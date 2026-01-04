@@ -3,33 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actor Arsenal | Weaponized Web Scrapers by John Rippy</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="50+ battle-tested Apify actors that murder manual data collection. Local SEO, competitor intel, review monitoring - built by a 2025 Zapier Automation Hero. Stop scraping by hand like a peasant.">
-    <meta name="keywords" content="Apify actors, web scraping, SEO automation, Google Maps scraper, Yelp scraper, local SEO, John Rippy, data extraction, business intelligence">
+    <title>Actor Arsenal | 159 Weaponized Web Scrapers by John Rippy</title>
+    <meta name="description" content="159 battle-tested Apify actors that murder manual data collection. Local SEO, competitor intel, review monitoring, social automation - built by a 2025 Zapier Automation Hero.">
+    <meta name="keywords" content="Apify actors, web scraping, SEO automation, Google Maps scraper, Yelp scraper, local SEO, John Rippy, data extraction, business intelligence, MCP servers">
     <meta name="author" content="John Rippy">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Actor Arsenal | Weaponized Web Scrapers">
-    <meta property="og:description" content="50+ battle-tested Apify actors that murder manual data collection. Built by a 2025 Zapier Automation Hero.">
+    <meta property="og:title" content="Actor Arsenal | 159 Weaponized Web Scrapers">
+    <meta property="og:description" content="159 battle-tested Apify actors. Built by a 2025 Zapier Automation Hero.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://actor-arsenal.vercel.app">
-    <meta property="og:image" content="https://actor-arsenal.vercel.app/og-image.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Actor Arsenal | Weaponized Web Scrapers">
-    <meta name="twitter:description" content="50+ battle-tested Apify actors. Murder manual data collection.">
-
-    <!-- Canonical -->
     <link rel="canonical" href="https://actor-arsenal.vercel.app">
-
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128163;</text></svg>">
-
-    <!-- Fonts -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128520;</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,22 +28,14 @@
             --accent-purple: #9933ff;
             --accent-yellow: #ffcc00;
             --accent-blood: #8B0000;
+            --blood-red: #cc0000;
             --text-primary: #ffffff;
             --text-secondary: #888888;
             --border: #222222;
-            --doom-orange: #ff6600;
-            --doom-brown: #8B4513;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Space Grotesk', sans-serif;
@@ -70,34 +45,15 @@
             overflow-x: hidden;
         }
 
-        /* DOOM-style pixel font for headings */
         .doom-text {
             font-family: 'Press Start 2P', cursive;
-            text-shadow:
-                3px 3px 0 var(--accent-blood),
-                6px 6px 0 rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 0 var(--accent-blood), 6px 6px 0 rgba(0,0,0,0.5);
             letter-spacing: 2px;
         }
 
-        /* Pixelated border effect */
-        .pixel-border {
-            border: 4px solid;
-            border-image: repeating-linear-gradient(
-                45deg,
-                var(--accent-green) 0px,
-                var(--accent-green) 4px,
-                transparent 4px,
-                transparent 8px
-            ) 4;
-        }
-
-        /* Animated DOOM-style background */
         .bg-grid {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image:
                 linear-gradient(rgba(139, 0, 0, 0.05) 2px, transparent 2px),
                 linear-gradient(90deg, rgba(139, 0, 0, 0.05) 2px, transparent 2px),
@@ -108,137 +64,131 @@
             animation: gridPulse 4s ease-in-out infinite;
         }
 
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
+        @keyframes gridPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-        /* Scanline effect overlay */
         .scanlines {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 9999;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1) 0px,
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
             opacity: 0.3;
         }
 
-        /* Sprite-style icon containers */
         .sprite-icon {
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            font-size: 2.5rem;
+            font-size: 2rem;
             filter: drop-shadow(2px 2px 0 var(--accent-blood));
             animation: spriteFloat 2s ease-in-out infinite;
         }
 
-        @keyframes spriteFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        @keyframes spriteFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 
-        /* Health bar style progress indicator */
-        .health-bar {
-            height: 20px;
-            background: linear-gradient(90deg,
-                var(--accent-blood) 0%,
-                var(--doom-orange) 50%,
-                var(--accent-green) 100%
-            );
-            border: 3px solid #333;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .health-bar::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Ammo counter style numbers */
         .doom-number {
             font-family: 'Press Start 2P', cursive;
-            color: var(--doom-orange);
+            color: #ff6600;
             text-shadow: 2px 2px 0 var(--accent-blood);
         }
 
-        /* Glitch effect */
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+        /* BFG Icon Styles */
+        .bfg-icon {
+            width: 60px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        .glitch:hover {
-            animation: glitch 0.3s ease-in-out;
+        .bfg-glow {
+            animation: bfgPulse 1.5s ease-in-out infinite;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        @keyframes bfgPulse {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px #00ff88); }
+            50% { opacity: 0.7; filter: drop-shadow(0 0 15px #00ff88); }
         }
 
-        /* Navigation */
+        /* Blood Drip Animation */
+        .blood-text {
+            position: relative;
+            display: inline-block;
+            color: var(--blood-red);
+        }
+
+        .blood-text::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--blood-red), transparent);
+            animation: bloodDrip 2s ease-in-out infinite;
+            border-radius: 0 0 2px 2px;
+        }
+
+        .blood-text::before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 30%;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--blood-red), transparent);
+            animation: bloodDrip 2s ease-in-out infinite 0.5s;
+            border-radius: 0 0 2px 2px;
+        }
+
+        @keyframes bloodDrip {
+            0% { height: 0; opacity: 0; }
+            20% { height: 20px; opacity: 1; }
+            80% { height: 40px; opacity: 0.8; }
+            100% { height: 60px; opacity: 0; }
+        }
+
+        /* Doom Guy */
+        .doom-guy {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 4rem;
+            z-index: 100;
+            animation: doomGuyBob 1s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+            filter: drop-shadow(0 0 10px rgba(255, 102, 0, 0.5));
+        }
+
+        .doom-guy:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(255, 102, 0, 0.8));
+        }
+
+        @keyframes doomGuyBob {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 0;
-            background: rgba(10, 10, 10, 0.9);
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
         }
 
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--accent-green);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-green);
         }
 
         .cta-button {
@@ -248,8 +198,8 @@
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
             border: 2px solid var(--accent-green);
+            transition: all 0.3s;
         }
 
         .cta-button:hover {
@@ -257,20 +207,14 @@
             color: var(--accent-green);
         }
 
-        /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             padding-top: 80px;
-            position: relative;
         }
 
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
 
         .badge {
             display: inline-block;
@@ -280,17 +224,21 @@
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.875rem;
-            font-weight: 500;
             margin-bottom: 2rem;
         }
 
         h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: -2px;
+        }
+
+        h1 .strike {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            opacity: 0.6;
         }
 
         h1 .accent {
@@ -298,158 +246,48 @@
             text-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
         }
 
-        h1 .strike {
-            text-decoration: line-through;
-            color: var(--text-secondary);
-            opacity: 0.5;
-        }
-
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .button-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .button-secondary:hover {
-            border-color: var(--text-primary);
+            margin-bottom: 2rem;
         }
 
         .stats-bar {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            margin-top: 5rem;
-            padding-top: 3rem;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--border);
+            flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--accent-green); font-family: 'JetBrains Mono', monospace; }
+        .stat-label { color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Problem Section */
-        .problem {
-            padding: 8rem 0;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #0d0d0d 100%);
-        }
-
-        .problem h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .problem h2 .red {
-            color: var(--accent-red);
-        }
-
-        .problem-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            margin-bottom: 4rem;
-        }
-
-        .pain-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .pain-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pain-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-red);
-        }
-
-        .pain-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pain-card p {
-            color: var(--text-secondary);
-        }
-
-        /* Arsenal Section */
-        .arsenal {
-            padding: 8rem 0;
-        }
+        .arsenal { padding: 6rem 0; }
 
         .arsenal h2 {
-            font-size: 3rem;
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 1rem;
         }
 
-        .arsenal h2 .green {
-            color: var(--accent-green);
-        }
+        .arsenal h2 .green { color: var(--accent-green); }
 
         .arsenal-subtitle {
             text-align: center;
             color: var(--text-secondary);
             font-size: 1.25rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
@@ -457,11 +295,12 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s;
+            font-size: 0.8rem;
         }
 
         .tab:hover, .tab.active {
@@ -471,15 +310,15 @@
 
         .actors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
         }
 
         .actor-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 1rem;
             transition: all 0.3s;
             text-decoration: none;
             color: inherit;
@@ -488,210 +327,39 @@
 
         .actor-card:hover {
             border-color: var(--accent-green);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.1);
         }
 
         .actor-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
-        .actor-icon {
-            font-size: 2rem;
-        }
-
-        .actor-name {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
+        .actor-icon { font-size: 1.5rem; }
+        .actor-name { font-size: 0.9rem; font-weight: 600; }
         .actor-category {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--accent-purple);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .actor-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
+        .actor-stats { display: flex; gap: 0.5rem; }
 
-        .actor-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .actor-tag {
+        .stat-badge {
             background: rgba(0, 255, 136, 0.1);
             color: var(--accent-green);
-            padding: 0.25rem 0.5rem;
+            padding: 0.2rem 0.4rem;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Why Section */
-        .why {
-            padding: 8rem 0;
-            background: linear-gradient(180deg, #0d0d0d 0%, var(--bg-dark) 100%);
-        }
-
-        .why h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .why h2 .yellow {
-            color: var(--accent-yellow);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-card p {
-            color: var(--text-secondary);
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 0;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text h2 .purple {
-            color: var(--accent-purple);
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.125rem;
-        }
-
-        .credential {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--accent-yellow);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .credential-icon {
-            font-size: 2.5rem;
-        }
-
-        .credential-text h4 {
-            color: var(--accent-yellow);
-            margin-bottom: 0.25rem;
-        }
-
-        .credential-text p {
-            color: var(--text-secondary);
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        .about-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .link-card {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s;
-        }
-
-        .link-card:hover {
-            border-color: var(--accent-green);
-            transform: translateX(8px);
-        }
-
-        .link-icon {
-            font-size: 2rem;
-        }
-
-        .link-content h4 {
-            margin-bottom: 0.25rem;
-        }
-
-        .link-content p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin: 0;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 0;
-            text-align: center;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #050505 100%);
-        }
-
-        .cta-section h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Footer */
         footer {
-            padding: 4rem 0 2rem;
+            padding: 3rem 0 2rem;
             border-top: 1px solid var(--border);
         }
 
@@ -700,79 +368,45 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1rem;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-green); }
+        .copyright { color: var(--text-secondary); font-size: 0.875rem; }
 
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-green);
-        }
-
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .stats-bar {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .actors-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .stats-bar { gap: 1.5rem; }
+            .actors-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .doom-guy { font-size: 3rem; bottom: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="bg-grid"></div>
     <div class="scanlines"></div>
+    
+    <!-- Doom Guy floating in corner -->
+    <div class="doom-guy" title="Rip and Tear!">&#128128;</div>
 
     <nav>
         <div class="container">
-            <a href="#" class="logo glitch">&#128163; ACTOR ARSENAL</a>
-            <ul class="nav-links">
-                <li><a href="#arsenal">The Arsenal</a></li>
-                <li><a href="#why">Why Us</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View All Actors &#8594;</a>
+            <a href="#" class="logo">
+                <svg class="bfg-icon" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="12" width="70" height="16" fill="#4a4a4a" rx="2"/>
+        <rect x="75" y="8" width="20" height="24" fill="#3a3a3a" rx="3"/>
+        <rect x="0" y="15" width="8" height="10" fill="#00ff88"/>
+        <rect x="10" y="14" width="4" height="12" fill="#333"/>
+        <rect x="20" y="14" width="4" height="12" fill="#333"/>
+        <rect x="30" y="14" width="4" height="12" fill="#333"/>
+        <circle cx="85" cy="20" r="6" fill="#00ff88" class="bfg-glow"/>
+        <rect x="55" y="28" width="15" height="6" fill="#2a2a2a" rx="1"/>
+    </svg>
+                ACTOR ARSENAL
+            </a>
+            <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify &#8594;</a>
         </div>
     </nav>
 
@@ -781,27 +415,23 @@
             <div class="hero-content">
                 <span class="badge">&#127942; 2025 Zapier Automation Hero of the Year</span>
                 <h1 class="doom-text">
-                    <span class="strike">Manual Scraping</span><br>
-                    IS <span class="accent">DEAD</span>
+                    <span class="strike">MANUAL SCRAPING</span><br>
+                    IS <span class="blood-text accent">DEAD</span>
                 </h1>
                 <p class="hero-subtitle">
-                    50+ battle-tested Apify actors that murder manual data collection.
-                    Local SEO, competitor intel, review monitoring.
-                    Built by someone who actually ships.
+                    159 battle-tested Apify actors. Local SEO, data extraction, social automation.
+                    Built by someone who ships.
                 </p>
-                <div class="hero-buttons">
-                    <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">&#128163; Deploy The Arsenal</a>
-                    <a href="#arsenal" class="button-secondary">See What's Inside &#8595;</a>
-                </div>
+                <a href="#arsenal" class="cta-button">&#128520; Explore The Arsenal</a>
 
                 <div class="stats-bar">
                     <div class="stat">
-                        <div class="stat-number doom-number">50+</div>
+                        <div class="stat-number doom-number">159</div>
                         <div class="stat-label">Active Actors</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number doom-number">5K+</div>
-                        <div class="stat-label">Runs Completed</div>
+                        <div class="stat-number doom-number">3,681</div>
+                        <div class="stat-label">Total Runs</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number doom-number">90%+</div>
@@ -816,412 +446,1932 @@
         </div>
     </section>
 
-    <section class="problem" id="problem">
-        <div class="container">
-            <h2 class="doom-text" style="font-size: 1.5rem;">You're <span class="red">Drowning</span>. We Know.</h2>
-            <p class="problem-subtitle">Every minute you spend manually collecting data is a minute your competitors are gaining ground.</p>
-
-            <div class="pain-points fade-in">
-                <div class="pain-card">
-                    <h3>&#128128; Spreadsheet Graveyard</h3>
-                    <p>Copy-pasting from 47 browser tabs into a spreadsheet that crashes every 30 minutes. You deserve better than this digital hell.</p>
-                </div>
-                <div class="pain-card">
-                    <h3>&#128293; Burning Cash</h3>
-                    <p>Paying VAs $15/hour to do what a $0.02 API call handles. Your burn rate is funding someone else's vacation.</p>
-                </div>
-                <div class="pain-card">
-                    <h3>&#9200; Time Vampire</h3>
-                    <p>8 hours to scrape what should take 8 minutes. That's not a workflow, that's a hostage situation.</p>
-                </div>
-                <div class="pain-card">
-                    <h3>&#128148; Stale Intel</h3>
-                    <p>Your "competitive analysis" is 3 months old. Your competitors' isn't. See the problem?</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="arsenal" id="arsenal">
         <div class="container">
-            <h2 class="doom-text" style="font-size: 2rem;">The <span class="green">Arsenal</span></h2>
-            <p class="arsenal-subtitle">Weaponized scrapers for every battlefield. Pick your poison.</p>
+            <h2 class="doom-text" style="font-size: 1.5rem;">The <span class="green">Arsenal</span></h2>
+            <p class="arsenal-subtitle">Every weapon you need. Pick your poison.</p>
 
             <div class="category-tabs">
-                <button class="tab active" onclick="filterActors('all')">All Weapons</button>
-                <button class="tab" onclick="filterActors('local-seo')">&#128205; Local SEO</button>
-                <button class="tab" onclick="filterActors('reviews')">&#11088; Reviews</button>
-                <button class="tab" onclick="filterActors('food')">&#127829; Food Delivery</button>
-                <button class="tab" onclick="filterActors('social')">&#128227; Social</button>
-                <button class="tab" onclick="filterActors('data')">&#128202; Data/Intel</button>
+                <button class="tab active" onclick="filterActors('all')">All (159)</button>
+                <button class="tab" onclick="filterActors('other')">&#128736; Other Tools (50)</button>
+                <button class="tab" onclick="filterActors('scraper')">&#128270; Scrapers & Crawlers (41)</button>
+                <button class="tab" onclick="filterActors('mcp')">&#129302; MCP Servers (16)</button>
+                <button class="tab" onclick="filterActors('ai')">&#129302; AI & Content (13)</button>
+                <button class="tab" onclick="filterActors('poster')">&#128227; Social Media Posters (11)</button>
+                <button class="tab" onclick="filterActors('api')">&#127760; APIs (11)</button>
+                <button class="tab" onclick="filterActors('local-seo')">&#128205; Local SEO & GBP (9)</button>
+                <button class="tab" onclick="filterActors('semrush')">&#128200; SEMrush Tools (8)</button>
             </div>
 
             <div class="actors-grid" id="actors-grid">
-                <!-- Local SEO Scrapers -->
-                <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/lottery-analyzer---powerball-mega-millions" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128081;</span>
+                        <span class="actor-icon sprite-icon">&#127922;</span>
                         <div>
-                            <div class="actor-name">Citation God Mode</div>
-                            <div class="actor-category">Local SEO Domination</div>
+                            <div class="actor-name">Lottery Analyzer - Powerball & Mega Millions</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">The nuclear option for local citation checking. Scans 100+ directories in parallel. Know exactly where your NAP is wrong.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">citations</span>
-                        <span class="actor-tag">NAP audit</span>
-                        <span class="actor-tag">local seo</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">105 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/google-maps-scraper" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/firecrawl-agent" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128506;</span>
+                        <span class="actor-icon sprite-icon">&#128293;</span>
                         <div>
-                            <div class="actor-name">Google Maps Scraper</div>
-                            <div class="actor-category">Business Intelligence</div>
+                            <div class="actor-name">Firecrawl Agent - Web Crawler</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Extract every detail from Google Maps listings. Reviews, photos, hours, contact info. Your competitors' whole operation, exposed.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">GMB data</span>
-                        <span class="actor-tag">reviews</span>
-                        <span class="actor-tag">lead gen</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">60 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-poster" class="actor-card" data-category="local-seo social" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/nanobanana-pro" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128640;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">GBP Post Scheduler</div>
-                            <div class="actor-category">Automation</div>
+                            <div class="actor-name">Nano Banana Pro - Premium AI Image Generator</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Auto-post to Google Business Profile. Schedule updates, offers, events. Never miss another GMB update opportunity.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">GBP posts</span>
-                        <span class="actor-tag">scheduler</span>
-                        <span class="actor-tag">automation</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">58 runs</span>
                     </div>
                 </a>
-
-                <!-- Review Scrapers -->
-                <a href="https://apify.com/alizarin_refrigerator-owner/yelp-scraper" class="actor-card" data-category="reviews local-seo" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-business-intelligence-suite" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#11088;</span>
+                        <span class="actor-icon sprite-icon">&#128205;</span>
                         <div>
-                            <div class="actor-name">Yelp Business Scraper</div>
-                            <div class="actor-category">Review Intelligence</div>
+                            <div class="actor-name">Local Business Intelligence Suite</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Full Yelp business profiles + every review. Sentiment analysis ready data. Know what customers really think.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">yelp</span>
-                        <span class="actor-tag">reviews</span>
-                        <span class="actor-tag">ratings</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">51 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/trustpilot-scraper" class="actor-card" data-category="reviews" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/nanobanana-flash" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128077;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">Trustpilot Scraper</div>
-                            <div class="actor-category">Review Intelligence</div>
+                            <div class="actor-name">Nanobanana Flash</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Extract Trustpilot reviews at scale. Company profiles, ratings, review text. Perfect for competitor monitoring.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">trustpilot</span>
-                        <span class="actor-tag">reviews</span>
-                        <span class="actor-tag">B2B</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">49 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/g2-scraper" class="actor-card" data-category="reviews data" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/design-huddle" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128187;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">G2 Reviews Scraper</div>
-                            <div class="actor-category">SaaS Intelligence</div>
+                            <div class="actor-name">Design Huddle - Professional Design Automation</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">G2 Crowd reviews for any software product. Competitive intel for SaaS companies. Know the market sentiment.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">G2</span>
-                        <span class="actor-tag">SaaS</span>
-                        <span class="actor-tag">competitive</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">45 runs</span>
                     </div>
                 </a>
-
-                <!-- Food Delivery Scrapers -->
-                <a href="https://apify.com/alizarin_refrigerator-owner/ubereats-scraper" class="actor-card" data-category="food" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/gsc-data-analyzer" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#127829;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">Uber Eats Scraper</div>
-                            <div class="actor-category">Food Delivery Intel</div>
+                            <div class="actor-name">GSC Data Analyzer - AI-Powered Search Console Insights</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Restaurant data from Uber Eats. Menus, prices, ratings, delivery fees. Food delivery market research, handled.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">uber eats</span>
-                        <span class="actor-tag">menus</span>
-                        <span class="actor-tag">pricing</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">38 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/doordash-scraper" class="actor-card" data-category="food" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/gtmetrix-performance-tester" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#127831;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">DoorDash Scraper</div>
-                            <div class="actor-category">Food Delivery Intel</div>
+                            <div class="actor-name">GTmetrix Performance Tester</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">DoorDash restaurant listings, menus, and ratings. Complete delivery platform intelligence.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">doordash</span>
-                        <span class="actor-tag">restaurants</span>
-                        <span class="actor-tag">delivery</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">36 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/grubhub-scraper" class="actor-card" data-category="food" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-news-monitor" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#127828;</span>
+                        <span class="actor-icon sprite-icon">&#128240;</span>
                         <div>
-                            <div class="actor-name">Grubhub Scraper</div>
-                            <div class="actor-category">Food Delivery Intel</div>
+                            <div class="actor-name">Local News & Reputation Monitor</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Grubhub restaurant data extraction. Menus, pricing, availability. Complete the food delivery trifecta.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">grubhub</span>
-                        <span class="actor-tag">restaurants</span>
-                        <span class="actor-tag">menus</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">34 runs</span>
                     </div>
                 </a>
-
-                <!-- Social/Content Scrapers -->
-                <a href="https://apify.com/alizarin_refrigerator-owner/youtube-scraper" class="actor-card" data-category="social data" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-insights" class="actor-card" data-category="other" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#127909;</span>
+                        <span class="actor-icon sprite-icon">&#128736;</span>
                         <div>
-                            <div class="actor-name">YouTube Scraper</div>
-                            <div class="actor-category">Content Intelligence</div>
+                            <div class="actor-name">PageSpeed Insights - Core Web Vitals & Real User Metrics</div>
+                            <div class="actor-category">Other Tools</div>
                         </div>
                     </div>
-                    <p class="actor-description">Channel stats, video metadata, comments. Content research at scale. Know what's working in your niche.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">youtube</span>
-                        <span class="actor-tag">videos</span>
-                        <span class="actor-tag">analytics</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">33 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-post-scraper" class="actor-card" data-category="social" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-suite" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Industry Research Suite - Market Intelligence API</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">27 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/telegram-integration" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Telegram Integration - Bot Messenger</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">26 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/moz-listing-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Moz Local Listing Checker - NAP Consistency Audit</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">26 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/company-contact-enricher" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Company Contact Enricher - Website to B2B Leads</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/lead-enricher" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Lead Enrichment API Multi-Provider B2B Data Enrichment</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/rip-on-shit" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Rip On Shit</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/competitor-monitor" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128225;</span>
+                        <div>
+                            <div class="actor-name">GBP Competitor Monitor</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">19 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/quora-research" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Quora Research - Q&A Scraper</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">19 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/technical-seo-auditor" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Technical SEO Auditor - AI-Powered On-Page Analysis</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">19 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/google-lighthouse-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128270;</span>
+                        <div>
+                            <div class="actor-name">Google Lighthouse Checker Core Web Vitals & Performance Audits</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/dataforseo-backlinks" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">DataForSEO Backlinks Analyzer</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/blog-syndication" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">AI Blog Syndication to Social Channels</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/wordpress-integration" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">WordPress Integration - Auto Publisher</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/fire-enrich" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Firecrawl Enrich - Data Enrichment</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-intelligence" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129504;</span>
+                        <div>
+                            <div class="actor-name">PageSpeed Intelligence Complete Web Performance Analysis w/AI</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/dataforseo-serp" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">DataForSEO SERP Tracker</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/vercel-analytics-exporter" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Vercel Analytics Exporter</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/google-calendar-integration" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128270;</span>
+                        <div>
+                            <div class="actor-name">Google Calendar Integration</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/real-estate-aggregator" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Real Estate Aggregator - Multi-Platform</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/seo-news-aggregator" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128240;</span>
+                        <div>
+                            <div class="actor-name">SEO News Aggregator - AI-Powered Content Curation</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/robots-txt-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Robots.txt Checker - CMS-Aware Analysis with AI Recommendations</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/rich-results-tester" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Rich Results Schema.org Tester</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/llms-txt-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">LLMs.txt Checker - AI Readiness Scanner</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/sentry-issue-summarizer" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Sentry Issue Summarizer</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/dataforseo-onpage" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">DataForSeo On-page SEO</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/localfalcon-grid" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">LocalFalcon Grid Scanner</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/lingo-asset-sync" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Lingo Digital Asset Management (DAM) platform Asset Sync</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/indexnow-url-submitter" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">IndexNow URL Submitter</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nlweb-compliance-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">NLWeb Compliance Checker</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/meeting-roi-calculator" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Meeting ROI Calculator</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/calendar-ics-analyzer" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Calendar ICS Analyzer</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/meeting-culture-score-checker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Meeting Culture Score Checker</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/async-company-directory" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Async-Friendly Company Directory</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/teams-meeting-cost-tracker" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Microsoft Teams Meeting Cost Tracker</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/workspace-sentiment-analyzer" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129504;</span>
+                        <div>
+                            <div class="actor-name">Google Workspace Sentiment Analyzer</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/lbis-pro" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">The Local Business Intelligence Suite</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/dad-joke-fart-joke-texter" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128514;</span>
+                        <div>
+                            <div class="actor-name">Dad Joke & Fart Joke Texter</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/service-area-mapper" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128736;</span>
+                        <div>
+                            <div class="actor-name">Service Area Mapper</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/rich-results-schema-org-tester" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Rich Results Schema.org Tester</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">1 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/moz-local-listing-checker---nap-consistency-audit" class="actor-card" data-category="other" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">Moz Local Listing Checker - NAP Consistency Audit</div>
+                            <div class="actor-category">Other Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">1 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-post-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
                         <span class="actor-icon sprite-icon">&#128188;</span>
                         <div>
-                            <div class="actor-name">LinkedIn Post Scraper</div>
-                            <div class="actor-category">B2B Intelligence</div>
+                            <div class="actor-name">AI Linkedin Post Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Extract LinkedIn posts and engagement data. Track thought leaders, monitor competitors. B2B content intel.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">linkedin</span>
-                        <span class="actor-tag">posts</span>
-                        <span class="actor-tag">B2B</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">91 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-social-repurposer" class="actor-card" data-category="social local-seo" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-profile-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128260;</span>
+                        <span class="actor-icon sprite-icon">&#128188;</span>
                         <div>
-                            <div class="actor-name">GBP Social Repurposer</div>
-                            <div class="actor-category">Content Automation</div>
+                            <div class="actor-name">Linkedin Profile Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Auto-repurpose content to Google Business Profile. One piece of content, multiple platforms. Maximum efficiency.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">repurpose</span>
-                        <span class="actor-tag">GBP</span>
-                        <span class="actor-tag">automation</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">70 runs</span>
                     </div>
                 </a>
-
-                <!-- Data/Intel Scrapers -->
-                <a href="https://apify.com/alizarin_refrigerator-owner/website-crawler" class="actor-card" data-category="data" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/website-crawler" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
                         <span class="actor-icon sprite-icon">&#128375;</span>
                         <div>
                             <div class="actor-name">Website Content Crawler</div>
-                            <div class="actor-category">Data Extraction</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Deep crawl any website. Extract text, images, links, structure. Feed your AI models with quality data.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">crawler</span>
-                        <span class="actor-tag">scraping</span>
-                        <span class="actor-tag">AI ready</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">47 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/google-serp-scraper" class="actor-card" data-category="data local-seo" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/google-maps-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
                         <span class="actor-icon sprite-icon">&#128270;</span>
                         <div>
-                            <div class="actor-name">Google SERP Scraper</div>
-                            <div class="actor-category">SEO Intelligence</div>
+                            <div class="actor-name">Google Maps Business Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Scrape Google search results at scale. Track rankings, analyze SERPs, monitor competitors. SEO intel on demand.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">SERP</span>
-                        <span class="actor-tag">rankings</span>
-                        <span class="actor-tag">SEO</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">46 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/local-news-monitor" class="actor-card" data-category="data" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/the-yellow-pages-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#128240;</span>
+                        <span class="actor-icon sprite-icon">&#128375;</span>
                         <div>
-                            <div class="actor-name">Local News Monitor</div>
-                            <div class="actor-category">Media Intelligence</div>
+                            <div class="actor-name">The Yellow Pages Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Monitor local news sources for brand mentions, competitor coverage, industry trends. Never miss relevant news again.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">news</span>
-                        <span class="actor-tag">monitoring</span>
-                        <span class="actor-tag">alerts</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">46 runs</span>
                     </div>
                 </a>
-
-                <a href="https://apify.com/alizarin_refrigerator-owner/redfin-scraper" class="actor-card" data-category="data" target="_blank" rel="noopener">
+                <a href="https://apify.com/alizarin_refrigerator-owner/facebook-ads-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
                     <div class="actor-header">
-                        <span class="actor-icon sprite-icon">&#127968;</span>
+                        <span class="actor-icon sprite-icon">&#128101;</span>
                         <div>
-                            <div class="actor-name">Redfin Scraper</div>
-                            <div class="actor-category">Real Estate Intel</div>
+                            <div class="actor-name">Facebook Ads Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                    <p class="actor-description">Real estate listings from Redfin. Property data, pricing history, market trends. Real estate research, simplified.</p>
-                    <div class="actor-tags">
-                        <span class="actor-tag">redfin</span>
-                        <span class="actor-tag">real estate</span>
-                        <span class="actor-tag">listings</span>
+                    <div class="actor-stats">
+                        <span class="stat-badge">42 runs</span>
                     </div>
                 </a>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View All 50+ Actors &#8594;</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="why" id="why">
-        <div class="container">
-            <h2 class="doom-text" style="font-size: 1.5rem;">Why <span class="yellow">These</span> Actors?</h2>
-
-            <div class="benefits-grid fade-in">
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#128640;</div>
-                    <h3>Demo Mode First</h3>
-                    <p>Every actor ships with demo mode. Test before you commit. No surprises, no wasted compute.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#128736;</div>
-                    <h3>Battle-Tested</h3>
-                    <p>90%+ success rates across the board. These aren't weekend projects - they're production-ready tools.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#128176;</div>
-                    <h3>Pay Per Result</h3>
-                    <p>Most actors use pay-per-event pricing. Only pay for successful extractions. Fair and transparent.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#128295;</div>
-                    <h3>Actively Maintained</h3>
-                    <p>Sites change. Scrapers break. Ours get fixed. Regular updates keep everything running smooth.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#127760;</div>
-                    <h3>API Ready</h3>
-                    <p>Clean JSON output. Ready for your workflows, databases, or AI pipelines. No cleanup needed.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon sprite-icon">&#129302;</div>
-                    <h3>MCP Servers</h3>
-                    <p>Several actors include MCP (Model Context Protocol) for AI agent integration. The future is here.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="doom-text" style="font-size: 1.3rem;">Built by <span class="purple">John Rippy</span></h2>
-                    <p>
-                        Not a faceless agency. Not a dev farm. Just one automation-obsessed engineer who's been
-                        in the trenches with local SEO, data extraction, and workflow automation since before
-                        it was cool.
-                    </p>
-                    <p>
-                        Every actor in this arsenal started as a solution to a real problem.
-                        If I needed it, chances are you do too.
-                    </p>
-
-                    <div class="credential">
-                        <span class="credential-icon">&#127942;</span>
-                        <div class="credential-text">
-                            <h4>2025 Zapier Automation Hero of the Year</h4>
-                            <p>Project Phoenix: A 95-step AI sales pipeline that cut development time by 50%.</p>
+                <a href="https://apify.com/alizarin_refrigerator-owner/automobile-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Multi-Source Car Listing Aggregator Automobile Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
                     </div>
-                </div>
-
-                <div class="about-links">
-                    <a href="https://apify.com/alizarin_refrigerator-owner" class="link-card" target="_blank" rel="noopener">
-                        <span class="link-icon">&#128163;</span>
-                        <div class="link-content">
-                            <h4>Apify Store Profile</h4>
-                            <p>Browse all 50+ actors, reviews, and documentation</p>
+                    <div class="actor-stats">
+                        <span class="stat-badge">35 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/tripadvisor-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Tripadvisor Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/johnrippy/" class="link-card" target="_blank" rel="noopener">
-                        <span class="link-icon">&#128188;</span>
-                        <div class="link-content">
-                            <h4>LinkedIn</h4>
-                            <p>Connect and follow automation insights</p>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">34 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/tiktok-creator-video-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127926;</span>
+                        <div>
+                            <div class="actor-name">TikTok Creator & Video Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
-                    </a>
-                    <a href="https://johnrippy.link" class="link-card" target="_blank" rel="noopener">
-                        <span class="link-icon">&#127760;</span>
-                        <div class="link-content">
-                            <h4>johnrippy.link</h4>
-                            <p>Portfolio, projects, and more</p>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">34 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/g2-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">G2 Software Reviews & Ratings Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
                         </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="doom-text" style="font-size: 1.5rem;">Stop Scraping Like a <span class="accent">Peasant</span></h2>
-            <p>Join the automation revolution. Your manual processes are begging for mercy.</p>
-            <div class="hero-buttons">
-                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">&#128163; Enter The Arsenal</a>
-                <a href="https://www.linkedin.com/in/johnrippy/" class="button-secondary" target="_blank" rel="noopener">&#128188; Connect on LinkedIn</a>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">31 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/realtor-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Realtor.com Scraper - Property Data</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">27 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-leads-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Google Maps Local Leads Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">26 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/review-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#11088;</span>
+                        <div>
+                            <div class="actor-name">Review Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">23 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/yelp-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#11088;</span>
+                        <div>
+                            <div class="actor-name">Yelp Business Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">23 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ubereats-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Uber Eats Restaurant Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">23 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/youtube-channel-video-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127909;</span>
+                        <div>
+                            <div class="actor-name">YouTube Channel & Video Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">22 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/glassdoor-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Glassdoor Company Reviews & Salary Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/zillow-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Zillow Scraper - Home Listings</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nextdoor-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Nextdoor Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">20 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/tech-stack-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Tech Stack Scraper - Website Analyzer</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">20 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/angi-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Angi (formerly Angie's List) Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">19 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/bbb-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">BBB Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/healthgrades-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Healthgrades Doctor & Healthcare Provider Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/homeadvisor-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">HomeAdvisor Pro Finder & Reviews Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/capterra-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Capterra Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/clutch-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Clutch Scraper - B2B Reviews</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/instagram-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128247;</span>
+                        <div>
+                            <div class="actor-name">Instagram Profile & Posts Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/enterprise-grade-trustpilot-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Enterprise-grade Trustpilot scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/crunchbase-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Crunchbase Scraper - Company Data</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/redfin-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Redfin Scraper - Property Listings</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/reddit-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128172;</span>
+                        <div>
+                            <div class="actor-name">Reddit Scraper - Posts, Comments & Subreddit Data</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/mls-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">MLS Scraper - Real Estate Listings</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/yellow-pages-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Yellow Pages Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/goodfirms-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">GoodFirms Scraper - Agency Reviews</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/facebook-page-post-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128101;</span>
+                        <div>
+                            <div class="actor-name">Facebook Page Post Scraper</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/doordash-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">DoorDash Scraper - Extract Restaurant & Store Data with Menus</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/google-serp-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128270;</span>
+                        <div>
+                            <div class="actor-name">Google SERP Scraper - Search Results, Rankings & SERP Features</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/houzz-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Houzz Scraper - Extract Home Professionals, Reviews & Projects</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/manta-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Manta Scraper - Extract Business Listings & Company Data</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/grubhub-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Grubhub Scraper - Extract Restaurant Data, Menus & Reviews</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/realtor-com-scraper" class="actor-card" data-category="scraper" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128375;</span>
+                        <div>
+                            <div class="actor-name">Realtor.com Scraper - Property Data</div>
+                            <div class="actor-category">Scrapers & Crawlers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">4 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-seo-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Local SEO MCP Server for Claude & AI Assistants</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">61 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/seo-intelligence-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Unified SEO Intelligence MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/social-media-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Social Media MCP Server - Unified Multi-Platform Posting API</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/competitive-intelligence-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Competitive Intelligence MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">13 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128188;</span>
+                        <div>
+                            <div class="actor-name">LinkedIn MCP Server - AI Assistant</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/lead-enrichment-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Lead Enrichment MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-technical-seo-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI Technical SEO MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/review-intelligence-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#11088;</span>
+                        <div>
+                            <div class="actor-name">Review Intelligence MCP Server for AI Assistants</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/b2b-research-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">B2B Research MCP Server Company Intel & Sales Research for AI</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Industry Research MCP Server for AI Assistants</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-content-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI Content MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">11 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/real-estate-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Real Estate MCP Server Multi-Platform Property Data for AI</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/performance-seo-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Website Performance & Technical SEO MCP Server for AI Assistant</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/messaging-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Messaging Platform MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/sports-data-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">62-in-1 Sports Data MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/influencer-marketing-mcp-server" class="actor-card" data-category="mcp" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Influencer Marketing MCP Server</div>
+                            <div class="actor-category">MCP Servers</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">10 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-voice-trainer" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128188;</span>
+                        <div>
+                            <div class="actor-name">LinkedIn Voice Trainer & AI Content Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">109 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-extraction-agent" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI Extraction Agent - Smart Scraper</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">61 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gemini-image-generator" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#9889;</span>
+                        <div>
+                            <div class="actor-name">Google Imagen 3 - AI Image Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">50 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-schema-generator" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#9889;</span>
+                        <div>
+                            <div class="actor-name">Local Schema Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">25 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/mailchimp-campaign-analyzer" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">Mailchimp Campaign Analyzer</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">25 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/review-response-generator" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#11088;</span>
+                        <div>
+                            <div class="actor-name">Review Response Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">24 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/sitemap-generator" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#9889;</span>
+                        <div>
+                            <div class="actor-name">Sitemap Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-image-studio" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI Image Studio - Multi-Provider Generator</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/meeting-to-content-pipeline" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Meeting To Content Pipeline</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/email-validation-api" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">Email Validation API - Bulk Verify</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-readiness-checker" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI Readiness Checker - Website Scanner</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-competitor-monitor" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">AI-Enhanced Competitor Monitor with Strategic Intelligence</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gmail-sentiment-scanner" class="actor-card" data-category="ai" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#129302;</span>
+                        <div>
+                            <div class="actor-name">GMail Sentiment Scanner</div>
+                            <div class="actor-category">AI & Content</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">13 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">Google Business Profile (GBP) Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">54 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/tiktok-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127926;</span>
+                        <div>
+                            <div class="actor-name">Tiktok Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">40 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/reddit-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128172;</span>
+                        <div>
+                            <div class="actor-name">Reddit Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">32 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/twitter-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128038;</span>
+                        <div>
+                            <div class="actor-name">X Twitter Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">31 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/facebook-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128101;</span>
+                        <div>
+                            <div class="actor-name">Facebook Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">20 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/instagram-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128247;</span>
+                        <div>
+                            <div class="actor-name">Instagram Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">19 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128188;</span>
+                        <div>
+                            <div class="actor-name">LinkedIn Personal & Company Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pinterest-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128204;</span>
+                        <div>
+                            <div class="actor-name">Pinterest Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">18 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/discord-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128640;</span>
+                        <div>
+                            <div class="actor-name">Discord Bot Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/slack-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128640;</span>
+                        <div>
+                            <div class="actor-name">Slack Bot Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/whatsapp-business-poster" class="actor-card" data-category="poster" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128640;</span>
+                        <div>
+                            <div class="actor-name">Whatsapp Business Poster</div>
+                            <div class="actor-category">Social Media Posters</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pdf-ocr-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">PDF OCR API - Document Extraction</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">98 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/premier-league-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">Premier League API - Football Stats</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">29 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/mlb-stats-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">MLB Stats API - Baseball Data</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/sentiment-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">AI Sentiment Analysis API</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/recipe-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">Recipe API - TheMealDB, AllRecipes Scraper & Spoonacular</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ncaa-api---college-sports" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">NCAA API - College Sports</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nfl-api---football-statistics" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">NFL API - Football Statistics</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nhl-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">NHL API - Hockey Statistics</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/serpapi-realtime" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">SERPApi Real-Time SERP</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nba-api---basketball-statistics" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">NBA API - Basketball Statistics</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">13 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/wwe-api" class="actor-card" data-category="api" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#127760;</span>
+                        <div>
+                            <div class="actor-name">WWE API - Wrestling Sports</div>
+                            <div class="actor-category">APIs</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">13 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-howl-citation-checker" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Local Howl Citation Checker</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">41 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-builder" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Citation Builder</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">22 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-post-scheduler" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">GBP Post Scheduler</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">21 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-audit-scheduler" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">GBP Audit Scheduler with Change Tracking</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-checker-ai" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Citation Checker AI</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/gbp-social-repurposer" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128205;</span>
+                        <div>
+                            <div class="actor-name">GBP Social Repurposer - Auto-Post to Social Platforms</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">14 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Citation God Mode - Ultimate NAP Consistency Checker</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">13 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode-deprecated" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Citation God Mode - Ultimate NAP Consistency Checker</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-checker" class="actor-card" data-category="local-seo" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128221;</span>
+                        <div>
+                            <div class="actor-name">Citation Checker</div>
+                            <div class="actor-category">Local SEO & GBP</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">3 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-competitor-analysis---discover-compare-competitors" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Competitor Analysis - Discover & Compare Competitors</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">44 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-position-tracker---keyword-rankings-serp-features" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Position Tracker - Keyword Rankings & SERP Features</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">44 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-content-gap-analysis---find-missing-keywords" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Content Gap Analysis - Find Missing Keywords</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">44 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-domain-overview---authority-score-traffic-keywords" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Domain Overview - Authority Score, Traffic & Keywords</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">17 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-backlink-analyzer---referring-domains-link-quality" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Backlink Analyzer - Referring Domains & Link Quality</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-traffic-analytics---visits-sources-engagement" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Traffic Analytics - Visits, Sources & Engagement</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">16 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-keyword-research---volume-difficulty-related" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Keyword Research - Volume, Difficulty & Related</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">15 runs</span>
+                    </div>
+                </a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-site-audit" class="actor-card" data-category="semrush" target="_blank" rel="noopener">
+                    <div class="actor-header">
+                        <span class="actor-icon sprite-icon">&#128200;</span>
+                        <div>
+                            <div class="actor-name">SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup</div>
+                            <div class="actor-category">SEMrush Tools</div>
+                        </div>
+                    </div>
+                    <div class="actor-stats">
+                        <span class="stat-badge">12 runs</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -1229,19 +2379,30 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <a href="#" class="logo">&#128163; ACTOR ARSENAL</a>
+                <a href="#" class="logo">
+                    <svg class="bfg-icon" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="12" width="70" height="16" fill="#4a4a4a" rx="2"/>
+        <rect x="75" y="8" width="20" height="24" fill="#3a3a3a" rx="3"/>
+        <rect x="0" y="15" width="8" height="10" fill="#00ff88"/>
+        <rect x="10" y="14" width="4" height="12" fill="#333"/>
+        <rect x="20" y="14" width="4" height="12" fill="#333"/>
+        <rect x="30" y="14" width="4" height="12" fill="#333"/>
+        <circle cx="85" cy="20" r="6" fill="#00ff88" class="bfg-glow"/>
+        <rect x="55" y="28" width="15" height="6" fill="#2a2a2a" rx="1"/>
+    </svg>
+                    ACTOR ARSENAL
+                </a>
                 <div class="footer-links">
                     <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank" rel="noopener">Apify Store</a>
                     <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">LinkedIn</a>
                     <a href="https://johnrippy.link" target="_blank" rel="noopener">johnrippy.link</a>
                 </div>
-                <p class="copyright">&copy; 2025 John Rippy. Built different.</p>
+                <p class="copyright">&copy; 2025 John Rippy. Rip and tear.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Filter actors by category
         function filterActors(category) {
             const cards = document.querySelectorAll('.actor-card');
             const tabs = document.querySelectorAll('.tab');
@@ -1250,7 +2411,7 @@
             event.target.classList.add('active');
 
             cards.forEach(card => {
-                if (category === 'all' || card.dataset.category.includes(category)) {
+                if (category === 'all' || card.dataset.category === category) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -1258,23 +2419,6 @@
             });
         }
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1284,46 +2428,12 @@
                 }
             });
         });
-    </script>
 
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Actor Arsenal",
-        "description": "50+ battle-tested Apify actors for web scraping, local SEO, and data extraction by John Rippy",
-        "url": "https://actor-arsenal.vercel.app",
-        "author": {
-            "@type": "Person",
-            "name": "John Rippy",
-            "url": "https://johnrippy.link",
-            "sameAs": [
-                "https://www.linkedin.com/in/johnrippy/",
-                "https://apify.com/alizarin_refrigerator-owner"
-            ]
-        },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://apify.com/alizarin_refrigerator-owner?search={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "John Rippy",
-        "url": "https://johnrippy.link",
-        "sameAs": [
-            "https://www.linkedin.com/in/johnrippy/",
-            "https://apify.com/alizarin_refrigerator-owner"
-        ],
-        "jobTitle": "Automation Engineer",
-        "award": "2025 Zapier Automation Hero of the Year"
-    }
+        // Doom Guy click effect
+        document.querySelector('.doom-guy').addEventListener('click', function() {
+            this.innerHTML = '&#128545;';
+            setTimeout(() => this.innerHTML = '&#128128;', 500);
+        });
     </script>
 </body>
 </html>
