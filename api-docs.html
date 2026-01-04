@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation | Actor Arsenal by John Rippy</title>
+    <meta name="description" content="API documentation and integration guides for Actor Arsenal Apify actors.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128214;</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --accent-yellow: #ffcc00;
+            --accent-blue: #3399ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .page-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        .doom-text {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 3px 3px 0 #8B0000;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.75rem; margin: 2rem 0 1rem; color: var(--accent-green); }
+        h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: var(--accent-purple); }
+        .subtitle { color: var(--text-secondary); font-size: 1.25rem; }
+        .docs-content { padding: 2rem 0 4rem; }
+        .doc-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .doc-section:hover {
+            border-color: var(--accent-green);
+        }
+        pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            margin: 1rem 0;
+        }
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-code);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        .code-comment { color: #6a9955; }
+        .code-string { color: #ce9178; }
+        .code-keyword { color: #569cd6; }
+        .code-function { color: #dcdcaa; }
+        .code-variable { color: #9cdcfe; }
+        .code-number { color: #b5cea8; }
+        .endpoint {
+            display: inline-block;
+            background: rgba(51, 153, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+        }
+        .method {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+        .method-post { background: var(--accent-green); color: var(--bg-dark); }
+        .method-get { background: var(--accent-blue); color: white; }
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .param-table th, .param-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table th {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .param-required {
+            color: var(--accent-red);
+            font-size: 0.75rem;
+        }
+        .param-optional {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+        .toc {
+            position: sticky;
+            top: 100px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .toc-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+        .toc a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .toc a:hover { color: var(--accent-green); }
+        .toc a:last-child { border-bottom: none; }
+        .tip {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid var(--accent-green);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .tip-title {
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+        .warning {
+            background: rgba(255, 204, 0, 0.1);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .warning-title {
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-green); }
+        .copyright { color: var(--text-secondary); font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            pre { font-size: 0.75rem; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="index.html">Arsenal</a>
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html" class="active">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="doom-text">&#128214; <span style="color: var(--accent-green);">API</span> DOCS</h1>
+            <p class="subtitle">Integration guides and code examples for all actors</p>
+        </div>
+    </div>
+
+    <section class="docs-content">
+        <div class="container">
+
+            <div class="toc">
+                <div class="toc-title">Quick Navigation</div>
+                <a href="#getting-started">Getting Started</a>
+                <a href="#authentication">Authentication</a>
+                <a href="#running-actors">Running Actors</a>
+                <a href="#citation-checker">Citation Checker API</a>
+                <a href="#social-posters">Social Posters API</a>
+                <a href="#sports-apis">Sports APIs</a>
+                <a href="#mcp-servers">MCP Servers</a>
+                <a href="#webhooks">Webhooks</a>
+            </div>
+
+            <div class="doc-section" id="getting-started">
+                <h2>Getting Started</h2>
+                <p>All Actor Arsenal actors run on the Apify platform. You'll need an Apify account and API token to use them programmatically.</p>
+
+                <h3>Step 1: Get Your API Token</h3>
+                <p>Go to <a href="https://console.apify.com/account/integrations" style="color: var(--accent-green);">Apify Console > Settings > Integrations</a> to find your API token.</p>
+
+                <h3>Step 2: Install the Apify Client</h3>
+<pre><span class="code-comment"># Node.js</span>
+npm install apify-client
+
+<span class="code-comment"># Python</span>
+pip install apify-client</pre>
+
+                <h3>Step 3: Run Your First Actor</h3>
+<pre><span class="code-keyword">const</span> { <span class="code-variable">ApifyClient</span> } = <span class="code-function">require</span>(<span class="code-string">'apify-client'</span>);
+
+<span class="code-keyword">const</span> <span class="code-variable">client</span> = <span class="code-keyword">new</span> <span class="code-function">ApifyClient</span>({
+    <span class="code-variable">token</span>: <span class="code-string">'YOUR_API_TOKEN'</span>,
+});
+
+<span class="code-comment">// Run the Citation God Mode actor</span>
+<span class="code-keyword">const</span> <span class="code-variable">run</span> = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/citation-god-mode'</span>).<span class="code-function">call</span>({
+    <span class="code-variable">businessName</span>: <span class="code-string">'Your Business Name'</span>,
+    <span class="code-variable">address</span>: <span class="code-string">'123 Main St, City, ST 12345'</span>,
+    <span class="code-variable">phone</span>: <span class="code-string">'555-123-4567'</span>,
+});
+
+<span class="code-comment">// Get results</span>
+<span class="code-keyword">const</span> { <span class="code-variable">items</span> } = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">dataset</span>(<span class="code-variable">run</span>.<span class="code-variable">defaultDatasetId</span>).<span class="code-function">listItems</span>();
+<span class="code-variable">console</span>.<span class="code-function">log</span>(<span class="code-variable">items</span>);</pre>
+            </div>
+
+            <div class="doc-section" id="authentication">
+                <h2>Authentication</h2>
+                <p>All API requests require authentication via your Apify API token.</p>
+
+                <h3>Header Authentication</h3>
+<pre><span class="code-variable">Authorization</span>: Bearer YOUR_API_TOKEN</pre>
+
+                <h3>Query Parameter</h3>
+<pre>https://api.apify.com/v2/acts/...?token=YOUR_API_TOKEN</pre>
+
+                <div class="warning">
+                    <div class="warning-title">Security Warning</div>
+                    Never expose your API token in client-side code. Always use server-side requests or environment variables.
+                </div>
+            </div>
+
+            <div class="doc-section" id="running-actors">
+                <h2>Running Actors</h2>
+
+                <h3>Start Actor Run</h3>
+                <span class="method method-post">POST</span>
+                <span class="endpoint">/v2/acts/{actorId}/runs</span>
+
+                <table class="param-table">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>actorId</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Actor ID (e.g., "alizarin_refrigerator-owner/citation-god-mode")</td>
+                    </tr>
+                    <tr>
+                        <td>waitForFinish</td>
+                        <td>integer</td>
+                        <td><span class="param-optional">optional</span> Wait up to N seconds for run to finish (max 300)</td>
+                    </tr>
+                    <tr>
+                        <td>memory</td>
+                        <td>integer</td>
+                        <td><span class="param-optional">optional</span> Memory limit in MB (128-32768)</td>
+                    </tr>
+                </table>
+
+<pre><span class="code-comment">// Start run and wait for completion</span>
+<span class="code-keyword">const</span> <span class="code-variable">response</span> = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(
+    <span class="code-string">'https://api.apify.com/v2/acts/alizarin_refrigerator-owner/citation-god-mode/runs?waitForFinish=300'</span>,
+    {
+        <span class="code-variable">method</span>: <span class="code-string">'POST'</span>,
+        <span class="code-variable">headers</span>: {
+            <span class="code-string">'Authorization'</span>: <span class="code-string">`Bearer ${API_TOKEN}`</span>,
+            <span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span>,
+        },
+        <span class="code-variable">body</span>: <span class="code-variable">JSON</span>.<span class="code-function">stringify</span>({
+            <span class="code-variable">businessName</span>: <span class="code-string">'Acme Corp'</span>,
+            <span class="code-variable">address</span>: <span class="code-string">'123 Main St, Austin, TX 78701'</span>,
+            <span class="code-variable">phone</span>: <span class="code-string">'512-555-1234'</span>,
+        }),
+    }
+);</pre>
+            </div>
+
+            <div class="doc-section" id="citation-checker">
+                <h2>Citation Checker API</h2>
+                <p>Check NAP consistency across 60+ business directories.</p>
+
+                <h3>Input Schema</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>businessName</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Exact business name as it should appear</td>
+                    </tr>
+                    <tr>
+                        <td>address</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Full street address with city, state, zip</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Primary business phone number</td>
+                    </tr>
+                    <tr>
+                        <td>website</td>
+                        <td>string</td>
+                        <td><span class="param-optional">optional</span> Business website URL</td>
+                    </tr>
+                    <tr>
+                        <td>demoMode</td>
+                        <td>boolean</td>
+                        <td><span class="param-optional">optional</span> Return sample data (default: false)</td>
+                    </tr>
+                </table>
+
+                <h3>Output Schema</h3>
+<pre>{
+    <span class="code-string">"summary"</span>: {
+        <span class="code-string">"totalPlatforms"</span>: <span class="code-number">60</span>,
+        <span class="code-string">"foundOn"</span>: <span class="code-number">42</span>,
+        <span class="code-string">"consistentNAP"</span>: <span class="code-number">38</span>,
+        <span class="code-string">"inconsistencies"</span>: <span class="code-number">4</span>,
+        <span class="code-string">"napScore"</span>: <span class="code-number">90.5</span>
+    },
+    <span class="code-string">"citations"</span>: [
+        {
+            <span class="code-string">"platform"</span>: <span class="code-string">"Google Business Profile"</span>,
+            <span class="code-string">"found"</span>: <span class="code-keyword">true</span>,
+            <span class="code-string">"nameMatch"</span>: <span class="code-keyword">true</span>,
+            <span class="code-string">"addressMatch"</span>: <span class="code-keyword">true</span>,
+            <span class="code-string">"phoneMatch"</span>: <span class="code-keyword">true</span>,
+            <span class="code-string">"listingUrl"</span>: <span class="code-string">"https://..."</span>
+        }
+    ]
+}</pre>
+
+                <div class="tip">
+                    <div class="tip-title">Pro Tip</div>
+                    Use <code>demoMode: true</code> for testing to avoid consuming credits.
+                </div>
+            </div>
+
+            <div class="doc-section" id="social-posters">
+                <h2>Social Posters API</h2>
+                <p>Automate posting to social media platforms.</p>
+
+                <h3>Common Input Fields</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Post content/caption</td>
+                    </tr>
+                    <tr>
+                        <td>imageUrl</td>
+                        <td>string</td>
+                        <td><span class="param-optional">optional</span> Image URL to attach</td>
+                    </tr>
+                    <tr>
+                        <td>sessionCookie</td>
+                        <td>string</td>
+                        <td><span class="param-required">required</span> Platform session cookie for auth</td>
+                    </tr>
+                </table>
+
+                <h3>Facebook Poster Example</h3>
+<pre><span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/facebook-poster'</span>).<span class="code-function">call</span>({
+    <span class="code-variable">pageId</span>: <span class="code-string">'your-page-id'</span>,
+    <span class="code-variable">text</span>: <span class="code-string">'Check out our latest updates!'</span>,
+    <span class="code-variable">imageUrl</span>: <span class="code-string">'https://example.com/image.jpg'</span>,
+    <span class="code-variable">sessionCookie</span>: <span class="code-string">'your-session-cookie'</span>,
+});</pre>
+
+                <h3>LinkedIn Poster Example</h3>
+<pre><span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/linkedin-poster'</span>).<span class="code-function">call</span>({
+    <span class="code-variable">postType</span>: <span class="code-string">'company'</span>, <span class="code-comment">// or 'personal'</span>
+    <span class="code-variable">companyId</span>: <span class="code-string">'your-company-id'</span>,
+    <span class="code-variable">text</span>: <span class="code-string">'Exciting news from our team!'</span>,
+    <span class="code-variable">sessionCookie</span>: <span class="code-string">'li_at=your-cookie'</span>,
+});</pre>
+            </div>
+
+            <div class="doc-section" id="sports-apis">
+                <h2>Sports APIs</h2>
+                <p>Real-time sports data from official league APIs.</p>
+
+                <h3>NFL API Example</h3>
+<pre><span class="code-keyword">const</span> <span class="code-variable">run</span> = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/nfl-api---football-statistics'</span>).<span class="code-function">call</span>({
+    <span class="code-variable">action</span>: <span class="code-string">'standings'</span>, <span class="code-comment">// standings, schedule, teams, scores</span>
+    <span class="code-variable">season</span>: <span class="code-number">2024</span>,
+    <span class="code-variable">week</span>: <span class="code-number">17</span>, <span class="code-comment">// optional for scores</span>
+});
+
+<span class="code-comment">// Returns team standings, records, division rankings</span></pre>
+
+                <h3>Available Actions (All Sports APIs)</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Action</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>standings</td>
+                        <td>League/division standings</td>
+                    </tr>
+                    <tr>
+                        <td>schedule</td>
+                        <td>Season or week schedule</td>
+                    </tr>
+                    <tr>
+                        <td>teams</td>
+                        <td>All teams with metadata</td>
+                    </tr>
+                    <tr>
+                        <td>scores</td>
+                        <td>Live or final scores</td>
+                    </tr>
+                    <tr>
+                        <td>roster</td>
+                        <td>Team roster (requires teamId)</td>
+                    </tr>
+                    <tr>
+                        <td>player</td>
+                        <td>Player stats (requires playerId)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="doc-section" id="mcp-servers">
+                <h2>MCP Servers</h2>
+                <p>Model Context Protocol servers for AI assistants like Claude.</p>
+
+                <h3>What is MCP?</h3>
+                <p>MCP (Model Context Protocol) is a standard for connecting AI assistants to external tools and data sources. Our MCP servers let Claude and other AI assistants use Apify actors as tools.</p>
+
+                <h3>Using with Claude Desktop</h3>
+                <p>Add to your <code>claude_desktop_config.json</code>:</p>
+<pre>{
+    <span class="code-string">"mcpServers"</span>: {
+        <span class="code-string">"local-seo"</span>: {
+            <span class="code-string">"command"</span>: <span class="code-string">"npx"</span>,
+            <span class="code-string">"args"</span>: [<span class="code-string">"@anthropic/mcp-remote"</span>, <span class="code-string">"https://actors-mcp.apify.actor/alizarin_refrigerator-owner/local-seo-mcp-server"</span>],
+            <span class="code-string">"env"</span>: {
+                <span class="code-string">"APIFY_TOKEN"</span>: <span class="code-string">"your-api-token"</span>
+            }
+        }
+    }
+}</pre>
+
+                <h3>Available MCP Servers</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Server</th>
+                        <th>Tools</th>
+                        <th>Use Case</th>
+                    </tr>
+                    <tr>
+                        <td>local-seo-mcp-server</td>
+                        <td>check_citations, scrape_reviews, gbp_audit, local_rankings</td>
+                        <td>Local SEO analysis</td>
+                    </tr>
+                    <tr>
+                        <td>social-media-mcp-server</td>
+                        <td>post_to_facebook, post_to_linkedin, scrape_engagement</td>
+                        <td>Social automation</td>
+                    </tr>
+                    <tr>
+                        <td>seo-intelligence-mcp-server</td>
+                        <td>keyword_research, competitor_analysis, backlink_check</td>
+                        <td>SEO research</td>
+                    </tr>
+                    <tr>
+                        <td>lead-enrichment-mcp-server</td>
+                        <td>enrich_company, find_contacts, verify_email</td>
+                        <td>B2B lead gen</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="doc-section" id="webhooks">
+                <h2>Webhooks</h2>
+                <p>Get notified when actor runs complete.</p>
+
+                <h3>Setting Up Webhooks</h3>
+<pre><span class="code-keyword">const</span> <span class="code-variable">run</span> = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/citation-god-mode'</span>).<span class="code-function">call</span>(
+    {
+        <span class="code-variable">businessName</span>: <span class="code-string">'Acme Corp'</span>,
+        <span class="code-variable">address</span>: <span class="code-string">'123 Main St'</span>,
+    },
+    {
+        <span class="code-variable">webhooks</span>: [
+            {
+                <span class="code-variable">eventTypes</span>: [<span class="code-string">'ACTOR.RUN.SUCCEEDED'</span>, <span class="code-string">'ACTOR.RUN.FAILED'</span>],
+                <span class="code-variable">requestUrl</span>: <span class="code-string">'https://your-server.com/webhook'</span>,
+            }
+        ]
+    }
+);</pre>
+
+                <h3>Webhook Payload</h3>
+<pre>{
+    <span class="code-string">"eventType"</span>: <span class="code-string">"ACTOR.RUN.SUCCEEDED"</span>,
+    <span class="code-string">"eventData"</span>: {
+        <span class="code-string">"actorId"</span>: <span class="code-string">"..."</span>,
+        <span class="code-string">"actorRunId"</span>: <span class="code-string">"..."</span>,
+        <span class="code-string">"defaultDatasetId"</span>: <span class="code-string">"..."</span>,
+        <span class="code-string">"status"</span>: <span class="code-string">"SUCCEEDED"</span>
+    }
+}</pre>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank">Apify Store</a>
+                <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
+                <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
+            </div>
+            <p class="copyright">&copy; 2025 John Rippy. Rip and tear.</p>
+        </div>
+    </footer>
+</body>
+</html>

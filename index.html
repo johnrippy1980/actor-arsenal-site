@@ -244,6 +244,10 @@
 
         nav .container { display: flex; justify-content: space-between; align-items: center; }
 
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-green); }
+
         .logo {
             font-size: 1.25rem;
             font-weight: 700;
@@ -504,7 +508,11 @@
                 </svg>
                 ACTOR ARSENAL
             </a>
-            <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify &#8594;</a>
+            <div class="nav-links">
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify &#8594;</a>
+            </div>
         </div>
     </nav>
 

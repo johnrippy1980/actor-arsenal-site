@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Actors | Actor Arsenal by John Rippy</title>
+    <meta name="description" content="Compare Apify actors side-by-side. Find the best scraper or automation tool for your use case.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9876;</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --accent-yellow: #ffcc00;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .page-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        .doom-text {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 3px 3px 0 #8B0000;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .subtitle { color: var(--text-secondary); font-size: 1.25rem; }
+        .comparison-section { padding: 2rem 0 4rem; }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .comparison-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .comparison-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-4px);
+        }
+        .comparison-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-green);
+        }
+        .comparison-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table th {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .actor-link {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .actor-link:hover { text-decoration: underline; }
+        .check { color: var(--accent-green); }
+        .cross { color: var(--accent-red); }
+        .category-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-green);
+        }
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-green); }
+        .copyright { color: var(--text-secondary); font-size: 0.875rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="index.html">Arsenal</a>
+                <a href="compare.html" class="active">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="doom-text">&#9876; <span style="color: var(--accent-green);">COMPARE</span> ACTORS</h1>
+            <p class="subtitle">Side-by-side comparisons to help you choose the right weapon</p>
+        </div>
+    </div>
+
+    <section class="comparison-section">
+        <div class="container">
+
+            <h2 class="category-header">&#128221; Citation & NAP Checkers</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">Citation Checker Showdown</div>
+                    <div class="comparison-desc">Which citation tool is right for you?</div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Actor</th>
+                            <th>Platforms</th>
+                            <th>AI Analysis</th>
+                            <th>Best For</th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode" class="actor-link">Citation God Mode</a></td>
+                            <td>60+</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td>Enterprise</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/local-howl-citation-checker" class="actor-link">Local Howl Citation</a></td>
+                            <td>40+</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td>Agencies</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/citation-checker" class="actor-link">Citation Checker</a></td>
+                            <td>20+</td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td>Quick Audits</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2 class="category-header">&#128227; Social Media Posters</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">Platform Coverage</div>
+                    <div class="comparison-desc">All social posting actors at a glance</div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Platform</th>
+                            <th>Actor</th>
+                            <th>Images</th>
+                            <th>Video</th>
+                            <th>Scheduling</th>
+                        </tr>
+                        <tr>
+                            <td>Facebook</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/facebook-poster" class="actor-link">Facebook Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Instagram</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/instagram-poster" class="actor-link">Instagram Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>LinkedIn</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/linkedin-poster" class="actor-link">LinkedIn Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Twitter/X</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/twitter-poster" class="actor-link">Twitter Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>TikTok</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/tiktok-poster" class="actor-link">TikTok Poster</a></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Pinterest</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/pinterest-poster" class="actor-link">Pinterest Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Reddit</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/reddit-poster" class="actor-link">Reddit Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                        </tr>
+                        <tr>
+                            <td>GBP</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/gbp-poster" class="actor-link">GBP Poster</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2 class="category-header">&#128200; SEMrush Tools</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">SEMrush Actor Suite</div>
+                    <div class="comparison-desc">Complete SEMrush data extraction toolkit</div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Actor</th>
+                            <th>Data Type</th>
+                            <th>BYOK Required</th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-domain-overview---authority-score-traffic-keywords" class="actor-link">Domain Overview</a></td>
+                            <td>Authority, Traffic, Keywords</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-keyword-research---volume-difficulty-related" class="actor-link">Keyword Research</a></td>
+                            <td>Volume, Difficulty, Related</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-competitor-analysis---discover-compare-competitors" class="actor-link">Competitor Analysis</a></td>
+                            <td>Organic Competitors</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-backlink-analyzer---referring-domains-link-quality" class="actor-link">Backlink Analyzer</a></td>
+                            <td>Referring Domains, Links</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-position-tracker---keyword-rankings-serp-features" class="actor-link">Position Tracker</a></td>
+                            <td>Rankings, SERP Features</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-content-gap-analysis---find-missing-keywords" class="actor-link">Content Gap</a></td>
+                            <td>Missing Keywords</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-traffic-analytics---visits-sources-engagement" class="actor-link">Traffic Analytics</a></td>
+                            <td>Visits, Sources</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/semrush-site-audit" class="actor-link">Site Audit</a></td>
+                            <td>Technical SEO Issues</td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2 class="category-header">&#127760; Sports APIs</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">Sports Data APIs</div>
+                    <div class="comparison-desc">Real-time sports statistics and data</div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Sport</th>
+                            <th>Actor</th>
+                            <th>Live Scores</th>
+                            <th>Stats</th>
+                            <th>Historical</th>
+                        </tr>
+                        <tr>
+                            <td>Football (NFL)</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/nfl-api---football-statistics" class="actor-link">NFL API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Basketball (NBA)</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/nba-api---basketball-statistics" class="actor-link">NBA API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Baseball (MLB)</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/mlb-stats-api" class="actor-link">MLB Stats API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Hockey (NHL)</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/nhl-api" class="actor-link">NHL API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Soccer (Premier)</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/premier-league-api" class="actor-link">Premier League API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>College Sports</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/ncaa-api---college-sports" class="actor-link">NCAA API</a></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Wrestling</td>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/wwe-api" class="actor-link">WWE API</a></td>
+                            <td><span class="cross">&#10007;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2 class="category-header">&#129302; MCP Servers</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-title">AI-Ready MCP Servers</div>
+                    <div class="comparison-desc">Model Context Protocol servers for AI assistants</div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Server</th>
+                            <th>Focus Area</th>
+                            <th>Tools</th>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/local-seo-mcp-server" class="actor-link">Local SEO MCP</a></td>
+                            <td>Local Business Intelligence</td>
+                            <td>12+</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/social-media-mcp-server" class="actor-link">Social Media MCP</a></td>
+                            <td>Social Posting & Analytics</td>
+                            <td>10+</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/seo-intelligence-mcp-server" class="actor-link">SEO Intelligence MCP</a></td>
+                            <td>SEO Analysis & Research</td>
+                            <td>15+</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/lead-enrichment-mcp-server" class="actor-link">Lead Enrichment MCP</a></td>
+                            <td>B2B Lead Data</td>
+                            <td>8+</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/competitive-intelligence-mcp-server" class="actor-link">Competitive Intel MCP</a></td>
+                            <td>Competitor Analysis</td>
+                            <td>10+</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://apify.com/alizarin_refrigerator-owner/technical-seo-mcp-server" class="actor-link">Technical SEO MCP</a></td>
+                            <td>Site Audits & Performance</td>
+                            <td>12+</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank">Apify Store</a>
+                <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
+                <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
+            </div>
+            <p class="copyright">&copy; 2025 John Rippy. Rip and tear.</p>
+        </div>
+    </footer>
+</body>
+</html>
