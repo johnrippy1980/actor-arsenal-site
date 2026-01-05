@@ -9,9 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- js-dos v8 -->
-    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
-    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
 
     <style>
         :root {
@@ -105,14 +102,19 @@
             text-align: center;
         }
 
-        /* Game Container - js-dos player */
-        #dos {
+        /* Game Container - iframe */
+        .game-container {
             width: 100%;
             max-width: 960px;
             height: 600px;
             background: #000;
             border: 4px solid #333;
             box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+        }
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Instructions */
@@ -240,7 +242,13 @@
         <h1 class="title">DOOM - MODERN CONTROLS</h1>
         <p class="subtitle">FREEDOOM + JS-DOS WEBASSEMBLY | CLICK TO PLAY</p>
 
-        <div id="dos"></div>
+        <div class="game-container">
+            <iframe
+                src="https://dos.zone/player/?bundleUrl=https://cdn.dos.zone/original/2X/2/24b00b14f118580763440ecaddcc948f8cb94f14.jsdos&anonymous=1"
+                allow="autoplay; fullscreen"
+                allowfullscreen>
+            </iframe>
+        </div>
 
         <div class="instructions">
             <h3>CONTROLS</h3>
@@ -291,10 +299,6 @@
             });
         });
 
-        // Initialize js-dos with DOOM bundle from dos.zone CDN
-        Dos(document.getElementById("dos"), {
-            url: "https://cdn.dos.zone/original/2X/2/24b00b14f118580763440ecaddcc948f8cb94f14.jsdos",
-        });
     </script>
 
     <!-- Apify Affiliate Partner Badge -->
