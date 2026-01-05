@@ -685,6 +685,12 @@
             death: new Audio('../sounds/death.wav'),
             shotgun: new Audio('../sounds/shotgun.wav')
         };
+
+        // Load persistent secrets count
+        const secretsState = JSON.parse(localStorage.getItem('doomSecrets') || '{"iddqd":false,"idkfa":false,"wall":false}');
+        const secretsFound = Object.values(secretsState).filter(Boolean).length;
+        document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+
         // DOOM Theme Music (E1M1 - At Doom's Gate)
         const doomMusic = new Audio('../sounds/e1m1.mp3');
         doomMusic.loop = true;

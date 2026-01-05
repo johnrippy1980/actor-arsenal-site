@@ -2277,7 +2277,15 @@ You&#x27;re currently paying for: Br...</p>
         let konamiBuffer = [];
         const iddqd = ['i', 'd', 'd', 'q', 'd'];
         const idkfa = ['i', 'd', 'k', 'f', 'a'];
-        let secretsFound = 0;
+
+        // Load secrets from localStorage for persistence across pages
+        let secretsState = JSON.parse(localStorage.getItem('doomSecrets') || '{"iddqd":false,"idkfa":false,"wall":false}');
+        let secretsFound = Object.values(secretsState).filter(Boolean).length;
+        document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+
+        function saveSecrets() {
+            localStorage.setItem('doomSecrets', JSON.stringify(secretsState));
+        }
 
         document.addEventListener('keydown', (e) => {
             konamiBuffer.push(e.key.toLowerCase());
@@ -2287,26 +2295,38 @@ You&#x27;re currently paying for: Br...</p>
                 // GOD MODE!
                 document.getElementById('hudHealth').textContent = '∞';
                 document.getElementById('hudHealth').style.color = 'gold';
-                playSound('secret');
-                triggerPainFlash();
-                document.body.classList.add('shake');
-                setTimeout(() => document.body.classList.remove('shake'), 300);
-                secretsFound = Math.min(3, secretsFound + 1);
-                document.getElementById('hudSecrets').textContent = secretsFound + '/3';
-                showMessage('GOD MODE ACTIVATED');
+                if (!secretsState.iddqd) {
+                    secretsState.iddqd = true;
+                    secretsFound = Object.values(secretsState).filter(Boolean).length;
+                    saveSecrets();
+                    playSound('secret');
+                    triggerPainFlash();
+                    document.body.classList.add('shake');
+                    setTimeout(() => document.body.classList.remove('shake'), 300);
+                    document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+                    showMessage('GOD MODE ACTIVATED');
+                } else {
+                    showMessage('GOD MODE (ALREADY FOUND)');
+                }
             }
 
             if (konamiBuffer.join('') === idkfa.join('')) {
                 // ALL WEAPONS!
                 document.getElementById('hudAmmo').textContent = '999';
                 document.getElementById('hudAmmo').style.color = 'gold';
-                playSound('secret');
-                triggerPainFlash();
-                document.body.classList.add('shake');
-                setTimeout(() => document.body.classList.remove('shake'), 300);
-                secretsFound = Math.min(3, secretsFound + 1);
-                document.getElementById('hudSecrets').textContent = secretsFound + '/3';
-                showMessage('ALL WEAPONS UNLOCKED');
+                if (!secretsState.idkfa) {
+                    secretsState.idkfa = true;
+                    secretsFound = Object.values(secretsState).filter(Boolean).length;
+                    saveSecrets();
+                    playSound('secret');
+                    triggerPainFlash();
+                    document.body.classList.add('shake');
+                    setTimeout(() => document.body.classList.remove('shake'), 300);
+                    document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+                    showMessage('ALL WEAPONS UNLOCKED');
+                } else {
+                    showMessage('ALL WEAPONS (ALREADY FOUND)');
+                }
             }
         });
 
@@ -2425,14 +2445,20 @@ You&#x27;re currently paying for: Br...</p>
         const secretIndex = Math.floor(Math.random() * allCards.length);
         const secretCard = allCards[secretIndex];
         secretCard.classList.add('secret-wall');
+        // If wall secret already found, show it as revealed
+        if (secretsState.wall) {
+            secretCard.classList.add('revealed');
+        }
         secretCard.addEventListener('click', function handler(e) {
-            if (!this.classList.contains('revealed')) {
+            if (!this.classList.contains('revealed') && !secretsState.wall) {
                 e.preventDefault();
                 this.classList.add('revealed');
+                secretsState.wall = true;
+                secretsFound = Object.values(secretsState).filter(Boolean).length;
+                saveSecrets();
                 playSound('secret');
-                secretsFound = Math.min(3, secretsFound + 1);
                 document.getElementById('hudSecrets').textContent = secretsFound + '/3';
-                showMessage('SECRET FOUND!');
+                showMessage('SECRET WALL FOUND!');
             }
         }, { once: false });
 
