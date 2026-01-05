@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAY DOOM | Actor Arsenal</title>
+    <meta name="description" content="Play the original DOOM (1993) right in your browser! Actor Arsenal's arcade machine.">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://js-dos.com/cdn/js-dos-api.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --accent-yellow: #ffcc00;
+            --accent-blood: #8B0000;
+            --blood-red: #cc0000;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+            border-bottom: 3px solid var(--accent-blood);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: var(--accent-red);
+            text-decoration: none;
+            text-shadow: 2px 2px 0 #8B0000;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .arcade-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            text-shadow: 4px 4px 0 #8B0000;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .arcade-subtitle {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* ===== ARCADE CABINET ===== */
+        .arcade-cabinet {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            border: 4px solid #444;
+            border-top-color: #555;
+            border-left-color: #555;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            box-shadow:
+                0 0 50px rgba(139, 0, 0, 0.5),
+                inset 0 2px 0 #5a5a5a,
+                inset 0 -2px 0 #1a1a1a;
+            position: relative;
+        }
+
+        .arcade-cabinet::before {
+            content: 'INSERT COIN';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: var(--accent-yellow);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .screen-bezel {
+            background: #111;
+            border: 6px solid #333;
+            border-top-color: #222;
+            border-left-color: #222;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* JS-DOS Container Styling */
+        #dosbox {
+            width: 640px;
+            height: 400px;
+            background: #000;
+            image-rendering: pixelated;
+        }
+        .dosbox-container {
+            width: 640px;
+            height: 400px;
+        }
+        .dosbox-container > .dosbox-overlay {
+            background: url(https://js-dos.com/cdn/DOOM.png) center center no-repeat;
+            background-size: contain;
+            background-color: #000;
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .control-btn {
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            border-bottom-color: #1a1a1a;
+            border-right-color: #1a1a1a;
+            color: var(--accent-yellow);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-shadow: 2px 2px 0 #000;
+        }
+        .control-btn:hover {
+            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+            transform: translateY(-2px);
+        }
+        .control-btn:active {
+            transform: translateY(2px);
+            border-top-color: #1a1a1a;
+            border-left-color: #1a1a1a;
+            border-bottom-color: #5a5a5a;
+            border-right-color: #5a5a5a;
+        }
+
+        /* ===== INSTRUCTIONS ===== */
+        .instructions {
+            margin-top: 2rem;
+            max-width: 700px;
+            text-align: center;
+        }
+        .instructions h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+        }
+        .key-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: #888;
+        }
+        .key-badge {
+            background: #333;
+            border: 1px solid #555;
+            padding: 0.3rem 0.5rem;
+            border-radius: 2px;
+            color: var(--accent-yellow);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* ===== WARNING ===== */
+        .warning {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--accent-blood);
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: var(--accent-red);
+            text-align: center;
+            max-width: 700px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== DEMON SPRITES ===== */
+        .demon-left, .demon-right {
+            position: fixed;
+            bottom: 0;
+            width: 80px;
+            height: 100px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            image-rendering: pixelated;
+        }
+        .demon-left {
+            left: -80px;
+        }
+        .demon-right {
+            right: -80px;
+        }
+        .demon-left.active {
+            left: 20px;
+            opacity: 1;
+        }
+        .demon-right.active {
+            right: 20px;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .arcade-title { font-size: 1.5rem; }
+            #dosbox, .dosbox-container {
+                width: 100%;
+                max-width: 640px;
+                height: auto;
+                aspect-ratio: 640 / 400;
+            }
+            .arcade-cabinet { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+
+    <nav>
+        <a href="index.html" class="nav-brand">ACTOR ARSENAL</a>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="compare.html">COMPARE</a>
+            <a href="api-docs.html">API</a>
+            <button class="music-btn" id="musicBtn" title="Toggle E1M1 Music">🔇</button>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="arcade-title">PLAY DOOM</h1>
+        <p class="arcade-subtitle">THE ULTIMATE DOOM (1995) - ID SOFTWARE</p>
+
+        <div class="arcade-cabinet">
+            <div class="screen-bezel">
+                <div id="dosbox"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" onclick="dosbox.requestFullScreen();">FULLSCREEN</button>
+            <button class="control-btn" onclick="location.reload();">RESTART</button>
+            <a href="index.html" class="control-btn" style="text-decoration: none;">EXIT GAME</a>
+        </div>
+
+        <div class="instructions">
+            <h3>CONTROLS</h3>
+            <div class="key-grid">
+                <div class="key-item"><span class="key-badge">WASD</span> Move</div>
+                <div class="key-item"><span class="key-badge">ARROWS</span> Move</div>
+                <div class="key-item"><span class="key-badge">CTRL</span> Fire</div>
+                <div class="key-item"><span class="key-badge">SPACE</span> Use/Open</div>
+                <div class="key-item"><span class="key-badge">SHIFT</span> Run</div>
+                <div class="key-item"><span class="key-badge">1-7</span> Weapons</div>
+                <div class="key-item"><span class="key-badge">TAB</span> Map</div>
+                <div class="key-item"><span class="key-badge">ESC</span> Menu</div>
+            </div>
+        </div>
+
+        <div class="warning">
+            DESKTOP ONLY - MOBILE NOT SUPPORTED<br>
+            CLICK THE GAME AREA TO CAPTURE MOUSE
+        </div>
+    </main>
+
+    <footer>
+        DOOM is a registered trademark of id Software LLC.
+        This is the shareware version running via js-dos emulator.
+    </footer>
+
+    <!-- Demon Sprites -->
+    <img src="images/imp-front.png" class="demon-left" id="demonLeft" alt="">
+    <img src="images/imp-front.png" class="demon-right" id="demonRight" alt="">
+
+    <!-- Background Music -->
+    <audio id="doomMusic" loop preload="auto">
+        <source src="sounds/e1m1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Initialize DOOM via js-dos
+        var dosbox = new Dosbox({
+            id: "dosbox",
+            onload: function(dosbox) {
+                dosbox.run("https://js-dos.com/cdn/upload/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+            },
+            onrun: function(dosbox, app) {
+                console.log("DOOM is running!");
+                // Show demons when game starts
+                document.getElementById('demonLeft').classList.add('active');
+                document.getElementById('demonRight').classList.add('active');
+            }
+        });
+
+        // Music controls with persistence
+        const doomMusic = document.getElementById('doomMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let musicPlaying = false;
+
+        // Check if music was playing on previous page
+        if (localStorage.getItem('doomMusicPlaying') === 'true') {
+            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
+            doomMusic.currentTime = savedTime;
+            doomMusic.play().then(() => {
+                musicPlaying = true;
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('playing');
+            }).catch(() => {});
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (musicPlaying) {
+                doomMusic.pause();
+                musicBtn.textContent = '🔇';
+                musicBtn.classList.remove('playing');
+                musicPlaying = false;
+                localStorage.setItem('doomMusicPlaying', 'false');
+            } else {
+                doomMusic.play().then(() => {
+                    musicBtn.textContent = '🔊';
+                    musicBtn.classList.add('playing');
+                    musicPlaying = true;
+                    localStorage.setItem('doomMusicPlaying', 'true');
+                }).catch(() => {});
+            }
+        });
+
+        // Save music position periodically
+        setInterval(() => {
+            if (musicPlaying) {
+                localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+            }
+        }, 500);
+
+        // Save state before leaving
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('doomMusicPlaying', musicPlaying);
+            localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+        });
+
+        // Shotgun sound on link clicks
+        const shotgunSound = new Audio('sounds/shotgun.wav');
+        shotgunSound.preload = 'auto';
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+                    shotgunSound.currentTime = 0;
+                    shotgunSound.play().catch(() => {});
+                    return;
+                }
+                e.preventDefault();
+                shotgunSound.currentTime = 0;
+                shotgunSound.play().catch(() => {});
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -274,12 +274,44 @@
             transition: all 0.3s;
         }
         .music-btn {
-            font-size: 1rem;
-            padding: 0.3rem 0.6rem;
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
             margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
         }
         .difficulty-btn:hover, .music-btn:hover {
             background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
             color: #000;
         }
         .difficulty-menu {
@@ -908,8 +940,8 @@
     <div class="pain-flash" id="painFlash"></div>
 
     <!-- Imp Sprites (Actual DOOM sprites) -->
-    <img src="images/imp-left.png" class="demon-left" id="demonLeft" alt="Imp">
-    <img src="images/imp-right.png" class="demon-right" id="demonRight" alt="Imp">
+    <img src="images/imp-front.png" class="demon-left" id="demonLeft" alt="Imp">
+    <img src="images/imp-front.png" class="demon-right" id="demonRight" alt="Imp">
 
     <nav>
         <div class="container">
@@ -917,6 +949,7 @@
             <div class="nav-links">
                 <a href="compare.html">Compare</a>
                 <a href="api-docs.html">API Docs</a>
+                <a href="play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
                 <!-- Difficulty Selector -->
                 <div class="difficulty-selector">
                     <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
@@ -2138,17 +2171,44 @@ You&#x27;re currently paying for: Br...</p>
         doomMusic.volume = 0.3;
         let musicPlaying = false;
 
+        // Check if music was playing on previous page
+        const musicBtn = document.getElementById('musicBtn');
+        if (localStorage.getItem('doomMusicPlaying') === 'true') {
+            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
+            doomMusic.currentTime = savedTime;
+            doomMusic.play().then(() => {
+                musicPlaying = true;
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('playing');
+            }).catch(() => {});
+        }
+
+        // Save music time periodically
+        setInterval(() => {
+            if (musicPlaying) {
+                localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+            }
+        }, 500);
+
+        // Save state before leaving page
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('doomMusicPlaying', musicPlaying);
+            localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+        });
+
         function toggleMusic() {
             if (musicPlaying) {
                 doomMusic.pause();
                 musicPlaying = false;
-                document.getElementById('musicBtn').textContent = '🔇';
-                document.getElementById('musicBtn').title = 'Play Music';
+                musicBtn.textContent = '🔇';
+                musicBtn.classList.remove('playing');
+                localStorage.setItem('doomMusicPlaying', 'false');
             } else {
                 doomMusic.play().catch(() => {});
                 musicPlaying = true;
-                document.getElementById('musicBtn').textContent = '🔊';
-                document.getElementById('musicBtn').title = 'Pause Music';
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('playing');
+                localStorage.setItem('doomMusicPlaying', 'true');
             }
         }
 
@@ -2324,7 +2384,20 @@ You&#x27;re currently paying for: Br...</p>
 
         // ===== SHOTGUN SOUND ON LINK CLICKS =====
         document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => playSound('shotgun'));
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Skip if it's an anchor link, javascript:, or opens in new tab
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
+                    playSound('shotgun');
+                    return;
+                }
+                e.preventDefault();
+                playSound('shotgun');
+                // Delay navigation to let shotgun sound play
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 200);
+            });
         });
 
         // ===== FILTER ACTORS (Updated) =====

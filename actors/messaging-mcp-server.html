@@ -229,6 +229,48 @@
         .difficulty-option:hover { background: #ff3366; color: #000; }
         .difficulty-option.active { color: #ffcc00; }
 
+        
+        /* Music Button */
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid #ffcc00;
+            color: #ffcc00;
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: #ffcc00;
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: #ffcc00;
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px #ffcc00;
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px #ffcc00; }
+            50% { box-shadow: 0 0 20px #ffcc00, 0 0 30px #ff3366; }
+        }
+        .music-btn:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
         /* ===== DOOM EFFECTS ===== */
         body { padding-bottom: 90px; }
         
@@ -365,8 +407,8 @@
     <div class="pain-flash" id="painFlash"></div>
     
     <!-- Imp Sprites (SVG) -->
-    <img src="../images/imp-left.png" class="demon-left" id="demonLeft" alt="Imp">
-    <img src="../images/imp-right.png" class="demon-right" id="demonRight" alt="Imp">
+    <img src="../images/imp-front.png" class="demon-left" id="demonLeft" alt="Imp">
+    <img src="../images/imp-front.png" class="demon-right" id="demonRight" alt="Imp">
 
     <nav>
         <div class="container">
@@ -375,6 +417,7 @@
                 <a href="../index.html">Arsenal</a>
                 <a href="../compare.html">Compare</a>
                 <a href="../api-docs.html">API Docs</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
                 
                 <!-- Difficulty Selector -->
                 <div class="difficulty-selector">
@@ -642,6 +685,45 @@
             death: new Audio('../sounds/death.wav'),
             shotgun: new Audio('../sounds/shotgun.wav')
         };
+        // DOOM Theme Music (E1M1 - At Doom's Gate)
+        const doomMusic = new Audio('../sounds/e1m1.mp3');
+        doomMusic.loop = true;
+        doomMusic.volume = 0.3;
+        let musicPlaying = false;
+
+        const musicBtn = document.getElementById('musicBtn');
+        if (localStorage.getItem('doomMusicPlaying') === 'true') {
+            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
+            doomMusic.currentTime = savedTime;
+            doomMusic.play().then(() => {
+                musicPlaying = true;
+                if (musicBtn) { musicBtn.textContent = '🔊'; musicBtn.classList.add('playing'); }
+            }).catch(() => {});
+        }
+
+        setInterval(() => {
+            if (musicPlaying) localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+        }, 500);
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('doomMusicPlaying', musicPlaying);
+            localStorage.setItem('doomMusicTime', doomMusic.currentTime);
+        });
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                doomMusic.pause();
+                musicPlaying = false;
+                if (musicBtn) { musicBtn.textContent = '🔇'; musicBtn.classList.remove('playing'); }
+                localStorage.setItem('doomMusicPlaying', 'false');
+            } else {
+                doomMusic.play().catch(() => {});
+                musicPlaying = true;
+                if (musicBtn) { musicBtn.textContent = '🔊'; musicBtn.classList.add('playing'); }
+                localStorage.setItem('doomMusicPlaying', 'true');
+            }
+        }
+
         Object.values(doomSounds).forEach(s => { s.preload = 'auto'; s.volume = 0.5; });
         function playSound(type) {
             const sound = doomSounds[type];
@@ -675,8 +757,20 @@
             btn.addEventListener('click', () => {
                 playSound('pickup');
                 triggerPainFlash();
-                document.body.classList.add('shake');
-                setTimeout(() => document.body.classList.remove('shake'), 100);
+            });
+        });
+
+        // Shotgun sound on link clicks (with delay for sound to play)
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
+                    playSound('shotgun');
+                    return;
+                }
+                e.preventDefault();
+                playSound('shotgun');
+                setTimeout(() => { window.location.href = href; }, 200);
             });
         });
     </script>
