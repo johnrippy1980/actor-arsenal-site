@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAY DOOM (Modern Controls) | Actor Arsenal</title>
+    <meta name="description" content="Play DOOM with modern FPS controls - WASD movement, mouselook, mouse to fire!">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-red: #ff3366;
+            --accent-yellow: #ffcc00;
+            --accent-green: #00ff88;
+            --accent-blood: #8B0000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: var(--bg-dark);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CRT Effect */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+            border-bottom: 3px solid var(--accent-blood);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .nav-brand {
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            text-decoration: none;
+            text-shadow: 2px 2px 0 #8B0000;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.5rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: var(--accent-red);
+            text-shadow: 3px 3px 0 #8B0000;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 0.6rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Game Container */
+        .game-container {
+            width: 100%;
+            max-width: 960px;
+            aspect-ratio: 4/3;
+            background: #000;
+            border: 4px solid #333;
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Instructions */
+        .instructions {
+            margin-top: 1.5rem;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .instructions h3 {
+            font-size: 0.7rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.45rem;
+        }
+
+        .key-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #888;
+        }
+
+        .key-badge {
+            background: #333;
+            border: 1px solid #555;
+            padding: 0.3rem 0.5rem;
+            border-radius: 2px;
+            color: var(--accent-yellow);
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* Setup Instructions */
+        .setup-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-green);
+            border-radius: 4px;
+            max-width: 800px;
+            font-size: 0.5rem;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .setup-box h4 {
+            color: var(--accent-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 0.6rem;
+        }
+
+        .setup-box ol {
+            margin-left: 1.5rem;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            border-bottom-color: #1a1a1a;
+            border-right-color: #1a1a1a;
+            color: var(--accent-yellow);
+            padding: 0.6rem 1.2rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .btn:hover {
+            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+        }
+
+        .btn-classic {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.4rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 1rem; }
+            .game-container { aspect-ratio: 4/3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="nav-brand">ACTOR ARSENAL</a>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="compare.html">COMPARE</a>
+            <a href="api-docs.html">API</a>
+            <a href="play-doom.html">CLASSIC DOOM</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="title">DOOM - MODERN CONTROLS</h1>
+        <p class="subtitle">FREEDOOM + PRBOOM+ ENGINE | WASD + MOUSELOOK</p>
+
+        <div class="game-container">
+            <iframe
+                src="https://dwasm.m-h.org.uk/"
+                allow="pointer-lock; fullscreen; autoplay"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="setup-box">
+            <h4>QUICK START:</h4>
+            <ol>
+                <li>Select <strong>"Freedoom Phase 1"</strong> or <strong>"Freedoom Phase 2"</strong> from dropdown</li>
+                <li>Check <strong>"I am over 18 years old"</strong></li>
+                <li>Click <strong>"Start Dwasm"</strong></li>
+                <li>Click the game area to capture mouse for mouselook</li>
+                <li>Press ESC to release mouse or access menu</li>
+            </ol>
+        </div>
+
+        <div class="instructions">
+            <h3>MODERN FPS CONTROLS</h3>
+            <div class="key-grid">
+                <div class="key-item"><span class="key-badge">WASD</span> Move</div>
+                <div class="key-item"><span class="key-badge">MOUSE</span> Look Around</div>
+                <div class="key-item"><span class="key-badge">LEFT CLICK</span> Fire</div>
+                <div class="key-item"><span class="key-badge">RIGHT CLICK</span> Move Forward</div>
+                <div class="key-item"><span class="key-badge">SCROLL</span> Change Weapon</div>
+                <div class="key-item"><span class="key-badge">SPACE</span> Use / Open</div>
+                <div class="key-item"><span class="key-badge">TAB</span> Automap</div>
+                <div class="key-item"><span class="key-badge">ESC</span> Menu / Release Mouse</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="play-doom.html" class="btn btn-classic">CLASSIC DOS VERSION</a>
+            <a href="https://dwasm.m-h.org.uk/" target="_blank" class="btn">OPEN FULLSCREEN</a>
+            <a href="index.html" class="btn">BACK TO ARSENAL</a>
+        </div>
+    </main>
+
+    <footer>
+        Powered by Dwasm (PrBoom+ WebAssembly) by Gregory Maynard-Hoare<br>
+        Freedoom is a free content game compatible with DOOM engines<br>
+        DOOM is a trademark of id Software LLC
+    </footer>
+</body>
+</html>
