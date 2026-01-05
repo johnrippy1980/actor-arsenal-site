@@ -51,7 +51,372 @@
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* ===== DOOM SPLASH SCREEN ===== */
+        .doom-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .doom-splash.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .splash-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
+            color: var(--accent-red);
+            text-shadow: 4px 4px 0 #8B0000;
+            margin-bottom: 2rem;
+            animation: splashPulse 1s ease-in-out infinite;
+        }
+        .splash-press {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: #888;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes splashPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            opacity: 0.4;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
+        /* ===== SCREEN SHAKE ===== */
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2px, -1px); }
+            20% { transform: translate(2px, 1px); }
+            30% { transform: translate(-1px, 2px); }
+            40% { transform: translate(1px, -2px); }
+            50% { transform: translate(-2px, 1px); }
+            60% { transform: translate(2px, -1px); }
+            70% { transform: translate(-1px, -2px); }
+            80% { transform: translate(1px, 2px); }
+            90% { transform: translate(-2px, -1px); }
+        }
+        .shake {
+            animation: screenShake 0.3s ease-in-out;
+        }
+
+        /* ===== DOOM HUD ===== */
+        .doom-hud {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-top: 3px solid #444;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1001;
+            font-family: 'Press Start 2P', cursive;
+            padding: 0 2rem;
+        }
+        .hud-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .hud-value {
+            font-size: 1.5rem;
+            color: var(--accent-red);
+            text-shadow: 2px 2px 0 #000;
+        }
+        .hud-label {
+            font-size: 0.5rem;
+            color: #888;
+        }
+        .hud-face {
+            width: 50px;
+            height: 50px;
+            image-rendering: pixelated;
+        }
+        .hud-ammo { color: var(--accent-yellow); }
+        .hud-health { color: var(--accent-red); }
+        .hud-armor { color: var(--accent-green); }
+
+        /* ===== DIFFICULTY SELECTOR ===== */
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .difficulty-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid var(--accent-red);
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-option.active {
+            color: var(--accent-yellow);
+        }
+
+        /* ===== WEAPON SELECTOR (Category Filters) ===== */
+        .weapon-selector {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .weapon-btn {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            color: #888;
+            padding: 0.5rem 1rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .weapon-btn:hover {
+            border-color: var(--accent-yellow);
+            color: var(--accent-yellow);
+            transform: translateY(-2px);
+        }
+        .weapon-btn.active {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(0, 255, 136, 0.1);
+        }
+        .weapon-key {
+            background: #333;
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            font-size: 0.4rem;
+        }
+
+        /* ===== DEMON SPRITES ===== */
+        .demon-left, .demon-right {
+            position: fixed;
+            bottom: 70px;
+            width: 80px;
+            height: 100px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            image-rendering: pixelated;
+        }
+        .demon-left {
+            left: -80px;
+            transform: scaleX(-1);
+        }
+        .demon-right {
+            right: -80px;
+        }
+        .demon-left.peek {
+            left: -20px;
+            opacity: 1;
+        }
+        .demon-right.peek {
+            right: -20px;
+            opacity: 1;
+        }
+
+        /* ===== KILL COUNTER ANIMATION ===== */
+        .kill-counter {
+            display: inline-block;
+            transition: transform 0.1s;
+        }
+        .kill-counter.increment {
+            transform: scale(1.3);
+            color: var(--accent-red);
+        }
+
+        /* ===== TYPEWRITER EFFECT ===== */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent-green);
+            animation: typewriter 2s steps(40) 1s forwards, blinkCaret 0.5s step-end infinite;
+            width: 0;
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blinkCaret {
+            50% { border-color: transparent; }
+        }
+
+        /* ===== GIBS/BLOOD SPLATTER ===== */
+        .blood-splat {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9990;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .blood-splat.show {
+            animation: splatAnim 0.5s ease-out forwards;
+        }
+        @keyframes splatAnim {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(360deg); opacity: 0; }
+        }
+
+        /* ===== LEVEL STYLE ACTOR CARDS ===== */
+        .actor-card {
+            position: relative;
+        }
+        .actor-card::before {
+            content: attr(data-level);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            opacity: 0.7;
+        }
+
+        /* ===== SECRET WALL ===== */
+        .secret-wall {
+            position: relative;
+            cursor: pointer;
+        }
+        .secret-wall::after {
+            content: '???';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Press Start 2P', cursive;
+            color: #333;
+            transition: opacity 0.5s;
+        }
+        .secret-wall.revealed::after {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ===== FLASHING DEAD TEXT ===== */
+        .dead-text:hover {
+            animation: deadFlash 0.1s infinite;
+        }
+        @keyframes deadFlash {
+            0%, 100% { color: var(--accent-red); }
+            50% { color: #ff0000; text-shadow: 0 0 20px #ff0000; }
+        }
+
+        /* ===== FIREBALL CURSOR ===== */
+        .fireball-cursor {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='8' fill='%23ff6600'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ffcc00'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23fff'/%3E%3C/svg%3E") 16 16, auto;
+        }
+
+        /* Add padding for HUD */
+        body { padding-bottom: 70px; }
         .doom-text {
             font-family: 'Press Start 2P', cursive;
             text-shadow: 3px 3px 0 var(--accent-blood), 6px 6px 0 rgba(0,0,0,0.5);
@@ -462,13 +827,46 @@
     }
     </script>
 </head>
-<body>
+<body class="fireball-cursor">
+    <!-- DOOM Splash Screen -->
+    <div class="doom-splash" id="splashScreen">
+        <div class="splash-title">ACTOR ARSENAL</div>
+        <div class="splash-press">PRESS ANY KEY TO START</div>
+        <div style="margin-top: 3rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #444;">
+            Built by John Rippy - 2025 Zapier Automation Hero
+        </div>
+    </div>
+
+    <!-- CRT Scanline Overlay -->
+    <div class="crt-overlay"></div>
+
+    <!-- Red Vignette -->
+    <div class="vignette"></div>
+
+    <!-- Pain Flash -->
+    <div class="pain-flash" id="painFlash"></div>
+
+    <!-- Demon Sprites -->
+    <img src="images/logo.png" class="demon-left" id="demonLeft" alt="">
+    <img src="images/logo.png" class="demon-right" id="demonRight" alt="">
+
     <nav>
         <div class="container">
             <a href="index.html" class="logo"><img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
             <div class="nav-links">
                 <a href="compare.html">Compare</a>
                 <a href="api-docs.html">API Docs</a>
+                <!-- Difficulty Selector -->
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
+                    </div>
+                </div>
                 <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
@@ -1629,12 +2027,252 @@ You&#x27;re currently paying for: Br...</p>
         </div>
     </footer>
 
+    <!-- DOOM HUD -->
+    <div class="doom-hud">
+        <div class="hud-stat">
+            <div class="hud-value hud-ammo" id="hudAmmo">149</div>
+            <div class="hud-label">KILLS</div>
+        </div>
+        <div class="hud-stat">
+            <div class="hud-value hud-health" id="hudHealth">100</div>
+            <div class="hud-label">HEALTH</div>
+        </div>
+        <img src="images/logo.png" class="hud-face" id="hudFace" alt="Doomguy">
+        <div class="hud-stat">
+            <div class="hud-value hud-armor" id="hudArmor">149</div>
+            <div class="hud-label">ACTORS</div>
+        </div>
+        <div class="hud-stat">
+            <div class="hud-value" style="color: #ff6600;" id="hudSecrets">0/3</div>
+            <div class="hud-label">SECRETS</div>
+        </div>
+    </div>
+
     <script>
+        // ===== DOOM SOUNDS (Web Audio API) =====
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            initAudio();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            switch(type) {
+                case 'pickup':
+                    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+                    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.1);
+                    break;
+                case 'door':
+                    oscillator.type = 'sawtooth';
+                    oscillator.frequency.setValueAtTime(100, audioCtx.currentTime);
+                    oscillator.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.3);
+                    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.3);
+                    break;
+                case 'chainsaw':
+                    oscillator.type = 'sawtooth';
+                    for(let i = 0; i < 5; i++) {
+                        oscillator.frequency.setValueAtTime(80 + Math.random() * 40, audioCtx.currentTime + i * 0.05);
+                    }
+                    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.3);
+                    break;
+                case 'secret':
+                    oscillator.frequency.setValueAtTime(400, audioCtx.currentTime);
+                    oscillator.frequency.setValueAtTime(500, audioCtx.currentTime + 0.1);
+                    oscillator.frequency.setValueAtTime(600, audioCtx.currentTime + 0.2);
+                    oscillator.frequency.setValueAtTime(800, audioCtx.currentTime + 0.3);
+                    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.5);
+                    break;
+            }
+        }
+
+        // ===== SPLASH SCREEN =====
+        const splash = document.getElementById('splashScreen');
+        function dismissSplash() {
+            splash.classList.add('hidden');
+            playSound('door');
+            document.removeEventListener('keydown', dismissSplash);
+            document.removeEventListener('click', dismissSplash);
+        }
+        document.addEventListener('keydown', dismissSplash);
+        splash.addEventListener('click', dismissSplash);
+
+        // ===== DIFFICULTY SELECTOR =====
+        const difficultyBtn = document.getElementById('difficultyBtn');
+        const difficultyMenu = document.getElementById('difficultyMenu');
+        const difficultyOptions = document.querySelectorAll('.difficulty-option');
+
+        difficultyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            difficultyMenu.classList.toggle('show');
+        });
+
+        difficultyOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                difficultyOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                difficultyBtn.textContent = option.textContent;
+                difficultyMenu.classList.remove('show');
+                playSound('pickup');
+
+                // Apply difficulty effects
+                const difficulty = option.dataset.difficulty;
+                document.body.classList.remove('difficulty-baby', 'difficulty-nightmare');
+                if (difficulty === 'baby') {
+                    document.querySelector('.vignette').style.opacity = '0';
+                } else if (difficulty === 'nightmare') {
+                    document.querySelector('.vignette').style.background = 'radial-gradient(ellipse at center, transparent 20%, rgba(139, 0, 0, 0.5) 100%)';
+                    document.body.classList.add('shake');
+                    setTimeout(() => document.body.classList.remove('shake'), 300);
+                } else {
+                    document.querySelector('.vignette').style.opacity = '1';
+                    document.querySelector('.vignette').style.background = 'radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%)';
+                }
+            });
+        });
+
+        document.addEventListener('click', () => difficultyMenu.classList.remove('show'));
+
+        // ===== EASTER EGGS (IDDQD / IDKFA) =====
+        let konamiBuffer = [];
+        const iddqd = ['i', 'd', 'd', 'q', 'd'];
+        const idkfa = ['i', 'd', 'k', 'f', 'a'];
+        let secretsFound = 0;
+
+        document.addEventListener('keydown', (e) => {
+            konamiBuffer.push(e.key.toLowerCase());
+            if (konamiBuffer.length > 5) konamiBuffer.shift();
+
+            if (konamiBuffer.join('') === iddqd.join('')) {
+                // GOD MODE!
+                document.getElementById('hudHealth').textContent = '∞';
+                document.getElementById('hudHealth').style.color = 'gold';
+                playSound('secret');
+                triggerPainFlash();
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 300);
+                secretsFound = Math.min(3, secretsFound + 1);
+                document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+                showMessage('GOD MODE ACTIVATED');
+            }
+
+            if (konamiBuffer.join('') === idkfa.join('')) {
+                // ALL WEAPONS!
+                document.getElementById('hudAmmo').textContent = '999';
+                document.getElementById('hudAmmo').style.color = 'gold';
+                playSound('secret');
+                triggerPainFlash();
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 300);
+                secretsFound = Math.min(3, secretsFound + 1);
+                document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+                showMessage('ALL WEAPONS UNLOCKED');
+            }
+        });
+
+        function showMessage(text) {
+            const msg = document.createElement('div');
+            msg.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:"Press Start 2P",cursive;font-size:1.5rem;color:gold;text-shadow:3px 3px 0 #000;z-index:10000;animation:fadeOut 2s forwards;';
+            msg.textContent = text;
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
+        }
+
+        // ===== PAIN FLASH =====
+        function triggerPainFlash() {
+            const flash = document.getElementById('painFlash');
+            flash.classList.add('active');
+            setTimeout(() => flash.classList.remove('active'), 100);
+        }
+
+        // ===== DEMON PEEK =====
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (Math.abs(currentScroll - lastScroll) > 500) {
+                // Random demon peek
+                if (Math.random() > 0.7) {
+                    const demon = Math.random() > 0.5 ? document.getElementById('demonLeft') : document.getElementById('demonRight');
+                    demon.classList.add('peek');
+                    setTimeout(() => demon.classList.remove('peek'), 2000);
+                }
+                lastScroll = currentScroll;
+            }
+        });
+
+        // ===== ACTOR CARD INTERACTIONS =====
+        let killCount = 0;
+        document.querySelectorAll('.actor-card').forEach((card, index) => {
+            // Add level number
+            const episode = Math.floor(index / 9) + 1;
+            const mission = (index % 9) + 1;
+            card.setAttribute('data-level', 'E' + episode + 'M' + mission);
+
+            card.addEventListener('click', (e) => {
+                playSound('pickup');
+                triggerPainFlash();
+
+                // Blood splatter
+                const splat = document.createElement('div');
+                splat.className = 'blood-splat show';
+                splat.style.left = e.clientX + 'px';
+                splat.style.top = e.clientY + 'px';
+                splat.innerHTML = '💀';
+                document.body.appendChild(splat);
+                setTimeout(() => splat.remove(), 500);
+
+                // Increment kill counter
+                killCount++;
+                const hudAmmo = document.getElementById('hudAmmo');
+                if (hudAmmo.textContent !== '999' && hudAmmo.textContent !== '∞') {
+                    hudAmmo.textContent = killCount;
+                    hudAmmo.classList.add('increment');
+                    setTimeout(() => hudAmmo.classList.remove('increment'), 100);
+                }
+            });
+
+            card.addEventListener('mouseenter', () => {
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 100);
+            });
+        });
+
+        // ===== CHAINSAW HOVER SOUND =====
+        const chainsaw = document.querySelector('.chainsaw-img');
+        if (chainsaw) {
+            chainsaw.addEventListener('mouseenter', () => playSound('chainsaw'));
+        }
+
+        // ===== FILTER ACTORS (Updated) =====
         function filterActors(category) {
             const cards = document.querySelectorAll('.actor-card');
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
+
+            playSound('door');
+            document.body.classList.add('shake');
+            setTimeout(() => document.body.classList.remove('shake'), 200);
+
             cards.forEach(card => {
                 if (category === 'all' || card.dataset.category === category) {
                     card.style.display = 'block';
@@ -1643,6 +2281,27 @@ You&#x27;re currently paying for: Br...</p>
                 }
             });
         }
+
+        // ===== SECRET WALL (Random actor becomes secret) =====
+        const allCards = document.querySelectorAll('.actor-card');
+        const secretIndex = Math.floor(Math.random() * allCards.length);
+        const secretCard = allCards[secretIndex];
+        secretCard.classList.add('secret-wall');
+        secretCard.addEventListener('click', function handler(e) {
+            if (!this.classList.contains('revealed')) {
+                e.preventDefault();
+                this.classList.add('revealed');
+                playSound('secret');
+                secretsFound = Math.min(3, secretsFound + 1);
+                document.getElementById('hudSecrets').textContent = secretsFound + '/3';
+                showMessage('SECRET FOUND!');
+            }
+        }, { once: false });
+
+        // Add CSS for fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = '@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }';
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
