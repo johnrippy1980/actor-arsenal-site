@@ -1,5 +1,12 @@
 [
   {
+    "name": "linkedin-engage",
+    "title": "LinkedIn Engagement Automation - AI Lead Generation",
+    "description": "Automate LinkedIn engagement to generate inbound leads. Keyword-based post discovery, creator targeting, AI-powered comments with BYOK (Claude/OpenAI/Gemini). Similar to ConnectSafely.ai.",
+    "pictureUrl": "https://images.apifyusercontent.com/_v6c6ebSlsqwL11Zcg1xxjWZNBRjU-m2nZF56H2OkAg/rs:fill:76:76/cb:1/aHR0cHM6Ly9hcGlmeS1pbWFnZS11cGxvYWRzLXByb2QuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vQ1pHaTBpUERTQkZzSmF5M3AtYWN0b3ItemZwT1NZdFV6YWtoWkFmeWEtOUI5WkZ2VkhhMi1saW5rZWRpbi5wbmc.webp",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
     "name": "automobile-scraper",
     "title": "Multi-Source Car Listing Aggregator Automobile Scraper",
     "description": "Scrape vehicle listings from 5 major automotive marketplaces: Cars.com, Autotrader, Edmunds, TrueCar, and CarMax. Get pricing, mileage, VIN, dealer in",

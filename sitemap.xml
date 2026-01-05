@@ -404,6 +404,12 @@
   </url>
   <url>
     <loc>https://actor-arsenal-site.vercel.app/actors/linkedin-poster.html</loc>
+  </url>
+  <url>
+    <loc>https://actor-arsenal-site.vercel.app/actors/linkedin-engage.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
     <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
