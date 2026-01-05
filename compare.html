@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compare Actors | Actor Arsenal by John Rippy</title>
     <meta name="description" content="Compare Apify actors side-by-side. Find the best scraper or automation tool for your use case.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9876;</text></svg>">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -44,6 +44,14 @@
             font-weight: 700;
             color: var(--accent-green);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img {
+            width: 32px;
+            height: auto;
+            image-rendering: pixelated;
         }
         .nav-links { display: flex; gap: 2rem; align-items: center; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
@@ -143,7 +151,7 @@
 <body>
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">ACTOR ARSENAL</a>
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
             <div class="nav-links">
                 <a href="index.html">Arsenal</a>
                 <a href="compare.html" class="active">Compare</a>
