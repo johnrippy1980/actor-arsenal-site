@@ -100,7 +100,82 @@
             70% { height: 55px; opacity: 0.9; }
             100% { height: 80px; opacity: 0; }
         }
-        
+
+        /* Chainsaw divider with blood drips */
+        .chainsaw-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+        .chainsaw-container {
+            position: relative;
+            display: inline-block;
+        }
+        .chainsaw-img {
+            width: 300px;
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.5));
+        }
+        .chainsaw-blood {
+            position: absolute;
+            bottom: -5px;
+            background: linear-gradient(to bottom, var(--blood-red), #660000, transparent);
+            border-radius: 0 0 50% 50%;
+        }
+        .chainsaw-blood-1 {
+            left: 70%;
+            width: 4px;
+            animation: chainsawDrip1 2s ease-in infinite;
+        }
+        .chainsaw-blood-2 {
+            left: 75%;
+            width: 5px;
+            animation: chainsawDrip2 2s ease-in infinite;
+            animation-delay: 0.4s;
+        }
+        .chainsaw-blood-3 {
+            left: 80%;
+            width: 6px;
+            animation: chainsawDrip3 2s ease-in infinite;
+            animation-delay: 0.8s;
+        }
+        .chainsaw-blood-4 {
+            left: 85%;
+            width: 4px;
+            animation: chainsawDrip1 2s ease-in infinite;
+            animation-delay: 1.2s;
+        }
+        .chainsaw-blood-5 {
+            left: 90%;
+            width: 5px;
+            animation: chainsawDrip2 2s ease-in infinite;
+            animation-delay: 0.2s;
+        }
+        @keyframes chainsawDrip1 {
+            0% { height: 0; opacity: 0; }
+            15% { height: 0; opacity: 0; }
+            40% { height: 25px; opacity: 1; }
+            70% { height: 45px; opacity: 0.8; }
+            100% { height: 60px; opacity: 0; }
+        }
+        @keyframes chainsawDrip2 {
+            0% { height: 0; opacity: 0; }
+            15% { height: 0; opacity: 0; }
+            40% { height: 35px; opacity: 1; }
+            70% { height: 60px; opacity: 0.8; }
+            100% { height: 80px; opacity: 0; }
+        }
+        @keyframes chainsawDrip3 {
+            0% { height: 0; opacity: 0; }
+            15% { height: 0; opacity: 0; }
+            40% { height: 45px; opacity: 1; }
+            70% { height: 75px; opacity: 0.8; }
+            100% { height: 100px; opacity: 0; }
+        }
+
         .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
         nav {
             position: fixed;
@@ -320,6 +395,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Chainsaw Divider -->
+    <div class="chainsaw-divider">
+        <div class="chainsaw-container">
+            <img src="images/chainsaw.png" alt="Doom Chainsaw" class="chainsaw-img">
+            <div class="chainsaw-blood chainsaw-blood-1"></div>
+            <div class="chainsaw-blood chainsaw-blood-2"></div>
+            <div class="chainsaw-blood chainsaw-blood-3"></div>
+            <div class="chainsaw-blood chainsaw-blood-4"></div>
+            <div class="chainsaw-blood chainsaw-blood-5"></div>
+        </div>
+    </div>
 
     <section class="arsenal" id="arsenal">
         <div class="container">
