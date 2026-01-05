@@ -311,6 +311,30 @@
         DOOM is a trademark of id Software LLC
     </footer>
 
+    <script>
+        // Shotgun sound on link clicks
+        const shotgunSound = new Audio('sounds/shotgun.wav');
+        shotgunSound.preload = 'auto';
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Skip if it's an anchor link, javascript:, or opens in new tab
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
+                    shotgunSound.currentTime = 0;
+                    shotgunSound.play().catch(() => {});
+                    return;
+                }
+                e.preventDefault();
+                shotgunSound.currentTime = 0;
+                shotgunSound.play().catch(() => {});
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 200);
+            });
+        });
+    </script>
+
     <!-- Apify Affiliate Partner Badge -->
     <a href="https://apify.com/?fpr=kqpn7b" target="_blank" rel="noopener" class="apify-affiliate">
         <img src="https://apify.com/img/logo.svg" alt="Apify">

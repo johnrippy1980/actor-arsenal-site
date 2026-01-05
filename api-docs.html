@@ -1016,6 +1016,24 @@ pip install apify-client</pre>
                 triggerPainFlash();
             });
         });
+
+        // ===== SHOTGUN SOUND ON LINK CLICKS =====
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Skip if it's an anchor link, javascript:, or opens in new tab
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
+                    playSound('shotgun');
+                    return;
+                }
+                e.preventDefault();
+                playSound('shotgun');
+                // Delay navigation to let shotgun sound play
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 200);
+            });
+        });
     </script>
 
     <!-- Apify Affiliate Partner Badge -->

@@ -534,7 +534,8 @@
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+                // Skip if it's an anchor link, javascript:, or opens in new tab
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
                     shotgunSound.currentTime = 0;
                     shotgunSound.play().catch(() => {});
                     return;
