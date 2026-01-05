@@ -285,6 +285,9 @@
             <p style="margin-top: 0.8rem; color: var(--accent-yellow);">
                 <strong>NOTE:</strong> For best mouse control, click <strong>"OPEN FULLSCREEN"</strong> below to play in a dedicated tab. Browser security restricts pointer lock in embedded frames.
             </p>
+            <p style="margin-top: 0.5rem; color: var(--accent-green);">
+                <strong>NEW:</strong> Try our <a href="doom-modern/" style="color: var(--accent-green);">Self-Hosted JS-DOS Version</a> for better compatibility!
+            </p>
         </div>
 
         <div class="instructions">
@@ -302,6 +305,7 @@
         </div>
 
         <div class="buttons">
+            <a href="doom-modern/" class="btn" style="border-color: var(--accent-green); color: var(--accent-green);">SELF-HOSTED JS-DOS</a>
             <a href="play-doom.html" class="btn btn-classic">CLASSIC DOS VERSION</a>
             <a href="https://dwasm.m-h.org.uk/" target="_blank" class="btn">OPEN FULLSCREEN</a>
             <a href="index.html" class="btn">BACK TO ARSENAL</a>
@@ -322,11 +326,12 @@
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                // Skip if it's an anchor link, javascript:, or opens in new tab
-                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
+                const target = link.getAttribute('target');
+                // Skip preventDefault if it's an anchor link, javascript:, or opens in new tab
+                if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') {
                     shotgunSound.currentTime = 0;
                     shotgunSound.play().catch(() => {});
-                    return;
+                    return; // Let browser handle normally (especially for _blank)
                 }
                 e.preventDefault();
                 shotgunSound.currentTime = 0;
