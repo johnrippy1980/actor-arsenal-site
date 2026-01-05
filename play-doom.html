@@ -575,7 +575,8 @@
             elementPointerLock: true,
 
             // Command line arguments - tell PrBoom+ where to find the WAD
-            arguments: ['-iwad', '/freedoom1.wad'],
+            // -nomusic disables in-game music so we can play our E1M1 MP3 instead
+            arguments: ['-iwad', '/freedoom1.wad', '-nomusic'],
 
             // preRun - load WAD file into virtual filesystem before game runs
             preRun: [function() {
@@ -630,6 +631,18 @@
                     // Show demons
                     document.getElementById('demonLeft').classList.add('active');
                     document.getElementById('demonRight').classList.add('active');
+
+                    // Auto-start E1M1 music (Bobby Prince soundtrack)
+                    const doomMusic = document.getElementById('doomMusic');
+                    const musicBtn = document.getElementById('musicBtn');
+                    doomMusic.play().then(() => {
+                        musicBtn.innerHTML = '&#x1F50A;';
+                        musicBtn.classList.add('playing');
+                        localStorage.setItem('doomMusicPlaying', 'true');
+                    }).catch(() => {
+                        // Browser blocked autoplay - user will need to click music button
+                        console.log('Autoplay blocked - click music button to start E1M1');
+                    });
 
                     // Focus canvas for keyboard input
                     canvas.focus();
