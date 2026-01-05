@@ -195,9 +195,224 @@ Real-World Field Data from Chr">
             .actor-header-content { flex-direction: column; }
             .actor-icon { width: 60px; height: 60px; }
         }
+    
+        
+        /* Difficulty Selector */
+        .difficulty-selector { position: relative; display: inline-block; }
+        .difficulty-btn {
+            background: transparent;
+            border: 1px solid #ff3366;
+            color: #ff3366;
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .difficulty-btn:hover { background: #ff3366; color: #000; }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid #ff3366;
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover { background: #ff3366; color: #000; }
+        .difficulty-option.active { color: #ffcc00; }
+
+        /* ===== DOOM EFFECTS ===== */
+        body { padding-bottom: 90px; }
+        
+        /* CRT Scanline Overlay */
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 3px);
+            opacity: 0.6;
+        }
+        
+        /* Red Vignette */
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+        
+        /* Pain Flash */
+        .pain-flash {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active { background: rgba(255, 0, 0, 0.3); }
+        
+        /* Screen Shake */
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2px, -1px); }
+            20% { transform: translate(2px, 1px); }
+            30% { transform: translate(-1px, 2px); }
+            40% { transform: translate(1px, -2px); }
+            50% { transform: translate(-2px, 1px); }
+            60% { transform: translate(2px, -1px); }
+            70% { transform: translate(-1px, -2px); }
+            80% { transform: translate(1px, 2px); }
+            90% { transform: translate(-2px, -1px); }
+        }
+        .shake { animation: screenShake 0.3s ease-in-out; }
+        
+        /* DOOM HUD (Classic Grey Metal Style) */
+        .doom-hud {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%; height: 80px;
+            background:
+                repeating-linear-gradient(90deg, #5a5a5a 0px, #5a5a5a 2px, #6a6a6a 2px, #6a6a6a 4px, #4a4a4a 4px, #4a4a4a 6px, #555 6px, #555 8px),
+                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
+            border-top: 4px solid #7a7a7a;
+            border-bottom: 4px solid #2a2a2a;
+            box-shadow: inset 0 2px 0 #8a8a8a, inset 0 -2px 0 #2a2a2a, 0 -4px 8px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            font-family: 'Press Start 2P', cursive;
+            padding: 0; gap: 0;
+        }
+        .hud-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+            border-left: 3px solid #6a6a6a;
+            border-right: 3px solid #2a2a2a;
+            border-top: 2px solid #7a7a7a;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+        .hud-section::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 2px solid #1a1a1a;
+            border-radius: 2px;
+            z-index: -1;
+        }
+        .hud-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 0.5rem; }
+        .hud-value { font-size: 1.8rem; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000; letter-spacing: 2px; }
+        .hud-label { font-size: 0.5rem; color: #888; text-shadow: 1px 1px 0 #000; text-transform: uppercase; }
+        .hud-face-container {
+            width: 70px; height: 70px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            border-bottom-color: #1a1a1a;
+            border-right-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .hud-face { width: 60px; height: 60px; image-rendering: pixelated; }
+        .hud-ammo { color: #ffcc00; }
+        .hud-health { color: #ff3333; }
+        .hud-armor { color: #00ff88; }
+        .hud-secrets { color: #ff6600; }
+        
+        /* Demon Sprites */
+        .demon-left, .demon-right {
+            position: fixed;
+            bottom: 70px;
+            width: 80px;
+            height: 100px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            image-rendering: pixelated;
+        }
+        .demon-left { left: -80px; transform: scaleX(-1); }
+        .demon-right { right: -80px; }
+        .demon-left.peek { left: -20px; opacity: 1; }
+        .demon-right.peek { right: -20px; opacity: 1; }
+
     </style>
 </head>
 <body>
+    <!-- DOOM Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash" id="painFlash"></div>
+    
+    <!-- Imp Sprites (SVG) -->
+    <svg class="demon-left" id="demonLeft" viewBox="0 0 64 80">
+        <rect x="20" y="5" width="24" height="8" fill="#8B4513"/>
+        <rect x="18" y="13" width="8" height="6" fill="#ff0"/>
+        <rect x="20" y="15" width="4" height="4" fill="#f00"/>
+        <rect x="38" y="13" width="8" height="6" fill="#ff0"/>
+        <rect x="40" y="15" width="4" height="4" fill="#f00"/>
+        <rect x="14" y="0" width="6" height="13" fill="#8B4513"/>
+        <rect x="44" y="0" width="6" height="13" fill="#8B4513"/>
+        <rect x="16" y="19" width="32" height="25" fill="#8B4513"/>
+        <rect x="26" y="28" width="12" height="8" fill="#4a2505"/>
+        <rect x="28" y="32" width="8" height="6" fill="#000"/>
+        <rect x="10" y="22" width="6" height="20" fill="#8B4513"/>
+        <rect x="48" y="22" width="6" height="20" fill="#8B4513"/>
+        <rect x="4" y="18" width="8" height="6" fill="#8B4513"/>
+        <rect x="52" y="18" width="8" height="6" fill="#8B4513"/>
+        <rect x="18" y="44" width="12" height="20" fill="#8B4513"/>
+        <rect x="34" y="44" width="12" height="20" fill="#8B4513"/>
+        <rect x="16" y="64" width="16" height="8" fill="#4a2505"/>
+        <rect x="32" y="64" width="16" height="8" fill="#4a2505"/>
+    </svg>
+    <svg class="demon-right" id="demonRight" viewBox="0 0 64 80">
+        <rect x="20" y="5" width="24" height="8" fill="#8B4513"/>
+        <rect x="18" y="13" width="8" height="6" fill="#ff0"/>
+        <rect x="20" y="15" width="4" height="4" fill="#f00"/>
+        <rect x="38" y="13" width="8" height="6" fill="#ff0"/>
+        <rect x="40" y="15" width="4" height="4" fill="#f00"/>
+        <rect x="14" y="0" width="6" height="13" fill="#8B4513"/>
+        <rect x="44" y="0" width="6" height="13" fill="#8B4513"/>
+        <rect x="16" y="19" width="32" height="25" fill="#8B4513"/>
+        <rect x="26" y="28" width="12" height="8" fill="#4a2505"/>
+        <rect x="28" y="32" width="8" height="6" fill="#000"/>
+        <rect x="10" y="22" width="6" height="20" fill="#8B4513"/>
+        <rect x="48" y="22" width="6" height="20" fill="#8B4513"/>
+        <rect x="4" y="18" width="8" height="6" fill="#8B4513"/>
+        <rect x="52" y="18" width="8" height="6" fill="#8B4513"/>
+        <rect x="18" y="44" width="12" height="20" fill="#8B4513"/>
+        <rect x="34" y="44" width="12" height="20" fill="#8B4513"/>
+        <rect x="16" y="64" width="16" height="8" fill="#4a2505"/>
+        <rect x="32" y="64" width="16" height="8" fill="#4a2505"/>
+    </svg>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -205,6 +420,19 @@ Real-World Field Data from Chr">
                 <a href="../index.html">Arsenal</a>
                 <a href="../compare.html">Compare</a>
                 <a href="../api-docs.html">API Docs</a>
+                
+                <!-- Difficulty Selector -->
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
+                    </div>
+                </div>
+
                 <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-insights" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
@@ -505,5 +733,125 @@ Mobile & Desktop</p>
             <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
         </div>
     </footer>
+
+    <!-- DOOM HUD (Classic Metal Style) -->
+    <div class="doom-hud">
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-label">KILLS</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-health" id="hudHealth">100%</div>
+                <div class="hud-label">HEALTH</div>
+            </div>
+        </div>
+        <div class="hud-face-container">
+            <img src="../images/logo.png" class="hud-face" id="hudFace" alt="Doomguy">
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-armor" id="hudArmor">149</div>
+                <div class="hud-label">ACTORS</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-secrets" id="hudSecrets">0/3</div>
+                <div class="hud-label">SECRETS</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOOM Sounds
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+        function initAudio() { if (!audioCtx) audioCtx = new AudioContext(); }
+        
+        function createNoiseBuffer(duration) {
+            const bufferSize = audioCtx.sampleRate * duration;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const output = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
+            return buffer;
+        }
+
+        function playSound(type) {
+            initAudio();
+            switch(type) {
+                case 'pickup': {
+                    const osc = audioCtx.createOscillator();
+                    const osc2 = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const filter = audioCtx.createBiquadFilter();
+                    osc.type = 'square'; osc2.type = 'sawtooth';
+                    filter.type = 'lowpass'; filter.frequency.value = 2000;
+                    osc.connect(filter); osc2.connect(filter);
+                    filter.connect(gain); gain.connect(audioCtx.destination);
+                    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
+                    osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+                    osc2.frequency.setValueAtTime(75, audioCtx.currentTime);
+                    osc2.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+                    osc.start(); osc2.start();
+                    osc.stop(audioCtx.currentTime + 0.15); osc2.stop(audioCtx.currentTime + 0.15);
+                    break;
+                }
+                case 'imp': {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const filter = audioCtx.createBiquadFilter();
+                    osc.type = 'sawtooth'; filter.type = 'lowpass'; filter.frequency.value = 600;
+                    osc.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+                    osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.1);
+                    osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
+                    osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.4);
+                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.start(); osc.stop(audioCtx.currentTime + 0.4);
+                    break;
+                }
+            }
+        }
+
+        // Pain Flash
+        function triggerPainFlash() {
+            const flash = document.getElementById('painFlash');
+            flash.classList.add('active');
+            setTimeout(() => flash.classList.remove('active'), 100);
+        }
+
+        // Demon Peek on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (Math.abs(currentScroll - lastScroll) > 300) {
+                if (Math.random() > 0.6) {
+                    const demon = Math.random() > 0.5 ? document.getElementById('demonLeft') : document.getElementById('demonRight');
+                    demon.classList.add('peek');
+                    playSound('imp');
+                    setTimeout(() => demon.classList.remove('peek'), 2000);
+                }
+                lastScroll = currentScroll;
+            }
+        });
+
+        // CTA button effects
+        document.querySelectorAll('.btn, .cta-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                playSound('pickup');
+                triggerPainFlash();
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 100);
+            });
+        });
+    </script>
+
 </body>
 </html>
