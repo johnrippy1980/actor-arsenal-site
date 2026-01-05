@@ -390,6 +390,8 @@
         <div class="instructions">
             <h3>CONTROLS</h3>
             <div class="key-grid">
+                <div class="key-item"><span class="key-badge">MOUSE</span> Look/Aim</div>
+                <div class="key-item"><span class="key-badge">L-CLICK</span> Fire</div>
                 <div class="key-item"><span class="key-badge">WASD</span> Move</div>
                 <div class="key-item"><span class="key-badge">ARROWS</span> Move</div>
                 <div class="key-item"><span class="key-badge">CTRL</span> Fire</div>
@@ -397,13 +399,13 @@
                 <div class="key-item"><span class="key-badge">SHIFT</span> Run</div>
                 <div class="key-item"><span class="key-badge">1-7</span> Weapons</div>
                 <div class="key-item"><span class="key-badge">TAB</span> Map</div>
-                <div class="key-item"><span class="key-badge">ESC</span> Menu</div>
+                <div class="key-item"><span class="key-badge">ESC</span> Release Mouse</div>
             </div>
         </div>
 
         <div class="warning">
             DESKTOP ONLY - MOBILE NOT SUPPORTED<br>
-            CLICK THE GAME AREA TO CAPTURE MOUSE
+            CLICK GAME TO CAPTURE MOUSE FOR MOUSELOOK
         </div>
     </main>
 
@@ -433,6 +435,24 @@
                 // Show demons when game starts
                 document.getElementById('demonLeft').classList.add('active');
                 document.getElementById('demonRight').classList.add('active');
+            }
+        });
+
+        // Mouse capture for DOOM - click game area to lock pointer
+        const dosboxEl = document.getElementById('dosbox');
+        dosboxEl.addEventListener('click', function() {
+            // Request pointer lock for mouse look
+            const canvas = dosboxEl.querySelector('canvas');
+            if (canvas) {
+                canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
+                canvas.requestPointerLock();
+            }
+        });
+
+        // Show message when pointer is locked/unlocked
+        document.addEventListener('pointerlockchange', function() {
+            if (document.pointerLockElement) {
+                console.log('Mouse captured - use mouse to look around. Press ESC to release.');
             }
         });
 

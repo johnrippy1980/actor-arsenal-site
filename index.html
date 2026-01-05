@@ -2287,6 +2287,19 @@ You&#x27;re currently paying for: Br...</p>
             localStorage.setItem('doomSecrets', JSON.stringify(secretsState));
         }
 
+        function checkAllSecretsFound() {
+            if (secretsState.iddqd && secretsState.idkfa && secretsState.wall) {
+                // All secrets found - play death scream!
+                setTimeout(() => {
+                    playSound('death');
+                    showMessage('ALL SECRETS FOUND! 100%');
+                    // Epic flash effect
+                    document.body.style.animation = 'screenShake 0.5s ease-in-out';
+                    setTimeout(() => document.body.style.animation = '', 500);
+                }, 500);
+            }
+        }
+
         document.addEventListener('keydown', (e) => {
             konamiBuffer.push(e.key.toLowerCase());
             if (konamiBuffer.length > 5) konamiBuffer.shift();
@@ -2305,6 +2318,7 @@ You&#x27;re currently paying for: Br...</p>
                     setTimeout(() => document.body.classList.remove('shake'), 300);
                     document.getElementById('hudSecrets').textContent = secretsFound + '/3';
                     showMessage('GOD MODE ACTIVATED');
+                    checkAllSecretsFound();
                 } else {
                     showMessage('GOD MODE (ALREADY FOUND)');
                 }
@@ -2324,6 +2338,7 @@ You&#x27;re currently paying for: Br...</p>
                     setTimeout(() => document.body.classList.remove('shake'), 300);
                     document.getElementById('hudSecrets').textContent = secretsFound + '/3';
                     showMessage('ALL WEAPONS UNLOCKED');
+                    checkAllSecretsFound();
                 } else {
                     showMessage('ALL WEAPONS (ALREADY FOUND)');
                 }
@@ -2459,6 +2474,7 @@ You&#x27;re currently paying for: Br...</p>
                 playSound('secret');
                 document.getElementById('hudSecrets').textContent = secretsFound + '/3';
                 showMessage('SECRET WALL FOUND!');
+                checkAllSecretsFound();
             }
         }, { once: false });
 
