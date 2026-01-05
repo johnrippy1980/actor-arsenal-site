@@ -210,14 +210,20 @@
             border-radius: 4px;
             padding: 10px;
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+            width: 850px;
+            height: 650px;
+            overflow: hidden;
         }
 
-        /* Game Canvas */
+        /* Game Canvas - scale down the large rendering to fit */
         #doom-canvas {
             background: #000;
             image-rendering: pixelated;
             cursor: crosshair;
             display: block;
+            transform: scale(0.52);
+            transform-origin: top left;
         }
 
         /* Loading overlay */
@@ -498,6 +504,11 @@
         // Module configuration for Emscripten
         var Module = {
             canvas: canvas,
+            // Force fixed resolution
+            preRun: [function() {
+                // Set environment variables for screen size
+                ENV.SDL_VIDEO_CANVAS_SIZE = "800,600";
+            }],
             print: function(text) { console.log('[DOOM]', text); },
             printErr: function(text) { console.error('[DOOM]', text); },
             setStatus: function(text) {
