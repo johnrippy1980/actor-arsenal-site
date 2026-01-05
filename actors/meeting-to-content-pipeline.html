@@ -624,58 +624,19 @@ Schedule & publish</p>
     </div>
 
     <script>
-        // DOOM Sounds
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx = null;
-        function initAudio() { if (!audioCtx) audioCtx = new AudioContext(); }
-        
-        function createNoiseBuffer(duration) {
-            const bufferSize = audioCtx.sampleRate * duration;
-            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-            const output = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) output[i] = Math.random() * 2 - 1;
-            return buffer;
-        }
-
+        // DOOM Sounds (Real WAV Files)
+        const doomSounds = {
+            pickup: new Audio('../sounds/pickup.wav'),
+            door: new Audio('../sounds/door.wav'),
+            chainsaw: new Audio('../sounds/chainsaw.wav'),
+            secret: new Audio('../sounds/secret.wav'),
+            imp: new Audio('../sounds/imp.wav'),
+            death: new Audio('../sounds/death.wav')
+        };
+        Object.values(doomSounds).forEach(s => { s.preload = 'auto'; s.volume = 0.5; });
         function playSound(type) {
-            initAudio();
-            switch(type) {
-                case 'pickup': {
-                    const osc = audioCtx.createOscillator();
-                    const osc2 = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-                    osc.type = 'square'; osc2.type = 'sawtooth';
-                    filter.type = 'lowpass'; filter.frequency.value = 2000;
-                    osc.connect(filter); osc2.connect(filter);
-                    filter.connect(gain); gain.connect(audioCtx.destination);
-                    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
-                    osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
-                    osc2.frequency.setValueAtTime(75, audioCtx.currentTime);
-                    osc2.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
-                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
-                    osc.start(); osc2.start();
-                    osc.stop(audioCtx.currentTime + 0.15); osc2.stop(audioCtx.currentTime + 0.15);
-                    break;
-                }
-                case 'imp': {
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-                    osc.type = 'sawtooth'; filter.type = 'lowpass'; filter.frequency.value = 600;
-                    osc.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
-                    osc.frequency.setValueAtTime(200, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.1);
-                    osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
-                    osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.4);
-                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-                    osc.start(); osc.stop(audioCtx.currentTime + 0.4);
-                    break;
-                }
-            }
+            const sound = doomSounds[type];
+            if (sound) { sound.currentTime = 0; sound.play().catch(() => {}); }
         }
 
         // Pain Flash

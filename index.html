@@ -2156,200 +2156,27 @@ You&#x27;re currently paying for: Br...</p>
     </div>
 
     <script>
-        // ===== DOOM SOUNDS (Web Audio API - More Authentic) =====
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx = null;
+        // ===== DOOM SOUNDS (Real WAV Files) =====
+        const doomSounds = {
+            pickup: new Audio('sounds/pickup.wav'),
+            door: new Audio('sounds/door.wav'),
+            chainsaw: new Audio('sounds/chainsaw.wav'),
+            secret: new Audio('sounds/secret.wav'),
+            imp: new Audio('sounds/imp.wav'),
+            death: new Audio('sounds/death.wav')
+        };
 
-        function initAudio() {
-            if (!audioCtx) audioCtx = new AudioContext();
-        }
-
-        // Create noise buffer for more realistic sounds
-        function createNoiseBuffer(duration) {
-            const bufferSize = audioCtx.sampleRate * duration;
-            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-            const output = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                output[i] = Math.random() * 2 - 1;
-            }
-            return buffer;
-        }
+        // Preload all sounds
+        Object.values(doomSounds).forEach(sound => {
+            sound.preload = 'auto';
+            sound.volume = 0.5;
+        });
 
         function playSound(type) {
-            initAudio();
-
-            switch(type) {
-                case 'pickup': {
-                    // DOOM pickup - quick ascending blip with some grit
-                    const osc = audioCtx.createOscillator();
-                    const osc2 = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-
-                    osc.type = 'square';
-                    osc2.type = 'sawtooth';
-                    filter.type = 'lowpass';
-                    filter.frequency.value = 2000;
-
-                    osc.connect(filter);
-                    osc2.connect(filter);
-                    filter.connect(gain);
-                    gain.connect(audioCtx.destination);
-
-                    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
-                    osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
-                    osc2.frequency.setValueAtTime(75, audioCtx.currentTime);
-                    osc2.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
-
-                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
-
-                    osc.start();
-                    osc2.start();
-                    osc.stop(audioCtx.currentTime + 0.15);
-                    osc2.stop(audioCtx.currentTime + 0.15);
-                    break;
-                }
-                case 'door': {
-                    // DOOM door - deep grinding mechanical sound
-                    const osc = audioCtx.createOscillator();
-                    const osc2 = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-
-                    osc.type = 'sawtooth';
-                    osc2.type = 'square';
-                    filter.type = 'lowpass';
-                    filter.frequency.value = 800;
-
-                    osc.connect(filter);
-                    osc2.connect(filter);
-                    filter.connect(gain);
-                    gain.connect(audioCtx.destination);
-
-                    // Grinding frequency modulation
-                    osc.frequency.setValueAtTime(60, audioCtx.currentTime);
-                    osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.5);
-                    osc2.frequency.setValueAtTime(65, audioCtx.currentTime);
-                    osc2.frequency.linearRampToValueAtTime(35, audioCtx.currentTime + 0.5);
-
-                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                    gain.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.3);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
-
-                    osc.start();
-                    osc2.start();
-                    osc.stop(audioCtx.currentTime + 0.5);
-                    osc2.stop(audioCtx.currentTime + 0.5);
-                    break;
-                }
-                case 'chainsaw': {
-                    // DOOM chainsaw - aggressive buzzing with variation
-                    const noise = audioCtx.createBufferSource();
-                    noise.buffer = createNoiseBuffer(0.8);
-
-                    const osc = audioCtx.createOscillator();
-                    const osc2 = audioCtx.createOscillator();
-                    const lfo = audioCtx.createOscillator();
-                    const lfoGain = audioCtx.createGain();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-                    const distortion = audioCtx.createWaveShaper();
-
-                    // Create distortion curve
-                    const curve = new Float32Array(256);
-                    for (let i = 0; i < 256; i++) {
-                        const x = (i - 128) / 128;
-                        curve[i] = Math.tanh(x * 3);
-                    }
-                    distortion.curve = curve;
-
-                    osc.type = 'sawtooth';
-                    osc2.type = 'square';
-                    lfo.type = 'sine';
-                    filter.type = 'bandpass';
-                    filter.frequency.value = 400;
-                    filter.Q.value = 2;
-
-                    // LFO modulates frequency for that sputtering chainsaw sound
-                    lfo.frequency.value = 30;
-                    lfoGain.gain.value = 20;
-                    lfo.connect(lfoGain);
-                    lfoGain.connect(osc.frequency);
-
-                    osc.connect(distortion);
-                    osc2.connect(distortion);
-                    noise.connect(filter);
-                    filter.connect(gain);
-                    distortion.connect(gain);
-                    gain.connect(audioCtx.destination);
-
-                    osc.frequency.setValueAtTime(80, audioCtx.currentTime);
-                    osc2.frequency.setValueAtTime(82, audioCtx.currentTime);
-
-                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
-                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime + 0.1);
-                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime + 0.2);
-                    gain.gain.setValueAtTime(0.35, audioCtx.currentTime + 0.3);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
-
-                    lfo.start();
-                    osc.start();
-                    osc2.start();
-                    noise.start();
-                    lfo.stop(audioCtx.currentTime + 0.8);
-                    osc.stop(audioCtx.currentTime + 0.8);
-                    osc2.stop(audioCtx.currentTime + 0.8);
-                    noise.stop(audioCtx.currentTime + 0.8);
-                    break;
-                }
-                case 'secret': {
-                    // DOOM secret - triumphant ascending chime
-                    const notes = [262, 330, 392, 523]; // C, E, G, C (octave up)
-                    notes.forEach((freq, i) => {
-                        const osc = audioCtx.createOscillator();
-                        const gain = audioCtx.createGain();
-                        osc.type = 'square';
-                        osc.connect(gain);
-                        gain.connect(audioCtx.destination);
-
-                        const startTime = audioCtx.currentTime + i * 0.1;
-                        osc.frequency.setValueAtTime(freq, startTime);
-                        gain.gain.setValueAtTime(0.3, startTime);
-                        gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.3);
-
-                        osc.start(startTime);
-                        osc.stop(startTime + 0.3);
-                    });
-                    break;
-                }
-                case 'imp': {
-                    // Imp growl/screech
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const filter = audioCtx.createBiquadFilter();
-
-                    osc.type = 'sawtooth';
-                    filter.type = 'lowpass';
-                    filter.frequency.value = 600;
-
-                    osc.connect(filter);
-                    filter.connect(gain);
-                    gain.connect(audioCtx.destination);
-
-                    osc.frequency.setValueAtTime(200, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.1);
-                    osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
-                    osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.4);
-
-                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.4);
-                    break;
-                }
+            const sound = doomSounds[type];
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(() => {}); // Ignore autoplay errors
             }
         }
 
