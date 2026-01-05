@@ -660,7 +660,8 @@
             chainsaw: new Audio('../sounds/chainsaw.wav'),
             secret: new Audio('../sounds/secret.wav'),
             imp: new Audio('../sounds/imp.wav'),
-            death: new Audio('../sounds/death.wav')
+            death: new Audio('../sounds/death.wav'),
+            shotgun: new Audio('../sounds/shotgun.wav')
         };
         Object.values(doomSounds).forEach(s => { s.preload = 'auto'; s.volume = 0.5; });
         function playSound(type) {

@@ -2128,7 +2128,8 @@ You&#x27;re currently paying for: Br...</p>
             chainsaw: new Audio('sounds/chainsaw.wav'),
             secret: new Audio('sounds/secret.wav'),
             imp: new Audio('sounds/imp.wav'),
-            death: new Audio('sounds/death.wav')
+            death: new Audio('sounds/death.wav'),
+            shotgun: new Audio('sounds/shotgun.wav')
         };
 
         // DOOM Theme Music (E1M1 - At Doom's Gate)
@@ -2320,6 +2321,11 @@ You&#x27;re currently paying for: Br...</p>
         if (chainsaw) {
             chainsaw.addEventListener('mouseenter', () => playSound('chainsaw'));
         }
+
+        // ===== SHOTGUN SOUND ON LINK CLICKS =====
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => playSound('shotgun'));
+        });
 
         // ===== FILTER ACTORS (Updated) =====
         function filterActors(category) {
