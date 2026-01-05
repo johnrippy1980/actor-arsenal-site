@@ -432,7 +432,7 @@
 
         <div class="arcade-cabinet">
             <div class="screen-bezel" style="position: relative;">
-                <canvas id="doom-canvas" width="640" height="480"></canvas>
+                <canvas id="doom-canvas" width="800" height="600" tabindex="1"></canvas>
                 <div class="loading-overlay" id="loadingOverlay">
                     <div class="loading-text" id="loadingText">LOADING DOOM...</div>
                     <div class="loading-bar">
@@ -603,7 +603,13 @@
             document.body.appendChild(script);
         }
 
-        // Pointer lock for mouselook
+        // Single click to focus canvas for keyboard input
+        canvas.addEventListener('click', function() {
+            canvas.focus();
+            console.log('Canvas focused for keyboard input');
+        });
+
+        // Pointer lock for mouselook (double-click)
         canvas.addEventListener('dblclick', function() {
             canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
             canvas.requestPointerLock();
