@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLAY DOOM | Actor Arsenal</title>
-    <meta name="description" content="Play the original DOOM (1993) right in your browser! Actor Arsenal's arcade machine.">
+    <meta name="description" content="Play DOOM with modern controls and mouselook! Self-hosted PrBoom+ WebAssembly.">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://js-dos.com/cdn/js-dos-api.js"></script>
     <style>
         :root {
             --bg-dark: #0a0a0a;
@@ -185,7 +184,7 @@
         }
 
         .arcade-cabinet::before {
-            content: 'INSERT COIN';
+            content: 'CLICK TO PLAY';
             position: absolute;
             top: -30px;
             left: 50%;
@@ -210,21 +209,49 @@
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
         }
 
-        /* JS-DOS Container Styling */
-        #dosbox {
+        /* Game Canvas */
+        #doom-canvas {
             width: 640px;
             height: 400px;
             background: #000;
             image-rendering: pixelated;
+            cursor: crosshair;
         }
-        .dosbox-container {
-            width: 640px;
-            height: 400px;
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
-        .dosbox-container > .dosbox-overlay {
-            background: url(https://js-dos.com/cdn/DOOM.png) center center no-repeat;
-            background-size: contain;
-            background-color: #000;
+        .loading-overlay.hidden {
+            display: none;
+        }
+        .loading-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+        }
+        .loading-bar {
+            width: 200px;
+            height: 20px;
+            border: 2px solid var(--accent-red);
+            background: #111;
+        }
+        .loading-fill {
+            height: 100%;
+            background: var(--accent-red);
+            width: 0%;
+            transition: width 0.3s;
         }
 
         /* ===== CONTROLS ===== */
@@ -296,16 +323,16 @@
             text-align: center;
         }
 
-        /* ===== WARNING ===== */
-        .warning {
+        /* ===== MOUSELOOK NOTICE ===== */
+        .mouselook-notice {
             margin-top: 2rem;
             padding: 1rem;
-            background: rgba(139, 0, 0, 0.2);
-            border: 1px solid var(--accent-blood);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-green);
             border-radius: 4px;
             font-family: 'Press Start 2P', cursive;
             font-size: 0.5rem;
-            color: var(--accent-red);
+            color: var(--accent-green);
             text-align: center;
             max-width: 700px;
         }
@@ -347,7 +374,7 @@
 
         @media (max-width: 768px) {
             .arcade-title { font-size: 1.5rem; }
-            #dosbox, .dosbox-container {
+            #doom-canvas {
                 width: 100%;
                 max-width: 640px;
                 height: auto;
@@ -391,29 +418,35 @@
             <a href="index.html">HOME</a>
             <a href="compare.html">COMPARE</a>
             <a href="api-docs.html">API</a>
-            <button class="music-btn" id="musicBtn" title="Toggle E1M1 Music">🔇</button>
+            <button class="music-btn" id="musicBtn" title="Toggle E1M1 Music">&#x1F507;</button>
         </div>
     </nav>
 
     <main>
         <h1 class="arcade-title">PLAY DOOM</h1>
-        <p class="arcade-subtitle">THE ULTIMATE DOOM (1995) - ID SOFTWARE</p>
+        <p class="arcade-subtitle">FREEDOOM + PRBOOM+ WEBASSEMBLY | MOUSELOOK ENABLED</p>
 
         <div class="arcade-cabinet">
-            <div class="screen-bezel">
-                <div id="dosbox"></div>
+            <div class="screen-bezel" style="position: relative;">
+                <canvas id="doom-canvas" width="640" height="400"></canvas>
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-text" id="loadingText">LOADING DOOM...</div>
+                    <div class="loading-bar">
+                        <div class="loading-fill" id="loadingFill"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="controls">
-            <button class="control-btn" onclick="dosbox.requestFullScreen();">FULLSCREEN</button>
+            <button class="control-btn" id="fullscreenBtn">FULLSCREEN</button>
+            <button class="control-btn" id="lockMouseBtn">LOCK MOUSE</button>
             <button class="control-btn" onclick="location.reload();">RESTART</button>
-            <a href="play-doom-modern.html" class="control-btn" style="text-decoration: none; background: linear-gradient(180deg, #003300 0%, #001a00 100%); border-color: #00ff88;">MODERN CONTROLS</a>
             <a href="index.html" class="control-btn" style="text-decoration: none;">EXIT GAME</a>
         </div>
 
         <div class="instructions">
-            <h3>CONTROLS</h3>
+            <h3>MODERN CONTROLS</h3>
             <div class="key-grid">
                 <div class="key-item"><span class="key-badge">MOUSE</span> Look/Aim</div>
                 <div class="key-item"><span class="key-badge">L-CLICK</span> Fire</div>
@@ -424,19 +457,20 @@
                 <div class="key-item"><span class="key-badge">SHIFT</span> Run</div>
                 <div class="key-item"><span class="key-badge">1-7</span> Weapons</div>
                 <div class="key-item"><span class="key-badge">TAB</span> Map</div>
-                <div class="key-item"><span class="key-badge">ESC</span> Release Mouse</div>
+                <div class="key-item"><span class="key-badge">ESC</span> Menu</div>
             </div>
         </div>
 
-        <div class="warning">
-            THIS IS CLASSIC DOS DOOM - LIMITED MOUSE SUPPORT<br>
-            FOR WASD + MOUSELOOK USE "MODERN CONTROLS" BUTTON ABOVE
+        <div class="mouselook-notice">
+            DOUBLE-CLICK GAME TO LOCK MOUSE FOR MOUSELOOK<br>
+            PRESS ESC TO RELEASE MOUSE
         </div>
     </main>
 
     <footer>
-        DOOM is a registered trademark of id Software LLC.
-        This is the shareware version running via js-dos emulator.
+        Powered by PrBoom+ WebAssembly (Dwasm).<br>
+        Freedoom is free content compatible with DOOM engines.<br>
+        DOOM is a trademark of id Software LLC.
     </footer>
 
     <!-- Demon Sprites -->
@@ -449,35 +483,149 @@
     </audio>
 
     <script>
-        // Initialize DOOM via js-dos
-        var dosbox = new Dosbox({
-            id: "dosbox",
-            onload: function(dosbox) {
-                dosbox.run("https://js-dos.com/cdn/upload/DOOM-@evilution.zip", "./DOOM/DOOM.EXE");
+        // Game state
+        let gameLoaded = false;
+        let wadData = null;
+
+        // DOM elements
+        const canvas = document.getElementById('doom-canvas');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const loadingText = document.getElementById('loadingText');
+        const loadingFill = document.getElementById('loadingFill');
+
+        // Module configuration for Emscripten
+        var Module = {
+            canvas: canvas,
+            print: function(text) { console.log('[DOOM]', text); },
+            printErr: function(text) { console.error('[DOOM]', text); },
+            setStatus: function(text) {
+                if (text) {
+                    loadingText.textContent = text.toUpperCase();
+                    // Parse progress from status text
+                    const match = text.match(/(\d+)\/(\d+)/);
+                    if (match) {
+                        const progress = (parseInt(match[1]) / parseInt(match[2])) * 100;
+                        loadingFill.style.width = progress + '%';
+                    }
+                }
             },
-            onrun: function(dosbox, app) {
-                console.log("DOOM is running!");
-                // Show demons when game starts
-                document.getElementById('demonLeft').classList.add('active');
-                document.getElementById('demonRight').classList.add('active');
+            onRuntimeInitialized: function() {
+                console.log('DOOM runtime initialized');
+                // Write WAD file to virtual filesystem
+                if (wadData) {
+                    try {
+                        const wadFile = FS.open('/freedoom1.wad', 'w');
+                        FS.write(wadFile, wadData, 0, wadData.length, 0);
+                        FS.close(wadFile);
+                        console.log('WAD file written to MemFS');
+                    } catch (e) {
+                        console.error('Failed to write WAD:', e);
+                    }
+                }
+            },
+            arguments: ['-iwad', '/freedoom1.wad'],
+            locateFile: function(path) {
+                return 'doom-wasm/' + path;
             }
+        };
+
+        // Load the WAD file
+        async function loadWAD() {
+            loadingText.textContent = 'LOADING WAD FILE...';
+            loadingFill.style.width = '10%';
+
+            try {
+                const response = await fetch('doom-wasm/freedoom1.wad');
+                const total = parseInt(response.headers.get('content-length') || '0');
+                const reader = response.body.getReader();
+                let received = 0;
+                const chunks = [];
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    chunks.push(value);
+                    received += value.length;
+                    if (total > 0) {
+                        const progress = 10 + (received / total) * 40;
+                        loadingFill.style.width = progress + '%';
+                        loadingText.textContent = `LOADING WAD... ${Math.round(received / 1024 / 1024)}MB`;
+                    }
+                }
+
+                // Combine chunks
+                const allChunks = new Uint8Array(received);
+                let position = 0;
+                for (const chunk of chunks) {
+                    allChunks.set(chunk, position);
+                    position += chunk.length;
+                }
+
+                wadData = allChunks;
+                console.log('WAD loaded:', wadData.length, 'bytes');
+                loadingFill.style.width = '50%';
+                loadingText.textContent = 'LOADING DOOM ENGINE...';
+
+                // Now load the WASM engine
+                loadDoomEngine();
+
+            } catch (err) {
+                console.error('Failed to load WAD:', err);
+                loadingText.textContent = 'ERROR LOADING WAD FILE';
+            }
+        }
+
+        // Load the DOOM WASM engine
+        function loadDoomEngine() {
+            const script = document.createElement('script');
+            script.src = 'doom-wasm/index.js';
+            script.onload = function() {
+                loadingFill.style.width = '80%';
+                loadingText.textContent = 'INITIALIZING...';
+
+                // Hide loading overlay after a short delay
+                setTimeout(() => {
+                    loadingOverlay.classList.add('hidden');
+                    gameLoaded = true;
+
+                    // Show demons
+                    document.getElementById('demonLeft').classList.add('active');
+                    document.getElementById('demonRight').classList.add('active');
+                }, 2000);
+            };
+            script.onerror = function() {
+                loadingText.textContent = 'ERROR LOADING DOOM ENGINE';
+            };
+            document.body.appendChild(script);
+        }
+
+        // Pointer lock for mouselook
+        canvas.addEventListener('dblclick', function() {
+            canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
+            canvas.requestPointerLock();
         });
 
-        // Mouse capture for DOOM - click game area to lock pointer
-        const dosboxEl = document.getElementById('dosbox');
-        dosboxEl.addEventListener('click', function() {
-            // Request pointer lock for mouse look
-            const canvas = dosboxEl.querySelector('canvas');
-            if (canvas) {
-                canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
-                canvas.requestPointerLock();
-            }
+        document.getElementById('lockMouseBtn').addEventListener('click', function() {
+            canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
+            canvas.requestPointerLock();
         });
 
-        // Show message when pointer is locked/unlocked
         document.addEventListener('pointerlockchange', function() {
-            if (document.pointerLockElement) {
-                console.log('Mouse captured - use mouse to look around. Press ESC to release.');
+            if (document.pointerLockElement === canvas) {
+                console.log('Mouse locked - mouselook active');
+            } else {
+                console.log('Mouse unlocked');
+            }
+        });
+
+        // Fullscreen
+        document.getElementById('fullscreenBtn').addEventListener('click', function() {
+            if (canvas.requestFullscreen) {
+                canvas.requestFullscreen();
+            } else if (canvas.webkitRequestFullscreen) {
+                canvas.webkitRequestFullscreen();
+            } else if (canvas.mozRequestFullScreen) {
+                canvas.mozRequestFullScreen();
             }
         });
 
@@ -492,7 +640,7 @@
             doomMusic.currentTime = savedTime;
             doomMusic.play().then(() => {
                 musicPlaying = true;
-                musicBtn.textContent = '🔊';
+                musicBtn.innerHTML = '&#x1F50A;';
                 musicBtn.classList.add('playing');
             }).catch(() => {});
         }
@@ -500,13 +648,13 @@
         musicBtn.addEventListener('click', () => {
             if (musicPlaying) {
                 doomMusic.pause();
-                musicBtn.textContent = '🔇';
+                musicBtn.innerHTML = '&#x1F507;';
                 musicBtn.classList.remove('playing');
                 musicPlaying = false;
                 localStorage.setItem('doomMusicPlaying', 'false');
             } else {
                 doomMusic.play().then(() => {
-                    musicBtn.textContent = '🔊';
+                    musicBtn.innerHTML = '&#x1F50A;';
                     musicBtn.classList.add('playing');
                     musicPlaying = true;
                     localStorage.setItem('doomMusicPlaying', 'true');
@@ -548,6 +696,9 @@
                 }, 200);
             });
         });
+
+        // Start loading when page loads
+        window.addEventListener('load', loadWAD);
     </script>
 
     <!-- Apify Affiliate Partner Badge -->
