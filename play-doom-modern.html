@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLAY DOOM (Modern Controls) | Actor Arsenal</title>
-    <meta name="description" content="Play DOOM with modern FPS controls - WASD movement, mouselook, mouse to fire!">
+    <meta name="description" content="Play DOOM with modern FPS controls - self-hosted with js-dos WebAssembly!">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- js-dos v8 -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
     <style>
         :root {
             --bg-dark: #0a0a0a;
@@ -100,21 +105,14 @@
             text-align: center;
         }
 
-        /* Game Container */
-        .game-container {
+        /* Game Container - js-dos player */
+        #dos {
             width: 100%;
             max-width: 960px;
-            aspect-ratio: 4/3;
+            height: 600px;
             background: #000;
             border: 4px solid #333;
             box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .game-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         /* Instructions */
@@ -152,29 +150,6 @@
             color: var(--accent-yellow);
             min-width: 60px;
             text-align: center;
-        }
-
-        /* Setup Instructions */
-        .setup-box {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--accent-green);
-            border-radius: 4px;
-            max-width: 800px;
-            font-size: 0.5rem;
-            color: #ccc;
-            line-height: 1.8;
-        }
-
-        .setup-box h4 {
-            color: var(--accent-yellow);
-            margin-bottom: 0.5rem;
-            font-size: 0.6rem;
-        }
-
-        .setup-box ol {
-            margin-left: 1.5rem;
         }
 
         /* Buttons */
@@ -220,7 +195,7 @@
 
         @media (max-width: 768px) {
             .title { font-size: 1rem; }
-            .game-container { aspect-ratio: 4/3; }
+            #dos { height: 400px; }
         }
 
         /* ===== APIFY AFFILIATE BADGE ===== */
@@ -263,57 +238,32 @@
 
     <main>
         <h1 class="title">DOOM - MODERN CONTROLS</h1>
-        <p class="subtitle">FREEDOOM + PRBOOM+ ENGINE | WASD + MOUSELOOK</p>
+        <p class="subtitle">FREEDOOM + JS-DOS WEBASSEMBLY | CLICK TO PLAY</p>
 
-        <div class="game-container">
-            <iframe
-                src="https://dwasm.m-h.org.uk/"
-                allow="pointer-lock; fullscreen; autoplay"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <div class="setup-box">
-            <h4>QUICK START:</h4>
-            <ol>
-                <li>Select <strong>"Freedoom Phase 1"</strong> or <strong>"Freedoom Phase 2"</strong> from dropdown</li>
-                <li>Check <strong>"I am over 18 years old"</strong></li>
-                <li>Click <strong>"Start Dwasm"</strong></li>
-                <li>Click the game area to capture mouse for mouselook</li>
-                <li>Press ESC to release mouse or access menu</li>
-            </ol>
-            <p style="margin-top: 0.8rem; color: var(--accent-yellow);">
-                <strong>NOTE:</strong> For best mouse control, click <strong>"OPEN FULLSCREEN"</strong> below to play in a dedicated tab. Browser security restricts pointer lock in embedded frames.
-            </p>
-            <p style="margin-top: 0.5rem; color: var(--accent-green);">
-                <strong>NEW:</strong> Try our <a href="doom-modern/" style="color: var(--accent-green);">Self-Hosted JS-DOS Version</a> for better compatibility!
-            </p>
-        </div>
+        <div id="dos"></div>
 
         <div class="instructions">
-            <h3>MODERN FPS CONTROLS</h3>
+            <h3>CONTROLS</h3>
             <div class="key-grid">
-                <div class="key-item"><span class="key-badge">WASD</span> Move</div>
-                <div class="key-item"><span class="key-badge">MOUSE</span> Look Around</div>
-                <div class="key-item"><span class="key-badge">LEFT CLICK</span> Fire</div>
-                <div class="key-item"><span class="key-badge">RIGHT CLICK</span> Move Forward</div>
-                <div class="key-item"><span class="key-badge">SCROLL</span> Change Weapon</div>
+                <div class="key-item"><span class="key-badge">ARROWS</span> Move</div>
+                <div class="key-item"><span class="key-badge">CTRL</span> Fire</div>
                 <div class="key-item"><span class="key-badge">SPACE</span> Use / Open</div>
+                <div class="key-item"><span class="key-badge">ALT</span> Strafe</div>
+                <div class="key-item"><span class="key-badge">SHIFT</span> Run</div>
+                <div class="key-item"><span class="key-badge">1-7</span> Weapons</div>
                 <div class="key-item"><span class="key-badge">TAB</span> Automap</div>
-                <div class="key-item"><span class="key-badge">ESC</span> Menu / Release Mouse</div>
+                <div class="key-item"><span class="key-badge">ESC</span> Menu</div>
             </div>
         </div>
 
         <div class="buttons">
-            <a href="doom-modern/" class="btn" style="border-color: var(--accent-green); color: var(--accent-green);">SELF-HOSTED JS-DOS</a>
             <a href="play-doom.html" class="btn btn-classic">CLASSIC DOS VERSION</a>
-            <a href="https://dwasm.m-h.org.uk/" target="_blank" class="btn">OPEN FULLSCREEN</a>
             <a href="index.html" class="btn">BACK TO ARSENAL</a>
         </div>
     </main>
 
     <footer>
-        Powered by Dwasm (PrBoom+ WebAssembly) by Gregory Maynard-Hoare<br>
+        Powered by js-dos WebAssembly emulator<br>
         Freedoom is a free content game compatible with DOOM engines<br>
         DOOM is a trademark of id Software LLC
     </footer>
@@ -327,11 +277,10 @@
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 const target = link.getAttribute('target');
-                // Skip preventDefault if it's an anchor link, javascript:, or opens in new tab
                 if (!href || href.startsWith('#') || href.startsWith('javascript:') || target === '_blank') {
                     shotgunSound.currentTime = 0;
                     shotgunSound.play().catch(() => {});
-                    return; // Let browser handle normally (especially for _blank)
+                    return;
                 }
                 e.preventDefault();
                 shotgunSound.currentTime = 0;
@@ -340,6 +289,11 @@
                     window.location.href = href;
                 }, 200);
             });
+        });
+
+        // Initialize js-dos with DOOM bundle from dos.zone CDN
+        Dos(document.getElementById("dos"), {
+            url: "https://cdn.dos.zone/original/2X/2/24b00b14f118580763440ecaddcc948f8cb94f14.jsdos",
         });
     </script>
 
