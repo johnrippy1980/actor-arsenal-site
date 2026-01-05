@@ -213,7 +213,7 @@
         }
 
         /* Game Canvas */
-        #doom-canvas {
+        #canvas {
             background: #000;
             image-rendering: pixelated;
             cursor: crosshair;
@@ -378,7 +378,7 @@
 
         @media (max-width: 768px) {
             .arcade-title { font-size: 1.5rem; }
-            #doom-canvas {
+            #canvas {
                 width: 100%;
                 max-width: 640px;
                 height: auto;
@@ -432,7 +432,7 @@
 
         <div class="arcade-cabinet">
             <div class="screen-bezel" style="position: relative;">
-                <canvas id="doom-canvas" width="800" height="600" tabindex="1"></canvas>
+                <canvas id="canvas" width="640" height="400" tabindex="1"></canvas>
                 <div class="loading-overlay" id="loadingOverlay">
                     <div class="loading-text" id="loadingText">LOADING DOOM...</div>
                     <div class="loading-bar">
@@ -489,19 +489,27 @@
     <script>
         // Game state
         let gameLoaded = false;
-        let wadData = null;
 
         // DOM elements
-        const canvas = document.getElementById('doom-canvas');
+        const canvas = document.getElementById('canvas');
         const loadingOverlay = document.getElementById('loadingOverlay');
         const loadingText = document.getElementById('loadingText');
         const loadingFill = document.getElementById('loadingFill');
 
-        // Module configuration for Emscripten
+        // Module configuration for Emscripten (Dwasm/PrBoom+)
+        // CRITICAL: Must be defined BEFORE loading the WASM script
         var Module = {
+            // Canvas reference - Dwasm expects id="canvas"
             canvas: canvas,
+
+            // Enable pointer lock for mouselook (WebPrBoom style)
+            elementPointerLock: true,
+
+            // Console output
             print: function(text) { console.log('[DOOM]', text); },
             printErr: function(text) { console.error('[DOOM]', text); },
+
+            // Loading status callback
             setStatus: function(text) {
                 if (text) {
                     loadingText.textContent = text.toUpperCase();
@@ -513,93 +521,68 @@
                     }
                 }
             },
+
+            // Runtime initialized callback
             onRuntimeInitialized: function() {
                 console.log('DOOM runtime initialized');
-                // Write WAD file to virtual filesystem
-                if (wadData) {
-                    try {
-                        const wadFile = FS.open('/freedoom1.wad', 'w');
-                        FS.write(wadFile, wadData, 0, wadData.length, 0);
-                        FS.close(wadFile);
-                        console.log('WAD file written to MemFS');
-                    } catch (e) {
-                        console.error('Failed to write WAD:', e);
+                loadingFill.style.width = '100%';
+                loadingText.textContent = 'READY!';
+
+                // Resume audio context on user interaction (browser requirement)
+                const resumeAudio = function() {
+                    if (typeof SDL !== 'undefined' && SDL.audioContext) {
+                        if (SDL.audioContext.state === 'suspended') {
+                            SDL.audioContext.resume();
+                        }
                     }
-                }
-            },
-            arguments: ['-iwad', '/freedoom1.wad'],
-            locateFile: function(path) {
-                return 'doom-wasm/' + path;
-            }
-        };
+                };
 
-        // Load the WAD file
-        async function loadWAD() {
-            loadingText.textContent = 'LOADING WAD FILE...';
-            loadingFill.style.width = '10%';
+                // Add listeners to resume audio
+                ['keydown', 'click', 'touchstart'].forEach(function(event) {
+                    document.addEventListener(event, resumeAudio, { once: true });
+                });
 
-            try {
-                const response = await fetch('doom-wasm/freedoom1.wad');
-                const total = parseInt(response.headers.get('content-length') || '0');
-                const reader = response.body.getReader();
-                let received = 0;
-                const chunks = [];
-
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-                    chunks.push(value);
-                    received += value.length;
-                    if (total > 0) {
-                        const progress = 10 + (received / total) * 40;
-                        loadingFill.style.width = progress + '%';
-                        loadingText.textContent = `LOADING WAD... ${Math.round(received / 1024 / 1024)}MB`;
-                    }
-                }
-
-                // Combine chunks
-                const allChunks = new Uint8Array(received);
-                let position = 0;
-                for (const chunk of chunks) {
-                    allChunks.set(chunk, position);
-                    position += chunk.length;
-                }
-
-                wadData = allChunks;
-                console.log('WAD loaded:', wadData.length, 'bytes');
-                loadingFill.style.width = '50%';
-                loadingText.textContent = 'LOADING DOOM ENGINE...';
-
-                // Now load the WASM engine
-                loadDoomEngine();
-
-            } catch (err) {
-                console.error('Failed to load WAD:', err);
-                loadingText.textContent = 'ERROR LOADING WAD FILE';
-            }
-        }
-
-        // Load the DOOM WASM engine
-        function loadDoomEngine() {
-            const script = document.createElement('script');
-            script.src = 'doom-wasm/index.js';
-            script.onload = function() {
-                loadingFill.style.width = '80%';
-                loadingText.textContent = 'INITIALIZING...';
-
-                // Hide loading overlay after a short delay
-                setTimeout(() => {
+                // Hide loading overlay
+                setTimeout(function() {
                     loadingOverlay.classList.add('hidden');
                     gameLoaded = true;
 
                     // Show demons
                     document.getElementById('demonLeft').classList.add('active');
                     document.getElementById('demonRight').classList.add('active');
-                }, 2000);
+
+                    // Focus canvas for keyboard input
+                    canvas.focus();
+                }, 500);
+            },
+
+            // Locate WASM/data files
+            locateFile: function(path) {
+                return 'doom-wasm/' + path;
+            }
+        };
+
+        // Load the DOOM WASM engine
+        // The Dwasm build includes the WAD in index.data, so we just load the script
+        function loadDoomEngine() {
+            loadingText.textContent = 'LOADING DOOM ENGINE...';
+            loadingFill.style.width = '20%';
+
+            const script = document.createElement('script');
+            script.src = 'doom-wasm/index.js';
+            script.async = true;
+
+            script.onload = function() {
+                loadingFill.style.width = '60%';
+                loadingText.textContent = 'INITIALIZING WASM...';
+                console.log('DOOM engine script loaded');
             };
-            script.onerror = function() {
+
+            script.onerror = function(e) {
+                console.error('Failed to load DOOM engine:', e);
                 loadingText.textContent = 'ERROR LOADING DOOM ENGINE';
             };
+
             document.body.appendChild(script);
         }
 
@@ -708,7 +691,7 @@
         });
 
         // Start loading when page loads
-        window.addEventListener('load', loadWAD);
+        window.addEventListener('load', loadDoomEngine);
     </script>
 
     <!-- Apify Affiliate Partner Badge -->
