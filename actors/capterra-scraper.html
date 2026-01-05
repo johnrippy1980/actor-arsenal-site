@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capterra Scraper | Actor Arsenal</title>
+    <meta name="description" content="Scrape Capterra.com for business software product reviews, ratings, pricing information, and feature comparisons. Essential for SaaS market research and competi">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/capterra-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/capterra-scraper.png" alt="Capterra Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Capterra Scraper</h1>
+                    <span class="actor-category">Developer Tools</span>
+                    <p class="actor-description">Scrape Capterra.com for business software product reviews, ratings, pricing information, and feature comparisons. Essential for SaaS market research and competitive analysis.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/capterra-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Capterra Software Reviews & Pricing Scraper</h1>
+
+<blockquote>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>Scrape Capterra.com for business software product reviews, ratings, pricing information, and feature comparisons. Essential for SaaS market research and competitive analysis.</p>
+
+<h2>Why Capterra Data is Valuable</h2>
+
+<p>Capterra is a leading B2B software review platform owned by Gartner:</p>
+<ul>
+<li><strong>Verified Reviews</strong>: Reviews from verified software users</li>
+<li><strong>Detailed Ratings</strong>: Overall + category-specific ratings (Ease of Use, Features, Value, etc.)</li>
+<li><strong>Pricing Data</strong>: Transparent pricing and free trial information</li>
+<li><strong>Feature Comparisons</strong>: Detailed feature lists for comparison</li>
+<li><strong>Industry Filters</strong>: Reviews segmented by industry and company size</li>
+<li><strong>SMB Focus</strong>: Strong coverage of small-to-medium business software</li>
+</ul>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Product Profile Scraping</strong>: Complete software product profiles</li>
+<li><strong>Category Search</strong>: Find top products in any Capterra category</li>
+<li><strong>Review Extraction</strong>: User reviews with detailed ratings</li>
+<li><strong>Pricing Information</strong>: Pricing tiers, free trials, free versions</li>
+<li><strong>Feature Lists</strong>: Comprehensive feature comparisons</li>
+<li><strong>Alternatives</strong>: Similar products and recommendations</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Competitive Intelligence</strong>: Track competitor reviews and pricing</li>
+<li><strong>Market Research</strong>: Analyze software category landscape</li>
+<li><strong>Product Marketing</strong>: Monitor your Capterra presence</li>
+<li><strong>Feature Gap Analysis</strong>: Compare feature sets across products</li>
+<li><strong>Pricing Strategy</strong>: Research competitor pricing models</li>
+<li><strong>Buyer Research</strong>: Understand what users like/dislike</li>
+</ul>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Output</h2>
+
+<h3>Product Output</h3>
+
+<pre><code>{
+<p>"productName": "Slack",</p>
+<p>"capterraUrl": "https://www.capterra.com/p/135003/Slack/",</p>
+<p>"vendor": "Salesforce",</p>
+<p>"category": "Team Communication Software",</p>
+<p>"subcategories": ["Collaboration", "Messaging", "Video Conferencing"],</p>
+<p>"overallRating": 4.7,</p>
+<p>"ratings": {</p>
+<p>"easeOfUse": 4.8,</p>
+<p>"customerService": 4.2,</p>
+<p>"features": 4.6,</p>
+<p>"valueForMoney": 4.4</p>
+<p>},</p>
+<p>"reviewCount": 23456,</p>
+<p>"recommendationRate": 94,</p>
+<p>"description": "Slack is a messaging platform that connects people to the information they need...",</p>
+<p>"features": ["Channels", "Direct Messages", "File Sharing", "Integrations", "Search"],</p>
+<p>"pricing": {</p>
+<p>"hasFreeVersion": true,</p>
+<p>"hasFreeTrial": true,</p>
+<p>"startingPrice": 8.75,</p>
+<p>"pricingModel": "Per User/Month",</p>
+<p>"pricingTiers": ["Free", "Pro $8.75/mo", "Business+ $15/mo", "Enterprise Grid Custom"]</p>
+<p>},</p>
+<p>"deploymentType": ["Cloud", "Web-based"],</p>
+<p>"platformSupport": ["Windows", "Mac", "iOS", "Android", "Web"],</p>
+<p>"targetMarket": ["Small Business", "Mid-Market", "Enterprise"],</p>
+<p>"reviews": [</p>
+<p>{</p>
+<p>"reviewId": "capterra-12345",</p>
+<p>"overallRating": 5,</p>
+<p>"ratings": {</p>
+<p>"easeOfUse": 5,</p>
+<p>"customerService": 4,</p>
+<p>"features": 5,</p>
+<p>"valueForMoney": 4</p>
+<p>},</p>
+<p>"title": "Essential tool for remote teams",</p>
+<p>"pros": "Easy to use, great integrations, excellent mobile app",</p>
+<p>"cons": "Can get noisy with too many channels, notification overload",</p>
+<p>"reviewerRole": "Project Manager",</p>
+<p>"companySize": "51-200 employees",</p>
+<p>"industry": "Information Technology",</p>
+<p>"usageDuration": "2+ years",</p>
+<p>"date": "November 2024",</p>
+<p>"verified": true</p>
+<p>}</p>
+<p>],</p>
+<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Example Usage</h2>
+
+<h3>Search for CRM Software</h3>
+
+<pre><code>{
+<p>"scrapeType": "category_search",</p>
+<p>"category": "CRM Software",</p>
+<p>"minRating": 4.0,</p>
+<p>"deploymentType": "cloud",</p>
+<p>"maxResults": 50</p>
+<p>}</p>
+</code></pre>
+
+<h3>Scrape Single Product Profile</h3>
+
+<pre><code>{
+<p>"scrapeType": "product_profile",</p>
+<p>"productUrl": "https://www.capterra.com/p/135003/Slack/",</p>
+<p>"includeReviews": true,</p>
+<p>"maxReviewsPerProduct": 50</p>
+<p>}</p>
+</code></pre>
+
+<h3>Compare Products</h3>
+
+<pre><code>{
+<p>"scrapeType": "compare",</p>
+<p>"productName": "Slack",</p>
+<p>"category": "Team Communication Software",</p>
+<p>"maxResults": 10</p>
+<p>}</p>
+</code></pre>
+
+<h2>Categories Supported</h2>
+
+<ul>
+<li>CRM Software</li>
+<li>Project Management</li>
+<li>Accounting Software</li>
+<li>HR Software</li>
+<li>Help Desk</li>
+<li>Marketing Automation</li>
+<li>E-commerce Platforms</li>
+<li>Inventory Management</li>
+<li>Learning Management</li>
+<li>And 800+ more categories</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 products with 25 reviews each: $0.10 + (50 × $0.06) + (1250 × $0.004) = <strong>$8.10</strong></li>
+<li>100 products, no reviews: $0.10 + (100 × $0.06) = <strong>$6.10</strong></li>
+</ul>
+
+<h2>Rate Limiting & Best Practices</h2>
+
+<ul>
+<li>Built-in delays to respect Capterra servers</li>
+<li>Residential proxy recommended for reliability</li>
+<li>Maximum 500 products per run</li>
+<li>Reviews limited per product to prevent excessive requests</li>
+</ul>
+
+<h2>Legal Considerations</h2>
+
+<ul>
+<li>Use data for legitimate business research purposes</li>
+<li>Comply with Capterra Terms of Service</li>
+<li>Do not scrape personal reviewer information</li>
+<li>Respect rate limits and access patterns</li>
+</ul>
+
+<h2>Integration</h2>
+
+<p>Export data to:</p>
+<ul>
+<li>Google Sheets</li>
+<li>CSV/Excel</li>
+<li>CRM systems (HubSpot, Salesforce)</li>
+<li>BI tools (Tableau, Power BI)</li>
+<li>Marketing databases</li>
+</ul>
+
+<h2>Support</h2>
+
+<p>For issues or feature requests, contact support.</p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>capterra scraper, software reviews scraper, capterra api, software comparison data, b2b software reviews, capterra data extraction, software ratings</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

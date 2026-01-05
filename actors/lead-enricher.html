@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Enrichment API Multi-Provider B2B Data Enrichment | Actor Arsenal</title>
+    <meta name="description" content="Enrich your leads w/company & contact data from 10+ enrichment providers. Perfect for sales prospecting, lead scoring, CRM enrichment, and account-based marketi">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/lead-enricher" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/lead-enricher.png" alt="Lead Enrichment API Multi-Provider B2B Data Enrichment" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Lead Enrichment API Multi-Provider B2B Data Enrichment</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Enrich your leads w/company & contact data from 10+ enrichment providers. Perfect for sales prospecting, lead scoring, CRM enrichment, and account-based marketing. 10 Provider Integrations: Apollo, Clearbit, ZoomInfo, IPinfo, FullContact, Hunter, Lusha, Snov, RocketReach & People Data Labs</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/lead-enricher" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Lead Enricher - BYOK Multi-Provider</h1>
+
+<strong>"10+ Enrichment Providers, Your Keys"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Enrich your leads with company and contact data from <strong>10+ enrichment providers</strong> using your own API keys. Perfect for sales prospecting, lead scoring, CRM enrichment, and account-based marketing.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>10 Provider Integrations</strong>: Apollo, Clearbit, ZoomInfo, IPinfo, FullContact, Hunter, Lusha, Snov, RocketReach, and People Data Labs</li>
+<li><strong>BYOK (Bring Your Own Key)</strong>: Use your existing API subscriptions - pay only for what you use</li>
+<li><strong>Cascade Enrichment</strong>: Providers are tried in order until data is found - maximizing hit rate</li>
+<li><strong>Company Data</strong>: Industry, employee count, revenue, tech stack, social profiles, location</li>
+<li><strong>Contact Data</strong>: Job title, phone, email verification, LinkedIn, seniority level</li>
+<li><strong>Webhook Support</strong>: Send results to any endpoint when enrichment completes</li>
+<li><strong>Demo Mode</strong>: Test the actor with sample data before using real API credits</li>
+</ul>
+
+<h2>Supported Providers</h2>
+
+
+<h2>Input</h2>
+
+<pre><code>{
+<p>"demoMode": false,</p>
+<p>"leads": [</p>
+<p>{</p>
+<p>"email": "john@example.com",</p>
+<p>"company": "Example Inc",</p>
+<p>"domain": "example.com"</p>
+<p>}</p>
+<p>],</p>
+<p>"enrichmentProviders": ["apollo", "clearbit", "fullcontact"],</p>
+<p>"apolloApiKey": "your-apollo-key",</p>
+<p>"clearbitApiKey": "your-clearbit-key",</p>
+<p>"enrichCompanyData": true,</p>
+<p>"enrichContactData": true,</p>
+<p>"webhookUrl": "https://your-webhook.com/endpoint"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output</h2>
+
+<p>Each enriched lead includes:</p>
+
+<pre><code>{
+<p>"email": "john@example.com",</p>
+<p>"company": "Example Inc",</p>
+<p>"domain": "example.com",</p>
+<p>"enrichedAt": "2025-12-28T12:00:00Z",</p>
+<p>"enrichmentSource": "apollo",</p>
+<p>"company_data": {</p>
+<p>"name": "Example Inc",</p>
+<p>"domain": "example.com",</p>
+<p>"industry": "Technology",</p>
+<p>"employeeCount": 500,</p>
+<p>"revenue": "$50M - $100M",</p>
+<p>"founded": 2015,</p>
+<p>"location": {</p>
+<p>"city": "San Francisco",</p>
+<p>"state": "CA",</p>
+<p>"country": "USA"</p>
+<p>},</p>
+<p>"description": "...",</p>
+<p>"techStack": ["Salesforce", "HubSpot"],</p>
+<p>"socialProfiles": {</p>
+<p>"linkedin": "...",</p>
+<p>"twitter": "..."</p>
+<p>}</p>
+<p>},</p>
+<p>"contact_data": {</p>
+<p>"firstName": "John",</p>
+<p>"lastName": "Smith",</p>
+<p>"jobTitle": "VP of Sales",</p>
+<p>"phone": "+1 555-123-4567",</p>
+<p>"emailVerified": true,</p>
+<p>"seniority": "VP",</p>
+<p>"linkedinUrl": "..."</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<h3>Sales Prospecting</h3>
+<p>Enrich leads from LinkedIn, trade shows, or web forms with verified contact details and company information.</p>
+
+<h3>CRM Data Hygiene</h3>
+<p>Fill in missing company and contact data in your CRM to improve segmentation and personalization.</p>
+
+<h3>Account-Based Marketing</h3>
+<p>Get detailed company intelligence including tech stack, employee count, and revenue for targeting.</p>
+
+<h3>Lead Scoring</h3>
+<p>Use enriched data points like company size, industry, and seniority to score and prioritize leads.</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<ul>
+<li><strong>$0.01 per lead enriched</strong> (actor usage)</li>
+<li>Plus your provider API costs (Apollo, Clearbit, etc.)</li>
+</ul>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test the actor with sample data without using any API credits. Perfect for understanding the output format before running on real leads.</p>
+
+<p>---</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clutch Scraper - B2B Reviews | Actor Arsenal</title>
+    <meta name="description" content="Scrape Clutch.co for agency profiles, client reviews, project portfolios & service categories. Generate B2B leads & analyze competitor positioning.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/clutch-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/clutch-scraper.png" alt="Clutch Scraper - B2B Reviews" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Clutch Scraper - B2B Reviews</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Scrape Clutch.co for agency profiles, client reviews, project portfolios & service categories. Generate B2B leads & analyze competitor positioning.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/clutch-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Clutch.co Agency Scraper</h1>
+
+<strong>"B2B Agency Reviews & Ratings"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>2025 Zapier Automation Hero of the Year — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Scrape B2B agency profiles from Clutch.co. Extract company info, reviews, ratings, pricing, services, clients, and portfolios. Perfect for B2B lead generation, competitive analysis, and vendor research.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Agency Profiles</strong>: Name, location, website, phone, description</li>
+<li><strong>Ratings & Reviews</strong>: Star ratings, review counts, detailed reviews</li>
+<li><strong>Pricing Info</strong>: Minimum project size, hourly rates</li>
+<li><strong>Services</strong>: Full list of services offered</li>
+<li><strong>Client Lists</strong>: Notable clients and portfolio</li>
+<li><strong>Filters</strong>: Search by category, location, minimum rating</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>B2B Lead Generation</strong>: Find agencies to partner with or sell to</li>
+<li><strong>Competitive Analysis</strong>: Research competitors in your space</li>
+<li><strong>Vendor Selection</strong>: Find the right agency for your project</li>
+<li><strong>Market Research</strong>: Understand agency landscape in any vertical</li>
+</ul>
+
+<h2>Input Configuration</h2>
+
+<pre><code>{
+<p>"demoMode": false,</p>
+<p>"searchQuery": "digital marketing agency",</p>
+<p>"location": "New York",</p>
+<p>"category": "digital-marketing",</p>
+<p>"minRating": 4.5,</p>
+<p>"maxResults": 50,</p>
+<p>"includeReviews": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+
+<h2>Output</h2>
+
+<pre><code>{
+<p>"name": "Digital Growth Agency",</p>
+<p>"url": "https://clutch.co/profile/digital-growth-agency",</p>
+<p>"rating": 4.9,</p>
+<p>"reviewCount": 127,</p>
+<p>"location": "New York, NY",</p>
+<p>"minProjectSize": "$25,000+",</p>
+<p>"hourlyRate": "$150 - $199/hr",</p>
+<p>"employees": "50-249",</p>
+<p>"founded": 2015,</p>
+<p>"services": ["SEO", "PPC", "Content Marketing"],</p>
+<p>"industries": ["eCommerce", "Healthcare"],</p>
+<p>"description": "Award-winning digital marketing agency...",</p>
+<p>"website": "https://digitalgrowthagency.com",</p>
+<p>"clients": ["Fortune 500 Company", "Major Healthcare Provider"],</p>
+<p>"reviews": [</p>
+<p>{</p>
+<p>"author": "Marketing Director",</p>
+<p>"rating": 5,</p>
+<p>"text": "Exceptional results..."</p>
+<p>}</p>
+<p>],</p>
+<p>"scrapedAt": "2025-12-23T12:00:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Categories</h2>
+
+<ul>
+<li><code>web-development</code> - Web Development</li>
+<li><code>mobile-app-development</code> - Mobile App Development</li>
+<li><code>digital-marketing</code> - Digital Marketing</li>
+<li><code>seo</code> - SEO</li>
+<li><code>ppc</code> - PPC</li>
+<li><code>social-media-marketing</code> - Social Media Marketing</li>
+<li><code>branding</code> - Branding</li>
+<li><code>ux-design</code> - UX Design</li>
+<li><code>it-services</code> - IT Services</li>
+<li><code>software-development</code> - Software Development</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<ul>
+<li><strong>$0.02</strong> per agency scraped</li>
+<li>Demo mode is free</li>
+</ul>
+
+<h2>Integrations</h2>
+
+<h3>Zapier</h3>
+<p>Automate B2B lead workflows with Zapier:</p>
+<p>1. Add the "Apify" app in Zapier</p>
+<p>2. Select "Run Actor" as the action</p>
+<p>3. Enter <code>localhowl/clutch-scraper</code> as the actor ID</p>
+<p>4. Use results to create leads in your CRM (HubSpot, Salesforce, etc.)</p>
+
+<h3>Make (Integromat)</h3>
+<p>Build lead generation pipelines:</p>
+<p>1. Add the Apify module to your Make scenario</p>
+<p>2. Select "Run an Actor" action</p>
+<p>3. Configure with actor ID and search parameters</p>
+<p>4. Route agencies to Google Sheets, Airtable, or CRM</p>
+
+<h3>n8n</h3>
+<p>1. Add the Apify node to your workflow</p>
+<p>2. Configure with your Apify API token</p>
+<p>3. Set actor ID to <code>localhowl/clutch-scraper</code></p>
+<p>4. Enrich leads with additional data nodes</p>
+
+<h3>Webhooks</h3>
+<p>Send scraped agencies directly to your CRM:</p>
+<pre><code>{
+<p>"webhooks": [{</p>
+<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
+<p>"requestUrl": "https://your-crm.com/webhook/clutch-leads"</p>
+<p>}]</p>
+<p>}</p>
+</code></pre>
+
+<h3>API</h3>
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~clutch-scraper/runs?token=YOUR_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{"searchQuery": "SEO agency", "location": "New York", "maxResults": 50}'</p>
+</code></pre>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

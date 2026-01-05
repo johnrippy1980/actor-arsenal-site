@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup | Actor Arsenal</title>
+    <meta name="description" content="Run comprehensive SEMrush Site Audits using your own API key (BYOK). The killer feature? Automatically delete the project after extracting results to save your ">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/semrush-site-audit" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/semrush-site-audit.png" alt="SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">Run comprehensive SEMrush Site Audits using your own API key (BYOK). The killer feature? Automatically delete the project after extracting results to save your precious project quota!  
+Health Score
+Errors
+Warnings
+Notices</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/semrush-site-audit" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup</h1>
+
+<strong>"Run SEMrush Site Audits Without Using Up Your Project Quota"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Run comprehensive SEMrush Site Audits using your own API key (BYOK). The killer feature? <strong>Automatically delete the project after extracting results</strong> to save your precious project quota!</p>
+
+<h2>The Problem This Solves</h2>
+
+<p>SEMrush limits the number of projects you can have based on your plan:</p>
+<ul>
+<li><strong>Pro</strong>: 5 projects</li>
+<li><strong>Guru</strong>: 15 projects</li>
+<li><strong>Business</strong>: 40 projects</li>
+</ul>
+
+<p>If you're an agency or consultant running audits for multiple clients, you quickly run out of project slots. This actor:</p>
+
+<p>1. Creates a temporary project</p>
+<p>2. Runs a full site audit</p>
+<p>3. Extracts all issues and health score</p>
+<p>4. <strong>Deletes the project automatically</strong></p>
+<p>5. Returns your project slot for the next client!</p>
+
+<h2>Features</h2>
+
+<h3>Technical SEO Analysis</h3>
+<ul>
+<li><strong>Health Score</strong>: Overall site health (0-100)</li>
+<li><strong>Errors</strong>: Critical issues (5xx, 4xx, broken links, mixed content)</li>
+<li><strong>Warnings</strong>: Important issues (missing meta, slow pages, redirect chains)</li>
+<li><strong>Notices</strong>: Minor issues (multiple H1s, thin content)</li>
+</ul>
+
+<h3>Smart Automation</h3>
+<ul>
+<li><strong>Auto-Cleanup</strong>: Delete project after audit to save quota</li>
+<li><strong>Existing Projects</strong>: Use an existing project instead of creating new</li>
+<li><strong>Wait or Fire-and-Forget</strong>: Wait for completion or return immediately</li>
+<li><strong>Configurable Crawl</strong>: Set page limits and subdomain options</li>
+</ul>
+
+<h3>Integration Ready</h3>
+<ul>
+<li><strong>Webhook Support</strong>: Zapier, Make, n8n, or custom endpoints</li>
+<li><strong>Structured Output</strong>: Clean JSON for automation workflows</li>
+<li><strong>API Units Tracking</strong>: Know how many SEMrush units you used</li>
+</ul>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Example Usage</h2>
+
+<h3>Basic Audit with Auto-Cleanup</h3>
+<pre><code>{
+<p>"semrushApiKey": "your-api-key",</p>
+<p>"domain": "example.com",</p>
+<p>"deleteProjectAfter": true,</p>
+<p>"demoMode": false</p>
+<p>}</p>
+</code></pre>
+
+<h3>Use Existing Project</h3>
+<pre><code>{
+<p>"semrushApiKey": "your-api-key",</p>
+<p>"existingProjectId": "643526670283248",</p>
+<p>"deleteProjectAfter": false,</p>
+<p>"demoMode": false</p>
+<p>}</p>
+</code></pre>
+
+<h3>Large Site Audit</h3>
+<pre><code>{
+<p>"semrushApiKey": "your-api-key",</p>
+<p>"domain": "largesite.com",</p>
+<p>"pageLimit": 10000,</p>
+<p>"crawlSubdomains": true,</p>
+<p>"maxWaitMinutes": 60,</p>
+<p>"demoMode": false</p>
+<p>}</p>
+</code></pre>
+
+<h3>With Webhook</h3>
+<pre><code>{
+<p>"semrushApiKey": "your-api-key",</p>
+<p>"domain": "client-site.com",</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123/abc",</p>
+<p>"webhookPlatform": "zapier",</p>
+<p>"demoMode": false</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Example</h2>
+
+<pre><code>{
+<p>"domain": "example.com",</p>
+<p>"projectId": "643526670283248",</p>
+<p>"snapshotId": "12345",</p>
+<p>"healthScore": 72,</p>
+<p>"pagesCrawled": 487,</p>
+<p>"totalErrors": 23,</p>
+<p>"totalWarnings": 265,</p>
+<p>"totalNotices": 62,</p>
+<p>"errors": [</p>
+<p>{</p>
+<p>"issueId": 2,</p>
+<p>"issueName": "4xx Client Errors",</p>
+<p>"issueType": "error",</p>
+<p>"count": 12,</p>
+<p>"description": "Pages returning 4xx client errors"</p>
+<p>}</p>
+<p>],</p>
+<p>"warnings": [...],</p>
+<p>"notices": [...],</p>
+<p>"auditDate": "2025-01-01T12:00:00.000Z",</p>
+<p>"projectDeleted": true,</p>
+<p>"apiUnitsUsed": 400</p>
+<p>}</p>
+</code></pre>
+
+<h2>Issue Types Tracked</h2>
+
+<h3>Errors (Critical)</h3>
+<ul>
+<li>5xx Server Errors</li>
+<li>4xx Client Errors</li>
+<li>Broken Internal Links</li>
+<li>Mixed Content (HTTPS/HTTP)</li>
+<li>Duplicate Content</li>
+</ul>
+
+<h3>Warnings (Important)</h3>
+<ul>
+<li>Missing Meta Descriptions</li>
+<li>Missing H1 Tags</li>
+<li>Missing Image Alt Text</li>
+<li>Duplicate Title Tags</li>
+<li>Slow Page Speed</li>
+<li>Redirect Chains</li>
+<li>Broken External Links</li>
+</ul>
+
+<h3>Notices (Minor)</h3>
+<ul>
+<li>Multiple H1 Tags</li>
+<li>Low Word Count</li>
+<li>Large Page Size</li>
+<li>Too Many HTTP Requests</li>
+</ul>
+
+<h2>SEMrush API Units</h2>
+
+
+<strong>Typical full audit with cleanup: ~500 units</strong>
+
+<h2>Pricing</h2>
+
+
+<strong>Note</strong>: You also use your own SEMrush API units.
+
+<h2>Use Cases</h2>
+
+<h3>Agency Client Audits</h3>
+<p>Run audits for multiple clients without filling up your project quota.</p>
+
+<h3>Automated Monitoring</h3>
+<p>Schedule regular audits with webhook notifications.</p>
+
+<h3>SEO Reporting</h3>
+<p>Extract structured data for client reports.</p>
+
+<h3>Competitive Analysis</h3>
+<p>Audit competitor sites one-off without permanent tracking.</p>
+
+<h2>Getting Your SEMrush API Key</h2>
+
+<p>1. Log in to <a href="https://www.semrush.com" target="_blank" rel="noopener">SEMrush</a></p>
+<p>2. Go to <strong>My Profile</strong> → <strong>API</strong> → <strong>Subscription Info</strong></p>
+<p>3. Copy your API key</p>
+<p>4. Paste into the <code>semrushApiKey</code> input field</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li>Audit completion time depends on site size (can take 5-30+ minutes)</li>
+<li>SEMrush API unit limits apply based on your subscription</li>
+<li>Project limits apply if not using auto-cleanup</li>
+<li>Some issue details require additional API calls (not included)</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>semrush site audit, technical seo audit, semrush api, byok semrush, seo automation, site health check, crawl errors, broken links, meta description audit, h1 audit, page speed audit, zapier integration, make integration, n8n integration</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

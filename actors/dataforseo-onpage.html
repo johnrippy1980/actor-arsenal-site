@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataForSeo On-page SEO | Actor Arsenal</title>
+    <meta name="description" content="This actor performs in-depth on-page SEO audits using the DataForSEO On-Page API. Page titles, meta descriptions, headings, content, technical SEO factors w/act">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/dataforseo-onpage" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/dataforseo-onpage.png" alt="DataForSeo On-page SEO" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">DataForSeo On-page SEO</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">This actor performs in-depth on-page SEO audits using the DataForSEO On-Page API. Page titles, meta descriptions, headings, content, technical SEO factors w/actionable recommendations. Technical SEO, Content Analysis, Meta Tags, Heading Structure, Image Optimization, Link Analysis & Core Web Vitals</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/dataforseo-onpage" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>DataForSEO On-Page Auditor</h1>
+
+<strong>Comprehensive on-page SEO analysis powered by DataForSEO API.</strong>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Overview</h2>
+
+<p>This actor performs in-depth on-page SEO audits using the DataForSEO On-Page API. Analyze page titles, meta descriptions, headings, content, technical SEO factors, and get actionable recommendations.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Technical SEO Audit</strong>: Check page speed, mobile-friendliness, SSL, redirects</li>
+<li><strong>Content Analysis</strong>: Analyze word count, keyword density, readability</li>
+<li><strong>Meta Tag Review</strong>: Evaluate titles, descriptions, Open Graph, Twitter cards</li>
+<li><strong>Heading Structure</strong>: Check H1-H6 hierarchy and keyword usage</li>
+<li><strong>Image Optimization</strong>: Find missing alt tags, oversized images</li>
+<li><strong>Link Analysis</strong>: Internal/external link ratios, broken links</li>
+<li><strong>Core Web Vitals</strong>: LCP, FID, CLS scores</li>
+<li><strong>BYOK Pattern</strong>: Bring your own DataForSEO API credentials</li>
+</ul>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Example Usage</h2>
+
+<h3>Single Page Audit</h3>
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"maxPages": 1,</p>
+<p>"checkMobile": true,</p>
+<p>"dataForSeoLogin": "your-login",</p>
+<p>"dataForSeoPassword": "your-password"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Full Site Audit</h3>
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"maxPages": 100,</p>
+<p>"checkMobile": true,</p>
+<p>"dataForSeoLogin": "your-login",</p>
+<p>"dataForSeoPassword": "your-password"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"status": "success",</p>
+<p>"timestamp": "2025-12-28T12:00:00.000Z",</p>
+<p>"data": {</p>
+<p>"url": "https://example.com",</p>
+<p>"score": 78,</p>
+<p>"issues": {</p>
+<p>"critical": 2,</p>
+<p>"warnings": 5,</p>
+<p>"notices": 12</p>
+<p>},</p>
+<p>"categories": {</p>
+<p>"technical": { "score": 85, "issues": [...] },</p>
+<p>"content": { "score": 72, "issues": [...] },</p>
+<p>"meta": { "score": 80, "issues": [...] },</p>
+<p>"performance": { "score": 75, "issues": [...] }</p>
+<p>},</p>
+<p>"coreWebVitals": {</p>
+<p>"lcp": 2.1,</p>
+<p>"fid": 45,</p>
+<p>"cls": 0.05</p>
+<p>},</p>
+<p>"recommendations": [</p>
+<p>"Add meta description to 3 pages",</p>
+<p>"Compress images to reduce load time",</p>
+<p>"Fix 2 broken internal links"</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-event pricing:</p>
+<ul>
+<li><code>onpage-audit</code>: Per page audited</li>
+</ul>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data without consuming DataForSEO API credits.</p>
+
+<h2>Related Actors</h2>
+
+<p>Part of the SEO Intelligence Suite:</p>
+<ul>
+<li><code>localhowl~seo-intelligence-mcp-server</code> - Unified MCP orchestrator</li>
+<li><code>localhowl~dataforseo-serp</code> - SERP rankings and keyword research</li>
+<li><code>localhowl~dataforseo-backlinks</code> - Backlink analysis</li>
+<li><code>localhowl~localfalcon-grid</code> - Local ranking grids</li>
+<li><code>localhowl~serpapi-realtime</code> - Real-time SERP snapshots</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

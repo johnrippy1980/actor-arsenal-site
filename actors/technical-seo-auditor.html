@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical SEO Auditor - AI-Powered On-Page Analysis | Actor Arsenal</title>
+    <meta name="description" content="The Technical SEO Auditor performs comprehensive on-page SEO analysis:
+Meta Tag Analysis
+Heading Structure
+Image Optimization
+Link Analysis
+Structured Data
+Core">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/technical-seo-auditor" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/technical-seo-auditor.png" alt="Technical SEO Auditor - AI-Powered On-Page Analysis" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Technical SEO Auditor - AI-Powered On-Page Analysis</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">The Technical SEO Auditor performs comprehensive on-page SEO analysis:
+Meta Tag Analysis
+Heading Structure
+Image Optimization
+Link Analysis
+Structured Data
+Core Web Vitals
+Mobile Friendliness
+Content Analysis</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/technical-seo-auditor" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Technical SEO Auditor - AI-Powered On-Page Analysis</h1>
+
+<blockquote><strong>Audit 50+ SEO ranking factors with AI recommendations</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>What This Actor Does</h2>
+
+<p>The <strong>Technical SEO Auditor</strong> performs comprehensive on-page SEO analysis:</p>
+
+<p>1. <strong>Meta Tag Analysis</strong> - Title, description, OG tags, Twitter cards</p>
+<p>2. <strong>Heading Structure</strong> - H1-H6 hierarchy and keyword presence</p>
+<p>3. <strong>Image Optimization</strong> - Alt tags, file sizes, lazy loading</p>
+<p>4. <strong>Link Analysis</strong> - Internal/external links, broken links, nofollow</p>
+<p>5. <strong>Structured Data</strong> - JSON-LD validation, Schema.org markup</p>
+<p>6. <strong>Core Web Vitals</strong> - LCP, FID, CLS estimates</p>
+<p>7. <strong>Mobile Friendliness</strong> - Viewport, touch targets, responsive design</p>
+<p>8. <strong>Content Analysis</strong> - Word count, keyword density, readability</p>
+
+<p>---</p>
+
+<h2>Why Use This Actor?</h2>
+
+<h3>The Problem with Manual Audits</h3>
+
+<p>SEO audits typically require:</p>
+<ul>
+<li>Multiple tools (Screaming Frog, Lighthouse, Schema validators)</li>
+<li>Manual data compilation and analysis</li>
+<li>Subjective interpretation of results</li>
+</ul>
+
+<h3>AI-Powered Intelligence</h3>
+
+<p>This actor provides:</p>
+<ul>
+<li><strong>Unified Score (0-100)</strong> - Single metric combining all factors</li>
+<li><strong>Prioritized Issues</strong> - Sorted by SEO impact</li>
+<li><strong>AI Recommendations</strong> - Context-aware suggestions</li>
+<li><strong>Competitor Comparison</strong> - Benchmark against industry standards</li>
+</ul>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>1. Client Onboarding Audits</h3>
+<p>Run comprehensive audits for new SEO clients to identify quick wins.</p>
+
+<h3>2. Pre-Launch Technical Review</h3>
+<p>Ensure new sites meet all SEO requirements before going live.</p>
+
+<h3>3. Competitor Analysis</h3>
+<p>Compare your technical SEO against competitors.</p>
+
+<h3>4. Ongoing Monitoring</h3>
+<p>Schedule regular audits to catch regressions early.</p>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Single Page Audit</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"includeAIRecommendations": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Multi-Page Crawl</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"crawlDepth": 2,</p>
+<p>"maxPages": 20,</p>
+<p>"checkStructuredData": true,</p>
+<p>"checkAccessibility": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Demo Mode (Free Testing)</h3>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: With AI Enhancement (BYOK)</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"includeAIRecommendations": true,</p>
+<p>"anthropicApiKey": "sk-ant-..."</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Either <code>url</code> or <code>urls</code> required unless using <code>demoMode</code></p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"overallScore": 78,</p>
+
+<p>"meta": {</p>
+<p>"title": "Example Domain - Your Title Here",</p>
+<p>"titleLength": 28,</p>
+<p>"titleScore": 85,</p>
+<p>"description": "This is the meta description...",</p>
+<p>"descriptionLength": 142,</p>
+<p>"descriptionScore": 90,</p>
+<p>"hasCanonical": true,</p>
+<p>"canonicalUrl": "https://example.com/",</p>
+<p>"hasRobots": true,</p>
+<p>"robotsContent": "index, follow"</p>
+<p>},</p>
+
+<p>"headings": {</p>
+<p>"h1Count": 1,</p>
+<p>"h1Text": ["Main Heading"],</p>
+<p>"h2Count": 5,</p>
+<p>"headingHierarchyValid": true,</p>
+<p>"score": 95</p>
+<p>},</p>
+
+<p>"images": {</p>
+<p>"total": 12,</p>
+<p>"withAlt": 10,</p>
+<p>"withoutAlt": 2,</p>
+<p>"lazyLoaded": 8,</p>
+<p>"oversized": 1,</p>
+<p>"score": 75</p>
+<p>},</p>
+
+<p>"links": {</p>
+<p>"internal": 24,</p>
+<p>"external": 8,</p>
+<p>"nofollow": 3,</p>
+<p>"broken": 0,</p>
+<p>"score": 100</p>
+<p>},</p>
+
+<p>"structuredData": {</p>
+<p>"hasJsonLd": true,</p>
+<p>"types": ["Organization", "WebPage"],</p>
+<p>"errors": [],</p>
+<p>"warnings": ["Missing 'logo' property"],</p>
+<p>"score": 85</p>
+<p>},</p>
+
+<p>"performance": {</p>
+<p>"lcpEstimate": "2.1s",</p>
+<p>"clsEstimate": "0.05",</p>
+<p>"domSize": 1245,</p>
+<p>"resourceCount": 34,</p>
+<p>"score": 72</p>
+<p>},</p>
+
+<p>"mobile": {</p>
+<p>"hasViewport": true,</p>
+<p>"viewportContent": "width=device-width, initial-scale=1",</p>
+<p>"touchTargetsAdequate": true,</p>
+<p>"fontSizeAdequate": true,</p>
+<p>"score": 95</p>
+<p>},</p>
+
+<p>"content": {</p>
+<p>"wordCount": 1250,</p>
+<p>"paragraphCount": 15,</p>
+<p>"readabilityScore": 68,</p>
+<p>"hasKeywordInTitle": true,</p>
+<p>"hasKeywordInH1": true,</p>
+<p>"score": 80</p>
+<p>},</p>
+
+<p>"issues": [</p>
+<p>{</p>
+<p>"severity": "high",</p>
+<p>"category": "images",</p>
+<p>"issue": "2 images missing alt text",</p>
+<p>"recommendation": "Add descriptive alt text to images",</p>
+<p>"affectedElements": ["img.hero-image", "img.product-photo"]</p>
+<p>}</p>
+<p>],</p>
+
+<p>"recommendations": [</p>
+<p>{</p>
+<p>"priority": 1,</p>
+<p>"category": "images",</p>
+<p>"issue": "Missing alt text on 2 images",</p>
+<p>"recommendation": "Add descriptive alt text that includes relevant keywords",</p>
+<p>"impact": "medium",</p>
+<p>"effort": "low"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Scoring System</h2>
+
+<p>The actor calculates scores (0-100) for each category:</p>
+
+
+<p>---</p>
+
+<h2>AI Recommendations</h2>
+
+<h3>Without Anthropic API Key</h3>
+<p>Uses rule-based recommendations based on:</p>
+<ul>
+<li>Industry best practices</li>
+<li>Common SEO issues</li>
+<li>Priority scoring by impact</li>
+</ul>
+
+<h3>With Anthropic API Key (BYOK)</h3>
+<p>Enhanced analysis using Claude to:</p>
+<ul>
+<li>Identify nuanced issues</li>
+<li>Provide context-aware suggestions</li>
+<li>Prioritize by business impact</li>
+<li>Generate custom action items</li>
+</ul>
+
+<p>---</p>
+
+<h2>Webhook Integration</h2>
+
+<h3>Webhook Payload</h3>
+
+<pre><code>{
+<p>"event": "technical_seo_audit_complete",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"actor": "technical-seo-auditor",</p>
+<p>"status": "success",</p>
+<p>"pagesAudited": 10,</p>
+<p>"avgScore": 78,</p>
+<p>"results": [...]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Perfect For</h2>
+
+<h3>SEO Agencies</h3>
+<ul>
+<li>Client onboarding audits</li>
+<li>Monthly technical reviews</li>
+<li>Competitor benchmarking</li>
+</ul>
+
+<h3>Web Developers</h3>
+<ul>
+<li>Pre-launch checklists</li>
+<li>CI/CD integration</li>
+<li>Technical debt tracking</li>
+</ul>
+
+<h3>Marketing Teams</h3>
+<ul>
+<li>Campaign landing page audits</li>
+<li>Content optimization</li>
+<li>Performance monitoring</li>
+</ul>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<ul>
+<li><strong>Demo Mode</strong>: Free (sample data)</li>
+<li><strong>Standard Usage</strong>: Apify compute units only</li>
+<li><strong>AI Recommendations</strong>: Rule-based free, Claude BYOK for enhanced</li>
+</ul>
+
+<p>---</p>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><strong>PageSpeed Intelligence</strong> - Performance + Tech Stack analysis</li>
+<li><strong>Robots.txt Checker</strong> - Crawl directive validation</li>
+<li><strong>Sitemap Generator</strong> - XML sitemap creation</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>technical seo audit, on-page seo, meta tags analyzer, heading structure, image optimization, alt text checker, broken link checker, structured data validator, schema.org, json-ld, core web vitals, mobile friendly test, seo score, ai recommendations, website crawler, seo analysis tool</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

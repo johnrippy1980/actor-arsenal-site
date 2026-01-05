@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Research MCP Server for AI Assistants | Actor Arsenal</title>
+    <meta name="description" content="MCP Server providing AI assistants with unified access to industry research, market trends, competitor analysis, and business intelligence through a single inte">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-mcp-server" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/industry-research-mcp-server.png" alt="Industry Research MCP Server for AI Assistants" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Industry Research MCP Server for AI Assistants</h1>
+                    <span class="actor-category">Mcp Servers</span>
+                    <p class="actor-description">MCP Server providing AI assistants with unified access to industry research, market trends, competitor analysis, and business intelligence through a single interface. SEO news aggregation, Quora insights, Crunchbase data, review platform aggregation, and Reddit discussions.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-mcp-server" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Industry Research MCP Server v1.0</h1>
+
+<blockquote><strong>Market Intelligence & Industry Research for AI Assistants</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>MCP Server providing AI assistants with unified access to <strong>industry research, market trends, competitor analysis, and business intelligence</strong> through a single interface. SEO news aggregation, Quora insights, Crunchbase data, review platform aggregation, and Reddit discussions.</p>
+
+<h2>Supported Research Sources</h2>
+
+
+<h2>MCP Tools Available</h2>
+
+<h3>1. <code>get_seo_news</code></h3>
+<p>Get latest SEO news and industry trends.</p>
+
+<pre><code>{
+<p>"tool": "get_seo_news",</p>
+<p>"toolInput": {</p>
+<p>"topics": ["google updates", "local seo", "ai search"],</p>
+<p>"maxArticles": 20</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>2. <code>research_quora</code></h3>
+<p>Research industry topics on Quora.</p>
+
+<pre><code>{
+<p>"tool": "research_quora",</p>
+<p>"toolInput": {</p>
+<p>"query": "best marketing automation tools 2025",</p>
+<p>"maxResults": 15</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>3. <code>get_crunchbase_data</code></h3>
+<p>Get company data from Crunchbase.</p>
+
+<pre><code>{
+<p>"tool": "get_crunchbase_data",</p>
+<p>"toolInput": {</p>
+<p>"companyName": "Anthropic",</p>
+<p>"includeInvestors": true,</p>
+<p>"includeFunding": true</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>4. <code>get_clutch_reviews</code></h3>
+<p>Get agency reviews from Clutch.</p>
+
+<pre><code>{
+<p>"tool": "get_clutch_reviews",</p>
+<p>"toolInput": {</p>
+<p>"category": "seo-companies",</p>
+<p>"location": "United States",</p>
+<p>"maxResults": 20</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>5. <code>get_g2_reviews</code></h3>
+<p>Get software reviews from G2.</p>
+
+<pre><code>{
+<p>"tool": "get_g2_reviews",</p>
+<p>"toolInput": {</p>
+<p>"productName": "HubSpot Marketing Hub",</p>
+<p>"maxReviews": 25</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>6. <code>get_goodfirms_reviews</code></h3>
+<p>Get company reviews from GoodFirms.</p>
+
+<pre><code>{
+<p>"tool": "get_goodfirms_reviews",</p>
+<p>"toolInput": {</p>
+<p>"category": "digital-marketing",</p>
+<p>"location": "New York",</p>
+<p>"maxResults": 15</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>7. <code>analyze_industry_trends</code></h3>
+<p>Comprehensive industry trend analysis.</p>
+
+<pre><code>{
+<p>"tool": "analyze_industry_trends",</p>
+<p>"toolInput": {</p>
+<p>"industry": "Digital Marketing",</p>
+<p>"timeframe": "6 months",</p>
+<p>"includeSentiment": true</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>8. <code>get_reddit_discussions</code></h3>
+<p>Get Reddit discussions on industry topics.</p>
+
+<pre><code>{
+<p>"tool": "get_reddit_discussions",</p>
+<p>"toolInput": {</p>
+<p>"subreddits": ["marketing", "SEO", "digital_marketing"],</p>
+<p>"query": "AI marketing tools",</p>
+<p>"maxPosts": 30</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>9. <code>research_competitors</code></h3>
+<p>Research competitors in an industry.</p>
+
+<pre><code>{
+<p>"tool": "research_competitors",</p>
+<p>"toolInput": {</p>
+<p>"businessName": "Acme Agency",</p>
+<p>"industry": "Digital Marketing",</p>
+<p>"location": "Chicago",</p>
+<p>"maxCompetitors": 10</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>10. <code>get_company_contacts</code></h3>
+<p>Get company contact information and enrichment.</p>
+
+<pre><code>{
+<p>"tool": "get_company_contacts",</p>
+<p>"toolInput": {</p>
+<p>"companyName": "Example Corp",</p>
+<p>"domain": "example.com",</p>
+<p>"includeEmails": true</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>11. <code>run_market_intelligence</code></h3>
+<p>Complete market intelligence report.</p>
+
+<pre><code>{
+<p>"tool": "run_market_intelligence",</p>
+<p>"toolInput": {</p>
+<p>"industry": "SaaS Marketing",</p>
+<p>"includeTrends": true,</p>
+<p>"includeCompetitors": true,</p>
+<p>"includeNews": true</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>12. <code>list_tools</code></h3>
+<p>Get a list of all available industry research tools.</p>
+
+<pre><code>{
+<p>"tool": "list_tools"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Competitive Intelligence</strong> - Research competitors and market positioning</li>
+<li><strong>Trend Analysis</strong> - Identify industry trends and emerging topics</li>
+<li><strong>Review Aggregation</strong> - Collect reviews from multiple platforms</li>
+<li><strong>Lead Research</strong> - Enrich company data for sales outreach</li>
+<li><strong>Content Research</strong> - Find trending topics and questions</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>SEO News: $0.10 + $0.05 = <strong>$0.15</strong></li>
+<li>Market Intelligence: $0.10 + $0.25 = <strong>$0.35</strong></li>
+<li>Competitor Research: $0.10 + $0.15 = <strong>$0.25</strong></li>
+</ul>
+
+<h2>Integration with AI Assistants</h2>
+
+<h3>Claude Desktop / Cursor</h3>
+<p>Add to your Claude configuration:</p>
+
+<pre><code>{
+<p>"mcpServers": {</p>
+<p>"industry-research": {</p>
+<p>"url": "https://api.apify.com/v2/acts/localhowl~industry-research-mcp-server/runs",</p>
+<p>"headers": {</p>
+<p>"Authorization": "Bearer YOUR_APIFY_TOKEN"</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>n8n / Make / Zapier</h3>
+<p>Use the Apify integration to call this actor with the desired tool and inputs.</p>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test without actual API calls. Returns realistic sample industry research data.</p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>industry research mcp, market intelligence, competitor analysis, seo news aggregator, quora research, crunchbase api, clutch reviews, g2 reviews, reddit scraper, mcp server, business intelligence</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

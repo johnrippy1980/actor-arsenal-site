@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firecrawl Enrich - Data Enrichment | Actor Arsenal</title>
+    <meta name="description" content="Enrich business data with Firecrawl. Get company info, contact details, social profiles & website data. Batch process leads for sales & marketing.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/fire-enrich" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/fire-enrich.png" alt="Firecrawl Enrich - Data Enrichment" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Firecrawl Enrich - Data Enrichment</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Enrich business data with Firecrawl. Get company info, contact details, social profiles & website data. Batch process leads for sales & marketing.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/fire-enrich" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Fire-Enrich</h1>
+
+<blockquote><strong>"5 AI Agents That Turn a Company Name into Complete Intelligence"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Stop Manually Researching Every Lead</h2>
+
+<strong>You're currently doing:</strong> Google searches, LinkedIn stalking, checking Crunchbase, scanning websites, trying to find emails, manually entering data into your CRM.
+
+<strong>What if 5 AI agents did all of this in seconds?</strong>
+
+<strong>Fire-Enrich</strong> uses a multi-agent architecture where each agent builds on the previous context, creating a comprehensive company profile from just a name and website:
+
+<ul>
+<li><strong>Discovery Agent</strong> - Basic company information</li>
+<li><strong>Company Profile Agent</strong> - Industry, size, headquarters</li>
+<li><strong>Financial Intel Agent</strong> - Funding, revenue, investors</li>
+<li><strong>Tech Stack Agent</strong> - Technologies, CMS, analytics tools</li>
+<li><strong>Custom Fields Agent</strong> - Extract any data you define</li>
+</ul>
+
+<strong>All with source attribution.</strong> Every data point links back to where it was found.
+
+<p>---</p>
+
+<h2>How It Works</h2>
+
+<pre><code>Company Name + Website
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  DISCOVERY  │ → Name, Type, Description</p>
+<p>│    AGENT    │</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  COMPANY    │ → Industry, Size, HQ, Founded</p>
+<p>│   PROFILE   │</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  FINANCIAL  │ → Funding, Investors, Revenue</p>
+<p>│    INTEL    │</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  TECH STACK │ → Languages, CMS, Analytics, Ads</p>
+<p>│    SCAN     │</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│   CUSTOM    │ → Your defined fields</p>
+<p>│   FIELDS    │</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>Complete Company Intelligence</p>
+</code></pre>
+
+<p>Each agent receives the context from previous agents, enabling smarter, more accurate extraction.</p>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>1. Sales Lead Enrichment</h3>
+<pre><code>{
+<p>"leads": [</p>
+<p>{ "companyName": "Stripe", "website": "https://stripe.com" }</p>
+<p>],</p>
+<p>"agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
+<p>"firecrawlApiKey": "fc-xxx",</p>
+<p>"anthropicApiKey": "sk-ant-xxx"</p>
+<p>}</p>
+</code></pre>
+
+<strong>Returns:</strong> Complete company profile with industry, employee count, funding history, tech stack.
+
+<h3>2. Competitive Intelligence</h3>
+<pre><code>{
+<p>"leads": [</p>
+<p>{ "companyName": "Competitor A", "website": "https://competitor.com" },</p>
+<p>{ "companyName": "Competitor B", "website": "https://rival.com" }</p>
+<p>],</p>
+<p>"agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
+<p>"customFields": [</p>
+<p>{ "name": "pricingModel", "description": "What pricing model do they use?" },</p>
+<p>{ "name": "targetMarket", "description": "Who is their primary target market?" }</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>3. Investment Research</h3>
+<pre><code>{
+<p>"leads": [</p>
+<p>{ "companyName": "Startup Inc", "website": "https://startup.com" }</p>
+<p>],</p>
+<p>"agents": ["discovery", "company_profile", "financial_intel"],</p>
+<p>"customFields": [</p>
+<p>{ "name": "productMarketFit", "description": "Evidence of product-market fit" },</p>
+<p>{ "name": "competitiveAdvantage", "description": "What is their moat?" }</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>4. Marketing Qualification</h3>
+<pre><code>{
+<p>"leads": [</p>
+<p>{ "companyName": "Prospect Corp", "website": "https://prospect.com" }</p>
+<p>],</p>
+<p>"agents": ["discovery", "company_profile", "tech_stack"],</p>
+<p>"customFields": [</p>
+<p>{ "name": "hasMarketing", "description": "Do they have a marketing team?" },</p>
+<p>{ "name": "adSpend", "description": "Evidence of advertising spend" }</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>AI Agents Deep Dive</h2>
+
+<h3>1. Discovery Agent</h3>
+<p>Extracts foundational company information:</p>
+
+<h3>2. Company Profile Agent</h3>
+<p>Builds on discovery context to extract:</p>
+
+<h3>3. Financial Intel Agent</h3>
+<p>Analyzes funding and financial information:</p>
+
+<h3>4. Tech Stack Agent</h3>
+<p>Identifies technologies used:</p>
+
+<h3>5. Custom Fields Agent</h3>
+<p>Extracts any user-defined fields based on accumulated context.</p>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Not required in demo mode</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"companyName": "Stripe",</p>
+<p>"website": "https://stripe.com",</p>
+<p>"businessType": "B2B SaaS",</p>
+<p>"description": "Financial infrastructure platform for businesses",</p>
+<p>"industry": "Financial Technology",</p>
+<p>"subIndustry": "Payment Processing",</p>
+<p>"employeeCount": "5000+",</p>
+<p>"yearFounded": "2010",</p>
+<p>"headquarters": "San Francisco, CA",</p>
+<p>"funding": "$8.7B",</p>
+<p>"lastFundingRound": "Series I - March 2021",</p>
+<p>"investors": ["Sequoia Capital", "Andreessen Horowitz", "Tiger Global"],</p>
+<p>"revenueEstimate": "$14B+ (2023)",</p>
+<p>"technologies": ["Ruby", "Go", "React", "AWS"],</p>
+<p>"cms": null,</p>
+<p>"analytics": ["Segment", "Amplitude"],</p>
+<p>"advertising": ["Google Ads"],</p>
+<p>"customFields": {</p>
+<p>"hasEcommerce": false,</p>
+<p>"targetMarket": "Developers and businesses"</p>
+<p>},</p>
+<p>"sources": [</p>
+<p>{ "url": "https://stripe.com/about", "field": "description" },</p>
+<p>{ "url": "https://stripe.com/newsroom", "field": "funding" }</p>
+<p>],</p>
+<p>"enrichedAt": "2024-12-23T10:30:00Z",</p>
+<p>"agentsUsed": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
+<p>"cost": 0.04</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<h3>BYOK (Bring Your Own Keys)</h3>
+<p>You pay directly to each provider:</p>
+
+
+<h3>Cost Per Lead</h3>
+
+
+<h3>Cost Comparison</h3>
+
+
+<strong>No monthly subscription. Pay per use.</strong>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_APIFY_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/fire-enrich').call({</p>
+<p>leads: [</p>
+<p>{ companyName: 'Stripe', website: 'https://stripe.com' },</p>
+<p>{ companyName: 'Notion', website: 'https://notion.so' }</p>
+<p>],</p>
+<p>agents: ['discovery', 'company_profile', 'financial_intel', 'tech_stack'],</p>
+<p>customFields: [</p>
+<p>{ name: 'targetMarket', description: 'Who is their target customer?' }</p>
+<p>],</p>
+<p>firecrawlApiKey: 'fc-xxx',</p>
+<p>anthropicApiKey: 'sk-ant-xxx',</p>
+<p>maxConcurrency: 5</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>items.forEach(company =&gt; {</p>
+<p>console.log(<code>${company.companyName}: ${company.industry}, ${company.employeeCount} employees</code>);</p>
+<p>});</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~fire-enrich/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"leads": [</p>
+<p>{ "companyName": "Stripe", "website": "https://stripe.com" }</p>
+<p>],</p>
+<p>"agents": ["discovery", "company_profile"],</p>
+<p>"firecrawlApiKey": "fc-xxx",</p>
+<p>"anthropicApiKey": "sk-ant-xxx"</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Demo Mode</h2>
+
+<p>Test the actor without API keys:</p>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<p>Returns sample data for Stripe and Notion with all agent outputs.</p>
+
+<p>---</p>
+
+<h2>Perfect For</h2>
+
+<h3>Sales Teams</h3>
+<ul>
+<li>Enrich inbound leads automatically</li>
+<li>Build complete prospect profiles</li>
+<li>Identify high-value opportunities</li>
+</ul>
+
+<h3>Marketing Teams</h3>
+<ul>
+<li>Qualify MQLs with company data</li>
+<li>Segment by industry, size, funding</li>
+<li>Personalize outreach campaigns</li>
+</ul>
+
+<h3>Investors & VCs</h3>
+<ul>
+<li>Research portfolio candidates</li>
+<li>Due diligence automation</li>
+<li>Market mapping</li>
+</ul>
+
+<h3>Recruiters</h3>
+<ul>
+<li>Research target companies</li>
+<li>Identify growing companies</li>
+<li>Tech stack analysis for matching</li>
+</ul>
+
+<p>---</p>
+
+<h2>Integration with Your Pipeline</h2>
+
+<p>Fire-Enrich integrates with your existing enrichment queue:</p>
+
+<pre><code>// Add to enrichment pipeline
+<p>const result = await enrichmentQueue.addLead(lead, ['fire_enrich'], {</p>
+<p>priority: PRIORITY.SINGLE_LEAD</p>
+<p>});</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>Rate Limits</strong>: Respects Firecrawl rate limits</li>
+<li><strong>Private Companies</strong>: Limited financial data for private companies</li>
+<li><strong>Accuracy</strong>: AI-extracted data should be verified for critical decisions</li>
+<li><strong>Language</strong>: Best results for English-language websites</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<p>For issues or feature requests, contact support@localhowl.com</p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>lead enrichment, company data api, b2b lead enrichment, sales intelligence, company research automation, zoominfo alternative, apollo alternative, ai lead enrichment, multi-agent enrichment, company profile api, funding data, tech stack detection, firecrawl, claude ai</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

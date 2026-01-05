@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Teams Meeting Cost Tracker | Actor Arsenal</title>
+    <meta name="description" content="Calculate real-time meeting costs in Microsoft Teams. Analyze Teams calendar meetings, get &quot;Could Have Been an Email&quot; scores, and generate cost report">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/teams-meeting-cost-tracker" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/teams-meeting-cost-tracker.png" alt="Microsoft Teams Meeting Cost Tracker" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Microsoft Teams Meeting Cost Tracker</h1>
+                    <span class="actor-category">Automation</span>
+                    <p class="actor-description">Calculate real-time meeting costs in Microsoft Teams. Analyze Teams calendar meetings, get "Could Have Been an Email" scores, and generate cost reports w/Adaptive Cards.This actor connects to Microsoft Graph API to analyze your Teams calendar
+
+"Could Have Been an Email" Score
+Meeting Culture Score</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/teams-meeting-cost-tracker" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Microsoft Teams Meeting Cost Tracker</h1>
+
+<strong>"Real-Time Meeting Costs in Microsoft Teams"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Calculate real-time meeting costs in Microsoft Teams. Analyze Teams calendar meetings, get "Could Have Been an Email" scores, and generate cost reports with Adaptive Cards.</p>
+
+<h2>What This Actor Does</h2>
+
+<p>This actor connects to Microsoft Graph API to analyze your Teams calendar and provides:</p>
+
+<ul>
+<li><strong>Meeting Cost Analysis</strong>: Calculate the true cost of each meeting based on attendees and duration</li>
+<li><strong>"Could Have Been an Email" Score</strong>: AI-powered analysis of meeting necessity (0-100)</li>
+<li><strong>Meeting Culture Score</strong>: Overall assessment of your Teams meeting health</li>
+<li><strong>Adaptive Card Output</strong>: Native Teams-formatted cards for easy sharing</li>
+<li><strong>Recommendations</strong>: Actionable insights to reduce meeting waste</li>
+</ul>
+
+<h2>Perfect For</h2>
+
+<ul>
+<li><strong>Microsoft 365 Organizations</strong>: Analyze your Teams meeting culture</li>
+<li><strong>IT Administrators</strong>: Audit organization-wide meeting costs</li>
+<li><strong>Team Leads</strong>: Identify opportunities to reduce meeting overhead</li>
+<li><strong>HR Teams</strong>: Track meeting trends across departments</li>
+<li><strong>Productivity Consultants</strong>: Deliver Teams-specific meeting reports</li>
+</ul>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Microsoft Graph Integration</strong>: Secure OAuth connection to Teams/Outlook calendars</li>
+<li><strong>Demo Mode</strong>: Test the actor without Azure credentials</li>
+<li><strong>Multiple Output Formats</strong>: Full analysis, summary, or Teams Adaptive Card</li>
+<li><strong>Multi-Currency Support</strong>: USD, EUR, GBP, CAD, AUD</li>
+<li><strong>Recurring Meeting Detection</strong>: Identify high-cost recurring meetings</li>
+<li><strong>Focus Time Analysis</strong>: Measure meeting fragmentation impact</li>
+</ul>
+
+<h2>Input Examples</h2>
+
+<h3>Demo Mode (No Credentials Required)</h3>
+
+<pre><code>{
+<p>"demoMode": true,</p>
+<p>"dateRange": "last_week",</p>
+<p>"averageSalary": 100000</p>
+<p>}</p>
+</code></pre>
+
+<h3>Real Mode with Azure AD Credentials</h3>
+
+<pre><code>{
+<p>"demoMode": false,</p>
+<p>"tenantId": "your-azure-tenant-id",</p>
+<p>"clientId": "your-app-client-id",</p>
+<p>"clientSecret": "your-app-client-secret",</p>
+<p>"userEmail": "user@company.com",</p>
+<p>"dateRange": "last_week",</p>
+<p>"averageSalary": 120000</p>
+<p>}</p>
+</code></pre>
+
+<h3>Output as Teams Adaptive Card</h3>
+
+<pre><code>{
+<p>"tenantId": "...",</p>
+<p>"clientId": "...",</p>
+<p>"clientSecret": "...",</p>
+<p>"userEmail": "user@company.com",</p>
+<p>"outputFormat": "teams_card"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Azure AD Setup</h2>
+
+<p>To use this actor with real Teams data, you need to register an app in Azure AD:</p>
+
+<h3>1. Register Application</h3>
+
+<p>1. Go to <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a> > Azure Active Directory</p>
+<p>2. App registrations > New registration</p>
+<p>3. Name: "Meeting Cost Tracker"</p>
+<p>4. Supported account types: Single tenant or Multitenant</p>
+<p>5. Register</p>
+
+<h3>2. Configure API Permissions</h3>
+
+<p>Add these Microsoft Graph permissions (Application type):</p>
+
+<ul>
+<li><code>Calendars.Read</code> - Read calendars in all mailboxes</li>
+<li><code>User.Read.All</code> - Read all users' full profiles</li>
+</ul>
+
+<p>Grant admin consent for these permissions.</p>
+
+<h3>3. Create Client Secret</h3>
+
+<p>1. Certificates & secrets > New client secret</p>
+<p>2. Copy the secret value (you won't see it again!)</p>
+
+<h3>4. Get Your Credentials</h3>
+
+<ul>
+<li><strong>Tenant ID</strong>: Azure AD > Overview > Tenant ID</li>
+<li><strong>Client ID</strong>: App registration > Overview > Application (client) ID</li>
+<li><strong>Client Secret</strong>: The secret you just created</li>
+</ul>
+
+<h2>Output</h2>
+
+<h3>Full Analysis</h3>
+
+<pre><code>{
+<p>"overview": {</p>
+<p>"platform": "Microsoft Teams",</p>
+<p>"totalMeetings": 24,</p>
+<p>"totalHours": 42,</p>
+<p>"totalCost": 8400,</p>
+<p>"averageMeetingLength": 52,</p>
+<p>"averageAttendees": 4.2,</p>
+<p>"currency": "USD"</p>
+<p>},</p>
+<p>"meetingCultureScore": {</p>
+<p>"overall": 58,</p>
+<p>"breakdown": {</p>
+<p>"focusTime": 45,</p>
+<p>"asyncSuitability": 62</p>
+<p>}</p>
+<p>},</p>
+<p>"asyncCandidates": [</p>
+<p>{</p>
+<p>"subject": "Weekly Status Update",</p>
+<p>"duration": 60,</p>
+<p>"attendees": 8,</p>
+<p>"cost": 384,</p>
+<p>"emailScore": 82,</p>
+<p>"recommendation": "Consider replacing with Teams chat, Loop component, or email"</p>
+<p>}</p>
+<p>],</p>
+<p>"recommendations": [</p>
+<p>{</p>
+<p>"priority": "high",</p>
+<p>"action": "Convert \"Weekly Status Update\" to async",</p>
+<p>"potentialSavings": 268,</p>
+<p>"rationale": "Email score of 82%, 8 attendees"</p>
+<p>}</p>
+<p>],</p>
+<p>"potentialSavings": 2100</p>
+<p>}</p>
+</code></pre>
+
+<h3>Teams Adaptive Card</h3>
+
+<p>Perfect for posting to Teams channels:</p>
+
+<pre><code>{
+<p>"type": "AdaptiveCard",</p>
+<p>"version": "1.4",</p>
+<p>"body": [</p>
+<p>{</p>
+<p>"type": "TextBlock",</p>
+<p>"text": "📊 Meeting Cost Report",</p>
+<p>"weight": "bolder",</p>
+<p>"size": "large"</p>
+<p>},</p>
+<p>...</p>
+<p>],</p>
+<p>"actions": [</p>
+<p>{</p>
+<p>"type": "Action.OpenUrl",</p>
+<p>"title": "View Full Report",</p>
+<p>"url": "https://meeting.localhowl.com"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<h3>1. Weekly Team Reports</h3>
+
+<p>Post meeting cost summaries to a Teams channel:</p>
+
+<pre><code>const result = await apifyClient.actor("localhowl/teams-meeting-cost-tracker").call({
+<p>tenantId: process.env.AZURE_TENANT_ID,</p>
+<p>clientId: process.env.AZURE_CLIENT_ID,</p>
+<p>clientSecret: process.env.AZURE_CLIENT_SECRET,</p>
+<p>userEmail: "team-lead@company.com",</p>
+<p>dateRange: "last_week",</p>
+<p>outputFormat: "teams_card"</p>
+<p>});</p>
+
+<p>// Post to Teams webhook</p>
+<p>await fetch(TEAMS_WEBHOOK_URL, {</p>
+<p>method: 'POST',</p>
+<p>headers: { 'Content-Type': 'application/json' },</p>
+<p>body: JSON.stringify(result.adaptiveCard)</p>
+<p>});</p>
+</code></pre>
+
+<h3>2. Organization-Wide Audit</h3>
+
+<p>Analyze multiple users' calendars:</p>
+
+<pre><code>const users = ["alice@co.com", "bob@co.com", "carol@co.com"];
+<p>const results = [];</p>
+
+<p>for (const user of users) {</p>
+<p>const result = await apifyClient.actor("localhowl/teams-meeting-cost-tracker").call({</p>
+<p>tenantId: "...",</p>
+<p>clientId: "...",</p>
+<p>clientSecret: "...",</p>
+<p>userEmail: user,</p>
+<p>dateRange: "last_month"</p>
+<p>});</p>
+<p>results.push({ user, ...result });</p>
+<p>}</p>
+
+<p>// Aggregate insights across the organization</p>
+</code></pre>
+
+<h3>3. Power Automate Integration</h3>
+
+<p>Trigger weekly reports via Power Automate:</p>
+
+<p>1. Create a scheduled flow (weekly)</p>
+<p>2. Add HTTP action to call Apify API</p>
+<p>3. Post Adaptive Card to Teams channel</p>
+
+<h2>"Could Have Been an Email" Score for Teams</h2>
+
+<p>The Email Score (0-100) predicts how likely a meeting could be handled via Teams chat, Loop, or email:</p>
+
+
+<h3>Factors That Increase Score:</h3>
+
+<ul>
+<li>Title contains "sync", "update", "status", "check-in"</li>
+<li>Short duration (< 30 minutes)</li>
+<li>Only 2 attendees</li>
+<li>Recurring meeting</li>
+</ul>
+
+<h3>Factors That Decrease Score:</h3>
+
+<ul>
+<li>Title contains "brainstorm", "planning", "workshop"</li>
+<li>External attendees</li>
+<li>Structured agenda (from description)</li>
+<li>Longer, focused sessions</li>
+</ul>
+
+<h2>Privacy & Security</h2>
+
+<ul>
+<li>Uses Microsoft Graph API with OAuth 2.0</li>
+<li>Client credentials flow (no user interaction required)</li>
+<li>No calendar data stored beyond analysis</li>
+<li>Supports single-tenant or multi-tenant apps</li>
+<li>Admin consent required for organization-wide access</li>
+</ul>
+
+<h2>Related Tools</h2>
+
+<ul>
+<li><strong><a href="https://apify.com/localhowl/meeting-roi-calculator" target="_blank" rel="noopener">Meeting ROI Calculator</a></strong>: Calculate individual meeting costs</li>
+<li><strong><a href="https://apify.com/localhowl/calendar-ics-analyzer" target="_blank" rel="noopener">Calendar ICS Analyzer</a></strong>: Analyze exported calendar files</li>
+<li><strong><a href="https://apify.com/localhowl/meeting-culture-score-checker" target="_blank" rel="noopener">Meeting Culture Score Checker</a></strong>: Analyze any company's culture</li>
+<li><strong><a href="https://meeting.localhowl.com" target="_blank" rel="noopener">Meeting Cost Tracker Chrome Extension</a></strong>: Real-time tracking in Google Meet</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Documentation</strong>: https://meeting.localhowl.com/docs</li>
+<li><strong>Email</strong>: support@localhowl.com</li>
+<li><strong>Issues</strong>: Report bugs or request features</li>
+</ul>
+
+<p>---</p>
+
+<h2>Author</h2>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<em>Part of the <a href="https://meeting.localhowl.com" target="_blank" rel="noopener">Meeting Cost Tracker</a> productivity suite by <a href="https://localhowl.com" target="_blank" rel="noopener">LocalHowl</a></em>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

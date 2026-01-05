@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Pro - Premium AI Image Generator | Actor Arsenal</title>
+    <meta name="description" content="Generate premium quality AI images using Google's latest Gemini 3 Pro model. (Nano Banana Pro) Up to 4K resolution with superior text rendering and photorealist">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/nanobanana-pro" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/nanobanana-pro.png" alt="Nano Banana Pro - Premium AI Image Generator" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Nano Banana Pro - Premium AI Image Generator</h1>
+                    <span class="actor-category">Developer Tools</span>
+                    <p class="actor-description">Generate premium quality AI images using Google's latest Gemini 3 Pro model. (Nano Banana Pro) Up to 4K resolution with superior text rendering and photorealistic output.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/nanobanana-pro" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Nanobanana Pro - Premium AI Image Generator</h1>
+
+<strong>"Premium 4K AI Images with Gemini Pro"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Generate <strong>premium quality</strong> AI images using Google's latest <strong>Gemini 3 Pro</strong> model. Up to <strong>4K resolution</strong> with superior text rendering and photorealistic output.</p>
+
+<h2>Why Nanobanana Pro?</h2>
+
+<ul>
+<li><strong>2K/4K Resolution</strong>: Generate images up to 3840x2160 (4K UHD)</li>
+<li><strong>Superior Text Rendering</strong>: Best-in-class text generation within images</li>
+<li><strong>Multiple Styles</strong>: Photorealistic, cinematic, digital art, anime, and more</li>
+<li><strong>BYOK Model</strong>: Use your own Google AI API key - pay only for what you use</li>
+<li><strong>Demo Mode</strong>: Test the actor without an API key</li>
+</ul>
+
+<h2>Getting Your FREE Google AI API Key</h2>
+
+<p>1. Go to <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a></p>
+<p>2. Sign in with your Google account</p>
+<p>3. Click "Create API Key"</p>
+<p>4. Copy your API key and paste it in the actor input</p>
+
+<strong>It's completely free to get started!</strong> Google provides generous free tier usage.
+
+<h2>Input Parameters</h2>
+
+
+<h2>Resolution Options</h2>
+
+
+<h2>Style Options</h2>
+
+<ul>
+<li><strong>Photorealistic</strong>: True-to-life photography quality</li>
+<li><strong>Cinematic</strong>: Movie-like dramatic lighting</li>
+<li><strong>Digital Art</strong>: Modern digital illustration</li>
+<li><strong>Anime</strong>: Japanese animation style</li>
+<li><strong>Watercolor</strong>: Soft, artistic watercolor look</li>
+<li><strong>Oil Painting</strong>: Classic oil painting texture</li>
+<li><strong>3D Render</strong>: CGI/3D rendered look</li>
+<li><strong>Sketch</strong>: Hand-drawn pencil sketch style</li>
+</ul>
+
+<h2>Example Input</h2>
+
+<pre><code>{
+<p>"googleApiKey": "YOUR_GOOGLE_AI_API_KEY",</p>
+<p>"prompt": "A majestic mountain landscape at sunset with snow-capped peaks and a crystal clear lake reflection",</p>
+<p>"numberOfImages": 4,</p>
+<p>"resolution": "2048x2048",</p>
+<p>"style": "cinematic",</p>
+<p>"negativePrompt": "blurry, low quality, distorted"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output</h2>
+
+<p>The actor outputs:</p>
+<ul>
+<li>Generated images saved to key-value store</li>
+<li>Public URLs for each image</li>
+<li>Metadata including prompt, resolution, style, and generation timestamp</li>
+</ul>
+
+<pre><code>{
+<p>"prompt": "A majestic mountain landscape...",</p>
+<p>"imageCount": 4,</p>
+<p>"resolution": "2048x2048",</p>
+<p>"style": "cinematic",</p>
+<p>"model": "gemini-3-pro-image-preview",</p>
+<p>"generatedAt": "2024-12-24T10:30:00Z",</p>
+<p>"images": [</p>
+<p>{ "index": 1, "url": "https://...", "mimeType": "image/png" },</p>
+<p>{ "index": 2, "url": "https://...", "mimeType": "image/png" }</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Marketing Campaigns</strong>: High-resolution ad creatives and banners</li>
+<li><strong>Print Materials</strong>: Posters, brochures, large format prints</li>
+<li><strong>UI/UX Design</strong>: High-fidelity mockups and prototypes</li>
+<li><strong>Social Media</strong>: Premium quality content for all platforms</li>
+<li><strong>E-commerce</strong>: Product visualization and lifestyle imagery</li>
+<li><strong>Presentations</strong>: Executive-level visual content</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>This actor uses the BYOK (Bring Your Own Key) model:</p>
+<ul>
+<li><strong>Apify Usage</strong>: Standard compute costs</li>
+<li><strong>Google Gemini Pro</strong>: Billed directly to your Google Cloud account</li>
+<li>Higher resolution images may consume more API credits</li>
+</ul>
+
+<h2>Pro vs Flash</h2>
+
+
+<p>Choose <strong>Pro</strong> for marketing materials, print, and professional use.</p>
+<p>Choose <strong>Flash</strong> for quick iterations and budget-conscious projects.</p>
+
+<h2>Troubleshooting</h2>
+
+<h3>API Key Issues</h3>
+<ul>
+<li>Ensure your API key is valid at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">AI Studio</a></li>
+<li>Check you haven't exceeded your quota</li>
+</ul>
+
+<h3>Rate Limits</h3>
+<ul>
+<li>Google has rate limits - if you hit them, wait a few minutes</li>
+<li>Consider upgrading your Google Cloud tier for higher limits</li>
+</ul>
+
+<h3>Model Access</h3>
+<ul>
+<li>Gemini 3 Pro requires access to preview features</li>
+<li>Check <a href="https://ai.google.dev/" target="_blank" rel="noopener">Google AI documentation</a> for requirements</li>
+</ul>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><a href="https://apify.com/localhowl/nanobanana-flash" target="_blank" rel="noopener">Nanobanana Flash</a> - Fast, budget-friendly alternative</li>
+<li><a href="https://apify.com/localhowl/gemini-image-generator" target="_blank" rel="noopener">Gemini Image Generator</a> - Imagen model</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Issues</strong>: Open a GitHub issue</li>
+<li><strong>Questions</strong>: Contact via LinkedIn</li>
+</ul>
+
+<h2>Keywords</h2>
+
+<p>AI image generation, Gemini 3 Pro, Google AI, text-to-image, BYOK, 4K images, 2K resolution, premium AI art, professional image generator, marketing images, print quality, cinematic images, photorealistic AI, high resolution, Nanobanana</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

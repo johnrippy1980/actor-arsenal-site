@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Contact Enricher - Website to B2B Leads | Actor Arsenal</title>
+    <meta name="description" content="Transform company website URLs into enriched B2B contact data. Automatically scrapes team pages, detects email patterns, cross-references LinkedIn & identifies ">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/company-contact-enricher" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/company-contact-enricher.png" alt="Company Contact Enricher - Website to B2B Leads" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Company Contact Enricher - Website to B2B Leads</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Transform company website URLs into enriched B2B contact data. Automatically scrapes team pages, detects email patterns, cross-references LinkedIn & identifies decision makers.
+- Website Scanning 
+- Contact Extraction 
+- Email Pattern Detection 
+- LinkedIn Integration 
+- Title Filtering 
+- Webhooks</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/company-contact-enricher" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>🏢 Company Contact Enricher - Website to B2B Leads</h1>
+
+<strong>"Transform Websites into B2B Contact Data"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Transform company website URLs into enriched B2B contact data. Automatically scrapes team pages, detects email patterns, cross-references LinkedIn profiles, and identifies decision makers.</p>
+
+<h2>Features</h2>
+
+<p>✅ <strong>Website Scanning</strong> - Crawls company sites for team/about pages</p>
+<p>✅ <strong>Contact Extraction</strong> - Finds names, titles, emails, phone numbers</p>
+<p>✅ <strong>Email Pattern Detection</strong> - Detects patterns like first.last@company.com</p>
+<p>✅ <strong>LinkedIn Integration</strong> - Cross-references with LinkedIn profiles</p>
+<p>✅ <strong>Title Filtering</strong> - Focus on decision makers (CEO, CTO, etc.)</p>
+<p>✅ <strong>Webhook Support</strong> - Integrate with Zapier, Make, n8n</p>
+<p>✅ <strong>Demo Mode</strong> - Test with sample data</p>
+
+<h2>How It Works</h2>
+
+<pre><code>┌─────────────────────────────────────────────────────┐
+<p>│            Company Contact Enricher                  │</p>
+<p>├─────────────────────────────────────────────────────┤</p>
+<p>│                                                     │</p>
+<p>│  Website URLs ──► Crawl Team Pages ──► Extract     │</p>
+<p>│                                          │          │</p>
+<p>│                                          ▼          │</p>
+<p>│                               ┌─────────────────┐   │</p>
+<p>│                               │ Name, Title,    │   │</p>
+<p>│                               │ Email, Phone    │   │</p>
+<p>│                               └─────────────────┘   │</p>
+<p>│                                          │          │</p>
+<p>│              ┌───────────────────────────┴───┐      │</p>
+<p>│              ▼                               ▼      │</p>
+<p>│     ┌─────────────────┐          ┌────────────────┐ │</p>
+<p>│     │ Email Pattern   │          │ LinkedIn       │ │</p>
+<p>│     │ Detection       │          │ Lookup         │ │</p>
+<p>│     └─────────────────┘          └────────────────┘ │</p>
+<p>│              │                               │      │</p>
+<p>│              └───────────────┬───────────────┘      │</p>
+<p>│                              ▼                      │</p>
+<p>│                     Enriched Dataset                │</p>
+<p>│                                                     │</p>
+<p>└─────────────────────────────────────────────────────┘</p>
+</code></pre>
+
+<h2>Input Schema</h2>
+
+
+<p>*Required unless <code>demoMode</code> is <code>true</code></p>
+
+<h2>Output Schema</h2>
+
+<p>Each contact in the dataset includes:</p>
+
+
+<h2>Use Cases</h2>
+
+<p>🎯 <strong>Sales Prospecting</strong> - Build targeted lead lists from competitor or prospect websites</p>
+<p>📧 <strong>Email Outreach</strong> - Find decision-maker emails for cold outreach campaigns</p>
+<p>🔗 <strong>LinkedIn Campaigns</strong> - Get profile URLs for connection requests</p>
+<p>📊 <strong>Market Research</strong> - Map company org structures and leadership teams</p>
+<p>🤝 <strong>Partnership Development</strong> - Find the right contacts at potential partners</p>
+<p>🔍 <strong>Competitor Analysis</strong> - Identify key personnel at competing companies</p>
+
+<h2>Example Input</h2>
+
+<h3>Basic Usage</h3>
+<pre><code>{
+<p>"websiteUrls": [</p>
+<p>"https://acme-corp.com",</p>
+<p>"https://example-startup.io"</p>
+<p>],</p>
+<p>"lookupLinkedIn": true,</p>
+<p>"detectEmailPattern": true,</p>
+<p>"targetTitles": ["CEO", "CTO", "VP Sales", "Marketing Director"],</p>
+<p>"maxContactsPerSite": 10</p>
+<p>}</p>
+</code></pre>
+
+<h3>Focus on C-Suite Only</h3>
+<pre><code>{
+<p>"websiteUrls": ["https://enterprise-company.com"],</p>
+<p>"targetTitles": ["CEO", "CFO", "CTO", "COO", "CMO"],</p>
+<p>"maxContactsPerSite": 5,</p>
+<p>"lookupLinkedIn": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Quick Test with Demo Mode</h3>
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>With Webhook Integration</h3>
+<pre><code>{
+<p>"websiteUrls": ["https://target-company.com"],</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef/",</p>
+<p>"targetTitles": ["Director", "Manager", "Head of"]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Example Output</h2>
+
+<h3>Single Contact</h3>
+<pre><code>{
+<p>"name": "Jane Smith",</p>
+<p>"title": "Chief Executive Officer",</p>
+<p>"email": "jane.smith@acme-corp.com",</p>
+<p>"emailConfidence": 0.95,</p>
+<p>"phone": "+1 (555) 123-4567",</p>
+<p>"linkedInUrl": "https://linkedin.com/in/janesmith",</p>
+<p>"company": "Acme Corporation",</p>
+<p>"companyDomain": "acme-corp.com",</p>
+<p>"source": "team page",</p>
+<p>"scrapedAt": "2024-12-24T15:30:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Demo Mode Output (5 sample contacts)</h3>
+<pre><code>[
+<p>{</p>
+<p>"name": "Jane Smith",</p>
+<p>"title": "Chief Executive Officer",</p>
+<p>"email": "jane.smith@acme-corp.com",</p>
+<p>"emailConfidence": 0.95,</p>
+<p>"company": "Acme Corporation"</p>
+<p>},</p>
+<p>{</p>
+<p>"name": "Michael Johnson",</p>
+<p>"title": "Chief Technology Officer",</p>
+<p>"email": "michael.johnson@acme-corp.com",</p>
+<p>"emailConfidence": 0.95,</p>
+<p>"company": "Acme Corporation"</p>
+<p>}</p>
+<p>]</p>
+</code></pre>
+
+<h2>Email Pattern Detection</h2>
+
+<p>The actor detects these common email patterns:</p>
+
+
+<p>If an email is found on the page, <code>emailConfidence</code> is <code>1.0</code>. If derived from a pattern, <code>emailConfidence</code> is <code>0.75</code>.</p>
+
+<h2>Team Page Detection</h2>
+
+<p>The actor automatically searches for these common paths:</p>
+
+<ul>
+<li><code>/team</code>, <code>/our-team</code></li>
+<li><code>/about</code>, <code>/about-us</code></li>
+<li><code>/leadership</code>, <code>/management</code></li>
+<li><code>/people</code>, <code>/staff</code></li>
+<li><code>/who-we-are</code></li>
+<li><code>/company/team</code>, <code>/company/about</code></li>
+</ul>
+
+<p>It also follows internal links containing keywords like "team", "about", "leadership", and "people".</p>
+
+<h2>Apify Integration</h2>
+
+<p>This actor can call other actors for enhanced enrichment:</p>
+
+<ul>
+<li><strong>linkedin-profile-scraper</strong> - Enriches with LinkedIn data</li>
+<li><strong>website-crawler</strong> - For deep website scanning</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-event model:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>10 websites × 5 contacts each = $0.50 + $1.00 = <strong>$1.50</strong></li>
+<li>With LinkedIn lookups: + $1.50 = <strong>$3.00 total</strong></li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>Why are some contacts missing emails?</h3>
+<ul>
+<li>Some team pages only list names and photos without contact info</li>
+<li>The actor will attempt to derive emails using detected patterns</li>
+<li>Check <code>emailConfidence</code> - values below 1.0 indicate derived emails</li>
+</ul>
+
+<h3>Why doesn't LinkedIn lookup work for all contacts?</h3>
+<ul>
+<li>LinkedIn profiles may not exist or may have privacy settings</li>
+<li>Name + company matching isn't always reliable</li>
+<li>The actor only charges for successful lookups</li>
+</ul>
+
+<h3>How long does it take?</h3>
+<ul>
+<li>~5-10 seconds per website</li>
+<li>LinkedIn lookups add ~2-3 seconds per contact</li>
+<li>Demo mode completes instantly</li>
+</ul>
+
+<h3>Can I filter by specific departments?</h3>
+<ul>
+<li>Yes! Use <code>targetTitles</code> with department-specific keywords</li>
+<li>Example: <code>["Sales", "Marketing", "Business Development"]</code></li>
+</ul>
+
+<h3>What if a website blocks scraping?</h3>
+<ul>
+<li>The actor uses Apify's residential proxy pool</li>
+<li>Most websites are accessible, but some may block</li>
+<li>Failed websites are logged but don't count toward billing</li>
+</ul>
+
+<h2>Error Handling</h2>
+
+
+<h2>Integrations</h2>
+
+<h3>Zapier</h3>
+<p>Send results to Zapier when the run completes:</p>
+<pre><code>{
+<p>"websiteUrls": ["https://example.com"],</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/..."</p>
+<p>}</p>
+</code></pre>
+
+<h3>Make (Integromat)</h3>
+<pre><code>{
+<p>"webhookUrl": "https://hook.us1.make.com/..."</p>
+<p>}</p>
+</code></pre>
+
+<h3>n8n</h3>
+<pre><code>{
+<p>"webhookUrl": "https://your-n8n.com/webhook/..."</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

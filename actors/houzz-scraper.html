@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houzz Scraper - Extract Home Professionals, Reviews & Projects | Actor Arsenal</title>
+    <meta name="description" content="Extract comprehensive data from Houzz including home improvement professionals, customer reviews, portfolio projects, and business details. Perfect for lead gen">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/houzz-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/houzz-scraper.png" alt="Houzz Scraper - Extract Home Professionals, Reviews & Projects" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Houzz Scraper - Extract Home Professionals, Reviews & Projects</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Extract comprehensive data from Houzz including home improvement professionals, customer reviews, portfolio projects, and business details. Perfect for lead generation, market research, and competitive analysis in the home services industry.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/houzz-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Houzz Scraper - Extract Home Professionals, Reviews & Projects</h1>
+
+<p>Extract comprehensive data from Houzz including home improvement professionals, customer reviews, portfolio projects, and business details. Perfect for lead generation, market research, and competitive analysis in the home services industry.</p>
+
+<h2>Why Use Houzz Scraper?</h2>
+
+<p>Houzz is the leading platform for home remodeling and design with millions of professionals listed. This scraper helps you:</p>
+
+<ul>
+<li><strong>Generate Quality Leads</strong>: Find contractors, designers, and architects in any location</li>
+<li><strong>Analyze Competition</strong>: Research competitors' reviews, ratings, and portfolios</li>
+<li><strong>Build Contact Lists</strong>: Extract verified business contact information</li>
+<li><strong>Monitor Reviews</strong>: Track customer feedback across multiple professionals</li>
+<li><strong>Market Research</strong>: Understand pricing and service offerings in specific markets</li>
+</ul>
+
+<h2>Features</h2>
+
+<h3>Multi-Mode Scraping</h3>
+
+<ul>
+<li><strong>Search Mode</strong>: Find professionals by type and location</li>
+<li><strong>Profile Mode</strong>: Extract detailed info from specific professional pages</li>
+<li><strong>Reviews Mode</strong>: Collect customer reviews and ratings</li>
+</ul>
+
+<h3>Data Extracted</h3>
+
+
+<h3>Professional Types Supported</h3>
+
+<ul>
+<li>General Contractors</li>
+<li>Interior Designers</li>
+<li>Architects</li>
+<li>Kitchen & Bath Remodelers</li>
+<li>Landscape Contractors</li>
+<li>Home Builders</li>
+<li>And more...</li>
+</ul>
+
+<h2>Input Configuration</h2>
+
+<h3>Basic Search</h3>
+
+<pre><code>{
+<p>"scrapeType": "search",</p>
+<p>"searchTerm": "General Contractor",</p>
+<p>"location": "Los Angeles, CA",</p>
+<p>"maxResults": 100</p>
+<p>}</p>
+</code></pre>
+
+<h3>Profile Scraping</h3>
+
+<pre><code>{
+<p>"scrapeType": "professional_profile",</p>
+<p>"professionalUrl": "https://www.houzz.com/professionals/general-contractor/abc-construction",</p>
+<p>"includeReviews": true,</p>
+<p>"maxReviewsPerProfessional": 50</p>
+<p>}</p>
+</code></pre>
+
+<h3>Advanced Options</h3>
+
+<pre><code>{
+<p>"scrapeType": "search",</p>
+<p>"searchTerm": "Kitchen Remodeler",</p>
+<p>"location": "Miami, FL",</p>
+<p>"professionalType": "kitchen_bath",</p>
+<p>"minRating": 4.0,</p>
+<p>"includeReviews": true,</p>
+<p>"includeProjects": true,</p>
+<p>"maxResults": 200</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"name": "ABC Contracting",</p>
+<p>"professionalType": "General Contractor",</p>
+<p>"location": {</p>
+<p>"address": "123 Main St",</p>
+<p>"city": "Los Angeles",</p>
+<p>"state": "CA",</p>
+<p>"zip": "90001"</p>
+<p>},</p>
+<p>"phone": "(555) 123-4567",</p>
+<p>"website": "https://abccontracting.com",</p>
+<p>"rating": 4.8,</p>
+<p>"reviewCount": 127,</p>
+<p>"reviews": [</p>
+<p>{</p>
+<p>"text": "Excellent work on our kitchen remodel...",</p>
+<p>"rating": 5,</p>
+<p>"date": "2024-01-15",</p>
+<p>"author": "John D."</p>
+<p>}</p>
+<p>],</p>
+<p>"projects": [</p>
+<p>{</p>
+<p>"title": "Modern Kitchen Renovation",</p>
+<p>"imageUrl": "https://...",</p>
+<p>"description": "Complete kitchen overhaul..."</p>
+<p>}</p>
+<p>],</p>
+<p>"license": "CA-B123456",</p>
+<p>"yearsInBusiness": 15,</p>
+<p>"houzzUrl": "https://www.houzz.com/professionals/..."</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<h3>Lead Generation for Home Services</h3>
+<p>Extract contractor leads with verified contact information for sales outreach.</p>
+
+<h3>Competitive Intelligence</h3>
+<p>Monitor competitors' reviews, ratings, and project portfolios in your market.</p>
+
+<h3>Market Research</h3>
+<p>Analyze the home services landscape in specific geographic areas.</p>
+
+<h3>Review Monitoring</h3>
+<p>Track customer sentiment and reviews for multiple professionals.</p>
+
+<h3>Citation Building</h3>
+<p>Verify business listing accuracy across directories.</p>
+
+<h2>Demo Mode</h2>
+
+<p>Enable <code>demoMode: true</code> to test the actor with sample data without making actual requests. Perfect for testing integrations and understanding the output format.</p>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-result pricing model:</p>
+<ul>
+<li>$0.002 per professional result</li>
+<li>$0.001 per review extracted</li>
+<li>$0.001 per project extracted</li>
+</ul>
+
+<h2>Tips for Best Results</h2>
+
+<p>1. <strong>Use Specific Locations</strong>: City + State format works best (e.g., "Denver, CO")</p>
+<p>2. <strong>Filter by Rating</strong>: Set <code>minRating</code> to focus on quality professionals</p>
+<p>3. <strong>Include Reviews</strong>: Customer reviews provide valuable insights</p>
+<p>4. <strong>Batch by Area</strong>: Split large geographic areas into smaller searches</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>How current is the data?</h3>
+<p>Data is scraped in real-time directly from Houzz.</p>
+
+<h3>Can I scrape multiple locations?</h3>
+<p>Yes, run separate scrapes for each location or use the Apify scheduler for automation.</p>
+
+<h3>What about blocked requests?</h3>
+<p>The scraper uses residential proxies by default for reliable access.</p>
+
+<h3>Is there a limit on results?</h3>
+<p>Maximum 500 professionals per run. For larger datasets, split into multiple runs.</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
+<li><strong>Issues</strong>: Report bugs via Apify support</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+
+<p>Power your home services business with Houzz data.</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firecrawl Agent - Web Crawler | Actor Arsenal</title>
+    <meta name="description" content="Advanced web crawling with Firecrawl. Extract clean markdown, handle JavaScript sites & manage large-scale crawls with built-in rate limiting & error handling.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/firecrawl-agent" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/firecrawl-agent.png" alt="Firecrawl Agent - Web Crawler" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Firecrawl Agent - Web Crawler</h1>
+                    <span class="actor-category">Developer Tools</span>
+                    <p class="actor-description">Advanced web crawling with Firecrawl. Extract clean markdown, handle JavaScript sites & manage large-scale crawls with built-in rate limiting & error handling.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/firecrawl-agent" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Firecrawl Agent</h1>
+
+<blockquote><strong>"AI That Navigates Websites Like a Human, Extracts Data Like a Pro"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Stop Writing Custom Scrapers for Every Website</h2>
+
+<strong>You're currently doing:</strong> Building different scrapers for each website, handling pagination manually, dealing with JavaScript-rendered content, writing complex CSS selectors.
+
+<strong>What if you could just describe what you want?</strong>
+
+<strong>Firecrawl Agent</strong> uses Firecrawl's autonomous Agent API to navigate websites intelligently and extract exactly what you need:
+
+<ul>
+<li><strong>Natural Language Goals</strong> - Describe extraction in plain English</li>
+<li><strong>Autonomous Navigation</strong> - AI decides which links to click</li>
+<li><strong>Smart Pagination</strong> - Automatically handles "Load More" and infinite scroll</li>
+<li><strong>JavaScript Rendering</strong> - Full browser rendering for SPAs</li>
+<li><strong>Backtracking</strong> - Recovers from dead ends automatically</li>
+</ul>
+
+<strong>Powered by Firecrawl's Agent API</strong> - the same technology behind production web scraping systems.
+
+<p>---</p>
+
+<h2>How It Works</h2>
+
+<pre><code>URL + Natural Language Goal
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  GOAL       │ Parse user objective</p>
+<p>│  ANALYSIS   │ Identify data requirements</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  STRATEGIC  │ Find likely paths to data</p>
+<p>│  NAVIGATION │ Click links, fill forms</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  CONTENT    │ Render JavaScript</p>
+<p>│  EXTRACTION │ Scrape clean content</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  DATA       │ Apply optional schema</p>
+<p>│  STRUCTURING│ Format as JSON</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>┌─────────────┐</p>
+<p>│  VALIDATION │ Verify data meets goal</p>
+<p>│             │ Backtrack if needed</p>
+<p>└─────────────┘</p>
+<p>↓</p>
+<p>Clean JSON Output</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>1. Competitive Pricing Research</h3>
+
+<pre><code>{
+<p>"url": "https://competitor.com",</p>
+<p>"objective": "Find all pricing plans, their monthly and annual costs, and included features"</p>
+<p>}</p>
+</code></pre>
+
+<strong>Returns:</strong>
+<pre><code>{
+<p>"plans": [</p>
+<p>{</p>
+<p>"name": "Starter",</p>
+<p>"monthlyPrice": 29,</p>
+<p>"annualPrice": 290,</p>
+<p>"features": ["5 users", "10GB storage", "Email support"]</p>
+<p>},</p>
+<p>{</p>
+<p>"name": "Pro",</p>
+<p>"monthlyPrice": 99,</p>
+<p>"annualPrice": 990,</p>
+<p>"features": ["Unlimited users", "100GB storage", "Priority support"]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>2. Job Listings Extraction</h3>
+
+<pre><code>{
+<p>"url": "https://company.com/careers",</p>
+<p>"objective": "Extract all software engineering job openings with title, location, and requirements"</p>
+<p>}</p>
+</code></pre>
+
+<h3>3. Product Catalog Scraping</h3>
+
+<pre><code>{
+<p>"url": "https://store.com/products",</p>
+<p>"objective": "Get all products with name, price, description, and availability",</p>
+<p>"schema": {</p>
+<p>"type": "array",</p>
+<p>"items": {</p>
+<p>"type": "object",</p>
+<p>"properties": {</p>
+<p>"name": { "type": "string" },</p>
+<p>"price": { "type": "number" },</p>
+<p>"inStock": { "type": "boolean" }</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>4. Company Research</h3>
+
+<pre><code>{
+<p>"url": "https://company.com",</p>
+<p>"objective": "Find the leadership team, their titles, and LinkedIn profiles"</p>
+<p>}</p>
+</code></pre>
+
+<h3>5. Event/Conference Extraction</h3>
+
+<pre><code>{
+<p>"url": "https://conference.com",</p>
+<p>"objective": "Extract the conference schedule with session titles, speakers, times, and room locations"</p>
+<p>}</p>
+</code></pre>
+
+<h3>6. Documentation Scraping</h3>
+
+<pre><code>{
+<p>"url": "https://docs.example.com",</p>
+<p>"objective": "Extract all API endpoints with their methods, parameters, and descriptions"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Not required in demo mode</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"success": true,</p>
+<p>"url": "https://example.com",</p>
+<p>"objective": "Find pricing plans",</p>
+<p>"data": {</p>
+<p>"plans": [</p>
+<p>{</p>
+<p>"name": "Starter",</p>
+<p>"price": 29,</p>
+<p>"features": ["5 users", "10GB storage"]</p>
+<p>},</p>
+<p>{</p>
+<p>"name": "Pro",</p>
+<p>"price": 99,</p>
+<p>"features": ["Unlimited users", "100GB storage", "Priority support"]</p>
+<p>}</p>
+<p>]</p>
+<p>},</p>
+<p>"stepsUsed": 4,</p>
+<p>"pagesVisited": [</p>
+<p>"https://example.com",</p>
+<p>"https://example.com/pricing"</p>
+<p>],</p>
+<p>"extractedAt": "2024-12-23T10:30:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<h3>BYOK (Bring Your Own Key)</h3>
+
+
+<h3>Cost Per Extraction</h3>
+
+
+<h3>Cost Comparison</h3>
+
+
+<strong>No development time. No maintenance. Pay per use.</strong>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_APIFY_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/firecrawl-agent').call({</p>
+<p>url: 'https://competitor.com/pricing',</p>
+<p>objective: 'Extract all pricing plans with features and costs',</p>
+<p>firecrawlApiKey: 'fc-xxx'</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items[0].data);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~firecrawl-agent/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"url": "https://example.com/pricing",</p>
+<p>"objective": "Find all pricing plans with their features",</p>
+<p>"firecrawlApiKey": "fc-xxx"</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Demo Mode</h2>
+
+<p>Test the actor without an API key:</p>
+
+<pre><code>{
+<p>"demoMode": true,</p>
+<p>"url": "https://example-saas.com",</p>
+<p>"objective": "Find the pricing information"</p>
+<p>}</p>
+</code></pre>
+
+<p>Returns sample pricing data extraction.</p>
+
+<p>---</p>
+
+<h2>Firecrawl Agent vs Fire-Enrich</h2>
+
+
+<strong>Use Firecrawl Agent</strong> when you need to extract arbitrary data from any website.
+
+<strong>Use Fire-Enrich</strong> when you specifically need to enrich company/lead information.
+
+<p>---</p>
+
+<h2>Perfect For</h2>
+
+<h3>Sales Teams</h3>
+<ul>
+<li>Extract competitor pricing</li>
+<li>Gather prospect information</li>
+<li>Build target account lists</li>
+</ul>
+
+<h3>Product Managers</h3>
+<ul>
+<li>Competitive analysis</li>
+<li>Feature comparison research</li>
+<li>Market research</li>
+</ul>
+
+<h3>Developers</h3>
+<ul>
+<li>API documentation scraping</li>
+<li>Data migration projects</li>
+<li>Integration research</li>
+</ul>
+
+<h3>Researchers</h3>
+<ul>
+<li>Content aggregation</li>
+<li>Data collection for analysis</li>
+<li>Automated research tasks</li>
+</ul>
+
+<p>---</p>
+
+<h2>Advanced Features</h2>
+
+<h3>Schema Enforcement</h3>
+
+<p>Force output to match a specific structure:</p>
+
+<pre><code>{
+<p>"url": "https://store.com/products",</p>
+<p>"objective": "Get all products",</p>
+<p>"schema": {</p>
+<p>"type": "array",</p>
+<p>"items": {</p>
+<p>"type": "object",</p>
+<p>"properties": {</p>
+<p>"name": { "type": "string" },</p>
+<p>"price": { "type": "number" },</p>
+<p>"sku": { "type": "string" },</p>
+<p>"inStock": { "type": "boolean" }</p>
+<p>},</p>
+<p>"required": ["name", "price"]</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>Backtracking</h3>
+
+<p>When <code>allowBacktracking: true</code> (default), the agent will:</p>
+<p>1. Try the most likely path to find data</p>
+<p>2. If unsuccessful, backtrack and try alternative paths</p>
+<p>3. Continue until data is found or maxSteps is reached</p>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>Authentication</strong>: Cannot access login-protected content</li>
+<li><strong>Rate Limits</strong>: Respects Firecrawl's API rate limits</li>
+<li><strong>Captchas</strong>: Cannot bypass CAPTCHA challenges</li>
+<li><strong>Heavy JavaScript</strong>: Very complex SPAs may require more steps</li>
+<li><strong>Dynamic Content</strong>: Real-time updating content may vary between runs</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<p>For issues or feature requests, contact support@localhowl.com</p>
+
+<p>Get your Firecrawl API key at <a href="https://firecrawl.dev" target="_blank" rel="noopener">firecrawl.dev</a></p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>firecrawl, web scraping agent, ai web scraper, autonomous web extraction, natural language scraper, javascript scraper, spa scraper, web data extraction, pricing scraper, product catalog scraper, competitor research, no-code scraper, firecrawl api, intelligent web crawler</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

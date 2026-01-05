@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quora Research - Q&A Scraper | Actor Arsenal</title>
+    <meta name="description" content="Scrape Quora questions, answers, topics & user profiles. Extract engagement metrics, trending topics & expert insights for content research & market intelligenc">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/quora-research" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/quora-research.png" alt="Quora Research - Q&A Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Quora Research - Q&A Scraper</h1>
+                    <span class="actor-category">Developer Tools</span>
+                    <p class="actor-description">Scrape Quora questions, answers, topics & user profiles. Extract engagement metrics, trending topics & expert insights for content research & market intelligence.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/quora-research" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Quora Content Research</h1>
+
+<strong>"Content Marketing Insights from Q&A"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Research trending questions and expert answers on Quora for content marketing insights. Discover what your audience is asking, identify content gaps, and find authoritative answers to inform your content strategy.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Question Discovery</strong>: Find relevant questions in your niche</li>
+<li><strong>Answer Analysis</strong>: Extract top answers with upvote counts</li>
+<li><strong>Topic Tracking</strong>: Identify trending topics and themes</li>
+<li><strong>Expert Insights</strong>: Find industry experts and thought leaders</li>
+<li><strong>Content Ideas</strong>: Generate blog post and FAQ ideas from real questions</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Content Marketing</strong>: Find topics your audience cares about</li>
+<li><strong>SEO Research</strong>: Discover long-tail keyword opportunities</li>
+<li><strong>Thought Leadership</strong>: Identify questions to answer for visibility</li>
+<li><strong>Competitor Research</strong>: See what experts are saying in your space</li>
+<li><strong>FAQ Generation</strong>: Build FAQs from real user questions</li>
+</ul>
+
+<h2>Input Configuration</h2>
+
+<pre><code>{
+<p>"demoMode": false,</p>
+<p>"searchQuery": "local SEO strategies",</p>
+<p>"topics": ["SEO", "Digital Marketing"],</p>
+<p>"maxQuestions": 50,</p>
+<p>"includeAnswers": true,</p>
+<p>"minAnswerUpvotes": 10,</p>
+<p>"sortBy": "relevance"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+
+<h2>Output</h2>
+
+<pre><code>{
+<p>"title": "What are the best strategies for local SEO in 2025?",</p>
+<p>"url": "https://www.quora.com/What-are-the-best-strategies-for-local-SEO-in-2025",</p>
+<p>"answerCount": 47,</p>
+<p>"followerCount": 312,</p>
+<p>"viewCount": 15600,</p>
+<p>"topics": ["SEO", "Local Business", "Digital Marketing"],</p>
+<p>"askedDate": "2025-10-15",</p>
+<p>"topAnswers": [</p>
+<p>{</p>
+<p>"author": "Sarah Johnson",</p>
+<p>"authorCredentials": "SEO Consultant, 10+ years experience",</p>
+<p>"upvotes": 234,</p>
+<p>"text": "Local SEO in 2025 is all about Google Business Profile optimization...",</p>
+<p>"answeredDate": "2025-10-16"</p>
+<p>}</p>
+<p>],</p>
+<p>"scrapedAt": "2025-12-23T12:00:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Content Research Tips</h2>
+
+<p>1. <strong>Find Content Gaps</strong>: Questions with many followers but few answers = opportunity</p>
+<p>2. <strong>Identify Experts</strong>: Authors with high credentials are potential influencers</p>
+<p>3. <strong>Track Trends</strong>: Sort by recent to see emerging topics</p>
+<p>4. <strong>Long-form Ideas</strong>: High-upvote answers often make great blog post outlines</p>
+<p>5. <strong>FAQ Building</strong>: Multiple similar questions = FAQ section material</p>
+
+<h2>Pricing</h2>
+
+<ul>
+<li><strong>$0.01</strong> per question scraped</li>
+<li><strong>$0.005</strong> per answer included</li>
+<li>Demo mode is free</li>
+</ul>
+
+<h2>Integrations</h2>
+
+<h3>Zapier</h3>
+<p>Automate content research workflows:</p>
+<p>1. Add the "Apify" app in Zapier</p>
+<p>2. Select "Run Actor" as the action</p>
+<p>3. Enter <code>localhowl/quora-research</code> as the actor ID</p>
+<p>4. Send questions to your content calendar or Trello board</p>
+
+<h3>Make (Integromat)</h3>
+<p>Build content ideation pipelines:</p>
+<p>1. Add the Apify module to your Make scenario</p>
+<p>2. Select "Run an Actor" action</p>
+<p>3. Configure with your topic keywords</p>
+<p>4. Auto-create content briefs in Google Docs or Notion</p>
+
+<h3>n8n</h3>
+<p>1. Add the Apify node to your workflow</p>
+<p>2. Configure with your Apify API token</p>
+<p>3. Set actor ID to <code>localhowl/quora-research</code></p>
+<p>4. Use AI nodes to generate blog outlines from questions</p>
+
+<h3>Webhooks</h3>
+<p>Receive research results via webhook:</p>
+<pre><code>{
+<p>"webhooks": [{</p>
+<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
+<p>"requestUrl": "https://your-app.com/webhook/quora-research"</p>
+<p>}]</p>
+<p>}</p>
+</code></pre>
+
+<h3>API</h3>
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~quora-research/runs?token=YOUR_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{"searchQuery": "local SEO tips", "maxQuestions": 50, "includeAnswers": true}'</p>
+</code></pre>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

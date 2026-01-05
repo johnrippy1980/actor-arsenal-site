@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Readiness Checker - Website Scanner | Actor Arsenal</title>
+    <meta name="description" content="Analyze any website for AI optimization readiness. Check robots.txt, llms.txt, structured data, meta tags & content quality. Get actionable recommendations to i">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/ai-readiness-checker" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/ai-readiness-checker.png" alt="AI Readiness Checker - Website Scanner" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">AI Readiness Checker - Website Scanner</h1>
+                    <span class="actor-category">Ai</span>
+                    <p class="actor-description">Analyze any website for AI optimization readiness. Check robots.txt, llms.txt, structured data, meta tags & content quality. Get actionable recommendations to improve AI crawler accessibility.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/ai-readiness-checker" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>AI Readiness Checker (Howl IQ)</h1>
+
+<blockquote><strong>Is your website ready for AI?</strong> Analyze your site's compatibility with ChatGPT, Claude, Perplexity, and other AI systems by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Why AI Readiness Matters</h2>
+
+<p>AI assistants like ChatGPT, Claude, and Perplexity are increasingly used to research businesses, answer questions, and make recommendations. If your website isn't optimized for AI:</p>
+
+<ul>
+<li>AI systems may misunderstand your business</li>
+<li>You could be left out of AI-generated recommendations</li>
+<li>Competitors with better-structured sites get cited instead</li>
+<li>Your content won't surface in AI-powered search</li>
+</ul>
+
+<p>---</p>
+
+<h2>What This Actor Checks</h2>
+
+<h3>1. Structured Data (30% weight)</h3>
+<ul>
+<li>JSON-LD Schema.org markup</li>
+<li>Meta descriptions</li>
+<li>Open Graph tags</li>
+<li>Canonical URLs</li>
+</ul>
+
+<h3>2. Content Clarity (25% weight)</h3>
+<ul>
+<li>Heading hierarchy (H1, H2, H3)</li>
+<li>Paragraph content quality</li>
+<li>FAQ sections</li>
+<li>Structured lists</li>
+</ul>
+
+<h3>3. Semantic HTML (15% weight)</h3>
+<ul>
+<li>Use of <code><main></code>, <code><nav></code>, <code><article></code>, <code><section></code></li>
+<li>Proper <code><header></code> and <code><footer></code></li>
+<li>Table accessibility</li>
+</ul>
+
+<h3>4. Accessibility (10% weight)</h3>
+<ul>
+<li>Image alt text</li>
+<li>Language attributes</li>
+<li>Descriptive link text</li>
+</ul>
+
+<h3>5. Mobile-Friendly (10% weight)</h3>
+<ul>
+<li>Mobile viewport optimization</li>
+</ul>
+
+<h3>6. Page Speed (10% weight)</h3>
+<ul>
+<li>Load time considerations</li>
+</ul>
+
+<p>---</p>
+
+<h2>Quick Start</h2>
+
+<h3>Demo Mode (Free)</h3>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Single URL Analysis</h3>
+
+<pre><code>{
+<p>"url": "https://yourwebsite.com"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Batch Analysis</h3>
+
+<pre><code>{
+<p>"urls": [</p>
+<p>"https://yourwebsite.com",</p>
+<p>"https://yourwebsite.com/about",</p>
+<p>"https://yourwebsite.com/services"</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"score": {</p>
+<p>"overall": 78,</p>
+<p>"categories": {</p>
+<p>"contentClarity": 85,</p>
+<p>"structuredData": 65,</p>
+<p>"semanticHTML": 80,</p>
+<p>"accessibility": 90,</p>
+<p>"mobileFriendly": 75,</p>
+<p>"pageSpeed": 80</p>
+<p>}</p>
+<p>},</p>
+<p>"issues": [</p>
+<p>{</p>
+<p>"severity": "critical",</p>
+<p>"category": "Structured Data",</p>
+<p>"title": "No JSON-LD structured data",</p>
+<p>"description": "No Schema.org structured data found",</p>
+<p>"recommendation": "Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",</p>
+<p>"impact": "Structured data is the primary way AI systems understand your business"</p>
+<p>}</p>
+<p>],</p>
+<p>"strengths": [</p>
+<p>"Single H1 heading present - good for AI topic detection",</p>
+<p>"All images have alt text - AI can understand image content"</p>
+<p>],</p>
+<p>"recommendations": [</p>
+<p>"Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",</p>
+<p>"Add a 150-160 character meta description summarizing the page"</p>
+<p>],</p>
+<p>"readyForAI": true,</p>
+<p>"scannedAt": "2024-12-24T12:00:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Score Interpretation</h2>
+
+
+<strong>AI Ready</strong>: Sites scoring 70+ are considered "AI Ready"
+
+<p>---</p>
+
+<h2>Issue Severity Levels</h2>
+
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>For Businesses</h3>
+<ul>
+<li>Audit your website before AI-driven traffic becomes mainstream</li>
+<li>Identify gaps that prevent AI from recommending your business</li>
+<li>Get actionable steps to improve AI visibility</li>
+</ul>
+
+<h3>For Agencies</h3>
+<ul>
+<li>Batch audit client websites</li>
+<li>Create AI readiness reports for proposals</li>
+<li>Track improvements over time</li>
+</ul>
+
+<h3>For Developers</h3>
+<ul>
+<li>Integrate AI readiness checks into CI/CD pipelines</li>
+<li>Monitor structured data implementation</li>
+<li>Validate Schema.org markup</li>
+</ul>
+
+<p>---</p>
+
+<h2>Related Tools</h2>
+
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+
+<p>---</p>
+
+<h2>FAQ</h2>
+
+<h3>What makes a website "AI Ready"?</h3>
+
+<p>AI systems need clear, structured content to understand and cite your business. This includes:</p>
+<ul>
+<li>Schema.org structured data (JSON-LD)</li>
+<li>Clear content hierarchy (headings, paragraphs)</li>
+<li>Semantic HTML elements</li>
+<li>Accessible content (alt text, language tags)</li>
+</ul>
+
+<h3>How is this different from regular SEO?</h3>
+
+<p>Traditional SEO focuses on keywords and backlinks. AI readiness focuses on how well machines can <strong>understand</strong> your content, not just find it.</p>
+
+<h3>Does this affect Google rankings?</h3>
+
+<p>While not directly, many AI readiness factors (structured data, semantic HTML, accessibility) also improve traditional SEO.</p>
+
+<h3>How often should I run this check?</h3>
+
+<p>Run after major website changes, or monthly to track improvements.</p>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li><strong>Live Tool</strong>: <a href="https://aiready.localhowl.com" target="_blank" rel="noopener">aiready.localhowl.com</a></li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>ai readiness checker, ai ready website, chatgpt optimization, claude ai seo, perplexity optimization, structured data checker, schema org validator, json-ld checker, semantic html checker, ai seo audit, ai visibility, ai citation optimization, llm optimization, ai assistant seo, generative ai optimization, howl iq, website ai score</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalFalcon Grid Scanner | Actor Arsenal</title>
+    <meta name="description" content="Run local ranking grid scans to visualize Google Maps visibility across a geographic area. This actor integrates with the LocalFalcon API to run grid-based loca">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/localfalcon-grid" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/localfalcon-grid.png" alt="LocalFalcon Grid Scanner" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">LocalFalcon Grid Scanner</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">Run local ranking grid scans to visualize Google Maps visibility across a geographic area. This actor integrates with the LocalFalcon API to run grid-based local ranking scans. See exactly where your business ranks in Google Maps across a geographic grid essential for local SEO strategy & analysis.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/localfalcon-grid" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>LocalFalcon Grid Scanner</h1>
+
+<strong>Run local ranking grid scans to visualize Google Maps visibility across a geographic area.</strong>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Overview</h2>
+
+<p>This actor integrates with the LocalFalcon API to run grid-based local ranking scans. See exactly where your business ranks in Google Maps across a geographic grid - essential for local SEO strategy and competitor analysis.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Grid Scanning</strong>: Create 5x5, 7x7, 9x9, 11x11, 13x13, or 15x15 ranking grids</li>
+<li><strong>Custom Radius</strong>: Set scan radius from 1 to 50 miles</li>
+<li><strong>Keyword Tracking</strong>: Track any local search keyword</li>
+<li><strong>Competitor Visibility</strong>: See competitor rankings at each grid point</li>
+<li><strong>Trend Analysis</strong>: Compare scans over time to track progress</li>
+<li><strong>Visual Output</strong>: Grid data ready for map visualization</li>
+<li><strong>BYOK Pattern</strong>: Bring your own LocalFalcon API key</li>
+</ul>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Example Usage</h2>
+
+<h3>Basic Grid Scan</h3>
+<pre><code>{
+<p>"businessName": "Joe's Plumbing",</p>
+<p>"keyword": "plumber near me",</p>
+<p>"location": "Saint Louis, MO",</p>
+<p>"gridSize": 9,</p>
+<p>"radiusMiles": 10,</p>
+<p>"localFalconApiKey": "your-api-key"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Large Area Scan</h3>
+<pre><code>{
+<p>"businessName": "ABC HVAC",</p>
+<p>"keyword": "hvac repair",</p>
+<p>"latitude": 38.6270,</p>
+<p>"longitude": -90.1994,</p>
+<p>"gridSize": 15,</p>
+<p>"radiusMiles": 25,</p>
+<p>"localFalconApiKey": "your-api-key"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"status": "success",</p>
+<p>"timestamp": "2025-12-28T12:00:00.000Z",</p>
+<p>"data": {</p>
+<p>"businessName": "Joe's Plumbing",</p>
+<p>"keyword": "plumber near me",</p>
+<p>"gridSize": 9,</p>
+<p>"radiusMiles": 10,</p>
+<p>"centerPoint": {</p>
+<p>"lat": 38.6270,</p>
+<p>"lng": -90.1994</p>
+<p>},</p>
+<p>"summary": {</p>
+<p>"avgRank": 4.2,</p>
+<p>"top3Count": 45,</p>
+<p>"top10Count": 72,</p>
+<p>"notRanking": 9,</p>
+<p>"totalPoints": 81</p>
+<p>},</p>
+<p>"gridData": [</p>
+<p>{</p>
+<p>"row": 0,</p>
+<p>"col": 0,</p>
+<p>"lat": 38.7120,</p>
+<p>"lng": -90.2844,</p>
+<p>"rank": 3,</p>
+<p>"competitors": [</p>
+<p>{ "name": "Competitor A", "rank": 1 },</p>
+<p>{ "name": "Competitor B", "rank": 2 }</p>
+<p>]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-event pricing:</p>
+<ul>
+<li><code>local-grid-scan</code>: Per grid scan (price varies by grid size)</li>
+</ul>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data without consuming LocalFalcon API credits.</p>
+
+<h2>Related Actors</h2>
+
+<p>Part of the SEO Intelligence Suite:</p>
+<ul>
+<li><code>localhowl~seo-intelligence-mcp-server</code> - Unified MCP orchestrator</li>
+<li><code>localhowl~dataforseo-serp</code> - SERP rankings and keyword research</li>
+<li><code>localhowl~dataforseo-onpage</code> - On-page SEO audits</li>
+<li><code>localhowl~dataforseo-backlinks</code> - Backlink analysis</li>
+<li><code>localhowl~serpapi-realtime</code> - Real-time SERP snapshots</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

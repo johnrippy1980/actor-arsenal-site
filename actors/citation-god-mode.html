@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation God Mode - Ultimate NAP Consistency Checker | Actor Arsenal</title>
+    <meta name="description" content="Citation God Mode combining 4 powerful engines into 1 comprehensive tool:
+Moz Integration - Quick scan Moz's listing tool (50+ directories)
+Direct Scraping - De">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/citation-god-mode.png" alt="Citation God Mode - Ultimate NAP Consistency Checker" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Citation God Mode - Ultimate NAP Consistency Checker</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">Citation God Mode combining 4 powerful engines into 1 comprehensive tool:
+Moz Integration - Quick scan Moz's listing tool (50+ directories)
+Direct Scraping - Deep scrape of 60+ directories
+Cross-Validation - Determines "canonical" NAP by weighing data
+AI Analysis - recommendations & fix suggestions</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Citation God Mode - Ultimate NAP Consistency Checker</h1>
+
+<strong>"The Most Comprehensive Citation Checker on Apify"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>What Is Citation God Mode?</h2>
+
+<p>Citation God Mode is the ultimate citation checker that combines <strong>five powerful engines</strong> into one comprehensive solution:</p>
+
+<p>1. <strong>Moz Integration</strong> - Quick scan via Moz's free listing tool (50+ directories)</p>
+<p>2. <strong>Dedicated Scrapers</strong> - High-reliability scraping via purpose-built Apify actors for Yelp, Manta, Houzz, DoorDash, and Grubhub (85-95% confidence)</p>
+<p>3. <strong>Direct Scraping</strong> - Deep scrape of 60+ directory platforms with CSS selectors</p>
+<p>4. <strong>Cross-Validation Engine</strong> - Determines the "canonical" NAP by weighing data from multiple authoritative sources</p>
+<p>5. <strong>AI Analysis</strong> - Claude-powered recommendations and fix suggestions</p>
+
+<h2>Why Use This Over Other Checkers?</h2>
+
+
+<h2>Scan Modes</h2>
+
+<p>Choose your scan depth based on your needs:</p>
+
+
+<h2>Platforms Checked</h2>
+
+<h3>Critical (Weight: 10)</h3>
+<ul>
+<li>Google Business Profile</li>
+<li>Yelp</li>
+<li>Facebook</li>
+<li>Apple Maps</li>
+<li>Bing Places</li>
+</ul>
+
+<h3>Data Aggregators (Weight: 8)</h3>
+<ul>
+<li>Foursquare</li>
+<li>Data Axle</li>
+<li>Neustar Localeze</li>
+<li>Factual</li>
+<li>Acxiom/Infogroup</li>
+</ul>
+
+<h3>High Priority (Weight: 6)</h3>
+<ul>
+<li>Yellow Pages, BBB, TripAdvisor, MapQuest, SuperPages, Manta, Hotfrog</li>
+</ul>
+
+<h3>Medium Priority (Weight: 4)</h3>
+<ul>
+<li>Angi, Trustpilot, LinkedIn, Nextdoor, Merchant Circle, Brownbook, Citysearch</li>
+</ul>
+
+<h3>Industry-Specific (Weight: 3)</h3>
+<ul>
+<li><strong>Healthcare</strong>: Healthgrades</li>
+<li><strong>Legal</strong>: Avvo</li>
+<li><strong>Real Estate</strong>: Zillow</li>
+<li><strong>Home Services</strong>: HomeAdvisor, Houzz, Thumbtack</li>
+</ul>
+
+<h3>Food & Delivery (Weight: 2)</h3>
+<ul>
+<li>DoorDash, Grubhub, Uber Eats, OpenTable</li>
+</ul>
+
+<h3>Additional Directories (Weight: 1)</h3>
+<ul>
+<li>20+ more directories for complete coverage</li>
+</ul>
+
+<h2>Cross-Validation: Finding the Truth</h2>
+
+<p>The cross-validation engine uses <strong>weighted voting</strong> to determine your canonical NAP:</p>
+
+<pre><code>Canonical Name:    "Acme Plumbing Co" (85% confidence)
+<p>Canonical Address: "123 Main St, Miami, FL 33101" (92% confidence)</p>
+<p>Canonical Phone:   "(305) 555-1234" (78% confidence)</p>
+</code></pre>
+
+<p>Higher-weight sources (Google, Yelp, Facebook) have more influence on the canonical values.</p>
+
+<h2>AI Analysis</h2>
+
+<p>When enabled, Claude AI provides:</p>
+
+<ul>
+<li><strong>Health Score</strong> (0-100)</li>
+<li><strong>Correction Suggestions</strong> with priorities</li>
+<li><strong>Prioritized Actions</strong> for maximum impact</li>
+<li><strong>Estimated SEO Impact</strong> of fixes</li>
+</ul>
+
+<h2>Output</h2>
+
+<pre><code>{
+<p>"businessName": "Acme Plumbing Co",</p>
+<p>"overallScore": "B",</p>
+<p>"healthScore": 78,</p>
+<p>"canonicalNAP": {</p>
+<p>"canonicalName": "Acme Plumbing Co",</p>
+<p>"canonicalAddress": "123 Main St, Miami, FL 33101",</p>
+<p>"canonicalPhone": "(305) 555-1234",</p>
+<p>"confidence": 85</p>
+<p>},</p>
+<p>"summary": {</p>
+<p>"totalChecked": 45,</p>
+<p>"correct": 32,</p>
+<p>"incorrect": 8,</p>
+<p>"missing": 5</p>
+<p>},</p>
+<p>"aiAnalysis": {</p>
+<p>"overallHealthScore": 78,</p>
+<p>"summary": "Your citations are moderately healthy...",</p>
+<p>"correctionSuggestions": [...],</p>
+<p>"prioritizedActions": [...]</p>
+<p>},</p>
+<p>"mergedResults": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Pricing</h2>
+
+<ul>
+<li><strong>Quick Mode</strong>: $0.05 per check</li>
+<li><strong>Standard Mode</strong>: $0.15 per check</li>
+<li><strong>Deep Mode</strong>: $0.35 per check</li>
+<li><strong>God Mode</strong>: $0.50 per check</li>
+</ul>
+
+<p>Demo mode is free.</p>
+
+<h2>Use Cases</h2>
+
+<h3>For Agencies</h3>
+<p>Run monthly audits for all clients. Export results to CSV for white-label reports.</p>
+
+<h3>For Local Businesses</h3>
+<p>Get a complete picture of your online presence. Know exactly which directories need updating.</p>
+
+<h3>For SEO Professionals</h3>
+<p>Use the canonical NAP detection to advise clients on the "correct" business information.</p>
+
+<h2>Webhook Integration</h2>
+
+<p>Send results directly to your CRM, Zapier, or automation platform.</p>
+
+<h2>Author</h2>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Local Leads Scraper | Actor Arsenal</title>
+    <meta name="description" content="Scrape Google Maps for local business leads. Get names, phone numbers, websites, addresses, ratings, review counts, and more. Perfect for lead generation, prosp">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/local-leads-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/local-leads-scraper.png" alt="Google Maps Local Leads Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Google Maps Local Leads Scraper</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Scrape Google Maps for local business leads. Get names, phone numbers, websites, addresses, ratings, review counts, and more. Perfect for lead generation, prospecting, and market research.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/local-leads-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>AI-Powered Local Leads Scraper v2.3</h1>
+
+<blockquote><strong>Build targeted local business lead lists from Google Maps with AI Lead Scoring</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>Scrape Google Maps for local business leads with <strong>AI-powered lead scoring and prioritization</strong>. Get names, phone numbers, websites, addresses, ratings, review counts, and Claude AI analysis for each lead. Perfect for lead generation, prospecting, and market research.</p>
+
+<h2>🤖 AI Lead Scoring (BYOK - Bring Your Own Key)</h2>
+
+<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
+
+<ul>
+<li><strong>Quality Score (0-100)</strong> - AI rates each lead's quality based on business data</li>
+<li><strong>Priority Tier</strong> - Hot/Warm/Cold classification for sales prioritization</li>
+<li><strong>Buying Signals</strong> - AI detects signals indicating readiness to purchase</li>
+<li><strong>Outreach Recommendations</strong> - Personalized suggestions for approaching each lead</li>
+<li><strong>Best Contact Method</strong> - AI recommends the optimal way to reach out</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Lead Generation</strong> - Build prioritized prospect lists with AI scoring</li>
+<li><strong>Market Research</strong> - Analyze competition in any market</li>
+<li><strong>Web Design Leads</strong> - Find businesses WITHOUT websites (hot leads!)</li>
+<li><strong>Review Management</strong> - Find businesses with low ratings who need help</li>
+<li><strong>B2B Prospecting</strong> - Get contact info for local businesses</li>
+<li><strong>Sales Prioritization</strong> - Focus on hot leads first with AI scoring</li>
+</ul>
+
+<h2>Features</h2>
+
+<h3>Core Features</h3>
+<ul>
+<li><strong>Google Maps Scraping</strong> - Extract businesses from any search query and location</li>
+<li><strong>Rich Data</strong> - Names, phones, websites, addresses, ratings, reviews, hours</li>
+<li><strong>Email Extraction</strong> - Optionally scrape emails from business websites</li>
+<li><strong>Smart Filtering</strong> - Filter by rating, website presence, and more</li>
+<li><strong>CSV/JSON Export</strong> - Download leads in your preferred format</li>
+</ul>
+
+<h3>AI Features (BYOK)</h3>
+<ul>
+<li><strong>Claude AI Lead Scoring</strong> - Every lead analyzed by Claude AI</li>
+<li><strong>Hot/Warm/Cold Classification</strong> - Instant sales prioritization</li>
+<li><strong>Buying Signal Detection</strong> - AI identifies ready-to-buy indicators</li>
+<li><strong>Personalized Outreach Tips</strong> - Unique recommendations per lead</li>
+</ul>
+
+<h3>Email Enrichment APIs (Optional BYOK)</h3>
+<ul>
+<li><strong>Hunter.io</strong> - Verified professional emails</li>
+<li><strong>Apollo.io</strong> - Decision-maker contacts with titles</li>
+<li><strong>Clearbit</strong> - Company info, social profiles, tech stack</li>
+<li><strong>Snov.io</strong> - Email finder and verification</li>
+<li><strong>FullContact</strong> - Company profiles with employee data</li>
+<li><strong>Lusha</strong> - B2B contacts with direct phone numbers</li>
+</ul>
+
+<h2>Input Options</h2>
+
+<h3>Core Parameters</h3>
+
+<h3>AI Lead Scoring (BYOK)</h3>
+
+<h3>Email Enrichment APIs (BYOK)</h3>
+
+<h3>Other Options</h3>
+
+<h2>Example Inputs</h2>
+
+<h3>Basic Lead Scrape</h3>
+<pre><code>{
+<p>"searchQuery": "plumbers",</p>
+<p>"location": "Dallas, TX",</p>
+<p>"maxResults": 100</p>
+<p>}</p>
+</code></pre>
+
+<h3>Web Design Leads (No Website)</h3>
+<pre><code>{
+<p>"searchQuery": "restaurants",</p>
+<p>"location": "Austin, TX",</p>
+<p>"maxResults": 200,</p>
+<p>"noWebsite": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Low-Rated Businesses (Reputation Management)</h3>
+<pre><code>{
+<p>"searchQuery": "dentists",</p>
+<p>"location": "Houston, TX",</p>
+<p>"maxResults": 50,</p>
+<p>"minRating": 1,</p>
+<p>"maxRating": 3.5</p>
+<p>}</p>
+</code></pre>
+
+<h3>Full Lead Enrichment</h3>
+<pre><code>{
+<p>"searchQuery": "lawyers",</p>
+<p>"location": "Miami, FL",</p>
+<p>"maxResults": 100,</p>
+<p>"includeEmail": true,</p>
+<p>"hasWebsite": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>With AI Lead Scoring (BYOK)</h3>
+<pre><code>{
+<p>"searchQuery": "plumbers",</p>
+<p>"location": "Dallas, TX",</p>
+<p>"maxResults": 50,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"enableAiScoring": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Demo Mode (No Real Scraping)</h3>
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<h3>Standard Lead Output</h3>
+<pre><code>{
+<p>"name": "Joe's Plumbing",</p>
+<p>"category": "Plumber",</p>
+<p>"address": "123 Main St, Dallas, TX 75201",</p>
+<p>"city": "Dallas",</p>
+<p>"state": "TX",</p>
+<p>"zipCode": "75201",</p>
+<p>"phone": "(214) 555-1234",</p>
+<p>"website": "https://joesplumbing.com",</p>
+<p>"email": "info@joesplumbing.com",</p>
+<p>"rating": 4.7,</p>
+<p>"reviewCount": 142,</p>
+<p>"priceLevel": "$$",</p>
+<p>"hours": "Open 24 hours",</p>
+<p>"googleMapsUrl": "https://maps.google.com/...",</p>
+<p>"placeId": "ChIJ...",</p>
+<p>"hasWebsite": true,</p>
+<p>"scrapedAt": "2024-12-26T00:00:00.000Z"</p>
+<p>}</p>
+</code></pre>
+
+<h3>With AI Lead Scoring (BYOK)</h3>
+<p>When you provide an Anthropic API key, each lead includes Claude AI analysis:</p>
+<pre><code>{
+<p>"name": "Joe's Plumbing",</p>
+<p>"category": "Plumber",</p>
+<p>"address": "123 Main St, Dallas, TX 75201",</p>
+<p>"phone": "(214) 555-1234",</p>
+<p>"website": "https://joesplumbing.com",</p>
+<p>"rating": 4.7,</p>
+<p>"reviewCount": 142,</p>
+<p>"aiScoring": {</p>
+<p>"qualityScore": 85,</p>
+<p>"priorityTier": "hot",</p>
+<p>"signals": [</p>
+<p>"Strong online presence with high review count",</p>
+<p>"24/7 availability indicates serious business",</p>
+<p>"Premium pricing suggests budget for services"</p>
+<p>],</p>
+<p>"outreachRecommendation": "Lead with ROI-focused messaging. Mention their strong reviews and suggest ways to leverage that reputation for more business.",</p>
+<p>"bestContactMethod": "phone",</p>
+<p>"analyzedAt": "2024-12-26T12:00:00.000Z"</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>AI Priority Tiers Explained</h3>
+<ul>
+<li><strong>Hot</strong> (Score 80-100): High-quality leads ready to buy. Contact immediately.</li>
+<li><strong>Warm</strong> (Score 50-79): Good potential but may need nurturing.</li>
+<li><strong>Cold</strong> (Score 0-49): Lower priority. May be worth outreach but don't prioritize.</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>100 leads (no emails): $0.10 + (100 × $0.02) = <strong>$2.10</strong></li>
+<li>100 leads with emails: $0.10 + (100 × $0.02) + (100 × $0.01) = <strong>$3.10</strong></li>
+<li>500 leads (no emails): $0.10 + (500 × $0.02) = <strong>$10.10</strong></li>
+</ul>
+
+<h2>Tips for Best Results</h2>
+
+<p>1. <strong>Be Specific</strong> - More specific searches get better results</p>
+<p>2. <strong>Use City + State</strong> - "Dallas, TX" works better than just "Dallas"</p>
+<p>3. <strong>Filter Smart</strong> - Use rating filters to find your ideal prospects</p>
+<p>4. <strong>Web Design Leads</strong> - The <code>noWebsite</code> filter is gold for web agencies</p>
+<p>5. <strong>Email Extraction</strong> - Only enable if you need emails (it's slower)</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li>Maximum 500 leads per run (Google Maps pagination limits)</li>
+<li>Email extraction adds ~3 seconds per lead</li>
+<li>Some businesses may not have all data fields</li>
+<li>Rate limited to avoid detection</li>
+</ul>
+
+<h2>Integration Ideas</h2>
+
+<ul>
+<li>Export to CSV for your CRM</li>
+<li>Pipe to your email marketing tool</li>
+<li>Build automated prospecting workflows</li>
+<li>Feed into your sales dialer</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong> - Your Local SEO Partner
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>local leads scraper, lead generation, google maps leads, local business leads, b2b leads, sales leads, email finder</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Stats API - Baseball Data | Actor Arsenal</title>
+    <meta name="description" content="Comprehensive MLB baseball statistics including player stats, game logs, standings & historical data. Perfect for fantasy sports, betting & analytics.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/mlb-stats-api" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/mlb-stats-api.png" alt="MLB Stats API - Baseball Data" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">MLB Stats API - Baseball Data</h1>
+                    <span class="actor-category">Other</span>
+                    <p class="actor-description">Comprehensive MLB baseball statistics including player stats, game logs, standings & historical data. Perfect for fantasy sports, betting & analytics.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/mlb-stats-api" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>MLB Stats API</h1>
+
+<blockquote><strong>"Complete MLB Data in Clean JSON"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Simple Access to Official MLB Statistics</h2>
+
+<strong>The MLB Stats API exists but is complex and poorly documented.</strong> Hundreds of endpoints, nested responses, and frequent changes make it frustrating to use.
+
+<strong>What if you could get clean, simple MLB data with one API call?</strong>
+
+<p>The <strong>MLB Stats API</strong> actor wraps the official MLB API and returns clean, structured data:</p>
+
+<ul>
+<li>All 30 MLB teams with details</li>
+<li>Full 40-man rosters with player info</li>
+<li>Current division standings</li>
+<li>Complete game schedules</li>
+<li>Individual player statistics (batting & pitching)</li>
+<li>Box scores with play-by-play</li>
+<li>League leaders by category</li>
+</ul>
+
+<strong>No API key required. No authentication needed. Just simple JSON responses.</strong>
+
+<p>---</p>
+
+<h2>Why Use This Instead of Direct API Access</h2>
+
+<h3>1. Clean Data Structure</h3>
+
+<p>Raw MLB API returns inconsistent, deeply nested JSON. We normalize everything.</p>
+
+<strong>Raw MLB API:</strong>
+<pre><code>{
+<p>"people": [{</p>
+<p>"id": 660271,</p>
+<p>"fullName": "Shohei Ohtani",</p>
+<p>"stats": [{</p>
+<p>"type": {"displayName": "season"},</p>
+<p>"splits": [{</p>
+<p>"stat": {"homeRuns": 54}</p>
+<p>}]</p>
+<p>}]</p>
+<p>}]</p>
+<p>}</p>
+</code></pre>
+
+<strong>Our API:</strong>
+<pre><code>{
+<p>"player": "Shohei Ohtani",</p>
+<p>"playerId": 660271,</p>
+<p>"team": "Los Angeles Dodgers",</p>
+<p>"homeRuns": 54,</p>
+<p>"battingAverage": ".310"</p>
+<p>}</p>
+</code></pre>
+
+<h3>2. No Authentication Needed</h3>
+
+<p>We handle all the complexity. You just make requests.</p>
+
+<h3>3. Stable Endpoints</h3>
+
+<p>MLB changes their API frequently. We maintain compatibility.</p>
+
+<h3>4. Both Batting and Pitching Stats</h3>
+
+<p>Get comprehensive stats for any player in one call.</p>
+
+<p>---</p>
+
+<h2>Available Tasks</h2>
+
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Get Current Standings</h3>
+
+<pre><code>{
+<p>"task": "standings"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Get Team Roster</h3>
+
+<pre><code>{
+<p>"task": "team_roster",</p>
+<p>"teamId": 119</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Get Player Stats</h3>
+
+<pre><code>{
+<p>"task": "player_stats",</p>
+<p>"playerId": 660271,</p>
+<p>"season": "2024"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: Today's Schedule</h3>
+
+<pre><code>{
+<p>"task": "schedule",</p>
+<p>"date": "2025-04-15"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Team IDs Reference</h2>
+
+
+<p>---</p>
+
+<h2>Output Examples</h2>
+
+<h3>Standings Response</h3>
+
+<pre><code>{
+<p>"task": "standings",</p>
+<p>"success": true,</p>
+<p>"data": {</p>
+<p>"season": "2024",</p>
+<p>"standings": [</p>
+<p>{</p>
+<p>"division": "AL East",</p>
+<p>"teams": [</p>
+<p>{</p>
+<p>"rank": 1,</p>
+<p>"team": "Baltimore Orioles",</p>
+<p>"teamId": 110,</p>
+<p>"wins": 91,</p>
+<p>"losses": 71,</p>
+<p>"pct": ".562",</p>
+<p>"gamesBack": "-",</p>
+<p>"wildCard": "-",</p>
+<p>"runsScored": 765,</p>
+<p>"runsAllowed": 640,</p>
+<p>"runDifferential": 125,</p>
+<p>"streak": "W3",</p>
+<p>"last10": "7-3"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>Player Stats Response</h3>
+
+<pre><code>{
+<p>"task": "player_stats",</p>
+<p>"success": true,</p>
+<p>"data": {</p>
+<p>"player": {</p>
+<p>"id": 660271,</p>
+<p>"name": "Shohei Ohtani",</p>
+<p>"team": "Los Angeles Dodgers",</p>
+<p>"position": "DH",</p>
+<p>"jerseyNumber": 17,</p>
+<p>"bats": "L",</p>
+<p>"throws": "R",</p>
+<p>"batting": {</p>
+<p>"gamesPlayed": 159,</p>
+<p>"atBats": 636,</p>
+<p>"runs": 134,</p>
+<p>"hits": 197,</p>
+<p>"doubles": 38,</p>
+<p>"triples": 6,</p>
+<p>"homeRuns": 54,</p>
+<p>"rbi": 130,</p>
+<p>"stolenBases": 59,</p>
+<p>"battingAverage": ".310",</p>
+<p>"obp": ".390",</p>
+<p>"slg": ".646",</p>
+<p>"ops": "1.036"</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pay-Per-Event Pricing</h2>
+
+<strong>You only pay for what you use.</strong> No API key costs. No rate limit fees.
+
+
+<h3>Cost Examples</h3>
+
+
+<strong>Free tier available for testing.</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>Fantasy Baseball</h3>
+<ul>
+<li><strong>Player tracking</strong>: Monitor stats for your roster</li>
+<li><strong>Injury updates</strong>: Check player status</li>
+<li><strong>Waiver wire</strong>: Compare available players</li>
+<li><strong>Trade analysis</strong>: Compare player statistics</li>
+</ul>
+
+<h3>Sports Analytics</h3>
+<ul>
+<li><strong>Team performance</strong>: Analyze wins, losses, run differentials</li>
+<li><strong>Sabermetrics</strong>: Calculate WAR, wOBA, FIP, etc.</li>
+<li><strong>Trend analysis</strong>: Track performance over time</li>
+<li><strong>Predictive models</strong>: Feed data into ML models</li>
+</ul>
+
+<h3>Apps & Websites</h3>
+<ul>
+<li><strong>Live scores</strong>: Display current standings</li>
+<li><strong>Schedule displays</strong>: Show upcoming games</li>
+<li><strong>Stats pages</strong>: Build player stat cards</li>
+<li><strong>Team pages</strong>: Roster and team info</li>
+</ul>
+
+<h3>Media & Content</h3>
+<ul>
+<li><strong>Article research</strong>: Get accurate stats for articles</li>
+<li><strong>Broadcast support</strong>: Quick stats lookup</li>
+<li><strong>Social content</strong>: Stats for posts and graphics</li>
+</ul>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API (JavaScript)</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/mlb-stats-api').call({</p>
+<p>task: 'player_stats',</p>
+<p>playerId: 660271</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items[0].data.player);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~mlb-stats-api/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"task": "standings"</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Webhook Integration</h2>
+
+<h3>Webhook Payload Format</h3>
+
+<pre><code>{
+<p>"event": "task_completed",</p>
+<p>"timestamp": "2025-04-15T12:00:00.000Z",</p>
+<p>"actor": "mlb-stats-api",</p>
+<p>"task": "standings",</p>
+<p>"success": true,</p>
+<p>"data": { ... }</p>
+<p>}</p>
+</code></pre>
+
+<h3>Automation Ideas</h3>
+
+<ul>
+<li><strong>Daily standings</strong>: Update your database every morning</li>
+<li><strong>Game alerts</strong>: Trigger when your team plays</li>
+<li><strong>Stat tracking</strong>: Log player stats to Google Sheets</li>
+<li><strong>Discord bot</strong>: Post updates to your server</li>
+</ul>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>Historical data</strong>: Limited to current and recent seasons</li>
+<li><strong>Real-time</strong>: Not truly live (refresh every few minutes during games)</li>
+<li><strong>Rate limits</strong>: Built-in delays to respect MLB servers</li>
+<li><strong>Offseason</strong>: Limited data during winter months</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Email</strong>: john@johnrippy.link</li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li><strong>GitHub</strong>: Report issues on the repository</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>mlb api, baseball api, mlb stats, baseball statistics, mlb standings, mlb scores, baseball data, mlb player stats, fantasy baseball api, sports data api, mlb schedule, baseball scraper, mlb data feed, sports analytics, sabermetrics</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

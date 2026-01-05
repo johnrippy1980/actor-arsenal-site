@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF OCR API - Document Extraction | Actor Arsenal</title>
+    <meta name="description" content="Extract text from PDFs including scanned documents. OCR processing, table extraction & structured data output. Process invoices, contracts & forms at scale.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pdf-ocr-api" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/pdf-ocr-api.png" alt="PDF OCR API - Document Extraction" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">PDF OCR API - Document Extraction</h1>
+                    <span class="actor-category">Ai</span>
+                    <p class="actor-description">Extract text from PDFs including scanned documents. OCR processing, table extraction & structured data output. Process invoices, contracts & forms at scale.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/pdf-ocr-api" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>PDF OCR API</h1>
+
+<blockquote><strong>"Extract Text from Any PDF for Pennies"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Stop Paying for Expensive OCR Services</h2>
+
+<strong>You're currently paying:</strong> Adobe Acrobat Pro ($22.99/mo), ABBYY FineReader ($199/year), Google Document AI ($1.50/1000 pages), Amazon Textract ($1.50/1000 pages).
+
+<strong>What if you could extract text for a fraction of the cost?</strong>
+
+<p>The <strong>PDF OCR API</strong> extracts text from any PDF - scanned documents, image-based PDFs, and multi-page files:</p>
+
+<ul>
+<li>Scanned document support (OCR)</li>
+<li>Multi-page processing (any length)</li>
+<li>14 language support (English, Spanish, French, German, Chinese, Japanese, and more)</li>
+<li>Table structure preservation</li>
+<li>Multiple output formats (text, JSON, Markdown)</li>
+<li>Confidence scores per page</li>
+<li>Page-by-page results</li>
+</ul>
+
+<strong>Pay only for what you use.</strong> No monthly subscriptions. No minimum commitments.
+
+<p>---</p>
+
+<h2>Why Choose This Over Traditional OCR Services</h2>
+
+<h3>1. Pay-Per-Page, Not Per-Month</h3>
+
+<p>Traditional tools: $20-$200/month for your business.</p>
+
+<p>This actor: Pay per page processed. Process 100 pages for ~$5. Process 1,000 for ~$40.</p>
+
+<strong>Process 500 pages/month and still pay less than an Adobe subscription.</strong>
+
+<h3>2. Support for Any PDF</h3>
+
+<ul>
+<li><strong>Scanned PDFs</strong>: Image-based documents from scanners</li>
+<li><strong>Digital PDFs</strong>: Native text extraction (faster, more accurate)</li>
+<li><strong>Mixed PDFs</strong>: Pages with both text and images</li>
+<li><strong>Multi-page</strong>: No limit on document length</li>
+</ul>
+
+<h3>3. 14 Languages Supported</h3>
+
+
+<h3>4. Table Detection</h3>
+
+<p>Preserve table structure from scanned documents. Get rows and columns as structured data.</p>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Extract Text from URL</h3>
+
+<pre><code>{
+<p>"pdfUrl": "https://example.com/document.pdf",</p>
+<p>"language": "eng",</p>
+<p>"outputFormat": "text"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Process Specific Pages</h3>
+
+<pre><code>{
+<p>"pdfUrl": "https://example.com/document.pdf",</p>
+<p>"pageRange": "1-5",</p>
+<p>"language": "eng",</p>
+<p>"detectTables": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Multi-Language Document</h3>
+
+<pre><code>{
+<p>"pdfUrl": "https://example.com/document.pdf",</p>
+<p>"language": "spa",</p>
+<p>"outputFormat": "json"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: With Webhook</h3>
+
+<pre><code>{
+<p>"pdfUrl": "https://example.com/document.pdf",</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Either <code>pdfUrl</code> or <code>pdfBase64</code> is required</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"success": true,</p>
+<p>"fileName": "document.pdf",</p>
+<p>"totalPages": 5,</p>
+<p>"processedPages": 5,</p>
+<p>"language": "eng",</p>
+<p>"processingTime": 2.3,</p>
+<p>"pages": [</p>
+<p>{</p>
+<p>"pageNumber": 1,</p>
+<p>"text": "This is the extracted text from page 1...",</p>
+<p>"confidence": 95.2,</p>
+<p>"wordCount": 342,</p>
+<p>"hasImages": true,</p>
+<p>"tables": [</p>
+<p>{</p>
+<p>"rows": 5,</p>
+<p>"columns": 3,</p>
+<p>"data": [["Header1", "Header2", "Header3"], ...]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>],</p>
+<p>"fullText": "Complete document text concatenated...",</p>
+<p>"wordCount": 1250,</p>
+<p>"averageConfidence": 94.5</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pay-Per-Event Pricing</h2>
+
+<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+
+
+<h3>Cost Examples</h3>
+
+
+<strong>For low-to-medium volume, save compared to subscriptions. For high volume, competitive with cloud APIs.</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>Document Digitization</h3>
+<ul>
+<li><strong>Archive processing</strong>: Make historical documents searchable</li>
+<li><strong>Paper to digital</strong>: Convert scanned documents to text</li>
+<li><strong>Record keeping</strong>: Digitize contracts, invoices, receipts</li>
+</ul>
+
+<h3>Data Extraction</h3>
+<ul>
+<li><strong>Invoice processing</strong>: Extract line items, totals, dates</li>
+<li><strong>Form processing</strong>: Pull data from scanned forms</li>
+<li><strong>Contract analysis</strong>: Extract key terms and clauses</li>
+</ul>
+
+<h3>Research & Academia</h3>
+<ul>
+<li><strong>Academic papers</strong>: Extract text from PDF research papers</li>
+<li><strong>Book scanning</strong>: Digitize book chapters and pages</li>
+<li><strong>Citation extraction</strong>: Pull references from documents</li>
+</ul>
+
+<h3>Legal & Compliance</h3>
+<ul>
+<li><strong>Legal discovery</strong>: Process large document sets</li>
+<li><strong>Contract review</strong>: Extract text for analysis</li>
+<li><strong>Compliance audits</strong>: Digitize paper records</li>
+</ul>
+
+<h3>Developers</h3>
+<ul>
+<li><strong>API integration</strong>: RESTful JSON responses</li>
+<li><strong>Webhook support</strong>: Async processing for large documents</li>
+<li><strong>Multiple formats</strong>: Text, JSON, or Markdown output</li>
+</ul>
+
+<p>---</p>
+
+<h2>Confidence Scores</h2>
+
+<p>Each page includes a confidence score (0-100%):</p>
+
+
+<p>Low confidence usually indicates:</p>
+<ul>
+<li>Poor scan quality</li>
+<li>Unusual fonts</li>
+<li>Handwritten text</li>
+<li>Low resolution images</li>
+</ul>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API (JavaScript)</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/pdf-ocr-api').call({</p>
+<p>pdfUrl: 'https://example.com/document.pdf',</p>
+<p>language: 'eng',</p>
+<p>outputFormat: 'json'</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items[0].fullText);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"pdfUrl": "https://example.com/document.pdf",</p>
+<p>"language": "eng"</p>
+<p>}'</p>
+</code></pre>
+
+<h3>Base64 Upload (for local files)</h3>
+
+<pre><code># Convert PDF to base64
+<p>base64 document.pdf &gt; document_b64.txt</p>
+
+<h1>Send to API</h1>
+<p>curl -X POST "https://api.apify.com/v2/acts/localhowl~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \</p>
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"pdfBase64": "'$(cat document_b64.txt)'",</p>
+<p>"language": "eng"</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Webhook Integration (Zapier, Make, n8n)</h2>
+
+<h3>Webhook Payload Format</h3>
+
+<pre><code>{
+<p>"event": "ocr_completed",</p>
+<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
+<p>"actor": "pdf-ocr-api",</p>
+<p>"runId": "abc123",</p>
+<p>"totalPages": 10,</p>
+<p>"processedPages": 10,</p>
+<p>"averageConfidence": 92.5,</p>
+<p>"fullText": "...",</p>
+<p>"pages": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Common Automations</h3>
+
+<ul>
+<li><strong>Google Drive</strong>: Save extracted text alongside PDFs</li>
+<li><strong>Notion/Coda</strong>: Create searchable document database</li>
+<li><strong>Slack</strong>: Notify when processing completes</li>
+<li><strong>CRM</strong>: Attach extracted text to records</li>
+</ul>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>File Size</strong>: Maximum 50MB per PDF</li>
+<li><strong>Handwriting</strong>: Limited support for handwritten text</li>
+<li><strong>Complex Layouts</strong>: Multi-column layouts may merge incorrectly</li>
+<li><strong>Image Quality</strong>: Low-resolution scans reduce accuracy</li>
+<li><strong>Encrypted PDFs</strong>: Password-protected PDFs not supported</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Email</strong>: john@johnrippy.link</li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li><strong>GitHub</strong>: Report issues on the repository</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>pdf ocr, pdf text extraction, ocr api, scanned pdf to text, document digitization, pdf scraper, image to text, optical character recognition, pdf parser, document processing, invoice ocr, form extraction, adobe alternative, abbyy alternative, tesseract ocr, multi-language ocr</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

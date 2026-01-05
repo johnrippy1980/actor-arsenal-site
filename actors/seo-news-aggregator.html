@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO News Aggregator - AI-Powered Content Curation | Actor Arsenal</title>
+    <meta name="description" content="Aggregate the latest SEO news from top industry sources and transform them into ready-to-post content with AI summarization. Search Engine Journal, Search Engin">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/seo-news-aggregator" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/seo-news-aggregator.png" alt="SEO News Aggregator - AI-Powered Content Curation" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">SEO News Aggregator - AI-Powered Content Curation</h1>
+                    <span class="actor-category">Ai</span>
+                    <p class="actor-description">Aggregate the latest SEO news from top industry sources and transform them into ready-to-post content with AI summarization. Search Engine Journal, Search Engine Land,  Moz Blog,  Ahrefs Blog , Neil Patel, Backlinko</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/seo-news-aggregator" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>📰 SEO News Aggregator - AI-Powered Content Curation</h1>
+
+<strong>"AI-Curated SEO Industry News"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Aggregate the latest SEO news from top industry sources and transform them into ready-to-post content with AI summarization.</p>
+
+<h2>Sources</h2>
+
+
+<h2>Features</h2>
+
+<p>✅ <strong>Multi-Source Aggregation</strong> - One actor, 6 sources</p>
+<p>✅ <strong>RSS Feed Parsing</strong> - Fast, reliable article fetching</p>
+<p>✅ <strong>BYOK AI Summarization</strong> - Use your Claude or GPT API key</p>
+<p>✅ <strong>Multiple Summary Styles</strong> - Professional, Twitter, LinkedIn, Newsletter</p>
+<p>✅ <strong>Image Generation</strong> - Create social post images with Gemini</p>
+<p>✅ <strong>Category Filtering</strong> - Focus on topics that matter</p>
+<p>✅ <strong>Scheduled Runs</strong> - Set up daily news digests</p>
+<p>✅ <strong>Webhook Support</strong> - Send to Zapier, Make, n8n</p>
+<p>✅ <strong>Key-Value Store</strong> - Tracks last scrape to avoid duplicates</p>
+
+<h2>How It Works</h2>
+
+<pre><code>┌─────────────────────────────────────────────────┐
+<p>│              SEO News Aggregator                │</p>
+<p>├─────────────────────────────────────────────────┤</p>
+<p>│                                                 │</p>
+<p>│  RSS Feeds ──► Parse ──► Filter by Time/Cat    │</p>
+<p>│                           │                     │</p>
+<p>│                           ▼                     │</p>
+<p>│                    Full Article                 │</p>
+<p>│                    Extraction                   │</p>
+<p>│                           │                     │</p>
+<p>│                           ▼                     │</p>
+<p>│              ┌────────────────────┐             │</p>
+<p>│              │  AI Summarization  │             │</p>
+<p>│              │  (Claude/GPT)      │             │</p>
+<p>│              └────────────────────┘             │</p>
+<p>│                           │                     │</p>
+<p>│                           ▼                     │</p>
+<p>│              ┌────────────────────┐             │</p>
+<p>│              │  Image Generation  │             │</p>
+<p>│              │  (Gemini)          │             │</p>
+<p>│              └────────────────────┘             │</p>
+<p>│                           │                     │</p>
+<p>│                           ▼                     │</p>
+<p>│              Dataset + Webhook                  │</p>
+<p>│                                                 │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+
+<h2>Input Schema</h2>
+
+
+<h3>Available Sources</h3>
+<ul>
+<li><code>searchenginejournal</code></li>
+<li><code>searchengineland</code></li>
+<li><code>moz</code></li>
+<li><code>ahrefs</code></li>
+<li><code>neilpatel</code></li>
+<li><code>backlinko</code></li>
+</ul>
+
+<h3>Available Categories</h3>
+<ul>
+<li><code>seo</code></li>
+<li><code>google</code></li>
+<li><code>content-marketing</code></li>
+<li><code>link-building</code></li>
+<li><code>technical-seo</code></li>
+<li><code>local-seo</code></li>
+<li><code>ppc</code></li>
+<li><code>social-media</code></li>
+<li><code>ai</code></li>
+<li><code>algorithm-updates</code></li>
+</ul>
+
+<h3>Summary Styles</h3>
+
+<h2>Output Schema</h2>
+
+<p>Each article in the dataset includes:</p>
+
+
+<h2>Use Cases</h2>
+
+<p>📱 <strong>Social Media Management</strong> - Auto-post SEO news to your channels</p>
+<p>📧 <strong>Newsletter Curation</strong> - Compile weekly/daily digests automatically</p>
+<p>🤖 <strong>Content Ideation</strong> - Find trending topics for your own content</p>
+<p>📊 <strong>Industry Monitoring</strong> - Track algorithm updates and industry changes</p>
+<p>🎓 <strong>Team Education</strong> - Keep your marketing team informed</p>
+<p>🔔 <strong>Competitive Intelligence</strong> - Monitor what competitors are writing about</p>
+
+<h2>Example Inputs</h2>
+
+<h3>Daily News Digest (All Sources)</h3>
+<pre><code>{
+<p>"sources": ["searchenginejournal", "searchengineland", "moz", "ahrefs"],</p>
+<p>"maxArticlesPerSource": 5,</p>
+<p>"hoursLookback": 24,</p>
+<p>"summarizeArticles": true,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"summaryStyle": "newsletter"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Algorithm Updates Only</h3>
+<pre><code>{
+<p>"sources": ["searchenginejournal", "searchengineland"],</p>
+<p>"categories": ["algorithm-updates", "google"],</p>
+<p>"hoursLookback": 48,</p>
+<p>"summarizeArticles": true,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"summaryStyle": "professional"</p>
+<p>}</p>
+</code></pre>
+
+<h3>LinkedIn Content Pipeline</h3>
+<pre><code>{
+<p>"sources": ["moz", "ahrefs", "backlinko"],</p>
+<p>"categories": ["seo", "link-building"],</p>
+<p>"maxArticlesPerSource": 3,</p>
+<p>"hoursLookback": 24,</p>
+<p>"summarizeArticles": true,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"summaryStyle": "linkedin",</p>
+<p>"generateImages": true,</p>
+<p>"geminiApiKey": "AIza..."</p>
+<p>}</p>
+</code></pre>
+
+<h3>Quick Test</h3>
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>With Webhook (Zapier/Make/n8n)</h3>
+<pre><code>{
+<p>"sources": ["searchenginejournal"],</p>
+<p>"maxArticlesPerSource": 10,</p>
+<p>"hoursLookback": 24,</p>
+<p>"summarizeArticles": true,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef/"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Example Output</h2>
+
+<h3>Standard Article</h3>
+<pre><code>{
+<p>"title": "Google Confirms December 2024 Core Update Rolling Out",</p>
+<p>"url": "https://www.searchenginejournal.com/google-december-2024-core-update/123456/",</p>
+<p>"source": "Search Engine Journal",</p>
+<p>"author": "Matt Southern",</p>
+<p>"publishedAt": "2024-12-24T10:30:00Z",</p>
+<p>"category": "algorithm-updates",</p>
+<p>"summary": "Google has confirmed the rollout of the December 2024 core update, which is expected to take 2-3 weeks to complete. Key changes focus on improving content quality signals and reducing spam.",</p>
+<p>"linkedInPost": "🚨 Google December 2024 Core Update is LIVE!\n\nKey takeaways:\n• Rolling out over 2-3 weeks\n• Focus on content quality signals\n• Spam reduction improvements\n\nWhat does this mean for your site? Time to review your content strategy!\n\n#SEO #Google #DigitalMarketing",</p>
+<p>"imageUrl": "https://storage.googleapis.com/...",</p>
+<p>"scrapedAt": "2024-12-24T15:30:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Demo Mode Output (5 sample articles)</h3>
+<p>Returns realistic sample data including:</p>
+<ul>
+<li>Google algorithm update news</li>
+<li>AI Overviews impact study</li>
+<li>Technical SEO fixes guide</li>
+<li>Link building strategies</li>
+<li>Local SEO ranking factors</li>
+</ul>
+
+<h2>Scheduling</h2>
+
+<p>Set up automated runs in Apify:</p>
+
+<p>1. Go to your actor's <strong>Schedules</strong> tab</p>
+<p>2. Create a new schedule (e.g., "Daily 9 AM EST")</p>
+<p>3. Configure input with your API keys</p>
+<p>4. Add webhook URL for automatic delivery</p>
+
+<strong>Recommended schedules:</strong>
+<ul>
+<li><strong>Daily digest</strong>: Run once per day with <code>hoursLookback: 24</code></li>
+<li><strong>Breaking news</strong>: Run every 6 hours with <code>hoursLookback: 6</code></li>
+<li><strong>Weekly roundup</strong>: Run once per week with <code>hoursLookback: 168</code></li>
+</ul>
+
+<h2>Apify Integration</h2>
+
+<p>This actor uses internal Apify features:</p>
+
+<ul>
+<li><strong>Key-Value Store</strong> - Stores <code>lastScrapedAt</code> to avoid duplicate articles across runs</li>
+<li><strong>Named Datasets</strong> - Persist articles for historical analysis</li>
+<li><strong>Actor.call()</strong> - Calls <code>gemini-image-generator</code> actor for image generation</li>
+<li><strong>Webhooks</strong> - Send results to Zapier, Make, n8n, or custom endpoints</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-event model:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>20 articles with summaries = $0.20 + $0.40 = <strong>$0.60</strong></li>
+<li>With images: + $1.00 = <strong>$1.60 total</strong></li>
+</ul>
+
+<strong>Note:</strong> AI API costs (Claude/OpenAI/Gemini) are billed directly by those providers using your BYOK keys.
+
+<h2>FAQ</h2>
+
+<h3>Why do I need to provide my own API keys?</h3>
+<p>This is a BYOK (Bring Your Own Key) model. Your Claude/OpenAI/Gemini API keys are used directly, so you control costs and rate limits. Keys are encrypted and never stored.</p>
+
+<h3>Why are some articles missing summaries?</h3>
+<ul>
+<li>AI summarization requires either <code>anthropicApiKey</code> or <code>openaiApiKey</code></li>
+<li>If both APIs fail, the original content snippet is used</li>
+<li>Check your API key validity and rate limits</li>
+</ul>
+
+<h3>How do I avoid duplicate articles?</h3>
+<p>The actor uses Apify's Key-Value Store to track <code>lastScrapedAt</code>. Subsequent runs only fetch articles published after the last run.</p>
+
+<h3>Can I add custom sources?</h3>
+<p>Currently, only the 6 built-in sources are supported. Custom RSS feeds may be added in future versions.</p>
+
+<h3>How long does it take?</h3>
+<ul>
+<li>Without AI: ~10-30 seconds</li>
+<li>With AI summarization: ~1-2 minutes (depends on article count)</li>
+<li>With image generation: ~3-5 minutes</li>
+</ul>
+
+<h3>What if a source is down?</h3>
+<p>Failed sources are logged but don't stop the run. Other sources continue normally.</p>
+
+<h2>Error Handling</h2>
+
+
+<h2>Integrations</h2>
+
+<h3>Zapier</h3>
+<p>1. Create a Zapier webhook trigger</p>
+<p>2. Add webhook URL to input</p>
+<p>3. Use "Parse JSON" action to process articles</p>
+<p>4. Connect to social media apps</p>
+
+<h3>Make (Integromat)</h3>
+<pre><code>{
+<p>"webhookUrl": "https://hook.us1.make.com/..."</p>
+<p>}</p>
+</code></pre>
+
+<h3>n8n</h3>
+<pre><code>{
+<p>"webhookUrl": "https://your-n8n.com/webhook/..."</p>
+<p>}</p>
+</code></pre>
+
+<h3>Buffer / Hootsuite</h3>
+<p>Use Zapier or Make as an intermediary to connect to social scheduling tools.</p>
+
+<h2>Best Practices</h2>
+
+<p>1. <strong>Start with demo mode</strong> - Test the actor before using API credits</p>
+<p>2. <strong>Use category filters</strong> - Focus on relevant topics to reduce costs</p>
+<p>3. <strong>Schedule appropriately</strong> - Match <code>hoursLookback</code> to schedule frequency</p>
+<p>4. <strong>Monitor API usage</strong> - Check your AI provider dashboards for costs</p>
+<p>5. <strong>Use webhooks</strong> - Automate delivery to your workflow tools</p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

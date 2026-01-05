@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified SEO Intelligence MCP Server | Actor Arsenal</title>
+    <meta name="description" content="Unified MCP Server for comprehensive SEO intelligence - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration. It orchestrates m">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/seo-intelligence-mcp-server" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/seo-intelligence-mcp-server.png" alt="Unified SEO Intelligence MCP Server" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Unified SEO Intelligence MCP Server</h1>
+                    <span class="actor-category">Mcp Servers</span>
+                    <p class="actor-description">Unified MCP Server for comprehensive SEO intelligence - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration. It orchestrates multiple specialized Apify actors DataForSEO, LocalFalcon & SERPApi</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/seo-intelligence-mcp-server" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>SEO Intelligence MCP Server</h1>
+
+<strong>Unified MCP Server for comprehensive SEO intelligence</strong> - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration.
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Overview</h2>
+
+<p>This MCP (Model Context Protocol) Server provides a unified interface for AI assistants to access comprehensive SEO intelligence capabilities. It orchestrates multiple specialized Apify actors:</p>
+
+<ul>
+<li><strong>DataForSEO</strong>: SERP rankings, keyword research, on-page audits, backlink analysis</li>
+<li><strong>LocalFalcon</strong>: Local ranking grid scans</li>
+<li><strong>SERPApi</strong>: Real-time SERP snapshots</li>
+</ul>
+
+<h2>Available Tools</h2>
+
+
+<h2>Input Parameters</h2>
+
+<h3>Required for Production</h3>
+<ul>
+<li><code>apifyToken</code> - Your Apify API token (for running sub-actors)</li>
+<li>API credentials for the specific tool:</li>
+<li>DataForSEO: <code>dataForSeoLogin</code>, <code>dataForSeoPassword</code></li>
+<li>LocalFalcon: <code>localFalconApiKey</code></li>
+<li>SERPApi: <code>serpApiKey</code></li>
+</ul>
+
+<h3>Common Parameters</h3>
+
+<h2>Example Usage</h2>
+
+<h3>SERP Rankings Tracking</h3>
+<pre><code>{
+<p>"tool": "serp_rankings",</p>
+<p>"domain": "example.com",</p>
+<p>"keywords": ["digital marketing", "seo services", "local seo"],</p>
+<p>"location": "Saint Louis, MO",</p>
+<p>"dataForSeoLogin": "your-login",</p>
+<p>"dataForSeoPassword": "your-password",</p>
+<p>"apifyToken": "your-apify-token"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Local Grid Scan</h3>
+<pre><code>{
+<p>"tool": "local_grid_scan",</p>
+<p>"toolInput": {</p>
+<p>"businessName": "Joe's Plumbing",</p>
+<p>"keyword": "plumber near me",</p>
+<p>"gridSize": 9,</p>
+<p>"radiusMiles": 10</p>
+<p>},</p>
+<p>"location": "Saint Louis, MO",</p>
+<p>"localFalconApiKey": "your-localfalcon-key",</p>
+<p>"apifyToken": "your-apify-token"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Real-Time SERP Snapshot</h3>
+<pre><code>{
+<p>"tool": "realtime_serp",</p>
+<p>"toolInput": {</p>
+<p>"query": "best marketing agency",</p>
+<p>"engine": "google",</p>
+<p>"device": "mobile"</p>
+<p>},</p>
+<p>"location": "New York, NY",</p>
+<p>"serpApiKey": "your-serpapi-key",</p>
+<p>"apifyToken": "your-apify-token"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Full SEO Audit</h3>
+<pre><code>{
+<p>"tool": "full_audit",</p>
+<p>"domain": "example.com",</p>
+<p>"location": "Chicago, IL",</p>
+<p>"dataForSeoLogin": "your-login",</p>
+<p>"dataForSeoPassword": "your-password",</p>
+<p>"localFalconApiKey": "your-localfalcon-key",</p>
+<p>"apifyToken": "your-apify-token"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<p>All tools return a standardized result format:</p>
+
+<pre><code>{
+<p>"tool": "serp_rankings",</p>
+<p>"status": "success",</p>
+<p>"timestamp": "2025-12-27T12:00:00.000Z",</p>
+<p>"summary": "Tracked 5 keywords for example.com - Avg position: 4.2",</p>
+<p>"data": {</p>
+<p>// Tool-specific data</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h2>MCP Integration</h2>
+
+<p>This actor exposes MCP tools via the Key-Value Store:</p>
+
+<pre><code>// Fetch MCP tools definition
+<p>const kvStore = await client.keyValueStore(runId);</p>
+<p>const mcpTools = await kvStore.getRecord('MCP_TOOLS');</p>
+
+<p>// Get the latest result</p>
+<p>const output = await kvStore.getRecord('OUTPUT');</p>
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-event pricing based on tool usage:</p>
+
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data without consuming API credits or running sub-actors.</p>
+
+<h2>Webhook Support</h2>
+
+<p>Configure <code>webhookUrl</code> to receive results via HTTP POST when the run completes. Perfect for Zapier, Make, or n8n integrations.</p>
+
+<h2>Related Actors</h2>
+
+<p>This MCP Server orchestrates these specialized actors:</p>
+<ul>
+<li><code>localhowl~dataforseo-serp</code> - SERP and keyword data</li>
+<li><code>localhowl~dataforseo-onpage</code> - On-page SEO audits</li>
+<li><code>localhowl~dataforseo-backlinks</code> - Backlink analysis</li>
+<li><code>localhowl~localfalcon-grid</code> - Local ranking grids</li>
+<li><code>localhowl~serpapi-realtime</code> - Real-time SERP snapshots</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

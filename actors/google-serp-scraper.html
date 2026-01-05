@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google SERP Scraper - Search Results, Rankings & SERP Features | Actor Arsenal</title>
+    <meta name="description" content="Scrape Google search results including organic listings, local pack, featured snippets, People Also Ask, and ads. Perfect for SEO research, rank tracking, and c">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/google-serp-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/google-serp-scraper.png" alt="Google SERP Scraper - Search Results, Rankings & SERP Features" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Google SERP Scraper - Search Results, Rankings & SERP Features</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">Scrape Google search results including organic listings, local pack, featured snippets, People Also Ask, and ads. Perfect for SEO research, rank tracking, and competitive analysis.
+Track Rankings
+Analyze SERP Features
+Research Competition
+Study User Intent
+Monitor Local SEO</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/google-serp-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Google SERP Scraper - Extract Search Results, Rankings & SERP Features</h1>
+
+<p>Scrape Google search results including organic listings, local pack, featured snippets, People Also Ask, and ads. Perfect for SEO research, rank tracking, and competitive analysis.</p>
+
+<h2>Why Use Google SERP Scraper?</h2>
+
+<p>Understanding Google search results is critical for SEO success. This scraper helps you:</p>
+
+<ul>
+<li><strong>Track Rankings</strong>: Monitor keyword positions over time</li>
+<li><strong>Analyze SERP Features</strong>: Identify featured snippets and local pack opportunities</li>
+<li><strong>Research Competition</strong>: Analyze who ranks for target keywords</li>
+<li><strong>Study User Intent</strong>: Understand what Google shows for different queries</li>
+<li><strong>Monitor Local SEO</strong>: Track local pack positions and competitors</li>
+</ul>
+
+<h2>Features</h2>
+
+<h3>Complete SERP Extraction</h3>
+
+<ul>
+<li>Organic search results</li>
+<li>Local pack (map pack) results</li>
+<li>Featured snippets</li>
+<li>People Also Ask questions</li>
+<li>Related searches</li>
+<li>Paid advertisements</li>
+</ul>
+
+<h3>Multi-Location Support</h3>
+
+<ul>
+<li>Any geographic location</li>
+<li>Desktop and mobile results</li>
+<li>Multiple language support</li>
+</ul>
+
+<h3>Data Extracted</h3>
+
+
+<h2>Input Configuration</h2>
+
+<h3>Basic Search</h3>
+
+<pre><code>{
+<p>"queries": ["best pizza near me"],</p>
+<p>"location": "New York, NY, USA",</p>
+<p>"maxResults": 10</p>
+<p>}</p>
+</code></pre>
+
+<h3>Multiple Queries</h3>
+
+<pre><code>{
+<p>"queries": [</p>
+<p>"plumber chicago",</p>
+<p>"emergency plumber chicago",</p>
+<p>"24 hour plumber near me"</p>
+<p>],</p>
+<p>"location": "Chicago, IL, USA",</p>
+<p>"maxResults": 20</p>
+<p>}</p>
+</code></pre>
+
+<h3>Full SERP Analysis</h3>
+
+<pre><code>{
+<p>"queries": ["best crm software"],</p>
+<p>"location": "United States",</p>
+<p>"language": "en",</p>
+<p>"device": "desktop",</p>
+<p>"maxResults": 30,</p>
+<p>"includeAds": true,</p>
+<p>"includePAA": true,</p>
+<p>"includeLocalPack": true,</p>
+<p>"includeFeaturedSnippet": true,</p>
+<p>"includeRelatedSearches": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Mobile Search</h3>
+
+<pre><code>{
+<p>"queries": ["restaurants near me"],</p>
+<p>"location": "Los Angeles, CA, USA",</p>
+<p>"device": "mobile",</p>
+<p>"maxResults": 10</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"query": "best pizza near me",</p>
+<p>"location": "New York, NY, USA",</p>
+<p>"device": "desktop",</p>
+<p>"language": "en",</p>
+<p>"totalResults": "About 458,000,000 results",</p>
+<p>"organicResults": [</p>
+<p>{</p>
+<p>"position": 1,</p>
+<p>"title": "Best Pizza in NYC - Top Rated Pizzerias",</p>
+<p>"url": "https://example.com/best-pizza-nyc",</p>
+<p>"displayUrl": "example.com &gt; food &gt; pizza",</p>
+<p>"description": "Discover the best pizza places in New York City..."</p>
+<p>}</p>
+<p>],</p>
+<p>"localPack": [</p>
+<p>{</p>
+<p>"position": 1,</p>
+<p>"businessName": "Joe's Pizza",</p>
+<p>"address": "7 Carmine St, New York, NY",</p>
+<p>"rating": 4.5,</p>
+<p>"reviewCount": 2847,</p>
+<p>"phone": "(212) 555-1234",</p>
+<p>"category": "Pizza restaurant"</p>
+<p>}</p>
+<p>],</p>
+<p>"featuredSnippet": {</p>
+<p>"content": "According to local reviews, the best pizza in NYC...",</p>
+<p>"sourceUrl": "https://example.com/pizza-guide",</p>
+<p>"type": "paragraph"</p>
+<p>},</p>
+<p>"peopleAlsoAsk": [</p>
+<p>{</p>
+<p>"question": "What is the best pizza place in NYC?",</p>
+<p>"answer": "Joe's Pizza is consistently rated...",</p>
+<p>"sourceUrl": "https://example.com"</p>
+<p>}</p>
+<p>],</p>
+<p>"relatedSearches": [</p>
+<p>"best pizza manhattan",</p>
+<p>"best pizza brooklyn",</p>
+<p>"best pizza near me open now"</p>
+<p>],</p>
+<p>"ads": [</p>
+<p>{</p>
+<p>"position": 1,</p>
+<p>"title": "Order Pizza Delivery - 50% Off First Order",</p>
+<p>"displayUrl": "pizzadelivery.com",</p>
+<p>"description": "Hot, fresh pizza delivered to your door..."</p>
+<p>}</p>
+<p>],</p>
+<p>"scrapedAt": "2024-01-15T12:00:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<h3>SEO Rank Tracking</h3>
+<p>Monitor keyword rankings for your site and competitors over time.</p>
+
+<h3>SERP Feature Opportunities</h3>
+<p>Identify keywords with featured snippets, PAA, or local pack you can target.</p>
+
+<h3>Competitor Analysis</h3>
+<p>Analyze which domains rank for your target keywords.</p>
+
+<h3>Local SEO Monitoring</h3>
+<p>Track local pack rankings and competitor positions.</p>
+
+<h3>Content Gap Analysis</h3>
+<p>Discover what questions users ask to inform content strategy.</p>
+
+<h3>PPC Research</h3>
+<p>Analyze ad copy and competitors' advertising strategies.</p>
+
+<h2>Demo Mode</h2>
+
+<p>Enable <code>demoMode: true</code> to test with sample SERP data without making actual searches. Perfect for testing integrations and understanding output format.</p>
+
+<h2>Pricing</h2>
+
+<p>Pay-per-result pricing:</p>
+<ul>
+<li>$0.003 per search query</li>
+</ul>
+
+<strong>Example</strong>: 100 keyword searches = $0.30
+
+<h2>Supported Languages</h2>
+
+<ul>
+<li>English (en)</li>
+<li>Spanish (es)</li>
+<li>French (fr)</li>
+<li>German (de)</li>
+<li>Italian (it)</li>
+<li>Portuguese (pt)</li>
+<li>Japanese (ja)</li>
+<li>Chinese (zh)</li>
+<li>Korean (ko)</li>
+<li>Arabic (ar)</li>
+</ul>
+
+<h2>Tips for Best Results</h2>
+
+<p>1. <strong>Specific Locations</strong>: Use "City, State, Country" format for best accuracy</p>
+<p>2. <strong>Batch Queries</strong>: Process multiple keywords in single runs for efficiency</p>
+<p>3. <strong>Device Matters</strong>: Mobile and desktop results differ significantly</p>
+<p>4. <strong>Schedule Tracking</strong>: Use Apify scheduler for regular rank monitoring</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>How accurate are the rankings?</h3>
+<p>Results reflect real-time Google SERPs for the specified location and device.</p>
+
+<h3>Can I track rankings over time?</h3>
+<p>Yes, run scheduled scrapes and compare positions across datasets.</p>
+
+<h3>What about personalized results?</h3>
+<p>Scrapes use clean sessions without personalization for unbiased data.</p>
+
+<h3>How often should I scrape?</h3>
+<p>Daily for competitive keywords, weekly for broader monitoring.</p>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><a href="https://apify.com/alizarin_refrigerator-owner/semrush-keyword-research" target="_blank" rel="noopener">Semrush Keyword Research</a> - Keyword metrics</li>
+<li><a href="https://apify.com/alizarin_refrigerator-owner/google-maps-scraper" target="_blank" rel="noopener">Google Maps Scraper</a> - Local business data</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
+<li><strong>Issues</strong>: Report bugs via Apify support</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+
+<p>Power your SEO strategy with real-time Google SERP data.</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

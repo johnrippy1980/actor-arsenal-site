@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Scraper | Actor Arsenal</title>
+    <meta name="description" content="Aggregate customer reviews from multiple platforms into a single unified dataset for comprehensive reputation management.
+Google Maps, Yelp, Facebook, BBB - Bet">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/review-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/review-scraper.png" alt="Review Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Review Scraper</h1>
+                    <span class="actor-category">Automation</span>
+                    <p class="actor-description">Aggregate customer reviews from multiple platforms into a single unified dataset for comprehensive reputation management.
+Google Maps, Yelp, Facebook, BBB - Better Business Bureau, TripAdvisor, Trustpilot, Angi, Healthgrades, Avvo & OpenTable supported.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/review-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>AI-Powered Review Scraper v2.1</h1>
+
+<blockquote><strong>Aggregate reviews with Claude AI Sentiment Analysis</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>Aggregate customer reviews from multiple platforms with <strong>AI-powered sentiment analysis</strong>. Get actionable insights from your reviews with Claude AI theme extraction, complaint detection, and improvement recommendations.</p>
+
+<h2>🤖 AI Sentiment Analysis (BYOK - Bring Your Own Key)</h2>
+
+<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
+
+<ul>
+<li><strong>Sentiment Theme Extraction</strong> - AI identifies key positive and negative themes</li>
+<li><strong>Common Complaint Detection</strong> - Spots recurring issues across all platforms</li>
+<li><strong>Praise Pattern Analysis</strong> - Understands what customers love</li>
+<li><strong>Competitive Insights</strong> - AI identifies competitive advantages and gaps</li>
+<li><strong>Actionable Recommendations</strong> - Specific improvements based on feedback</li>
+<li><strong>Sentiment Scoring (0-100)</strong> - Quantified overall sentiment</li>
+</ul>
+
+<h3>Example AI Analysis Output</h3>
+<pre><code>{
+<p>"overallSentiment": "positive",</p>
+<p>"sentimentScore": 78,</p>
+<p>"positiveThemes": [</p>
+<p>"Fast service and punctuality",</p>
+<p>"Friendly and professional staff",</p>
+<p>"Fair and transparent pricing"</p>
+<p>],</p>
+<p>"negativeThemes": [</p>
+<p>"Occasional scheduling delays",</p>
+<p>"Limited availability on weekends"</p>
+<p>],</p>
+<p>"commonComplaints": [</p>
+<p>"Wait times during peak hours"</p>
+<p>],</p>
+<p>"recommendations": [</p>
+<p>"Consider expanding weekend availability",</p>
+<p>"Implement callback system for peak periods"</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Supported Platforms</h2>
+
+<ul>
+<li><strong>Google Maps</strong> - The most important review platform for local SEO</li>
+<li><strong>Yelp</strong> - Critical for restaurants, home services, retail</li>
+<li><strong>Facebook</strong> - Social recommendations and reviews</li>
+<li><strong>BBB</strong> - Better Business Bureau ratings and complaints</li>
+<li><strong>TripAdvisor</strong> - Essential for hospitality, tourism, restaurants</li>
+<li><strong>Trustpilot</strong> - Popular for e-commerce and services</li>
+<li><strong>Angi</strong> - Home services reviews</li>
+</ul>
+
+<h2>Features</h2>
+
+<h3>AI Features (BYOK)</h3>
+<ul>
+<li><strong>Claude AI Analysis</strong> - Deep sentiment analysis using Claude claude-sonnet-4-20250514</li>
+<li><strong>Theme Extraction</strong> - Automatic categorization of feedback themes</li>
+<li><strong>Recommendation Engine</strong> - AI-generated improvement suggestions</li>
+<li><strong>Demo Mode</strong> - Test AI features with sample data</li>
+</ul>
+
+<h3>Multi-Platform Aggregation</h3>
+<ul>
+<li>Scrape reviews from multiple platforms in one run</li>
+<li>Unified review format across all sources</li>
+<li>Platform-specific data preserved</li>
+</ul>
+
+<h3>Analytics & Insights</h3>
+<ul>
+<li>Aggregate rating across platforms</li>
+<li>Rating distribution analysis</li>
+<li>Sentiment breakdown (positive/neutral/negative)</li>
+<li>Response rate tracking</li>
+<li>Platform performance comparison</li>
+</ul>
+
+<h3>Filtering & Sorting</h3>
+<ul>
+<li>Filter by minimum/maximum rating</li>
+<li>Filter by date range</li>
+<li>Sort by date, rating, or platform</li>
+<li>Include/exclude owner responses</li>
+</ul>
+
+<h3>Integrations</h3>
+<ul>
+<li><strong>Webhook Support</strong> - POST results to Zapier, Make, n8n</li>
+<li><strong>Demo Mode</strong> - Test without real scraping</li>
+</ul>
+
+<h2>Input Options</h2>
+
+<h3>Required</h3>
+<ul>
+<li><code>businessName</code> - Name of the business</li>
+<li><code>location</code> - City, State or address</li>
+</ul>
+
+<h3>Platform URLs (Optional)</h3>
+<p>Provide direct URLs for faster, more accurate scraping:</p>
+<ul>
+<li><code>googleMapsUrl</code> - Google Maps business URL</li>
+<li><code>yelpUrl</code> - Yelp business page URL</li>
+<li><code>facebookUrl</code> - Facebook page URL (required for FB)</li>
+<li><code>bbbUrl</code> - BBB profile URL</li>
+<li><code>tripAdvisorUrl</code> - TripAdvisor URL</li>
+<li><code>healthgradesUrl</code> - Healthgrades provider profile URL (NEW)</li>
+<li><code>avvoUrl</code> - Avvo attorney profile URL (NEW)</li>
+<li><code>opentableUrl</code> - OpenTable restaurant URL (NEW)</li>
+</ul>
+
+<h3>Configuration</h3>
+<ul>
+<li><code>platforms</code> - Which platforms to scrape</li>
+<li><code>maxReviewsPerPlatform</code> - Limit reviews per platform</li>
+<li><code>includeResponses</code> - Include owner responses</li>
+<li><code>minRating</code> / <code>maxRating</code> - Filter by rating</li>
+<li><code>sortBy</code> - Sort results</li>
+<li><code>outputFormat</code> - Combined or by platform</li>
+</ul>
+
+<h3>BYOK (Bring Your Own Keys)</h3>
+<ul>
+<li><code>serpApiKey</code> - Enhanced Google scraping</li>
+<li><code>yelpApiKey</code> - Official Yelp Fusion API</li>
+</ul>
+
+<h2>Output</h2>
+
+<h3>Dataset</h3>
+<p>Combined review data with:</p>
+<ul>
+<li>Reviewer name and avatar</li>
+<li>Rating and review text</li>
+<li>Date posted</li>
+<li>Owner response (if available)</li>
+<li>Platform identification</li>
+</ul>
+
+<h3>Key-Value Store</h3>
+<ul>
+<li><code>REVIEW_REPORT</code> - Complete aggregated report</li>
+<li><code>SENTIMENT_REPORT</code> - Sentiment analysis with recommendations</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<h3>Reputation Monitoring</h3>
+<p>Track reviews across all platforms to maintain your online reputation.</p>
+
+<h3>Competitor Analysis</h3>
+<p>Compare your review profile to competitors.</p>
+
+<h3>Response Management</h3>
+<p>Identify reviews needing responses, prioritize by sentiment.</p>
+
+<h3>Trend Analysis</h3>
+<p>Track review sentiment over time.</p>
+
+<h3>Client Reporting</h3>
+<p>Generate comprehensive review reports for clients.</p>
+
+<h2>Best Practices</h2>
+
+<p>1. <strong>Provide Direct URLs</strong> when possible for more accurate results</p>
+<p>2. <strong>Run Regularly</strong> to catch new reviews quickly</p>
+<p>3. <strong>Focus on Negatives</strong> - Set maxRating: 3 to find issues fast</p>
+<p>4. <strong>Track Response Rate</strong> - Aim for 100% response rate</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li>Some platforms require authentication for full data</li>
+<li>Review counts may vary from platform totals</li>
+<li>Rate limiting may affect large scrapes</li>
+</ul>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 reviews from 3 platforms: $0.10 + (50 × $0.01) + (3 × $0.02) = <strong>$0.66</strong></li>
+<li>200 reviews from 5 platforms: $0.10 + (200 × $0.01) + (5 × $0.02) = <strong>$2.20</strong></li>
+</ul>
+
+<h2>Author</h2>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>review scraper, multi-platform reviews, google reviews scraper, yelp scraper, tripadvisor scraper, review aggregation, reputation monitoring, zapier integration, make integration, n8n integration</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

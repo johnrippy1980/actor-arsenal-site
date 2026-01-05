@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageSpeed Intelligence Complete Web Performance Analysis w/AI | Actor Arsenal</title>
+    <meta name="description" content="PageSpeed Intelligence combines:
+Google PageSpeed Insights - Real-user CrUX data + lab metrics
+Lighthouse Audits - Detailed performance, accessibility, SEO audi">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-intelligence" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/pagespeed-intelligence.png" alt="PageSpeed Intelligence Complete Web Performance Analysis w/AI" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">PageSpeed Intelligence Complete Web Performance Analysis w/AI</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">PageSpeed Intelligence combines:
+Google PageSpeed Insights - Real-user CrUX data + lab metrics
+Lighthouse Audits - Detailed performance, accessibility, SEO audits
+Tech Stack Detection - Identify CMS, frameworks, analytics, CDN, hosting
+AI Recommendations - Actionable advice tailored to your stack</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-intelligence" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>PageSpeed Intelligence - Complete Website Performance Analysis with AI</h1>
+
+<blockquote><strong>PSI + Lighthouse + Tech Stack + AI Recommendations in One Actor</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Why This Actor Exists</h2>
+
+<p>Most performance tools give you data without context. You get a list of issues, but no guidance on <em>what to actually do</em> based on your specific tech stack.</p>
+
+<strong>PageSpeed Intelligence</strong> combines:
+
+<p>1. <strong>Google PageSpeed Insights</strong> - Real-user CrUX data + lab metrics</p>
+<p>2. <strong>Lighthouse Audits</strong> - Detailed performance, accessibility, SEO audits</p>
+<p>3. <strong>Tech Stack Detection</strong> - Identify CMS, frameworks, analytics, CDN, hosting</p>
+<p>4. <strong>AI Recommendations</strong> - Actionable optimization advice tailored to your stack</p>
+
+<p>---</p>
+
+<h2>What Makes This Different</h2>
+
+<h3>The Problem with Generic Recommendations</h3>
+
+<p>"Reduce JavaScript execution time" is useless advice if you don't know:</p>
+<ul>
+<li>Are they using React, Vue, or vanilla JS?</li>
+<li>Is the site on WordPress with heavy plugins?</li>
+<li>Are they using a CDN?</li>
+<li>What analytics/tracking scripts are loading?</li>
+</ul>
+
+<h3>Stack-Aware Recommendations</h3>
+
+<p>This actor detects 50+ technologies and provides recommendations that actually make sense:</p>
+
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>1. Client Onboarding Audits</h3>
+<p>Run a comprehensive performance audit in minutes instead of hours. Get a complete picture of their site's performance, tech stack, and prioritized recommendations.</p>
+
+<h3>2. Competitor Analysis</h3>
+<p>Compare performance metrics and tech stacks across multiple competitors. Identify what high-performing competitors are doing differently.</p>
+
+<h3>3. Performance Optimization Projects</h3>
+<p>Get a prioritized list of issues with estimated impact, specific to their technology stack.</p>
+
+<h3>4. Pre/Post Optimization Reports</h3>
+<p>Document before and after metrics to show the ROI of performance work.</p>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Full Analysis</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"strategy": "both",</p>
+<p>"includePageSpeedInsights": true,</p>
+<p>"includeLighthouse": true,</p>
+<p>"includeTechStack": true,</p>
+<p>"includeAIRecommendations": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Tech Stack Only</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"includeTechStack": true,</p>
+<p>"includePageSpeedInsights": false,</p>
+<p>"includeLighthouse": false</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Batch Competitor Analysis</h3>
+
+<pre><code>{
+<p>"urls": [</p>
+<p>"https://yoursite.com",</p>
+<p>"https://competitor1.com",</p>
+<p>"https://competitor2.com"</p>
+<p>],</p>
+<p>"strategy": "mobile"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: With Webhook</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 5: Demo Mode (Free Testing)</h3>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Either <code>url</code> or <code>urls</code> is required (unless using <code>demoMode</code>)</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"overallScore": 78,</p>
+
+<p>"pageSpeedInsights": {</p>
+<p>"mobile": {</p>
+<p>"performanceScore": 72,</p>
+<p>"hasFieldData": true,</p>
+<p>"coreWebVitals": {</p>
+<p>"lcp": { "value": 2.8, "rating": "needs-improvement" },</p>
+<p>"fid": { "value": 45, "rating": "good" },</p>
+<p>"cls": { "value": 0.15, "rating": "needs-improvement" }</p>
+<p>}</p>
+<p>},</p>
+<p>"desktop": {</p>
+<p>"performanceScore": 89,</p>
+<p>"hasFieldData": true,</p>
+<p>"coreWebVitals": {</p>
+<p>"lcp": { "value": 1.2, "rating": "good" },</p>
+<p>"fid": { "value": 12, "rating": "good" },</p>
+<p>"cls": { "value": 0.02, "rating": "good" }</p>
+<p>}</p>
+<p>}</p>
+<p>},</p>
+
+<p>"lighthouse": {</p>
+<p>"performance": 72,</p>
+<p>"accessibility": 85,</p>
+<p>"bestPractices": 92,</p>
+<p>"seo": 98,</p>
+<p>"opportunities": [</p>
+<p>{</p>
+<p>"id": "render-blocking-resources",</p>
+<p>"title": "Eliminate render-blocking resources",</p>
+<p>"potentialSavings": "1,450ms"</p>
+<p>}</p>
+<p>],</p>
+<p>"diagnostics": [...]</p>
+<p>},</p>
+
+<p>"techStack": {</p>
+<p>"cms": "WordPress 6.4",</p>
+<p>"ecommerce": "WooCommerce 8.3",</p>
+<p>"framework": null,</p>
+<p>"analytics": ["Google Analytics 4", "Meta Pixel", "Hotjar"],</p>
+<p>"cdn": "Cloudflare",</p>
+<p>"hosting": "WP Engine",</p>
+<p>"security": ["Cloudflare WAF", "SSL"],</p>
+<p>"marketing": ["HubSpot", "Mailchimp"],</p>
+<p>"other": ["Google Tag Manager", "reCAPTCHA"]</p>
+<p>},</p>
+
+<p>"recommendations": [</p>
+<p>{</p>
+<p>"priority": 1,</p>
+<p>"category": "performance",</p>
+<p>"issue": "Large Contentful Paint is slow on mobile (2.8s)",</p>
+<p>"recommendation": "For WordPress + WooCommerce: Enable LiteSpeed Cache or WP Rocket with preload feature. Consider implementing Cloudflare APO for full-page edge caching.",</p>
+<p>"estimatedImpact": "high",</p>
+<p>"difficulty": "medium"</p>
+<p>},</p>
+<p>{</p>
+<p>"priority": 2,</p>
+<p>"category": "performance",</p>
+<p>"issue": "Multiple analytics scripts blocking render",</p>
+<p>"recommendation": "Move GA4, Meta Pixel, and Hotjar to Google Tag Manager with delayed loading. Use GTM's trigger on 'DOM Ready' or 'Window Loaded' instead of 'Page View'.",</p>
+<p>"estimatedImpact": "medium",</p>
+<p>"difficulty": "low"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Tech Stack Detection</h2>
+
+<p>This actor detects 50+ technologies across these categories:</p>
+
+
+<p>---</p>
+
+<h2>AI Recommendations</h2>
+
+<p>When <code>includeAIRecommendations</code> is enabled (default), the actor generates:</p>
+
+<p>1. <strong>Prioritized Action Items</strong> - Ranked by impact and difficulty</p>
+<p>2. <strong>Stack-Specific Advice</strong> - Recommendations that work with your tech</p>
+<p>3. <strong>Quick Wins</strong> - Low-effort, high-impact changes</p>
+<p>4. <strong>Strategic Improvements</strong> - Larger projects worth planning</p>
+
+<h3>Without Anthropic API Key</h3>
+<p>Uses rule-based recommendations based on detected tech stack.</p>
+
+<h3>With Anthropic API Key</h3>
+<p>Uses Claude to generate more nuanced, context-aware recommendations.</p>
+
+<p>---</p>
+
+<h2>Webhook Integration</h2>
+
+<h3>Webhook Payload</h3>
+
+<pre><code>{
+<p>"event": "analysis_complete",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"actor": "pagespeed-intelligence",</p>
+<p>"runId": "abc123",</p>
+<p>"status": "success",</p>
+<p>"summary": {</p>
+<p>"urlsAnalyzed": 3,</p>
+<p>"avgPerformanceScore": 76,</p>
+<p>"criticalIssues": 4,</p>
+<p>"recommendations": 12</p>
+<p>},</p>
+<p>"results": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Integration Examples</h3>
+
+<strong>Zapier</strong>: Send results to Google Sheets, notify Slack on critical issues
+<strong>Make</strong>: Build complex workflows with conditional actions
+<strong>n8n</strong>: Self-hosted automation with full control
+
+<p>---</p>
+
+<h2>API Usage</h2>
+
+<h3>Using the Apify API</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/pagespeed-intelligence').call({</p>
+<p>url: 'https://example.com',</p>
+<p>strategy: 'both',</p>
+<p>includeAIRecommendations: true</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items[0].recommendations);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~pagespeed-intelligence/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"url": "https://example.com",</p>
+<p>"strategy": "mobile",</p>
+<p>"includeAIRecommendations": true</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Perfect For</h2>
+
+<h3>SEO Agencies</h3>
+<ul>
+<li>Client onboarding audits in minutes</li>
+<li>Monthly performance reporting</li>
+<li>Competitor analysis with tech stack comparison</li>
+</ul>
+
+<h3>Web Developers</h3>
+<ul>
+<li>Pre-launch performance checks</li>
+<li>Optimization project planning</li>
+<li>Stack-aware debugging</li>
+</ul>
+
+<h3>Marketing Teams</h3>
+<ul>
+<li>Landing page performance optimization</li>
+<li>A/B test impact analysis</li>
+<li>Tracking script audit</li>
+</ul>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<ul>
+<li><strong>Demo Mode</strong>: Free (sample data, no API calls)</li>
+<li><strong>Standard Usage</strong>: Apify compute units only</li>
+<li><strong>With API Keys</strong>: Higher rate limits, enhanced AI recommendations</li>
+</ul>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>CrUX Data</strong>: Requires sufficient traffic (may not be available for new sites)</li>
+<li><strong>Tech Detection</strong>: Some obfuscated or custom technologies may not be detected</li>
+<li><strong>AI Recommendations</strong>: Quality depends on Anthropic API availability</li>
+</ul>
+
+<p>---</p>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><strong>PageSpeed Insights</strong> - Simpler, PSI-only version without tech stack or AI</li>
+<li><strong>Google Lighthouse Checker</strong> - Detailed Lighthouse audits with custom configs</li>
+<li><strong>Tech Stack Scraper</strong> - Standalone tech stack detection</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>pagespeed insights, lighthouse audit, core web vitals, tech stack detection, website performance, seo audit, web performance optimization, crux data, chrome ux report, lcp optimization, ai recommendations, wordpress performance, shopify speed, react optimization, next.js performance</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripadvisor Scraper | Actor Arsenal</title>
+    <meta name="description" content="Scrape TripAdvisor business listings, traveler reviews, bubble ratings, and photos. Perfect for hotels, restaurants, attractions, and vacation rentals. Bubble R">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/tripadvisor-scraper" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/tripadvisor-scraper.png" alt="Tripadvisor Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Tripadvisor Scraper</h1>
+                    <span class="actor-category">Travel</span>
+                    <p class="actor-description">Scrape TripAdvisor business listings, traveler reviews, bubble ratings, and photos. Perfect for hotels, restaurants, attractions, and vacation rentals. Bubble Ratings, Review Volume, Global Coverage, Rich Details, Verified Reviews: Authentic traveler experiences</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/tripadvisor-scraper" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>TripAdvisor Business Scraper</h1>
+
+<blockquote>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>Scrape TripAdvisor business listings, traveler reviews, bubble ratings, and photos. Perfect for hotels, restaurants, attractions, and vacation rentals.</p>
+
+<h2>Why TripAdvisor Data is Valuable</h2>
+
+<p>TripAdvisor is the world's largest travel platform:</p>
+<ul>
+<li><strong>Bubble Ratings</strong>: 1-5 bubble ratings from millions of travelers</li>
+<li><strong>Review Volume</strong>: Extensive traveler reviews with trip details</li>
+<li><strong>Global Coverage</strong>: Businesses in every country and city</li>
+<li><strong>Rich Details</strong>: Amenities, rankings, price levels, photos</li>
+<li><strong>Verified Reviews</strong>: Authentic traveler experiences</li>
+</ul>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Profile Scraping</strong>: Get complete business profile data</li>
+<li><strong>Search</strong>: Find businesses by name, type, and location</li>
+<li><strong>Review Extraction</strong>: Scrape traveler reviews with ratings and trip types</li>
+<li><strong>Photo URLs</strong>: Extract traveler and business photos</li>
+<li><strong>Multi-Category</strong>: Hotels, restaurants, attractions, vacation rentals</li>
+<li><strong>Bulk Processing</strong>: Scrape multiple listings efficiently</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Competitive Analysis</strong>: Compare ratings across properties</li>
+<li><strong>Lead Generation</strong>: Find hotels/restaurants in specific destinations</li>
+<li><strong>Reputation Monitoring</strong>: Track your TripAdvisor presence</li>
+<li><strong>Market Research</strong>: Analyze travel industry trends</li>
+<li><strong>Review Aggregation</strong>: Combine TripAdvisor data with other platforms</li>
+<li><strong>Pricing Intelligence</strong>: Track competitor pricing</li>
+</ul>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Output</h2>
+
+<h3>Listing Output</h3>
+
+<pre><code>{
+<p>"businessName": "Grand Oceanview Resort",</p>
+<p>"tripAdvisorUrl": "https://www.tripadvisor.com/Hotel_Review-g123-d456789-Reviews-Grand_Oceanview_Resort.html",</p>
+<p>"tripAdvisorId": "456789",</p>
+<p>"businessType": "Hotel",</p>
+<p>"rating": 4.5,</p>
+<p>"reviewCount": 1247,</p>
+<p>"priceLevel": "$$$$",</p>
+<p>"ranking": "#3 of 45 hotels in Orlando",</p>
+<p>"categories": ["Resort", "Luxury Hotel"],</p>
+<p>"address": {</p>
+<p>"street": "100 Ocean Drive",</p>
+<p>"city": "Orlando",</p>
+<p>"state": "FL",</p>
+<p>"country": "United States",</p>
+<p>"postalCode": "32801"</p>
+<p>},</p>
+<p>"coordinates": {</p>
+<p>"latitude": 28.5383,</p>
+<p>"longitude": -81.3792</p>
+<p>},</p>
+<p>"phone": "+1 407-555-1234",</p>
+<p>"website": "https://grandoceanviewresort.com",</p>
+<p>"email": "info@grandoceanviewresort.com",</p>
+<p>"amenities": [</p>
+<p>"Free WiFi",</p>
+<p>"Pool",</p>
+<p>"Spa",</p>
+<p>"Restaurant on Site",</p>
+<p>"Parking Available"</p>
+<p>],</p>
+<p>"photos": [</p>
+<p>"https://media-cdn.tripadvisor.com/media/photo-o/abc123.jpg",</p>
+<p>"https://media-cdn.tripadvisor.com/media/photo-o/def456.jpg"</p>
+<p>],</p>
+<p>"reviews": [</p>
+<p>{</p>
+<p>"reviewId": "rev123",</p>
+<p>"rating": 5,</p>
+<p>"title": "Amazing experience!",</p>
+<p>"text": "We had the most wonderful time here...",</p>
+<p>"author": "TravelLover2024",</p>
+<p>"authorLocation": "Chicago, Illinois",</p>
+<p>"date": "December 2024",</p>
+<p>"tripType": "Family",</p>
+<p>"helpful": 24</p>
+<p>}</p>
+<p>],</p>
+<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Example Usage</h2>
+
+<h3>Scrape Single Listing</h3>
+
+<pre><code>{
+<p>"scrapeType": "business_profile",</p>
+<p>"businessUrl": "https://www.tripadvisor.com/Hotel_Review-g123-d456789-Reviews-Example_Hotel.html",</p>
+<p>"includeReviews": true,</p>
+<p>"maxReviewsPerBusiness": 50</p>
+<p>}</p>
+</code></pre>
+
+<h3>Search for Hotels</h3>
+
+<pre><code>{
+<p>"scrapeType": "search",</p>
+<p>"searchTerm": "beach resort",</p>
+<p>"location": "Miami Beach, FL",</p>
+<p>"businessType": "hotels",</p>
+<p>"minRating": 4.0,</p>
+<p>"maxResults": 100</p>
+<p>}</p>
+</code></pre>
+
+<h3>Search for Restaurants</h3>
+
+<pre><code>{
+<p>"scrapeType": "search",</p>
+<p>"searchTerm": "Italian restaurant",</p>
+<p>"location": "New York, NY",</p>
+<p>"businessType": "restaurants",</p>
+<p>"minRating": 4.5,</p>
+<p>"maxResults": 50</p>
+<p>}</p>
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 hotels with 20 reviews each: $0.10 + (50 × $0.03) + (1000 × $0.003) = <strong>$4.60</strong></li>
+<li>100 restaurants, no reviews: $0.10 + (100 × $0.03) = <strong>$3.10</strong></li>
+</ul>
+
+<h2>Rate Limiting & Best Practices</h2>
+
+<ul>
+<li>Built-in delays to respect TripAdvisor servers</li>
+<li>Residential proxy required for reliability</li>
+<li>Maximum 500 listings per run</li>
+<li>Reviews limited to prevent excessive requests</li>
+</ul>
+
+<h2>Data Accuracy Notes</h2>
+
+<ul>
+<li>Ratings are real-time bubble ratings</li>
+<li>Review counts may change frequently</li>
+<li>Rankings are location-specific</li>
+<li>Some listings have limited public data</li>
+</ul>
+
+<h2>Legal Considerations</h2>
+
+<ul>
+<li>Use data for legitimate business purposes</li>
+<li>Comply with TripAdvisor Terms of Service</li>
+<li>Do not use for spam or fake reviews</li>
+<li>Respect robots.txt guidelines</li>
+</ul>
+
+<h2>Integration</h2>
+
+<p>Export data to:</p>
+<ul>
+<li>Google Sheets</li>
+<li>CSV/Excel</li>
+<li>CRM systems (via webhook)</li>
+<li>Databases (via API)</li>
+</ul>
+
+<h2>Support</h2>
+
+<p>For issues or feature requests, contact support.</p>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>tripadvisor scraper, travel reviews scraper, hotel reviews, restaurant reviews, tripadvisor data extraction</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation API - Bulk Verify | Actor Arsenal</title>
+    <meta name="description" content="Validate email addresses at scale. Check deliverability, detect disposable emails, verify MX records & identify role-based addresses. Reduce bounce rates.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/email-validation-api" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/email-validation-api.png" alt="Email Validation API - Bulk Verify" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Email Validation API - Bulk Verify</h1>
+                    <span class="actor-category">Lead Generation</span>
+                    <p class="actor-description">Validate email addresses at scale. Check deliverability, detect disposable emails, verify MX records & identify role-based addresses. Reduce bounce rates.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/email-validation-api" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Email Validation API</h1>
+
+<blockquote><strong>"Stop Paying $0.008 Per Email"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Stop Paying for Expensive Email Validation Services</h2>
+
+<strong>You're currently paying:</strong> ZeroBounce ($0.008/email), NeverBounce ($0.008/email), Hunter.io ($0.01/email), Clearout ($0.006/email).
+
+<strong>What if you could validate emails for less?</strong>
+
+<p>The <strong>Email Validation API</strong> provides comprehensive email validation at a fraction of the cost:</p>
+
+<ul>
+<li>Syntax validation (RFC-compliant)</li>
+<li>MX record verification</li>
+<li>SPF/DMARC detection</li>
+<li>Disposable email detection (1,000+ domains)</li>
+<li>Free provider identification (Gmail, Yahoo, Outlook, etc.)</li>
+<li>Role-based address detection (info@, support@, sales@)</li>
+<li>Deliverability scoring (0-100)</li>
+<li>Bulk validation support</li>
+</ul>
+
+<strong>Pay only for what you use.</strong> No monthly subscriptions. No minimum commitments.
+
+<p>---</p>
+
+<h2>Why Choose This Over Traditional Validators</h2>
+
+<h3>1. Pay-Per-Email, Not Per-Month</h3>
+
+<p>Traditional tools: $50-$500/month for your agency.</p>
+
+<p>This actor: Pay per validation. Validate 1,000 emails for ~$5. Validate 10,000 for ~$40.</p>
+
+<strong>Validate 50,000 emails/month and still pay less than a ZeroBounce subscription.</strong>
+
+<h3>2. Comprehensive Checks in One API Call</h3>
+
+<p>Stop making multiple API calls. Get syntax, MX, SPF, DMARC, deliverability, and risk flags in one response.</p>
+
+<p>Feed it directly into your CRM, email platform, or lead generation workflow.</p>
+
+<h3>3. Real-Time or Bulk Mode</h3>
+
+<ul>
+<li><strong>Real-time</strong>: Validate emails at point of entry (forms, signups)</li>
+<li><strong>Bulk</strong>: Clean entire lists before campaigns</li>
+<li><strong>Webhook</strong>: Get results delivered automatically when done</li>
+</ul>
+
+<h3>4. No False Positives</h3>
+
+<p>Unlike basic validators, we check actual MX records and authentication protocols. If an email passes, it's deliverable.</p>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Validate Single Email</h3>
+
+<pre><code>{
+<p>"emails": ["john.doe@gmail.com"],</p>
+<p>"checkMx": true,</p>
+<p>"checkDisposable": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Bulk Validation (Lead List)</h3>
+
+<pre><code>{
+<p>"emails": [</p>
+<p>"lead1@company.com",</p>
+<p>"lead2@startup.io",</p>
+<p>"lead3@enterprise.net"</p>
+<p>],</p>
+<p>"checkMx": true,</p>
+<p>"checkSmtp": false,</p>
+<p>"checkDisposable": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: With Webhook (Zapier/Make/n8n)</h3>
+
+<pre><code>{
+<p>"emails": ["lead@example.com"],</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
+<p>}</p>
+</code></pre>
+
+<p>Results automatically POST to your webhook when complete.</p>
+
+<p>---</p>
+
+<h2>Features</h2>
+
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<p>Each validated email returns structured JSON:</p>
+
+<pre><code>{
+<p>"email": "john.doe@gmail.com",</p>
+<p>"isValid": true,</p>
+<p>"syntax": {</p>
+<p>"isValid": true,</p>
+<p>"localPart": "john.doe",</p>
+<p>"domain": "gmail.com"</p>
+<p>},</p>
+<p>"domain": {</p>
+<p>"name": "gmail.com",</p>
+<p>"hasMx": true,</p>
+<p>"mxRecords": [</p>
+<p>{"exchange": "gmail-smtp-in.l.google.com", "priority": 5}</p>
+<p>],</p>
+<p>"hasSpf": true,</p>
+<p>"hasDmarc": true</p>
+<p>},</p>
+<p>"deliverability": {</p>
+<p>"isDeliverable": true,</p>
+<p>"reason": null</p>
+<p>},</p>
+<p>"flags": {</p>
+<p>"isDisposable": false,</p>
+<p>"isFreeProvider": true,</p>
+<p>"isRoleBased": false,</p>
+<p>"isCatchAll": null</p>
+<p>},</p>
+<p>"score": 95,</p>
+<p>"checkedAt": "2025-12-23T12:00:00.000Z"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Scoring System</h2>
+
+<p>The quality score (0-100) is calculated based on:</p>
+
+
+<strong>Score Interpretation:</strong>
+<ul>
+<li><strong>90-100</strong>: Excellent - High confidence, proceed with outreach</li>
+<li><strong>70-89</strong>: Good - Likely valid, safe to email</li>
+<li><strong>50-69</strong>: Fair - Some risk, consider verification</li>
+<li><strong>Below 50</strong>: Poor - High risk, avoid sending</li>
+</ul>
+
+<p>---</p>
+
+<h2>Pay-Per-Event Pricing</h2>
+
+<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+
+
+<h3>Cost Examples</h3>
+
+
+<strong>Save 40-60% compared to traditional email validation services.</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>Lead Generation & Sales</h3>
+<ul>
+<li><strong>List cleaning</strong>: Validate purchased lists before campaigns</li>
+<li><strong>Form validation</strong>: Real-time validation at point of entry</li>
+<li><strong>CRM hygiene</strong>: Maintain clean customer databases</li>
+<li><strong>Bounce prevention</strong>: Avoid damaging sender reputation</li>
+</ul>
+
+<h3>Marketing Agencies</h3>
+<ul>
+<li><strong>Campaign prep</strong>: Clean client lists before sends</li>
+<li><strong>Deliverability optimization</strong>: Improve open rates</li>
+<li><strong>List monetization</strong>: Validate before selling leads</li>
+</ul>
+
+<h3>E-commerce & SaaS</h3>
+<ul>
+<li><strong>Signup validation</strong>: Reduce fake accounts</li>
+<li><strong>Fraud prevention</strong>: Detect disposable emails</li>
+<li><strong>Customer verification</strong>: Ensure valid contact info</li>
+</ul>
+
+<h3>Developers</h3>
+<ul>
+<li><strong>API integration</strong>: RESTful JSON responses</li>
+<li><strong>Webhook support</strong>: Async processing for large lists</li>
+<li><strong>Batch processing</strong>: Validate thousands in parallel</li>
+</ul>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API (JavaScript)</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/email-validation-api').call({</p>
+<p>emails: ['lead1@company.com', 'lead2@startup.io'],</p>
+<p>checkMx: true,</p>
+<p>checkDisposable: true</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~email-validation-api/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"emails": ["lead@example.com"],</p>
+<p>"checkMx": true,</p>
+<p>"checkDisposable": true</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Webhook Integration (Zapier, Make, n8n)</h2>
+
+<h3>Webhook Payload Format</h3>
+
+<p>When validation completes, we POST:</p>
+
+<pre><code>{
+<p>"event": "validation_completed",</p>
+<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
+<p>"actor": "email-validation-api",</p>
+<p>"runId": "abc123",</p>
+<p>"totalEmails": 100,</p>
+<p>"validEmails": 87,</p>
+<p>"invalidEmails": 13,</p>
+<p>"results": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Zapier Setup</h3>
+
+<p>1. Create a new Zap with "Webhooks by Zapier" as trigger</p>
+<p>2. Select "Catch Hook"</p>
+<p>3. Copy the webhook URL</p>
+<p>4. Paste into the <code>webhookUrl</code> field when running the actor</p>
+<p>5. Add actions: Update CRM, send to Mailchimp, Slack notification, etc.</p>
+
+<p>---</p>
+
+<h2>Disposable Email Detection</h2>
+
+<p>We detect 1,000+ disposable email domains including:</p>
+
+<ul>
+<li>Guerrilla Mail, 10MinuteMail, TempMail</li>
+<li>Mailinator, Discard.email, Throwaway.email</li>
+<li>YOPmail, Sharklasers, Maildrop</li>
+<li>And 990+ more...</li>
+</ul>
+
+<strong>Updated weekly</strong> to catch new disposable domains.
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>SMTP Check</strong>: Some mail servers block SMTP verification; results may be inconclusive</li>
+<li><strong>Catch-All</strong>: Domains with catch-all enabled always appear deliverable</li>
+<li><strong>Rate Limiting</strong>: Built-in delays to avoid being blocked</li>
+<li><strong>Privacy</strong>: We don't store email addresses after validation</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Email</strong>: john@johnrippy.link</li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li><strong>GitHub</strong>: Report issues on the repository</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>email validation, email verifier, email checker, bulk email validation, email list cleaning, disposable email detection, mx record check, email deliverability, zeroBounce alternative, neverbounce alternative, hunter.io alternative, email hygiene, lead validation, crm data cleaning, email bounce prevention</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

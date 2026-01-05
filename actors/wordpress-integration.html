@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Integration - Auto Publisher | Actor Arsenal</title>
+    <meta name="description" content="Automatically publish content to WordPress sites. Schedule posts, manage categories, upload media & sync with your content calendar. REST API & XML-RPC support.">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/wordpress-integration" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/wordpress-integration.png" alt="WordPress Integration - Auto Publisher" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">WordPress Integration - Auto Publisher</h1>
+                    <span class="actor-category">Automation</span>
+                    <p class="actor-description">Automatically publish content to WordPress sites. Schedule posts, manage categories, upload media & sync with your content calendar. REST API & XML-RPC support.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/wordpress-integration" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>WordPress Integration</h1>
+
+<blockquote><strong>"Auto-Publish to WordPress from Anywhere"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Seamless WordPress Publishing via REST API</h2>
+
+<strong>Stop manually copying content into WordPress.</strong> This actor auto-publishes posts, pages, and custom post types directly via the WordPress REST API.
+
+<strong>What can you do with this?</strong>
+
+<ul>
+<li>Create blog posts with featured images</li>
+<li>Publish pages with custom templates</li>
+<li>Update existing content</li>
+<li>Schedule posts for future publishing</li>
+<li>Support for custom post types (WooCommerce products, portfolios, etc.)</li>
+<li>Batch publish multiple pieces at once</li>
+</ul>
+
+<strong>Automate your WordPress publishing workflow.</strong>
+
+<p>---</p>
+
+<h2>Why Use This?</h2>
+
+<h3>1. Connect Any Data Source to WordPress</h3>
+
+<p>Combine with other Apify actors to build powerful content pipelines:</p>
+
+<ul>
+<li><strong>AI-generated content</strong> → WordPress posts</li>
+<li><strong>Scraped news articles</strong> → WordPress aggregation site</li>
+<li><strong>Product data</strong> → WooCommerce products</li>
+<li><strong>Social media content</strong> → Cross-posted blog posts</li>
+</ul>
+
+<h3>2. No Plugin Required</h3>
+
+<p>Uses native WordPress REST API. Works with any WordPress site with REST API enabled (WordPress 4.7+).</p>
+
+<h3>3. Full Content Control</h3>
+
+<ul>
+<li>Set categories and tags</li>
+<li>Add featured images</li>
+<li>Set meta fields (SEO plugins, custom fields)</li>
+<li>Control post status (draft, publish, schedule)</li>
+<li>Custom post types supported</li>
+</ul>
+
+<h3>4. Webhook Notifications</h3>
+
+<p>Get notified when posts are published. Integrate with Zapier, Make, n8n.</p>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Publish a Blog Post</h3>
+
+<pre><code>{
+<p>"action": "create_post",</p>
+<p>"wordpressUrl": "https://your-site.com",</p>
+<p>"authType": "application_password",</p>
+<p>"username": "your-username",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
+<p>"posts": [</p>
+<p>{</p>
+<p>"title": "My First Automated Post",</p>
+<p>"content": "&lt;p&gt;This post was created automatically via API!&lt;/p&gt;",</p>
+<p>"status": "publish",</p>
+<p>"categories": ["Technology", "Automation"],</p>
+<p>"tags": ["apify", "wordpress", "api"]</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Schedule a Post for Later</h3>
+
+<pre><code>{
+<p>"action": "create_post",</p>
+<p>"wordpressUrl": "https://your-site.com",</p>
+<p>"authType": "application_password",</p>
+<p>"username": "admin",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
+<p>"posts": [</p>
+<p>{</p>
+<p>"title": "Scheduled Post",</p>
+<p>"content": "&lt;p&gt;This will go live on New Year's Day!&lt;/p&gt;",</p>
+<p>"status": "future",</p>
+<p>"date": "2025-01-01T09:00:00"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Create Page with Featured Image</h3>
+
+<pre><code>{
+<p>"action": "create_page",</p>
+<p>"wordpressUrl": "https://your-site.com",</p>
+<p>"authType": "application_password",</p>
+<p>"username": "admin",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
+<p>"posts": [</p>
+<p>{</p>
+<p>"title": "About Us",</p>
+<p>"content": "&lt;h2&gt;Our Story&lt;/h2&gt;&lt;p&gt;We started in 2020...&lt;/p&gt;",</p>
+<p>"status": "publish",</p>
+<p>"featuredImageUrl": "https://example.com/team-photo.jpg",</p>
+<p>"template": "page-about"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: Batch Create Multiple Posts</h3>
+
+<pre><code>{
+<p>"action": "create_post",</p>
+<p>"wordpressUrl": "https://your-site.com",</p>
+<p>"authType": "application_password",</p>
+<p>"username": "admin",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
+<p>"posts": [</p>
+<p>{</p>
+<p>"title": "Post 1",</p>
+<p>"content": "&lt;p&gt;First post content...&lt;/p&gt;",</p>
+<p>"status": "draft"</p>
+<p>},</p>
+<p>{</p>
+<p>"title": "Post 2",</p>
+<p>"content": "&lt;p&gt;Second post content...&lt;/p&gt;",</p>
+<p>"status": "draft"</p>
+<p>},</p>
+<p>{</p>
+<p>"title": "Post 3",</p>
+<p>"content": "&lt;p&gt;Third post content...&lt;/p&gt;",</p>
+<p>"status": "draft"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Authentication Methods</h2>
+
+<h3>Application Passwords (Recommended)</h3>
+
+<p>1. Go to <strong>Users → Profile</strong> in WordPress admin</p>
+<p>2. Scroll to <strong>Application Passwords</strong></p>
+<p>3. Enter a name (e.g., "Apify Integration")</p>
+<p>4. Click <strong>Add New Application Password</strong></p>
+<p>5. Copy the generated password</p>
+
+<pre><code>{
+<p>"authType": "application_password",</p>
+<p>"username": "your-username",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Basic Auth (with Plugin)</h3>
+
+<p>Requires the <a href="https://wordpress.org/plugins/application-passwords/" target="_blank" rel="noopener">Application Passwords</a> plugin for WordPress < 5.6.</p>
+
+<pre><code>{
+<p>"authType": "basic",</p>
+<p>"username": "your-username",</p>
+<p>"password": "your-password"</p>
+<p>}</p>
+</code></pre>
+
+<h3>JWT Token</h3>
+
+<p>Requires the <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/" target="_blank" rel="noopener">JWT Authentication</a> plugin.</p>
+
+<pre><code>{
+<p>"authType": "jwt",</p>
+<p>"jwtToken": "your-jwt-token"</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<h3>Post Object Properties</h3>
+
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"success": true,</p>
+<p>"action": "create_post",</p>
+<p>"totalPosts": 3,</p>
+<p>"created": 3,</p>
+<p>"failed": 0,</p>
+<p>"results": [</p>
+<p>{</p>
+<p>"title": "My First Automated Post",</p>
+<p>"postId": 1234,</p>
+<p>"postType": "post",</p>
+<p>"status": "publish",</p>
+<p>"url": "https://your-site.com/my-first-automated-post/",</p>
+<p>"publishedAt": "2025-12-23T12:00:00.000Z"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pay-Per-Event Pricing</h2>
+
+<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+
+
+<h3>Cost Examples</h3>
+
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>Content Automation</h3>
+<ul>
+<li><strong>AI content pipeline</strong>: Generate → publish automatically</li>
+<li><strong>News aggregation</strong>: Scrape → format → publish</li>
+<li><strong>Content repurposing</strong>: Transform and publish across sites</li>
+</ul>
+
+<h3>Blog Networks</h3>
+<ul>
+<li><strong>Multi-site publishing</strong>: Push content to multiple WordPress sites</li>
+<li><strong>Syndication</strong>: Republish content across network</li>
+<li><strong>Guest posting</strong>: Automate contributor workflow</li>
+</ul>
+
+<h3>E-commerce (WooCommerce)</h3>
+<ul>
+<li><strong>Product imports</strong>: Create products from data sources</li>
+<li><strong>Inventory updates</strong>: Sync stock levels</li>
+<li><strong>Price updates</strong>: Batch update pricing</li>
+</ul>
+
+<h3>SEO & Marketing</h3>
+<ul>
+<li><strong>Programmatic SEO</strong>: Create location/keyword pages at scale</li>
+<li><strong>Landing pages</strong>: Generate from templates</li>
+<li><strong>A/B testing</strong>: Create page variants</li>
+</ul>
+
+<p>---</p>
+
+<h2>Webhook Integration</h2>
+
+<h3>Webhook Payload</h3>
+
+<pre><code>{
+<p>"event": "publish_completed",</p>
+<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
+<p>"actor": "wordpress-integration",</p>
+<p>"wordpressSite": "https://your-site.com",</p>
+<p>"action": "create_post",</p>
+<p>"totalPosts": 5,</p>
+<p>"created": 5,</p>
+<p>"failed": 0,</p>
+<p>"results": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Common Automations</h3>
+
+<ul>
+<li><strong>Slack notification</strong>: Alert team when posts go live</li>
+<li><strong>Google Sheets</strong>: Log all published content</li>
+<li><strong>Social sharing</strong>: Auto-post to social when WordPress publishes</li>
+<li><strong>Analytics tracking</strong>: Log publish events</li>
+</ul>
+
+<p>---</p>
+
+<h2>API Integration</h2>
+
+<h3>Using the Apify API (JavaScript)</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/wordpress-integration').call({</p>
+<p>action: 'create_post',</p>
+<p>wordpressUrl: 'https://your-site.com',</p>
+<p>authType: 'application_password',</p>
+<p>username: 'admin',</p>
+<p>applicationPassword: 'xxxx xxxx xxxx xxxx xxxx xxxx',</p>
+<p>posts: [</p>
+<p>{</p>
+<p>title: 'Automated Post',</p>
+<p>content: '&lt;p&gt;Published via API&lt;/p&gt;',</p>
+<p>status: 'publish'</p>
+<p>}</p>
+<p>]</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items[0]);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~wordpress-integration/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"action": "create_post",</p>
+<p>"wordpressUrl": "https://your-site.com",</p>
+<p>"authType": "application_password",</p>
+<p>"username": "admin",</p>
+<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
+<p>"posts": [</p>
+<p>{</p>
+<p>"title": "API Test Post",</p>
+<p>"content": "&lt;p&gt;Created via cURL&lt;/p&gt;",</p>
+<p>"status": "draft"</p>
+<p>}</p>
+<p>]</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>WordPress 4.7+ (REST API enabled)</li>
+<li>Application Passwords enabled (WordPress 5.6+ has this built-in)</li>
+<li>User with appropriate publishing permissions</li>
+<li>REST API accessible (not blocked by security plugins)</li>
+</ul>
+
+<p>---</p>
+
+<h2>Troubleshooting</h2>
+
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>Rate limits</strong>: WordPress may limit rapid requests</li>
+<li><strong>Image size</strong>: Large images may timeout</li>
+<li><strong>Custom fields</strong>: Requires meta fields registered in WordPress</li>
+<li><strong>Multisite</strong>: Each site needs separate configuration</li>
+</ul>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Email</strong>: john@johnrippy.link</li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li><strong>GitHub</strong>: Report issues on the repository</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>wordpress api, wordpress automation, wordpress rest api, auto publish wordpress, wordpress integration, blog automation, content automation, wordpress headless cms, wordpress programmatic publishing, woocommerce api, batch wordpress publishing, wordpress webhook, zapier wordpress, make wordpress</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

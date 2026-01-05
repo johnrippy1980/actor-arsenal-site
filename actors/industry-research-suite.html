@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Research Suite - Market Intelligence API | Actor Arsenal</title>
+    <meta name="description" content="Comprehensive industry research combining Google Trends, US Census Bureau, SBA.gov, IBISWorld & Statista. Get market size, growth rates, competitor analysis & A">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-suite" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/industry-research-suite.png" alt="Industry Research Suite - Market Intelligence API" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Industry Research Suite - Market Intelligence API</h1>
+                    <span class="actor-category">Ai</span>
+                    <p class="actor-description">Comprehensive industry research combining Google Trends, US Census Bureau, SBA.gov, IBISWorld & Statista. Get market size, growth rates, competitor analysis & AI-powered executive summaries for any industry or NAICS code.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/industry-research-suite" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Industry Research Suite - Market Intelligence API</h1>
+
+<strong>"Market Intelligence from Multiple Data Sources"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Comprehensive industry research and market intelligence powered by multiple data sources and AI analysis. Get actionable insights for any industry or market segment.</p>
+
+<h2>Data Sources</h2>
+
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Multi-Source Aggregation</strong>: Combine data from 5+ authoritative sources</li>
+<li><strong>AI-Powered Summaries</strong>: Executive summaries using Claude, GPT-4, or Gemini (BYOK)</li>
+<li><strong>NAICS Classification</strong>: Target specific industries using official classification codes</li>
+<li><strong>Geographic Focus</strong>: National, state, or city-level research</li>
+<li><strong>Trend Analysis</strong>: Historical data and future projections</li>
+<li><strong>Competitive Intelligence</strong>: Market size, growth rates, key players</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<h3>Free Sources (No API Key Required)</h3>
+
+<p>1. <strong>Google Trends</strong>: Automatically included</p>
+<p>2. <strong>Census Bureau</strong>: Uses public API endpoints</p>
+<p>3. <strong>SBA.gov</strong>: Uses public developer API</p>
+
+<h3>Premium Sources (BYOK)</h3>
+
+<p>#### IBISWorld API</p>
+<p>1. Go to <a href="https://www.ibisworld.com/access/api/" target="_blank" rel="noopener">IBISWorld API Access</a></p>
+<p>2. Contact sales for API credentials</p>
+<p>3. Enter your API key in the actor input</p>
+
+<p>#### Statista API</p>
+<p>1. Visit <a href="https://www.statista.com/accounts/individuals" target="_blank" rel="noopener">Statista Accounts</a></p>
+<p>2. Subscribe to a plan with API access</p>
+<p>3. Generate API key in your account settings</p>
+
+<h3>AI Summary Providers (BYOK)</h3>
+
+
+<h2>Input Parameters</h2>
+
+<h3>Research Configuration</h3>
+
+
+<h3>Data Source Settings</h3>
+
+
+<h3>AI Summary Settings</h3>
+
+
+<h2>Example Input</h2>
+
+<pre><code>{
+<p>"industry": "Digital Marketing Agencies",</p>
+<p>"location": "United States",</p>
+<p>"keywords": ["SEO", "PPC", "social media marketing"],</p>
+<p>"dataSources": {</p>
+<p>"googleTrends": true,</p>
+<p>"censusBureau": true,</p>
+<p>"sba": true,</p>
+<p>"ibisworld": true,</p>
+<p>"statista": false</p>
+<p>},</p>
+<p>"googleTrendsTimeframe": "past_year",</p>
+<p>"ibisWorldApiKey": "YOUR_IBISWORLD_KEY",</p>
+<p>"aiSummary": true,</p>
+<p>"aiProvider": "claude",</p>
+<p>"anthropicApiKey": "YOUR_ANTHROPIC_KEY"</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output</h2>
+
+<pre><code>{
+<p>"industry": "Digital Marketing Agencies",</p>
+<p>"naicsCode": "541810",</p>
+<p>"location": "United States",</p>
+<p>"generatedAt": "2024-12-24T10:30:00Z",</p>
+<p>"dataSources": ["googleTrends", "censusBureau", "sba", "ibisworld"],</p>
+
+<p>"googleTrends": {</p>
+<p>"interestOverTime": [...],</p>
+<p>"relatedQueries": [...],</p>
+<p>"geographicBreakdown": [...]</p>
+<p>},</p>
+
+<p>"censusBureau": {</p>
+<p>"businessCount": 45000,</p>
+<p>"employeeCount": 350000,</p>
+<p>"annualPayroll": "$28.5B",</p>
+<p>"demographicData": {...}</p>
+<p>},</p>
+
+<p>"sba": {</p>
+<p>"smallBusinessCount": 42000,</p>
+<p>"averageRevenue": "$1.2M",</p>
+<p>"loanData": {...}</p>
+<p>},</p>
+
+<p>"ibisworld": {</p>
+<p>"marketSize": "$65.2B",</p>
+<p>"growthRate": "8.5%",</p>
+<p>"majorPlayers": [...],</p>
+<p>"industryOutlook": "..."</p>
+<p>},</p>
+
+<p>"aiSummary": {</p>
+<p>"provider": "claude",</p>
+<p>"executiveSummary": "The digital marketing agency industry...",</p>
+<p>"keyInsights": [...],</p>
+<p>"opportunities": [...],</p>
+<p>"threats": [...],</p>
+<p>"recommendations": [...]</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h2>Use Cases</h2>
+
+<h3>Business Planning</h3>
+<ul>
+<li>Market size and growth potential</li>
+<li>Competitive landscape analysis</li>
+<li>Investment opportunity assessment</li>
+</ul>
+
+<h3>Sales & Marketing</h3>
+<ul>
+<li>Target market identification</li>
+<li>Industry trend monitoring</li>
+<li>Lead qualification research</li>
+</ul>
+
+<h3>Due Diligence</h3>
+<ul>
+<li>M&A research</li>
+<li>Investor presentations</li>
+<li>Business valuation support</li>
+</ul>
+
+<h3>Consulting</h3>
+<ul>
+<li>Client industry analysis</li>
+<li>Strategic planning support</li>
+<li>Market entry research</li>
+</ul>
+
+<h2>Census Bureau Data Available</h2>
+
+<ul>
+<li><strong>County Business Patterns</strong>: Establishment counts, employment, payroll</li>
+<li><strong>Annual Business Survey</strong>: Minority/women-owned business data</li>
+<li><strong>Economic Census</strong>: Detailed industry statistics (every 5 years)</li>
+<li><strong>Population Estimates</strong>: Demographics for market sizing</li>
+</ul>
+
+<h2>SBA Data Available</h2>
+
+<ul>
+<li><strong>Small Business Profiles</strong>: State-by-state statistics</li>
+<li><strong>Loan Data</strong>: SBA lending by industry and location</li>
+<li><strong>Size Standards</strong>: Official small business definitions by NAICS</li>
+<li><strong>Contracting Data</strong>: Government procurement by industry</li>
+</ul>
+
+<h2>NAICS Code Reference</h2>
+
+<p>Common industry codes for research:</p>
+
+
+<p>Find more at <a href="https://www.census.gov/naics/" target="_blank" rel="noopener">census.gov/naics</a></p>
+
+<h2>Pricing</h2>
+
+
+<h2>Pro Tips</h2>
+
+<p>1. <strong>Use NAICS Codes</strong>: More precise than text searches for official data</p>
+<p>2. <strong>Combine Sources</strong>: Cross-reference trends with census data</p>
+<p>3. <strong>AI Summaries</strong>: Let AI synthesize insights from multiple sources</p>
+<p>4. <strong>Geographic Focus</strong>: Start broad, then narrow to specific markets</p>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><a href="https://apify.com/localhowl/local-business-intelligence-suite" target="_blank" rel="noopener">Local Business Intelligence Suite</a> - Local SEO intelligence</li>
+<li><a href="https://apify.com/localhowl/google-trends-scraper" target="_blank" rel="noopener">Google Trends Scraper</a> - Dedicated trends analysis</li>
+<li><a href="https://apify.com/localhowl/competitor-monitor" target="_blank" rel="noopener">Competitor Monitor</a> - Competitive intelligence</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Issues</strong>: Open a GitHub issue</li>
+<li><strong>Questions</strong>: Contact via LinkedIn</li>
+</ul>
+
+<h2>Keywords</h2>
+
+<p>Industry research, market intelligence, Google Trends, Census Bureau, SBA, IBISWorld, Statista, market analysis, business research, NAICS, industry reports, market size, competitive analysis, AI summary, Claude, GPT-4, Gemini, business intelligence, market research API</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageSpeed Insights - Core Web Vitals & Real User Metrics | Actor Arsenal</title>
+    <meta name="description" content="PageSpeed Insights actor uses Google's PageSpeed Insights API to get:
+Real-World Field Data from Chrome UX Report (CrUX)
+Lab Data from Lighthouse
+Core Web Vital">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-insights" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/pagespeed-insights.png" alt="PageSpeed Insights - Core Web Vitals & Real User Metrics" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">PageSpeed Insights - Core Web Vitals & Real User Metrics</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">PageSpeed Insights actor uses Google's PageSpeed Insights API to get:
+Real-World Field Data from Chrome UX Report (CrUX)
+Lab Data from Lighthouse
+Core Web Vitals - LCP, FID/INP, CLS, FCP, TTFB, TBT
+Performance Scores - 0-100 scores for Performance, Accessibility, Best Practices, SEO
+Mobile & Desktop</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-insights" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>PageSpeed Insights - Core Web Vitals & Real User Metrics</h1>
+
+<blockquote><strong>Get real-world performance data from Chrome users</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>What This Actor Does</h2>
+
+<p>The <strong>PageSpeed Insights</strong> actor provides access to Google's PageSpeed Insights API to get:</p>
+
+<ul>
+<li><strong>Real-World Field Data</strong> from Chrome UX Report (CrUX) - actual user experience metrics</li>
+<li><strong>Lab Data</strong> from Lighthouse - synthetic performance audits</li>
+<li><strong>Core Web Vitals</strong> - LCP, FID/INP, CLS, FCP, TTFB, TBT</li>
+<li><strong>Performance Scores</strong> - 0-100 scores for Performance, Accessibility, Best Practices, SEO</li>
+<li><strong>Mobile & Desktop</strong> analysis in a single run</li>
+</ul>
+
+<p>---</p>
+
+<h2>Why Use This Actor?</h2>
+
+<h3>Real User Data vs Lab Data</h3>
+
+<p>Most performance tools only give you <strong>lab data</strong> - synthetic tests run in controlled conditions. This actor gives you <strong>field data</strong> from the Chrome UX Report (CrUX), which represents actual user experiences from millions of Chrome users over a 28-day rolling window.</p>
+
+
+<h3>Core Web Vitals Explained</h3>
+
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>SEO Audits</strong> - Core Web Vitals are a Google ranking factor</li>
+<li><strong>Performance Monitoring</strong> - Track real-user experience over time</li>
+<li><strong>Competitor Analysis</strong> - Compare your site's performance vs competitors</li>
+<li><strong>Client Reporting</strong> - Include CrUX data in SEO reports</li>
+<li><strong>Before/After Analysis</strong> - Measure impact of performance optimizations</li>
+</ul>
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Single URL Analysis</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"strategy": "both"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Batch URL Analysis</h3>
+
+<pre><code>{
+<p>"urls": [</p>
+<p>"https://example.com",</p>
+<p>"https://competitor1.com",</p>
+<p>"https://competitor2.com"</p>
+<p>],</p>
+<p>"strategy": "mobile"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: With Webhook (Zapier/Make/n8n)</h3>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"strategy": "both",</p>
+<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: Demo Mode (Free Testing)</h3>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*Either <code>url</code> or <code>urls</code> is required (unless using <code>demoMode</code>)</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+<p>"url": "https://example.com",</p>
+<p>"strategy": "mobile",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"hasFieldData": true,</p>
+<p>"performanceScore": 85,</p>
+<p>"accessibilityScore": 92,</p>
+<p>"bestPracticesScore": 100,</p>
+<p>"seoScore": 98,</p>
+<p>"coreWebVitals": {</p>
+<p>"lcp": {</p>
+<p>"value": 2.1,</p>
+<p>"unit": "seconds",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>},</p>
+<p>"fid": {</p>
+<p>"value": 45,</p>
+<p>"unit": "milliseconds",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>},</p>
+<p>"cls": {</p>
+<p>"value": 0.05,</p>
+<p>"unit": "score",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>},</p>
+<p>"fcp": {</p>
+<p>"value": 1.2,</p>
+<p>"unit": "seconds",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>},</p>
+<p>"ttfb": {</p>
+<p>"value": 0.4,</p>
+<p>"unit": "seconds",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>},</p>
+<p>"inp": {</p>
+<p>"value": 120,</p>
+<p>"unit": "milliseconds",</p>
+<p>"rating": "good",</p>
+<p>"source": "field"</p>
+<p>}</p>
+<p>},</p>
+<p>"labData": {</p>
+<p>"lcp": 2.3,</p>
+<p>"tbt": 150,</p>
+<p>"cls": 0.02,</p>
+<p>"fcp": 1.4,</p>
+<p>"speedIndex": 2.8</p>
+<p>},</p>
+<p>"audits": {</p>
+<p>"passed": 42,</p>
+<p>"failed": 3,</p>
+<p>"opportunities": [</p>
+<p>{</p>
+<p>"id": "render-blocking-resources",</p>
+<p>"title": "Eliminate render-blocking resources",</p>
+<p>"potentialSavings": "1.2s"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Webhook Integration</h2>
+
+<h3>Webhook Payload Format</h3>
+
+<p>When the analysis completes, results are POSTed to your webhook:</p>
+
+<pre><code>{
+<p>"event": "pagespeed_analysis_complete",</p>
+<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
+<p>"actor": "pagespeed-insights",</p>
+<p>"runId": "abc123",</p>
+<p>"urlsAnalyzed": 3,</p>
+<p>"status": "success",</p>
+<p>"results": [...]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Zapier Setup</h3>
+
+<p>1. Create a new Zap with "Webhooks by Zapier" as trigger</p>
+<p>2. Select "Catch Hook"</p>
+<p>3. Copy the webhook URL</p>
+<p>4. Add to <code>webhookUrl</code> input parameter</p>
+<p>5. Add actions: Send to Google Sheets, Slack, email, etc.</p>
+
+<p>---</p>
+
+<h2>API Usage</h2>
+
+<h3>Using the Apify API</h3>
+
+<pre><code>import { ApifyClient } from 'apify-client';
+
+<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
+
+<p>const run = await client.actor('localhowl/pagespeed-insights').call({</p>
+<p>urls: ['https://example.com', 'https://competitor.com'],</p>
+<p>strategy: 'both'</p>
+<p>});</p>
+
+<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
+<p>console.log(items);</p>
+</code></pre>
+
+<h3>Using cURL</h3>
+
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~pagespeed-insights/runs?token=YOUR_API_TOKEN" \
+<p>-H "Content-Type: application/json" \</p>
+<p>-d '{</p>
+<p>"url": "https://example.com",</p>
+<p>"strategy": "mobile"</p>
+<p>}'</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses the <strong>Google PageSpeed Insights API</strong> which is free for most usage. Apify platform usage is billed separately based on compute units used.</p>
+
+<ul>
+<li><strong>Demo Mode</strong>: Free (no API calls, uses sample data)</li>
+<li><strong>With API Key</strong>: Higher rate limits from Google</li>
+<li><strong>Without API Key</strong>: Standard rate limits apply</li>
+</ul>
+
+<p>---</p>
+
+<h2>Limitations</h2>
+
+<ul>
+<li><strong>Rate Limiting</strong>: Without an API key, Google limits requests. Add your own API key for higher limits.</li>
+<li><strong>CrUX Data Availability</strong>: Field data requires sufficient traffic to your site. New or low-traffic sites may only have lab data.</li>
+<li><strong>Historical Data</strong>: CrUX represents a 28-day rolling window, not point-in-time snapshots.</li>
+</ul>
+
+<p>---</p>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><strong>PageSpeed Intelligence</strong> - Combines PSI with Lighthouse, Tech Stack detection, and AI recommendations</li>
+<li><strong>Google Lighthouse Checker</strong> - Detailed Lighthouse audits with custom configurations</li>
+</ul>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>pagespeed insights, core web vitals, crux data, chrome ux report, lcp, fid, cls, inp, lighthouse, web performance, seo audit, page speed, google pagespeed api, website performance monitoring, real user metrics, field data</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

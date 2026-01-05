@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBP Competitor Monitor | Actor Arsenal</title>
+    <meta name="description" content="Stay ahead of the competition by monitoring their Google Business Profile (GBP), formerly Google My Business (GMB), activity. Know when competitors get new revi">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/competitor-monitor" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/competitor-monitor.png" alt="GBP Competitor Monitor" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">GBP Competitor Monitor</h1>
+                    <span class="actor-category">Seo Tools</span>
+                    <p class="actor-description">Stay ahead of the competition by monitoring their Google Business Profile (GBP), formerly Google My Business (GMB), activity. Know when competitors get new reviews, post updates, or change their listings.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/competitor-monitor" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>AI-Enhanced Competitor Monitor v2.0</h1>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<blockquote>AI-Powered Competitive Intelligence with Claude AI Strategic Analysis</blockquote>
+
+<p>Track local competitor GBP changes, reviews, rankings, Google Ads activity, and social media presence with AI-powered strategic recommendations.</p>
+
+<h2>Features</h2>
+
+<h3>Core Competitor Tracking</h3>
+<ul>
+<li><strong>Multi-Competitor Tracking</strong> - Monitor up to 20 competitors</li>
+<li><strong>Review Monitoring</strong> - New reviews, rating changes, response patterns</li>
+<li><strong>Post Tracking</strong> - GBP post frequency and content themes</li>
+<li><strong>Profile Change Detection</strong> - Hours, photos, descriptions, categories</li>
+<li><strong>Comparison Dashboard</strong> - Your business vs competitors</li>
+<li><strong>Smart Alerts</strong> - Get notified of significant changes</li>
+</ul>
+
+<h3>v2.0 Enhanced Features</h3>
+<ul>
+<li><strong>Keyword Rankings</strong> - Track local SERP positions for target keywords</li>
+<li><strong>Google Ads Detection</strong> - Discover if competitors are running ads</li>
+<li><strong>Social Media Discovery</strong> - Find competitor profiles on Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok</li>
+</ul>
+
+<h3>AI Analysis (BYOK - Bring Your Own Key)</h3>
+<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
+
+<ul>
+<li><strong>Strategic Summary</strong> - AI analyzes all competitor data and provides actionable insights</li>
+<li><strong>Threat Assessment</strong> - Prioritized list of competitive threats to address</li>
+<li><strong>Opportunity Identification</strong> - Market opportunities based on competitor gaps</li>
+<li><strong>Recommended Actions</strong> - Specific next steps ranked by impact</li>
+<li><strong>Competition Score</strong> - 0-100 overall competitive position rating</li>
+</ul>
+
+<h2>Quick Start</h2>
+
+<h3>Basic Usage (No AI)</h3>
+<pre><code>{
+<p>"yourBusiness": {</p>
+<p>"name": "Acme Plumbing",</p>
+<p>"placeId": "ChIJ..."</p>
+<p>},</p>
+<p>"competitors": [</p>
+<p>{ "name": "Bob's Plumbing", "placeId": "ChIJ..." },</p>
+<p>{ "name": "Quick Fix Plumbers", "searchQuery": "Quick Fix Plumbers Dallas TX" }</p>
+<p>],</p>
+<p>"trackReviews": true,</p>
+<p>"trackPosts": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>With AI Analysis (BYOK)</h3>
+<pre><code>{
+<p>"yourBusiness": {</p>
+<p>"name": "Acme Plumbing",</p>
+<p>"placeId": "ChIJ...",</p>
+<p>"website": "https://acmeplumbing.com"</p>
+<p>},</p>
+<p>"competitors": [</p>
+<p>{ "name": "Bob's Plumbing", "placeId": "ChIJ..." }</p>
+<p>],</p>
+<p>"trackReviews": true,</p>
+<p>"trackRankings": true,</p>
+<p>"targetKeywords": ["plumber", "emergency plumber", "drain cleaning"],</p>
+<p>"targetLocation": "Dallas, TX",</p>
+<p>"detectGoogleAds": true,</p>
+<p>"trackSocialMedia": true,</p>
+<p>"anthropicApiKey": "sk-ant-...",</p>
+<p>"enableAiAnalysis": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Demo Mode</h3>
+<p>Test without real scraping:</p>
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+
+<h2>Output</h2>
+
+<h3>Standard Output (Per Competitor)</h3>
+<pre><code>{
+<p>"competitor": "Bob's Plumbing",</p>
+<p>"placeId": "ChIJ...",</p>
+<p>"monitorDate": "2024-12-26T00:00:00.000Z",</p>
+<p>"currentState": {</p>
+<p>"rating": 4.5,</p>
+<p>"reviewCount": 156,</p>
+<p>"photoCount": 42,</p>
+<p>"lastPost": "2024-12-25",</p>
+<p>"category": "Plumber",</p>
+<p>"website": "https://bobsplumbing.com"</p>
+<p>},</p>
+<p>"rankings": {</p>
+<p>"plumber dallas": { "position": 3, "inLocalPack": true },</p>
+<p>"emergency plumber": { "position": 7, "inLocalPack": false }</p>
+<p>},</p>
+<p>"googleAds": {</p>
+<p>"detected": true,</p>
+<p>"adCopy": "24/7 Emergency Plumbing - Call Now!"</p>
+<p>},</p>
+<p>"socialProfiles": {</p>
+<p>"facebook": "https://facebook.com/bobsplumbing",</p>
+<p>"instagram": "https://instagram.com/bobsplumbing"</p>
+<p>},</p>
+<p>"changes": [</p>
+<p>{</p>
+<p>"type": "new_review",</p>
+<p>"importance": "medium",</p>
+<p>"details": {</p>
+<p>"rating": 5,</p>
+<p>"snippet": "Great service, highly recommend!"</p>
+<p>}</p>
+<p>}</p>
+<p>],</p>
+<p>"comparison": {</p>
+<p>"ratingDiff": -0.2,</p>
+<p>"reviewCountDiff": 14,</p>
+<p>"advantage": "You have more photos, they have more reviews"</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>AI Strategic Analysis Output</h3>
+<p>When AI analysis is enabled, a separate dataset item is pushed:</p>
+
+<pre><code>{
+<p>"type": "ai_strategic_analysis",</p>
+<p>"overallScore": 72,</p>
+<p>"strategicSummary": "Your competitive position is moderately strong. Key threats include Bob's Plumbing's aggressive review acquisition and Quick Fix's Google Ads presence. Opportunities exist in social media engagement and emergency service positioning.",</p>
+<p>"threats": [</p>
+<p>{</p>
+<p>"competitor": "Bob's Plumbing",</p>
+<p>"threat": "Gaining reviews 3x faster than you",</p>
+<p>"priority": "high",</p>
+<p>"recommendation": "Implement post-service review request automation"</p>
+<p>},</p>
+<p>{</p>
+<p>"competitor": "Quick Fix Plumbers",</p>
+<p>"threat": "Running Google Ads on your brand keywords",</p>
+<p>"priority": "medium",</p>
+<p>"recommendation": "Consider defensive brand bidding or SEO optimization"</p>
+<p>}</p>
+<p>],</p>
+<p>"opportunities": [</p>
+<p>{</p>
+<p>"area": "Social Media",</p>
+<p>"insight": "Competitors have minimal Instagram presence",</p>
+<p>"action": "Establish Instagram with before/after project photos"</p>
+<p>},</p>
+<p>{</p>
+<p>"area": "Emergency Services",</p>
+<p>"insight": "No competitor ranks for '24 hour plumber'",</p>
+<p>"action": "Create dedicated landing page for emergency services"</p>
+<p>}</p>
+<p>],</p>
+<p>"recommendedActions": [</p>
+<p>"Set up automated review request system (high impact)",</p>
+<p>"Create Instagram business profile with project portfolio",</p>
+<p>"Optimize for 'emergency plumber' and '24 hour plumber' keywords",</p>
+<p>"Add more service area photos to GBP profile"</p>
+<p>],</p>
+<p>"analyzedAt": "2024-12-26T12:00:00.000Z",</p>
+<p>"competitorsAnalyzed": 5</p>
+<p>}</p>
+</code></pre>
+
+<h2>Change Types & Importance</h2>
+
+
+<h2>Integration (Zapier, Make, n8n)</h2>
+
+<p>This actor supports webhook notifications for easy integration:</p>
+
+<h3>Zapier</h3>
+<p>1. Create a new Zap with "Webhooks by Zapier" as the trigger</p>
+<p>2. Select "Catch Hook" and copy the webhook URL</p>
+<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
+<p>4. Run the actor to send data to your Zap</p>
+
+<h3>Make (Integromat)</h3>
+<p>1. Create a new scenario with "Webhooks" module</p>
+<p>2. Add "Custom webhook" trigger and copy the URL</p>
+<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
+
+<h3>n8n</h3>
+<p>1. Add a "Webhook" node to your workflow</p>
+<p>2. Copy the production webhook URL</p>
+<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+
+<strong>Example costs:</strong>
+<ul>
+<li>5 competitors basic: $0.10 + (5 × $0.03) = <strong>$0.25</strong></li>
+<li>10 competitors with reviews + AI: $0.10 + (10 × $0.03) + (10 × $0.02) = <strong>$0.60</strong> + your Anthropic API usage</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<p>1. <strong>Local SEO Agencies</strong> - Monitor client competitors at scale</p>
+<p>2. <strong>Multi-Location Businesses</strong> - Track competitors in each market</p>
+<p>3. <strong>Franchise Operations</strong> - Competitive intelligence across territories</p>
+<p>4. <strong>Strategy Planning</strong> - Data-driven competitive positioning</p>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>competitor monitoring, competitor analysis, competitive intelligence, ai analysis, claude ai, byok, bring your own key, market tracking, local seo competitor analysis, google ads detection, social media monitoring, keyword rankings, zapier integration, make integration, n8n integration</p>
+
+<p>---</p>
+
+<strong>Part of the Local SEO Automation Suite</strong> - 50+ Apify actors for automating local search optimization.
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

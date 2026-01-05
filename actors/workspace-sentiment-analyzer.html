@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Workspace Sentiment Analyzer | Actor Arsenal</title>
+    <meta name="description" content="Analyze sentiment across your entire Google Workspace. Get company health scores, client relationship insights & team burnout indicators in a single comprehensi">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/workspace-sentiment-analyzer" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/workspace-sentiment-analyzer.png" alt="Google Workspace Sentiment Analyzer" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Google Workspace Sentiment Analyzer</h1>
+                    <span class="actor-category">Ai</span>
+                    <p class="actor-description">Analyze sentiment across your entire Google Workspace. Get company health scores, client relationship insights & team burnout indicators in a single comprehensive report.
+Company Health Score
+Client Sentiment Score
+Team Burnout Indicators
+Client Risk Alerts
+Actionable Recommendations</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/workspace-sentiment-analyzer" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Google Workspace Sentiment Analyzer</h1>
+
+<strong>"Team Communication Health Metrics"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<p>Analyze sentiment across your entire Google Workspace: Gmail, Calendar, Chat, and Docs. Get company health scores, client relationship insights, and team burnout indicators in a single comprehensive report.</p>
+
+<h2>What This Actor Does</h2>
+
+<p>This actor aggregates sentiment analysis from multiple Google Workspace sources to provide:</p>
+
+<ul>
+<li><strong>Company Health Score</strong>: Overall communication health across your organization</li>
+<li><strong>Client Sentiment Score</strong>: How your external communications are trending</li>
+<li><strong>Team Burnout Indicators</strong>: Early warning signs of team overload</li>
+<li><strong>Client Risk Alerts</strong>: Identify at-risk client relationships</li>
+<li><strong>Actionable Recommendations</strong>: Prioritized steps to improve communication health</li>
+</ul>
+
+<h2>Data Sources</h2>
+
+
+<h2>Perfect For</h2>
+
+<ul>
+<li><strong>Operations Leaders</strong>: Monitor organizational communication health</li>
+<li><strong>Customer Success Teams</strong>: Track client relationship sentiment</li>
+<li><strong>HR/People Teams</strong>: Identify burnout risks early</li>
+<li><strong>Executives</strong>: Get high-level Workspace intelligence</li>
+<li><strong>Agency Owners</strong>: Monitor client relationship health</li>
+</ul>
+
+<h2>Input Examples</h2>
+
+<h3>Demo Mode (No Credentials Required)</h3>
+
+<pre><code>{
+<p>"demoMode": true,</p>
+<p>"dateRange": "last_7_days",</p>
+<p>"dataSources": ["gmail", "calendar"],</p>
+<p>"includeClientSegments": true,</p>
+<p>"includeBurnoutIndicators": true</p>
+<p>}</p>
+</code></pre>
+
+<h3>Real Mode with Google OAuth</h3>
+
+<pre><code>{
+<p>"demoMode": false,</p>
+<p>"accessToken": "ya29.your-access-token",</p>
+<p>"refreshToken": "your-refresh-token",</p>
+<p>"clientId": "your-client-id.apps.googleusercontent.com",</p>
+<p>"clientSecret": "your-client-secret",</p>
+<p>"companyDomain": "yourcompany.com",</p>
+<p>"dateRange": "last_14_days",</p>
+<p>"dataSources": ["gmail", "calendar"],</p>
+<p>"includeClientSegments": true,</p>
+<p>"includeBurnoutIndicators": true</p>
+<p>}</p>
+</code></pre>
+
+<h2>Output</h2>
+
+<h3>Summary</h3>
+
+<pre><code>{
+<p>"summary": {</p>
+<p>"companyHealthScore": 60,</p>
+<p>"clientSentimentScore": 62,</p>
+<p>"teamBurnoutRisk": "medium",</p>
+<p>"dataSourcesAnalyzed": ["gmail", "calendar"],</p>
+<p>"dateRange": "last_7_days"</p>
+<p>}</p>
+<p>}</p>
+</code></pre>
+
+<h3>Client Segments</h3>
+
+<pre><code>{
+<p>"clientSegments": [</p>
+<p>{</p>
+<p>"domain": "acmecorp.com",</p>
+<p>"overallSentiment": 78,</p>
+<p>"trend": "improving",</p>
+<p>"riskLevel": "low"</p>
+<p>},</p>
+<p>{</p>
+<p>"domain": "troubledclient.com",</p>
+<p>"overallSentiment": 35,</p>
+<p>"trend": "declining",</p>
+<p>"riskLevel": "high"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Burnout Indicators</h3>
+
+<pre><code>{
+<p>"burnoutIndicators": [</p>
+<p>{</p>
+<p>"metric": "After-Hours Email Activity",</p>
+<p>"value": 18,</p>
+<p>"threshold": 15,</p>
+<p>"status": "warning",</p>
+<p>"description": "18% of emails sent outside business hours"</p>
+<p>},</p>
+<p>{</p>
+<p>"metric": "Meeting Load",</p>
+<p>"value": 28,</p>
+<p>"threshold": 25,</p>
+<p>"status": "warning",</p>
+<p>"description": "28 hours/week in meetings"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h3>Alerts & Recommendations</h3>
+
+<pre><code>{
+<p>"alerts": [</p>
+<p>{</p>
+<p>"type": "client_risk",</p>
+<p>"severity": "critical",</p>
+<p>"message": "1 client(s) at high risk: troubledclient.com",</p>
+<p>"action": "Schedule immediate check-in calls"</p>
+<p>}</p>
+<p>],</p>
+<p>"recommendations": [</p>
+<p>{</p>
+<p>"priority": "high",</p>
+<p>"category": "Client Retention",</p>
+<p>"action": "Schedule recovery calls with at-risk clients",</p>
+<p>"impact": "Prevent potential client churn"</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+</code></pre>
+
+<h2>Scoring System</h2>
+
+<h3>Company Health Score (0-100)</h3>
+
+
+<h3>Burnout Risk Levels</h3>
+
+
+<h2>Google OAuth Setup</h2>
+
+<h3>Required Scopes</h3>
+
+<pre><code>https://www.googleapis.com/auth/gmail.readonly
+<p>https://www.googleapis.com/auth/calendar.readonly</p>
+</code></pre>
+
+<h3>Setup Steps</h3>
+
+<p>1. Create a Google Cloud project</p>
+<p>2. Enable Gmail API and Calendar API</p>
+<p>3. Configure OAuth consent screen</p>
+<p>4. Create OAuth credentials</p>
+<p>5. Get access token via OAuth flow</p>
+
+<h2>Limitations (Apify Version)</h2>
+
+<ul>
+<li>Point-in-time snapshot (no historical trends)</li>
+<li>Single user mailbox only</li>
+<li>Manual OAuth token management</li>
+<li>Limited to 100 items per source</li>
+<li>No real-time monitoring</li>
+</ul>
+
+<h2>Enterprise Version</h2>
+
+<p>For continuous monitoring and team-wide insights:</p>
+
+<strong><a href="https://meeting.localhowl.com/workspace-intelligence" target="_blank" rel="noopener">Workspace Intelligence by LocalHowl</a></strong>
+
+<p>Enterprise features:</p>
+<ul>
+<li>Real-time OAuth connection (no token management)</li>
+<li>Continuous monitoring & Slack/Teams alerts</li>
+<li>Historical trend analysis over months</li>
+<li>Team-wide and department rollups</li>
+<li>Executive dashboards</li>
+<li>Client health CRM integration</li>
+<li>SSO/SAML authentication</li>
+<li>Dedicated support</li>
+</ul>
+
+<h2>Use Cases</h2>
+
+<h3>1. Weekly Health Check</h3>
+
+<p>Run weekly to get a pulse on company communication:</p>
+
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
+<p>dateRange: "last_7_days",</p>
+<p>dataSources: ["gmail", "calendar"]</p>
+<p>});</p>
+
+<p>if (result.summary.companyHealthScore &lt; 60) {</p>
+<p>// Send alert to leadership</p>
+<p>}</p>
+</code></pre>
+
+<h3>2. Client Relationship Monitoring</h3>
+
+<p>Track client sentiment before quarterly reviews:</p>
+
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
+<p>companyDomain: "mycompany.com",</p>
+<p>dateRange: "last_30_days",</p>
+<p>includeClientSegments: true</p>
+<p>});</p>
+
+<p>const atRiskClients = result.clientSegments.filter(c =&gt; c.riskLevel === "high");</p>
+</code></pre>
+
+<h3>3. Burnout Prevention</h3>
+
+<p>Monitor team health metrics:</p>
+
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
+<p>includeBurnoutIndicators: true</p>
+<p>});</p>
+
+<p>if (result.summary.teamBurnoutRisk === "high") {</p>
+<p>// Implement intervention measures</p>
+<p>}</p>
+</code></pre>
+
+<h2>Privacy & Security</h2>
+
+<ul>
+<li>Uses Google OAuth 2.0 with read-only scopes</li>
+<li>Analyzes metadata and snippets only</li>
+<li>No full email/document content stored</li>
+<li>All analysis is aggregated, not individual</li>
+<li>Compliant with Google's API usage policies</li>
+</ul>
+
+<h2>Related Actors</h2>
+
+<ul>
+<li><strong><a href="https://apify.com/localhowl/gmail-sentiment-scanner" target="_blank" rel="noopener">Gmail Sentiment Scanner</a></strong>: Deep-dive Gmail analysis</li>
+<li><strong><a href="https://apify.com/localhowl/teams-meeting-cost-tracker" target="_blank" rel="noopener">Teams Meeting Cost Tracker</a></strong>: Microsoft Teams analysis</li>
+<li><strong><a href="https://apify.com/localhowl/meeting-culture-score-checker" target="_blank" rel="noopener">Meeting Culture Score Checker</a></strong>: Public meeting culture analysis</li>
+</ul>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>Documentation</strong>: https://meeting.localhowl.com/docs</li>
+<li><strong>Email</strong>: support@localhowl.com</li>
+<li><strong>Issues</strong>: Report bugs or request features</li>
+</ul>
+
+<p>---</p>
+
+<h2>Author</h2>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote><strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
+
+<em>Part of the <a href="https://meeting.localhowl.com" target="_blank" rel="noopener">Workspace Intelligence</a> suite by <a href="https://localhowl.com" target="_blank" rel="noopener">LocalHowl</a></em>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>

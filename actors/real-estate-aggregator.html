@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Aggregator - Multi-Platform | Actor Arsenal</title>
+    <meta name="description" content="Aggregate real estate listings from Zillow, Redfin, Realtor.com & more. Unified data format, deduplication & comprehensive property insights across all major pl">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2, .content h3 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content h1 { font-size: 1.75rem; }
+        .content h2 { font-size: 1.5rem; }
+        .content h3 { font-size: 1.25rem; }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+        .content pre {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/real-estate-aggregator" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="../images/real-estate-aggregator.png" alt="Real Estate Aggregator - Multi-Platform" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Real Estate Aggregator - Multi-Platform</h1>
+                    <span class="actor-category">Real Estate</span>
+                    <p class="actor-description">Aggregate real estate listings from Zillow, Redfin, Realtor.com & more. Unified data format, deduplication & comprehensive property insights across all major platforms.</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/real-estate-aggregator" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Real Estate Aggregator - Zillow + Redfin + Realtor</h1>
+
+<blockquote><strong>Search all major real estate platforms at once</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>The Ultimate Real Estate Data Solution</h2>
+
+<strong>Tired of checking Zillow, Redfin, AND Realtor.com separately?</strong> This actor searches all three platforms simultaneously and <strong>automatically deduplicates listings</strong> that appear on multiple sites.
+
+<h3>What You Get:</h3>
+
+<ul>
+<li><strong>Unified Search</strong>: Query Zillow, Redfin, and Realtor.com in a single run</li>
+<li><strong>Automatic Deduplication</strong>: Same property on 3 sites? You get 1 record with all data merged</li>
+<li><strong>Cross-Platform Enrichment</strong>: Zestimate from Zillow + agent info from Redfin + photos from Realtor</li>
+<li><strong>Price Variance Detection</strong>: Instantly see when the same property is priced differently across platforms</li>
+<li><strong>Source Tracking</strong>: Know which platforms have each listing</li>
+<li><strong>Best-of-Breed Data</strong>: Automatically pulls the best data from each source</li>
+</ul>
+
+<p>---</p>
+
+<h2>Why Aggregation Matters</h2>
+
+<h3>The Problem with Single-Platform Scraping</h3>
+
+
+<strong>If you scrape all three separately, you'll have 2-3x duplicates!</strong>
+
+<h3>The Aggregator Solution</h3>
+
+<p>1. Scrapes all platforms in parallel</p>
+<p>2. Normalizes addresses to USPS standard format</p>
+<p>3. Matches duplicates by normalized address</p>
+<p>4. Merges data from all sources into one record</p>
+<p>5. Flags price discrepancies between platforms</p>
+
+<p>---</p>
+
+<h2>Perfect For</h2>
+
+<h3>Real Estate Investors</h3>
+<ul>
+<li>Get the most complete view of any market</li>
+<li>Catch underpriced listings missed by single-platform searches</li>
+<li>Track price discrepancies for arbitrage opportunities</li>
+</ul>
+
+<h3>Market Researchers</h3>
+<ul>
+<li>Build comprehensive property databases</li>
+<li>Analyze listing coverage across platforms</li>
+<li>Track which properties are cross-listed</li>
+</ul>
+
+<h3>Real Estate Agents</h3>
+<ul>
+<li>Complete competitive market analysis</li>
+<li>Never miss a listing on any platform</li>
+<li>Verify listing data across sources</li>
+</ul>
+
+<h3>Wholesalers</h3>
+<ul>
+<li>Maximum lead coverage</li>
+<li>Find motivated sellers faster</li>
+<li>Identify stale listings across all platforms</li>
+</ul>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<p>Each aggregated listing includes:</p>
+
+<pre><code>{
+<p>"platform": "aggregated",</p>
+<p>"listingId": "AGG-ZL-12345678",</p>
+<p>"addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",</p>
+<p>"price": 1350000,</p>
+<p>"zestimate": 1380000,</p>
+<p>"rentZestimate": 5200,</p>
+<p>"beds": 3,</p>
+<p>"baths": 2,</p>
+<p>"sqft": 1850,</p>
+<p>"sources": ["zillow.com", "redfin.com", "realtor.com"],</p>
+<p>"pricesByPlatform": {</p>
+<p>"zillow.com": 1350000,</p>
+<p>"redfin.com": 1349000,</p>
+<p>"realtor.com": 1355000</p>
+<p>},</p>
+<p>"priceVariance": "$6,000 (0.45%)",</p>
+<p>"allUrls": [</p>
+<p>"https://www.zillow.com/homedetails/...",</p>
+<p>"https://www.redfin.com/CA/...",</p>
+<p>"https://www.realtor.com/..."</p>
+<p>],</p>
+<p>"bestPhotos": ["https://..."],</p>
+<p>"agent": {...},</p>
+<p>"features": [...],</p>
+<p>"priceHistory": [...],</p>
+<p>"taxHistory": [...],</p>
+<p>"scrapedAt": "2025-12-24T12:00:00Z"</p>
+<p>}</p>
+</code></pre>
+
+<h3>Key Aggregation Fields</h3>
+
+
+<p>---</p>
+
+<h2>Quick Start Examples</h2>
+
+<h3>Example 1: Basic City Search (All Platforms)</h3>
+
+<pre><code>{
+<p>"city": "San Francisco, CA",</p>
+<p>"priceMax": 1500000,</p>
+<p>"bedsMin": 3</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 2: Specific Platforms Only</h3>
+
+<pre><code>{
+<p>"city": "Miami, FL",</p>
+<p>"platforms": ["zillow", "redfin"],</p>
+<p>"priceMin": 500000,</p>
+<p>"priceMax": 1000000</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 3: Keep Lowest Price (Arbitrage Strategy)</h3>
+
+<pre><code>{
+<p>"zipCode": "90210",</p>
+<p>"deduplicationStrategy": "keep_lowest_price",</p>
+<p>"maxResultsPerPlatform": 100</p>
+<p>}</p>
+</code></pre>
+
+<h3>Example 4: Demo Mode (Free Testing)</h3>
+
+<pre><code>{
+<p>"demoMode": true</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Input Parameters</h2>
+
+
+<p>*At least one location parameter required</p>
+
+<h3>Deduplication Strategies</h3>
+
+
+<p>---</p>
+
+<h2>How Deduplication Works</h2>
+
+<h3>1. Address Normalization</h3>
+
+<p>All addresses are converted to USPS standard format:</p>
+
+<ul>
+<li><code>123 Main Street, Apt 4</code> → <code>123 MAIN ST APT 4</code></li>
+<li><code>456 Oak Avenue #2B</code> → <code>456 OAK AVE #2B</code></li>
+<li><code>789 N. First Blvd</code> → <code>789 N FIRST BLVD</code></li>
+</ul>
+
+<h3>2. Matching</h3>
+
+<p>Properties with identical normalized addresses are grouped together.</p>
+
+<h3>3. Merging</h3>
+
+<p>Based on your strategy, data is merged:</p>
+
+<ul>
+<li><strong>Price</strong>: From primary source or lowest/highest</li>
+<li><strong>Zestimate</strong>: Always from Zillow (only they have it)</li>
+<li><strong>Photos</strong>: Combined from all sources</li>
+<li><strong>Features</strong>: Union of all features</li>
+<li><strong>Agent</strong>: From most complete source</li>
+</ul>
+
+<h3>4. Variance Detection</h3>
+
+<p>Price differences across platforms are calculated and flagged.</p>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+
+<h3>Why More Than Single-Platform Scrapers?</h3>
+
+<p>The aggregator runs <strong>3 separate scrapers</strong> (Zillow, Redfin, Realtor) and then performs deduplication and enrichment. The $0.10 per unique property includes:</p>
+
+<ul>
+<li>Running 3 platform scrapers ($0.05 × 3 = $0.15 potential)</li>
+<li>Deduplication (often 40-60% overlap = savings)</li>
+<li>Cross-platform enrichment</li>
+<li>Price variance analysis</li>
+</ul>
+
+<strong>Typical savings: 30-50% vs running platforms separately!</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>Investment Property Pipeline</h3>
+
+<pre><code>{
+<p>"city": "Atlanta, GA",</p>
+<p>"propertyTypes": ["multi_family"],</p>
+<p>"priceMax": 500000,</p>
+<p>"maxResultsPerPlatform": 100,</p>
+<p>"deduplicationStrategy": "keep_lowest_price"</p>
+<p>}</p>
+</code></pre>
+
+<p>Find multi-family properties across all platforms, keeping the lowest listed price for each.</p>
+
+<h3>Luxury Home Search</h3>
+
+<pre><code>{
+<p>"city": "Beverly Hills, CA",</p>
+<p>"priceMin": 5000000,</p>
+<p>"bedsMin": 5,</p>
+<p>"platforms": ["zillow", "redfin"]</p>
+<p>}</p>
+</code></pre>
+
+<p>High-end properties with maximum data coverage.</p>
+
+<h3>Rental Market Analysis</h3>
+
+<pre><code>{
+<p>"zipCode": "78701",</p>
+<p>"listingStatus": "for_rent",</p>
+<p>"maxResultsPerPlatform": 200</p>
+<p>}</p>
+</code></pre>
+
+<p>Comprehensive rental inventory in downtown Austin.</p>
+
+<p>---</p>
+
+<h2>Part of the Real Estate Scraper Suite</h2>
+
+
+<p>---</p>
+
+<h2>FAQ</h2>
+
+<h3>How long does it take?</h3>
+
+<p>Typically 3-5 minutes depending on result count. Each platform is scraped in parallel.</p>
+
+<h3>What if one platform fails?</h3>
+
+<p>The aggregator will continue with successful platforms. You'll see which platforms returned data in the output.</p>
+
+<h3>Can I run just 2 platforms?</h3>
+
+<p>Yes! Use the <code>platforms</code> array to specify which ones.</p>
+
+<h3>How accurate is the deduplication?</h3>
+
+<p>Very accurate. Address normalization handles 99%+ of cases. Edge cases (typos, new construction) may occasionally slip through.</p>
+
+<h3>Do I need API keys for each platform?</h3>
+
+<p>No! All platform scrapers use web scraping. No API keys required.</p>
+
+<p>---</p>
+
+<h2>Integrations</h2>
+
+<h3>Zapier/Make/n8n</h3>
+
+<p>Use the Apify integration to trigger this actor and route aggregated listings to:</p>
+
+<ul>
+<li>Google Sheets</li>
+<li>Airtable</li>
+<li>Your CRM</li>
+<li>Email notifications</li>
+</ul>
+
+<h3>Webhooks</h3>
+
+<pre><code>{
+<p>"webhooks": [{</p>
+<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
+<p>"requestUrl": "https://your-app.com/webhook/listings"</p>
+<p>}]</p>
+<p>}</p>
+</code></pre>
+
+<p>---</p>
+
+<h2>Support</h2>
+
+<ul>
+<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
+<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+</ul>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+
+<p>---</p>
+
+<h2>Keywords</h2>
+
+<p>real estate aggregator, property search, zillow redfin realtor combined, multi-platform real estate search, property listing aggregation, real estate data deduplication, combined property search, cross-platform real estate, unified property search, real estate api, property data aggregation, home search all platforms, deduplicated listings, real estate data enrichment, investment property finder, multi-source real estate data</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+</body>
+</html>
