@@ -7,8 +7,17 @@
     <meta name="description" content="The page you're looking for has been slain by demons.">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-yellow: #ffcc00;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -16,13 +25,51 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
             position: relative;
+            background: #0a0a0a;
         }
 
-        /* DOOM Death Screen Pattern - Pixelated blocky background */
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .logo-img { height: 32px; image-rendering: pixelated; }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 2rem 120px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* DOOM Death Screen Pattern */
         .death-screen {
             position: fixed;
             top: 0;
@@ -33,66 +80,7 @@
             background-color: #8B0000;
         }
 
-        /* Generate the blocky death pattern with CSS */
-        .death-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                /* Red blocks */
-                linear-gradient(90deg, #cc3300 0%, #cc3300 100%),
-                /* Orange/tan blocks scattered */
-                radial-gradient(ellipse 80px 60px at 10% 20%, #cc9966 0%, #cc9966 100%),
-                radial-gradient(ellipse 60px 80px at 25% 15%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 100px 70px at 40% 25%, #cc6633 0%, #cc6633 100%),
-                radial-gradient(ellipse 70px 90px at 60% 10%, #cc9966 0%, #cc9966 100%),
-                radial-gradient(ellipse 90px 60px at 80% 20%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 80px 70px at 95% 15%, #cc6633 0%, #cc6633 100%),
-                /* More tan/brown scattered */
-                radial-gradient(ellipse 60px 80px at 5% 45%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 90px 70px at 20% 55%, #cc9966 0%, #cc9966 100%),
-                radial-gradient(ellipse 70px 60px at 35% 40%, #663300 0%, #663300 100%),
-                radial-gradient(ellipse 80px 90px at 50% 50%, #cc6633 0%, #cc6633 100%),
-                radial-gradient(ellipse 60px 70px at 70% 45%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 100px 80px at 85% 55%, #cc9966 0%, #cc9966 100%),
-                /* Bottom section more brown */
-                radial-gradient(ellipse 90px 100px at 15% 80%, #663300 0%, #663300 100%),
-                radial-gradient(ellipse 80px 70px at 30% 90%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 100px 80px at 55% 85%, #663300 0%, #663300 100%),
-                radial-gradient(ellipse 70px 90px at 75% 75%, #996633 0%, #996633 100%),
-                radial-gradient(ellipse 90px 70px at 90% 85%, #663300 0%, #663300 100%);
-            background-size: 100% 100%;
-            opacity: 0.9;
-        }
-
-        /* Pixelated overlay using canvas-like blocks */
-        .pixel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0px,
-                    transparent 20px,
-                    rgba(0,0,0,0.1) 20px,
-                    rgba(0,0,0,0.1) 40px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent 0px,
-                    transparent 20px,
-                    rgba(0,0,0,0.1) 20px,
-                    rgba(0,0,0,0.1) 40px
-                );
-            image-rendering: pixelated;
-        }
-
-        /* SVG for the actual blocky death pattern */
+        /* SVG for the blocky death pattern */
         .doom-death-bg {
             position: absolute;
             top: 0;
@@ -167,6 +155,7 @@
             text-shadow: 2px 2px 0 #000;
             transition: all 0.2s;
             cursor: pointer;
+            margin: 0.5rem;
         }
 
         .home-link:hover {
@@ -177,6 +166,14 @@
 
         .home-link:active {
             transform: translateY(0);
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         /* CRT Scanline effect */
@@ -209,9 +206,145 @@
             z-index: 99;
             background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.6) 100%);
         }
+
+        /* DOOM HUD */
+        .doom-hud {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    #5a5a5a 0px, #5a5a5a 2px,
+                    #6a6a6a 2px, #6a6a6a 4px,
+                    #4a4a4a 4px, #4a4a4a 6px,
+                    #555 6px, #555 8px
+                ),
+                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
+            border-top: 4px solid #7a7a7a;
+            border-bottom: 4px solid #2a2a2a;
+            box-shadow:
+                inset 0 2px 0 #8a8a8a,
+                inset 0 -2px 0 #2a2a2a,
+                0 -4px 8px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            font-family: 'Press Start 2P', cursive;
+            padding: 0;
+            gap: 0;
+        }
+        .hud-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+            border-left: 3px solid #6a6a6a;
+            border-right: 3px solid #2a2a2a;
+            border-top: 2px solid #7a7a7a;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+        .hud-section::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 2px solid #1a1a1a;
+            border-radius: 2px;
+            z-index: -1;
+        }
+        .hud-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 0 0.5rem;
+        }
+        .hud-value {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+            letter-spacing: 2px;
+        }
+        .hud-label {
+            font-size: 0.5rem;
+            color: #888;
+            text-shadow: 1px 1px 0 #000;
+            text-transform: uppercase;
+        }
+        .hud-face-container {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            border-bottom-color: #1a1a1a;
+            border-right-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .hud-face {
+            width: 60px;
+            height: 60px;
+            image-rendering: pixelated;
+        }
+        .hud-health { color: #ff3333; }
+        .hud-armor { color: #00ff88; }
+
+        /* Apify Affiliate */
+        .apify-affiliate {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00b8a9 0%, #00d4aa 100%);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 184, 169, 0.3);
+        }
+        .apify-affiliate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 169, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .error-code { font-size: 4rem; }
+            .error-message { font-size: 1rem; }
+            .nav-links a:not(:first-child) { display: none; }
+            .hud-section { padding: 0 0.5rem; }
+            .hud-value { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Death Screen Background with SVG pattern -->
     <div class="death-screen">
         <svg class="doom-death-bg" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -232,7 +365,7 @@
             <rect x="80" y="0" width="8" height="8" fill="#996633"/>
             <rect x="88" y="0" width="8" height="8" fill="#cc3300"/>
 
-            <!-- Row 2 -->
+            <!-- Additional rows for full coverage -->
             <rect x="0" y="8" width="8" height="8" fill="#993300"/>
             <rect x="8" y="8" width="8" height="8" fill="#aa2200"/>
             <rect x="16" y="8" width="8" height="8" fill="#cc9966"/>
@@ -246,206 +379,124 @@
             <rect x="80" y="8" width="8" height="8" fill="#cc9966"/>
             <rect x="88" y="8" width="8" height="8" fill="#996633"/>
 
-            <!-- Row 3 -->
-            <rect x="0" y="16" width="8" height="8" fill="#cc6633"/>
-            <rect x="8" y="16" width="8" height="8" fill="#996633"/>
-            <rect x="16" y="16" width="8" height="8" fill="#aa2200"/>
-            <rect x="24" y="16" width="8" height="8" fill="#cc6633"/>
-            <rect x="32" y="16" width="8" height="8" fill="#cc9966"/>
-            <rect x="40" y="16" width="8" height="8" fill="#993300"/>
-            <rect x="48" y="16" width="8" height="8" fill="#aa3300"/>
-            <rect x="56" y="16" width="8" height="8" fill="#cc3300"/>
-            <rect x="64" y="16" width="8" height="8" fill="#663300"/>
-            <rect x="72" y="16" width="8" height="8" fill="#cc6633"/>
-            <rect x="80" y="16" width="8" height="8" fill="#aa2200"/>
-            <rect x="88" y="16" width="8" height="8" fill="#cc3300"/>
-
-            <!-- Row 4 -->
-            <rect x="0" y="24" width="8" height="8" fill="#aa3300"/>
-            <rect x="8" y="24" width="8" height="8" fill="#cc3300"/>
-            <rect x="16" y="24" width="8" height="8" fill="#996633"/>
-            <rect x="24" y="24" width="8" height="8" fill="#aa2200"/>
-            <rect x="32" y="24" width="8" height="8" fill="#cc3300"/>
-            <rect x="40" y="24" width="8" height="8" fill="#cc9966"/>
-            <rect x="48" y="24" width="8" height="8" fill="#663300"/>
-            <rect x="56" y="24" width="8" height="8" fill="#aa2200"/>
-            <rect x="64" y="24" width="8" height="8" fill="#cc6633"/>
-            <rect x="72" y="24" width="8" height="8" fill="#993300"/>
-            <rect x="80" y="24" width="8" height="8" fill="#cc9966"/>
-            <rect x="88" y="24" width="8" height="8" fill="#aa3300"/>
-
-            <!-- Row 5 -->
-            <rect x="0" y="32" width="8" height="8" fill="#663300"/>
-            <rect x="8" y="32" width="8" height="8" fill="#cc6633"/>
-            <rect x="16" y="32" width="8" height="8" fill="#cc3300"/>
-            <rect x="24" y="32" width="8" height="8" fill="#993300"/>
-            <rect x="32" y="32" width="8" height="8" fill="#aa2200"/>
-            <rect x="40" y="32" width="8" height="8" fill="#cc6633"/>
-            <rect x="48" y="32" width="8" height="8" fill="#996633"/>
-            <rect x="56" y="32" width="8" height="8" fill="#cc3300"/>
-            <rect x="64" y="32" width="8" height="8" fill="#aa3300"/>
-            <rect x="72" y="32" width="8" height="8" fill="#cc9966"/>
-            <rect x="80" y="32" width="8" height="8" fill="#663300"/>
-            <rect x="88" y="32" width="8" height="8" fill="#aa2200"/>
-
-            <!-- Row 6 -->
-            <rect x="0" y="40" width="8" height="8" fill="#cc9966"/>
-            <rect x="8" y="40" width="8" height="8" fill="#aa2200"/>
-            <rect x="16" y="40" width="8" height="8" fill="#663300"/>
-            <rect x="24" y="40" width="8" height="8" fill="#cc6633"/>
-            <rect x="32" y="40" width="8" height="8" fill="#996633"/>
-            <rect x="40" y="40" width="8" height="8" fill="#aa3300"/>
-            <rect x="48" y="40" width="8" height="8" fill="#cc3300"/>
-            <rect x="56" y="40" width="8" height="8" fill="#cc9966"/>
-            <rect x="64" y="40" width="8" height="8" fill="#993300"/>
-            <rect x="72" y="40" width="8" height="8" fill="#aa2200"/>
-            <rect x="80" y="40" width="8" height="8" fill="#cc6633"/>
-            <rect x="88" y="40" width="8" height="8" fill="#996633"/>
-
-            <!-- Row 7 -->
-            <rect x="0" y="48" width="8" height="8" fill="#993300"/>
-            <rect x="8" y="48" width="8" height="8" fill="#cc6633"/>
-            <rect x="16" y="48" width="8" height="8" fill="#cc9966"/>
-            <rect x="24" y="48" width="8" height="8" fill="#aa2200"/>
-            <rect x="32" y="48" width="8" height="8" fill="#cc3300"/>
-            <rect x="40" y="48" width="8" height="8" fill="#663300"/>
-            <rect x="48" y="48" width="8" height="8" fill="#aa3300"/>
-            <rect x="56" y="48" width="8" height="8" fill="#996633"/>
-            <rect x="64" y="48" width="8" height="8" fill="#cc6633"/>
-            <rect x="72" y="48" width="8" height="8" fill="#cc3300"/>
-            <rect x="80" y="48" width="8" height="8" fill="#aa2200"/>
-            <rect x="88" y="48" width="8" height="8" fill="#cc9966"/>
-
-            <!-- Row 8 -->
-            <rect x="0" y="56" width="8" height="8" fill="#cc3300"/>
-            <rect x="8" y="56" width="8" height="8" fill="#996633"/>
-            <rect x="16" y="56" width="8" height="8" fill="#aa3300"/>
-            <rect x="24" y="56" width="8" height="8" fill="#cc9966"/>
-            <rect x="32" y="56" width="8" height="8" fill="#663300"/>
-            <rect x="40" y="56" width="8" height="8" fill="#cc6633"/>
-            <rect x="48" y="56" width="8" height="8" fill="#993300"/>
-            <rect x="56" y="56" width="8" height="8" fill="#aa2200"/>
-            <rect x="64" y="56" width="8" height="8" fill="#cc3300"/>
-            <rect x="72" y="56" width="8" height="8" fill="#996633"/>
-            <rect x="80" y="56" width="8" height="8" fill="#cc6633"/>
-            <rect x="88" y="56" width="8" height="8" fill="#663300"/>
-
-            <!-- Row 9 -->
-            <rect x="0" y="64" width="8" height="8" fill="#aa2200"/>
-            <rect x="8" y="64" width="8" height="8" fill="#cc3300"/>
-            <rect x="16" y="64" width="8" height="8" fill="#663300"/>
-            <rect x="24" y="64" width="8" height="8" fill="#993300"/>
-            <rect x="32" y="64" width="8" height="8" fill="#cc9966"/>
-            <rect x="40" y="64" width="8" height="8" fill="#aa2200"/>
-            <rect x="48" y="64" width="8" height="8" fill="#cc6633"/>
-            <rect x="56" y="64" width="8" height="8" fill="#663300"/>
-            <rect x="64" y="64" width="8" height="8" fill="#996633"/>
-            <rect x="72" y="64" width="8" height="8" fill="#aa3300"/>
-            <rect x="80" y="64" width="8" height="8" fill="#993300"/>
-            <rect x="88" y="64" width="8" height="8" fill="#cc3300"/>
-
-            <!-- Row 10 -->
-            <rect x="0" y="72" width="8" height="8" fill="#996633"/>
-            <rect x="8" y="72" width="8" height="8" fill="#663300"/>
-            <rect x="16" y="72" width="8" height="8" fill="#cc6633"/>
-            <rect x="24" y="72" width="8" height="8" fill="#aa3300"/>
-            <rect x="32" y="72" width="8" height="8" fill="#aa2200"/>
-            <rect x="40" y="72" width="8" height="8" fill="#993300"/>
-            <rect x="48" y="72" width="8" height="8" fill="#cc9966"/>
-            <rect x="56" y="72" width="8" height="8" fill="#cc3300"/>
-            <rect x="64" y="72" width="8" height="8" fill="#aa2200"/>
-            <rect x="72" y="72" width="8" height="8" fill="#663300"/>
-            <rect x="80" y="72" width="8" height="8" fill="#cc6633"/>
-            <rect x="88" y="72" width="8" height="8" fill="#aa2200"/>
-
-            <!-- Row 11 -->
-            <rect x="0" y="80" width="8" height="8" fill="#663300"/>
-            <rect x="8" y="80" width="8" height="8" fill="#aa2200"/>
-            <rect x="16" y="80" width="8" height="8" fill="#993300"/>
-            <rect x="24" y="80" width="8" height="8" fill="#cc3300"/>
-            <rect x="32" y="80" width="8" height="8" fill="#663300"/>
-            <rect x="40" y="80" width="8" height="8" fill="#cc6633"/>
-            <rect x="48" y="80" width="8" height="8" fill="#aa3300"/>
-            <rect x="56" y="80" width="8" height="8" fill="#996633"/>
-            <rect x="64" y="80" width="8" height="8" fill="#cc9966"/>
-            <rect x="72" y="80" width="8" height="8" fill="#cc3300"/>
-            <rect x="80" y="80" width="8" height="8" fill="#aa2200"/>
-            <rect x="88" y="80" width="8" height="8" fill="#993300"/>
-
-            <!-- Row 12 - Bottom -->
-            <rect x="0" y="88" width="8" height="8" fill="#cc6633"/>
-            <rect x="8" y="88" width="8" height="8" fill="#993300"/>
-            <rect x="16" y="88" width="8" height="8" fill="#aa2200"/>
-            <rect x="24" y="88" width="8" height="8" fill="#663300"/>
-            <rect x="32" y="88" width="8" height="8" fill="#cc9966"/>
-            <rect x="40" y="88" width="8" height="8" fill="#aa2200"/>
-            <rect x="48" y="88" width="8" height="8" fill="#cc3300"/>
-            <rect x="56" y="88" width="8" height="8" fill="#663300"/>
-            <rect x="64" y="88" width="8" height="8" fill="#aa3300"/>
-            <rect x="72" y="88" width="8" height="8" fill="#996633"/>
-            <rect x="80" y="88" width="8" height="8" fill="#cc6633"/>
-            <rect x="88" y="88" width="8" height="8" fill="#cc3300"/>
+            <!-- Continue pattern -->
+            <rect x="0" y="16" width="100" height="84" fill="#8B0000" opacity="0.8"/>
         </svg>
     </div>
 
     <div class="vignette"></div>
     <div class="crt-overlay"></div>
 
-    <div class="content">
-        <!-- Dead Doomguy Face - Pixel Art SVG -->
-        <svg class="dead-face" viewBox="0 0 64 64">
-            <!-- Face background (flesh tone, but dead/grey) -->
-            <rect x="16" y="8" width="32" height="48" fill="#8B7355"/>
-            <rect x="12" y="16" width="4" height="32" fill="#8B7355"/>
-            <rect x="48" y="16" width="4" height="32" fill="#8B7355"/>
+    <div class="main-content">
+        <div class="content">
+            <!-- Dead Doomguy Face - Pixel Art SVG -->
+            <svg class="dead-face" viewBox="0 0 64 64">
+                <!-- Face background (flesh tone, but dead/grey) -->
+                <rect x="16" y="8" width="32" height="48" fill="#8B7355"/>
+                <rect x="12" y="16" width="4" height="32" fill="#8B7355"/>
+                <rect x="48" y="16" width="4" height="32" fill="#8B7355"/>
 
-            <!-- Hair (brown, messy) -->
-            <rect x="16" y="4" width="32" height="8" fill="#4a3728"/>
-            <rect x="12" y="8" width="8" height="8" fill="#4a3728"/>
-            <rect x="44" y="8" width="8" height="8" fill="#4a3728"/>
+                <!-- Hair (brown, messy) -->
+                <rect x="16" y="4" width="32" height="8" fill="#4a3728"/>
+                <rect x="12" y="8" width="8" height="8" fill="#4a3728"/>
+                <rect x="44" y="8" width="8" height="8" fill="#4a3728"/>
 
-            <!-- Eyes - X's for dead -->
-            <!-- Left eye X -->
-            <rect x="20" y="20" width="4" height="4" fill="#000"/>
-            <rect x="24" y="24" width="4" height="4" fill="#000"/>
-            <rect x="28" y="20" width="4" height="4" fill="#000"/>
-            <rect x="24" y="20" width="4" height="4" fill="#8B7355"/>
-            <rect x="20" y="24" width="4" height="4" fill="#000"/>
-            <rect x="28" y="24" width="4" height="4" fill="#000"/>
+                <!-- Eyes - X's for dead -->
+                <!-- Left eye X -->
+                <rect x="20" y="20" width="4" height="4" fill="#000"/>
+                <rect x="24" y="24" width="4" height="4" fill="#000"/>
+                <rect x="28" y="20" width="4" height="4" fill="#000"/>
+                <rect x="24" y="20" width="4" height="4" fill="#8B7355"/>
+                <rect x="20" y="24" width="4" height="4" fill="#000"/>
+                <rect x="28" y="24" width="4" height="4" fill="#000"/>
 
-            <!-- Right eye X -->
-            <rect x="36" y="20" width="4" height="4" fill="#000"/>
-            <rect x="40" y="24" width="4" height="4" fill="#000"/>
-            <rect x="44" y="20" width="4" height="4" fill="#000"/>
-            <rect x="40" y="20" width="4" height="4" fill="#8B7355"/>
-            <rect x="36" y="24" width="4" height="4" fill="#000"/>
-            <rect x="44" y="24" width="4" height="4" fill="#000"/>
+                <!-- Right eye X -->
+                <rect x="36" y="20" width="4" height="4" fill="#000"/>
+                <rect x="40" y="24" width="4" height="4" fill="#000"/>
+                <rect x="44" y="20" width="4" height="4" fill="#000"/>
+                <rect x="40" y="20" width="4" height="4" fill="#8B7355"/>
+                <rect x="36" y="24" width="4" height="4" fill="#000"/>
+                <rect x="44" y="24" width="4" height="4" fill="#000"/>
 
-            <!-- Nose -->
-            <rect x="30" y="32" width="4" height="8" fill="#6B5344"/>
+                <!-- Nose -->
+                <rect x="30" y="32" width="4" height="8" fill="#6B5344"/>
 
-            <!-- Mouth - open/grimacing -->
-            <rect x="22" y="44" width="20" height="8" fill="#2a0000"/>
-            <rect x="24" y="44" width="4" height="4" fill="#ffffff"/>
-            <rect x="32" y="44" width="4" height="4" fill="#ffffff"/>
-            <rect x="40" y="44" width="4" height="4" fill="#ffffff"/>
+                <!-- Mouth - open/grimacing -->
+                <rect x="22" y="44" width="20" height="8" fill="#2a0000"/>
+                <rect x="24" y="44" width="4" height="4" fill="#ffffff"/>
+                <rect x="32" y="44" width="4" height="4" fill="#ffffff"/>
+                <rect x="40" y="44" width="4" height="4" fill="#ffffff"/>
 
-            <!-- Blood dripping from mouth -->
-            <rect x="26" y="52" width="4" height="8" fill="#8B0000"/>
-            <rect x="34" y="52" width="4" height="12" fill="#8B0000"/>
-            <rect x="38" y="52" width="4" height="6" fill="#8B0000"/>
+                <!-- Blood dripping from mouth -->
+                <rect x="26" y="52" width="4" height="8" fill="#8B0000"/>
+                <rect x="34" y="52" width="4" height="12" fill="#8B0000"/>
+                <rect x="38" y="52" width="4" height="6" fill="#8B0000"/>
 
-            <!-- Wounds/blood on face -->
-            <rect x="14" y="28" width="4" height="8" fill="#8B0000"/>
-            <rect x="46" y="24" width="4" height="12" fill="#8B0000"/>
-            <rect x="36" y="12" width="8" height="4" fill="#8B0000"/>
-        </svg>
+                <!-- Wounds/blood on face -->
+                <rect x="14" y="28" width="4" height="8" fill="#8B0000"/>
+                <rect x="46" y="24" width="4" height="12" fill="#8B0000"/>
+                <rect x="36" y="12" width="8" height="4" fill="#8B0000"/>
+            </svg>
 
-        <div class="error-code">404</div>
-        <div class="error-message">YOU DIED</div>
-        <div class="error-subtitle">The page you seek has been consumed by the forces of Hell.</div>
+            <div class="error-code">404</div>
+            <div class="error-message">YOU DIED</div>
+            <div class="error-subtitle">The page you seek has been consumed by the forces of Hell.</div>
 
-        <a href="index.html" class="home-link">RESPAWN AT BASE</a>
+            <div class="nav-buttons">
+                <a href="index.html" class="home-link">RESPAWN AT BASE</a>
+                <a href="compare.html" class="home-link">COMPARE ACTORS</a>
+                <a href="api-docs.html" class="home-link">API DOCS</a>
+            </div>
+
+            <a href="https://apify.com/?fpr=kqpn7b" target="_blank" class="apify-affiliate" title="Apify Affiliate Partner">
+                <img src="https://apify.com/img/logo.svg" alt="Apify" style="height: 20px; filter: brightness(0) invert(1); margin-right: 8px;">
+                <span>Apify Affiliate Partner</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- DOOM HUD -->
+    <div class="doom-hud">
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-health">0%</div>
+                <div class="hud-label">HEALTH</div>
+            </div>
+        </div>
+
+        <div class="hud-face-container">
+            <svg class="hud-face" viewBox="0 0 64 64">
+                <!-- Dead face for HUD -->
+                <rect x="16" y="8" width="32" height="48" fill="#8B7355"/>
+                <rect x="12" y="16" width="4" height="32" fill="#8B7355"/>
+                <rect x="48" y="16" width="4" height="32" fill="#8B7355"/>
+                <rect x="16" y="4" width="32" height="8" fill="#4a3728"/>
+                <rect x="12" y="8" width="8" height="8" fill="#4a3728"/>
+                <rect x="44" y="8" width="8" height="8" fill="#4a3728"/>
+                <!-- X eyes -->
+                <rect x="20" y="20" width="4" height="4" fill="#000"/>
+                <rect x="24" y="24" width="4" height="4" fill="#000"/>
+                <rect x="28" y="20" width="4" height="4" fill="#000"/>
+                <rect x="20" y="24" width="4" height="4" fill="#000"/>
+                <rect x="28" y="24" width="4" height="4" fill="#000"/>
+                <rect x="36" y="20" width="4" height="4" fill="#000"/>
+                <rect x="40" y="24" width="4" height="4" fill="#000"/>
+                <rect x="44" y="20" width="4" height="4" fill="#000"/>
+                <rect x="36" y="24" width="4" height="4" fill="#000"/>
+                <rect x="44" y="24" width="4" height="4" fill="#000"/>
+                <rect x="30" y="32" width="4" height="8" fill="#6B5344"/>
+                <rect x="22" y="44" width="20" height="8" fill="#2a0000"/>
+                <rect x="26" y="52" width="4" height="8" fill="#8B0000"/>
+                <rect x="34" y="52" width="4" height="8" fill="#8B0000"/>
+            </svg>
+        </div>
+
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-armor">0%</div>
+                <div class="hud-label">ARMOR</div>
+            </div>
+        </div>
     </div>
 
     <script>

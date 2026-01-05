@@ -61,7 +61,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: #000 url('images/group-photo.png') center center / cover no-repeat;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -70,23 +70,51 @@
             cursor: pointer;
             transition: opacity 0.5s, visibility 0.5s;
         }
+        .doom-splash::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
         .doom-splash.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
         .splash-title {
+            position: relative;
+            z-index: 1;
             font-family: 'Press Start 2P', cursive;
             font-size: 3rem;
-            color: var(--accent-red);
-            text-shadow: 4px 4px 0 #8B0000;
+            color: #ff3366;
+            text-shadow:
+                4px 4px 0 #8B0000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 20px rgba(255, 51, 102, 0.8),
+                0 0 40px rgba(255, 51, 102, 0.5);
             margin-bottom: 2rem;
             animation: splashPulse 1s ease-in-out infinite;
+            text-align: center;
+            line-height: 1.4;
         }
         .splash-press {
+            position: relative;
+            z-index: 1;
             font-family: 'Press Start 2P', cursive;
             font-size: 1rem;
-            color: #888;
+            color: #ffcc00;
+            text-shadow:
+                2px 2px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                0 0 10px rgba(255, 204, 0, 0.8);
             animation: blink 1s step-end infinite;
         }
         @keyframes splashPulse {
@@ -868,6 +896,25 @@
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; }
         .footer-links a:hover { color: var(--accent-green); }
+        .apify-affiliate {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00b8a9 0%, #00d4aa 100%);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 184, 169, 0.3);
+        }
+        .apify-affiliate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 169, 0.4);
+        }
         .copyright { color: var(--text-secondary); font-size: 0.875rem; }
         @media (max-width: 768px) {
             .stats-bar { gap: 1.5rem; }
@@ -923,9 +970,9 @@
 <body class="fireball-cursor">
     <!-- DOOM Splash Screen -->
     <div class="doom-splash" id="splashScreen">
-        <div class="splash-title">ACTOR ARSENAL</div>
+        <div class="splash-title">YOUR APIFY<br>ACTOR ARSENAL</div>
         <div class="splash-press">PRESS ANY KEY TO START</div>
-        <div style="margin-top: 3rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #444;">
+        <div style="position: relative; z-index: 1; margin-top: 3rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #ccc; text-shadow: 2px 2px 0 #000;">
             Built by John Rippy - 2025 Zapier Automation Hero
         </div>
     </div>
@@ -2118,6 +2165,10 @@ You&#x27;re currently paying for: Br...</p>
                 <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
                 <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
             </div>
+            <a href="https://apify.com/?fpr=kqpn7b" target="_blank" class="apify-affiliate" title="Apify Affiliate Partner">
+                <img src="https://apify.com/img/logo.svg" alt="Apify" style="height: 24px; filter: brightness(0) invert(1); margin-right: 8px;">
+                <span>Apify Affiliate Partner</span>
+            </a>
             <p class="copyright">&copy; 2025 John Rippy. Rip and tear.</p>
         </div>
     </footer>
@@ -2228,14 +2279,24 @@ You&#x27;re currently paying for: Br...</p>
 
         // ===== SPLASH SCREEN =====
         const splash = document.getElementById('splashScreen');
+
+        // Check if user has already seen splash this session
+        if (sessionStorage.getItem('splashSeen')) {
+            splash.classList.add('hidden');
+        }
+
         function dismissSplash() {
             splash.classList.add('hidden');
-            playSound('door');
+            playSound('shotgun');
+            sessionStorage.setItem('splashSeen', 'true');
             document.removeEventListener('keydown', dismissSplash);
             document.removeEventListener('click', dismissSplash);
         }
-        document.addEventListener('keydown', dismissSplash);
-        splash.addEventListener('click', dismissSplash);
+
+        if (!sessionStorage.getItem('splashSeen')) {
+            document.addEventListener('keydown', dismissSplash);
+            splash.addEventListener('click', dismissSplash);
+        }
 
         // ===== DIFFICULTY SELECTOR =====
         const difficultyBtn = document.getElementById('difficultyBtn');
