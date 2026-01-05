@@ -66,39 +66,56 @@
             background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
         }
 
-        /* ===== NAVIGATION ===== */
+        /* ===== NAVIGATION (matching index.html) ===== */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
         nav {
-            background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
-            border-bottom: 3px solid var(--accent-blood);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .nav-brand {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img {
+            width: 40px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn, .music-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
             color: var(--accent-red);
-            text-decoration: none;
-            text-shadow: 2px 2px 0 #8B0000;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        .nav-links a {
-            color: #888;
-            text-decoration: none;
+            padding: 0.4rem 0.8rem;
             font-family: 'Press Start 2P', cursive;
             font-size: 0.5rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--accent-yellow);
+            cursor: pointer;
+            transition: all 0.3s;
         }
         .music-btn {
             font-size: 1.2rem;
@@ -109,8 +126,6 @@
             background: rgba(255, 204, 0, 0.1);
             animation: musicPulse 2s ease-in-out infinite;
             position: relative;
-            cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
         }
         .music-btn::after {
             content: 'E1M1';
@@ -134,6 +149,44 @@
         @keyframes musicPulse {
             0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
             50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+        .difficulty-btn:hover, .music-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid var(--accent-red);
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-option.active {
+            color: var(--accent-yellow);
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -417,12 +470,27 @@
     <div class="vignette"></div>
 
     <nav>
-        <a href="index.html" class="nav-brand">ACTOR ARSENAL</a>
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="compare.html">COMPARE</a>
-            <a href="api-docs.html">API</a>
-            <button class="music-btn" id="musicBtn" title="Toggle E1M1 Music">&#x1F507;</button>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL
+            </a>
+            <div class="nav-links">
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-level="1">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-level="2">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-level="3">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-level="4">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-level="5">NIGHTMARE!</button>
+                    </div>
+                </div>
+                <button class="music-btn" id="musicBtn" title="Toggle E1M1 Music">&#x1F507;</button>
+                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank">View on Apify</a>
+            </div>
         </div>
     </nav>
 
@@ -737,6 +805,39 @@
                     window.location.href = href;
                 }, 200);
             });
+        });
+
+        // Difficulty selector functionality
+        const difficultyBtn = document.getElementById('difficultyBtn');
+        const difficultyMenu = document.getElementById('difficultyMenu');
+        const difficultyOptions = document.querySelectorAll('.difficulty-option');
+
+        // Check saved difficulty
+        const savedDifficulty = localStorage.getItem('doomDifficulty') || 'HURT ME PLENTY';
+        difficultyBtn.textContent = savedDifficulty;
+        difficultyOptions.forEach(opt => {
+            opt.classList.toggle('active', opt.textContent === savedDifficulty);
+        });
+
+        difficultyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            difficultyMenu.classList.toggle('show');
+        });
+
+        difficultyOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const level = option.textContent;
+                difficultyBtn.textContent = level;
+                difficultyOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                difficultyMenu.classList.remove('show');
+                localStorage.setItem('doomDifficulty', level);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            difficultyMenu.classList.remove('show');
         });
 
         // Start loading when page loads
