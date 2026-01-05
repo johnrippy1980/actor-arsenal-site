@@ -263,7 +263,7 @@
             position: relative;
             display: inline-block;
         }
-        .difficulty-btn {
+        .difficulty-btn, .music-btn {
             background: transparent;
             border: 1px solid var(--accent-red);
             color: var(--accent-red);
@@ -273,7 +273,12 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        .difficulty-btn:hover {
+        .music-btn {
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            margin-left: 0.5rem;
+        }
+        .difficulty-btn:hover, .music-btn:hover {
             background: var(--accent-red);
             color: #000;
         }
@@ -923,6 +928,7 @@
                         <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
                     </div>
                 </div>
+                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
                 <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
@@ -2124,6 +2130,26 @@ You&#x27;re currently paying for: Br...</p>
             imp: new Audio('sounds/imp.wav'),
             death: new Audio('sounds/death.wav')
         };
+
+        // DOOM Theme Music (E1M1 - At Doom's Gate)
+        const doomMusic = new Audio('sounds/e1m1.mp3');
+        doomMusic.loop = true;
+        doomMusic.volume = 0.3;
+        let musicPlaying = false;
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                doomMusic.pause();
+                musicPlaying = false;
+                document.getElementById('musicBtn').textContent = '🔇';
+                document.getElementById('musicBtn').title = 'Play Music';
+            } else {
+                doomMusic.play().catch(() => {});
+                musicPlaying = true;
+                document.getElementById('musicBtn').textContent = '🔊';
+                document.getElementById('musicBtn').title = 'Pause Music';
+            }
+        }
 
         // Preload all sounds
         Object.values(doomSounds).forEach(sound => {
