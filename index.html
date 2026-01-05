@@ -902,50 +902,9 @@
     <!-- Pain Flash -->
     <div class="pain-flash" id="painFlash"></div>
 
-    <!-- Imp Sprites (SVG) -->
-    <svg class="demon-left" id="demonLeft" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-        <!-- DOOM Imp pixel art style -->
-        <rect x="20" y="5" width="24" height="8" fill="#8B4513"/>
-        <rect x="16" y="13" width="32" height="12" fill="#8B4513"/>
-        <rect x="18" y="13" width="8" height="6" fill="#ff0"/>
-        <rect x="38" y="13" width="8" height="6" fill="#ff0"/>
-        <rect x="20" y="15" width="4" height="4" fill="#f00"/>
-        <rect x="40" y="15" width="4" height="4" fill="#f00"/>
-        <rect x="26" y="20" width="12" height="5" fill="#3a1a0a"/>
-        <rect x="28" y="22" width="8" height="4" fill="#000"/>
-        <rect x="12" y="25" width="40" height="20" fill="#8B4513"/>
-        <rect x="8" y="30" width="8" height="15" fill="#8B4513"/>
-        <rect x="48" y="30" width="8" height="15" fill="#8B4513"/>
-        <rect x="4" y="35" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="52" y="35" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="16" y="45" width="12" height="20" fill="#8B4513"/>
-        <rect x="36" y="45" width="12" height="20" fill="#8B4513"/>
-        <rect x="12" y="60" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="44" y="60" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="10" y="65" width="6" height="10" fill="#3a1a0a"/>
-        <rect x="48" y="65" width="6" height="10" fill="#3a1a0a"/>
-    </svg>
-    <svg class="demon-right" id="demonRight" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="5" width="24" height="8" fill="#8B4513"/>
-        <rect x="16" y="13" width="32" height="12" fill="#8B4513"/>
-        <rect x="18" y="13" width="8" height="6" fill="#ff0"/>
-        <rect x="38" y="13" width="8" height="6" fill="#ff0"/>
-        <rect x="20" y="15" width="4" height="4" fill="#f00"/>
-        <rect x="40" y="15" width="4" height="4" fill="#f00"/>
-        <rect x="26" y="20" width="12" height="5" fill="#3a1a0a"/>
-        <rect x="28" y="22" width="8" height="4" fill="#000"/>
-        <rect x="12" y="25" width="40" height="20" fill="#8B4513"/>
-        <rect x="8" y="30" width="8" height="15" fill="#8B4513"/>
-        <rect x="48" y="30" width="8" height="15" fill="#8B4513"/>
-        <rect x="4" y="35" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="52" y="35" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="16" y="45" width="12" height="20" fill="#8B4513"/>
-        <rect x="36" y="45" width="12" height="20" fill="#8B4513"/>
-        <rect x="12" y="60" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="44" y="60" width="8" height="8" fill="#5a2d0a"/>
-        <rect x="10" y="65" width="6" height="10" fill="#3a1a0a"/>
-        <rect x="48" y="65" width="6" height="10" fill="#3a1a0a"/>
-    </svg>
+    <!-- Imp Sprites (Actual DOOM sprites) -->
+    <img src="images/imp-left.png" class="demon-left" id="demonLeft" alt="Imp">
+    <img src="images/imp-right.png" class="demon-right" id="demonRight" alt="Imp">
 
     <nav>
         <div class="container">
@@ -2326,8 +2285,7 @@ You&#x27;re currently paying for: Br...</p>
             });
 
             card.addEventListener('mouseenter', () => {
-                document.body.classList.add('shake');
-                setTimeout(() => document.body.classList.remove('shake'), 100);
+                playSound('pickup');
             });
         });
 
