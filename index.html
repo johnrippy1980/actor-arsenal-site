@@ -906,6 +906,24 @@
             .nav-links a:not(.cta-button) { display: none; }
         }
 
+        /* ===== APIFY AFFILIATE BADGE (Sticky) ===== */
+        .apify-affiliate {
+            position: fixed;
+            bottom: 90px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .apify-affiliate:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .apify-affiliate img {
+            height: 50px;
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -2605,5 +2623,9 @@ You&#x27;re currently paying for: Br...</p>
         document.head.appendChild(style);
     </script>
 
+    <!-- Apify Affiliate Partner Badge (Sticky) -->
+    <a href="https://apify.com/?fpr=kqpn7b" target="_blank" rel="noopener" class="apify-affiliate">
+        <img src="images/apify-affiliate-partner-dark.png" alt="Apify Partner">
+    </a>
 </body>
 </html>
