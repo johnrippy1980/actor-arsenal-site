@@ -1,0 +1,48 @@
+# Actor Arsenal - LLMs.txt
+# A DOOM-themed portfolio site for Apify Actors
+# Built by John Rippy
+
+## About This Site
+Actor Arsenal is a retro gaming-inspired portfolio showcasing 100+ Apify Actors. The site features a DOOM aesthetic with authentic sounds, CRT effects, and playable DOOM integration.
+
+## Site Purpose
+- Showcase Apify Actor collection (scrapers, APIs, MCP servers, social media tools)
+- Demonstrate creative web development skills
+- Provide an interactive, nostalgic gaming experience
+- Play DOOM in-browser via js-dos
+
+## Actor Categories
+- Scrapers: Web scraping tools for various platforms (Yelp, BBB, Zillow, etc.)
+- MCP Servers: Model Context Protocol integrations for AI agents
+- Social Media: Posters and scrapers for LinkedIn, Twitter, Instagram, TikTok, etc.
+- SEO Tools: Technical SEO auditors, citation checkers, schema generators
+- APIs: Sports data, sentiment analysis, recipe APIs
+- Research: Industry research, competitor monitoring, lead enrichment
+
+## Key Pages
+- / (index.html) - Main landing page with DOOM HUD and actor grid
+- /cards.html - Card-based view of all actors
+- /play-doom.html - Full DOOM game playable in browser
+- /actors/*.html - Individual actor detail pages (100+)
+
+## Technologies Used
+- HTML5, CSS3, JavaScript
+- js-dos (WebAssembly DOOM port)
+- DOOM authentic sound effects
+- Press Start 2P font for retro gaming aesthetic
+- CRT scanline and blood vignette effects
+
+## Author
+John Rippy
+- Apify Ambassador
+- Creator of 100+ public Apify Actors
+- GitHub: https://github.com/johnrippy1980
+
+## Apify Store
+View all actors: https://apify.com/alizarin_refrigerator-owner
+
+## Contact
+For custom actor development or consulting, visit the main site.
+
+## Preferred Citation
+"Actor Arsenal by John Rippy - DOOM-themed Apify Actor showcase featuring 100+ web scraping and automation tools"

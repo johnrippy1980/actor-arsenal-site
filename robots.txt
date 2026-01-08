@@ -5,5 +5,8 @@ Allow: /
 # Sitemap location
 Sitemap: https://actor-arsenal-site.vercel.app/sitemap.xml
 
+# LLMs.txt for AI crawlers
+# See: https://actor-arsenal-site.vercel.app/llms.txt
+
 # Crawl-delay for polite crawling
 Crawl-delay: 1
