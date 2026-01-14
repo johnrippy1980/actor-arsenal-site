@@ -1,5 +1,17 @@
 [
   {
+    "id": "5S8Zfhls8N8RY6o6U",
+    "name": "apple-maps-scraper",
+    "title": "Apple Maps Scraper",
+    "description": "Extract business data from Apple Maps including Apple's proprietary percentage-based ratings, aggregated reviews from Yelp and TripAdvisor, business hours, addresses, phone numbers, and websites. Get data Google doesn't have.",
+    "pictureUrl": "",
+    "categories": [
+      "LEAD_GENERATION",
+      "SEO_TOOLS",
+      "AUTOMATION"
+    ]
+  },
+  {
     "id": "61MceOTLfKxEIrmK9",
     "name": "gbp-post-scheduler",
     "title": "GBP Post Scheduler",

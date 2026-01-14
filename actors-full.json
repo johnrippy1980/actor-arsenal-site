@@ -1,5 +1,70 @@
 [
   {
+    "title": "Apple Maps Scraper",
+    "name": "apple-maps-scraper",
+    "username": "localhowl",
+    "stats": {
+      "totalBuilds": 5,
+      "totalRuns": 1,
+      "totalUsers": 1,
+      "totalUsers7Days": 1,
+      "totalUsers30Days": 1,
+      "totalUsers90Days": 1,
+      "lastRunStartedAt": "2026-01-14T23:09:58.413Z",
+      "actorReviewCount": 0,
+      "actorReviewRating": 0,
+      "bookmarkCount": 0,
+      "publicActorRunStats30Days": {
+        "ABORTED": 0,
+        "FAILED": 0,
+        "SUCCEEDED": 1,
+        "TIMED-OUT": 0,
+        "TOTAL": 1
+      }
+    },
+    "description": "Extract business data from Apple Maps including Apple's proprietary percentage-based ratings, aggregated reviews from Yelp and TripAdvisor, business hours, addresses, phone numbers, and websites. Get data Google doesn't have.",
+    "categories": [
+      "LEAD_GENERATION",
+      "SEO_TOOLS",
+      "AUTOMATION"
+    ],
+    "pictureUrl": "",
+    "notice": "NONE",
+    "bookmarkCount": 0,
+    "actorReviewRating": 0,
+    "actorReviewCount": 0,
+    "badge": null,
+    "isWhiteListedForAgenticPayments": false,
+    "userPictureUrl": "",
+    "userFullName": "John Rippy",
+    "currentPricingInfo": {
+      "minimalMaxTotalChargeUsd": 2,
+      "pricingModel": "PAY_PER_EVENT",
+      "isPriceChangeNotificationSuppressed": false,
+      "pricingPerEvent": {
+        "actorChargeEvents": {
+          "business-scraped": {
+            "eventTitle": "Business Scraped",
+            "eventDescription": "Charged for each business listing extracted from Apple Maps",
+            "isOneTimeEvent": false,
+            "eventPriceUsd": 0.01
+          },
+          "webhook-delivered": {
+            "eventTitle": "Webhook Delivered",
+            "eventDescription": "Charged when results are successfully sent to a webhook URL (Zapier, Make, n8n)",
+            "isOneTimeEvent": false,
+            "eventPriceUsd": 0.005
+          }
+        }
+      },
+      "startedAt": "2026-01-14T23:09:58.414Z",
+      "createdAt": "2026-01-14T23:09:58.414Z",
+      "apifyMarginPercentage": 0.2
+    },
+    "id": "5S8Zfhls8N8RY6o6U",
+    "url": "https://apify.com/localhowl/apple-maps-scraper"
+  },
+  {
     "title": "Multi-Source Car Listing Aggregator Automobile Scraper",
     "name": "automobile-scraper",
     "username": "alizarin_refrigerator-owner",
@@ -52,7 +117,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "vehicle_scraped": {
             "eventTitle": "Vehicle scraped",
@@ -134,7 +199,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "product_scraped": {
             "eventTitle": "Product Scraped",
@@ -210,7 +275,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -292,7 +357,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "website_scanned": {
             "eventTitle": "Website Scanned",
@@ -374,7 +439,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "company_scraped": {
             "eventTitle": "Company Scraped",
@@ -456,7 +521,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_audit": {
             "eventTitle": "Page Audit",
@@ -538,7 +603,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -608,7 +673,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_scraped": {
             "eventTitle": "Post Scraped",
@@ -684,7 +749,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "site_analyzed": {
             "eventTitle": "Site Analyzed",
@@ -766,7 +831,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -842,7 +907,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "citation_check": {
             "eventTitle": "Citation Check",
@@ -912,7 +977,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url-analysis": {
             "eventTitle": "URL Analysis",
@@ -1048,7 +1113,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "email_validated": {
             "eventTitle": "email_validated",
@@ -1130,7 +1195,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "match_fetched": {
             "eventTitle": "Match Fetched",
@@ -1207,12 +1272,12 @@
             "eventTitle": "Actor Start",
             "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
             "isOneTimeEvent": true,
-            "eventPriceUsd": 5e-05
+            "eventPriceUsd": 0.00005
           },
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "backlinks-analysis": {
             "eventTitle": "Backlinks Analysis",
@@ -1282,7 +1347,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_processed": {
             "eventTitle": "Page Processed",
@@ -1364,7 +1429,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "company_scraped": {
             "eventTitle": "Company Scraped",
@@ -1446,7 +1511,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -1528,7 +1593,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "LEAD_ENRICHED": {
             "eventTitle": "Lead Enriched",
@@ -1616,7 +1681,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "item_scraped": {
             "eventTitle": "Item Scraped",
@@ -1692,7 +1757,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -1768,7 +1833,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "agency_scraped": {
             "eventTitle": "Agency Scraped",
@@ -1850,7 +1915,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -1932,7 +1997,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -2002,7 +2067,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -2084,7 +2149,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "message_sent": {
             "eventTitle": "Message Sent",
@@ -2166,7 +2231,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "lead_scraped": {
             "eventTitle": "Lead Scraped",
@@ -2242,7 +2307,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_scraped": {
             "eventTitle": "Page Scraped",
@@ -2318,7 +2383,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "tweet_posted": {
             "eventTitle": "Tweet Posted",
@@ -2388,7 +2453,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -2470,7 +2535,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url_tested": {
             "eventTitle": "URL Tested",
@@ -2552,7 +2617,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url-analysis": {
             "eventTitle": "URL Analysis",
@@ -2658,7 +2723,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -2728,7 +2793,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "question_scraped": {
             "eventTitle": "Question Scraped",
@@ -2810,7 +2875,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_scraped": {
             "eventTitle": "Each post Scraped",
@@ -2892,7 +2957,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "business_profile": {
             "eventTitle": "Business Profile",
@@ -2974,7 +3039,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "video_posted": {
             "eventTitle": "Video Posted",
@@ -3044,7 +3109,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -3114,7 +3179,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "source_queried": {
             "eventTitle": "Source Queried",
@@ -3202,7 +3267,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "provider_scraped": {
             "eventTitle": "Provider Scraped",
@@ -3278,7 +3343,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -3360,7 +3425,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "audit_run": {
             "eventTitle": "Audit Run",
@@ -3430,7 +3495,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "voice_analyzed": {
             "eventTitle": "Voice Analyzed",
@@ -3518,7 +3583,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "citation_submitted": {
             "eventTitle": "Citation Submitted",
@@ -3588,7 +3653,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -3658,7 +3723,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "game_fetched": {
             "eventTitle": "Game Fetched",
@@ -3740,7 +3805,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -3810,7 +3875,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "nfl-teams": {
             "eventTitle": "NFL Teams",
@@ -3934,7 +3999,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -4016,7 +4081,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url-checked": {
             "eventTitle": "URL Checked",
@@ -4098,7 +4163,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_extracted": {
             "eventTitle": "Page Extracted",
@@ -4180,7 +4245,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "EMAIL_SENTIMENT_BATCH": {
             "eventTitle": "Email sentiment batch",
@@ -4250,7 +4315,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_scheduled": {
             "eventTitle": "Post Scheduled",
@@ -4326,7 +4391,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "company_enriched": {
             "eventTitle": "Company Enriched",
@@ -4408,7 +4473,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "profile_searched": {
             "eventTitle": "Profile Searched",
@@ -4490,7 +4555,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "channel_scraped": {
             "eventTitle": "Channel Scraped",
@@ -4572,7 +4637,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "ASSET_LISTED": {
             "eventTitle": "Asset Listed",
@@ -4666,7 +4731,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "lottery-data-fetch": {
             "eventTitle": "Lottery Data Fetch",
@@ -4748,7 +4813,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url_tested": {
             "eventTitle": "URL Tested",
@@ -4829,7 +4894,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "business-listing": {
             "eventTitle": "Business Listing",
@@ -4899,7 +4964,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "calendar-analyzed": {
             "eventTitle": "Calendar Analysis Completed",
@@ -4969,7 +5034,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "list_templates": {
             "eventTitle": "List Templates",
@@ -5075,7 +5140,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "article_scraped": {
             "eventTitle": "Article Scraped",
@@ -5157,7 +5222,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "roster-fetch": {
             "eventTitle": "WWE Superstars",
@@ -5269,7 +5334,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -5339,7 +5404,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_processed": {
             "eventTitle": "Post Processed",
@@ -5415,7 +5480,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "agency_scraped": {
             "eventTitle": "Agency Scraped",
@@ -5496,7 +5561,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "game_fetched": {
             "eventTitle": "Game Fetched",
@@ -5578,7 +5643,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "business-checked": {
             "eventTitle": "Business Checked",
@@ -5660,7 +5725,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "professional_scraped": {
             "eventTitle": "Professional Scraped",
@@ -5736,7 +5801,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "RECIPE_SEARCH": {
             "eventTitle": "Recipe Search",
@@ -5878,7 +5943,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "nba-teams": {
             "eventTitle": "NBA Teams List",
@@ -6002,7 +6067,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -6078,7 +6143,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "gsc_analysis": {
             "eventTitle": "GSC Data Analysis",
@@ -6160,7 +6225,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post-repurposed": {
             "eventTitle": "Post Repurposed",
@@ -6230,7 +6295,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "ncaa-basketball-teams": {
             "eventTitle": "NCAA Basketball Teams",
@@ -6354,7 +6419,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "product_scraped": {
             "eventTitle": "Product Scraped",
@@ -6430,7 +6495,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "business_scraped": {
             "eventTitle": "Business Scraped",
@@ -6506,7 +6571,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "response_generated": {
             "eventTitle": "Response Generated",
@@ -6576,7 +6641,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "post_published": {
             "eventTitle": "Post Published",
@@ -6658,7 +6723,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "serp-query": {
             "eventTitle": "SERP Query",
@@ -6776,7 +6841,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -6858,7 +6923,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "store-listing": {
             "eventTitle": "Store Listing",
@@ -6990,7 +7055,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "text_analyzed": {
             "eventTitle": "Text Analyzed",
@@ -7060,7 +7125,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -7136,7 +7201,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "audit_quick": {
             "eventTitle": "Quick Audit",
@@ -7218,7 +7283,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "ad_scraped": {
             "eventTitle": "Ad Scraped",
@@ -7288,7 +7353,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "CITATION_CHECKED": {
             "eventTitle": "Citation Checked",
@@ -7388,7 +7453,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_aggregated": {
             "eventTitle": "Listing Aggregated",
@@ -7470,7 +7535,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -7540,7 +7605,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -7622,7 +7687,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -7698,7 +7763,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "restaurant-listing": {
             "eventTitle": "Restaurant Listing",
@@ -7774,7 +7839,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "review_scraped": {
             "eventTitle": "Review Scraped",
@@ -7850,7 +7915,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "url-submitted": {
             "eventTitle": "URL Submitted",
@@ -7932,7 +7997,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "audit-launched": {
             "eventTitle": "Audit Launched",
@@ -8014,7 +8079,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -8108,7 +8173,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "competitor_monitored": {
             "eventTitle": "Competitor Monitored",
@@ -8184,7 +8249,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "schema_generated": {
             "eventTitle": "Schema Generated",
@@ -8254,7 +8319,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "robots_txt_analysis": {
             "eventTitle": "Robots.txt Analysis",
@@ -8336,7 +8401,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "calendar-analyzed": {
             "eventTitle": "Calendar Analysis Completed",
@@ -8406,7 +8471,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "grid-scan": {
             "eventTitle": "Local Grid Scan",
@@ -8494,7 +8559,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -8570,7 +8635,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "onpage-audit": {
             "eventTitle": "On-Page SEO Audit",
@@ -8640,7 +8705,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -8716,7 +8781,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "site_analyzed": {
             "eventTitle": "Site Analyzed",
@@ -8798,7 +8863,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "result_scraped": {
             "eventTitle": "Result Scraped",
@@ -8868,7 +8933,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -8950,7 +9015,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "directory-search": {
             "eventTitle": "Directory Search Performed",
@@ -9020,7 +9085,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "serp-query": {
             "eventTitle": "SERP Query",
@@ -9146,7 +9211,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "keyword_analyzed": {
             "eventTitle": "Keyword Analyzed",
@@ -9278,7 +9343,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "gap_analysis_complete": {
             "eventTitle": "Gap Analysis Complete",
@@ -9354,7 +9419,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "event_created": {
             "eventTitle": "Event Created",
@@ -9436,7 +9501,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "company-analyzed": {
             "eventTitle": "Company Culture Analyzed",
@@ -9506,7 +9571,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "professional-result": {
             "eventTitle": "Professional Result",
@@ -9588,7 +9653,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "WORKSPACE_SENTIMENT_ANALYSIS": {
             "eventTitle": "Workplace sentiment analysis",
@@ -9658,7 +9723,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -9740,7 +9805,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "competitor_analyzed": {
             "eventTitle": "Competitor Analyzed",
@@ -9846,7 +9911,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "restaurant-scraped": {
             "eventTitle": "Restaurant Scraped",
@@ -9928,7 +9993,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "article_found": {
             "eventTitle": "Article Found",
@@ -10004,7 +10069,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "site-checked": {
             "eventTitle": "Website Checked",
@@ -10092,7 +10157,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "TEAMS_ANALYSIS_RUN": {
             "eventTitle": "Teams Meeting Analysis",
@@ -10174,7 +10239,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -10268,7 +10333,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "pin_created": {
             "eventTitle": "Pin Created",
@@ -10338,7 +10403,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -10426,7 +10491,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "review_scraped": {
             "eventTitle": "Review Scraped",
@@ -10496,12 +10561,12 @@
             "eventTitle": "Actor Start",
             "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
             "isOneTimeEvent": true,
-            "eventPriceUsd": 5e-05
+            "eventPriceUsd": 0.00005
           },
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "tool-execution": {
             "eventTitle": "Tool Execution",
@@ -10672,7 +10737,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "issue_analyzed": {
             "eventTitle": "Issue Analyzed",
@@ -10747,7 +10812,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "mcp-tool-call": {
             "eventTitle": "MCP Tool Call",
@@ -10858,7 +10923,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "discovery_run": {
             "eventTitle": "Discovery Run",
@@ -11019,7 +11084,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "zip_analyzed": {
             "eventTitle": "ZIP Analyzed",
@@ -11094,7 +11159,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "campaign_analyzed": {
             "eventTitle": "Campaign Analyzed",
@@ -11206,7 +11271,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "MCP_TOOL_CALL": {
             "eventTitle": "MCP Tool Call",
@@ -11293,7 +11358,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "transcript_processed": {
             "eventTitle": "Transcript Processed",
@@ -11610,7 +11675,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "page_analyzed": {
             "eventTitle": "Page Analyzed",
@@ -11729,7 +11794,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 1e-05
+            "eventPriceUsd": 0.00001
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
