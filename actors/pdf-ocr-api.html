@@ -670,7 +670,7 @@
 
 <p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
 
-<p>const run = await client.actor('localhowl/pdf-ocr-api').call({</p>
+<p>const run = await client.actor('alizarin_refrigerator-owner/pdf-ocr-api').call({</p>
 <p>pdfUrl: 'https://example.com/document.pdf',</p>
 <p>language: 'eng',</p>
 <p>outputFormat: 'json'</p>
@@ -682,7 +682,7 @@
 
 <h3>Using cURL</h3>
 
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \
 <p>-H "Content-Type: application/json" \</p>
 <p>-d '{</p>
 <p>"pdfUrl": "https://example.com/document.pdf",</p>
@@ -696,7 +696,7 @@
 <p>base64 document.pdf &gt; document_b64.txt</p>
 
 <h1>Send to API</h1>
-<p>curl -X POST "https://api.apify.com/v2/acts/localhowl~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \</p>
+<p>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \</p>
 <p>-H "Content-Type: application/json" \</p>
 <p>-d '{</p>
 <p>"pdfBase64": "'$(cat document_b64.txt)'",</p>

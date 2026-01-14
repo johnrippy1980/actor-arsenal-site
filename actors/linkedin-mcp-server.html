@@ -568,7 +568,7 @@
 <p>"mcpServers": {</p>
 <p>"linkedin": {</p>
 <p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic-ai/model-context-protocol", "run", "apify-actor", "localhowl/linkedin-mcp-server"],</p>
+<p>"args": ["-y", "@anthropic-ai/model-context-protocol", "run", "apify-actor", "alizarin_refrigerator-owner/linkedin-mcp-server"],</p>
 <p>"env": {</p>
 <p>"APIFY_TOKEN": "your-apify-token"</p>
 <p>}</p>
@@ -689,7 +689,7 @@
 
 <p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
 
-<p>const run = await client.actor('localhowl/linkedin-mcp-server').call({</p>
+<p>const run = await client.actor('alizarin_refrigerator-owner/linkedin-mcp-server').call({</p>
 <p>mode: 'demo',</p>
 <p>tool: 'analyze_voice',</p>
 <p>profileUrl: 'https://www.linkedin.com/in/johnrippy/'</p>
@@ -701,7 +701,7 @@
 
 <h3>Using cURL</h3>
 
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/localhowl~linkedin-mcp-server/runs?token=YOUR_API_TOKEN" \
+<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~linkedin-mcp-server/runs?token=YOUR_API_TOKEN" \
 <p>-H "Content-Type: application/json" \</p>
 <p>-d '{</p>
 <p>"mode": "demo",</p>
