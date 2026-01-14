@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Records API Service Records & Verification | Actor Arsenal</title>
+    <meta name="description" content="Military Records API - Service Records & Verification">
+    <link rel="canonical" href="https://actor-arsenal-site.vercel.app/actors/military-records-api---service-records-verification.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://actor-arsenal-site.vercel.app/actors/military-records-api---service-records-verification.html">
+    <meta property="og:title" content="Military Records API Service Records & Verification | Actor Arsenal">
+    <meta property="og:description" content="Military Records API - Service Records & Verification">
+    <meta property="og:image" content="https://images.apifyusercontent.com/cxTZweNO-ORZ7oziENnsT60apLHkirNNq7nS8QxDFFs/rs:fill:250:250/cb:1/aHR0cHM6Ly9hcGlmeS1pbWFnZS11cGxvYWRzLXByb2QuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vQ1pHaTBpUERTQkZzSmF5M3AtYWN0b3ItSXhmUUI3U1QxQ2h3ZmtGS0ctOVJIamZXOGJvcy1TY3JlZW5zaG90XzIwMjYtMDEtMTJfYXRfMTIuNTcuNTdfUE0ucG5n.webp">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Military Records API Service Records & Verification">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #1a1a2e;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 90px;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img { width: 40px; height: auto; image-rendering: pixelated; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-button:hover { background: #00cc6a; }
+        .actor-header {
+            padding: 8rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .actor-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .actor-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .actor-info { flex: 1; }
+        .actor-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .actor-category {
+            display: inline-block;
+            background: rgba(153, 51, 255, 0.2);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        .actor-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .actor-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover { background: #00cc6a; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+        .btn-secondary:hover { background: rgba(0, 255, 136, 0.1); }
+        .content {
+            padding: 3rem 0;
+        }
+        .content h1, .content h2 {
+            color: var(--accent-green);
+            margin: 2rem 0 1rem;
+        }
+        .content p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .content a { color: var(--accent-green); }
+        .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover { color: var(--accent-green); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent-green); }
+        .doom-hud {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%; height: 80px;
+            background: linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
+            border-top: 4px solid #7a7a7a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .hud-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+            border-left: 3px solid #6a6a6a;
+            border-right: 3px solid #2a2a2a;
+            padding: 0 1.5rem;
+        }
+        .hud-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 0.5rem; }
+        .hud-value { font-size: 1.8rem; text-shadow: 2px 2px 0 #000; }
+        .hud-label { font-size: 0.5rem; color: #888; text-shadow: 1px 1px 0 #000; }
+        .hud-face-container {
+            width: 70px; height: 70px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .hud-face { width: 60px; height: 60px; image-rendering: pixelated; }
+        .hud-ammo { color: #ffcc00; }
+        .hud-health { color: #ff3333; }
+        .hud-armor { color: #00ff88; }
+        .hud-secrets { color: #ffcc00; }
+        @media (max-width: 768px) {
+            .actor-header-content { flex-direction: column; }
+            .actor-icon { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../index.html">Arsenal</a>
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner/military-records-api---service-records-verification" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="actor-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <div class="actor-header-content">
+                <img src="https://images.apifyusercontent.com/cxTZweNO-ORZ7oziENnsT60apLHkirNNq7nS8QxDFFs/rs:fill:250:250/cb:1/aHR0cHM6Ly9hcGlmeS1pbWFnZS11cGxvYWRzLXByb2QuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vQ1pHaTBpUERTQkZzSmF5M3AtYWN0b3ItSXhmUUI3U1QxQ2h3ZmtGS0ctOVJIamZXOGJvcy1TY3JlZW5zaG90XzIwMjYtMDEtMTJfYXRfMTIuNTcuNTdfUE0ucG5n.webp" alt="Military Records API - Service Records &amp; Verification" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <div class="actor-info">
+                    <h1 class="actor-title">Military Records API Service Records & Verification</h1>
+                    <span class="actor-category">API Integration</span>
+                    <p class="actor-description">Military Records API - Service Records & Verification</p>
+                    <div class="actor-actions">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/military-records-api---service-records-verification" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
+                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <h1>Military Records API Service Records & Verification</h1>
+            
+            <blockquote><strong>Built by</strong> <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+            
+            <blockquote>2025 Zapier Automation Hero of the Year &mdash; <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
+            
+            <p>Military Records API - Service Records & Verification</p>
+            
+            <h2>Actor ID</h2>
+            <p><code>IxfQB7ST1ChwfkFKG</code></p>
+            
+            <p><a href="https://apify.com/alizarin_refrigerator-owner/military-records-api---service-records-verification" target="_blank" rel="noopener">View full documentation on Apify &rarr;</a></p>
+            
+            <p>---</p>
+            
+            <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+        </div>
+    </footer>
+
+    <div class="doom-hud">
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-ammo">150,000</div>
+                <div class="hud-label">KILLS</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-health">100%</div>
+                <div class="hud-label">HEALTH</div>
+            </div>
+        </div>
+        <div class="hud-face-container">
+            <img src="../images/logo.png" class="hud-face" alt="Doomguy">
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-armor">274</div>
+                <div class="hud-label">ACTORS</div>
+            </div>
+        </div>
+    <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-secrets">0/3</div>
+                <div class="hud-label">SECRETS</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
