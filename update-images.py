@@ -29,6 +29,36 @@ def load_actors():
                 if short_name not in mapping:
                     mapping[short_name] = picture_url
 
+    # Manual mappings for HTML names that don't match JSON names
+    manual_mappings = {
+        'angi-angie-s-list-scraper': 'angi-scraper',
+        'bbb-advanced-scraper': 'bbb-scraper',
+        'doordash-store-details-scraper': 'doordash-scraper',
+        'facebook-photos-scraper': 'facebook-page-post-scraper',
+        'facebook-posts-scraper': 'facebook-page-post-scraper',
+        'facebook-search-scraper': 'facebook-page-post-scraper',
+        'grubhub-restaurant-scraper': 'grubhub-scraper',
+        'houzz-professional-scraper': 'houzz-scraper',
+        'manta-business-search-scraper': 'manta-scraper',
+        'moz-local-listing-checker---nap-consistency-audit': 'moz-listing-checker',
+        'nextdoor-business-scraper': 'nextdoor-scraper',
+        'web-scraper': 'website-crawler',
+        'website-content-crawler': 'website-crawler',
+        'google-search-scraper': 'google-serp-scraper',
+        'instagram-profile-scraper': 'instagram-scraper',
+        'linkedin-company-scraper': 'linkedin-company-profile-scraper',
+        'e-commerce-intelligence-made-simple': 'shopify-store-analyzer',
+        'shopify-store-analyzer': 'shopify-store-analyzer',
+    }
+
+    # Apply manual mappings
+    for html_name, json_name in manual_mappings.items():
+        # Find the JSON name in mapping and create alias
+        for key, url in list(mapping.items()):
+            if key.startswith(json_name) or json_name in key:
+                mapping[html_name] = url
+                break
+
     return mapping
 
 def update_index_html(actor_images):
