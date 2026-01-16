@@ -182,42 +182,148 @@
             background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
         }
 
+        /* Container */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
         /* Navigation */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 60px;
-            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-bottom: 3px solid var(--accent-red);
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 10000;
+        }
+        .nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-            z-index: 10000;
         }
-        .nav-logo {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
-            color: var(--accent-red);
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
             text-decoration: none;
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img {
+            width: 40px;
+            height: auto;
+            image-rendering: pixelated;
         }
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
-        .nav-link {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
+        .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-green);
+        }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Difficulty Selector */
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn, .music-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-red);
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+        .difficulty-btn:hover, .music-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid var(--accent-red);
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-option.active {
+            color: var(--accent-yellow);
         }
 
         /* Main Content */
@@ -352,19 +458,33 @@
         }
 
         /* Footer */
-        .footer {
+        footer {
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
             border-top: 1px solid var(--border);
         }
-        .footer-text {
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+        .footer-affiliate {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .copyright {
             font-size: 0.85rem;
             color: var(--text-secondary);
-        }
-        .footer-text a {
-            color: var(--accent-green);
-            text-decoration: none;
         }
 
         @media (max-width: 768px) {
@@ -380,10 +500,27 @@
     <div class="vignette"></div>
 
     <nav class="nav">
-        <a href="/" class="nav-logo">ACTOR ARSENAL</a>
-        <div class="nav-links">
-            <a href="/" class="nav-link">HOME</a>
-            <a href="/faq.html" class="nav-link active">FAQ</a>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <!-- Difficulty Selector -->
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
+                    </div>
+                </div>
+                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
+                <a href="https://apify.com/alizarin_refrigerator-owner" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
         </div>
     </nav>
 
@@ -476,9 +613,24 @@
         </aside>
     </main>
 
-    <footer class="footer">
-        <p class="footer-text">Built by <a href="/">John Rippy</a> | 2025 Zapier Automation Hero | Powered by <a href="https://apify.com" target="_blank" rel="noopener">Apify</a></p>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank">Apify Store</a>
+                <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
+                <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
+            </div>
+            <a href="https://apify.com/?fpr=kqpn7b" target="_blank" rel="noopener" class="footer-affiliate">
+                <img src="images/apify-affiliate-partner-dark.png" alt="Apify Partner" style="height: 40px;">
+            </a>
+            <p class="copyright">&copy; 2026 John Rippy. Rip and tear.</p>
+        </div>
     </footer>
+
+    <!-- Background Music -->
+    <audio id="doomMusic" loop preload="auto">
+        <source src="sounds/e1m1.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         // FAQ Accordion
@@ -495,6 +647,86 @@
                     item.classList.add('open');
                 }
             });
+        });
+
+        // DOOM Theme Music
+        const doomMusic = document.getElementById('doomMusic');
+        doomMusic.volume = 0.3;
+        let musicPlaying = false;
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Check if music was playing on previous page
+        if (localStorage.getItem('doomMusicPlaying') === 'true') {
+            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
+            doomMusic.currentTime = savedTime;
+            doomMusic.play().then(() => {
+                musicPlaying = true;
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('playing');
+            }).catch(() => {});
+        }
+
+        // Save music time periodically
+        setInterval(() => {
+            if (musicPlaying) {
+                localStorage.setItem('doomMusicTime', doomMusic.currentTime.toString());
+            }
+        }, 1000);
+
+        // Save music state before leaving page
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('doomMusicPlaying', musicPlaying.toString());
+            localStorage.setItem('doomMusicTime', doomMusic.currentTime.toString());
+        });
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                doomMusic.pause();
+                musicBtn.textContent = '🔇';
+                musicBtn.classList.remove('playing');
+                musicPlaying = false;
+                localStorage.setItem('doomMusicPlaying', 'false');
+            } else {
+                doomMusic.play().then(() => {
+                    musicBtn.textContent = '🔊';
+                    musicBtn.classList.add('playing');
+                    musicPlaying = true;
+                    localStorage.setItem('doomMusicPlaying', 'true');
+                }).catch(() => {});
+            }
+        }
+
+        // Difficulty selector
+        const difficultyBtn = document.getElementById('difficultyBtn');
+        const difficultyMenu = document.getElementById('difficultyMenu');
+        const difficultyOptions = document.querySelectorAll('.difficulty-option');
+
+        // Check saved difficulty
+        const savedDifficulty = localStorage.getItem('doomDifficulty') || 'HURT ME PLENTY';
+        difficultyBtn.textContent = savedDifficulty;
+        difficultyOptions.forEach(opt => {
+            opt.classList.toggle('active', opt.textContent === savedDifficulty);
+        });
+
+        difficultyBtn.addEventListener('click', () => {
+            difficultyMenu.classList.toggle('show');
+        });
+
+        difficultyOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                difficultyOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                difficultyBtn.textContent = option.textContent;
+                difficultyMenu.classList.remove('show');
+                localStorage.setItem('doomDifficulty', option.textContent);
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.difficulty-selector')) {
+                difficultyMenu.classList.remove('show');
+            }
         });
     </script>
 </body>
