@@ -1,5 +1,41 @@
 [
   {
+    "id": "baA4Az12N8znG6uJ7",
+    "name": "firecrawl-website-crawler",
+    "title": "Firecrawl Website Crawler",
+    "description": "Enhanced website crawler using Firecrawl's Crawl API for superior JavaScript rendering, smart rate limiting, anti-bot bypass, and clean markdown extraction.",
+    "pictureUrl": "images/firecrawl-website-crawler.png",
+    "categories": [
+      "SEO_TOOLS",
+      "DEVELOPER_TOOLS",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "STzQsscbcnezb8AIa",
+    "name": "firecrawl-competitive-intel",
+    "title": "Firecrawl Competitive Intelligence",
+    "description": "Discover and extract competitor pricing, features, and key pages using Firecrawl's Map + Scrape endpoints. Auto-discovers relevant pages and extracts structured data.",
+    "pictureUrl": "images/firecrawl-competitive-intel.png",
+    "categories": [
+      "SEO_TOOLS",
+      "DEVELOPER_TOOLS",
+      "LEAD_GENERATION"
+    ]
+  },
+  {
+    "id": "zqmweHYUUODpdT8UA",
+    "name": "firecrawl-site-mapper",
+    "title": "Firecrawl Site Mapper",
+    "description": "Fast URL discovery using Firecrawl's Map API. Perfect for competitor analysis, site audits, and content gap discovery. Search-based filtering and sitemap integration.",
+    "pictureUrl": "images/firecrawl-site-mapper.png",
+    "categories": [
+      "SEO_TOOLS",
+      "DEVELOPER_TOOLS",
+      "AUTOMATION"
+    ]
+  },
+  {
     "id": "5S8Zfhls8N8RY6o6U",
     "name": "apple-maps-scraper",
     "title": "Apple Maps Scraper",
