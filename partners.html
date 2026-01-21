@@ -633,6 +633,87 @@
             margin-top: 1rem;
         }
 
+        /* ===== NAVIGATION (from main site) ===== */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .nav-links a.active { color: var(--accent-yellow); }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img {
+            width: 40px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== SITE FOOTER (from main site) ===== */
+        .site-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            background: var(--bg-dark);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+        .footer-affiliate {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Partner logo fallback */
+        .partner-logo-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .header h1 {
@@ -644,13 +725,34 @@
             .faq-question h3 {
                 font-size: 0.9rem;
             }
+            .nav-links {
+                display: none;
+            }
         }
+
+        /* Add padding for fixed nav */
+        body { padding-top: 80px; }
     </style>
 </head>
 <body>
     <!-- CRT Effects -->
     <div class="crt-overlay"></div>
     <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="compare.html">Compare</a>
+                <a href="api-docs.html">API Docs</a>
+                <a href="faq.html">FAQ</a>
+                <a href="partners.html" class="active">Partners</a>
+                <a href="play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Header -->
     <header class="header">
@@ -665,7 +767,7 @@
             <!-- Semrush -->
             <article class="partner-card" data-partner="semrush">
                 <div class="power-level">LVL 99</div>
-                <img src="https://www.semrush.com/static/index/logos-new/semrush-logo.svg" alt="Semrush Logo" class="partner-logo" loading="lazy">
+                <img src="images/semrush-logo.svg" alt="Semrush Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">SEMRUSH</h2>
                 <p class="partner-tagline">The Ultimate SEO War Machine</p>
                 <p class="partner-description">The all-in-one toolkit trusted by 10+ million marketers. Dominate search with comprehensive keyword research, competitive intelligence, site audits, and rank tracking that leaves competitors in the dust.</p>
@@ -697,7 +799,7 @@
             <!-- DataForSEO -->
             <article class="partner-card" data-partner="dataforseo">
                 <div class="power-level">LVL 95</div>
-                <img src="https://dataforseo.com/wp-content/uploads/2023/12/logo_blue.svg" alt="DataForSEO Logo" class="partner-logo" loading="lazy">
+                <img src="images/dataforseo-logo.png" alt="DataForSEO Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">DATAFORSEO</h2>
                 <p class="partner-tagline">Raw SEO Data API Power</p>
                 <p class="partner-description">Direct API access to SERP data, keywords, backlinks, and on-page metrics. Build SEO tools and dashboards with fresh, reliable data. Pay only for what you use with no monthly minimums.</p>
@@ -713,7 +815,7 @@
             <!-- LocalFalcon -->
             <article class="partner-card" data-partner="localfalcon">
                 <div class="power-level">LVL 90</div>
-                <img src="https://www.localfalcon.com/images/logo.svg" alt="LocalFalcon Logo" class="partner-logo" loading="lazy">
+                <img src="images/localfalcon-logo.png" alt="LocalFalcon Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">LOCALFALCON</h2>
                 <p class="partner-tagline">Local SEO Rank Tracking Grid</p>
                 <p class="partner-description">See exactly where your Google Business Profile ranks across your entire service area. Visual grid maps reveal ranking patterns competitors can't see, powered by Falcon AI recommendations.</p>
@@ -729,7 +831,7 @@
             <!-- WPEngine -->
             <article class="partner-card" data-partner="wpengine">
                 <div class="power-level">LVL 88</div>
-                <img src="https://wpengine.com/wp-content/uploads/2022/06/WP-Engine-Logo-Dark.svg" alt="WPEngine Logo" class="partner-logo" loading="lazy">
+                <img src="images/wpengine-logo.svg" alt="WPEngine Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">WPENGINE</h2>
                 <p class="partner-tagline">Premium WordPress Hosting</p>
                 <p class="partner-description">Managed WordPress hosting that makes sites 2-6x faster. Enterprise security, automatic backups, staging environments, and expert support so you can focus on content, not server maintenance.</p>
@@ -745,7 +847,7 @@
             <!-- Clay -->
             <article class="partner-card" data-partner="clay">
                 <div class="power-level">LVL 92</div>
-                <img src="https://assets-global.website-files.com/6139e0d31b64f44b85c16bf6/63f5a5e2c25c49ea9e0afa49_Clay-logo.svg" alt="Clay Logo" class="partner-logo" loading="lazy">
+                <img src="images/clay-logo.png" alt="Clay Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">CLAY</h2>
                 <p class="partner-tagline">Data Enrichment & Outreach Engine</p>
                 <p class="partner-description">Build lead lists with 50+ data providers in one platform. Waterfall enrichment finds the data others miss. Automate personalized outreach and sync directly to your CRM.</p>
@@ -761,7 +863,7 @@
             <!-- Customers.AI -->
             <article class="partner-card" data-partner="customersai">
                 <div class="power-level">LVL 87</div>
-                <img src="https://customers.ai/wp-content/uploads/2023/08/CustomersAI-Logo-2.svg" alt="Customers.AI Logo" class="partner-logo" loading="lazy">
+                <img src="images/customersai-logo.png" alt="Customers.AI Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">CUSTOMERS.AI</h2>
                 <p class="partner-tagline">AI Visitor Identification & Automation</p>
                 <p class="partner-description">Reveal anonymous website visitors and turn them into leads. AI-powered identification finds emails, phones, and company info. Automate outreach through email, ads, and SMS.</p>
@@ -777,7 +879,7 @@
             <!-- Firecrawl -->
             <article class="partner-card" data-partner="firecrawl">
                 <div class="power-level">LVL 94</div>
-                <img src="https://www.firecrawl.dev/firecrawl.svg" alt="Firecrawl Logo" class="partner-logo" loading="lazy">
+                <img src="images/firecrawl-logo.svg" alt="Firecrawl Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">FIRECRAWL</h2>
                 <p class="partner-tagline">AI-Powered Web Scraping API</p>
                 <p class="partner-description">Convert any website to LLM-ready markdown with one API call. No selectors, no maintenance. Perfect for RAG applications, AI agents, and feeding fresh web data to language models.</p>
@@ -793,7 +895,7 @@
             <!-- Claude Code -->
             <article class="partner-card" data-partner="claudecode">
                 <div class="power-level">LVL 100</div>
-                <img src="https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F62c814a5-d33f-4556-a498-116ee11e8f71.svg&w=256&q=75" alt="Claude Code Logo" class="partner-logo" loading="lazy">
+                <img src="images/claude-logo.svg" alt="Claude Code Logo" class="partner-logo" loading="lazy">
                 <h2 class="partner-name">CLAUDE CODE</h2>
                 <p class="partner-tagline">AI Pair Programming From The Future</p>
                 <p class="partner-description">The AI coding assistant that actually understands your codebase. Claude Code by Anthropic reads, writes, debugs, and refactors code with superhuman context. It's like having a 10x developer who never sleeps.</p>
@@ -1101,10 +1203,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Built by <a href="https://actor-arsenal-site.vercel.app/">John Rippy</a> // 2025 Zapier Automation Hero</p>
-        <p class="affiliate-notice">Some links on this page are affiliate links. We may earn a commission if you make a purchase through these links at no extra cost to you.</p>
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" target="_blank">Apify Store</a>
+                <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
+                <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
+            </div>
+            <a href="https://apify.com/?fpr=kqpn7b" target="_blank" rel="noopener" class="footer-affiliate">
+                <img src="images/apify-affiliate-partner-dark.png" alt="Apify Partner" style="height: 40px;">
+            </a>
+            <p class="copyright">&copy; 2026 John Rippy. Rip and tear.</p>
+            <p class="affiliate-notice">Some links on this page are affiliate links. We may earn a commission if you make a purchase through these links at no extra cost to you.</p>
+        </div>
     </footer>
 
     <!-- FAQ Toggle Script -->
