@@ -402,6 +402,37 @@ def replace_nav_css(content):
     return content
 
 
+def clean_corrupted_css(content):
+    """Remove corrupted CSS fragments left over from previous sync attempts."""
+    # Remove empty "/* Music Button */" blocks with trailing empty rules
+    content = re.sub(
+        r'/\*\s*Music Button\s*\*/\s*\n\s*\n\s*\n\s*\n\s*\n\s*\}\s*\n\s*\n',
+        '',
+        content
+    )
+
+    # Remove empty "/* Difficulty Selector */" blocks
+    content = re.sub(
+        r'/\*\s*Difficulty Selector\s*\*/\s*\n(\s*\n)+',
+        '',
+        content
+    )
+
+    # Remove orphaned ".difficulty-btn," or ".difficulty-btn:hover," with empty bodies
+    content = re.sub(
+        r'\.difficulty-btn,\s*\n\s*\n\s*\n\s*\n\s*\n\s*\}\s*\n',
+        '',
+        content
+    )
+    content = re.sub(
+        r'\.difficulty-btn:hover,\s*\n\s*\n\s*\n\s*\n\s*\n\s*\n',
+        '',
+        content
+    )
+
+    return content
+
+
 def process_file(file_path):
     """Process a single HTML file."""
     rel_path = file_path.relative_to(BASE_DIR)
@@ -414,6 +445,9 @@ def process_file(file_path):
             content = f.read()
 
         original = content
+
+        # Clean corrupted CSS first
+        content = clean_corrupted_css(content)
 
         # Replace navigation HTML
         content = replace_nav(content, is_actor_page)
