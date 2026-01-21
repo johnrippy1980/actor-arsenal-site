@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <defs>
+    <style>
+      .google-blue { fill: #4285f4; }
+      .google-red { fill: #ea4335; }
+      .google-yellow { fill: #fbbc05; }
+      .google-green { fill: #34a853; }
+      .text { fill: #ffffff; font-family: 'Product Sans', 'Roboto', sans-serif; font-size: 14px; }
+    </style>
+  </defs>
+  <!-- Google "G" icon -->
+  <g transform="translate(5, 5)">
+    <!-- Blue arc -->
+    <path class="google-blue" d="M20 10c-5.5 0-10 4.5-10 10s4.5 10 10 10c4.4 0 8.1-2.8 9.4-6.7h-9.4v-4h14c.2 1 .3 2 .3 3 0 8.3-6.7 15-15 15S5 30.3 5 22 11.7 7 20 7c3.9 0 7.4 1.5 10.1 3.9l-3 3C25.1 12 22.7 10 20 10z"/>
+    <!-- Red arc -->
+    <path class="google-red" d="M20 10c2.7 0 5.1 1 7 2.9l3-3C27.4 7.5 23.9 7 20 7c-4.2 0-7.9 1.7-10.6 4.5l3.5 2.7C14.5 11.7 17 10 20 10z"/>
+    <!-- Yellow arc -->
+    <path class="google-yellow" d="M9.4 14.2l-3.5-2.7C4.1 14.2 3 17.9 3 22c0 4.1 1.1 7.8 2.9 10.5l3.5-2.7C8 27.6 7 24.9 7 22s1-5.6 2.4-7.8z"/>
+    <!-- Green arc -->
+    <path class="google-green" d="M20 34c-3 0-5.5-1.7-7-4.2l-3.5 2.7C12.1 36.3 15.8 37 20 37c3.9 0 7.4-1.5 10.1-3.9l-3-3C25.1 32 22.7 34 20 34z"/>
+  </g>
+  <!-- "Workspace" text -->
+  <text x="55" y="32" class="text">Workspace</text>
+</svg>

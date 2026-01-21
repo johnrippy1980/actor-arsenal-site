@@ -320,7 +320,8 @@ SKIP_FILES = ['index.html']  # Homepage is the canonical source
 def replace_nav(content, is_actor_page):
     """Replace the navigation block with the canonical version."""
     nav_template = NAV_ACTORS if is_actor_page else NAV_ROOT
-    pattern = r'<nav>[\s\S]*?</nav>'
+    # Match both <nav> and <nav class="...">
+    pattern = r'<nav[^>]*>[\s\S]*?</nav>'
     if re.search(pattern, content):
         return re.sub(pattern, nav_template.strip(), content)
     return content
