@@ -463,17 +463,10 @@ Audience Insights</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Mailchimp Campaign Analyzer</h1>
-
-<strong>"AI-Powered Email Campaign Analytics"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Analyze your Mailchimp email campaigns with AI-powered insights. Track open rates, click-through rates, and get actionable recommendations to improve your email marketing performance.</p>
+            <p>Analyze your Mailchimp email campaigns with AI-powered insights. Track open rates, click-through rates, revenue attribution, and get recommendations for improvement. Compare performance across campaigns and identify winning subject lines.</p>
 
 <h2>Features</h2>
 
@@ -484,8 +477,55 @@ Audience Insights</p>
 <li><strong>A/B Test Comparison</strong>: Compare campaign variants</li>
 <li><strong>Send Time Optimization</strong>: Find the best times to send emails</li>
 <li><strong>Audience Insights</strong>: Understand subscriber engagement patterns</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Field | Type | Description |
+|-------|------|-------------|
+| demoMode | boolean | Test with sample data (default: true) |
+| mailchimpApiKey | string | Your Mailchimp API key |
+| task | string | Analysis type to perform |
+| maxCampaigns | integer | Max campaigns to analyze (default: 20) |
+| aiProvider | string | AI provider for insights (claude/openai/gemini) |</p>
+
+<h2>Output Format</h2>
+
+<p>The actor outputs a dataset with:
+<ul>
+<li>Individual campaign metrics</li>
+<li>Summary statistics (avg open rate, click rate)</li>
+<li>Best/worst performing campaigns</li>
+<li>AI-generated insights and recommendations</li></p>
+
+</ul>
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
+<ul>
+<li>$0.02 per campaign analyzed</li>
+<li>$0.03 for AI insights generation</li>
+<li>$0.05 for comprehensive report</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -494,73 +534,13 @@ Audience Insights</p>
 <li>Optimize send times for better engagement</li>
 <li>Generate performance reports for stakeholders</li>
 <li>Improve campaign strategy with AI recommendations</li>
+
 </ul>
+---
 
-<h2>Input</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<p>The actor outputs a dataset with:</p>
-<ul>
-<li>Individual campaign metrics</li>
-<li>Summary statistics (avg open rate, click rate)</li>
-<li>Best/worst performing campaigns</li>
-<li>AI-generated insights and recommendations</li>
-</ul>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-event pricing:</p>
-<ul>
-<li>$0.02 per campaign analyzed</li>
-<li>$0.03 for AI insights generation</li>
-<li>$0.05 for comprehensive report</li>
-</ul>
-
-<h2>Getting Your API Keys</h2>
-
-<h3>Mailchimp API Key</h3>
-<p>1. Log into Mailchimp</p>
-<p>2. Go to Account > Extras > API Keys</p>
-<p>3. Create a new API key</p>
-<p>4. Copy the full key (format: xxxxxxxx-usX)</p>
-
-<h3>AI API Keys (BYOK)</h3>
-<ul>
-<li><strong>Claude</strong>: console.anthropic.com > API Keys</li>
-<li><strong>OpenAI</strong>: platform.openai.com > API Keys</li>
-<li><strong>Gemini</strong>: aistudio.google.com > Get API Key</li>
-</ul>
-
-<h2>Example Output</h2>
-
-<pre><code>{
-<p>"task": "analyze_campaigns",</p>
-<p>"summary": {</p>
-<p>"totalCampaigns": 5,</p>
-<p>"avgOpenRate": 38.2,</p>
-<p>"avgClickRate": 12.7,</p>
-<p>"bestPerforming": {</p>
-<p>"campaignName": "Welcome Series",</p>
-<p>"openRate": 70.0</p>
-<p>}</p>
-<p>},</p>
-<p>"aiInsights": "Your campaigns show strong engagement...",</p>
-<p>"recommendations": [</p>
-<p>"Use urgency-based subject lines",</p>
-<p>"Send on Tuesday mornings",</p>
-<p>"Include personalization tokens"</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -574,7 +554,7 @@ Audience Insights</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

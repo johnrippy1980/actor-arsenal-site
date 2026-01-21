@@ -456,15 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>DFAS Military Pay API</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>Military Pay Tables, BAH, BAS &amp; Retirement Calculator</blockquote>
-<p>Access comprehensive military pay information from the Defense Finance and Accounting Service. Query base pay tables, housing allowances (BAH), subsistence allowances (BAS), special pays, retirement calculations, and tax information.</p>
+            <h1>DFAS Military Pay API - Pay Tables, Allowances &amp; Retirement</h1>
+            <p>Access military pay information including base pay tables, BAH (housing allowance), BAS (subsistence), special pays, retirement calculators, and tax information. Essential for service members, families, and veteran service organizations.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Base Pay Tables</strong> - Monthly pay by grade and years of service</li>
+
+<ul>
+<li><strong>Base Pay Tables</strong> - Monthly pay by grade and years of service</li>
 <li><strong>BAH Rates</strong> - Basic Allowance for Housing by location</li>
 <li><strong>BAS Rates</strong> - Basic Allowance for Subsistence rates</li>
 <li><strong>Special Pays</strong> - Hazardous duty, flight pay, bonuses</li>
@@ -472,36 +472,66 @@
 <li><strong>Tax Information</strong> - Military tax benefits and filing</li>
 <li><strong>Leave Information</strong> - Leave accrual and policies</li>
 <li><strong>Allotments</strong> - Payroll deduction information</li>
+
 </ul>
-<h2>Tasks</h2>
-<h3>get_pay_tables</h3>
-<p>Retrieve military base pay tables by grade and years of service.</p>
-<h3>get_bah_rates</h3>
-<p>Look up Basic Allowance for Housing rates by ZIP code and dependency status.</p>
-<h3>get_bas_rates</h3>
-<p>Get current Basic Allowance for Subsistence rates.</p>
-<h3>get_special_pays</h3>
-<p>Information on special and incentive pays (hazardous duty, flight pay, etc.).</p>
-<h3>calculate_retirement</h3>
-<p>Calculate estimated retirement pay based on system and service.</p>
-<h3>get_tax_info</h3>
-<p>Military-specific tax information and benefits.</p>
-<h3>get_leave_info</h3>
-<p>Leave accrual rates, policies, and sell-back information.</p>
-<h3>get_allotments</h3>
-<p>Information on payroll allotments and deductions.</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
 <h2>Use Cases</h2>
-<ul><li>Military financial planning tools</li>
+
+<ul>
+<li>Military financial planning tools</li>
 <li>Veteran service organizations</li>
 <li>Military spouse employment services</li>
 <li>Recruiting and retention analysis</li>
 <li>Benefits comparison applications</li>
 <li>PCS (Permanent Change of Station) planning</li>
+
 </ul>
-<h2>Pricing</h2>
-<p>$0.01 per query (all tasks)</p>
-<h2>Data Source</h2>
-<p>Information based on official DFAS rates and military pay regulations. For official pay inquiries, contact DFAS directly at 1-888-332-7411.</p>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -515,7 +545,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,26 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>HomeAdvisor Pro Finder & Reviews Scraper</h1>
-
-<blockquote>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Scrape HomeAdvisor for home service professionals, contractors, customer reviews, and project cost data. Essential for home services competitive analysis and lead generation.</p>
-
-<h2>Why HomeAdvisor Data is Valuable</h2>
-
-<p>HomeAdvisor is the leading home services marketplace:</p>
-<ul>
-<li><strong>Customer Reviews</strong>: Verified reviews from actual customers</li>
-<li><strong>Professional Ratings</strong>: Detailed ratings and satisfaction scores</li>
-<li><strong>Cost Estimates</strong>: Project cost guides and estimates</li>
-<li><strong>Service Verification</strong>: Screened & Approved status, Elite Service badges</li>
-<li><strong>Business Details</strong>: Years in business, services offered, coverage areas</li>
-</ul>
+            <p>Scrape HomeAdvisor for home service professionals, contractors, ratings, reviews, and project cost data. Extract Screened & Approved status, Elite Service badges, service areas, and customer feedback. Essential for home services competitive analysis and lead generation. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -487,8 +471,108 @@
 <li><strong>Review Extraction</strong>: Customer reviews with ratings and project details</li>
 <li><strong>Cost Data</strong>: Average project costs and cost guides</li>
 <li><strong>Credential Verification</strong>: License, insurance, and screening status</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Type: search, professional_profile, reviews, cost_guide |
+| <code>professionalUrl</code> | string | Direct HomeAdvisor profile URL |
+| <code>serviceType</code> | string | Service type (Plumbing, Roofing, HVAC, etc.) |
+| <code>location</code> | string | City, State or ZIP code |
+| <code>minRating</code> | number | Minimum rating (1.0-5.0) |
+| <code>screened</code> | boolean | Only Screened & Approved professionals |
+| <code>eliteService</code> | boolean | Only Elite Service professionals |
+| <code>includeReviews</code> | boolean | Scrape customer reviews (default: true) |
+| <code>maxReviewsPerPro</code> | number | Max reviews per professional (default: 25) |
+| <code>includeCostData</code> | boolean | Include cost estimates (default: true) |
+| <code>maxResults</code> | number | Maximum professionals (default: 50) |
+| <code>proxyConfiguration</code> | object | Proxy settings |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<h3>Professional Output</h3>
+
+<pre><code>{
+  "businessName": "Smith Plumbing & Heating",
+  "homeAdvisorUrl": "https://www.homeadvisor.com/rated.SmithPlumbing.12345.html",
+  "serviceTypes": ["Plumbing", "Water Heater Installation", "Drain Cleaning"],
+  "rating": 4.8,
+  "reviewCount": 234,
+  "hiredCount": 1250,
+  "yearsInBusiness": 15,
+  "address": {
+    "city": "Houston",
+    "state": "TX",
+    "zipCode": "77001"
+  },
+  "phone": "(555) 123-4567",
+  "website": "https://smithplumbing.com",
+  "screenedApproved": true,
+  "eliteService": true,
+  "licensedInsured": true,
+  "bbbAccredited": true,
+  "serviceArea": ["Houston", "Katy", "Sugar Land", "The Woodlands"],
+  "costRange": {
+    "low": 150,
+    "high": 500,
+    "average": 275,
+    "projectType": "Standard Plumbing Repair"
+  },
+  "reviews": [
+    {
+      "reviewId": "ha123456",
+      "rating": 5,
+      "title": "Excellent plumber!",
+      "text": "Fixed our leak quickly and professionally...",
+      "date": "November 2024",
+      "projectType": "Plumbing Repair",
+      "projectCost": "$285",
+      "wouldRecommend": true,
+      "verified": true
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>professional_scraped</code> | Per professional profile scraped | $0.06 |
+| <code>review_scraped</code> | Per review extracted | $0.004 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 professionals with 25 reviews each: $0.10 + (50 × $0.06) + (1250 × $0.004) = <strong>$8.10</strong></li>
+<li>100 professionals, no reviews: $0.10 + (100 × $0.06) = <strong>$6.10</strong></li>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -498,171 +582,13 @@
 <li><strong>Market Research</strong>: Analyze pricing and demand by region</li>
 <li><strong>Reputation Monitoring</strong>: Track reviews for your business</li>
 <li><strong>Cost Analysis</strong>: Understand market pricing for services</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<h3>Professional Output</h3>
-
-<pre><code>{
-<p>"businessName": "Smith Plumbing & Heating",</p>
-<p>"homeAdvisorUrl": "https://www.homeadvisor.com/rated.SmithPlumbing.12345.html",</p>
-<p>"serviceTypes": ["Plumbing", "Water Heater Installation", "Drain Cleaning"],</p>
-<p>"rating": 4.8,</p>
-<p>"reviewCount": 234,</p>
-<p>"hiredCount": 1250,</p>
-<p>"yearsInBusiness": 15,</p>
-<p>"address": {</p>
-<p>"city": "Houston",</p>
-<p>"state": "TX",</p>
-<p>"zipCode": "77001"</p>
-<p>},</p>
-<p>"phone": "(555) 123-4567",</p>
-<p>"website": "https://smithplumbing.com",</p>
-<p>"screenedApproved": true,</p>
-<p>"eliteService": true,</p>
-<p>"licensedInsured": true,</p>
-<p>"bbbAccredited": true,</p>
-<p>"serviceArea": ["Houston", "Katy", "Sugar Land", "The Woodlands"],</p>
-<p>"costRange": {</p>
-<p>"low": 150,</p>
-<p>"high": 500,</p>
-<p>"average": 275,</p>
-<p>"projectType": "Standard Plumbing Repair"</p>
-<p>},</p>
-<p>"reviews": [</p>
-<p>{</p>
-<p>"reviewId": "ha123456",</p>
-<p>"rating": 5,</p>
-<p>"title": "Excellent plumber!",</p>
-<p>"text": "Fixed our leak quickly and professionally...",</p>
-<p>"date": "November 2024",</p>
-<p>"projectType": "Plumbing Repair",</p>
-<p>"projectCost": "$285",</p>
-<p>"wouldRecommend": true,</p>
-<p>"verified": true</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<h3>Search for Plumbers in Houston</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"serviceType": "Plumbing",</p>
-<p>"location": "Houston, TX",</p>
-<p>"minRating": 4.0,</p>
-<p>"screened": true,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Scrape Single Professional Profile</h3>
-
-<pre><code>{
-<p>"scrapeType": "professional_profile",</p>
-<p>"professionalUrl": "https://www.homeadvisor.com/rated.SmithPlumbing.12345.html",</p>
-<p>"includeReviews": true,</p>
-<p>"maxReviewsPerPro": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Find Elite HVAC Contractors</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"serviceType": "HVAC",</p>
-<p>"location": "Dallas, TX",</p>
-<p>"eliteService": true,</p>
-<p>"includeCostData": true</p>
-<p>}</p>
-</code></pre>
-
-<h2>Service Types Supported</h2>
-
-<ul>
-<li>Plumbing</li>
-<li>HVAC (Heating & Cooling)</li>
-<li>Roofing</li>
-<li>Electrical</li>
-<li>Home Remodeling</li>
-<li>Flooring</li>
-<li>Painting</li>
-<li>Landscaping</li>
-<li>Pest Control</li>
-<li>Garage Doors</li>
-<li>Windows & Doors</li>
-<li>Fencing</li>
-<li>Concrete/Masonry</li>
-<li>Tree Services</li>
-<li>Pool Services</li>
-<li>And many more...</li>
-</ul>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>50 professionals with 25 reviews each: $0.10 + (50 × $0.06) + (1250 × $0.004) = <strong>$8.10</strong></li>
-<li>100 professionals, no reviews: $0.10 + (100 × $0.06) = <strong>$6.10</strong></li>
-</ul>
-
-<h2>Rate Limiting & Best Practices</h2>
-
-<ul>
-<li>Built-in delays to respect HomeAdvisor servers</li>
-<li>Residential proxy recommended for reliability</li>
-<li>Maximum 500 professionals per run</li>
-<li>Reviews limited per professional to prevent excessive requests</li>
-</ul>
-
-<h2>Legal Considerations</h2>
-
-<ul>
-<li>Use data for legitimate business research purposes</li>
-<li>Comply with HomeAdvisor Terms of Service</li>
-<li>Do not use for fake reviews or spam</li>
-<li>Respect user privacy in review data</li>
-<li>Check local regulations for lead generation use</li>
-</ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
-<ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>CRM systems (HubSpot, Salesforce)</li>
-<li>Databases (via API)</li>
-<li>Marketing automation platforms</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>homeadvisor scraper, home services reviews, contractor ratings, home improvement reviews, homeadvisor data extraction</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -676,7 +602,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

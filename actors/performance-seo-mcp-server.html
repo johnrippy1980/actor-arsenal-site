@@ -457,150 +457,71 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Performance SEO MCP Server v1.0</h1>
+            <h1>Website Performance & Technical SEO MCP Server for AI Assistant</h1>
+            <p>MCP Server providing AI assistants with unified access to website performance and technical SEO analysis tools. PageSpeed Insights, Core Web Vitals, robots.txt checking, sitemap analysis, Lighthouse scores, and GTmetrix testing. By John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>Website Performance & Technical SEO for AI Assistants</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
 
-<p>MCP Server providing AI assistants with unified access to <strong>website performance and technical SEO analysis</strong> through a single interface. PageSpeed Insights, Core Web Vitals, Lighthouse audits, robots.txt validation, sitemap analysis, and comprehensive technical SEO checks.</p>
-
-<h2>Supported Analysis Tools</h2>
-
-
-<h2>MCP Tools Available</h2>
-
-<h3>1. <code>get_pagespeed_insights</code></h3>
-<p>Get Google PageSpeed Insights scores and recommendations.</p>
+</ul>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"tool": "get_pagespeed_insights",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"strategy": "mobile"</p>
-<p>}</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>2. <code>get_core_web_vitals</code></h3>
-<p>Get Core Web Vitals metrics (LCP, FID, CLS, INP).</p>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"tool": "get_core_web_vitals",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"device": "mobile"</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>3. <code>run_lighthouse_audit</code></h3>
-<p>Run a full Lighthouse audit.</p>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"tool": "run_lighthouse_audit",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"categories": ["performance", "accessibility", "seo", "best-practices"]</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>4. <code>check_robots_txt</code></h3>
-<p>Analyze robots.txt file for issues.</p>
+<h2>Pricing</h2>
 
-<pre><code>{
-<p>"tool": "check_robots_txt",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
-<h3>5. <code>analyze_sitemap</code></h3>
-<p>Analyze XML sitemap structure and health.</p>
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>actor-start</code> | Base cost per run | $0.10 |
+| <code>pagespeed_analyzed</code> | Per PageSpeed analysis | $0.05 |
+| <code>lighthouse_audit</code> | Per Lighthouse audit | $0.10 |
+| <code>gtmetrix_test</code> | Per GTmetrix test | $0.15 |
+| <code>technical_seo_audit</code> | Per technical audit | $0.10 |
+| <code>sitemap_analyzed</code> | Per sitemap analysis | $0.03 |</p>
 
-<pre><code>{
-<p>"tool": "analyze_sitemap",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com/sitemap.xml"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<strong>Example costs:</strong>
+<ul>
+<li>PageSpeed Insights: $0.10 + $0.05 = <strong>$0.15</strong></li>
+<li>Full Performance Audit: $0.10 + $0.40 = <strong>$0.50</strong></li>
+<li>Technical SEO Check: $0.10 + $0.10 = <strong>$0.20</strong></li>
 
-<h3>6. <code>run_gtmetrix_test</code></h3>
-<p>Run GTmetrix performance test.</p>
-
-<pre><code>{
-<p>"tool": "run_gtmetrix_test",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"location": "vancouver"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>7. <code>check_technical_seo</code></h3>
-<p>Comprehensive technical SEO audit.</p>
-
-<pre><code>{
-<p>"tool": "check_technical_seo",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"checkCanonicals": true,</p>
-<p>"checkHreflang": true,</p>
-<p>"checkSchemaMarkup": true</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>8. <code>analyze_mobile_usability</code></h3>
-<p>Check mobile-friendliness and usability.</p>
-
-<pre><code>{
-<p>"tool": "analyze_mobile_usability",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>9. <code>check_security_headers</code></h3>
-<p>Analyze security headers and HTTPS configuration.</p>
-
-<pre><code>{
-<p>"tool": "check_security_headers",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>10. <code>full_performance_audit</code></h3>
-<p>Complete performance and technical SEO audit.</p>
-
-<pre><code>{
-<p>"tool": "full_performance_audit",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://example.com",</p>
-<p>"includePageSpeed": true,</p>
-<p>"includeLighthouse": true,</p>
-<p>"includeGTmetrix": true,</p>
-<p>"includeTechnicalSEO": true</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>11. <code>list_tools</code></h3>
-<p>Get a list of all available performance SEO tools.</p>
-
-<pre><code>{
-<p>"tool": "list_tools"</p>
-<p>}</p>
-</code></pre>
-
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -609,56 +530,13 @@
 <li><strong>Core Web Vitals Monitoring</strong> - Track Google ranking factors</li>
 <li><strong>Mobile Optimization</strong> - Ensure mobile-first compliance</li>
 <li><strong>Security Hardening</strong> - Identify security vulnerabilities</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>PageSpeed Insights: $0.10 + $0.05 = <strong>$0.15</strong></li>
-<li>Full Performance Audit: $0.10 + $0.40 = <strong>$0.50</strong></li>
-<li>Technical SEO Check: $0.10 + $0.10 = <strong>$0.20</strong></li>
-</ul>
-
-<h2>Integration with AI Assistants</h2>
-
-<h3>Claude Desktop / Cursor</h3>
-<p>Add to your Claude configuration:</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"performance-seo": {</p>
-<p>"url": "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~performance-seo-mcp-server/runs",</p>
-<p>"headers": {</p>
-<p>"Authorization": "Bearer YOUR_APIFY_TOKEN"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n / Make / Zapier</h3>
-<p>Use the Apify integration to call this actor with the desired tool and inputs.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test without actual API calls. Returns realistic sample performance data.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>performance seo mcp, pagespeed insights api, core web vitals, lighthouse audit, technical seo, robots.txt checker, sitemap analyzer, gtmetrix api, website performance, mcp server, seo automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -672,7 +550,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

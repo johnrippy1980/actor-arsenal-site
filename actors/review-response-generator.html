@@ -457,25 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Review Response Generator</h1>
-
-<blockquote><strong>Generate AI-powered review responses with sentiment analysis and brand voice matching</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Transform your review management with AI-generated responses that match your brand voice, address customer concerns, and maintain consistent communication across all feedback.</p>
-
-<h2>Use Cases</h2>
-
-<ul>
-<li><strong>Reputation Management</strong> - Respond to all reviews professionally and promptly</li>
-<li><strong>Agency Automation</strong> - Generate responses for multiple client locations</li>
-<li><strong>Franchise Consistency</strong> - Maintain brand voice across all locations</li>
-<li><strong>Time Savings</strong> - Draft responses in seconds, not minutes</li>
-<li><strong>Negative Review Recovery</strong> - Craft empathetic responses that win back customers</li>
-</ul>
+            <p>Generate professional, personalized review responses using AI with multi-language support and auto-posting to Google Business Profile. v2.0 Features: - Multi-language support (9 languages: English, Spanish, French, German, Italian, Portuguese, Chinese, Japanese, Korean) - Auto-detect review language and respond in same language - Built-in response templates by star rating - Custom template support with variable substitution - Auto-post responses directly to GBP via API - AI-powered sentiment analysis (positive, neutral, negative) - Brand voice matching (professional, friendly, casual, formal, enthusiastic) - Keyword extraction and topic detection - Multiple response variations per review - Bulk review processing Core Features: - GPT-4 powered response generation - Owner name personalization - Call-to-action suggestions - Custom AI instructions Ideal for: - Local businesses managing Google reviews - Reputation management agencies - Multi-location franchises - International businesses - Marketing automation workflows. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -487,129 +472,85 @@
 <li><strong>Personalization</strong> - Uses reviewer name, business name, and owner signature</li>
 <li><strong>Call-to-Action</strong> - Suggests referral requests for positive reviews</li>
 <li><strong>Bulk Processing</strong> - Handle dozens of reviews in one run</li>
+
 </ul>
-
-<h2>Input Options</h2>
-
-
-<h2>Example Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"reviews": [</p>
-<p>{</p>
-<p>"reviewerName": "John D.",</p>
-<p>"rating": 5,</p>
-<p>"text": "Amazing service! The team was professional and got the job done quickly.",</p>
-<p>"date": "2024-12-15"</p>
-<p>},</p>
-<p>{</p>
-<p>"reviewerName": "Sarah M.",</p>
-<p>"rating": 2,</p>
-<p>"text": "Waited too long for service. Communication could be better.",</p>
-<p>"date": "2024-12-14"</p>
-<p>}</p>
-<p>],</p>
-<p>"businessName": "Acme Plumbing",</p>
-<p>"ownerName": "Mike",</p>
-<p>"brandVoice": "friendly",</p>
-<p>"responseLength": "medium",</p>
-<p>"includeCallToAction": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"reviewerName": "John D.",</p>
-<p>"rating": 5,</p>
-<p>"originalReview": "Amazing service! The team was professional...",</p>
-<p>"sentiment": "positive",</p>
-<p>"keywords": ["professional", "quick", "service"],</p>
-<p>"suggestedResponses": [</p>
-<p>{</p>
-<p>"response": "Thank you so much, John! We're thrilled to hear our team delivered the professional, efficient service we strive for. Your kind words mean the world to us. If you know anyone who needs plumbing help, we'd love to take care of them too! - Mike",</p>
-<p>"tone": "friendly",</p>
-<p>"wordCount": 47</p>
-<p>}</p>
-<p>],</p>
-<p>"recommendedAction": "Thank and encourage referral"</p>
-<p>}</p>
+  "reviewerName": "John D.",
+  "rating": 5,
+  "originalReview": "Amazing service! The team was professional...",
+  "sentiment": "positive",
+  "keywords": ["professional", "quick", "service"],
+  "suggestedResponses": [
+    {
+      "response": "Thank you so much, John! We're thrilled to hear our team delivered the professional, efficient service we strive for. Your kind words mean the world to us. If you know anyone who needs plumbing help, we'd love to take care of them too! - Mike",
+      "tone": "friendly",
+      "wordCount": 47
+    }
+  ],
+  "recommendedAction": "Thank and encourage referral"
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>review_analyzed</code> | Per review analyzed | $0.01 |
+| <code>response_generated</code> | Per response generated | $0.02 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>10 reviews, 1 response each: $0.10 + (10 × $0.01) + (10 × $0.02) = <strong>$0.40</strong></li>
 <li>10 reviews, 3 responses each: $0.10 + (10 × $0.01) + (30 × $0.02) = <strong>$0.80</strong></li>
 <li>50 reviews, 1 response each: $0.10 + (50 × $0.01) + (50 × $0.02) = <strong>$1.60</strong></li>
-</ul>
 
+</ul>
 <em>Note: You also pay for your AI provider's API usage separately.</em>
 
-<h2>Response Strategies by Rating</h2>
-
-<h3>5-Star Reviews</h3>
-<ul>
-<li>Express genuine gratitude</li>
-<li>Highlight specific praise mentioned</li>
-<li>Include subtle call-to-action (referrals, social shares)</li>
-</ul>
-
-<h3>4-Star Reviews</h3>
-<ul>
-<li>Thank for feedback</li>
-<li>Gently ask what would make it 5 stars</li>
-<li>Show commitment to improvement</li>
-</ul>
-
-<h3>3-Star Reviews</h3>
-<ul>
-<li>Acknowledge mixed experience</li>
-<li>Address any specific concerns</li>
-<li>Offer to make things right</li>
-</ul>
-
-<h3>1-2 Star Reviews</h3>
-<ul>
-<li>Apologize sincerely (without admitting fault)</li>
-<li>Show empathy for frustration</li>
-<li>Offer offline resolution path</li>
-<li>Never argue or get defensive</li>
-</ul>
-
-<h2>Integration Ideas</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Webhook to CRM</strong> - Auto-create tasks for review responses</li>
-<li><strong>Slack Notifications</strong> - Get suggested responses in your channel</li>
-<li><strong>Google Sheets</strong> - Export responses for team review</li>
-<li><strong>Zapier/Make</strong> - Automate your review management workflow</li>
+<li><strong>Reputation Management</strong> - Respond to all reviews professionally and promptly</li>
+<li><strong>Agency Automation</strong> - Generate responses for multiple client locations</li>
+<li><strong>Franchise Consistency</strong> - Maintain brand voice across all locations</li>
+<li><strong>Time Savings</strong> - Draft responses in seconds, not minutes</li>
+<li><strong>Negative Review Recovery</strong> - Craft empathetic responses that win back customers</li>
+
 </ul>
+---
 
-<h2>Tips for Best Results</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>1. <strong>Be Specific</strong> - Include your business name and owner name</p>
-<p>2. <strong>Match Your Voice</strong> - Choose the brand voice that fits your brand</p>
-<p>3. <strong>Review Before Posting</strong> - AI responses are drafts, personalize before publishing</p>
-<p>4. <strong>Address Issues</strong> - For negative reviews, always follow up offline</p>
-<p>5. <strong>Stay Consistent</strong> - Use the same brand voice across all responses</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong> - Your AI-Powered Local SEO Partner
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>review response generator, ai review responses, review management, reputation management, review reply automation, openai integration, sentiment analysis</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -623,7 +564,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

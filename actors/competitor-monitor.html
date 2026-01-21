@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>AI-Enhanced Competitor Monitor v2.0</h1>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<blockquote>AI-Powered Competitive Intelligence with Claude AI Strategic Analysis</blockquote>
-
-<p>Track local competitor GBP changes, reviews, rankings, Google Ads activity, and social media presence with AI-powered strategic recommendations.</p>
+            <h1>GBP Competitor Monitor</h1>
+            <p>AI-Powered Competitive Intelligence for Local Businesses. Track GBP changes, keyword rankings, Google Ads activity, and social media presence with Claude AI strategic analysis. BYOK (Bring Your Own Key) - Use your Anthropic API key for AI-powered competitive strategy recommendations, market positioning insights, and actionable next steps. v2.0 Features: - AI Strategic Analysis of competitor moves - Local SERP ranking tracking (position + local pack status) - Google Ads detection (discover if competitors are running ads) - Social media profile discovery (Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok) - Keyword ranking comparison between you and competitors Core Features: - GBP profile monitoring (reviews, ratings, photos, posts) - Change detection with importance scoring (low/medium/high) - AI-generated strategic recommendations based on competitor activity - Compare your business vs competitors side-by-side - Webhook alerts for important changes - Historical change tracking via dataset comparison AI Analysis Features: - Competitive strategy recommendations - Market positioning insights - Threat assessment with priority ranking - Opportunity identification - Actionable next steps. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -479,17 +472,17 @@
 <li><strong>Profile Change Detection</strong> - Hours, photos, descriptions, categories</li>
 <li><strong>Comparison Dashboard</strong> - Your business vs competitors</li>
 <li><strong>Smart Alerts</strong> - Get notified of significant changes</li>
-</ul>
 
+</ul>
 <h3>v2.0 Enhanced Features</h3>
 <ul>
 <li><strong>Keyword Rankings</strong> - Track local SERP positions for target keywords</li>
 <li><strong>Google Ads Detection</strong> - Discover if competitors are running ads</li>
 <li><strong>Social Media Discovery</strong> - Find competitor profiles on Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok</li>
-</ul>
 
+</ul>
 <h3>AI Analysis (BYOK - Bring Your Own Key)</h3>
-<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
+Provide your Anthropic API key to unlock Claude AI-powered features:
 
 <ul>
 <li><strong>Strategic Summary</strong> - AI analyzes all competitor data and provides actionable insights</li>
@@ -497,196 +490,168 @@
 <li><strong>Opportunity Identification</strong> - Market opportunities based on competitor gaps</li>
 <li><strong>Recommended Actions</strong> - Specific next steps ranked by impact</li>
 <li><strong>Competition Score</strong> - 0-100 overall competitive position rating</li>
-</ul>
 
+</ul>
 <h2>Quick Start</h2>
 
-<h3>Basic Usage (No AI)</h3>
 <pre><code>{
-<p>"yourBusiness": {</p>
-<p>"name": "Acme Plumbing",</p>
-<p>"placeId": "ChIJ..."</p>
-<p>},</p>
-<p>"competitors": [</p>
-<p>{ "name": "Bob's Plumbing", "placeId": "ChIJ..." },</p>
-<p>{ "name": "Quick Fix Plumbers", "searchQuery": "Quick Fix Plumbers Dallas TX" }</p>
-<p>],</p>
-<p>"trackReviews": true,</p>
-<p>"trackPosts": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>With AI Analysis (BYOK)</h3>
-<pre><code>{
-<p>"yourBusiness": {</p>
-<p>"name": "Acme Plumbing",</p>
-<p>"placeId": "ChIJ...",</p>
-<p>"website": "https://acmeplumbing.com"</p>
-<p>},</p>
-<p>"competitors": [</p>
-<p>{ "name": "Bob's Plumbing", "placeId": "ChIJ..." }</p>
-<p>],</p>
-<p>"trackReviews": true,</p>
-<p>"trackRankings": true,</p>
-<p>"targetKeywords": ["plumber", "emergency plumber", "drain cleaning"],</p>
-<p>"targetLocation": "Dallas, TX",</p>
-<p>"detectGoogleAds": true,</p>
-<p>"trackSocialMedia": true,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"enableAiAnalysis": true</p>
-<p>}</p>
-</code></pre>
+<h2>Demo Mode</h2>
 
-<h3>Demo Mode</h3>
-<p>Test without real scraping:</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Required | Description |
+|-----------|----------|-------------|
+| <code>yourBusiness</code> | No | Your business info for comparison |
+| <code>competitors</code> | Yes | Array of competitors (name + placeId/searchQuery) |
+| <code>previousRunId</code> | No | Previous dataset ID for change detection |
+| <code>trackReviews</code> | No | Monitor reviews (default: true) |
+| <code>trackPosts</code> | No | Monitor GBP posts (default: true) |
+| <code>trackPhotos</code> | No | Monitor photos (default: true) |
+| <code>trackProfileChanges</code> | No | Monitor profile updates (default: true) |
+| <code>trackRankings</code> | No | Monitor keyword rankings (default: false) |
+| <code>targetKeywords</code> | No | Keywords to track rankings for |
+| <code>targetLocation</code> | No | Location for ranking tracking |
+| <code>detectGoogleAds</code> | No | Check for competitor Google Ads (default: false) |
+| <code>trackSocialMedia</code> | No | Find social media profiles (default: false) |
+| <code>webhookUrl</code> | No | URL for alert notifications |
+| <code>alertThreshold</code> | No | Minimum importance for alerts (all/medium/high) |
+| <code>anthropicApiKey</code> | No | Your Anthropic API key for AI features |
+| <code>enableAiAnalysis</code> | No | Enable/disable AI analysis (default: true) |
+| <code>demoMode</code> | No | Return sample data without scraping |</p>
 
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Standard Output (Per Competitor)</h3>
 <pre><code>{
-<p>"competitor": "Bob's Plumbing",</p>
-<p>"placeId": "ChIJ...",</p>
-<p>"monitorDate": "2024-12-26T00:00:00.000Z",</p>
-<p>"currentState": {</p>
-<p>"rating": 4.5,</p>
-<p>"reviewCount": 156,</p>
-<p>"photoCount": 42,</p>
-<p>"lastPost": "2024-12-25",</p>
-<p>"category": "Plumber",</p>
-<p>"website": "https://bobsplumbing.com"</p>
-<p>},</p>
-<p>"rankings": {</p>
-<p>"plumber dallas": { "position": 3, "inLocalPack": true },</p>
-<p>"emergency plumber": { "position": 7, "inLocalPack": false }</p>
-<p>},</p>
-<p>"googleAds": {</p>
-<p>"detected": true,</p>
-<p>"adCopy": "24/7 Emergency Plumbing - Call Now!"</p>
-<p>},</p>
-<p>"socialProfiles": {</p>
-<p>"facebook": "https://facebook.com/bobsplumbing",</p>
-<p>"instagram": "https://instagram.com/bobsplumbing"</p>
-<p>},</p>
-<p>"changes": [</p>
-<p>{</p>
-<p>"type": "new_review",</p>
-<p>"importance": "medium",</p>
-<p>"details": {</p>
-<p>"rating": 5,</p>
-<p>"snippet": "Great service, highly recommend!"</p>
-<p>}</p>
-<p>}</p>
-<p>],</p>
-<p>"comparison": {</p>
-<p>"ratingDiff": -0.2,</p>
-<p>"reviewCountDiff": 14,</p>
-<p>"advantage": "You have more photos, they have more reviews"</p>
-<p>}</p>
-<p>}</p>
+  "competitor": "Bob's Plumbing",
+  "placeId": "ChIJ...",
+  "monitorDate": "2024-12-26T00:00:00.000Z",
+  "currentState": {
+    "rating": 4.5,
+    "reviewCount": 156,
+    "photoCount": 42,
+    "lastPost": "2024-12-25",
+    "category": "Plumber",
+    "website": "https://bobsplumbing.com"
+  },
+  "rankings": {
+    "plumber dallas": { "position": 3, "inLocalPack": true },
+    "emergency plumber": { "position": 7, "inLocalPack": false }
+  },
+  "googleAds": {
+    "detected": true,
+    "adCopy": "24/7 Emergency Plumbing - Call Now!"
+  },
+  "socialProfiles": {
+    "facebook": "https://facebook.com/bobsplumbing",
+    "instagram": "https://instagram.com/bobsplumbing"
+  },
+  "changes": [
+    {
+      "type": "new_review",
+      "importance": "medium",
+      "details": {
+        "rating": 5,
+        "snippet": "Great service, highly recommend!"
+      }
+    }
+  ],
+  "comparison": {
+    "ratingDiff": -0.2,
+    "reviewCountDiff": 14,
+    "advantage": "You have more photos, they have more reviews"
+  }
+}
 </code></pre>
 
 <h3>AI Strategic Analysis Output</h3>
-<p>When AI analysis is enabled, a separate dataset item is pushed:</p>
+When AI analysis is enabled, a separate dataset item is pushed:
 
 <pre><code>{
-<p>"type": "ai_strategic_analysis",</p>
-<p>"overallScore": 72,</p>
-<p>"strategicSummary": "Your competitive position is moderately strong. Key threats include Bob's Plumbing's aggressive review acquisition and Quick Fix's Google Ads presence. Opportunities exist in social media engagement and emergency service positioning.",</p>
-<p>"threats": [</p>
-<p>{</p>
-<p>"competitor": "Bob's Plumbing",</p>
-<p>"threat": "Gaining reviews 3x faster than you",</p>
-<p>"priority": "high",</p>
-<p>"recommendation": "Implement post-service review request automation"</p>
-<p>},</p>
-<p>{</p>
-<p>"competitor": "Quick Fix Plumbers",</p>
-<p>"threat": "Running Google Ads on your brand keywords",</p>
-<p>"priority": "medium",</p>
-<p>"recommendation": "Consider defensive brand bidding or SEO optimization"</p>
-<p>}</p>
-<p>],</p>
-<p>"opportunities": [</p>
-<p>{</p>
-<p>"area": "Social Media",</p>
-<p>"insight": "Competitors have minimal Instagram presence",</p>
-<p>"action": "Establish Instagram with before/after project photos"</p>
-<p>},</p>
-<p>{</p>
-<p>"area": "Emergency Services",</p>
-<p>"insight": "No competitor ranks for '24 hour plumber'",</p>
-<p>"action": "Create dedicated landing page for emergency services"</p>
-<p>}</p>
-<p>],</p>
-<p>"recommendedActions": [</p>
-<p>"Set up automated review request system (high impact)",</p>
-<p>"Create Instagram business profile with project portfolio",</p>
-<p>"Optimize for 'emergency plumber' and '24 hour plumber' keywords",</p>
-<p>"Add more service area photos to GBP profile"</p>
-<p>],</p>
-<p>"analyzedAt": "2024-12-26T12:00:00.000Z",</p>
-<p>"competitorsAnalyzed": 5</p>
-<p>}</p>
+  "type": "ai_strategic_analysis",
+  "overallScore": 72,
+  "strategicSummary": "Your competitive position is moderately strong. Key threats include Bob's Plumbing's aggressive review acquisition and Quick Fix's Google Ads presence. Opportunities exist in social media engagement and emergency service positioning.",
+  "threats": [
+    {
+      "competitor": "Bob's Plumbing",
+      "threat": "Gaining reviews 3x faster than you",
+      "priority": "high",
+      "recommendation": "Implement post-service review request automation"
+    },
+    {
+      "competitor": "Quick Fix Plumbers",
+      "threat": "Running Google Ads on your brand keywords",
+      "priority": "medium",
+      "recommendation": "Consider defensive brand bidding or SEO optimization"
+    }
+  ],
+  "opportunities": [
+    {
+      "area": "Social Media",
+      "insight": "Competitors have minimal Instagram presence",
+      "action": "Establish Instagram with before/after project photos"
+    },
+    {
+      "area": "Emergency Services",
+      "insight": "No competitor ranks for '24 hour plumber'",
+      "action": "Create dedicated landing page for emergency services"
+    }
+  ],
+  "recommendedActions": [
+    "Set up automated review request system (high impact)",
+    "Create Instagram business profile with project portfolio",
+    "Optimize for 'emergency plumber' and '24 hour plumber' keywords",
+    "Add more service area photos to GBP profile"
+  ],
+  "analyzedAt": "2024-12-26T12:00:00.000Z",
+  "competitorsAnalyzed": 5
+}
 </code></pre>
-
-<h2>Change Types & Importance</h2>
-
-
-<h2>Integration (Zapier, Make, n8n)</h2>
-
-<p>This actor supports webhook notifications for easy integration:</p>
-
-<h3>Zapier</h3>
-<p>1. Create a new Zap with "Webhooks by Zapier" as the trigger</p>
-<p>2. Select "Catch Hook" and copy the webhook URL</p>
-<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
-<p>4. Run the actor to send data to your Zap</p>
-
-<h3>Make (Integromat)</h3>
-<p>1. Create a new scenario with "Webhooks" module</p>
-<p>2. Add "Custom webhook" trigger and copy the URL</p>
-<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
-
-<h3>n8n</h3>
-<p>1. Add a "Webhook" node to your workflow</p>
-<p>2. Copy the production webhook URL</p>
-<p>3. Paste the URL into the <code>webhookUrl</code> input parameter</p>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>competitor_analyzed</code> | Per competitor monitored | $0.03 |
+| <code>review_analyzed</code> | Per review analyzed | $0.02 |
+| AI Analysis | Uses your own Anthropic API key | $0.00 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>5 competitors basic: $0.10 + (5 × $0.03) = <strong>$0.25</strong></li>
 <li>10 competitors with reviews + AI: $0.10 + (10 × $0.03) + (10 × $0.02) = <strong>$0.60</strong> + your Anthropic API usage</li>
-</ul>
 
+</ul>
 <h2>Use Cases</h2>
 
-<p>1. <strong>Local SEO Agencies</strong> - Monitor client competitors at scale</p>
-<p>2. <strong>Multi-Location Businesses</strong> - Track competitors in each market</p>
-<p>3. <strong>Franchise Operations</strong> - Competitive intelligence across territories</p>
-<p>4. <strong>Strategy Planning</strong> - Data-driven competitive positioning</p>
+<p>1. <strong>Local SEO Agencies</strong> - Monitor client competitors at scale
+2. <strong>Multi-Location Businesses</strong> - Track competitors in each market
+3. <strong>Franchise Operations</strong> - Competitive intelligence across territories
+4. <strong>Strategy Planning</strong> - Data-driven competitive positioning</p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
-
-<p>competitor monitoring, competitor analysis, competitive intelligence, ai analysis, claude ai, byok, bring your own key, market tracking, local seo competitor analysis, google ads detection, social media monitoring, keyword rankings, zapier integration, make integration, n8n integration</p>
-
 <p>---</p>
 
-<strong>Part of the Local SEO Automation Suite</strong> - 50+ Apify actors for automating local search optimization.
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -700,7 +665,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

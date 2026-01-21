@@ -457,30 +457,36 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>SEO Intelligence MCP Server</h1>
+            <h1>Unified SEO Intelligence MCP Server</h1>
+            <p>21-in-1 MCP Server for comprehensive SEO intelligence + AI content generation. Includes: SERP tracking, keyword research, backlink analysis, local ranking grids, technical SEO audits, Lighthouse, GTmetrix, robots.txt/llms.txt analysis, rich results testing, AI text/image generation (Claude, Gemini, DALL-E, Imagen), and data extraction. All accessible via natural language prompts.</p>
 
-<strong>Unified MCP Server for comprehensive SEO intelligence</strong> - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration.
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Overview</h2>
-
-<p>This MCP (Model Context Protocol) Server provides a unified interface for AI assistants to access comprehensive SEO intelligence capabilities. It orchestrates multiple specialized Apify actors:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>DataForSEO</strong>: SERP rankings, keyword research, on-page audits, backlink analysis</li>
-<li><strong>LocalFalcon</strong>: Local ranking grid scans</li>
-<li><strong>SERPApi</strong>: Real-time SERP snapshots</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Available Tools</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
@@ -491,126 +497,64 @@
 <li>DataForSEO: <code>dataForSeoLogin</code>, <code>dataForSeoPassword</code></li>
 <li>LocalFalcon: <code>localFalconApiKey</code></li>
 <li>SERPApi: <code>serpApiKey</code></li>
+
 </ul>
-
 <h3>Common Parameters</h3>
-
-<h2>Example Usage</h2>
-
-<h3>SERP Rankings Tracking</h3>
-<pre><code>{
-<p>"tool": "serp_rankings",</p>
-<p>"domain": "example.com",</p>
-<p>"keywords": ["digital marketing", "seo services", "local seo"],</p>
-<p>"location": "Saint Louis, MO",</p>
-<p>"dataForSeoLogin": "your-login",</p>
-<p>"dataForSeoPassword": "your-password",</p>
-<p>"apifyToken": "your-apify-token"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Local Grid Scan</h3>
-<pre><code>{
-<p>"tool": "local_grid_scan",</p>
-<p>"toolInput": {</p>
-<p>"businessName": "Joe's Plumbing",</p>
-<p>"keyword": "plumber near me",</p>
-<p>"gridSize": 9,</p>
-<p>"radiusMiles": 10</p>
-<p>},</p>
-<p>"location": "Saint Louis, MO",</p>
-<p>"localFalconApiKey": "your-localfalcon-key",</p>
-<p>"apifyToken": "your-apify-token"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Real-Time SERP Snapshot</h3>
-<pre><code>{
-<p>"tool": "realtime_serp",</p>
-<p>"toolInput": {</p>
-<p>"query": "best marketing agency",</p>
-<p>"engine": "google",</p>
-<p>"device": "mobile"</p>
-<p>},</p>
-<p>"location": "New York, NY",</p>
-<p>"serpApiKey": "your-serpapi-key",</p>
-<p>"apifyToken": "your-apify-token"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Full SEO Audit</h3>
-<pre><code>{
-<p>"tool": "full_audit",</p>
-<p>"domain": "example.com",</p>
-<p>"location": "Chicago, IL",</p>
-<p>"dataForSeoLogin": "your-login",</p>
-<p>"dataForSeoPassword": "your-password",</p>
-<p>"localFalconApiKey": "your-localfalcon-key",</p>
-<p>"apifyToken": "your-apify-token"</p>
-<p>}</p>
-</code></pre>
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>tool</code> | string | The SEO intelligence tool to execute |
+| <code>domain</code> | string | Target domain for analysis |
+| <code>keywords</code> | array | Keywords to track or research |
+| <code>location</code> | string | Geographic location (e.g., "Saint Louis, MO") |
+| <code>competitors</code> | array | Competitor domains to compare |
+| <code>webhookUrl</code> | string | URL to receive results when complete |
+| <code>demoMode</code> | boolean | Run with sample data (no API calls) |
 
 <h2>Output Format</h2>
 
 <p>All tools return a standardized result format:</p>
 
 <pre><code>{
-<p>"tool": "serp_rankings",</p>
-<p>"status": "success",</p>
-<p>"timestamp": "2025-12-27T12:00:00.000Z",</p>
-<p>"summary": "Tracked 5 keywords for example.com - Avg position: 4.2",</p>
-<p>"data": {</p>
-<p>// Tool-specific data</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h2>MCP Integration</h2>
-
-<p>This actor exposes MCP tools via the Key-Value Store:</p>
-
-<pre><code>// Fetch MCP tools definition
-<p>const kvStore = await client.keyValueStore(runId);</p>
-<p>const mcpTools = await kvStore.getRecord('MCP_TOOLS');</p>
-
-<p>// Get the latest result</p>
-<p>const output = await kvStore.getRecord('OUTPUT');</p>
+  "tool": "serp_rankings",
+  "status": "success",
+  "timestamp": "2025-12-27T12:00:00.000Z",
+  "summary": "Tracked 5 keywords for example.com - Avg position: 4.2",
+  "data": {
+    // Tool-specific data
+  }
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event pricing based on tool usage:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing based on tool usage:</p>
 
+<p>| Event | Description |
+|-------|-------------|
+| <code>mcp-tool-call</code> | Base charge per tool execution |
+| <code>serp_rankings</code> | SERP ranking check |
+| <code>keyword_research</code> | Keyword research query |
+| <code>onpage_audit</code> | On-page audit scan |
+| <code>backlink_analysis</code> | Backlink analysis |
+| <code>local_grid_scan</code> | Local grid scan |
+| <code>realtime_serp</code> | Real-time SERP snapshot |
+| <code>competitor-analysis</code> | Multi-source competitor analysis |
+| <code>full-audit</code> | Complete SEO audit |</p>
 
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test with sample data without consuming API credits or running sub-actors.</p>
-
-<h2>Webhook Support</h2>
-
-<p>Configure <code>webhookUrl</code> to receive results via HTTP POST when the run completes. Perfect for Zapier, Make, or n8n integrations.</p>
-
-<h2>Related Actors</h2>
-
-<p>This MCP Server orchestrates these specialized actors:</p>
-<ul>
-<li><code>alizarin_refrigerator-owner~dataforseo-serp</code> - SERP and keyword data</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-onpage</code> - On-page SEO audits</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-backlinks</code> - Backlink analysis</li>
-<li><code>alizarin_refrigerator-owner~localfalcon-grid</code> - Local ranking grids</li>
-<li><code>alizarin_refrigerator-owner~serpapi-realtime</code> - Real-time SERP snapshots</li>
-</ul>
-
-<h2>Support</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -624,7 +568,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -463,39 +463,10 @@ Alerts</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Gmail Sentiment Scanner</h1>
-
-<strong>"AI-Powered Email Sentiment Analysis"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Analyze email sentiment trends for team and client communications. Get sentiment scores, response time patterns, and communication health insights from your Gmail inbox.</p>
-
-<h2>What This Actor Does</h2>
-
-<p>This actor connects to Gmail API to analyze your email communications and provides:</p>
-
-<ul>
-<li><strong>Sentiment Analysis</strong>: Score each email thread from 0-100 (Very Negative to Very Positive)</li>
-<li><strong>Client Segmentation</strong>: Break down sentiment by client/external domain</li>
-<li><strong>Communication Health</strong>: Internal vs external sentiment comparison</li>
-<li><strong>Trend Detection</strong>: Identify improving or declining client relationships</li>
-<li><strong>Alerts</strong>: Early warning for sentiment drops or at-risk clients</li>
-</ul>
-
-<h2>Perfect For</h2>
-
-<ul>
-<li><strong>Account Managers</strong>: Monitor client relationship health</li>
-<li><strong>Sales Teams</strong>: Track prospect communication sentiment</li>
-<li><strong>Customer Success</strong>: Identify at-risk accounts early</li>
-<li><strong>Team Leads</strong>: Monitor team communication patterns</li>
-<li><strong>Freelancers</strong>: Keep pulse on client satisfaction</li>
-</ul>
+            <h1>GMail Sentiment Scanner</h1>
+            <p>Analyze Gmail email sentiment for team and client communications. Get sentiment scores, response time patterns, and communication health insights. Works with Google Workspace.</p>
 
 <h2>Features</h2>
 
@@ -505,200 +476,114 @@ Alerts</p>
 <li><strong>Client Segmentation</strong>: Group analysis by external domain</li>
 <li><strong>Sentiment Keywords</strong>: Detects positive, negative, and neutral patterns</li>
 <li><strong>Privacy-First</strong>: Only analyzes metadata and snippets, not full email bodies</li>
+
 </ul>
-
-<h2>Input Examples</h2>
-
-<h3>Demo Mode (No Credentials Required)</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": true,</p>
-<p>"dateRange": "last_7_days",</p>
-<p>"segmentByClient": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Real Mode with Google OAuth</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"demoMode": false,</p>
-<p>"accessToken": "ya29.your-access-token",</p>
-<p>"refreshToken": "your-refresh-token",</p>
-<p>"clientId": "your-client-id.apps.googleusercontent.com",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"dateRange": "last_30_days",</p>
-<p>"maxEmails": 200,</p>
-<p>"filterType": "external_only",</p>
-<p>"segmentByClient": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h2>Google OAuth Setup</h2>
+<h2>Input Parameters</h2>
 
-<p>To use this actor with real Gmail data:</p>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>1. Create Google Cloud Project</h3>
-
-<p>1. Go to <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Google Cloud Console</a></p>
-<p>2. Create a new project or select existing</p>
-<p>3. Enable the Gmail API</p>
-
-<h3>2. Configure OAuth Consent Screen</h3>
-
-<p>1. APIs & Services > OAuth consent screen</p>
-<p>2. Choose "External" user type</p>
-<p>3. Add required scopes: <code>gmail.readonly</code></p>
-<p>4. Add your email as a test user</p>
-
-<h3>3. Create OAuth Credentials</h3>
-
-<p>1. APIs & Services > Credentials</p>
-<p>2. Create Credentials > OAuth client ID</p>
-<p>3. Application type: Web application</p>
-<p>4. Add authorized redirect URIs</p>
-<p>5. Save Client ID and Client Secret</p>
-
-<h3>4. Get Access Token</h3>
-
-<p>Use Google's OAuth 2.0 Playground or your own OAuth flow to get tokens:</p>
-<ul>
-<li>Required scope: <code>https://www.googleapis.com/auth/gmail.readonly</code></li>
-</ul>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Sentiment Overview</h3>
 
 <pre><code>{
-<p>"demoMode": false,</p>
-<p>"overview": {</p>
-<p>"emailsAnalyzed": 156,</p>
-<p>"overallSentiment": 62,</p>
-<p>"sentimentLabel": "Positive",</p>
-<p>"dateRange": "last_7_days",</p>
-<p>"internalSentiment": 68,</p>
-<p>"externalSentiment": 58</p>
-<p>},</p>
-<p>"trends": {</p>
-<p>"weekOverWeek": 5,</p>
-<p>"mostPositiveDay": "Tuesday",</p>
-<p>"mostNegativeDay": "Monday"</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": false,
+  "overview": {
+    "emailsAnalyzed": 156,
+    "overallSentiment": 62,
+    "sentimentLabel": "Positive",
+    "dateRange": "last_7_days",
+    "internalSentiment": 68,
+    "externalSentiment": 58
+  },
+  "trends": {
+    "weekOverWeek": 5,
+    "mostPositiveDay": "Tuesday",
+    "mostNegativeDay": "Monday"
+  }
+}
 </code></pre>
 
 <h3>Client Segments</h3>
 
 <pre><code>{
-<p>"clientSegments": [</p>
-<p>{</p>
-<p>"domain": "acmecorp.com",</p>
-<p>"emailCount": 12,</p>
-<p>"avgSentiment": 75,</p>
-<p>"sentimentTrend": "improving",</p>
-<p>"topPositiveSubjects": ["Thank you for the quick turnaround!"],</p>
-<p>"topNegativeSubjects": []</p>
-<p>},</p>
-<p>{</p>
-<p>"domain": "troubledclient.com",</p>
-<p>"emailCount": 8,</p>
-<p>"avgSentiment": 32,</p>
-<p>"sentimentTrend": "declining",</p>
-<p>"topPositiveSubjects": [],</p>
-<p>"topNegativeSubjects": ["Urgent: Issue with the latest update"]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "clientSegments": [
+    {
+      "domain": "acmecorp.com",
+      "emailCount": 12,
+      "avgSentiment": 75,
+      "sentimentTrend": "improving",
+      "topPositiveSubjects": ["Thank you for the quick turnaround!"],
+      "topNegativeSubjects": []
+    },
+    {
+      "domain": "troubledclient.com",
+      "emailCount": 8,
+      "avgSentiment": 32,
+      "sentimentTrend": "declining",
+      "topPositiveSubjects": [],
+      "topNegativeSubjects": ["Urgent: Issue with the latest update"]
+    }
+  ]
+}
 </code></pre>
 
 <h3>Alerts & Recommendations</h3>
 
 <pre><code>{
-<p>"alerts": [</p>
-<p>{</p>
-<p>"type": "client_concern",</p>
-<p>"message": "2 client(s) showing declining sentiment",</p>
-<p>"severity": "medium"</p>
-<p>}</p>
-<p>],</p>
-<p>"recommendations": [</p>
-<p>"Schedule check-in calls with: troubledclient.com, demandingco.com",</p>
-<p>"Client communication sentiment is lower than internal - consider proactive outreach"</p>
-<p>]</p>
-<p>}</p>
+  "alerts": [
+    {
+      "type": "client_concern",
+      "message": "2 client(s) showing declining sentiment",
+      "severity": "medium"
+    }
+  ],
+  "recommendations": [
+    "Schedule check-in calls with: troubledclient.com, demandingco.com",
+    "Client communication sentiment is lower than internal - consider proactive outreach"
+  ]
+}
 </code></pre>
 
-<h2>Sentiment Scoring</h2>
+<h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-<h3>Detection Keywords</h3>
-
-<strong>Positive signals</strong>: thank, appreciate, great, excellent, wonderful, love, excited, well done
-
-<strong>Negative signals</strong>: sorry, unfortunately, issue, problem, disappointed, frustrated, urgent, mistake
-
-<strong>Neutral dampeners</strong>: fyi, update, reminder, following up, attached
-
-<h2>Limitations (Apify Version)</h2>
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li>Maximum 500 emails per run</li>
-<li>Point-in-time analysis (no historical comparison)</li>
-<li>Manual OAuth token management</li>
-<li>Single mailbox only</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<h2>Enterprise Version</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>For continuous monitoring, team-wide insights, and automation:</p>
-
-<strong><a href="https://meeting.alizarin_refrigerator-owner.com/workspace-intelligence" target="_blank" rel="noopener">Workspace Intelligence by LocalHowl</a></strong>
-
-<ul>
-<li>Real-time OAuth connection (no token management)</li>
-<li>Continuous monitoring & Slack/Teams alerts</li>
-<li>Historical trend analysis</li>
-<li>Team-wide rollups & dashboards</li>
-<li>Client health scoring with CRM integration</li>
-<li>SSO/SAML authentication</li>
-</ul>
-
-<h2>Privacy & Security</h2>
-
-<ul>
-<li>Uses Gmail API with <code>gmail.readonly</code> scope</li>
-<li>Only analyzes subject lines and snippets</li>
-<li>No full email body content stored</li>
-<li>All analysis aggregated, not individual tracking</li>
-<li>OAuth tokens handled securely</li>
-</ul>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/workspace-sentiment-analyzer?fpr=kqpn7" target="_blank" rel="noopener">Workspace Sentiment Analyzer</a></strong>: Full Google Workspace analysis</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/teams-meeting-cost-tracker?fpr=kqpn7" target="_blank" rel="noopener">Teams Meeting Cost Tracker</a></strong>: Microsoft Teams calendar analysis</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/meeting-culture-score-checker?fpr=kqpn7" target="_blank" rel="noopener">Meeting Culture Score Checker</a></strong>: Public meeting culture analysis</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: https://meeting.alizarin_refrigerator-owner.com/docs</li>
-<li><strong>Email</strong>: support@alizarin_refrigerator-owner.com</li>
-<li><strong>Issues</strong>: Report bugs or request features</li>
-</ul>
-
-<p>---</p>
-
-<h2>Author</h2>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote><strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
-
-<em>Part of the <a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Workspace Intelligence</a> suite by <a href="https://alizarin_refrigerator-owner.com" target="_blank" rel="noopener">LocalHowl</a></em>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -712,7 +597,7 @@ Alerts</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

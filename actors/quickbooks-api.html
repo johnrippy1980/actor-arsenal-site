@@ -456,272 +456,215 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>QuickBooks Online API</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>Accounting Automation - Invoices, Payments, Customers &amp; Reports</blockquote>
-<p>Automate your QuickBooks Online accounting with the official API. Manage invoices, customers, payments, vendors, bills, and items. Perfect for invoice automation, payment tracking, financial reporting, and CRM/ERP integration.</p>
-<h2>What is the QuickBooks Online API?</h2>
-<p>The <a href="https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice" target="_blank" rel="noopener">QuickBooks Online Accounting API</a> provides RESTful access to QuickBooks Online data. Create and manage invoices, track payments, sync customer data, and automate accounting workflows.</p>
+            <h1>QuickBooks Online API - Accounting Automation</h1>
+            <p>Automate QuickBooks Online accounting workflows. Manage invoices, customers, payments, vendors, bills, and items. Perfect for invoice automation, payment tracking, financial reporting, and CRM integration.</p>
+
 <h2>Features</h2>
+
 <h3>Company Info</h3>
-<ul><li><strong>Get Company Info</strong> - Retrieve company details and settings</li>
+<ul>
+<li><strong>Get Company Info</strong> - Retrieve company details and settings</li>
+
 </ul>
 <h3>Customers</h3>
-<ul><li><strong>List Customers</strong> - Get all customers</li>
+<ul>
+<li><strong>List Customers</strong> - Get all customers</li>
 <li><strong>Get Customer</strong> - Retrieve customer details</li>
 <li><strong>Create Customer</strong> - Add new customer</li>
 <li><strong>Update Customer</strong> - Modify customer info</li>
+
 </ul>
 <h3>Invoices</h3>
-<ul><li><strong>List Invoices</strong> - Get all invoices with filtering</li>
+<ul>
+<li><strong>List Invoices</strong> - Get all invoices with filtering</li>
 <li><strong>Get Invoice</strong> - Retrieve invoice details</li>
 <li><strong>Create Invoice</strong> - Create new invoice with line items</li>
 <li><strong>Send Invoice</strong> - Email invoice to customer</li>
 <li><strong>Void Invoice</strong> - Void an existing invoice</li>
+
 </ul>
 <h3>Payments</h3>
-<ul><li><strong>List Payments</strong> - Get all payments</li>
+<ul>
+<li><strong>List Payments</strong> - Get all payments</li>
 <li><strong>Get Payment</strong> - Retrieve payment details</li>
 <li><strong>Create Payment</strong> - Record new payment</li>
+
 </ul>
 <h3>Vendors</h3>
-<ul><li><strong>List Vendors</strong> - Get all vendors</li>
+<ul>
+<li><strong>List Vendors</strong> - Get all vendors</li>
 <li><strong>Get Vendor</strong> - Retrieve vendor details</li>
 <li><strong>Create Vendor</strong> - Add new vendor</li>
+
 </ul>
 <h3>Bills</h3>
-<ul><li><strong>List Bills</strong> - Get all bills</li>
+<ul>
+<li><strong>List Bills</strong> - Get all bills</li>
 <li><strong>Get Bill</strong> - Retrieve bill details</li>
 <li><strong>Create Bill</strong> - Create new bill</li>
+
 </ul>
 <h3>Items (Products/Services)</h3>
-<ul><li><strong>List Items</strong> - Get all items</li>
+<ul>
+<li><strong>List Items</strong> - Get all items</li>
 <li><strong>Get Item</strong> - Retrieve item details</li>
 <li><strong>Create Item</strong> - Add new item</li>
+
 </ul>
 <h3>Accounts</h3>
-<ul><li><strong>List Accounts</strong> - Get chart of accounts</li>
+<ul>
+<li><strong>List Accounts</strong> - Get chart of accounts</li>
 <li><strong>Get Account</strong> - Retrieve account details</li>
+
 </ul>
 <h3>Estimates</h3>
-<ul><li><strong>List Estimates</strong> - Get all estimates</li>
+<ul>
+<li><strong>List Estimates</strong> - Get all estimates</li>
 <li><strong>Get Estimate</strong> - Retrieve estimate details</li>
+
 </ul>
 <h3>Custom Queries</h3>
-<ul><li><strong>Query</strong> - Execute SQL-like queries</li>
+<ul>
+<li><strong>Query</strong> - Execute SQL-like queries</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>Invoice Automation</h3>
-<ul><li>Auto-generate invoices from orders</li>
-<li>Send invoice reminders</li>
-<li>Sync with e-commerce platforms</li>
-</ul>
-<h3>Payment Tracking</h3>
-<ul><li>Record payments automatically</li>
-<li>Match payments to invoices</li>
-<li>Track overdue accounts</li>
-</ul>
-<h3>Customer Sync</h3>
-<ul><li>Sync customers from CRM</li>
-<li>Update customer info bidirectionally</li>
-<li>Track customer purchase history</li>
-</ul>
-<h3>Financial Reporting</h3>
-<ul><li>Export transaction data</li>
-<li>Generate custom reports</li>
-<li>Sync with data warehouses</li>
-</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
-<p>| Parameter | Type | Required | Description |</p>
-<p>|-----------|------|----------|-------------|</p>
-<p>| task | string | Yes | Operation to perform |</p>
-<p>| accessToken | string | Yes<em> | OAuth 2.0 access token (</em>not needed for demoMode) |</p>
-<p>| realmId | string | Yes<em> | Company/realm ID (</em>not needed for demoMode) |</p>
-<p>| useSandbox | boolean | No | Use sandbox environment (default: false) |</p>
-<p>| entityId | string | No | Entity ID for get/update operations |</p>
-<p>| customerId | string | No | Customer ID for invoice/payment |</p>
-<p>| vendorId | string | No | Vendor ID for bills |</p>
-<p>| displayName | string | No | Name for customer/vendor |</p>
-<p>| email | string | No | Email address |</p>
-<p>| lineItems | array | No | Line items for invoice/bill |</p>
-<p>| amount | number | No | Amount for payment |</p>
-<p>| dueDate | string | No | Due date (YYYY-MM-DD) |</p>
-<p>| query | string | No | SQL-like query string |</p>
-<p>| maxResults | integer | No | Max results (default: 100) |</p>
-<p>| webhookUrl | string | No | URL to send results |</p>
-<p>| demoMode | boolean | No | Run with sample data (default: true) |</p>
-<h2>Available Tasks</h2>
-<p>| Task | Description |</p>
-<p>|------|-------------|</p>
-<p>| <code>get_company_info</code> | Get company details and settings |</p>
-<p>| <code>list_customers</code> | List all customers with filtering |</p>
-<p>| <code>manage_customer</code> | Get, create, or update customer (use entityId for get/update) |</p>
-<p>| <code>list_invoices</code> | List all invoices with filtering |</p>
-<p>| <code>manage_invoice</code> | Get, create, send, or void invoice (use entityId for get/send/void) |</p>
-<p>| <code>list_payments</code> | List all payments |</p>
-<p>| <code>manage_payment</code> | Get or create payment (use entityId for get) |</p>
-<p>| <code>list_vendors</code> | List all vendors |</p>
-<p>| <code>manage_vendor</code> | Get or create vendor (use entityId for get) |</p>
-<p>| <code>list_bills</code> | List all bills |</p>
-<p>| <code>manage_bill</code> | Get or create bill (use entityId for get) |</p>
-<p>| <code>list_items</code> | List all items/products/services |</p>
-<p>| <code>manage_item</code> | Get or create item (use entityId for get) |</p>
-<p>| <code>list_accounts</code> | List chart of accounts |</p>
-<p>| <code>list_estimates</code> | List all estimates |</p>
-<p>| <code>query</code> | Execute custom SQL-like query |</p>
-<p>| <code>get_reports</code> | Get financial reports summary |</p>
-<p>| <code>get_profit_loss</code> | Get profit &amp; loss report |</p>
-<h2>Getting Your Access Token</h2>
-<p>1. Create an app at <a href="https://developer.intuit.com" target="_blank" rel="noopener">developer.intuit.com</a></p>
-<p>2. Configure OAuth 2.0 settings</p>
-<p>3. Use OAuth flow to get access token</p>
-<p>4. Get your Realm ID (Company ID) from the URL after connecting</p>
-<h2>Example Usage</h2>
-<h3>List All Invoices</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;list_invoices&quot;,</p>
-<p>&quot;accessToken&quot;: &quot;eyJlbmMi...&quot;,</p>
-<p>&quot;realmId&quot;: &quot;123456789&quot;,</p>
-<p>&quot;maxResults&quot;: 100</p>
-<p>}</p>
-</code></pre>
-<h3>Create Invoice</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;create_invoice&quot;,</p>
-<p>&quot;accessToken&quot;: &quot;eyJlbmMi...&quot;,</p>
-<p>&quot;realmId&quot;: &quot;123456789&quot;,</p>
-<p>&quot;customerId&quot;: &quot;1&quot;,</p>
-<p>&quot;lineItems&quot;: [</p>
-<p>{</p>
-<p>&quot;Description&quot;: &quot;Consulting Services&quot;,</p>
-<p>&quot;Amount&quot;: 500.00,</p>
-<p>&quot;DetailType&quot;: &quot;SalesItemLineDetail&quot;,</p>
-<p>&quot;SalesItemLineDetail&quot;: {</p>
-<p>&quot;ItemRef&quot;: { &quot;value&quot;: &quot;1&quot; },</p>
-<p>&quot;Qty&quot;: 10,</p>
-<p>&quot;UnitPrice&quot;: 50</p>
-<p>}</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;dueDate&quot;: &quot;2025-02-15&quot;</p>
-<p>}</p>
-</code></pre>
-<h3>Create Customer</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;create_customer&quot;,</p>
-<p>&quot;accessToken&quot;: &quot;eyJlbmMi...&quot;,</p>
-<p>&quot;realmId&quot;: &quot;123456789&quot;,</p>
-<p>&quot;displayName&quot;: &quot;Acme Corporation&quot;,</p>
-<p>&quot;email&quot;: &quot;billing@acme.com&quot;,</p>
-<p>&quot;phone&quot;: &quot;555-123-4567&quot;,</p>
-<p>&quot;companyName&quot;: &quot;Acme Corporation&quot;</p>
-<p>}</p>
-</code></pre>
-<h3>Record Payment</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;create_payment&quot;,</p>
-<p>&quot;accessToken&quot;: &quot;eyJlbmMi...&quot;,</p>
-<p>&quot;realmId&quot;: &quot;123456789&quot;,</p>
-<p>&quot;customerId&quot;: &quot;1&quot;,</p>
-<p>&quot;invoiceId&quot;: &quot;101&quot;,</p>
-<p>&quot;amount&quot;: 500.00</p>
-<p>}</p>
-</code></pre>
-<h3>Custom Query</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;query&quot;,</p>
-<p>&quot;accessToken&quot;: &quot;eyJlbmMi...&quot;,</p>
-<p>&quot;realmId&quot;: &quot;123456789&quot;,</p>
-<p>&quot;query&quot;: &quot;SELECT * FROM Invoice WHERE TotalAmt &gt; &#x27;1000&#x27; MAXRESULTS 50&quot;</p>
-<p>}</p>
-</code></pre>
-<h2>Output</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform |
+| accessToken | string | Yes<em> | OAuth 2.0 access token (</em>not needed for demoMode) |
+| realmId | string | Yes<em> | Company/realm ID (</em>not needed for demoMode) |
+| useSandbox | boolean | No | Use sandbox environment (default: false) |
+| entityId | string | No | Entity ID for get/update operations |
+| customerId | string | No | Customer ID for invoice/payment |
+| vendorId | string | No | Vendor ID for bills |
+| displayName | string | No | Name for customer/vendor |
+| email | string | No | Email address |
+| lineItems | array | No | Line items for invoice/bill |
+| amount | number | No | Amount for payment |
+| dueDate | string | No | Due date (YYYY-MM-DD) |
+| query | string | No | SQL-like query string |
+| maxResults | integer | No | Max results (default: 100) |
+| webhookUrl | string | No | URL to send results |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
 <p>Results are saved to the default dataset:</p>
+
 <h3>Invoices List</h3>
 <pre><code>{
-<p>&quot;task&quot;: &quot;list_invoices&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;invoices&quot;: [</p>
-<p>{</p>
-<p>&quot;Id&quot;: &quot;101&quot;,</p>
-<p>&quot;DocNumber&quot;: &quot;1001&quot;,</p>
-<p>&quot;CustomerRef&quot;: { &quot;value&quot;: &quot;1&quot;, &quot;name&quot;: &quot;Acme Corp&quot; },</p>
-<p>&quot;TotalAmt&quot;: 500.00,</p>
-<p>&quot;Balance&quot;: 0,</p>
-<p>&quot;DueDate&quot;: &quot;2025-02-15&quot;,</p>
-<p>&quot;EmailStatus&quot;: &quot;Sent&quot;</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;total&quot;: 45</p>
-<p>}</p>
+  "task": "list_invoices",
+  "success": true,
+  "invoices": [
+    {
+      "Id": "101",
+      "DocNumber": "1001",
+      "CustomerRef": { "value": "1", "name": "Acme Corp" },
+      "TotalAmt": 500.00,
+      "Balance": 0,
+      "DueDate": "2025-02-15",
+      "EmailStatus": "Sent"
+    }
+  ],
+  "total": 45
+}
 </code></pre>
+
 <h3>Customer Created</h3>
 <pre><code>{
-<p>&quot;task&quot;: &quot;create_customer&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;customer&quot;: {</p>
-<p>&quot;Id&quot;: &quot;123&quot;,</p>
-<p>&quot;DisplayName&quot;: &quot;Acme Corporation&quot;,</p>
-<p>&quot;PrimaryEmailAddr&quot;: { &quot;Address&quot;: &quot;billing@acme.com&quot; },</p>
-<p>&quot;Active&quot;: true</p>
-<p>}</p>
-<p>}</p>
+  "task": "create_customer",
+  "success": true,
+  "customer": {
+    "Id": "123",
+    "DisplayName": "Acme Corporation",
+    "PrimaryEmailAddr": { "Address": "billing@acme.com" },
+    "Active": true
+  }
+}
 </code></pre>
-<h2>Query Language</h2>
-<p>QuickBooks uses a SQL-like query language:</p>
-<pre><code>-- Get invoices over $1000
-<p>SELECT * FROM Invoice WHERE TotalAmt &gt; &#x27;1000&#x27;</p>
-<p>-- Get unpaid invoices</p>
-<p>SELECT * FROM Invoice WHERE Balance &gt; &#x27;0&#x27;</p>
-<p>-- Get active customers</p>
-<p>SELECT * FROM Customer WHERE Active = true</p>
-<p>-- Date filtering</p>
-<p>SELECT * FROM Invoice WHERE TxnDate &gt;= &#x27;2025-01-01&#x27; AND TxnDate &lt;= &#x27;2025-01-31&#x27;</p>
-</code></pre>
-<h2>Rate Limits</h2>
-<p>QuickBooks Online API rate limit: <strong>500 requests per minute</strong> per realm</p>
-<p>The actor handles this automatically with built-in rate limiting.</p>
-<h2>Demo Mode</h2>
-<p>Test the actor without API credentials:</p>
-<pre><code>{
-<p>&quot;task&quot;: &quot;list_invoices&quot;,</p>
-<p>&quot;demoMode&quot;: true</p>
-<p>}</p>
-</code></pre>
+
 <h2>Pricing</h2>
-<p>Pay-per-event pricing:</p>
-<p>| Event | Price |</p>
-<p>|-------|-------|</p>
-<p>| <code>get_company_info</code> | $0.01 |</p>
-<p>| <code>list_customers</code> | $0.01 |</p>
-<p>| <code>manage_customer</code> | $0.02 |</p>
-<p>| <code>list_invoices</code> | $0.01 |</p>
-<p>| <code>manage_invoice</code> | $0.02 |</p>
-<p>| <code>list_payments</code> | $0.01 |</p>
-<p>| <code>manage_payment</code> | $0.02 |</p>
-<p>| <code>list_vendors</code> | $0.01 |</p>
-<p>| <code>manage_vendor</code> | $0.02 |</p>
-<p>| <code>list_bills</code> | $0.01 |</p>
-<p>| <code>manage_bill</code> | $0.02 |</p>
-<p>| <code>list_items</code> | $0.01 |</p>
-<p>| <code>manage_item</code> | $0.02 |</p>
-<p>| <code>list_accounts</code> | $0.005 |</p>
-<p>| <code>list_estimates</code> | $0.01 |</p>
-<p>| <code>query</code> | $0.02 |</p>
-<p>| <code>get_reports</code> | $0.02 |</p>
-<p>| <code>get_profit_loss</code> | $0.02 |</p>
-<h2>Related Actors</h2>
-<ul><li><a href="https://apify.com/localhowl/xero-api?fpr=kqpn7" target="_blank" rel="noopener">Xero API</a> - Alternative accounting automation</li>
-<li><a href="https://apify.com/localhowl/stripe-api?fpr=kqpn7" target="_blank" rel="noopener">Stripe API</a> - Payment processing</li>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:</p>
+
+<p>| Event | Price |
+|-------|-------|
+| <code>get_company_info</code> | $0.01 |
+| <code>list_customers</code> | $0.01 |
+| <code>manage_customer</code> | $0.02 |
+| <code>list_invoices</code> | $0.01 |
+| <code>manage_invoice</code> | $0.02 |
+| <code>list_payments</code> | $0.01 |
+| <code>manage_payment</code> | $0.02 |
+| <code>list_vendors</code> | $0.01 |
+| <code>manage_vendor</code> | $0.02 |
+| <code>list_bills</code> | $0.01 |
+| <code>manage_bill</code> | $0.02 |
+| <code>list_items</code> | $0.01 |
+| <code>manage_item</code> | $0.02 |
+| <code>list_accounts</code> | $0.005 |
+| <code>list_estimates</code> | $0.01 |
+| <code>query</code> | $0.02 |
+| <code>get_reports</code> | $0.02 |
+| <code>get_profit_loss</code> | $0.02 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Invoice Automation</h3>
+<ul>
+<li>Auto-generate invoices from orders</li>
+<li>Send invoice reminders</li>
+<li>Sync with e-commerce platforms</li>
+
 </ul>
-<h2>Support</h2>
-<ul><li><strong>QuickBooks API Docs</strong>: <a href="https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/invoice" target="_blank" rel="noopener">developer.intuit.com</a></li>
-<li><strong>Issues</strong>: Report on <a href="https://apify.com/localhowl/quickbooks-api?fpr=kqpn7" target="_blank" rel="noopener">Apify</a></li>
+<h3>Payment Tracking</h3>
+<ul>
+<li>Record payments automatically</li>
+<li>Match payments to invoices</li>
+<li>Track overdue accounts</li>
+
 </ul>
-<p>---</p>
+<h3>Customer Sync</h3>
+<ul>
+<li>Sync customers from CRM</li>
+<li>Update customer info bidirectionally</li>
+<li>Track customer purchase history</li>
+
+</ul>
+<h3>Financial Reporting</h3>
+<ul>
+<li>Export transaction data</li>
+<li>Generate custom reports</li>
+<li>Sync with data warehouses</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -735,7 +678,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

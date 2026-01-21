@@ -457,174 +457,80 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Local Schema Generator v1.0</h1>
+            <h1>Local Schema Generator</h1>
+            <p>Generate Schema.org JSON-LD structured data for local businesses. Boost your local SEO with proper structured data markup. Schema Types Generated: - LocalBusiness (with 50+ specific types like Plumber, Restaurant, Dentist) - Organization - WebSite with SearchAction - BreadcrumbList - FAQPage - Service/OfferCatalog Features: - Auto-detects correct schema.org business type from 50+ categories - Proper NAP (Name, Address, Phone) formatting - Opening hours with OpeningHoursSpecification - Aggregate ratings support - Service area for service businesses - Social profile linking via sameAs - Multiple output formats (JSON, script tags, or both) - Copy-paste ready HTML output - Implementation guide included. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<strong>"Schema.org JSON-LD for Local Businesses"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Generate Schema.org JSON-LD structured data for local businesses to improve search visibility and enable rich results.</p>
-
-<h2>Why Schema Matters</h2>
-
-<p>Structured data helps search engines understand your business:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Rich Results</strong>: Stars, hours, and contact info in search results</li>
-<li><strong>Knowledge Panel</strong>: Improved business information display</li>
-<li><strong>Voice Search</strong>: Better answers for voice assistants</li>
-<li><strong>Local Pack</strong>: Enhanced local search presence</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Supported Business Types</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<p>The generator automatically maps your business type to the correct schema.org type:</p>
+<h2>Demo Mode</h2>
 
-<h3>Home Services</h3>
-<ul>
-<li>Plumber, Electrician, HVAC, Roofer</li>
-<li>Locksmith, Moving Company, Landscaper</li>
-<li>House Painter, General Contractor</li>
-</ul>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<h3>Health & Medical</h3>
-<ul>
-<li>Dentist, Doctor, Chiropractor</li>
-<li>Optometrist, Veterinarian, Pharmacy</li>
-</ul>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<h3>Legal & Professional</h3>
-<ul>
-<li>Attorney, Accountant, Real Estate Agent</li>
-<li>Insurance Agency, Financial Advisor</li>
-</ul>
+<h2>Input Parameters</h2>
 
-<h3>Food & Dining</h3>
-<ul>
-<li>Restaurant, Cafe, Bakery, Bar</li>
-<li>Fast Food, Pizza</li>
-</ul>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>Retail</h3>
-<ul>
-<li>Store, Clothing, Jewelry, Electronics</li>
-<li>Hardware, Grocery, Pet Store, Florist</li>
-</ul>
-
-<h3>Auto</h3>
-<ul>
-<li>Auto Repair, Car Dealer, Car Wash</li>
-<li>Auto Body Shop, Tire Shop</li>
-</ul>
-
-<h3>Beauty & Personal Care</h3>
-<ul>
-<li>Hair Salon, Barber Shop, Spa</li>
-<li>Nail Salon, Beauty Salon</li>
-</ul>
-
-<h2>Schema Types Generated</h2>
-
-<h3>LocalBusiness (Primary)</h3>
-<p>The main schema for your business with:</p>
-<ul>
-<li>NAP (Name, Address, Phone)</li>
-<li>Opening hours</li>
-<li>Geo coordinates</li>
-<li>Price range</li>
-<li>Aggregate rating</li>
-<li>Social profiles</li>
-</ul>
-
-<h3>Organization</h3>
-<p>Corporate identity schema with:</p>
-<ul>
-<li>Company name and logo</li>
-<li>Contact information</li>
-<li>Social profiles via sameAs</li>
-</ul>
-
-<h3>WebSite</h3>
-<p>Website schema with:</p>
-<ul>
-<li>Site name and URL</li>
-<li>Search action for site search</li>
-</ul>
-
-<h3>FAQPage (Optional)</h3>
-<p>FAQ schema for:</p>
-<ul>
-<li>Common questions and answers</li>
-<li>Enhanced FAQ snippets in search</li>
-</ul>
-
-<h3>Service (Optional)</h3>
-<p>Service offerings with:</p>
-<ul>
-<li>Service descriptions</li>
-<li>Pricing information</li>
-<li>Service area</li>
-</ul>
-
-<h2>Usage</h2>
-
-<p>1. Enter your business information</p>
-<p>2. Select which schema types to generate</p>
-<p>3. Copy the output and paste into your website's <code><head></code> section</p>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <ul>
 <li><strong>SCHEMA_HTML</strong>: Ready-to-paste HTML with all script tags</li>
 <li><strong>Individual schemas</strong>: Separate JSON files for each type</li>
 <li><strong>IMPLEMENTATION_GUIDE</strong>: Step-by-step instructions</li>
+
 </ul>
-
-<h2>Testing Your Schema</h2>
-
-<p>After implementation:</p>
-<p>1. Visit https://search.google.com/test/rich-results</p>
-<p>2. Enter your website URL</p>
-<p>3. Review any errors or warnings</p>
-<p>4. Fix issues and re-test</p>
-
-<h2>Best Practices</h2>
-
-<ul>
-<li>Keep NAP consistent across all online presence</li>
-<li>Use high-resolution images (min 112x112px for logo)</li>
-<li>Include accurate business hours</li>
-<li>Add aggregate rating only if you have reviews</li>
-<li>Update schema when business info changes</li>
-</ul>
-
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>schema_generated</code> | Per schema generated | $0.05 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>Single business schema: $0.10 + $0.05 = <strong>$0.15</strong></li>
 <li>10 business schemas: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Author</h2>
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+</ul>
+---
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>local schema generator, json-ld generator, structured data, local business schema, seo schema markup, schema.org</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -638,7 +544,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

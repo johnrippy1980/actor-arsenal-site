@@ -457,79 +457,66 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Real Estate Aggregator - Zillow + Redfin + Realtor</h1>
+            <h1>Real Estate Aggregator - Multi-Platform</h1>
+            <p>Search all major real estate platforms at once. Automatically deduplicates listings that appear on multiple sites. Get unified data from Zillow, Redfin, and Realtor.com in a single run.</p>
 
-<blockquote><strong>Search all major real estate platforms at once</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>The Ultimate Real Estate Data Solution</h2>
-
-<strong>Tired of checking Zillow, Redfin, AND Realtor.com separately?</strong> This actor searches all three platforms simultaneously and <strong>automatically deduplicates listings</strong> that appear on multiple sites.
-
-<h3>What You Get:</h3>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Unified Search</strong>: Query Zillow, Redfin, and Realtor.com in a single run</li>
-<li><strong>Automatic Deduplication</strong>: Same property on 3 sites? You get 1 record with all data merged</li>
-<li><strong>Cross-Platform Enrichment</strong>: Zestimate from Zillow + agent info from Redfin + photos from Realtor</li>
-<li><strong>Price Variance Detection</strong>: Instantly see when the same property is priced differently across platforms</li>
-<li><strong>Source Tracking</strong>: Know which platforms have each listing</li>
-<li><strong>Best-of-Breed Data</strong>: Automatically pulls the best data from each source</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<p>---</p>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<h2>Why Aggregation Matters</h2>
+<h2>Demo Mode</h2>
 
-<h3>The Problem with Single-Platform Scraping</h3>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<strong>If you scrape all three separately, you'll have 2-3x duplicates!</strong>
+<h2>Input Parameters</h2>
 
-<h3>The Aggregator Solution</h3>
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free testing) |
+| <code>platforms</code> | array | No | all | Which platforms to search: zillow, redfin, realtor |
+| <code>city</code> | string | No<em> | - | City to search (e.g., "San Francisco, CA") |
+| <code>zipCode</code> | string | No</em> | - | ZIP code to search |
+| <code>address</code> | string | No<em> | - | Address to search around |
+| <code>searchRadius</code> | integer | No | 5 | Radius in miles |
+| <code>priceMin</code> | integer | No | - | Minimum listing price |
+| <code>priceMax</code> | integer | No | - | Maximum listing price |
+| <code>bedsMin</code> | integer | No | - | Minimum bedrooms |
+| <code>bathsMin</code> | integer | No | - | Minimum bathrooms |
+| <code>propertyTypes</code> | array | No | all | Filter: house, condo, townhouse, multi_family, land |
+| <code>listingStatus</code> | string | No | for_sale | Status: for_sale, pending, recently_sold, for_rent |
+| <code>maxResultsPerPlatform</code> | integer | No | 50 | Max listings from each platform |
+| <code>deduplicationStrategy</code> | string | No | keep_all_merged | How to handle duplicates |</p>
 
-<p>1. Scrapes all platforms in parallel</p>
-<p>2. Normalizes addresses to USPS standard format</p>
-<p>3. Matches duplicates by normalized address</p>
-<p>4. Merges data from all sources into one record</p>
-<p>5. Flags price discrepancies between platforms</p>
+</em>At least one location parameter required
 
-<p>---</p>
+<h3>Deduplication Strategies</h3>
 
-<h2>Perfect For</h2>
-
-<h3>Real Estate Investors</h3>
-<ul>
-<li>Get the most complete view of any market</li>
-<li>Catch underpriced listings missed by single-platform searches</li>
-<li>Track price discrepancies for arbitrage opportunities</li>
-</ul>
-
-<h3>Market Researchers</h3>
-<ul>
-<li>Build comprehensive property databases</li>
-<li>Analyze listing coverage across platforms</li>
-<li>Track which properties are cross-listed</li>
-</ul>
-
-<h3>Real Estate Agents</h3>
-<ul>
-<li>Complete competitive market analysis</li>
-<li>Never miss a listing on any platform</li>
-<li>Verify listing data across sources</li>
-</ul>
-
-<h3>Wholesalers</h3>
-<ul>
-<li>Maximum lead coverage</li>
-<li>Find motivated sellers faster</li>
-<li>Identify stale listings across all platforms</li>
-</ul>
+<p>| Strategy | Description |
+|----------|-------------|
+| <code>keep_all_merged</code> | Merge data from all sources (default) |
+| <code>keep_lowest_price</code> | Keep the listing with the lowest price |
+| <code>keep_highest_price</code> | Keep the listing with the highest price |
+| <code>keep_zillow</code> | Prefer Zillow data when available |</p>
 
 <p>---</p>
 
@@ -538,126 +525,55 @@
 <p>Each aggregated listing includes:</p>
 
 <pre><code>{
-<p>"platform": "aggregated",</p>
-<p>"listingId": "AGG-ZL-12345678",</p>
-<p>"addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",</p>
-<p>"price": 1350000,</p>
-<p>"zestimate": 1380000,</p>
-<p>"rentZestimate": 5200,</p>
-<p>"beds": 3,</p>
-<p>"baths": 2,</p>
-<p>"sqft": 1850,</p>
-<p>"sources": ["zillow.com", "redfin.com", "realtor.com"],</p>
-<p>"pricesByPlatform": {</p>
-<p>"zillow.com": 1350000,</p>
-<p>"redfin.com": 1349000,</p>
-<p>"realtor.com": 1355000</p>
-<p>},</p>
-<p>"priceVariance": "$6,000 (0.45%)",</p>
-<p>"allUrls": [</p>
-<p>"https://www.zillow.com/homedetails/...",</p>
-<p>"https://www.redfin.com/CA/...",</p>
-<p>"https://www.realtor.com/..."</p>
-<p>],</p>
-<p>"bestPhotos": ["https://..."],</p>
-<p>"agent": {...},</p>
-<p>"features": [...],</p>
-<p>"priceHistory": [...],</p>
-<p>"taxHistory": [...],</p>
-<p>"scrapedAt": "2025-12-24T12:00:00Z"</p>
-<p>}</p>
+  "platform": "aggregated",
+  "listingId": "AGG-ZL-12345678",
+  "addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",
+  "price": 1350000,
+  "zestimate": 1380000,
+  "rentZestimate": 5200,
+  "beds": 3,
+  "baths": 2,
+  "sqft": 1850,
+  "sources": ["zillow.com", "redfin.com", "realtor.com"],
+  "pricesByPlatform": {
+    "zillow.com": 1350000,
+    "redfin.com": 1349000,
+    "realtor.com": 1355000
+  },
+  "priceVariance": "$6,000 (0.45%)",
+  "allUrls": [
+    "https://www.zillow.com/homedetails/...",
+    "https://www.redfin.com/CA/...",
+    "https://www.realtor.com/..."
+  ],
+  "bestPhotos": ["https://..."],
+  "agent": {...},
+  "features": [...],
+  "priceHistory": [...],
+  "taxHistory": [...],
+  "scrapedAt": "2025-12-24T12:00:00Z"
+}
 </code></pre>
 
 <h3>Key Aggregation Fields</h3>
 
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Basic City Search (All Platforms)</h3>
-
-<pre><code>{
-<p>"city": "San Francisco, CA",</p>
-<p>"priceMax": 1500000,</p>
-<p>"bedsMin": 3</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 2: Specific Platforms Only</h3>
-
-<pre><code>{
-<p>"city": "Miami, FL",</p>
-<p>"platforms": ["zillow", "redfin"],</p>
-<p>"priceMin": 500000,</p>
-<p>"priceMax": 1000000</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 3: Keep Lowest Price (Arbitrage Strategy)</h3>
-
-<pre><code>{
-<p>"zipCode": "90210",</p>
-<p>"deduplicationStrategy": "keep_lowest_price",</p>
-<p>"maxResultsPerPlatform": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: Demo Mode (Free Testing)</h3>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Input Parameters</h2>
-
-
-<p>*At least one location parameter required</p>
-
-<h3>Deduplication Strategies</h3>
-
-
-<p>---</p>
-
-<h2>How Deduplication Works</h2>
-
-<h3>1. Address Normalization</h3>
-
-<p>All addresses are converted to USPS standard format:</p>
-
-<ul>
-<li><code>123 Main Street, Apt 4</code> → <code>123 MAIN ST APT 4</code></li>
-<li><code>456 Oak Avenue #2B</code> → <code>456 OAK AVE #2B</code></li>
-<li><code>789 N. First Blvd</code> → <code>789 N FIRST BLVD</code></li>
-</ul>
-
-<h3>2. Matching</h3>
-
-<p>Properties with identical normalized addresses are grouped together.</p>
-
-<h3>3. Merging</h3>
-
-<p>Based on your strategy, data is merged:</p>
-
-<ul>
-<li><strong>Price</strong>: From primary source or lowest/highest</li>
-<li><strong>Zestimate</strong>: Always from Zillow (only they have it)</li>
-<li><strong>Photos</strong>: Combined from all sources</li>
-<li><strong>Features</strong>: Union of all features</li>
-<li><strong>Agent</strong>: From most complete source</li>
-</ul>
-
-<h3>4. Variance Detection</h3>
-
-<p>Price differences across platforms are calculated and flagged.</p>
+<p>| Field | Description |
+|-------|-------------|
+| <code>sources</code> | Array of platforms that have this listing |
+| <code>pricesByPlatform</code> | Price on each platform |
+| <code>priceVariance</code> | Difference between highest and lowest price |
+| <code>allUrls</code> | URLs on all platforms |
+| <code>bestPhotos</code> | Deduplicated photos from all sources |</p>
 
 <p>---</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Per aggregated listing | $0.10 |
+| Demo mode | Free |</p>
 
 <h3>Why More Than Single-Platform Scrapers?</h3>
 
@@ -668,8 +584,8 @@
 <li>Deduplication (often 40-60% overlap = savings)</li>
 <li>Cross-platform enrichment</li>
 <li>Price variance analysis</li>
-</ul>
 
+</ul>
 <strong>Typical savings: 30-50% vs running platforms separately!</strong>
 
 <p>---</p>
@@ -679,12 +595,12 @@
 <h3>Investment Property Pipeline</h3>
 
 <pre><code>{
-<p>"city": "Atlanta, GA",</p>
-<p>"propertyTypes": ["multi_family"],</p>
-<p>"priceMax": 500000,</p>
-<p>"maxResultsPerPlatform": 100,</p>
-<p>"deduplicationStrategy": "keep_lowest_price"</p>
-<p>}</p>
+  "city": "Atlanta, GA",
+  "propertyTypes": ["multi_family"],
+  "priceMax": 500000,
+  "maxResultsPerPlatform": 100,
+  "deduplicationStrategy": "keep_lowest_price"
+}
 </code></pre>
 
 <p>Find multi-family properties across all platforms, keeping the lowest listed price for each.</p>
@@ -692,11 +608,11 @@
 <h3>Luxury Home Search</h3>
 
 <pre><code>{
-<p>"city": "Beverly Hills, CA",</p>
-<p>"priceMin": 5000000,</p>
-<p>"bedsMin": 5,</p>
-<p>"platforms": ["zillow", "redfin"]</p>
-<p>}</p>
+  "city": "Beverly Hills, CA",
+  "priceMin": 5000000,
+  "bedsMin": 5,
+  "platforms": ["zillow", "redfin"]
+}
 </code></pre>
 
 <p>High-end properties with maximum data coverage.</p>
@@ -704,91 +620,21 @@
 <h3>Rental Market Analysis</h3>
 
 <pre><code>{
-<p>"zipCode": "78701",</p>
-<p>"listingStatus": "for_rent",</p>
-<p>"maxResultsPerPlatform": 200</p>
-<p>}</p>
+  "zipCode": "78701",
+  "listingStatus": "for_rent",
+  "maxResultsPerPlatform": 200
+}
 </code></pre>
 
 <p>Comprehensive rental inventory in downtown Austin.</p>
 
 <p>---</p>
 
-<h2>Part of the Real Estate Scraper Suite</h2>
-
-
 <p>---</p>
 
-<h2>FAQ</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>How long does it take?</h3>
-
-<p>Typically 3-5 minutes depending on result count. Each platform is scraped in parallel.</p>
-
-<h3>What if one platform fails?</h3>
-
-<p>The aggregator will continue with successful platforms. You'll see which platforms returned data in the output.</p>
-
-<h3>Can I run just 2 platforms?</h3>
-
-<p>Yes! Use the <code>platforms</code> array to specify which ones.</p>
-
-<h3>How accurate is the deduplication?</h3>
-
-<p>Very accurate. Address normalization handles 99%+ of cases. Edge cases (typos, new construction) may occasionally slip through.</p>
-
-<h3>Do I need API keys for each platform?</h3>
-
-<p>No! All platform scrapers use web scraping. No API keys required.</p>
-
-<p>---</p>
-
-<h2>Integrations</h2>
-
-<h3>Zapier/Make/n8n</h3>
-
-<p>Use the Apify integration to trigger this actor and route aggregated listings to:</p>
-
-<ul>
-<li>Google Sheets</li>
-<li>Airtable</li>
-<li>Your CRM</li>
-<li>Email notifications</li>
-</ul>
-
-<h3>Webhooks</h3>
-
-<pre><code>{
-<p>"webhooks": [{</p>
-<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
-<p>"requestUrl": "https://your-app.com/webhook/listings"</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>real estate aggregator, property search, zillow redfin realtor combined, multi-platform real estate search, property listing aggregation, real estate data deduplication, combined property search, cross-platform real estate, unified property search, real estate api, property data aggregation, home search all platforms, deduplicated listings, real estate data enrichment, investment property finder, multi-source real estate data</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -802,7 +648,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

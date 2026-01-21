@@ -457,113 +457,52 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Email Validation API</h1>
-
-<blockquote><strong>"Stop Paying $0.008 Per Email"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Paying for Expensive Email Validation Services</h2>
-
-<strong>You're currently paying:</strong> ZeroBounce ($0.008/email), NeverBounce ($0.008/email), Hunter.io ($0.01/email), Clearout ($0.006/email).
-
-<strong>What if you could validate emails for less?</strong>
-
-<p>The <strong>Email Validation API</strong> provides comprehensive email validation at a fraction of the cost:</p>
-
-<ul>
-<li>Syntax validation (RFC-compliant)</li>
-<li>MX record verification</li>
-<li>SPF/DMARC detection</li>
-<li>Disposable email detection (1,000+ domains)</li>
-<li>Free provider identification (Gmail, Yahoo, Outlook, etc.)</li>
-<li>Role-based address detection (info@, support@, sales@)</li>
-<li>Deliverability scoring (0-100)</li>
-<li>Bulk validation support</li>
-</ul>
-
-<strong>Pay only for what you use.</strong> No monthly subscriptions. No minimum commitments.
-
-<p>---</p>
-
-<h2>Why Choose This Over Traditional Validators</h2>
-
-<h3>1. Pay-Per-Email, Not Per-Month</h3>
-
-<p>Traditional tools: $50-$500/month for your agency.</p>
-
-<p>This actor: Pay per validation. Validate 1,000 emails for ~$5. Validate 10,000 for ~$40.</p>
-
-<strong>Validate 50,000 emails/month and still pay less than a ZeroBounce subscription.</strong>
-
-<h3>2. Comprehensive Checks in One API Call</h3>
-
-<p>Stop making multiple API calls. Get syntax, MX, SPF, DMARC, deliverability, and risk flags in one response.</p>
-
-<p>Feed it directly into your CRM, email platform, or lead generation workflow.</p>
-
-<h3>3. Real-Time or Bulk Mode</h3>
-
-<ul>
-<li><strong>Real-time</strong>: Validate emails at point of entry (forms, signups)</li>
-<li><strong>Bulk</strong>: Clean entire lists before campaigns</li>
-<li><strong>Webhook</strong>: Get results delivered automatically when done</li>
-</ul>
-
-<h3>4. No False Positives</h3>
-
-<p>Unlike basic validators, we check actual MX records and authentication protocols. If an email passes, it's deliverable.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Validate Single Email</h3>
-
-<pre><code>{
-<p>"emails": ["john.doe@gmail.com"],</p>
-<p>"checkMx": true,</p>
-<p>"checkDisposable": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 2: Bulk Validation (Lead List)</h3>
-
-<pre><code>{
-<p>"emails": [</p>
-<p>"lead1@company.com",</p>
-<p>"lead2@startup.io",</p>
-<p>"lead3@enterprise.net"</p>
-<p>],</p>
-<p>"checkMx": true,</p>
-<p>"checkSmtp": false,</p>
-<p>"checkDisposable": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 3: With Webhook (Zapier/Make/n8n)</h3>
-
-<pre><code>{
-<p>"emails": ["lead@example.com"],</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<p>Results automatically POST to your webhook when complete.</p>
-
-<p>---</p>
+            <h1>Email Validation API - Bulk Verify</h1>
+            <p>Validate email addresses - check syntax, domain, MX records, SPF, DMARC, and deliverability. Detect disposable emails, free providers, and role-based addresses.</p>
 
 <h2>Features</h2>
 
+<p>| Feature | Replaces | What It Does |
+|---------|----------|--------------|
+| <strong>Syntax Validation</strong> | Basic regex | RFC-compliant email format checking with detailed error messages |
+| <strong>MX Record Check</strong> | Manual DNS lookup | Verify domain can actually receive emails |
+| <strong>SPF/DMARC Detection</strong> | DNS tools | Check for email authentication records (higher deliverability) |
+| <strong>Disposable Detection</strong> | EmailHippo, Kickbox | Flag 1,000+ temporary/throwaway email services |
+| <strong>Free Provider Detection</strong> | Manual lists | Identify Gmail, Yahoo, Outlook, ProtonMail, etc. |
+| <strong>Role-Based Detection</strong> | Manual patterns | Flag generic addresses (info@, support@, sales@, admin@) |
+| <strong>Deliverability Score</strong> | Multiple tools | 0-100 score combining all quality signals |</p>
 
 <p>---</p>
 
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>emails</code> | string[] | Yes | List of email addresses to validate |
+| <code>checkMx</code> | boolean | No | Verify MX records exist (default: true) |
+| <code>checkSmtp</code> | boolean | No | Attempt SMTP verification (default: false) |
+| <code>checkDisposable</code> | boolean | No | Flag disposable emails (default: true) |
+| <code>webhookUrl</code> | string | No | Webhook URL for async results |
+| <code>demoMode</code> | boolean | No | Return sample data without validation |</p>
 
 <p>---</p>
 
@@ -572,66 +511,46 @@
 <p>Each validated email returns structured JSON:</p>
 
 <pre><code>{
-<p>"email": "john.doe@gmail.com",</p>
-<p>"isValid": true,</p>
-<p>"syntax": {</p>
-<p>"isValid": true,</p>
-<p>"localPart": "john.doe",</p>
-<p>"domain": "gmail.com"</p>
-<p>},</p>
-<p>"domain": {</p>
-<p>"name": "gmail.com",</p>
-<p>"hasMx": true,</p>
-<p>"mxRecords": [</p>
-<p>{"exchange": "gmail-smtp-in.l.google.com", "priority": 5}</p>
-<p>],</p>
-<p>"hasSpf": true,</p>
-<p>"hasDmarc": true</p>
-<p>},</p>
-<p>"deliverability": {</p>
-<p>"isDeliverable": true,</p>
-<p>"reason": null</p>
-<p>},</p>
-<p>"flags": {</p>
-<p>"isDisposable": false,</p>
-<p>"isFreeProvider": true,</p>
-<p>"isRoleBased": false,</p>
-<p>"isCatchAll": null</p>
-<p>},</p>
-<p>"score": 95,</p>
-<p>"checkedAt": "2025-12-23T12:00:00.000Z"</p>
-<p>}</p>
+  "email": "john.doe@gmail.com",
+  "isValid": true,
+  "syntax": {
+    "isValid": true,
+    "localPart": "john.doe",
+    "domain": "gmail.com"
+  },
+  "domain": {
+    "name": "gmail.com",
+    "hasMx": true,
+    "mxRecords": [
+      {"exchange": "gmail-smtp-in.l.google.com", "priority": 5}
+    ],
+    "hasSpf": true,
+    "hasDmarc": true
+  },
+  "deliverability": {
+    "isDeliverable": true,
+    "reason": null
+  },
+  "flags": {
+    "isDisposable": false,
+    "isFreeProvider": true,
+    "isRoleBased": false,
+    "isCatchAll": null
+  },
+  "score": 95,
+  "checkedAt": "2025-12-23T12:00:00.000Z"
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Scoring System</h2>
+<h2>Pricing</h2>
 
-<p>The quality score (0-100) is calculated based on:</p>
-
-
-<strong>Score Interpretation:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li><strong>90-100</strong>: Excellent - High confidence, proceed with outreach</li>
-<li><strong>70-89</strong>: Good - Likely valid, safe to email</li>
-<li><strong>50-69</strong>: Fair - Some risk, consider verification</li>
-<li><strong>Below 50</strong>: Poor - High risk, avoid sending</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-
-<p>---</p>
-
-<h2>Pay-Per-Event Pricing</h2>
-
-<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
-
-
-<h3>Cost Examples</h3>
-
-
-<strong>Save 40-60% compared to traditional email validation services.</strong>
-
-<p>---</p>
-
 <h2>Use Cases</h2>
 
 <h3>Lead Generation & Sales</h3>
@@ -640,139 +559,36 @@
 <li><strong>Form validation</strong>: Real-time validation at point of entry</li>
 <li><strong>CRM hygiene</strong>: Maintain clean customer databases</li>
 <li><strong>Bounce prevention</strong>: Avoid damaging sender reputation</li>
-</ul>
 
+</ul>
 <h3>Marketing Agencies</h3>
 <ul>
 <li><strong>Campaign prep</strong>: Clean client lists before sends</li>
 <li><strong>Deliverability optimization</strong>: Improve open rates</li>
 <li><strong>List monetization</strong>: Validate before selling leads</li>
-</ul>
 
+</ul>
 <h3>E-commerce & SaaS</h3>
 <ul>
 <li><strong>Signup validation</strong>: Reduce fake accounts</li>
 <li><strong>Fraud prevention</strong>: Detect disposable emails</li>
 <li><strong>Customer verification</strong>: Ensure valid contact info</li>
-</ul>
 
+</ul>
 <h3>Developers</h3>
 <ul>
 <li><strong>API integration</strong>: RESTful JSON responses</li>
 <li><strong>Webhook support</strong>: Async processing for large lists</li>
 <li><strong>Batch processing</strong>: Validate thousands in parallel</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>API Integration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/email-validation-api').call({</p>
-<p>emails: ['lead1@company.com', 'lead2@startup.io'],</p>
-<p>checkMx: true,</p>
-<p>checkDisposable: true</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~email-validation-api/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"emails": ["lead@example.com"],</p>
-<p>"checkMx": true,</p>
-<p>"checkDisposable": true</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Webhook Integration (Zapier, Make, n8n)</h2>
-
-<h3>Webhook Payload Format</h3>
-
-<p>When validation completes, we POST:</p>
-
-<pre><code>{
-<p>"event": "validation_completed",</p>
-<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
-<p>"actor": "email-validation-api",</p>
-<p>"runId": "abc123",</p>
-<p>"totalEmails": 100,</p>
-<p>"validEmails": 87,</p>
-<p>"invalidEmails": 13,</p>
-<p>"results": [...]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Zapier Setup</h3>
-
-<p>1. Create a new Zap with "Webhooks by Zapier" as trigger</p>
-<p>2. Select "Catch Hook"</p>
-<p>3. Copy the webhook URL</p>
-<p>4. Paste into the <code>webhookUrl</code> field when running the actor</p>
-<p>5. Add actions: Update CRM, send to Mailchimp, Slack notification, etc.</p>
-
-<p>---</p>
-
-<h2>Disposable Email Detection</h2>
-
-<p>We detect 1,000+ disposable email domains including:</p>
-
-<ul>
-<li>Guerrilla Mail, 10MinuteMail, TempMail</li>
-<li>Mailinator, Discard.email, Throwaway.email</li>
-<li>YOPmail, Sharklasers, Maildrop</li>
-<li>And 990+ more...</li>
-</ul>
-
-<strong>Updated weekly</strong> to catch new disposable domains.
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>SMTP Check</strong>: Some mail servers block SMTP verification; results may be inconclusive</li>
-<li><strong>Catch-All</strong>: Domains with catch-all enabled always appear deliverable</li>
-<li><strong>Rate Limiting</strong>: Built-in delays to avoid being blocked</li>
-<li><strong>Privacy</strong>: We don't store email addresses after validation</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>email validation, email verifier, email checker, bulk email validation, email list cleaning, disposable email detection, mx record check, email deliverability, zeroBounce alternative, neverbounce alternative, hunter.io alternative, email hygiene, lead validation, crm data cleaning, email bounce prevention</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -786,7 +602,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

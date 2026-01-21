@@ -457,48 +457,137 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Angi (Angie&#x27;s List) Scraper</h1>
-
-<strong>"Angi (Angie&#x27;s List) Scraper"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Angi (Angie’s List) Scraper allows you to extract Angie&#x27;s List companies&#x27; data. Using our search fields, you&#x27;ll get general details, contact info, and reviews for market and advertising research, comp</p>
+            <p>Scrape Angi (formerly HomeAdvisor) business listings, customer reviews, ratings, project photos, and service areas. Extract license information, background check status, and hire counts. Essential for home service contractors and competitive analysis. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
+<li><strong>Profile Scraping</strong>: Complete business profile data</li>
+<li><strong>Search</strong>: Find contractors by service type and location</li>
+<li><strong>Review Extraction</strong>: Customer reviews with ratings and projects</li>
+<li><strong>Photo Extraction</strong>: Project and portfolio photos</li>
+<li><strong>Service Categories</strong>: Plumbers, electricians, HVAC, remodelers, etc.</li>
+<li><strong>Bulk Processing</strong>: Scrape multiple listings efficiently</li>
 
-<h2>Integration Support</h2>
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Type: business_profile, search, reviews |
+| <code>businessUrl</code> | string | Direct Angi listing URL |
+| <code>searchTerm</code> | string | Service type to search (plumber, electrician, etc.) |
+| <code>location</code> | string | City, state or ZIP code |
+| <code>serviceType</code> | string | Filter: plumbing, electrical, hvac, roofing, etc. |
+| <code>minRating</code> | number | Minimum star rating (1.0-5.0) |
+| <code>includeReviews</code> | boolean | Scrape reviews (default: true) |
+| <code>maxReviewsPerBusiness</code> | number | Max reviews per listing (default: 20) |
+| <code>includePhotos</code> | boolean | Extract project photos |
+| <code>maxResults</code> | number | Maximum listings (default: 50) |
+| <code>sortBy</code> | string | Sort: relevance, rating, review_count, years_in_business |
+| <code>proxyConfiguration</code> | object | Proxy settings |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<h3>Listing Output</h3>
+
+<pre><code>{
+  "businessName": "Mike's Plumbing & Drain",
+  "angiUrl": "https://www.angi.com/companylist/us/fl/miami/mikes-plumbing.htm",
+  "angiId": "12345678",
+  "categories": ["Plumber", "Drain Cleaning", "Water Heater"],
+  "rating": 4.8,
+  "reviewCount": 156,
+  "grade": "A",
+  "yearsInBusiness": 15,
+  "hiredOnAngi": 342,
+  "address": {
+    "city": "Miami",
+    "state": "FL",
+    "zipCode": "33101"
+  },
+  "phone": "(305) 555-1234",
+  "website": "https://mikesplumbing.com",
+  "serviceAreas": ["Miami", "Miami Beach", "Coral Gables", "Kendall"],
+  "licenses": ["CFC1428532", "State Licensed"],
+  "insurance": true,
+  "backgroundChecked": true,
+  "photos": [
+    "https://d2xuzatlf0eg6.cloudfront.net/photos/abc123.jpg"
+  ],
+  "reviews": [
+    {
+      "reviewId": "rev123",
+      "rating": 5,
+      "title": "Excellent service!",
+      "text": "Mike fixed our kitchen drain quickly and professionally...",
+      "author": "John D.",
+      "date": "December 2024",
+      "projectType": "Drain Cleaning",
+      "projectCost": "$150-$300",
+      "verified": true
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>listing_scraped</code> | Per business scraped | $0.04 |
+| <code>review_scraped</code> | Per review extracted | $0.004 |
+| <code>photo_scraped</code> | Per photo URL extracted | $0.002 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 contractors with 20 reviews each: $0.10 + (50 × $0.04) + (1000 × $0.004) = <strong>$6.10</strong></li>
+<li>100 contractors, no reviews: $0.10 + (100 × $0.04) = <strong>$4.10</strong></li>
+
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><strong>Competitive Analysis</strong>: Compare contractor ratings</li>
+<li><strong>Lead Generation</strong>: Find service professionals in target areas</li>
+<li><strong>Reputation Monitoring</strong>: Track your Angi presence</li>
+<li><strong>Market Research</strong>: Analyze home service industry trends</li>
+<li><strong>Pricing Intelligence</strong>: Understand market rates</li>
+<li><strong>Review Aggregation</strong>: Combine with other platforms</li>
+
 </ul>
+---
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>angi angie s list scraper, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +601,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

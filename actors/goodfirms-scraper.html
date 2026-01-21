@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>GoodFirms Directory Scraper</h1>
-
-<strong>"IT Service Provider Reviews & Ratings"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape IT service provider profiles from GoodFirms.co. Extract company info, reviews, ratings, services, and client portfolios. Perfect for B2B vendor research and competitive analysis.</p>
+            <h1>GoodFirms Scraper - Agency Reviews</h1>
+            <p>Scrape B2B company profiles from GoodFirms directory. Extract company info, reviews, ratings, services, and portfolios. Find IT companies, agencies, and software providers. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -478,8 +471,68 @@
 <li><strong>Services</strong>: Full list of services offered</li>
 <li><strong>Client Lists</strong>: Notable clients and portfolio</li>
 <li><strong>Filters</strong>: Search by category, location, minimum rating</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "name": "Pixel Perfect Studios",
+  "url": "https://www.goodfirms.co/company/pixel-perfect-studios",
+  "rating": 4.9,
+  "reviewCount": 89,
+  "location": "Austin, TX",
+  "minProjectSize": "$10,000+",
+  "hourlyRate": "$100 - $149/hr",
+  "employees": "10-49",
+  "founded": 2016,
+  "services": ["Web Design", "UI/UX Design", "Mobile App Development"],
+  "industries": ["Technology", "Healthcare", "Finance"],
+  "description": "Award-winning digital design studio...",
+  "website": "https://pixelperfectstudios.com",
+  "clients": ["Tech Startup", "Healthcare Provider"],
+  "reviews": [
+    {
+      "author": "Product Manager",
+      "rating": 5,
+      "text": "Incredible attention to detail..."
+    }
+  ],
+  "scrapedAt": "2025-12-23T12:00:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><strong>$0.02</strong> per company scraped</li>
+<li>Demo mode is free</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -487,127 +540,13 @@
 <li><strong>B2B Lead Generation</strong>: Build lists of potential clients or partners</li>
 <li><strong>Competitive Analysis</strong>: Research competitors in your industry</li>
 <li><strong>Market Research</strong>: Understand the service provider landscape</li>
+
 </ul>
+---
 
-<h2>Input Configuration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-<p>"demoMode": false,</p>
-<p>"searchQuery": "web development company",</p>
-<p>"location": "New York",</p>
-<p>"category": "web-development-companies",</p>
-<p>"minRating": 4.5,</p>
-<p>"maxResults": 50,</p>
-<p>"includeReviews": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Input Parameters</h3>
-
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"name": "Pixel Perfect Studios",</p>
-<p>"url": "https://www.goodfirms.co/company/pixel-perfect-studios",</p>
-<p>"rating": 4.9,</p>
-<p>"reviewCount": 89,</p>
-<p>"location": "Austin, TX",</p>
-<p>"minProjectSize": "$10,000+",</p>
-<p>"hourlyRate": "$100 - $149/hr",</p>
-<p>"employees": "10-49",</p>
-<p>"founded": 2016,</p>
-<p>"services": ["Web Design", "UI/UX Design", "Mobile App Development"],</p>
-<p>"industries": ["Technology", "Healthcare", "Finance"],</p>
-<p>"description": "Award-winning digital design studio...",</p>
-<p>"website": "https://pixelperfectstudios.com",</p>
-<p>"clients": ["Tech Startup", "Healthcare Provider"],</p>
-<p>"reviews": [</p>
-<p>{</p>
-<p>"author": "Product Manager",</p>
-<p>"rating": 5,</p>
-<p>"text": "Incredible attention to detail..."</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2025-12-23T12:00:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Categories</h2>
-
-<ul>
-<li><code>web-development-companies</code> - Web Development</li>
-<li><code>mobile-app-development-companies</code> - Mobile App Development</li>
-<li><code>software-development-companies</code> - Software Development</li>
-<li><code>digital-marketing-companies</code> - Digital Marketing</li>
-<li><code>seo-companies</code> - SEO</li>
-<li><code>ui-ux-design-companies</code> - UI/UX Design</li>
-<li><code>cloud-computing-companies</code> - Cloud Computing</li>
-<li><code>ecommerce-development-companies</code> - eCommerce Development</li>
-<li><code>it-services-companies</code> - IT Services</li>
-<li><code>data-analytics-companies</code> - Data Analytics</li>
-</ul>
-
-<h2>Pricing</h2>
-
-<ul>
-<li><strong>$0.02</strong> per company scraped</li>
-<li>Demo mode is free</li>
-</ul>
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-<p>Automate vendor research workflows:</p>
-<p>1. Add the "Apify" app in Zapier</p>
-<p>2. Select "Run Actor" as the action</p>
-<p>3. Enter <code>alizarin_refrigerator-owner/goodfirms-scraper</code> as the actor ID</p>
-<p>4. Send results to Google Sheets or your project management tool</p>
-
-<h3>Make (Integromat)</h3>
-<p>Build vendor selection pipelines:</p>
-<p>1. Add the Apify module to your Make scenario</p>
-<p>2. Select "Run an Actor" action</p>
-<p>3. Configure with actor ID and search filters</p>
-<p>4. Compare companies in Airtable or Notion databases</p>
-
-<h3>n8n</h3>
-<p>1. Add the Apify node to your workflow</p>
-<p>2. Configure with your Apify API token</p>
-<p>3. Set actor ID to <code>alizarin_refrigerator-owner/goodfirms-scraper</code></p>
-<p>4. Process and filter results with code nodes</p>
-
-<h3>Webhooks</h3>
-<p>Receive scraped companies via webhook:</p>
-<pre><code>{
-<p>"webhooks": [{</p>
-<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
-<p>"requestUrl": "https://your-app.com/webhook/goodfirms"</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<h3>API</h3>
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~goodfirms-scraper/runs?token=YOUR_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{"searchQuery": "web development", "location": "Austin", "maxResults": 50}'</p>
-</code></pre>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -621,7 +560,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

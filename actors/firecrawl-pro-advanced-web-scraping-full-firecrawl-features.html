@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,203 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Firecrawl Pro Advanced Web Scraping Full Firecrawl Features</h1>
-            <p>Apify actor for Firecrawl Pro Advanced Web Scraping Full Firecrawl Features</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Professional web scraping with Firecrawl's advanced features: Actions (click, type, scroll), Screenshots, Stealth Mode, Caching, Fast Mode, Location Proxies, and Schema Extraction. Perfect for protected sites and complex scraping workflows.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Basic Scraping</h3>
+<ul>
+<li><strong>Markdown/HTML Extraction</strong> - Clean content in multiple formats</li>
+<li><strong>Main Content Filtering</strong> - Remove headers, footers, navigation</li>
+<li><strong>Include/Exclude Tags</strong> - Fine-grained content selection</li>
+
+</ul>
+<h3>Advanced Features</h3>
+<ul>
+<li><strong>Actions</strong> - Click buttons, type text, scroll, wait before scraping</li>
+<li><strong>Screenshots</strong> - Full-page or element screenshots in PNG/JPEG</li>
+<li><strong>Stealth Mode</strong> - Anti-detection for protected sites</li>
+<li><strong>Fast Mode</strong> - Accelerated scraping for simple pages</li>
+<li><strong>Caching</strong> - Reduce costs with 2-day cache (configurable)</li>
+<li><strong>Location Proxies</strong> - Geo-targeted content (US, UK, DE, FR, JP, AU, BR, IN)</li>
+
+</ul>
+<h3>Extraction</h3>
+<ul>
+<li><strong>JSON Schema Extraction</strong> - Define fields to extract as structured data</li>
+<li><strong>Prompt-Based Extraction</strong> - Natural language extraction instructions</li>
+<li><strong>Branding Profile</strong> - Extract colors, fonts, logos, typography</li>
+<li><strong>Links Extraction</strong> - All links with metadata</li>
+<li><strong>Images Extraction</strong> - All images with alt text</li>
+
+</ul>
+<h3>Agent Mode</h3>
+<ul>
+<li><strong>Autonomous Navigation</strong> - AI navigates multiple pages to find data</li>
+<li><strong>Multi-Page Discovery</strong> - About, Pricing, Contact, etc.</li>
+<li><strong>Credit Limits</strong> - Control agent spend per session</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<h3>Basic Scrape</h3>
+<pre><code>{
+  "urls": ["https://example.com"],
+  "formats": ["markdown", "screenshot"],
+  "stealthMode": true,
+  "extractionSchema": {
+    "type": "object",
+    "properties": {
+      "title": {"type": "string"},
+      "price": {"type": "string"},
+      "features": {"type": "array", "items": {"type": "string"}}
+    }
+  },
+  "firecrawlApiKey": "fc-xxxxx"
+}
+</code></pre>
+
+<h3>With Actions (Dismiss Cookie Banner)</h3>
+<pre><code>{
+  "urls": ["https://example.com"],
+  "formats": ["markdown"],
+  "actions": [
+    {"type": "wait", "milliseconds": 2000},
+    {"type": "click", "selector": "#cookie-accept"},
+    {"type": "wait", "milliseconds": 500}
+  ],
+  "firecrawlApiKey": "fc-xxxxx"
+}
+</code></pre>
+
+<h3>Agent Mode (Multi-Page Discovery)</h3>
+<pre><code>{
+  "urls": ["https://stripe.com"],
+  "mode": "agent",
+  "agentPrompt": "Navigate to find pricing information, company about page, and contact details.",
+  "agentMaxCredits": 50,
+  "extractionSchema": {
+    "type": "object",
+    "properties": {
+      "companyName": {"type": "string"},
+      "pricing": {"type": "string"},
+      "contactEmail": {"type": "string"}
+    }
+  },
+  "firecrawlApiKey": "fc-xxxxx"
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>urls</code> | array | - | URLs to scrape |
+| <code>mode</code> | string | "basic" | "basic" or "agent" |
+| <code>formats</code> | array | ["markdown"] | markdown, html, rawHtml, links, screenshot, extract |
+| <code>onlyMainContent</code> | boolean | true | Filter to main content only |
+| <code>actions</code> | array | [] | Page actions before scraping |
+| <code>extractionSchema</code> | object | - | JSON schema for extraction |
+| <code>extractionPrompt</code> | string | - | Natural language extraction |
+| <code>screenshotOptions</code> | object | {fullPage: true} | Screenshot settings |
+| <code>enableCaching</code> | boolean | false | Use cached results |
+| <code>cacheMaxAge</code> | number | 172800 | Cache age in seconds (2 days) |
+| <code>fastMode</code> | boolean | false | Faster but less accurate |
+| <code>stealthMode</code> | boolean | false | Anti-detection mode |
+| <code>proxyLocation</code> | string | - | US, UK, DE, FR, JP, AU, BR, IN |
+| <code>extractBranding</code> | boolean | false | Extract brand colors/fonts |
+| <code>agentPrompt</code> | string | - | Instructions for agent mode |
+| <code>agentMaxCredits</code> | number | 50 | Max Firecrawl credits per agent |
+| <code>firecrawlApiKey</code> | string | - | Your Firecrawl API key |
+| <code>webhookUrl</code> | string | - | Webhook for results |
+| <code>demoMode</code> | boolean | true | Run with sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "success": true,
+  "title": "Example Domain",
+  "markdown": "# Example Domain
+
+This domain is for use...",
+  "screenshotBase64": "data:image/png;base64,...",
+  "extractedData": {
+    "title": "Example Domain",
+    "price": "$99.00",
+    "features": ["Feature 1", "Feature 2"]
+  },
+  "extractedDataCount": 3,
+  "branding": {
+    "primaryColor": "#0066cc",
+    "secondaryColors": ["#ffffff"],
+    "fonts": ["Arial", "Helvetica"],
+    "logo": "https://example.com/logo.png"
+  },
+  "links": [{"url": "https://...", "text": "Link text"}],
+  "images": [{"src": "https://...", "alt": "Image alt"}],
+  "actionsExecuted": 2,
+  "cachedResult": false,
+  "scrapedAt": "2025-01-15T10:30:00.000Z",
+  "mode": "basic",
+  "featuresUsed": ["markdown", "screenshot", "schemaExtraction", "actions"]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>page_scraped</code> | Per webpage scraped with content | $0.02 |
+| <code>screenshot_captured</code> | Per full-page screenshot | $0.01 |
+| <code>schema_extracted</code> | Per structured data extraction | $0.03 |
+| <code>actions_executed</code> | Per action sequence (click, type, scroll) | $0.015 |
+| <code>agent_navigation</code> | Per autonomous agent session | $0.08 |
+| <code>branding_extracted</code> | Per branding profile extraction | $0.025 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Scrape 100 pages with markdown: 100 x $0.02 = <strong>$2.00</strong></li>
+<li>Scrape 50 pages with screenshots: 50 x $0.02 + 50 x $0.01 = <strong>$1.50</strong></li>
+<li>Agent navigation with extraction: $0.08 + $0.03 = <strong>$0.11</strong></li>
+
+</ul>
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Competitor Analysis</strong> - Scrape pricing pages with cookie dismissal</li>
+<li><strong>Lead Enrichment</strong> - Extract company info across multiple pages</li>
+<li><strong>E-commerce Monitoring</strong> - Product data with screenshots</li>
+<li><strong>Brand Analysis</strong> - Extract visual identity (colors, fonts, logos)</li>
+<li><strong>Content Archiving</strong> - Full-page screenshots with markdown backup</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +531,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

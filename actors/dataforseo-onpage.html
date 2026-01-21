@@ -457,21 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>DataForSEO On-Page Auditor</h1>
-
-<strong>Comprehensive on-page SEO analysis powered by DataForSEO API.</strong>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Overview</h2>
-
-<p>This actor performs in-depth on-page SEO audits using the DataForSEO On-Page API. Analyze page titles, meta descriptions, headings, content, technical SEO factors, and get actionable recommendations.</p>
+            <h1>DataForSeo On-page SEO</h1>
+            <p>Technical SEO audits using DataForSEO On-Page API. Crawl websites, analyze page content, find duplicate content, check links, and run waterfall analysis.</p>
 
 <h2>Features</h2>
 
@@ -484,98 +473,91 @@
 <li><strong>Link Analysis</strong>: Internal/external link ratios, broken links</li>
 <li><strong>Core Web Vitals</strong>: LCP, FID, CLS scores</li>
 <li><strong>BYOK Pattern</strong>: Bring your own DataForSEO API credentials</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
-
-<h2>Example Usage</h2>
-
-<h3>Single Page Audit</h3>
-<pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"maxPages": 1,</p>
-<p>"checkMobile": true,</p>
-<p>"dataForSeoLogin": "your-login",</p>
-<p>"dataForSeoPassword": "your-password"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Full Site Audit</h3>
-<pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"maxPages": 100,</p>
-<p>"checkMobile": true,</p>
-<p>"dataForSeoLogin": "your-login",</p>
-<p>"dataForSeoPassword": "your-password"</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>url</code> | string | Yes | URL to audit |
+| <code>maxPages</code> | number | No | Max pages to crawl (default: 10) |
+| <code>checkMobile</code> | boolean | No | Include mobile audit (default: true) |
+| <code>dataForSeoLogin</code> | string | Yes | Your DataForSEO API login |
+| <code>dataForSeoPassword</code> | string | Yes | Your DataForSEO API password |
+| <code>webhookUrl</code> | string | No | URL to receive results when complete |
+| <code>demoMode</code> | boolean | No | Run with sample data (no API calls) |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"status": "success",</p>
-<p>"timestamp": "2025-12-28T12:00:00.000Z",</p>
-<p>"data": {</p>
-<p>"url": "https://example.com",</p>
-<p>"score": 78,</p>
-<p>"issues": {</p>
-<p>"critical": 2,</p>
-<p>"warnings": 5,</p>
-<p>"notices": 12</p>
-<p>},</p>
-<p>"categories": {</p>
-<p>"technical": { "score": 85, "issues": [...] },</p>
-<p>"content": { "score": 72, "issues": [...] },</p>
-<p>"meta": { "score": 80, "issues": [...] },</p>
-<p>"performance": { "score": 75, "issues": [...] }</p>
-<p>},</p>
-<p>"coreWebVitals": {</p>
-<p>"lcp": 2.1,</p>
-<p>"fid": 45,</p>
-<p>"cls": 0.05</p>
-<p>},</p>
-<p>"recommendations": [</p>
-<p>"Add meta description to 3 pages",</p>
-<p>"Compress images to reduce load time",</p>
-<p>"Fix 2 broken internal links"</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
+  "status": "success",
+  "timestamp": "2025-12-28T12:00:00.000Z",
+  "data": {
+    "url": "https://example.com",
+    "score": 78,
+    "issues": {
+      "critical": 2,
+      "warnings": 5,
+      "notices": 12
+    },
+    "categories": {
+      "technical": { "score": 85, "issues": [...] },
+      "content": { "score": 72, "issues": [...] },
+      "meta": { "score": 80, "issues": [...] },
+      "performance": { "score": 75, "issues": [...] }
+    },
+    "coreWebVitals": {
+      "lcp": 2.1,
+      "fid": 45,
+      "cls": 0.05
+    },
+    "recommendations": [
+      "Add meta description to 3 pages",
+      "Compress images to reduce load time",
+      "Fix 2 broken internal links"
+    ]
+  }
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
 <ul>
-<li><code>onpage-audit</code>: Per page audited</li>
+<li><code>onpage-audit</code>: Per page audited</li></p>
+
 </ul>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test with sample data without consuming DataForSEO API credits.</p>
-
-<h2>Related Actors</h2>
-
-<p>Part of the SEO Intelligence Suite:</p>
-<ul>
-<li><code>alizarin_refrigerator-owner~seo-intelligence-mcp-server</code> - Unified MCP orchestrator</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-serp</code> - SERP rankings and keyword research</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-backlinks</code> - Backlink analysis</li>
-<li><code>alizarin_refrigerator-owner~localfalcon-grid</code> - Local ranking grids</li>
-<li><code>alizarin_refrigerator-owner~serpapi-realtime</code> - Real-time SERP snapshots</li>
-</ul>
-
-<h2>Support</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -589,7 +571,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

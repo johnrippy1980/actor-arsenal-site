@@ -457,11 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>DataForSEO SERP Tracker</h1>
-
-<p>Track keyword rankings, analyze SERPs, and perform keyword research using the DataForSEO API. Get organic results, featured snippets, people also ask, and more for any keyword.</p>
+            <p>Track keyword rankings, analyze SERPs, and perform keyword research using the DataForSEO API. Get organic results, featured snippets, people also ask, and more for any keyword.</p>
 
 <h2>Features</h2>
 
@@ -472,158 +471,94 @@
 <li><strong>Competitor Analysis</strong>: Discover competing domains</li>
 <li><strong>Multi-Device</strong>: Desktop and mobile SERP data</li>
 <li><strong>BYOK</strong>: Bring your own DataForSEO API credentials</li>
+
 </ul>
-
-<h2>Available Tasks</h2>
-
-<h3>serp_live</h3>
-<p>Get live SERP results for a keyword.</p>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"task": "serp_live",</p>
-<p>"keyword": "best digital marketing agency",</p>
-<p>"location": "United States",</p>
-<p>"searchEngine": "google",</p>
-<p>"device": "desktop",</p>
-<p>"depth": 100,</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>keyword_suggestions</h3>
-<p>Get keyword suggestions based on a seed keyword.</p>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"task": "keyword_suggestions",</p>
-<p>"keyword": "digital marketing",</p>
-<p>"location": "United States",</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>keyword_ideas</h3>
-<p>Get keyword ideas with search volume and competition data.</p>
+<h2>Input Parameters</h2>
 
-<pre><code>{
-<p>"task": "keyword_ideas",</p>
-<p>"keyword": "seo services",</p>
-<p>"location": "New York,New York,United States",</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>search_volume</h3>
-<p>Get search volume for multiple keywords.</p>
-
-<pre><code>{
-<p>"task": "search_volume",</p>
-<p>"keywords": ["seo agency", "ppc management", "content marketing"],</p>
-<p>"location": "United States",</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
-</code></pre>
-
-<h3>ranked_keywords</h3>
-<p>Find keywords a domain ranks for.</p>
-
-<pre><code>{
-<p>"task": "ranked_keywords",</p>
-<p>"domain": "example.com",</p>
-<p>"location": "United States",</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
-</code></pre>
-
-<h3>competitors</h3>
-<p>Analyze competing domains.</p>
-
-<pre><code>{
-<p>"task": "competitors",</p>
-<p>"domain": "example.com",</p>
-<p>"location": "United States",</p>
-<p>"dataForSeoLogin": "your@email.com",</p>
-<p>"dataForSeoPassword": "your_api_password"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>SERP Results</h3>
 <pre><code>{
-<p>"keyword": "best digital marketing agency",</p>
-<p>"location": "United States",</p>
-<p>"searchEngine": "google",</p>
-<p>"organicResults": [</p>
-<p>{</p>
-<p>"position": 1,</p>
-<p>"url": "https://example.com",</p>
-<p>"domain": "example.com",</p>
-<p>"title": "Top Digital Marketing Agency",</p>
-<p>"description": "Award-winning agency..."</p>
-<p>}</p>
-<p>],</p>
-<p>"organicCount": 10,</p>
-<p>"featuredSnippet": {</p>
-<p>"type": "paragraph",</p>
-<p>"title": "What makes a great agency?",</p>
-<p>"description": "..."</p>
-<p>},</p>
-<p>"peopleAlsoAsk": ["What services do agencies offer?"],</p>
-<p>"totalResults": 1240000000,</p>
-<p>"scannedAt": "2024-01-15T10:30:00.000Z"</p>
-<p>}</p>
+  "keyword": "best digital marketing agency",
+  "location": "United States",
+  "searchEngine": "google",
+  "organicResults": [
+    {
+      "position": 1,
+      "url": "https://example.com",
+      "domain": "example.com",
+      "title": "Top Digital Marketing Agency",
+      "description": "Award-winning agency..."
+    }
+  ],
+  "organicCount": 10,
+  "featuredSnippet": {
+    "type": "paragraph",
+    "title": "What makes a great agency?",
+    "description": "..."
+  },
+  "peopleAlsoAsk": ["What services do agencies offer?"],
+  "totalResults": 1240000000,
+  "scannedAt": "2024-01-15T10:30:00.000Z"
+}
 </code></pre>
 
 <h3>Keyword Data</h3>
 <pre><code>{
-<p>"keyword": "digital marketing agency",</p>
-<p>"searchVolume": 33100,</p>
-<p>"cpc": 15.42,</p>
-<p>"competition": 0.87,</p>
-<p>"competitionLevel": "HIGH",</p>
-<p>"trend": [100, 95, 98, 102, 110, 108, 115, 120, 118, 125, 130, 128]</p>
-<p>}</p>
+  "keyword": "digital marketing agency",
+  "searchVolume": 33100,
+  "cpc": 15.42,
+  "competition": 0.87,
+  "competitionLevel": "HIGH",
+  "trend": [100, 95, 98, 102, 110, 108, 115, 120, 118, 125, 130, 128]
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| serp-query | $0.005 |
+| keyword-research | $0.05 |
+| competitor-analysis | $0.10 |</p>
 
 <em>Plus DataForSEO API costs (BYOK)</em>
 
-<h2>Getting DataForSEO Credentials</h2>
+<h2>Use Cases</h2>
 
-<p>1. Sign up at <a href="https://dataforseo.com" target="_blank" rel="noopener">DataForSEO</a></p>
-<p>2. Go to API Settings</p>
-<p>3. Copy your login email and API password</p>
-<p>4. Use these as <code>dataForSeoLogin</code> and <code>dataForSeoPassword</code></p>
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
 
-<h2>Demo Mode</h2>
+</ul>
+---
 
-<p>Test without API credentials:</p>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-<p>"task": "serp_live",</p>
-<p>"keyword": "test",</p>
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, visit <a href="https://johnrippy.link" target="_blank" rel="noopener">johnrippy.link</a></p>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -637,7 +572,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

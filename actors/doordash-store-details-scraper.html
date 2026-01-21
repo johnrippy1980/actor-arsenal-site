@@ -457,48 +457,140 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>DoorDash Store Details Scraper</h1>
-
-<strong>"DoorDash Store Details Scraper"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Using Doordash store URLs, you can collect store details</p>
+            <p>Scrape DoorDash for restaurant and store listings, menus, prices, ratings, and delivery info. Extract data for food delivery market analysis. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
-<ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
-
-<h2>Integration Support</h2>
+<h3>Multi-Mode Scraping</h3>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><strong>Search Mode</strong>: Find stores by keyword and location</li>
+<li><strong>Profile Mode</strong>: Extract detailed info from specific store pages</li>
+<li><strong>Menu Mode</strong>: Deep dive into menu items and pricing</li>
+
 </ul>
+<h3>Store Types Supported</h3>
 
-<h2>Author</h2>
+<ul>
+<li>Restaurants</li>
+<li>Grocery Stores</li>
+<li>Convenience Stores</li>
+<li>Alcohol/Liquor Stores</li>
+<li>Retail/Retail Stores</li>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+</ul>
+<h3>Data Extracted</h3>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<p>| Field | Description |
+|-------|-------------|
+| Store Name | Restaurant/store name |
+| Store Type | Category (restaurant, grocery, etc.) |
+| Cuisine Types | Food categories served |
+| Address | Full delivery address |
+| Rating | Average customer rating |
+| Review Count | Total reviews |
+| Delivery Fee | Base delivery charge |
+| Delivery Time | Estimated delivery range |
+| Price Level | $, $$, $$$, $$$$ |
+| Menu Items | Full menu with categories |
+| Item Prices | Current pricing |
+| Item Descriptions | Menu item details |
+| Popular Items | Highlighted dishes |
+| Operating Hours | Store hours |</p>
+
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "storeName": "Burger Palace",
+  "storeType": "restaurant",
+  "cuisineTypes": ["American", "Burgers", "Fast Food"],
+  "address": "123 Main St, San Francisco, CA 94102",
+  "rating": 4.7,
+  "reviewCount": 892,
+  "deliveryFee": "$2.99",
+  "deliveryTime": "25-35 min",
+  "priceLevel": "$$",
+  "menu": [
+    {
+      "category": "Burgers",
+      "items": [
+        {
+          "name": "Classic Cheeseburger",
+          "price": "$12.99",
+          "description": "1/2 lb beef patty with cheddar...",
+          "isPopular": true
+        }
+      ]
+    }
+  ],
+  "operatingHours": {
+    "monday": "11:00 AM - 10:00 PM",
+    "tuesday": "11:00 AM - 10:00 PM"
+  },
+  "doordashUrl": "https://www.doordash.com/store/..."
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.003 per store listing</li>
+<li>$0.001 per menu item extracted</li></p>
+
+</ul>
+<strong>Example</strong>: 100 restaurants with 50 menu items each = $5.30
+
+<h2>Use Cases</h2>
+
+<h3>Competitive Pricing Analysis</h3>
+Monitor competitor menu prices and special offers in your market.
+
+<h3>Market Expansion Research</h3>
+Analyze restaurant density and cuisine distribution before entering new markets.
+
+<h3>Menu Optimization</h3>
+Compare menu structures and pricing across similar restaurants.
+
+<h3>Franchise Performance</h3>
+Track chain restaurant ratings and presence across locations.
+
+<h3>Food Industry Reports</h3>
+Generate comprehensive food delivery market reports.
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>doordash store details scraper, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +604,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

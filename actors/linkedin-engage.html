@@ -474,96 +474,76 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>LinkedIn Engagement Automation</h1>
-
-<blockquote><strong>"Stop Chasing Leads. Start Attracting Them."</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Automate your LinkedIn engagement to generate qualified inbound leads through strategic commenting and creator targeting. Similar to ConnectSafely.ai but with more flexibility and BYOK (Bring Your Own Key) AI integration.</p>
+            <p>Automate LinkedIn engagement to generate inbound leads. Find posts by keywords, comment on influencer content, and build authority through strategic engagement. Similar to ConnectSafely.ai.</p>
 
 <h2>Features</h2>
 
 <h3>1. Keyword Engagement</h3>
-<p>Find posts containing your target keywords and automatically engage with thoughtful, AI-generated comments.</p>
+Find posts containing your target keywords and automatically engage with thoughtful, AI-generated comments.
+
 <ul>
 <li>Search LinkedIn for posts with specific keywords</li>
 <li>Filter by decision-maker titles (CEO, VP, Director, etc.)</li>
 <li>Generate personalized comments using your voice profile</li>
 <li>Rate-limited to stay safe on LinkedIn</li>
-</ul>
 
+</ul>
 <h3>2. Creator Engagement</h3>
-<p>Position yourself in influential creators' comment sections to reach their audience.</p>
+Position yourself in influential creators' comment sections to reach their audience.
+
 <ul>
 <li>Target specific LinkedIn creators/influencers</li>
 <li>Automatically comment on their new posts</li>
 <li>Build relationships with industry thought leaders</li>
 <li>Get exposure to their followers</li>
-</ul>
 
+</ul>
 <h3>3. Post Boosting</h3>
-<p>Amplify your own content to reach more decision-makers.</p>
+Amplify your own content to reach more decision-makers.
+
 <ul>
 <li>Share your post URL for engagement</li>
 <li>Get authentic engagement from real LinkedIn users</li>
 <li>Boost visibility beyond your immediate network</li>
-</ul>
 
-<h3>4. AI-Powered Comments</h3>
-<p>Generate thoughtful, on-brand comments using your choice of AI provider.</p>
+</ul>
+<h3>4. Analytics</h3>
+Track your engagement performance and inbound leads.
+
 <ul>
-<li><strong>Claude (Anthropic)</strong> - Best for nuanced, professional comments</li>
-<li><strong>OpenAI (GPT-4)</strong> - Versatile and reliable</li>
-<li><strong>Gemini (Google)</strong> - Cost-effective option</li>
+<li>Comments posted per day</li>
+<li>Engagement received (likes, replies)</li>
+<li>Profile views generated</li>
+<li>Inbound connection requests</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Why This Works</h2>
-
-<p>Traditional cold outreach has a <strong>1.7% conversion rate</strong>. Strategic engagement that positions you as an expert has a <strong>14.6% conversion rate</strong> (ConnectSafely.ai data).</p>
-
-<p>By consistently showing up in relevant conversations with valuable insights, you:</p>
-<ul>
-<li>Build authority in your niche</li>
-<li>Attract prospects who already see you as an expert</li>
-<li>Generate warm inbound leads instead of cold outreach</li>
-</ul>
-
-<h2>Input Examples</h2>
-
-<h3>Keyword Engagement</h3>
 <pre><code>{
-  "task": "keyword_engage",
-  "keywords": ["local SEO", "Google Business Profile", "citation building"],
-  "decisionMakerFilter": {
-    "enabled": true,
-    "titles": ["CEO", "Founder", "Marketing Director", "CMO"]
-  },
-  "engagementLimits": {
-    "maxCommentsPerDay": 30,
-    "maxPostsToProcess": 15
-  },
-  "aiProvider": "claude",
-  "claudeApiKey": "sk-ant-..."
-}</code></pre>
+  "input": "your input here"
+}
+</code></pre>
 
-<h3>Creator Engagement</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-  "task": "creator_engage",
-  "creatorUrls": [
-    "https://linkedin.com/in/garyvaynerchuk",
-    "https://linkedin.com/in/neilpatel"
-  ],
-  "commentSettings": {
-    "tone": "insightful",
-    "includeQuestion": true,
-    "addValue": true
-  }
-}</code></pre>
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<h2>Output</h2>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
   "task": "keyword_engage",
@@ -585,68 +565,44 @@
     "successRate": "80%",
     "keywords": ["local SEO", "Google Business Profile"]
   }
-}</code></pre>
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
-<table>
-<tr><th>Event</th><th>Description</th><th>Price</th></tr>
-<tr><td><code>comment_posted</code></td><td>Per comment successfully posted to LinkedIn</td><td>$0.10</td></tr>
-<tr><td><code>post_searched</code></td><td>Per post discovered via keyword search</td><td>$0.02</td></tr>
-<tr><td><code>creator_post_found</code></td><td>Per post discovered from a creator's profile</td><td>$0.03</td></tr>
-<tr><td><code>ai_comment_generated</code></td><td>Per AI comment generated</td><td>$0.05</td></tr>
-<tr><td><code>decision_maker_matched</code></td><td>Per post author matching decision-maker filter</td><td>$0.02</td></tr>
-<tr><td><code>engagement_session</code></td><td>Per complete engagement run/session</td><td>$0.50</td></tr>
-</table>
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>comment_posted</code> | Per comment successfully posted to LinkedIn | $0.10 |
+| <code>post_searched</code> | Per post discovered via keyword search | $0.02 |
+| <code>creator_post_found</code> | Per post discovered from a creator's profile | $0.03 |
+| <code>ai_comment_generated</code> | Per AI comment generated | $0.05 |
+| <code>decision_maker_matched</code> | Per post author matching decision-maker filter | $0.02 |
+| <code>engagement_session</code> | Per complete engagement run/session | $0.50 |</p>
 
-<p><strong>Example costs:</strong></p>
+<strong>Example costs:</strong>
 <ul>
-<li>Engage with 20 posts (keyword search): ~$3.40
-  <br>1 session ($0.50) + 20 searches ($0.40) + 20 AI comments ($1.00) + 15 posted ($1.50)</li>
-<li>Creator engagement (5 creators, 3 posts each): ~$3.45
-  <br>1 session ($0.50) + 15 creator posts ($0.45) + 15 AI comments ($0.75) + 12 posted ($1.20) + 12 decision makers ($0.24)</li>
+<li>Engage with 20 posts (keyword search): ~$3.40</li>
+<li>1 session ($0.50) + 20 searches ($0.40) + 20 AI comments ($1.00) + 15 posted ($1.50)</li>
+<li>Creator engagement (5 creators, 3 posts each): ~$3.45</li>
+<li>1 session ($0.50) + 15 creator posts ($0.45) + 15 AI comments ($0.75) + 12 posted ($1.20) + 12 decision makers ($0.24)</li>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Safety & Compliance</h2>
-
-<p>This actor is designed with LinkedIn's limits in mind:</p>
 <ul>
-<li><strong>Rate limiting</strong> - Configurable delays between actions</li>
-<li><strong>Daily limits</strong> - Caps on comments/likes per day</li>
-<li><strong>Human-like behavior</strong> - Random delays, realistic patterns</li>
-<li><strong>Residential proxies</strong> - Use Apify residential proxies for safety</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<p><strong>Recommended safe limits:</strong></p>
-<ul>
-<li>30-50 comments per day</li>
-<li>60-100 likes per day</li>
-<li>30-120 second delays between actions</li>
-</ul>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h2>Integration with Other Actors</h2>
-
-<p>This actor works great with:</p>
-<ul>
-<li><strong><a href="linkedin-voice-trainer.html">linkedin-voice-trainer</a></strong> - Analyze your voice for on-brand comments</li>
-<li><strong><a href="linkedin-profile-scraper.html">linkedin-profile-scraper</a></strong> - Research prospects before engaging</li>
-<li><strong><a href="linkedin-poster.html">linkedin-poster</a></strong> - Create posts to boost</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>linkedin automation, linkedin engagement, lead generation, linkedin comments, ai commenting, social selling, b2b leads, linkedin marketing, inbound leads, decision maker targeting, connectsafely alternative</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 

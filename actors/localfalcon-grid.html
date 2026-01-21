@@ -457,21 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>LocalFalcon Grid Scanner</h1>
-
-<strong>Run local ranking grid scans to visualize Google Maps visibility across a geographic area.</strong>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Overview</h2>
-
-<p>This actor integrates with the LocalFalcon API to run grid-based local ranking scans. See exactly where your business ranks in Google Maps across a geographic grid - essential for local SEO strategy and competitor analysis.</p>
+            <p>Geographic ranking grid scans for local SEO using LocalFalcon API. Track local pack rankings across geographic areas.</p>
 
 <h2>Features</h2>
 
@@ -483,106 +472,99 @@
 <li><strong>Trend Analysis</strong>: Compare scans over time to track progress</li>
 <li><strong>Visual Output</strong>: Grid data ready for map visualization</li>
 <li><strong>BYOK Pattern</strong>: Bring your own LocalFalcon API key</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
-
-<h2>Example Usage</h2>
-
-<h3>Basic Grid Scan</h3>
-<pre><code>{
-<p>"businessName": "Joe's Plumbing",</p>
-<p>"keyword": "plumber near me",</p>
-<p>"location": "Saint Louis, MO",</p>
-<p>"gridSize": 9,</p>
-<p>"radiusMiles": 10,</p>
-<p>"localFalconApiKey": "your-api-key"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Large Area Scan</h3>
-<pre><code>{
-<p>"businessName": "ABC HVAC",</p>
-<p>"keyword": "hvac repair",</p>
-<p>"latitude": 38.6270,</p>
-<p>"longitude": -90.1994,</p>
-<p>"gridSize": 15,</p>
-<p>"radiusMiles": 25,</p>
-<p>"localFalconApiKey": "your-api-key"</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>businessName</code> | string | Yes | Name of the business to track |
+| <code>keyword</code> | string | Yes | Search keyword (e.g., "plumber near me") |
+| <code>location</code> | string | Yes | Center point (e.g., "Saint Louis, MO") |
+| <code>latitude</code> | number | No | Exact latitude for center point |
+| <code>longitude</code> | number | No | Exact longitude for center point |
+| <code>gridSize</code> | number | No | Grid size: 5, 7, 9, 11, 13, or 15 (default: 9) |
+| <code>radiusMiles</code> | number | No | Scan radius in miles (default: 10) |
+| <code>localFalconApiKey</code> | string | Yes | Your LocalFalcon API key |
+| <code>webhookUrl</code> | string | No | URL to receive results when complete |
+| <code>demoMode</code> | boolean | No | Run with sample data (no API calls) |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"status": "success",</p>
-<p>"timestamp": "2025-12-28T12:00:00.000Z",</p>
-<p>"data": {</p>
-<p>"businessName": "Joe's Plumbing",</p>
-<p>"keyword": "plumber near me",</p>
-<p>"gridSize": 9,</p>
-<p>"radiusMiles": 10,</p>
-<p>"centerPoint": {</p>
-<p>"lat": 38.6270,</p>
-<p>"lng": -90.1994</p>
-<p>},</p>
-<p>"summary": {</p>
-<p>"avgRank": 4.2,</p>
-<p>"top3Count": 45,</p>
-<p>"top10Count": 72,</p>
-<p>"notRanking": 9,</p>
-<p>"totalPoints": 81</p>
-<p>},</p>
-<p>"gridData": [</p>
-<p>{</p>
-<p>"row": 0,</p>
-<p>"col": 0,</p>
-<p>"lat": 38.7120,</p>
-<p>"lng": -90.2844,</p>
-<p>"rank": 3,</p>
-<p>"competitors": [</p>
-<p>{ "name": "Competitor A", "rank": 1 },</p>
-<p>{ "name": "Competitor B", "rank": 2 }</p>
-<p>]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
+  "status": "success",
+  "timestamp": "2025-12-28T12:00:00.000Z",
+  "data": {
+    "businessName": "Joe's Plumbing",
+    "keyword": "plumber near me",
+    "gridSize": 9,
+    "radiusMiles": 10,
+    "centerPoint": {
+      "lat": 38.6270,
+      "lng": -90.1994
+    },
+    "summary": {
+      "avgRank": 4.2,
+      "top3Count": 45,
+      "top10Count": 72,
+      "notRanking": 9,
+      "totalPoints": 81
+    },
+    "gridData": [
+      {
+        "row": 0,
+        "col": 0,
+        "lat": 38.7120,
+        "lng": -90.2844,
+        "rank": 3,
+        "competitors": [
+          { "name": "Competitor A", "rank": 1 },
+          { "name": "Competitor B", "rank": 2 }
+        ]
+      }
+    ]
+  }
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
 <ul>
-<li><code>local-grid-scan</code>: Per grid scan (price varies by grid size)</li>
+<li><code>local-grid-scan</code>: Per grid scan (price varies by grid size)</li></p>
+
 </ul>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test with sample data without consuming LocalFalcon API credits.</p>
-
-<h2>Related Actors</h2>
-
-<p>Part of the SEO Intelligence Suite:</p>
-<ul>
-<li><code>alizarin_refrigerator-owner~seo-intelligence-mcp-server</code> - Unified MCP orchestrator</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-serp</code> - SERP rankings and keyword research</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-onpage</code> - On-page SEO audits</li>
-<li><code>alizarin_refrigerator-owner~dataforseo-backlinks</code> - Backlink analysis</li>
-<li><code>alizarin_refrigerator-owner~serpapi-realtime</code> - Real-time SERP snapshots</li>
-</ul>
-
-<h2>Support</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report issues</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -596,7 +578,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

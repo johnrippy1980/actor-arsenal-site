@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Blog-to-Social Syndication Actor</h1>
-
-<strong>"AI-Powered Blog to Social Syndication"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Automatically syndicate your blog posts to social media channels with AI-generated summaries tailored to each platform.</p>
+            <h1>AI Blog Syndication to Social Channels</h1>
+            <p>Monitor your blog for new posts and automatically syndicate them to social channels with AI-generated summaries. Supports Twitter/X, LinkedIn, Facebook, Instagram, Pinterest, Reddit, and Google Business Profile. Uses RSS feeds or sitemap.xml for detection. BYOK for AI summarization (OpenAI, Claude, Gemini). Integrates with existing poster actors. Features: - RSS feed monitoring - Sitemap.xml parsing - AI-generated post summaries - Multi-platform syndication - Customizable posting schedules - Image extraction and optimization - Hashtag generation - Link shortening Supported Platforms: - Twitter/X - LinkedIn (personal & company) - Facebook (pages & groups) - Instagram - Pinterest - Reddit - Google Business Profile. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -479,117 +472,63 @@
 <li><strong>UTM Tracking</strong>: Automatic UTM parameters for tracking social traffic</li>
 <li><strong>Customizable Style</strong>: Professional, casual, witty, informative, or promotional tone</li>
 <li><strong>Webhook Integration</strong>: Send results to Zapier, Make, n8n, or Slack</li>
+
 </ul>
-
-<h2>How It Works</h2>
-
-<p>1. <strong>Monitor</strong>: Actor checks your blog's RSS feed or sitemap for new posts</p>
-<p>2. <strong>Summarize</strong>: AI generates platform-optimized summaries with hashtags</p>
-<p>3. <strong>Post</strong>: Content is syndicated to selected social platforms</p>
-<p>4. <strong>Track</strong>: Results are logged and webhooks triggered</p>
-
-<h2>Input Configuration</h2>
-
-<h3>Required</h3>
-<ul>
-<li><code>blogUrl</code>: URL of your blog (we'll auto-detect RSS feed)</li>
-</ul>
-
-<h3>Recommended</h3>
-<ul>
-<li><code>platforms</code>: Which social channels to post to (default: twitter, linkedin, facebook)</li>
-<li><code>openaiApiKey</code> / <code>anthropicApiKey</code> / <code>geminiApiKey</code>: At least one AI API key for summarization</li>
-</ul>
-
-<h3>Content Settings</h3>
-<ul>
-<li><code>contentStyle</code>: Tone of voice (professional, casual, witty, informative, promotional)</li>
-<li><code>includeEmojis</code>: Add relevant emojis (default: true)</li>
-<li><code>includeHashtags</code>: Auto-generate hashtags (default: true)</li>
-<li><code>maxHashtags</code>: Maximum hashtags to include (default: 5)</li>
-<li><code>customHashtags</code>: Always include these hashtags</li>
-</ul>
-
-<h3>Scheduling</h3>
-<ul>
-<li><code>maxPostsPerRun</code>: Max posts per run to prevent spam (default: 3)</li>
-<li><code>delayBetweenPosts</code>: Minutes between posts (default: 5)</li>
-<li><code>lookbackDays</code>: Only process posts from last N days (default: 7)</li>
-</ul>
-
-<h3>Tracking</h3>
-<ul>
-<li><code>useUtmTracking</code>: Add UTM parameters (default: true)</li>
-<li><code>utmCampaign</code>: Campaign name (default: "blog-syndication")</li>
-</ul>
-
-<h3>Posting</h3>
-<ul>
-<li>Either provide platform credentials for direct API posting</li>
-<li>Or enable <code>useExternalPosters</code> to use our existing poster actors</li>
-</ul>
-
-<h2>Example Usage</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"blogUrl": "https://mybusiness.com/blog",</p>
-<p>"platforms": ["twitter", "linkedin", "facebook"],</p>
-<p>"openaiApiKey": "sk-...",</p>
-<p>"contentStyle": "professional",</p>
-<p>"maxPostsPerRun": 5,</p>
-<p>"includeEmojis": true,</p>
-<p>"useUtmTracking": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h2>Scheduling Recommendations</h2>
+<h2>Demo Mode</h2>
 
-<ul>
-<li><strong>Daily Updates</strong>: Run once per day if you publish frequently</li>
-<li><strong>Weekly Check</strong>: Run weekly for lower-volume blogs</li>
-<li>Set <code>lookbackDays</code> to match your posting frequency</li>
-</ul>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
 <ul>
 <li><strong>$0.10</strong> per blog post processed</li>
 <li><strong>$0.05</strong> per platform posted to</li>
-<li>AI costs depend on your BYOK usage</li>
+<li>AI costs depend on your BYOK usage</li></p>
+
 </ul>
+Example: Processing 5 posts to 3 platforms = $0.50 + $0.75 = $1.25
 
-<p>Example: Processing 5 posts to 3 platforms = $0.50 + $0.75 = $1.25</p>
-
-<h2>Integration with Existing Actors</h2>
-
-<p>Enable <code>useExternalPosters</code> to leverage our suite of poster actors:</p>
-<ul>
-<li><code>alizarin_refrigerator-owner/twitter-poster</code></li>
-<li><code>alizarin_refrigerator-owner/linkedin-poster</code></li>
-<li><code>alizarin_refrigerator-owner/facebook-poster</code></li>
-<li><code>alizarin_refrigerator-owner/instagram-poster</code></li>
-<li><code>alizarin_refrigerator-owner/pinterest-poster</code></li>
-<li><code>alizarin_refrigerator-owner/reddit-poster</code></li>
-<li><code>alizarin_refrigerator-owner/gbp-poster</code></li>
-</ul>
-
-<h2>Support</h2>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<h2>Use Cases</h2>
 
 <ul>
-<li>Email: support@alizarin_refrigerator-owner.com</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<p>---</p>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h2>Keywords</h2>
-
-<p>blog syndication, content distribution, rss syndication, ai content summarization, blog automation, content repurposing, multi-platform publishing, zapier integration, make integration, n8n integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -603,7 +542,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

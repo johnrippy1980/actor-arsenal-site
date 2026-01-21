@@ -457,27 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>BBB Business Scraper</h1>
-
-<blockquote><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Scrape Better Business Bureau (BBB) business profiles, ratings, complaints, reviews, and accreditation data. Get comprehensive trust signals and reputation data for any business.</p>
-
-<h2>Why BBB Data is Valuable</h2>
-
-<p>The BBB is one of the most trusted sources for business reputation:</p>
-<ul>
-<li><strong>Official Ratings</strong>: Letter grades (A+ to F) based on complaint history</li>
-<li><strong>Accreditation Status</strong>: BBB accredited vs non-accredited businesses</li>
-<li><strong>Complaint History</strong>: Detailed complaint counts, types, and resolutions</li>
-<li><strong>Customer Reviews</strong>: Verified customer feedback and ratings</li>
-<li><strong>Business Details</strong>: Years in business, contact info, license verification</li>
-<li><strong>Trust Score</strong>: Comprehensive trustworthiness assessment</li>
-</ul>
+            <h1>BBB Scraper</h1>
+            <p>Scrape Better Business Bureau profiles, ratings, complaints, reviews, and accreditation data. Get comprehensive business reputation data including BBB ratings, complaint history, customer reviews, and accreditation status. Features: - Business profile data extraction - BBB rating and accreditation status - Complaint history and resolution - Customer reviews and responses - Business category and contact info - Years in business and licensing Ideal for: - Reputation monitoring - Competitor research - Due diligence - Lead qualification. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -488,8 +471,125 @@
 <li><strong>Review Extraction</strong>: Scrape customer reviews with ratings</li>
 <li><strong>Accreditation Check</strong>: Verify BBB accreditation status</li>
 <li><strong>Bulk Processing</strong>: Scrape multiple businesses in one run</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Type: business_profile, search, complaints, reviews |
+| <code>businessUrl</code> | string | Direct BBB business profile URL |
+| <code>businessName</code> | string | Business name to search for |
+| <code>location</code> | string | City and state (e.g., 'Los Angeles, CA') |
+| <code>category</code> | string | Business category filter |
+| <code>accreditedOnly</code> | boolean | Only return accredited businesses |
+| <code>minRating</code> | string | Minimum BBB rating (A+ to F) |
+| <code>includeComplaints</code> | boolean | Scrape complaint details (default: true) |
+| <code>includeReviews</code> | boolean | Scrape customer reviews (default: true) |
+| <code>maxResults</code> | number | Maximum businesses to scrape (default: 50) |
+| <code>proxyConfiguration</code> | object | Proxy settings |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<h3>Business Profile Output</h3>
+
+<pre><code>{
+  "businessName": "ABC Plumbing Services Inc",
+  "bbbUrl": "https://www.bbb.org/us/ca/los-angeles/profile/plumber/abc-plumbing-0123-456789",
+  "rating": "A+",
+  "accredited": true,
+  "accreditedSince": "2015-03-15",
+  "yearsInBusiness": 12,
+  "businessStarted": "2012-01-01",
+  "address": {
+    "street": "123 Main Street",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90001"
+  },
+  "phone": "(323) 555-1234",
+  "website": "https://abcplumbing.com",
+  "categories": ["Plumber", "Water Heater Repair", "Drain Cleaning"],
+  "complaints": {
+    "total": 5,
+    "lastThreeYears": 3,
+    "closed": 5,
+    "resolved": 4,
+    "byType": {
+      "service": 2,
+      "billing": 2,
+      "product": 1
+    }
+  },
+  "reviews": {
+    "averageRating": 4.2,
+    "totalCount": 47,
+    "positive": 38,
+    "neutral": 5,
+    "negative": 4
+  },
+  "licenses": [
+    {
+      "type": "Contractor License",
+      "number": "C-12345",
+      "status": "Active"
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h3>Complaint Detail Output</h3>
+
+<pre><code>{
+  "complaintId": "12345678",
+  "dateOpened": "2024-11-15",
+  "dateClosed": "2024-12-01",
+  "type": "Service Issues",
+  "status": "Resolved",
+  "summary": "Customer reported incomplete work",
+  "businessResponse": true,
+  "resolution": "Company completed work and provided partial refund"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>business_scraped</code> | Per business profile scraped | $0.015 |
+| <code>complaint_scraped</code> | Per complaint extracted | $0.005 |
+| <code>review_scraped</code> | Per review extracted | $0.003 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 businesses with complaints: $0.10 + (50 × $0.015) + (250 × $0.005) = <strong>$2.10</strong></li>
+<li>100 businesses, no complaints: $0.10 + (100 × $0.015) = <strong>$1.60</strong></li>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -499,164 +599,13 @@
 <li><strong>Reputation Monitoring</strong>: Track your BBB profile and complaints</li>
 <li><strong>Market Research</strong>: Analyze industry complaint patterns</li>
 <li><strong>Citation Building</strong>: Verify NAP data from authoritative source</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<h3>Business Profile Output</h3>
-
-<pre><code>{
-<p>"businessName": "ABC Plumbing Services Inc",</p>
-<p>"bbbUrl": "https://www.bbb.org/us/ca/los-angeles/profile/plumber/abc-plumbing-0123-456789",</p>
-<p>"rating": "A+",</p>
-<p>"accredited": true,</p>
-<p>"accreditedSince": "2015-03-15",</p>
-<p>"yearsInBusiness": 12,</p>
-<p>"businessStarted": "2012-01-01",</p>
-<p>"address": {</p>
-<p>"street": "123 Main Street",</p>
-<p>"city": "Los Angeles",</p>
-<p>"state": "CA",</p>
-<p>"zip": "90001"</p>
-<p>},</p>
-<p>"phone": "(323) 555-1234",</p>
-<p>"website": "https://abcplumbing.com",</p>
-<p>"categories": ["Plumber", "Water Heater Repair", "Drain Cleaning"],</p>
-<p>"complaints": {</p>
-<p>"total": 5,</p>
-<p>"lastThreeYears": 3,</p>
-<p>"closed": 5,</p>
-<p>"resolved": 4,</p>
-<p>"byType": {</p>
-<p>"service": 2,</p>
-<p>"billing": 2,</p>
-<p>"product": 1</p>
-<p>}</p>
-<p>},</p>
-<p>"reviews": {</p>
-<p>"averageRating": 4.2,</p>
-<p>"totalCount": 47,</p>
-<p>"positive": 38,</p>
-<p>"neutral": 5,</p>
-<p>"negative": 4</p>
-<p>},</p>
-<p>"licenses": [</p>
-<p>{</p>
-<p>"type": "Contractor License",</p>
-<p>"number": "C-12345",</p>
-<p>"status": "Active"</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Complaint Detail Output</h3>
-
-<pre><code>{
-<p>"complaintId": "12345678",</p>
-<p>"dateOpened": "2024-11-15",</p>
-<p>"dateClosed": "2024-12-01",</p>
-<p>"type": "Service Issues",</p>
-<p>"status": "Resolved",</p>
-<p>"summary": "Customer reported incomplete work",</p>
-<p>"businessResponse": true,</p>
-<p>"resolution": "Company completed work and provided partial refund"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<h3>Scrape Single Business Profile</h3>
-
-<pre><code>{
-<p>"scrapeType": "business_profile",</p>
-<p>"businessUrl": "https://www.bbb.org/us/ca/los-angeles/profile/plumber/abc-plumbing-0123-456789"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Search for Businesses</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"businessName": "plumbing",</p>
-<p>"location": "Los Angeles, CA",</p>
-<p>"accreditedOnly": true,</p>
-<p>"minRating": "A",</p>
-<p>"maxResults": 25</p>
-<p>}</p>
-</code></pre>
-
-<h3>Get Complaints Only</h3>
-
-<pre><code>{
-<p>"scrapeType": "complaints",</p>
-<p>"businessUrl": "https://www.bbb.org/us/ca/los-angeles/profile/...",</p>
-<p>"includeComplaints": true,</p>
-<p>"includeReviews": false</p>
-<p>}</p>
-</code></pre>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>50 businesses with complaints: $0.10 + (50 × $0.015) + (250 × $0.005) = <strong>$2.10</strong></li>
-<li>100 businesses, no complaints: $0.10 + (100 × $0.015) = <strong>$1.60</strong></li>
-</ul>
-
-<h2>BBB Rating Scale</h2>
-
-
-<h2>Important Notes</h2>
-
-<h3>Rate Limiting</h3>
-<ul>
-<li>Built-in delays to respect BBB servers</li>
-<li>Residential proxy recommended for large runs</li>
-<li>Maximum 500 businesses per run</li>
-</ul>
-
-<h3>Data Accuracy</h3>
-<ul>
-<li>Ratings updated by BBB regularly</li>
-<li>Complaint data is from last 3 years</li>
-<li>Some businesses may have incomplete profiles</li>
-</ul>
-
-<h3>Legal Considerations</h3>
-<ul>
-<li>Use data for legitimate business purposes</li>
-<li>Comply with BBB Terms of Service</li>
-<li>Do not use for spam or harassment</li>
-</ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
-<ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>CRM systems (via webhook)</li>
-<li>Databases (via API)</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>bbb scraper, better business bureau scraper, bbb reviews api, business accreditation data, bbb complaints scraper, bbb rating extraction, consumer reviews</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -670,7 +619,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,208 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Calendly API - Scheduling &amp; Booking Automation</h1>
-            <p>Apify actor for Calendly API - Scheduling &amp; Booking Automation</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Automate Calendly scheduling workflows. List event types, manage scheduled events, check availability, get user info, and sync booking data. Perfect for CRM integration, appointment automation, and availability management.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>User & Organization</h3>
+<ul>
+<li><strong>Get Current User</strong> - Retrieve authenticated user info</li>
+<li><strong>List Organization Memberships</strong> - Get org members and roles</li>
+<li><strong>Get Organization Membership</strong> - Retrieve specific membership</li>
+
+</ul>
+<h3>Event Types</h3>
+<ul>
+<li><strong>List Event Types</strong> - Get all your event types (meetings, calls, etc.)</li>
+<li><strong>Get Event Type</strong> - Retrieve specific event type details</li>
+
+</ul>
+<h3>Scheduled Events</h3>
+<ul>
+<li><strong>List Scheduled Events</strong> - Query upcoming/past bookings</li>
+<li><strong>Get Scheduled Event</strong> - Retrieve event details</li>
+<li><strong>Cancel Scheduled Event</strong> - Cancel with optional reason</li>
+
+</ul>
+<h3>Invitees</h3>
+<ul>
+<li><strong>List Event Invitees</strong> - Get invitees for a scheduled event</li>
+<li><strong>Get Invitee</strong> - Retrieve invitee details</li>
+
+</ul>
+<h3>Availability</h3>
+<ul>
+<li><strong>List Available Times</strong> - Get open slots for an event type</li>
+<li><strong>List Busy Times</strong> - Get user's busy periods</li>
+
+</ul>
+<h3>Routing Forms</h3>
+<ul>
+<li><strong>List Routing Forms</strong> - Get routing forms for qualification</li>
+<li><strong>Get Routing Form</strong> - Retrieve form details</li>
+<li><strong>List Routing Form Submissions</strong> - Get form responses</li>
+
+</ul>
+<h3>Webhooks</h3>
+<ul>
+<li><strong>List Webhooks</strong> - Get webhook subscriptions</li>
+<li><strong>Create Webhook</strong> - Subscribe to events (invitee.created, etc.)</li>
+<li><strong>Delete Webhook</strong> - Remove subscription</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform |
+| accessToken | string | Yes<em> | Personal access token (</em>not needed for demoMode) |
+| userUri | string | No | User URI for filtering |
+| organizationUri | string | No | Organization URI |
+| eventTypeUri | string | No | Event type URI |
+| scheduledEventUri | string | No | Scheduled event URI |
+| inviteeUri | string | No | Invitee URI |
+| startTime | string | No | Start time (ISO 8601) |
+| endTime | string | No | End time (ISO 8601) |
+| status | string | No | Event status (active/canceled) |
+| cancelReason | string | No | Reason for cancellation |
+| webhookCallbackUrl | string | No | URL for webhook delivery |
+| webhookEvents | array | No | Events to subscribe to |
+| maxResults | integer | No | Max results (default: 100) |
+| resultWebhookUrl | string | No | URL to send results |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
+<p>Results are saved to the default dataset:</p>
+
+<h3>User Info</h3>
+<pre><code>{
+  "task": "get_current_user",
+  "success": true,
+  "user": {
+    "uri": "https://api.calendly.com/users/XXXXXXXX",
+    "name": "John Smith",
+    "email": "john@company.com",
+    "scheduling_url": "https://calendly.com/johnsmith",
+    "timezone": "America/New_York",
+    "current_organization": "https://api.calendly.com/organizations/XXXXXXXX"
+  }
+}
+</code></pre>
+
+<h3>Event Types</h3>
+<pre><code>{
+  "task": "list_event_types",
+  "success": true,
+  "eventTypes": [
+    {
+      "uri": "https://api.calendly.com/event_types/XXXXXXXX",
+      "name": "30 Minute Meeting",
+      "active": true,
+      "duration": 30,
+      "kind": "solo",
+      "scheduling_url": "https://calendly.com/johnsmith/30min"
+    }
+  ],
+  "total": 5
+}
+</code></pre>
+
+<h3>Scheduled Events</h3>
+<pre><code>{
+  "task": "list_scheduled_events",
+  "success": true,
+  "scheduledEvents": [
+    {
+      "uri": "https://api.calendly.com/scheduled_events/XXXXXXXX",
+      "name": "30 Minute Meeting",
+      "status": "active",
+      "start_time": "2025-01-15T10:00:00Z",
+      "end_time": "2025-01-15T10:30:00Z",
+      "location": {
+        "type": "zoom",
+        "join_url": "https://zoom.us/j/123456789"
+      }
+    }
+  ],
+  "total": 12
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:</p>
+
+<p>| Operation | Cost |
+|-----------|------|
+| Get user info | $0.01 |
+| List event types | $0.02 |
+| Get event type | $0.01 |
+| List scheduled events | $0.02 |
+| Get scheduled event | $0.01 |
+| Cancel event | $0.02 |
+| List invitees | $0.02 |
+| List available times | $0.02 |
+| List busy times | $0.01 |
+| List org memberships | $0.01 |
+| Routing form operations | $0.02 |
+| Webhook operations | $0.02 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>CRM Integration</h3>
+<ul>
+<li>Sync new bookings to Salesforce/HubSpot</li>
+<li>Update deal stages when meetings are scheduled</li>
+<li>Track meeting outcomes</li>
+
+</ul>
+<h3>Sales Automation</h3>
+<ul>
+<li>Notify sales reps of new bookings</li>
+<li>Auto-qualify leads from routing forms</li>
+<li>Track booking conversion rates</li>
+
+</ul>
+<h3>Customer Success</h3>
+<ul>
+<li>Monitor client meeting frequency</li>
+<li>Alert on cancellations</li>
+<li>Track onboarding calls</li>
+
+</ul>
+<h3>Operations</h3>
+<ul>
+<li>Sync availability with other calendars</li>
+<li>Monitor team utilization</li>
+<li>Generate scheduling reports</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +536,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

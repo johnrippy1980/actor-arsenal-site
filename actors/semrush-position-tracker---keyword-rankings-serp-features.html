@@ -478,20 +478,91 @@ Sitelinks</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Track keyword rankings for any domain with SEMrush data using your own API key (BYOK). All in structured format.
-Ranking Data
-Keyword Metrics
-CPC
-Competition
-SERP Features
-Featured Snippets
-People Also Ask
-Images, Video, News
-Local Pack
-Knowledge Panel
-Sitelinks</p>
+            <h1>SEMrush Position Tracker - Keyword Rankings & SERP Features</h1>
+            <p>Track keyword rankings for any domain with SEMrush. Get positions, ranking URLs, search volume, and SERP features. BYOK (Bring Your Own Key) - use your SEMrush API key.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key |
+| <code>domain</code> | string | - | Domain to track |
+| <code>database</code> | string | us | Country database |
+| <code>keywordLimit</code> | integer | 100 | Max keywords to retrieve |
+| <code>positionFilter</code> | string | all | all, top3, top10, top20, top50, top100 |
+| <code>sortBy</code> | string | traffic | traffic, volume, position, cpc |
+| <code>minVolume</code> | integer | 0 | Minimum search volume |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.05 |
+| Domain analyzed | Per domain | $0.03 |
+| Rankings fetched | Per batch | $0.02 |
+| Webhook sent | Per notification | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Daily Rank Monitoring</h3>
+Schedule regular checks to track position changes.
+
+<h3>SEO Performance Reports</h3>
+Export structured data for client reporting.
+
+<h3>Content Optimization</h3>
+Identify keywords close to top 3 for optimization.
+
+<h3>Traffic Attribution</h3>
+Understand which keywords drive the most traffic.
+
+<h3>Competitive Tracking</h3>
+Compare rankings against competitors.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -505,7 +576,7 @@ Sitelinks</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

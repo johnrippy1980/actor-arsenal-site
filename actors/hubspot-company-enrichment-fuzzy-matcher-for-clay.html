@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,274 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>HubSpot Company Enrichment &amp; Fuzzy Matcher for Clay</h1>
-            <p>Apify actor for HubSpot Company Enrichment &amp; Fuzzy Matcher for Clay</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Fuzzy match and enrich companies against your HubSpot CRM using multi-signal matching (domain, company name, phone, location). Returns HubSpot ID, lifecycle stage, deal status & confidence scores. Perfect for Clay workflows, lead deduplication, and outbound enrichment.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
+<p>> <strong>Clay Compatible</strong>: This actor works seamlessly with <a href="https://www.clay.com/integrations/data-provider/apify" target="_blank" rel="noopener">Clay's Apify integration</a>. See <a href="#clay-integration" target="_blank" rel="noopener">Clay Integration</a> below for setup instructions.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Multi-Signal Matching</strong>: Uses domain (40%), company name (35%), phone (15%), and location (10%) for accurate matching</li>
+<li><strong>Fuzzy Matching</strong>: Levenshtein distance algorithm for catching typos and variations</li>
+<li><strong>Intelligent Indexing</strong>: Pre-indexes HubSpot companies for fast lookups</li>
+<li><strong>Confidence Scores</strong>: Returns 0-100 confidence score with match type details</li>
+<li><strong>CRM Enrichment</strong>: Returns HubSpot ID, lifecycle stage, and deal stage for matched companies</li>
+<li><strong>Demo Mode</strong>: Test the actor without API calls or charges</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "hubspotApiKey": "pat-na1-xxxxxxxx",
+  "companies": [
+    {
+      "name": "Acme Photography LLC",
+      "domain": "acmephoto.com",
+      "phone": "555-123-4567",
+      "city": "Austin",
+      "state": "TX"
+    }
+  ],
+  "matchThreshold": 70,
+  "includeDeals": true,
+  "maxHubspotCompanies": 10000
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Run the actor in demo mode to see sample output without making HubSpot API calls or incurring charges:</p>
+
+<pre><code>{
   "demoMode": true
-}</code></pre>
+}
+</code></pre>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<p>This returns 3 sample results demonstrating exact domain match, name match, and no match scenarios.</p>
+
+<h2>Input Schema</h2>
+
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>hubspotApiKey</code> | string | Yes | - | Your HubSpot private app API key with CRM access |
+| <code>companies</code> | array | Yes | - | Array of companies to match against HubSpot |
+| <code>matchThreshold</code> | integer | No | 70 | Minimum confidence score (0-100) to consider a match |
+| <code>includeDeals</code> | boolean | No | true | Include deal stage info for matched companies |
+| <code>maxHubspotCompanies</code> | integer | No | 10000 | Max companies to load from HubSpot |
+| <code>demoMode</code> | boolean | No | false | Return sample data without API calls |</p>
+
+<h3>Company Object Fields</h3>
+
+<p>Each company in the <code>companies</code> array can include:</p>
+
+<p>| Field | Type | Description |
+|-------|------|-------------|
+| <code>name</code> | string | Company name (e.g., "Acme Corp") |
+| <code>domain</code> | string | Website domain (e.g., "acme.com") |
+| <code>phone</code> | string | Phone number (any format) |
+| <code>email</code> | string | Email address (domain will be extracted) |
+| <code>city</code> | string | City name |
+| <code>state</code> | string | State/province |
+| <code>address</code> | string | Street address |</p>
+
+<h2>Output Schema</h2>
+
+<p>Each result in the dataset contains:</p>
+
+<pre><code>{
+  // Input company info
+  inputCompany: string;        // Original company name
+  inputDomain: string | null;  // Input domain
+  inputPhone: string | null;   // Input phone
+
+<p>// Match results
+  matchedCompany: string | null;   // HubSpot company name
+  matchedDomain: string | null;    // HubSpot domain
+  hubspotId: string | null;        // HubSpot company ID
+  confidenceScore: number;         // 0-100 match confidence
+  matchType: string;               // exact_domain, similar_domain, name_match, phone_match, no_match</p>
+
+<p>// Match breakdown
+  matchDetails: {
+    domainMatch: number;     // Domain similarity (0-100)
+    nameMatch: number;       // Name similarity (0-100)
+    phoneMatch: number;      // Phone match (0 or 100)
+    locationMatch: number;   // Location match (0-100)
+  };</p>
+
+<p>// HubSpot data
+  dealStage: string | null;        // Latest deal stage
+  lifecycleStage: string | null;   // Lifecycle stage
+  isMatch: boolean;                // True if above threshold
+}
+</code></pre></p>
+
+<h2>Match Algorithm</h2>
+
+<p>The matching algorithm uses weighted signals:</p>
+
+<p>| Signal | Weight | Description |
+|--------|--------|-------------|
+| Domain | 40% | Exact or similar domain match |
+| Name | 35% | Fuzzy company name matching |
+| Phone | 15% | Phone number match (normalized) |
+| Location | 10% | City + State match |</p>
+
+<h3>Match Types</h3>
+
+<ul>
+<li><strong>exact_domain</strong>: Exact domain match (highest confidence)</li>
+<li><strong>similar_domain</strong>: Domain similarity >= 80%</li>
+<li><strong>name_match</strong>: Company name similarity >= 85%</li>
+<li><strong>phone_match</strong>: Phone number match</li>
+<li><strong>no_match</strong>: No match above threshold</li>
+
+</ul>
+<h2>Pricing (Pay-Per-Event)</h2>
+
+<p>This actor uses Apify's pay-per-event pricing:</p>
+
+<p>| Event | Price | Description |
+|-------|-------|-------------|
+| <code>company_matched</code> | $0.01 | Per successful company match |
+| <code>hubspot_loaded</code> | $0.02 | Per 1,000 HubSpot companies loaded |</p>
+
+<p>Demo mode runs are free (no charges).</p>
+
+<h3>Example Cost</h3>
+
+<ul>
+<li>Matching 100 companies against 5,000 HubSpot companies</li>
+<li>5,000 companies = 5 load charges = $0.10</li>
+<li>70 matches found = $0.70</li>
+<li><strong>Total: $0.80</strong></li>
+
+</ul>
+<h2>Clay Integration</h2>
+
+<p>This actor integrates seamlessly with <a href="https://www.clay.com/integrations/data-provider/apify" target="_blank" rel="noopener">Clay</a> through their native Apify integration.</p>
+
+<h3>Setup in Clay</h3>
+
+<p>1. <strong>Connect Apify to Clay</strong>:
+<ul>
+<li>Go to Settings > Connections in Clay</li>
+<li>Add Connection > Select "Apify"</li>
+<li>Enter your Apify API token (found at <a href="https://console.apify.com/account#/integrations" target="_blank" rel="noopener">Apify Settings > Integrations</a>)</li></p>
+
+</ul>
+2. <strong>Use the Actor in a Clay Table</strong>:
+<ul>
+<li>Add a new enrichment column</li>
+<li>Select "Apify" as the data source</li>
+<li>Search for "HubSpot CRM Company Enrichment" or use the actor ID</li>
+<li>Configure the input JSON mapping your Clay columns:</li>
+
+</ul>
+<pre><code>{
+  "hubspotApiKey": "{{your_hubspot_api_key}}",
+  "companies": [
+    {
+      "name": {{Company Name}},
+      "domain": {{Domain}},
+      "phone": {{Phone}},
+      "city": {{City}},
+      "state": {{State}}
+    }
+  ],
+  "matchThreshold": 70,
+  "includeDeals": true
+}
+</code></pre>
+
+<p>3. <strong>Map Output Columns</strong>:
+<ul>
+<li><code>hubspotId</code> → HubSpot Company ID</li>
+<li><code>confidenceScore</code> → Match Confidence</li>
+<li><code>matchType</code> → How matched (exact_domain, name_match, etc.)</li>
+<li><code>lifecycleStage</code> → Customer lifecycle stage</li>
+<li><code>dealStage</code> → Current deal status</li>
+<li><code>isMatch</code> → Boolean for filtering</li></p>
+
+</ul>
+<h3>Clay Use Cases</h3>
+
+<strong>Lead Deduplication</strong>: Before outreach, check if leads already exist in your CRM
+<strong>Lead Scoring</strong>: Use lifecycle stage and deal status to prioritize leads
+<strong>Data Enrichment</strong>: Add HubSpot IDs to sync data between Clay and HubSpot
+<strong>Customer Filtering</strong>: Filter out existing customers from prospecting lists
+
+<p>> <strong>Note</strong>: This actor works with Clay's native <strong>Apify integration</strong>, NOT with OpenMart. <a href="https://www.openmart.com/" target="_blank" rel="noopener">OpenMart</a> (acquired by Clay in 2024) is a separate Clay integration focused on SMB/local business intelligence data (restaurants, salons, retailers, etc.). If you're looking to enrich local business leads, check out OpenMart. For matching companies against your own HubSpot CRM, use this actor via the Apify integration.</p>
+
+<h2>Use Cases</h2>
+
+<h3>Outbound Lead Qualification</h3>
+
+<p>Before reaching out to leads:</p>
+
+<p>1. Batch match your lead list against HubSpot
+2. Filter out existing customers (lifecycle = customer)
+3. Prioritize leads already in pipeline (has deal stage)
+4. Skip companies with no match (new prospects)</p>
+
+<h3>Data Deduplication</h3>
+
+<p>Identify potential duplicates in your CRM:</p>
+
+<p>1. Export HubSpot companies
+2. Match against themselves with lower threshold (50%)
+3. Review similar_domain and name_match results
+4. Merge or clean duplicate records</p>
+
+<h2>HubSpot API Setup</h2>
+
+<p>1. Go to HubSpot Settings > Integrations > Private Apps
+2. Create a new private app
+3. Grant these scopes:
+<ul>
+<li><code>crm.objects.companies.read</code></li>
+<li><code>crm.objects.deals.read</code> (if using includeDeals)</li>
+</ul>
+4. Copy the access token</p>
+
+<h2>Performance Tips</h2>
+
+<ul>
+<li>Set <code>maxHubspotCompanies</code> based on your CRM size</li>
+<li>Use higher <code>matchThreshold</code> (80+) for strict matching</li>
+<li>Use lower <code>matchThreshold</code> (50-60) for deduplication</li>
+<li>Provide domain whenever possible (most reliable signal)</li>
+
+</ul>
+<h2>Example Output</h2>
+
+<pre><code>{
+  "inputCompany": "Acme Photography LLC",
+  "inputDomain": "acmephoto.com",
+  "inputPhone": "555-123-4567",
+  "matchedCompany": "Acme Photography Inc",
+  "matchedDomain": "acmephoto.com",
+  "hubspotId": "12345678",
+  "confidenceScore": 95,
+  "matchType": "exact_domain",
+  "matchDetails": {
+    "domainMatch": 100,
+    "nameMatch": 90,
+    "phoneMatch": 100,
+    "locationMatch": 50
+  },
+  "dealStage": "qualified",
+  "lifecycleStage": "opportunity",
+  "isMatch": true
+}
+</code></pre>
+
+<h2>Support</h2>
+
+<p>For issues or feature requests, please open a GitHub issue or contact support.</p>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +602,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

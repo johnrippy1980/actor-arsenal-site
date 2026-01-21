@@ -460,12 +460,91 @@ Untapped Keywords</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Find content gaps and untapped keyword opportunities using SEMrush data and your own API key (BYOK). Discover keywords your competitors rank for that you don't, and identify weak spots where you rank lower
-Missing Keywords
-Weak Keywords
-Untapped Keywords</p>
+            <h1>SEMrush Content Gap Analysis - Find Missing Keywords</h1>
+            <p>Discover content gaps - keywords competitors rank for that you don't. Find untapped keyword opportunities with SEMrush data. BYOK (Bring Your Own Key) - use your SEMrush API key.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key |
+| <code>yourDomain</code> | string | - | Your domain |
+| <code>competitors</code> | array | - | Competitor domains (up to 4) |
+| <code>database</code> | string | us | Country database |
+| <code>gapType</code> | string | missing | missing, weak, untapped, all |
+| <code>keywordLimit</code> | integer | 100 | Max keywords to return |
+| <code>minVolume</code> | integer | 100 | Minimum search volume |
+| <code>maxDifficulty</code> | integer | 70 | Maximum keyword difficulty |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.05 |
+| Gap analysis complete | Per analysis | $0.05 |
+| Webhook sent | Per notification | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Content Strategy</h3>
+Build a content calendar based on proven competitor topics.
+
+<h3>SEO Optimization</h3>
+Find quick wins to improve existing content.
+
+<h3>Competitive Intelligence</h3>
+Understand competitor content strategy.
+
+<h3>Client Proposals</h3>
+Show prospects what opportunities they're missing.
+
+<h3>Content Auditing</h3>
+Identify gaps in your content coverage.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -479,7 +558,7 @@ Untapped Keywords</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

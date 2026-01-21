@@ -466,51 +466,10 @@ Local citations are mentions of your business name, address, and phone number on
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Citation Builder v1.0</h1>
-
-<strong>"Automate Local SEO Citations to 50+ Directories"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Build local SEO citations by automatically submitting your business NAP (Name, Address, Phone) to 50+ directories.</p>
-
-<h2>Why Citations Matter</h2>
-
-<p>Local citations are mentions of your business name, address, and phone number on other websites. They're a critical local SEO ranking factor:</p>
-
-<ul>
-<li><strong>NAP Consistency</strong>: Search engines use citations to verify your business information</li>
-<li><strong>Local Pack Rankings</strong>: More citations = stronger local presence</li>
-<li><strong>Trust Signals</strong>: Listings on trusted directories improve credibility</li>
-<li><strong>Discoverability</strong>: More places customers can find you</li>
-</ul>
-
-<h2>Directory Priority System</h2>
-
-<h3>Critical (Submit First)</h3>
-<ul>
-<li><strong>Data Aggregators</strong>: Data Axle, Neustar Localeze, Foursquare - these feed hundreds of other directories</li>
-<li><strong>Major Platforms</strong>: Yelp, Bing Places, Apple Maps, Facebook Business</li>
-</ul>
-
-<h3>High Priority</h3>
-<ul>
-<li>Yellow Pages, Superpages, BBB, Manta, MapQuest, Hotfrog</li>
-</ul>
-
-<h3>Medium Priority</h3>
-<ul>
-<li>Local directories, Chamber of Commerce sites, Alignable, Nextdoor</li>
-</ul>
-
-<h3>Lower Priority</h3>
-<ul>
-<li>Niche directories, supplemental sites</li>
-</ul>
+            <h1>Citation Builder</h1>
+            <p>Build local SEO citations by submitting your business NAP (Name, Address, Phone) to 50+ directories. Includes data aggregators, general directories, and niche sites. MCP Server Compatible: Ask Claude "Submit Joe's Pizza to the top 10 citation sites" and automate your citation building. Features: - 50+ pre-configured directory targets - Data aggregators (Data Axle, Neustar, Foursquare) - critical for citation distribution - Priority ranking (critical, high, medium, low) - NAP consistency formatting - Existing citation detection - Dry run mode for planning - Detailed submission report Directory Categories: - Data Aggregators: Feed hundreds of downstream sites - Critical: Yelp, Bing Places, Apple Maps, Facebook - High Priority: Yellow Pages, BBB, Manta, MapQuest - Medium Priority: Local directories, chamber sites - Social: LinkedIn, Twitter, Instagram, Pinterest - Niche: Industry-specific directories. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -521,7 +480,24 @@ Local citations are mentions of your business name, address, and phone number on
 <li><strong>Dry Run Mode</strong>: Plan your submission campaign before executing</li>
 <li><strong>Priority Ranking</strong>: Submit to most important directories first</li>
 <li><strong>Detailed Reports</strong>: Know exactly what was submitted and what needs manual action</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
@@ -533,8 +509,8 @@ Local citations are mentions of your business name, address, and phone number on
 <li><code>state</code> - 2-letter state code</li>
 <li><code>zipCode</code> - ZIP code</li>
 <li><code>phone</code> - Business phone number</li>
-</ul>
 
+</ul>
 <h3>Optional</h3>
 <ul>
 <li><code>website</code> - Business website</li>
@@ -542,46 +518,54 @@ Local citations are mentions of your business name, address, and phone number on
 <li><code>description</code> - Business description</li>
 <li><code>categories</code> - Business categories</li>
 <li>Social media URLs (Facebook, LinkedIn, Twitter, Instagram)</li>
-</ul>
 
+</ul>
 <h3>Configuration</h3>
 <ul>
 <li><code>dryRun</code> - Check without submitting (recommended first)</li>
 <li><code>directories</code> - Target specific directories only</li>
 <li><code>skipDirectories</code> - Skip certain directories</li>
-</ul>
 
+</ul>
 <h3>BYOK (Bring Your Own Keys)</h3>
 <ul>
 <li><code>dataAxleApiKey</code> - For Data Axle API</li>
 <li><code>yextApiKey</code> - For Yext PowerListings</li>
 <li><code>brightLocalApiKey</code> - For BrightLocal integration</li>
-</ul>
 
-<h2>Output</h2>
+</ul>
+<h2>Output Format</h2>
 
 <h3>Dataset</h3>
-<p>Complete submission results including:</p>
+Complete submission results including:
 <ul>
 <li>Status for each directory</li>
 <li>Success/failure messages</li>
 <li>Timestamps</li>
-</ul>
 
+</ul>
 <h3>Key-Value Store</h3>
 <ul>
 <li><code>CITATION_REPORT</code> - Summary report with recommendations</li>
 <li><code>RESULTS</code> - Detailed results array</li>
+
 </ul>
+<h2>Pricing</h2>
 
-<h2>Best Practices</h2>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
-<p>1. <strong>Start with Dry Run</strong>: Always run in dry mode first to see what will happen</p>
-<p>2. <strong>Data Aggregators First</strong>: These feed other directories, so submit here first</p>
-<p>3. <strong>NAP Consistency</strong>: Use the exact same name, address, phone everywhere</p>
-<p>4. <strong>Monitor Email</strong>: Many directories send verification emails</p>
-<p>5. <strong>Monthly Checkups</strong>: Re-run periodically to catch new opportunities</p>
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>citation_submitted</code> | Per directory submission | $0.05 |</p>
 
+<strong>Example costs:</strong>
+<ul>
+<li>Submit to 10 directories: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
+<li>Submit to 50 directories: $0.10 + (50 × $0.05) = <strong>$2.60</strong></li>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -590,31 +574,13 @@ Local citations are mentions of your business name, address, and phone number on
 <li>Rebranding (updating NAP across all directories)</li>
 <li>Local SEO agencies managing multiple clients</li>
 <li>Franchise operations standardizing citations</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>Submit to 10 directories: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-<li>Submit to 50 directories: $0.10 + (50 × $0.05) = <strong>$2.60</strong></li>
-</ul>
-
-<h2>Author</h2>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>citation builder, local citations, nap consistency, business directory submissions, local seo citations, citation automation, business listings, yext alternative</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -628,7 +594,7 @@ Local citations are mentions of your business name, address, and phone number on
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

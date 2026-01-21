@@ -457,71 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>AI-Powered Service Area Mapper v2.3</h1>
-
-<blockquote><strong>Map service areas with Claude AI Market Opportunity Analysis</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Plan and optimize your service territories with detailed ZIP code analysis and <strong>AI-powered market intelligence</strong>. Understand population, income levels, and competitor saturation to make data-driven expansion decisions.</p>
-
-<h2>AI Market Opportunity Analysis (BYOK - Bring Your Own Key)</h2>
-
-<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
-
-<ul>
-<li><strong>Expansion Priority Recommendations</strong> - AI identifies which ZIP codes to target first</li>
-<li><strong>Competitive Gap Analysis</strong> - Spots underserved markets with high potential</li>
-<li><strong>Demographic Trend Insights</strong> - Understands population and income patterns</li>
-<li><strong>Territory Planning Intelligence</strong> - Strategic grouping recommendations</li>
-<li><strong>Revenue Potential Assessment</strong> - Estimates market opportunity by zone</li>
-<li><strong>Risk Assessment</strong> - Identifies potential challenges in each area</li>
-</ul>
-
-<h3>Example AI Analysis Output</h3>
-<pre><code>{
-<p>"marketOverview": {</p>
-<p>"totalOpportunityScore": 78,</p>
-<p>"marketMaturity": "growing",</p>
-<p>"expansionReadiness": "high"</p>
-<p>},</p>
-<p>"topOpportunityZones": [</p>
-<p>{</p>
-<p>"zipCode": "75201",</p>
-<p>"city": "Dallas",</p>
-<p>"opportunityScore": 92,</p>
-<p>"reasoning": "High population density, above-average income, low competition"</p>
-<p>}</p>
-<p>],</p>
-<p>"expansionStrategy": {</p>
-<p>"primaryTargets": ["75201", "75202", "75204"],</p>
-<p>"secondaryTargets": ["75205", "75219"],</p>
-<p>"rationale": "Focus on urban core first, expand to affluent suburbs"</p>
-<p>},</p>
-<p>"competitiveInsights": {</p>
-<p>"gaps": ["Northwest sector underserved", "Premium segment opportunity"],</p>
-<p>"threats": ["Two new competitors in 75205"]</p>
-<p>},</p>
-<p>"recommendations": [</p>
-<p>"Prioritize ZIP 75201 for immediate expansion",</p>
-<p>"Consider partnership opportunities in 75205",</p>
-<p>"Target homeowner-heavy areas for recurring revenue"</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Use Cases</h2>
-
-<ul>
-<li><strong>Territory Planning</strong> - Define optimal service areas</li>
-<li><strong>Franchise Mapping</strong> - Ensure non-overlapping territories</li>
-<li><strong>Market Expansion</strong> - Find underserved high-potential areas</li>
-<li><strong>Route Optimization</strong> - Group ZIP codes for efficiency</li>
-<li><strong>Competitor Analysis</strong> - Find gaps in competitor coverage</li>
-<li><strong>Marketing Targeting</strong> - Focus on high-value demographics</li>
-</ul>
+            <h1>Service Area Mapper</h1>
+            <p>Map service areas with Claude AI-powered market opportunity analysis. BYOK (Bring Your Own Key) - Use your Anthropic API key for AI features: strategic expansion recommendations, competitive gap analysis, demographic trend insights, and territory prioritization. AI Features (BYOK): - Claude AI market opportunity analysis - Expansion priority recommendations - Competitive advantage identification - Demographic trend analysis - Territory planning insights - Revenue potential assessment - Demo mode for testing. v2.1 Features: - Dynamic ZIP code discovery (GeoNames API + Nominatim fallback) - Works for ANY US location, not just specific cities - BYOK: Bring your own GeoNames username for higher rate limits - Automatic fallback to grid-based discovery. v2.0 Features: - Drive-time polygon generation (isochrones) - Configurable drive times (e.g., 15, 30, 45 minutes) - Traffic model options (optimistic, best_guess, pessimistic) - Opportunity heatmap generation - Multiple heatmap metrics (opportunity, population, income, competition) - Adjustable heatmap resolution - GeoJSON export with polygons and points. Core Features: - ZIP code lookup by radius from center point - Census demographics (population, income, age) - Homeownership and housing data - Competitor density analysis - Market opportunity scoring (0-100) - Population and income filtering - Webhook integration (Zapier, Make, n8n). Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -533,116 +472,106 @@
 <li><strong>Opportunity Scoring</strong> - High population + low competition = opportunity</li>
 <li><strong>GeoJSON Export</strong> - Map your service area visually</li>
 <li><strong>Territory Overlap Detection</strong> - Avoid franchise conflicts</li>
+
 </ul>
-
-<h2>Input Options</h2>
-
-
-<h2>Example Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"centerPoint": "Dallas, TX",</p>
-<p>"radiusMiles": 25,</p>
-<p>"industry": "plumbers",</p>
-<p>"includeCompetitors": true,</p>
-<p>"includeDemographics": true,</p>
-<p>"minPopulation": 5000,</p>
-<p>"minMedianIncome": 50000</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"zipCode": "75201",</p>
-<p>"city": "Dallas",</p>
-<p>"state": "TX",</p>
-<p>"distanceFromCenter": 2.3,</p>
-<p>"demographics": {</p>
-<p>"population": 12450,</p>
-<p>"medianAge": 34.2,</p>
-<p>"medianHouseholdIncome": 68500,</p>
-<p>"perCapitaIncome": 42000</p>
-<p>},</p>
-<p>"housing": {</p>
-<p>"totalHousingUnits": 8200,</p>
-<p>"ownerOccupied": 3500,</p>
-<p>"renterOccupied": 4200,</p>
-<p>"homeownershipRate": 0.45</p>
-<p>},</p>
-<p>"competition": {</p>
-<p>"competitorCount": 8,</p>
-<p>"competitorsPerCapita": 0.64,</p>
-<p>"saturation": "medium"</p>
-<p>},</p>
-<p>"opportunity": {</p>
-<p>"score": 78,</p>
-<p>"rating": "high",</p>
-<p>"factors": [</p>
-<p>"High population",</p>
-<p>"Above-average income",</p>
-<p>"Low competitor saturation"</p>
-<p>]</p>
-<p>},</p>
-<p>"coordinates": {</p>
-<p>"latitude": 32.789,</p>
-<p>"longitude": -96.801</p>
-<p>}</p>
-<p>}</p>
+  "zipCode": "75201",
+  "city": "Dallas",
+  "state": "TX",
+  "distanceFromCenter": 2.3,
+  "demographics": {
+    "population": 12450,
+    "medianAge": 34.2,
+    "medianHouseholdIncome": 68500,
+    "perCapitaIncome": 42000
+  },
+  "housing": {
+    "totalHousingUnits": 8200,
+    "ownerOccupied": 3500,
+    "renterOccupied": 4200,
+    "homeownershipRate": 0.45
+  },
+  "competition": {
+    "competitorCount": 8,
+    "competitorsPerCapita": 0.64,
+    "saturation": "medium"
+  },
+  "opportunity": {
+    "score": 78,
+    "rating": "high",
+    "factors": [
+      "High population",
+      "Above-average income",
+      "Low competitor saturation"
+    ]
+  },
+  "coordinates": {
+    "latitude": 32.789,
+    "longitude": -96.801
+  }
+}
 </code></pre>
-
-<h2>Opportunity Score Calculation</h2>
-
-
-<h2>Saturation Levels</h2>
-
-<ul>
-<li><strong>Low</strong>: <3 competitors per 10,000 people</li>
-<li><strong>Medium</strong>: 3-6 competitors per 10,000 people</li>
-<li><strong>High</strong>: >6 competitors per 10,000 people</li>
-</ul>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>zip_analyzed</code> | Per ZIP code analyzed | $0.005 |
+| <code>competitor_lookup</code> | Per competitor lookup | $0.01 |
+| <code>demographics_fetched</code> | Per demographics query | $0.005 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>100 ZIPs basic: $0.10 + (100 × $0.005) = <strong>$0.60</strong></li>
 <li>100 ZIPs with competitors: $0.10 + (100 × $0.005) + (100 × $0.01) = <strong>$1.60</strong></li>
 <li>300 ZIPs full analysis: $0.10 + (300 × $0.02) = <strong>$6.10</strong></li>
-</ul>
 
-<h2>Integration Ideas</h2>
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Google Maps Overlay</strong> - Visualize territories with GeoJSON</li>
-<li><strong>CRM Territory Assignment</strong> - Assign leads to territories</li>
-<li><strong>Route Planning</strong> - Group ZIP codes for technician routes</li>
-<li><strong>Marketing Campaigns</strong> - Target specific ZIP codes</li>
+<li><strong>Territory Planning</strong> - Define optimal service areas</li>
+<li><strong>Franchise Mapping</strong> - Ensure non-overlapping territories</li>
+<li><strong>Market Expansion</strong> - Find underserved high-potential areas</li>
+<li><strong>Route Optimization</strong> - Group ZIP codes for efficiency</li>
+<li><strong>Competitor Analysis</strong> - Find gaps in competitor coverage</li>
+<li><strong>Marketing Targeting</strong> - Focus on high-value demographics</li>
+
 </ul>
+---
 
-<h2>Best Practices</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>1. <strong>Start Small</strong> - Begin with 15-25 mile radius</p>
-<p>2. <strong>Filter Smart</strong> - Use income/population filters</p>
-<p>3. <strong>Regular Updates</strong> - Demographics change, refresh quarterly</p>
-<p>4. <strong>Overlap Check</strong> - Verify territories don't conflict</p>
-<p>5. <strong>Layer Data</strong> - Combine with keyword rankings</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong> - Your AI-Powered Local SEO Partner
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>service area mapper, service radius, business coverage area, geo targeting, service area visualization, local seo mapping</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -656,7 +585,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

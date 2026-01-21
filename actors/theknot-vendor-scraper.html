@@ -456,51 +456,41 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>The Knot Wedding Vendor Scraper</h1>
-<blockquote><strong>&quot;Complete Wedding Vendor Data from The Knot&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<h2>Scrape Wedding Vendors by Location and Category</h2>
-<strong>Planning a wedding means researching dozens of vendors.</strong> Photographers, venues, caterers, florists, DJs — all scattered across multiple websites with inconsistent information.
-<strong>The Knot is the largest wedding vendor marketplace</strong>, but manually browsing through listings is time-consuming. What if you could extract all vendor data for any location in seconds?
-<p>The <strong>The Knot Wedding Vendor Scraper</strong> extracts:</p>
-<ul><li>Business name and contact info</li>
-<li>Ratings and reviews</li>
-<li>Pricing information</li>
-<li>Services offered</li>
-<li>Awards and badges</li>
-<li>Social media links</li>
-<li>Gallery images</li>
-</ul>
-<strong>Perfect for wedding planning apps, vendor directories, and market research.</strong>
-<p>---</p>
+            <p>Scrape wedding vendor listings from The Knot - photographers, venues, caterers, florists, DJs, and more with reviews, pricing, and contact info.</p>
+
 <h2>Features</h2>
+
 <h3>18 Vendor Categories</h3>
-<p>| Category | Description |</p>
-<p>|----------|-------------|</p>
-<p>| <code>wedding-photographers</code> | Wedding and engagement photography |</p>
-<p>| <code>wedding-venues</code> | Ceremony and reception venues |</p>
-<p>| <code>wedding-videographers</code> | Wedding films and cinematography |</p>
-<p>| <code>wedding-florists</code> | Floral design and arrangements |</p>
-<p>| <code>wedding-caterers</code> | Food and beverage service |</p>
-<p>| <code>wedding-djs</code> | Music and entertainment |</p>
-<p>| <code>wedding-bands</code> | Live bands and musicians |</p>
-<p>| <code>wedding-planners</code> | Full and partial planning services |</p>
-<p>| <code>wedding-cakes</code> | Cakes and desserts |</p>
-<p>| <code>bridal-salons</code> | Wedding dresses and bridal wear |</p>
-<p>| <code>wedding-hair-makeup</code> | Beauty services |</p>
-<p>| <code>wedding-invitations</code> | Stationery and invitations |</p>
-<p>| <code>wedding-rentals</code> | Tables, chairs, linens |</p>
-<p>| <code>wedding-transportation</code> | Limos, shuttles, vintage cars |</p>
-<p>| <code>wedding-officiants</code> | Ministers, officiants, celebrants |</p>
-<p>| <code>wedding-jewelers</code> | Rings and jewelry |</p>
-<p>| <code>photo-booths</code> | Photo booth rentals |</p>
-<p>| <code>wedding-decor</code> | Decor and lighting |</p>
+
+<p>| Category | Description |
+|----------|-------------|
+| <code>wedding-photographers</code> | Wedding and engagement photography |
+| <code>wedding-venues</code> | Ceremony and reception venues |
+| <code>wedding-videographers</code> | Wedding films and cinematography |
+| <code>wedding-florists</code> | Floral design and arrangements |
+| <code>wedding-caterers</code> | Food and beverage service |
+| <code>wedding-djs</code> | Music and entertainment |
+| <code>wedding-bands</code> | Live bands and musicians |
+| <code>wedding-planners</code> | Full and partial planning services |
+| <code>wedding-cakes</code> | Cakes and desserts |
+| <code>bridal-salons</code> | Wedding dresses and bridal wear |
+| <code>wedding-hair-makeup</code> | Beauty services |
+| <code>wedding-invitations</code> | Stationery and invitations |
+| <code>wedding-rentals</code> | Tables, chairs, linens |
+| <code>wedding-transportation</code> | Limos, shuttles, vintage cars |
+| <code>wedding-officiants</code> | Ministers, officiants, celebrants |
+| <code>wedding-jewelers</code> | Rings and jewelry |
+| <code>photo-booths</code> | Photo booth rentals |
+| <code>wedding-decor</code> | Decor and lighting |</p>
+
 <h3>Complete Vendor Profiles</h3>
-<p>Each vendor includes:</p>
-<ul><li>Business name and description</li>
+
+<p>Each vendor includes:
+<ul>
+<li>Business name and description</li>
 <li>Full address and location</li>
 <li>Phone, email, and website</li>
 <li>Average rating and review count</li>
@@ -508,230 +498,160 @@
 <li>Services offered</li>
 <li>Awards (Best of Weddings, Hall of Fame)</li>
 <li>Social media links</li>
-<li>Gallery images</li>
+<li>Gallery images</li></p>
+
 </ul>
 <h3>Optional Review Scraping</h3>
-<p>Enable <code>includeReviews: true</code> to extract individual customer reviews with:</p>
-<ul><li>Author name</li>
+
+<p>Enable <code>includeReviews: true</code> to extract individual customer reviews with:
+<ul>
+<li>Author name</li>
 <li>Rating (1-5 stars)</li>
 <li>Review date</li>
 <li>Wedding date</li>
 <li>Full review text</li>
-<li>Verified status</li>
+<li>Verified status</li></p>
+
 </ul>
-<p>---</p>
+---
+
 <h2>Quick Start</h2>
-<h3>Basic Search</h3>
+
 <pre><code>{
-<p>&quot;location&quot;: &quot;Austin, TX&quot;,</p>
-<p>&quot;categories&quot;: [&quot;wedding-photographers&quot;, &quot;wedding-venues&quot;],</p>
-<p>&quot;maxResults&quot;: 50,</p>
-<p>&quot;demoMode&quot;: true</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
-<h3>Multi-Category Search</h3>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>&quot;location&quot;: &quot;Los Angeles, CA&quot;,</p>
-<p>&quot;categories&quot;: [</p>
-<p>&quot;wedding-photographers&quot;,</p>
-<p>&quot;wedding-venues&quot;,</p>
-<p>&quot;wedding-videographers&quot;,</p>
-<p>&quot;wedding-florists&quot;,</p>
-<p>&quot;wedding-caterers&quot;</p>
-<p>],</p>
-<p>&quot;maxResults&quot;: 100</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-<h3>With Reviews</h3>
-<pre><code>{
-<p>&quot;location&quot;: &quot;New York, NY&quot;,</p>
-<p>&quot;categories&quot;: [&quot;wedding-photographers&quot;],</p>
-<p>&quot;maxResults&quot;: 25,</p>
-<p>&quot;includeReviews&quot;: true,</p>
-<p>&quot;maxReviewsPerVendor&quot;: 10</p>
-<p>}</p>
-</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>location</code> | string | Yes | City and state (e.g., "Austin, TX") |
+| <code>categories</code> | array | No | Vendor categories to scrape |
+| <code>maxResults</code> | integer | No | Max vendors per category (default: 50) |
+| <code>includeReviews</code> | boolean | No | Scrape individual reviews |
+| <code>maxReviewsPerVendor</code> | integer | No | Max reviews per vendor (default: 10) |
+| <code>demoMode</code> | boolean | No | Use sample data (default: true) |</p>
+
 <p>---</p>
+
 <h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;name&quot;: &quot;Elegant Moments Photography&quot;,</p>
-<p>&quot;category&quot;: &quot;wedding-photographers&quot;,</p>
-<p>&quot;subcategory&quot;: &quot;Photography&quot;,</p>
-<p>&quot;location&quot;: &quot;Austin, TX&quot;,</p>
-<p>&quot;city&quot;: &quot;Austin&quot;,</p>
-<p>&quot;state&quot;: &quot;TX&quot;,</p>
-<p>&quot;address&quot;: &quot;123 Main St, Austin, TX 78701&quot;,</p>
-<p>&quot;rating&quot;: 4.9,</p>
-<p>&quot;reviewCount&quot;: 287,</p>
-<p>&quot;priceRange&quot;: &quot;$$$&quot;,</p>
-<p>&quot;priceLevel&quot;: 3,</p>
-<p>&quot;phone&quot;: &quot;(512) 555-0123&quot;,</p>
-<p>&quot;email&quot;: &quot;info@elegantmoments.com&quot;,</p>
-<p>&quot;website&quot;: &quot;https://elegantmoments.com&quot;,</p>
-<p>&quot;theKnotUrl&quot;: &quot;https://www.theknot.com/marketplace/elegant-moments-photography-austin-tx&quot;,</p>
-<p>&quot;description&quot;: &quot;Award-winning wedding photography capturing your special moments...&quot;,</p>
-<p>&quot;services&quot;: [</p>
-<p>&quot;Engagement Sessions&quot;,</p>
-<p>&quot;Full Day Coverage&quot;,</p>
-<p>&quot;Second Photographer&quot;,</p>
-<p>&quot;Drone Photography&quot;,</p>
-<p>&quot;Photo Albums&quot;</p>
-<p>],</p>
-<p>&quot;images&quot;: [</p>
-<p>&quot;https://media-api.theknot.com/images/...&quot;,</p>
-<p>&quot;https://media-api.theknot.com/images/...&quot;</p>
-<p>],</p>
-<p>&quot;awards&quot;: [</p>
-<p>&quot;The Knot Best of Weddings 2024&quot;,</p>
-<p>&quot;The Knot Best of Weddings 2023&quot;</p>
-<p>],</p>
-<p>&quot;reviews&quot;: [</p>
-<p>{</p>
-<p>&quot;author&quot;: &quot;Sarah M.&quot;,</p>
-<p>&quot;rating&quot;: 5,</p>
-<p>&quot;date&quot;: &quot;2024-10-15&quot;,</p>
-<p>&quot;title&quot;: &quot;Absolutely Stunning Photos!&quot;,</p>
-<p>&quot;text&quot;: &quot;They captured every special moment perfectly...&quot;,</p>
-<p>&quot;weddingDate&quot;: &quot;2024-09-28&quot;,</p>
-<p>&quot;verified&quot;: true</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;socialMedia&quot;: {</p>
-<p>&quot;instagram&quot;: &quot;https://instagram.com/elegantmoments&quot;,</p>
-<p>&quot;facebook&quot;: &quot;https://facebook.com/elegantmoments&quot;,</p>
-<p>&quot;pinterest&quot;: &quot;https://pinterest.com/elegantmoments&quot;</p>
-<p>},</p>
-<p>&quot;scrapedAt&quot;: &quot;2025-01-14T12:00:00.000Z&quot;</p>
-<p>}</p>
+  "name": "Elegant Moments Photography",
+  "category": "wedding-photographers",
+  "subcategory": "Photography",
+  "location": "Austin, TX",
+  "city": "Austin",
+  "state": "TX",
+  "address": "123 Main St, Austin, TX 78701",
+  "rating": 4.9,
+  "reviewCount": 287,
+  "priceRange": "$$$",
+  "priceLevel": 3,
+  "phone": "(512) 555-0123",
+  "email": "info@elegantmoments.com",
+  "website": "https://elegantmoments.com",
+  "theKnotUrl": "https://www.theknot.com/marketplace/elegant-moments-photography-austin-tx",
+  "description": "Award-winning wedding photography capturing your special moments...",
+  "services": [
+    "Engagement Sessions",
+    "Full Day Coverage",
+    "Second Photographer",
+    "Drone Photography",
+    "Photo Albums"
+  ],
+  "images": [
+    "https://media-api.theknot.com/images/...",
+    "https://media-api.theknot.com/images/..."
+  ],
+  "awards": [
+    "The Knot Best of Weddings 2024",
+    "The Knot Best of Weddings 2023"
+  ],
+  "reviews": [
+    {
+      "author": "Sarah M.",
+      "rating": 5,
+      "date": "2024-10-15",
+      "title": "Absolutely Stunning Photos!",
+      "text": "They captured every special moment perfectly...",
+      "weddingDate": "2024-09-28",
+      "verified": true
+    }
+  ],
+  "socialMedia": {
+    "instagram": "https://instagram.com/elegantmoments",
+    "facebook": "https://facebook.com/elegantmoments",
+    "pinterest": "https://pinterest.com/elegantmoments"
+  },
+  "scrapedAt": "2025-01-14T12:00:00.000Z"
+}
 </code></pre>
+
 <p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
 <h2>Use Cases</h2>
+
 <h3>Wedding Planning Apps</h3>
+
 <p>Build a wedding vendor directory with real data. Let couples search, filter, and compare vendors by location, category, price, and rating.</p>
+
 <h3>Market Research</h3>
-<p>Analyze the wedding vendor market in any city:</p>
-<ul><li>Average pricing by category</li>
+
+<p>Analyze the wedding vendor market in any city:
+<ul>
+<li>Average pricing by category</li>
 <li>Competition density</li>
 <li>Rating distributions</li>
-<li>Popular services</li>
+<li>Popular services</li></p>
+
 </ul>
 <h3>Lead Generation</h3>
-<p>Identify wedding vendors for B2B sales:</p>
-<ul><li>Vendors without websites</li>
+
+<p>Identify wedding vendors for B2B sales:
+<ul>
+<li>Vendors without websites</li>
 <li>Low-rated vendors (opportunity for improvement services)</li>
 <li>New vendors without reviews</li>
-<li>Vendors missing social media presence</li>
+<li>Vendors missing social media presence</li></p>
+
 </ul>
 <h3>Competitive Analysis</h3>
-<p>Research competitors in your wedding vendor market:</p>
-<ul><li>Compare pricing strategies</li>
+
+<p>Research competitors in your wedding vendor market:
+<ul>
+<li>Compare pricing strategies</li>
 <li>Analyze service offerings</li>
 <li>Track awards and recognition</li>
-<li>Monitor customer feedback</li>
+<li>Monitor customer feedback</li></p>
+
 </ul>
+---
+
 <p>---</p>
-<h2>Demo Mode</h2>
-<p>Enable <code>demoMode: true</code> to test with sample data without scraping. Perfect for:</p>
-<ul><li>Testing integrations</li>
-<li>Understanding output format</li>
-<li>Building UIs before going live</li>
-<li>Development and debugging</li>
-</ul>
-<p>Demo mode is <strong>free</strong> and returns realistic sample vendor data.</p>
-<p>---</p>
-<h2>Pay-Per-Event Pricing</h2>
-<strong>You only pay for what you use.</strong> No monthly fees. No hidden costs.
-<p>| Event | Description | Price |</p>
-<p>|-------|-------------|-------|</p>
-<p>| <code>vendor_scraped</code> | Each vendor profile extracted | $0.03 |</p>
-<h3>Cost Examples</h3>
-<p>| Usage | Monthly Cost |</p>
-<p>|-------|--------------|</p>
-<p>| 100 vendors | $3.00 |</p>
-<p>| 500 vendors | $15.00 |</p>
-<p>| 1,000 vendors | $30.00 |</p>
-<p>| 5,000 vendors | $150.00 |</p>
-<strong>Demo mode is free</strong> — test all you want before going live.
-<p>---</p>
-<h2>Input Parameters</h2>
-<p>| Parameter | Type | Required | Description |</p>
-<p>|-----------|------|----------|-------------|</p>
-<p>| <code>location</code> | string | Yes | City and state (e.g., &quot;Austin, TX&quot;) |</p>
-<p>| <code>categories</code> | array | No | Vendor categories to scrape |</p>
-<p>| <code>maxResults</code> | integer | No | Max vendors per category (default: 50) |</p>
-<p>| <code>includeReviews</code> | boolean | No | Scrape individual reviews |</p>
-<p>| <code>maxReviewsPerVendor</code> | integer | No | Max reviews per vendor (default: 10) |</p>
-<p>| <code>demoMode</code> | boolean | No | Use sample data (default: true) |</p>
-<p>---</p>
-<h2>API Integration</h2>
-<h3>JavaScript/Node.js</h3>
-<pre><code>import { ApifyClient } from &#x27;apify-client&#x27;;
-<p>const client = new ApifyClient({ token: &#x27;YOUR_API_TOKEN&#x27; });</p>
-<p>const run = await client.actor(&#x27;localhowl/theknot-vendor-scraper&#x27;).call({</p>
-<p>location: &#x27;Austin, TX&#x27;,</p>
-<p>categories: [&#x27;wedding-photographers&#x27;, &#x27;wedding-venues&#x27;],</p>
-<p>maxResults: 50,</p>
-<p>demoMode: false</p>
-<p>});</p>
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(<code>Found ${items.length} vendors</code>);</p>
-</code></pre>
-<h3>Python</h3>
-<pre><code>from apify_client import ApifyClient
-<p>client = ApifyClient(&quot;YOUR_API_TOKEN&quot;)</p>
-<p>run = client.actor(&quot;localhowl/theknot-vendor-scraper&quot;).call(run_input={</p>
-<p>&quot;location&quot;: &quot;Austin, TX&quot;,</p>
-<p>&quot;categories&quot;: [&quot;wedding-photographers&quot;, &quot;wedding-venues&quot;],</p>
-<p>&quot;maxResults&quot;: 50,</p>
-<p>&quot;demoMode&quot;: False</p>
-<p>})</p>
-<p>items = client.dataset(run[&quot;defaultDatasetId&quot;]).list_items().items</p>
-<p>print(f&quot;Found {len(items)} vendors&quot;)</p>
-</code></pre>
-<h3>cURL</h3>
-<pre><code>curl -X POST &quot;https://api.apify.com/v2/acts/localhowl~theknot-vendor-scraper/runs?token=YOUR_API_TOKEN&quot; \
-<p>-H &quot;Content-Type: application/json&quot; \</p>
-<p>-d &#x27;{</p>
-<p>&quot;location&quot;: &quot;Austin, TX&quot;,</p>
-<p>&quot;categories&quot;: [&quot;wedding-photographers&quot;],</p>
-<p>&quot;maxResults&quot;: 50,</p>
-<p>&quot;demoMode&quot;: false</p>
-<p>}&#x27;</p>
-</code></pre>
-<p>---</p>
-<h2>Popular Wedding Markets</h2>
-<p>| Market | Location String |</p>
-<p>|--------|-----------------|</p>
-<p>| New York | <code>New York, NY</code> |</p>
-<p>| Los Angeles | <code>Los Angeles, CA</code> |</p>
-<p>| Chicago | <code>Chicago, IL</code> |</p>
-<p>| Houston | <code>Houston, TX</code> |</p>
-<p>| Austin | <code>Austin, TX</code> |</p>
-<p>| Dallas | <code>Dallas, TX</code> |</p>
-<p>| San Francisco | <code>San Francisco, CA</code> |</p>
-<p>| Miami | <code>Miami, FL</code> |</p>
-<p>| Denver | <code>Denver, CO</code> |</p>
-<p>| Seattle | <code>Seattle, WA</code> |</p>
-<p>| Nashville | <code>Nashville, TN</code> |</p>
-<p>| Atlanta | <code>Atlanta, GA</code> |</p>
-<p>---</p>
-<h2>Limitations</h2>
-<ul><li><strong>Rate limiting</strong>: Built-in delays to respect The Knot&#x27;s servers</li>
-<li><strong>Dynamic content</strong>: Some vendor details may require JavaScript rendering</li>
-<li><strong>Review pagination</strong>: Reviews limited to first page unless explicitly requested</li>
-<li><strong>Geographic coverage</strong>: US-focused (The Knot is primarily a US platform)</li>
-</ul>
-<p>---</p>
-<h2>Support</h2>
-<ul><li><strong>Email</strong>: john@johnrippy.link</li>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<h2>Keywords</h2>
-<p>the knot scraper, wedding vendor api, wedding photographer scraper, wedding venue scraper, wedding vendor directory, wedding planning api, wedding vendor data, the knot api, wedding marketplace scraper, bridal vendor scraper, wedding caterer scraper, wedding florist scraper, wedding dj scraper</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -745,7 +665,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

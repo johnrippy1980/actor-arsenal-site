@@ -456,15 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>PubMed/NCBI API - Biomedical Literature &amp; Citations</h1>
-<strong>&quot;Medical Research Database&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Access PubMed and NCBI databases for biomedical literature. Search 36+ million citations, get article abstracts, citation metrics, author profiles, and journal data. Essential for scientific research and pharma market intelligence.</p>
+            <p>Access PubMed and NCBI databases for biomedical literature. Search publications, get article abstracts, citation data, author profiles, and journal metrics. Essential for scientific research and pharma intelligence.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Search Articles</strong>: Full-text search across PubMed database</li>
+
+<ul>
+<li><strong>Search Articles</strong>: Full-text search across PubMed database</li>
 <li><strong>Get Article</strong>: Detailed article metadata by PMID</li>
 <li><strong>Get Citations</strong>: Citation counts and citing articles</li>
 <li><strong>Search by Author</strong>: Find publications by researcher</li>
@@ -473,9 +473,59 @@
 <li><strong>Search MeSH</strong>: Search by Medical Subject Headings</li>
 <li><strong>Get Related</strong>: Find related articles</li>
 <li><strong>Demo Mode</strong>: Test with sample data</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li>Search Articles: $0.01</li>
+<li>Get Article: $0.01</li>
+<li>Get Citations: $0.01</li>
+<li>Author Search: $0.01</li>
+<li>Journal Search: $0.01</li>
+<li>Get Abstracts: $0.01</li>
+<li>MeSH Search: $0.01</li>
+<li>Related Articles: $0.01</li></p>
+
 </ul>
 <h2>Use Cases</h2>
-<ul><li>Literature reviews and meta-analysis</li>
+
+<ul>
+<li>Literature reviews and meta-analysis</li>
 <li>Competitive intelligence for pharma</li>
 <li>Track KOL (Key Opinion Leader) publications</li>
 <li>Monitor disease area research</li>
@@ -483,28 +533,17 @@
 <li>Academic citation analysis</li>
 <li>Drug development research</li>
 <li>Sync to research databases</li>
+
 </ul>
-<h2>Data Included</h2>
-<ul><li>Article title and abstract</li>
-<li>PubMed ID (PMID)</li>
-<li>Authors and affiliations</li>
-<li>Journal and publication date</li>
-<li>MeSH terms</li>
-<li>Citation counts</li>
-<li>DOI and links</li>
-<li>Article type</li>
-<li>Keywords</li>
-</ul>
-<h2>Pricing</h2>
-<ul><li>Search Articles: $0.01</li>
-<li>Get Article: $0.01</li>
-<li>Get Citations: $0.01</li>
-<li>Author Search: $0.01</li>
-<li>Journal Search: $0.01</li>
-<li>Get Abstracts: $0.01</li>
-<li>MeSH Search: $0.01</li>
-<li>Related Articles: $0.01</li>
-</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -518,7 +557,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

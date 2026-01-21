@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,103 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Apple Maps Business Listings Scraper</h1>
-            <p>Apify actor for Apple Maps Business Listings Scraper</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Scrape Google Maps business listings using Playwright browser automation. Returns business name, category, address, phone, website, rating, reviews, and more. Uses real browser for reliable extraction of JavaScript-rendered content. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Browser-based extraction</strong> - Uses Playwright for reliable JavaScript rendering</li>
+<li><strong>Business details</strong> - Name, category, address, phone, website</li>
+<li><strong>Ratings & reviews</strong> - Total score and review count</li>
+<li><strong>Place ID extraction</strong> - Google Maps place identifiers</li>
+<li><strong>Geo-biased search</strong> - Optional lat/lng for location-specific results</li>
+<li><strong>Scrolling pagination</strong> - Loads more results automatically</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "searchStringsArray": ["Bar Fort Lauderdale FL", "Plumber Miami"],
+  "maxCrawledPlacesPerSearch": 20,
+  "language": "en"
+}
+</code></pre>
+
+<h3>Optional Geo-Biased Search</h3>
+
+<pre><code>{
+  "searchStringsArray": ["Bar near me"],
+  "maxCrawledPlacesPerSearch": 10,
+  "lat": "26.1224",
+  "lng": "-80.1373",
+  "zoom": 13
+}
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "title": "The Mojito Bar",
+  "categoryName": "Bar",
+  "address": "11401 NW 12th St, Miami, FL 33172",
+  "city": "Miami",
+  "state": "FL",
+  "phone": "(305) 564-1597",
+  "website": "http://www.themojitobar.com/",
+  "totalScore": 4.6,
+  "reviewsCount": 825,
+  "placeId": "0x88d9bf880ee8fad9:0xd5d8645ea7eeff0b",
+  "url": "https://www.google.com/maps/place/..."
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>result_scraped</code> | Per result scraped | $0.02 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Scrape 20 businesses: 20 × $0.02 = <strong>$0.40</strong></li>
+<li>Scrape 100 businesses: 100 × $0.02 = <strong>$2.00</strong></li>
+
+</ul>
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +431,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Design Huddle - Professional Design Automation</h1>
-
-<strong>"Template-Based Design Automation"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Automate professional design creation using Design Huddle's template-based design platform. Perfect for marketing agencies, content creators, and businesses needing scalable design production.</p>
+            <p>Create, edit, and export professional designs using Design Huddle templates. Perfect for marketing agencies, content creators, and businesses needing scalable design production.</p>
 
 <h2>Features</h2>
 
@@ -477,8 +470,74 @@
 <li><strong>Export Projects</strong> - Download finished designs in PDF, PNG, JPG, GIF, MP4, or WebP</li>
 <li><strong>Batch Creation</strong> - Create multiple designs at once with different customizations</li>
 <li><strong>Duplicate Projects</strong> - Clone existing projects for variations</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation: <code>list_templates</code>, <code>create_project</code>, <code>export_project</code>, <code>list_projects</code>, <code>get_project</code>, <code>duplicate_project</code>, <code>batch_create</code> |
+| clientId | string | Yes<em> | Design Huddle Client ID (</em>not needed for demoMode) |
+| clientSecret | string | Yes<em> | Design Huddle Client Secret (</em>not needed for demoMode) |
+| templateId | string | No | Template ID for project creation |
+| projectId | string | No | Project ID for export/get/duplicate |
+| customizations | object | No | Template element customizations |
+| exportFormat | string | No | Export format: pdf, png, jpg, gif, mp4, webp |
+| demoMode | boolean | No | Run with sample data (no credentials needed) |</p>
+
+<h2>Output Format</h2>
+
+<p>The actor outputs results to the default dataset:</p>
+
+<pre><code>{
+  "task": "create_project",
+  "success": true,
+  "projectId": "proj_abc123",
+  "templateId": "tmpl_xyz789",
+  "status": "created",
+  "createdAt": "2024-12-29T12:00:00Z"
+}
+</code></pre>
+
+<p>For exports:
+<pre><code>{
+  "task": "export_project",
+  "success": true,
+  "projectId": "proj_abc123",
+  "exportUrl": "https://cdn.designhuddle.com/exports/abc123.png",
+  "format": "png",
+  "expiresAt": "2024-12-30T12:00:00Z"
+}
+</code></pre></p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
+<ul>
+<li>$0.01 per template listing</li>
+<li>$0.05 per project creation</li>
+<li>$0.03 per project export</li>
+<li>$0.02 per project duplicate</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <h3>Marketing Agencies</h3>
@@ -486,155 +545,27 @@
 <li>Generate branded social media graphics at scale</li>
 <li>Create personalized marketing materials for multiple clients</li>
 <li>Automate report and presentation generation</li>
-</ul>
 
+</ul>
 <h3>E-commerce</h3>
 <ul>
 <li>Product image templates with dynamic text/pricing</li>
 <li>Social media ad variations</li>
 <li>Email header graphics</li>
-</ul>
 
+</ul>
 <h3>Content Creators</h3>
 <ul>
 <li>YouTube thumbnails from templates</li>
 <li>Podcast cover art</li>
 <li>Blog post featured images</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Getting Design Huddle Credentials</h2>
-
-<p>1. Go to <a href="https://www.designhuddle.com/developers" target="_blank" rel="noopener">Design Huddle Developer Portal</a></p>
-<p>2. Sign up or log in to your account</p>
-<p>3. Navigate to Settings → API Credentials</p>
-<p>4. Copy your Client ID and Client Secret</p>
-
-<h2>Example Usage</h2>
-
-<h3>List Templates</h3>
-<pre><code>{
-<p>"task": "list_templates",</p>
-<p>"clientId": "your-client-id",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"templateCategory": "social-media",</p>
-<p>"maxResults": 20</p>
-<p>}</p>
-</code></pre>
-
-<h3>Create Project from Template</h3>
-<pre><code>{
-<p>"task": "create_project",</p>
-<p>"clientId": "your-client-id",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"templateId": "template-123",</p>
-<p>"projectName": "Summer Sale Banner",</p>
-<p>"customizations": {</p>
-<p>"headline": "Summer Sale - 50% Off!",</p>
-<p>"subheadline": "Limited time only",</p>
-<p>"background_color": "#FF6B6B"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Export Project</h3>
-<pre><code>{
-<p>"task": "export_project",</p>
-<p>"clientId": "your-client-id",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"projectId": "project-456",</p>
-<p>"exportFormat": "png",</p>
-<p>"exportQuality": 90</p>
-<p>}</p>
-</code></pre>
-
-<h3>Batch Create</h3>
-<pre><code>{
-<p>"task": "batch_create",</p>
-<p>"clientId": "your-client-id",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"batchItems": [</p>
-<p>{</p>
-<p>"templateId": "template-123",</p>
-<p>"customizations": { "headline": "Product A" }</p>
-<p>},</p>
-<p>{</p>
-<p>"templateId": "template-123",</p>
-<p>"customizations": { "headline": "Product B" }</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
-
-<p>The actor outputs results to the default dataset:</p>
-
-<pre><code>{
-<p>"task": "create_project",</p>
-<p>"success": true,</p>
-<p>"projectId": "proj_abc123",</p>
-<p>"templateId": "tmpl_xyz789",</p>
-<p>"status": "created",</p>
-<p>"createdAt": "2024-12-29T12:00:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<p>For exports:</p>
-<pre><code>{
-<p>"task": "export_project",</p>
-<p>"success": true,</p>
-<p>"projectId": "proj_abc123",</p>
-<p>"exportUrl": "https://cdn.designhuddle.com/exports/abc123.png",</p>
-<p>"format": "png",</p>
-<p>"expiresAt": "2024-12-30T12:00:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Webhook Integration</h2>
-
-<p>Send results to Zapier, Make, n8n, or any webhook URL:</p>
-
-<pre><code>{
-<p>"task": "create_project",</p>
-<p>"clientId": "your-client-id",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"templateId": "template-123",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-event pricing:</p>
-<ul>
-<li>$0.01 per template listing</li>
-<li>$0.05 per project creation</li>
-<li>$0.03 per project export</li>
-<li>$0.02 per project duplicate</li>
-</ul>
-
-<h2>Demo Mode</h2>
-
-<p>Test the actor without API credentials:</p>
-
-<pre><code>{
-<p>"task": "list_templates",</p>
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Design Huddle Docs</strong>: <a href="https://api.designhuddle.com/" target="_blank" rel="noopener">api.designhuddle.com</a></li>
-<li><strong>Issues</strong>: Report on <a href="https://apify.com/alizarin_refrigerator-owner/design-huddle?fpr=kqpn7" target="_blank" rel="noopener">Apify</a></li>
-</ul>
-
-<p>---</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -648,7 +579,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

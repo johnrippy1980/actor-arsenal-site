@@ -457,199 +457,57 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>LinkedIn MCP Server</h1>
+            <h1>LinkedIn MCP Server - AI Assistant</h1>
+            <p>MCP Server for LinkedIn - enables AI assistants like Claude to scrape profiles, analyze posts, train voice models, and generate content. Integrates with Claude Desktop and other MCP clients.</p>
 
-<blockquote><strong>"Let AI Assistants Work With LinkedIn"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>AI-Powered LinkedIn Automation Through MCP</h2>
-
-<strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants like Claude use external tools. This server exposes LinkedIn functionality to your AI assistant.
-
-<strong>What can you do with this?</strong>
+<h2>Features</h2>
 
 <ul>
-<li>Scrape LinkedIn profiles and posts through natural conversation</li>
-<li>Train AI voice models on writing styles</li>
-<li>Generate content that matches someone's voice</li>
-<li>Analyze post performance and suggest topics</li>
-<li>Search for people and companies</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
-
-<strong>Talk to Claude. Let Claude talk to LinkedIn.</strong>
-
-<p>---</p>
-
-<h2>What is MCP?</h2>
-
-<p>MCP (Model Context Protocol) is a standardized way for AI assistants to use external tools. Instead of copying and pasting data, you can just ask Claude:</p>
-
-<blockquote>"Analyze my LinkedIn profile and tell me what topics I should write about"</blockquote>
-
-<p>Claude uses this MCP server to scrape your profile, analyze your posts, and give you actionable recommendations.</p>
-
-<p>---</p>
-
-<h2>Available Tools</h2>
-
-<h3>Profile Tools</h3>
-
-
-<h3>Voice Training Tools</h3>
-
-
-<h3>Content Tools</h3>
-
-
-<h3>Search Tools</h3>
-
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Scrape a Profile</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"mode": "demo",</p>
-<p>"tool": "scrape_profile",</p>
-<p>"profileUrl": "https://www.linkedin.com/in/johnrippy/",</p>
-<p>"maxPosts": 20</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Analyze Voice Style</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"mode": "demo",</p>
-<p>"tool": "analyze_voice",</p>
-<p>"profileUrl": "https://www.linkedin.com/in/johnrippy/",</p>
-<p>"saveProfile": true,</p>
-<p>"profileName": "johnrippy-voice"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Example 3: Generate a Post in Someone's Voice</h3>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"mode": "demo",</p>
-<p>"tool": "generate_post",</p>
-<p>"voiceProfileId": "johnrippy-voice",</p>
-<p>"topic": "Why I stopped checking email first thing in the morning",</p>
-<p>"contentType": "text",</p>
-<p>"includeHashtags": true</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>Example 4: Improve a Draft</h3>
+<h2>Pricing</h2>
 
-<pre><code>{
-<p>"mode": "demo",</p>
-<p>"tool": "improve_draft",</p>
-<p>"voiceProfileId": "johnrippy-voice",</p>
-<p>"draft": "Here are my thoughts on productivity...",</p>
-<p>"feedback": "Make it more engaging with a stronger hook"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Setup with Claude Desktop</h2>
-
-<h3>Option 1: Using Apify (Cloud)</h3>
-
-<p>Add to your Claude Desktop config (<code>~/.config/claude/claude_desktop_config.json</code>):</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"linkedin": {</p>
-<p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic-ai/model-context-protocol", "run", "apify-actor", "alizarin_refrigerator-owner/linkedin-mcp-server"],</p>
-<p>"env": {</p>
-<p>"APIFY_TOKEN": "your-apify-token"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Option 2: Running Locally</h3>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"linkedin": {</p>
-<p>"command": "node",</p>
-<p>"args": ["/path/to/linkedin-mcp-server/dist/main.js"],</p>
-<p>"env": {</p>
-<p>"LINKEDIN_COOKIES": "[...]",</p>
-<p>"ANTHROPIC_API_KEY": "sk-ant-..."</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Authentication</h2>
-
-<p>LinkedIn scraping requires authentication. Provide one of:</p>
-
-
-<p>For AI features (voice training, post generation), provide:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li><strong>Claude API key</strong> (recommended)</li>
-<li><strong>OpenAI API key</strong> (alternative)</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-
-<p>---</p>
-
-<h2>Example Conversation with Claude</h2>
-
-<pre><code>User: Can you analyze my LinkedIn voice and suggest some post topics?
-
-<p>Claude: I'll analyze your LinkedIn profile to understand your writing style.</p>
-<p>[Uses scrape_posts tool]</p>
-<p>[Uses analyze_voice tool]</p>
-
-<p>Based on your posts, here's your voice profile:</p>
-<ul>
-<li>Tone: Professional but conversational</li>
-<li>Hooks: You often start with contrarian statements</li>
-<li>CTAs: You typically end with questions</li>
-<li>Signature phrases: "Here's the thing", "unpopular opinion"</li>
-</ul>
-
-<p>Let me suggest some topics that match your style:</p>
-<p>[Uses suggest_topics tool]</p>
-
-<p>Here are 5 topic ideas:</p>
-<p>1. "Why I stopped optimizing for likes" - matches your contrarian style</p>
-<p>2. "The 5-minute habit that changed my morning" - fits your list format</p>
-<p>3. "What nobody tells you about growing on LinkedIn"</p>
-<p>4. "I deleted my content calendar. Here's what happened."</p>
-<p>5. "The best career advice I ever ignored"</p>
-
-<p>Want me to draft one of these?</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Pay-Per-Event Pricing</h2>
-
-<strong>You only pay for what you use.</strong>
-
-
-<h3>Cost Examples</h3>
-
-
-<p>---</p>
-
 <h2>Use Cases</h2>
 
 <h3>Personal Branding</h3>
@@ -657,142 +515,36 @@
 <li><strong>Voice consistency</strong>: Maintain your unique voice across all posts</li>
 <li><strong>Content ideation</strong>: Get topic suggestions based on your style</li>
 <li><strong>Draft improvement</strong>: Polish drafts to match your voice</li>
-</ul>
 
+</ul>
 <h3>Ghostwriting</h3>
 <ul>
 <li><strong>Client voice training</strong>: Learn a client's writing style</li>
 <li><strong>Authentic content</strong>: Generate posts that sound like them</li>
 <li><strong>Quality control</strong>: Ensure drafts match the trained voice</li>
-</ul>
 
+</ul>
 <h3>Content Agencies</h3>
 <ul>
 <li><strong>Scale content creation</strong>: Generate drafts for multiple clients</li>
 <li><strong>Consistency</strong>: Maintain unique voices across accounts</li>
 <li><strong>Research</strong>: Analyze competitor content strategies</li>
-</ul>
 
+</ul>
 <h3>Lead Generation</h3>
 <ul>
 <li><strong>Profile research</strong>: Gather info on prospects</li>
 <li><strong>Connection outreach</strong>: Research before connecting</li>
 <li><strong>Content targeting</strong>: Find people engaging with relevant topics</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>API Integration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/linkedin-mcp-server').call({</p>
-<p>mode: 'demo',</p>
-<p>tool: 'analyze_voice',</p>
-<p>profileUrl: 'https://www.linkedin.com/in/johnrippy/'</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0]);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~linkedin-mcp-server/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"mode": "demo",</p>
-<p>"tool": "scrape_profile",</p>
-<p>"profileUrl": "https://www.linkedin.com/in/johnrippy/"</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Voice Profile Output</h2>
-
-<p>When you run <code>analyze_voice</code>, you get:</p>
-
-<pre><code>{
-<p>"voiceProfileId": "johnrippy-voice",</p>
-<p>"profileUrl": "https://www.linkedin.com/in/johnrippy/",</p>
-<p>"postsAnalyzed": 20,</p>
-<p>"profile": {</p>
-<p>"tone": "Professional but conversational",</p>
-<p>"formality": 0.6,</p>
-<p>"hookStyles": [</p>
-<p>"Contrarian statements",</p>
-<p>"Personal stories",</p>
-<p>"Numbers/statistics"</p>
-<p>],</p>
-<p>"ctaStyles": [</p>
-<p>"Questions to audience",</p>
-<p>"Call to connect",</p>
-<p>"Share your experience"</p>
-<p>],</p>
-<p>"signaturePhrases": [</p>
-<p>"Here's the thing",</p>
-<p>"Unpopular opinion",</p>
-<p>"Let me explain"</p>
-<p>],</p>
-<p>"topicCategories": [</p>
-<p>"Career advice",</p>
-<p>"Productivity",</p>
-<p>"LinkedIn growth"</p>
-<p>],</p>
-<p>"postLength": {</p>
-<p>"average": 850,</p>
-<p>"min": 400,</p>
-<p>"max": 1200</p>
-<p>},</p>
-<p>"hashtagUsage": {</p>
-<p>"average": 3,</p>
-<p>"common": ["#productivity", "#career", "#growth"]</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>LinkedIn TOS</strong>: Use responsibly, respect rate limits</li>
-<li><strong>Cookie expiry</strong>: LinkedIn cookies expire; refresh periodically</li>
-<li><strong>AI accuracy</strong>: Generated content should be reviewed before posting</li>
-<li><strong>Profile access</strong>: Can only scrape public profiles or connections</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>linkedin mcp server, model context protocol, claude linkedin, ai linkedin integration, linkedin profile scraper, linkedin voice trainer, linkedin post generator, mcp tools, claude desktop, ai assistant tools, linkedin automation, content generation, ghostwriting ai, personal branding ai</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -806,7 +558,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

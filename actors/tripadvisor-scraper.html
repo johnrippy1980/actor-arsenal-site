@@ -457,26 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>TripAdvisor Business Scraper</h1>
-
-<blockquote>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Scrape TripAdvisor business listings, traveler reviews, bubble ratings, and photos. Perfect for hotels, restaurants, attractions, and vacation rentals.</p>
-
-<h2>Why TripAdvisor Data is Valuable</h2>
-
-<p>TripAdvisor is the world's largest travel platform:</p>
-<ul>
-<li><strong>Bubble Ratings</strong>: 1-5 bubble ratings from millions of travelers</li>
-<li><strong>Review Volume</strong>: Extensive traveler reviews with trip details</li>
-<li><strong>Global Coverage</strong>: Businesses in every country and city</li>
-<li><strong>Rich Details</strong>: Amenities, rankings, price levels, photos</li>
-<li><strong>Verified Reviews</strong>: Authentic traveler experiences</li>
-</ul>
+            <h1>Tripadvisor Scraper</h1>
+            <p>Scrape TripAdvisor business listings, traveler reviews, bubble ratings, and photos. Extract amenities, rankings, coordinates, and price levels. Perfect for hotels, restaurants, attractions, and vacation rentals. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -487,8 +471,119 @@
 <li><strong>Photo URLs</strong>: Extract traveler and business photos</li>
 <li><strong>Multi-Category</strong>: Hotels, restaurants, attractions, vacation rentals</li>
 <li><strong>Bulk Processing</strong>: Scrape multiple listings efficiently</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Type: business_profile, search, reviews |
+| <code>businessUrl</code> | string | Direct TripAdvisor listing URL |
+| <code>searchTerm</code> | string | Business name or type to search |
+| <code>location</code> | string | City, state, or destination |
+| <code>businessType</code> | string | Filter: all, hotels, restaurants, attractions, vacation_rentals |
+| <code>minRating</code> | number | Minimum bubble rating (1.0-5.0) |
+| <code>priceLevel</code> | array | Filter by price level |
+| <code>includeReviews</code> | boolean | Scrape reviews (default: true) |
+| <code>maxReviewsPerBusiness</code> | number | Max reviews per listing (default: 20) |
+| <code>includePhotos</code> | boolean | Extract photo URLs |
+| <code>maxResults</code> | number | Maximum listings (default: 50) |
+| <code>sortBy</code> | string | Sort: relevance, rating, review_count, price_low, price_high |
+| <code>proxyConfiguration</code> | object | Proxy settings |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<h3>Listing Output</h3>
+
+<pre><code>{
+  "businessName": "Grand Oceanview Resort",
+  "tripAdvisorUrl": "https://www.tripadvisor.com/Hotel_Review-g123-d456789-Reviews-Grand_Oceanview_Resort.html",
+  "tripAdvisorId": "456789",
+  "businessType": "Hotel",
+  "rating": 4.5,
+  "reviewCount": 1247,
+  "priceLevel": "$$$$",
+  "ranking": "#3 of 45 hotels in Orlando",
+  "categories": ["Resort", "Luxury Hotel"],
+  "address": {
+    "street": "100 Ocean Drive",
+    "city": "Orlando",
+    "state": "FL",
+    "country": "United States",
+    "postalCode": "32801"
+  },
+  "coordinates": {
+    "latitude": 28.5383,
+    "longitude": -81.3792
+  },
+  "phone": "+1 407-555-1234",
+  "website": "https://grandoceanviewresort.com",
+  "email": "info@grandoceanviewresort.com",
+  "amenities": [
+    "Free WiFi",
+    "Pool",
+    "Spa",
+    "Restaurant on Site",
+    "Parking Available"
+  ],
+  "photos": [
+    "https://media-cdn.tripadvisor.com/media/photo-o/abc123.jpg",
+    "https://media-cdn.tripadvisor.com/media/photo-o/def456.jpg"
+  ],
+  "reviews": [
+    {
+      "reviewId": "rev123",
+      "rating": 5,
+      "title": "Amazing experience!",
+      "text": "We had the most wonderful time here...",
+      "author": "TravelLover2024",
+      "authorLocation": "Chicago, Illinois",
+      "date": "December 2024",
+      "tripType": "Family",
+      "helpful": 24
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>listing_scraped</code> | Per business scraped | $0.03 |
+| <code>review_scraped</code> | Per review extracted | $0.003 |
+| <code>photo_scraped</code> | Per photo URL extracted | $0.002 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 hotels with 20 reviews each: $0.10 + (50 × $0.03) + (1000 × $0.003) = <strong>$4.60</strong></li>
+<li>100 restaurants, no reviews: $0.10 + (100 × $0.03) = <strong>$3.10</strong></li>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -498,167 +593,13 @@
 <li><strong>Market Research</strong>: Analyze travel industry trends</li>
 <li><strong>Review Aggregation</strong>: Combine TripAdvisor data with other platforms</li>
 <li><strong>Pricing Intelligence</strong>: Track competitor pricing</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<h3>Listing Output</h3>
-
-<pre><code>{
-<p>"businessName": "Grand Oceanview Resort",</p>
-<p>"tripAdvisorUrl": "https://www.tripadvisor.com/Hotel_Review-g123-d456789-Reviews-Grand_Oceanview_Resort.html",</p>
-<p>"tripAdvisorId": "456789",</p>
-<p>"businessType": "Hotel",</p>
-<p>"rating": 4.5,</p>
-<p>"reviewCount": 1247,</p>
-<p>"priceLevel": "$$$$",</p>
-<p>"ranking": "#3 of 45 hotels in Orlando",</p>
-<p>"categories": ["Resort", "Luxury Hotel"],</p>
-<p>"address": {</p>
-<p>"street": "100 Ocean Drive",</p>
-<p>"city": "Orlando",</p>
-<p>"state": "FL",</p>
-<p>"country": "United States",</p>
-<p>"postalCode": "32801"</p>
-<p>},</p>
-<p>"coordinates": {</p>
-<p>"latitude": 28.5383,</p>
-<p>"longitude": -81.3792</p>
-<p>},</p>
-<p>"phone": "+1 407-555-1234",</p>
-<p>"website": "https://grandoceanviewresort.com",</p>
-<p>"email": "info@grandoceanviewresort.com",</p>
-<p>"amenities": [</p>
-<p>"Free WiFi",</p>
-<p>"Pool",</p>
-<p>"Spa",</p>
-<p>"Restaurant on Site",</p>
-<p>"Parking Available"</p>
-<p>],</p>
-<p>"photos": [</p>
-<p>"https://media-cdn.tripadvisor.com/media/photo-o/abc123.jpg",</p>
-<p>"https://media-cdn.tripadvisor.com/media/photo-o/def456.jpg"</p>
-<p>],</p>
-<p>"reviews": [</p>
-<p>{</p>
-<p>"reviewId": "rev123",</p>
-<p>"rating": 5,</p>
-<p>"title": "Amazing experience!",</p>
-<p>"text": "We had the most wonderful time here...",</p>
-<p>"author": "TravelLover2024",</p>
-<p>"authorLocation": "Chicago, Illinois",</p>
-<p>"date": "December 2024",</p>
-<p>"tripType": "Family",</p>
-<p>"helpful": 24</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<h3>Scrape Single Listing</h3>
-
-<pre><code>{
-<p>"scrapeType": "business_profile",</p>
-<p>"businessUrl": "https://www.tripadvisor.com/Hotel_Review-g123-d456789-Reviews-Example_Hotel.html",</p>
-<p>"includeReviews": true,</p>
-<p>"maxReviewsPerBusiness": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Search for Hotels</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "beach resort",</p>
-<p>"location": "Miami Beach, FL",</p>
-<p>"businessType": "hotels",</p>
-<p>"minRating": 4.0,</p>
-<p>"maxResults": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Search for Restaurants</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "Italian restaurant",</p>
-<p>"location": "New York, NY",</p>
-<p>"businessType": "restaurants",</p>
-<p>"minRating": 4.5,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-</code></pre>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>50 hotels with 20 reviews each: $0.10 + (50 × $0.03) + (1000 × $0.003) = <strong>$4.60</strong></li>
-<li>100 restaurants, no reviews: $0.10 + (100 × $0.03) = <strong>$3.10</strong></li>
-</ul>
-
-<h2>Rate Limiting & Best Practices</h2>
-
-<ul>
-<li>Built-in delays to respect TripAdvisor servers</li>
-<li>Residential proxy required for reliability</li>
-<li>Maximum 500 listings per run</li>
-<li>Reviews limited to prevent excessive requests</li>
-</ul>
-
-<h2>Data Accuracy Notes</h2>
-
-<ul>
-<li>Ratings are real-time bubble ratings</li>
-<li>Review counts may change frequently</li>
-<li>Rankings are location-specific</li>
-<li>Some listings have limited public data</li>
-</ul>
-
-<h2>Legal Considerations</h2>
-
-<ul>
-<li>Use data for legitimate business purposes</li>
-<li>Comply with TripAdvisor Terms of Service</li>
-<li>Do not use for spam or fake reviews</li>
-<li>Respect robots.txt guidelines</li>
-</ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
-<ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>CRM systems (via webhook)</li>
-<li>Databases (via API)</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>tripadvisor scraper, travel reviews scraper, hotel reviews, restaurant reviews, tripadvisor data extraction</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -672,7 +613,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

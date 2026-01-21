@@ -456,108 +456,66 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Dad Joke &amp; Fart Joke Texter</h1>
-<em>&#x27;Embarrass Your Kids Daily via SMS or Webhook&#x27;</em>
-<p>by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link" target="_blank" rel="noopener">johnrippy.link</a></p>
-<a href="https://community.zapier.com/blog-2/announcing-our-2025-zapier-community-heroes-16612" target="_blank" rel="noopener">2025 Zapier Automation Hero of the Year</a> — Project Phoenix: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://johnrippy.link" target="_blank" rel="noopener">Read more →</a>
-<p>Automatically send random dad jokes and fart jokes to your kids via SMS or webhook. Schedule it daily to maximize embarrassment. Because that&#x27;s what parents do.</p>
+            <h1>Dad Joke &amp; Fart Joke Texter - Embarrass Your Kids Daily</h1>
+            <p>Automatically send random dad jokes and fart jokes to your kids via SMS (Twilio) or webhook. Schedule it daily to maximize embarrassment. Because that's what parents do.</p>
+
 <h2>Features</h2>
-<ul><li><strong>45+ Classic Dad Jokes</strong> - Eye-roll guaranteed</li>
+
+<ul>
+<li><strong>45+ Classic Dad Jokes</strong> - Eye-roll guaranteed</li>
 <li><strong>30+ Fart Jokes</strong> - For the sophisticated palette</li>
 <li><strong>SMS Delivery via Twilio</strong> - Text jokes directly to your kids</li>
 <li><strong>Webhook Support</strong> - Send to Slack, Discord, Zapier, Make, n8n</li>
-<li><strong>Personalization</strong> - Add your kid&#x27;s name and custom signature</li>
+<li><strong>Personalization</strong> - Add your kid's name and custom signature</li>
 <li><strong>Emoji Support</strong> - Extra embarrassment with emoji</li>
 <li><strong>Demo Mode</strong> - Test without actually sending</li>
+
 </ul>
-<h2>Quick Start (Demo Mode)</h2>
-<p>Just run the actor with default settings to see sample jokes:</p>
+<h2>Quick Start</h2>
+
 <pre><code>{
-<p>&quot;demoMode&quot;: true,</p>
-<p>&quot;jokeType&quot;: &quot;both&quot;,</p>
-<p>&quot;jokeCount&quot;: 1</p>
-<p>}</p>
+  "query": "example search"
+}
 </code></pre>
-<h2>Send Jokes via SMS (Twilio)</h2>
-<p>1. Get a Twilio account at <a href="https://www.twilio.com/" target="_blank" rel="noopener">twilio.com</a></p>
-<p>2. Get your Account SID and Auth Token from the Twilio Console</p>
-<p>3. Purchase a phone number</p>
-<p>4. Configure the actor:</p>
-<pre><code>{
-<p>&quot;demoMode&quot;: false,</p>
-<p>&quot;jokeType&quot;: &quot;dad&quot;,</p>
-<p>&quot;jokeCount&quot;: 1,</p>
-<p>&quot;kidName&quot;: &quot;Kiddo&quot;,</p>
-<p>&quot;parentSignature&quot;: &quot;- Love, Dad&quot;,</p>
-<p>&quot;twilioAccountSid&quot;: &quot;your_account_sid&quot;,</p>
-<p>&quot;twilioAuthToken&quot;: &quot;your_auth_token&quot;,</p>
-<p>&quot;twilioPhoneNumber&quot;: &quot;+1234567890&quot;,</p>
-<p>&quot;recipientPhoneNumbers&quot;: [&quot;+1987654321&quot;],</p>
-<p>&quot;includeEmoji&quot;: true</p>
-<p>}</p>
-</code></pre>
-<h2>Send Jokes via Webhook</h2>
-<h3>Slack</h3>
-<p>1. Create an Incoming Webhook in Slack</p>
-<p>2. Configure:</p>
-<pre><code>{
-<p>&quot;demoMode&quot;: false,</p>
-<p>&quot;jokeType&quot;: &quot;both&quot;,</p>
-<p>&quot;webhookUrl&quot;: &quot;https://hooks.slack.com/services/YOUR/WEBHOOK/URL&quot;,</p>
-<p>&quot;webhookPlatform&quot;: &quot;slack&quot;,</p>
-<p>&quot;kidName&quot;: &quot;Family&quot;,</p>
-<p>&quot;parentSignature&quot;: &quot;- The Dad Bot&quot;</p>
-<p>}</p>
-</code></pre>
-<h3>Discord</h3>
-<p>1. Create a Webhook in your Discord server</p>
-<p>2. Configure:</p>
-<pre><code>{
-<p>&quot;demoMode&quot;: false,</p>
-<p>&quot;jokeType&quot;: &quot;fart&quot;,</p>
-<p>&quot;webhookUrl&quot;: &quot;https://discord.com/api/webhooks/YOUR/WEBHOOK&quot;,</p>
-<p>&quot;webhookPlatform&quot;: &quot;discord&quot;,</p>
-<p>&quot;includeEmoji&quot;: true</p>
-<p>}</p>
-</code></pre>
-<h3>Zapier / Make / n8n</h3>
-<p>For automation platforms, the webhook sends structured data:</p>
-<pre><code>{
-<p>&quot;jokeType&quot;: &quot;dad&quot;,</p>
-<p>&quot;joke&quot;: &quot;Why don&#x27;t scientists trust atoms? Because they make up everything!&quot;,</p>
-<p>&quot;setup&quot;: &quot;Why don&#x27;t scientists trust atoms?&quot;,</p>
-<p>&quot;punchline&quot;: &quot;Because they make up everything!&quot;,</p>
-<p>&quot;formattedMessage&quot;: &quot;Hey Kiddo! Why don&#x27;t scientists trust atoms?\n\nBecause they make up everything!\n\n- Love, Dad&quot;,</p>
-<p>&quot;recipient&quot;: &quot;Kiddo&quot;,</p>
-<p>&quot;sentAt&quot;: &quot;2024-01-15T08:00:00.000Z&quot;</p>
-<p>}</p>
-</code></pre>
-<h2>Scheduling Daily Jokes</h2>
-<p>1. Push this actor to Apify</p>
-<p>2. Go to Schedules in your Apify Console</p>
-<p>3. Create a new schedule (e.g., every day at 8 AM)</p>
-<p>4. Select this actor and your saved input configuration</p>
-<p>5. Your kids will now receive daily embarrassment!</p>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
 <h2>Input Parameters</h2>
-<p>| Parameter | Type | Default | Description |</p>
-<p>|-----------|------|---------|-------------|</p>
-<p>| jokeType | string | &quot;both&quot; | Type of jokes: &quot;dad&quot;, &quot;fart&quot;, &quot;both&quot;, or &quot;random&quot; |</p>
-<p>| jokeCount | integer | 1 | Number of jokes to send (1-5) |</p>
-<p>| kidName | string | - | Your kid&#x27;s name for personalization |</p>
-<p>| parentSignature | string | &quot;- Dad&quot; | How to sign off |</p>
-<p>| twilioAccountSid | string | - | Twilio Account SID |</p>
-<p>| twilioAuthToken | string | - | Twilio Auth Token |</p>
-<p>| twilioPhoneNumber | string | - | Your Twilio phone number |</p>
-<p>| recipientPhoneNumbers | array | [] | Phone numbers to send to |</p>
-<p>| webhookUrl | string | - | Webhook URL for notifications |</p>
-<p>| webhookPlatform | string | &quot;custom&quot; | Platform: zapier, make, n8n, slack, discord, custom |</p>
-<p>| includeEmoji | boolean | true | Add emoji to messages |</p>
-<p>| demoMode | boolean | true | Test mode (no actual sending) |</p>
-<h2>Output</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| jokeType | string | "both" | Type of jokes: "dad", "fart", "both", or "random" |
+| jokeCount | integer | 1 | Number of jokes to send (1-5) |
+| kidName | string | - | Your kid's name for personalization |
+| parentSignature | string | "- Dad" | How to sign off |
+| twilioAccountSid | string | - | Twilio Account SID |
+| twilioAuthToken | string | - | Twilio Auth Token |
+| twilioPhoneNumber | string | - | Your Twilio phone number |
+| recipientPhoneNumbers | array | [] | Phone numbers to send to |
+| webhookUrl | string | - | Webhook URL for notifications |
+| webhookPlatform | string | "custom" | Platform: zapier, make, n8n, slack, discord, custom |
+| includeEmoji | boolean | true | Add emoji to messages |
+| demoMode | boolean | true | Test mode (no actual sending) |</p>
+
+<h2>Output Format</h2>
+
 <p>Each joke sent generates a record with:</p>
-<ul><li><code>jokeType</code> - &quot;dad&quot; or &quot;fart&quot;</li>
+
+<ul>
+<li><code>jokeType</code> - "dad" or "fart"</li>
 <li><code>joke</code> - The full joke text</li>
 <li><code>setup</code> - Setup line (if applicable)</li>
 <li><code>punchline</code> - Punchline (if applicable)</li>
@@ -565,46 +523,32 @@
 <li><code>sentAt</code> - Timestamp</li>
 <li><code>sentVia</code> - Delivery method (sms, slack, discord, demo)</li>
 <li><code>embarrassmentLevel</code> - How cringy is this joke?</li>
+
 </ul>
-<h2>Embarrassment Levels</h2>
-<p>Your jokes come rated with randomly assigned cringe levels:</p>
-<ul><li>Mildly Cringe</li>
-<li>Eye Roll Guaranteed</li>
-<li>Full Dad Mode</li>
-<li>Maximum Embarrassment</li>
-<li>Will Not Make Eye Contact At Dinner</li>
-<li>Groan-Worthy</li>
-<li>They&#x27;ll Pretend Not To Know You</li>
-<li>Peak Parental Humor</li>
-<li>Legendary Cringe</li>
-<li>They&#x27;re Changing Their Phone Number</li>
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-<h2>Sample Jokes</h2>
-<h3>Dad Jokes</h3>
-<ul><li>&quot;Why don&#x27;t scientists trust atoms? Because they make up everything!&quot;</li>
-<li>&quot;What do you call a fake noodle? An impasta!&quot;</li>
-<li>&quot;I&#x27;m reading a book about anti-gravity. It&#x27;s impossible to put down!&quot;</li>
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
-<h3>Fart Jokes</h3>
-<ul><li>&quot;Why should you never fart in an elevator? It&#x27;s wrong on so many levels!&quot;</li>
-<li>&quot;What do you call a royal fart? A noble gas!&quot;</li>
-<li>&quot;A burp is just a fart that took the stairs.&quot;</li>
-</ul>
-<h2>Pro Tips</h2>
-<p>1. <strong>Start in Demo Mode</strong> - Always test first to make sure you like the format</p>
-<p>2. <strong>Schedule Strategically</strong> - Morning texts hit different than evening ones</p>
-<p>3. <strong>Rotate Joke Types</strong> - Use &quot;random&quot; to keep them guessing</p>
-<p>4. <strong>Multiple Kids?</strong> - Add all their numbers to recipientPhoneNumbers</p>
-<p>5. <strong>Webhook + SMS</strong> - Use both for maximum coverage</p>
-<h2>Pay-Per-Event Pricing</h2>
-<p>This actor uses pay-per-event pricing:</p>
-<ul><li><code>joke-generated</code> - Charged per joke generated</li>
-<li><code>sms-sent</code> - Charged per SMS successfully sent</li>
-<li><code>webhook-sent</code> - Charged per webhook successfully delivered</li>
-</ul>
-<h2>Support</h2>
-<p>Having issues embarrassing your kids? Report bugs at the actor&#x27;s issues page.</p>
-<p>Remember: A good dad joke is like a good fart - you have to own it with confidence!</p>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -618,7 +562,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

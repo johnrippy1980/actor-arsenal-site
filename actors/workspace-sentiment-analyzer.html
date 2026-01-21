@@ -462,284 +462,179 @@ Actionable Recommendations</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Google Workspace Sentiment Analyzer</h1>
+            <p>Analyze sentiment across Google Workspace: Gmail, Calendar, Chat, and Docs. Get company health scores, client relationship insights, and team burnout indicators.</p>
 
-<strong>"Team Communication Health Metrics"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Analyze sentiment across your entire Google Workspace: Gmail, Calendar, Chat, and Docs. Get company health scores, client relationship insights, and team burnout indicators in a single comprehensive report.</p>
-
-<h2>What This Actor Does</h2>
-
-<p>This actor aggregates sentiment analysis from multiple Google Workspace sources to provide:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Company Health Score</strong>: Overall communication health across your organization</li>
-<li><strong>Client Sentiment Score</strong>: How your external communications are trending</li>
-<li><strong>Team Burnout Indicators</strong>: Early warning signs of team overload</li>
-<li><strong>Client Risk Alerts</strong>: Identify at-risk client relationships</li>
-<li><strong>Actionable Recommendations</strong>: Prioritized steps to improve communication health</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h2>Data Sources</h2>
-
-
-<h2>Perfect For</h2>
-
-<ul>
-<li><strong>Operations Leaders</strong>: Monitor organizational communication health</li>
-<li><strong>Customer Success Teams</strong>: Track client relationship sentiment</li>
-<li><strong>HR/People Teams</strong>: Identify burnout risks early</li>
-<li><strong>Executives</strong>: Get high-level Workspace intelligence</li>
-<li><strong>Agency Owners</strong>: Monitor client relationship health</li>
-</ul>
-
-<h2>Input Examples</h2>
-
-<h3>Demo Mode (No Credentials Required)</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": true,</p>
-<p>"dateRange": "last_7_days",</p>
-<p>"dataSources": ["gmail", "calendar"],</p>
-<p>"includeClientSegments": true,</p>
-<p>"includeBurnoutIndicators": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Real Mode with Google OAuth</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"demoMode": false,</p>
-<p>"accessToken": "ya29.your-access-token",</p>
-<p>"refreshToken": "your-refresh-token",</p>
-<p>"clientId": "your-client-id.apps.googleusercontent.com",</p>
-<p>"clientSecret": "your-client-secret",</p>
-<p>"companyDomain": "yourcompany.com",</p>
-<p>"dateRange": "last_14_days",</p>
-<p>"dataSources": ["gmail", "calendar"],</p>
-<p>"includeClientSegments": true,</p>
-<p>"includeBurnoutIndicators": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h2>Output</h2>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <h3>Summary</h3>
 
 <pre><code>{
-<p>"summary": {</p>
-<p>"companyHealthScore": 60,</p>
-<p>"clientSentimentScore": 62,</p>
-<p>"teamBurnoutRisk": "medium",</p>
-<p>"dataSourcesAnalyzed": ["gmail", "calendar"],</p>
-<p>"dateRange": "last_7_days"</p>
-<p>}</p>
-<p>}</p>
+  "summary": {
+    "companyHealthScore": 60,
+    "clientSentimentScore": 62,
+    "teamBurnoutRisk": "medium",
+    "dataSourcesAnalyzed": ["gmail", "calendar"],
+    "dateRange": "last_7_days"
+  }
+}
 </code></pre>
 
 <h3>Client Segments</h3>
 
 <pre><code>{
-<p>"clientSegments": [</p>
-<p>{</p>
-<p>"domain": "acmecorp.com",</p>
-<p>"overallSentiment": 78,</p>
-<p>"trend": "improving",</p>
-<p>"riskLevel": "low"</p>
-<p>},</p>
-<p>{</p>
-<p>"domain": "troubledclient.com",</p>
-<p>"overallSentiment": 35,</p>
-<p>"trend": "declining",</p>
-<p>"riskLevel": "high"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "clientSegments": [
+    {
+      "domain": "acmecorp.com",
+      "overallSentiment": 78,
+      "trend": "improving",
+      "riskLevel": "low"
+    },
+    {
+      "domain": "troubledclient.com",
+      "overallSentiment": 35,
+      "trend": "declining",
+      "riskLevel": "high"
+    }
+  ]
+}
 </code></pre>
 
 <h3>Burnout Indicators</h3>
 
 <pre><code>{
-<p>"burnoutIndicators": [</p>
-<p>{</p>
-<p>"metric": "After-Hours Email Activity",</p>
-<p>"value": 18,</p>
-<p>"threshold": 15,</p>
-<p>"status": "warning",</p>
-<p>"description": "18% of emails sent outside business hours"</p>
-<p>},</p>
-<p>{</p>
-<p>"metric": "Meeting Load",</p>
-<p>"value": 28,</p>
-<p>"threshold": 25,</p>
-<p>"status": "warning",</p>
-<p>"description": "28 hours/week in meetings"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "burnoutIndicators": [
+    {
+      "metric": "After-Hours Email Activity",
+      "value": 18,
+      "threshold": 15,
+      "status": "warning",
+      "description": "18% of emails sent outside business hours"
+    },
+    {
+      "metric": "Meeting Load",
+      "value": 28,
+      "threshold": 25,
+      "status": "warning",
+      "description": "28 hours/week in meetings"
+    }
+  ]
+}
 </code></pre>
 
 <h3>Alerts & Recommendations</h3>
 
 <pre><code>{
-<p>"alerts": [</p>
-<p>{</p>
-<p>"type": "client_risk",</p>
-<p>"severity": "critical",</p>
-<p>"message": "1 client(s) at high risk: troubledclient.com",</p>
-<p>"action": "Schedule immediate check-in calls"</p>
-<p>}</p>
-<p>],</p>
-<p>"recommendations": [</p>
-<p>{</p>
-<p>"priority": "high",</p>
-<p>"category": "Client Retention",</p>
-<p>"action": "Schedule recovery calls with at-risk clients",</p>
-<p>"impact": "Prevent potential client churn"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "alerts": [
+    {
+      "type": "client_risk",
+      "severity": "critical",
+      "message": "1 client(s) at high risk: troubledclient.com",
+      "action": "Schedule immediate check-in calls"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "Client Retention",
+      "action": "Schedule recovery calls with at-risk clients",
+      "impact": "Prevent potential client churn"
+    }
+  ]
+}
 </code></pre>
 
-<h2>Scoring System</h2>
+<h2>Pricing</h2>
 
-<h3>Company Health Score (0-100)</h3>
-
-
-<h3>Burnout Risk Levels</h3>
-
-
-<h2>Google OAuth Setup</h2>
-
-<h3>Required Scopes</h3>
-
-<pre><code>https://www.googleapis.com/auth/gmail.readonly
-<p>https://www.googleapis.com/auth/calendar.readonly</p>
-</code></pre>
-
-<h3>Setup Steps</h3>
-
-<p>1. Create a Google Cloud project</p>
-<p>2. Enable Gmail API and Calendar API</p>
-<p>3. Configure OAuth consent screen</p>
-<p>4. Create OAuth credentials</p>
-<p>5. Get access token via OAuth flow</p>
-
-<h2>Limitations (Apify Version)</h2>
-
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li>Point-in-time snapshot (no historical trends)</li>
-<li>Single user mailbox only</li>
-<li>Manual OAuth token management</li>
-<li>Limited to 100 items per source</li>
-<li>No real-time monitoring</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-
-<h2>Enterprise Version</h2>
-
-<p>For continuous monitoring and team-wide insights:</p>
-
-<strong><a href="https://meeting.alizarin_refrigerator-owner.com/workspace-intelligence" target="_blank" rel="noopener">Workspace Intelligence by LocalHowl</a></strong>
-
-<p>Enterprise features:</p>
-<ul>
-<li>Real-time OAuth connection (no token management)</li>
-<li>Continuous monitoring & Slack/Teams alerts</li>
-<li>Historical trend analysis over months</li>
-<li>Team-wide and department rollups</li>
-<li>Executive dashboards</li>
-<li>Client health CRM integration</li>
-<li>SSO/SAML authentication</li>
-<li>Dedicated support</li>
-</ul>
-
 <h2>Use Cases</h2>
 
 <h3>1. Weekly Health Check</h3>
 
 <p>Run weekly to get a pulse on company communication:</p>
 
-<pre><code>const result = await apifyClient.actor("alizarin_refrigerator-owner/workspace-sentiment-analyzer").call({
-<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
-<p>dateRange: "last_7_days",</p>
-<p>dataSources: ["gmail", "calendar"]</p>
-<p>});</p>
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+  accessToken: process.env.GOOGLE_ACCESS_TOKEN,
+  dateRange: "last_7_days",
+  dataSources: ["gmail", "calendar"]
+});
 
-<p>if (result.summary.companyHealthScore &lt; 60) {</p>
-<p>// Send alert to leadership</p>
-<p>}</p>
-</code></pre>
+<p>if (result.summary.companyHealthScore < 60) {
+  // Send alert to leadership
+}
+</code></pre></p>
 
 <h3>2. Client Relationship Monitoring</h3>
 
 <p>Track client sentiment before quarterly reviews:</p>
 
-<pre><code>const result = await apifyClient.actor("alizarin_refrigerator-owner/workspace-sentiment-analyzer").call({
-<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
-<p>companyDomain: "mycompany.com",</p>
-<p>dateRange: "last_30_days",</p>
-<p>includeClientSegments: true</p>
-<p>});</p>
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+  accessToken: process.env.GOOGLE_ACCESS_TOKEN,
+  companyDomain: "mycompany.com",
+  dateRange: "last_30_days",
+  includeClientSegments: true
+});
 
-<p>const atRiskClients = result.clientSegments.filter(c =&gt; c.riskLevel === "high");</p>
-</code></pre>
+<p>const atRiskClients = result.clientSegments.filter(c => c.riskLevel === "high");
+</code></pre></p>
 
 <h3>3. Burnout Prevention</h3>
 
 <p>Monitor team health metrics:</p>
 
-<pre><code>const result = await apifyClient.actor("alizarin_refrigerator-owner/workspace-sentiment-analyzer").call({
-<p>accessToken: process.env.GOOGLE_ACCESS_TOKEN,</p>
-<p>includeBurnoutIndicators: true</p>
-<p>});</p>
+<pre><code>const result = await apifyClient.actor("localhowl/workspace-sentiment-analyzer").call({
+  accessToken: process.env.GOOGLE_ACCESS_TOKEN,
+  includeBurnoutIndicators: true
+});
 
-<p>if (result.summary.teamBurnoutRisk === "high") {</p>
-<p>// Implement intervention measures</p>
-<p>}</p>
-</code></pre>
-
-<h2>Privacy & Security</h2>
-
-<ul>
-<li>Uses Google OAuth 2.0 with read-only scopes</li>
-<li>Analyzes metadata and snippets only</li>
-<li>No full email/document content stored</li>
-<li>All analysis is aggregated, not individual</li>
-<li>Compliant with Google's API usage policies</li>
-</ul>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/gmail-sentiment-scanner?fpr=kqpn7" target="_blank" rel="noopener">Gmail Sentiment Scanner</a></strong>: Deep-dive Gmail analysis</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/teams-meeting-cost-tracker?fpr=kqpn7" target="_blank" rel="noopener">Teams Meeting Cost Tracker</a></strong>: Microsoft Teams analysis</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/meeting-culture-score-checker?fpr=kqpn7" target="_blank" rel="noopener">Meeting Culture Score Checker</a></strong>: Public meeting culture analysis</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: https://meeting.alizarin_refrigerator-owner.com/docs</li>
-<li><strong>Email</strong>: support@alizarin_refrigerator-owner.com</li>
-<li><strong>Issues</strong>: Report bugs or request features</li>
-</ul>
+<p>if (result.summary.teamBurnoutRisk === "high") {
+  // Implement intervention measures
+}
+</code></pre></p>
 
 <p>---</p>
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote><strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
-
-<em>Part of the <a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Workspace Intelligence</a> suite by <a href="https://alizarin_refrigerator-owner.com" target="_blank" rel="noopener">LocalHowl</a></em>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -753,7 +648,7 @@ Actionable Recommendations</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

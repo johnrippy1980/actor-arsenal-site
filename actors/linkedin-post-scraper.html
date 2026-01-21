@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>LinkedIn Post Scraper</h1>
-
-<strong>"Find Viral LinkedIn Content in Any Niche"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape viral/trending LinkedIn posts by hashtag or keyword search. Perfect for finding content inspiration and building a library of top-performing posts in your niche.</p>
+            <h1>AI Linkedin Post Scraper</h1>
+            <p>Scrape viral and trending LinkedIn posts by hashtag or keyword. Find top-performing content for inspiration and voice training. Features: - Search posts by hashtag or keyword - Filter by engagement metrics - Get full post content and reactions - Analyze content patterns - Identify viral hooks and formats - Track trending topics Data Collected: - Post text and media - Reaction counts (likes, comments, shares) - Author profile info - Post date and time - Hashtags used - Content format (text, image, video, carousel) Ideal for: - Content inspiration - Voice training data - Trend analysis - Competitive research - Content strategy. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -477,110 +470,113 @@
 <li><strong>Engagement Filtering</strong>: Only get posts above your engagement thresholds</li>
 <li><strong>Author Info</strong>: Optionally includes author's followers and headline</li>
 <li><strong>Voice Training Ready</strong>: Output formatted for AI voice analysis</li>
+
 </ul>
-
-<h2>Use Cases</h2>
-
-<p>1. <strong>Content Inspiration</strong>: Find what's working in your niche</p>
-<p>2. <strong>Trend Research</strong>: Track trending topics and formats</p>
-<p>3. <strong>Voice Training</strong>: Collect diverse writing styles for AI training</p>
-<p>4. <strong>Competitor Analysis</strong>: See what content performs best</p>
-
-<h2>Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"searchType": "hashtag",</p>
-<p>"hashtags": ["leadership", "marketing", "AI"],</p>
-<p>"cookies": "[{\"name\":\"li_at\", ...}]",</p>
-<p>"maxPostsPerSource": 50,</p>
-<p>"minLikes": 100,</p>
-<p>"minComments": 10,</p>
-<p>"sortBy": "top",</p>
-<p>"timeFilter": "past_week",</p>
-<p>"includeAuthorInfo": true</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h3>Getting LinkedIn Cookies (Required)</h3>
+<h2>Demo Mode</h2>
 
-<p>If you have <strong>Multi-Factor Authentication (MFA/2FA) enabled</strong> on your LinkedIn account, you <strong>must use cookies</strong> - there's no alternative login method.</p>
-
-<strong>Step 1:</strong> Install a cookie export extension:
-<ul>
-<li><strong><a href="https://cookie-editor.com/" target="_blank" rel="noopener">Cookie-Editor</a></strong> by <a href="https://github.com/Moustachauve/cookie-editor" target="_blank" rel="noopener">Moustachauve</a> - Clean interface, supports Chrome/Firefox/Edge/Safari</li>
-<li><strong><a href="http://www.editthiscookie.com/" target="_blank" rel="noopener">EditThisCookie</a></strong> by <a href="https://github.com/ETCExtensions/Edit-This-Cookie" target="_blank" rel="noopener">Francesco Capano</a> - Chrome extension, classic choice</li>
-</ul>
-
-<strong>Step 2:</strong> Log into LinkedIn in your browser
-
-<strong>Step 3:</strong> Click the cookie extension icon, then:
-<ul>
-<li><strong>Cookie-Editor:</strong> Click "Export" → "Export as JSON"</li>
-<li><strong>EditThisCookie:</strong> Click the export button (looks like ↓)</li>
-</ul>
-
-<strong>Step 4:</strong> Paste the JSON array into the "cookies" field
-
-<p>The most important cookie is <code>li_at</code> - this is your LinkedIn session token.</p>
-
-<h2>Output</h2>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"posts": [</p>
-<p>{</p>
-<p>"id": "123",</p>
-<p>"url": "https://linkedin.com/feed/update/...",</p>
-<p>"text": "Post content...",</p>
-<p>"likes": 1523,</p>
-<p>"comments": 234,</p>
-<p>"reposts": 89,</p>
-<p>"postedAt": "2025-12-15T10:00:00Z",</p>
-<p>"hashtags": ["leadership", "growth"],</p>
-<p>"author": {</p>
-<p>"name": "John Doe",</p>
-<p>"headline": "CEO at Company",</p>
-<p>"profileUrl": "https://linkedin.com/in/johndoe",</p>
-<p>"followers": 50000</p>
-<p>},</p>
-<p>"hasImage": true,</p>
-<p>"hasVideo": false,</p>
-<p>"hasCarousel": false,</p>
-<p>"hasDocument": true</p>
-<p>}</p>
-<p>],</p>
-<p>"stats": {</p>
-<p>"totalPosts": 150,</p>
-<p>"avgLikes": 523,</p>
-<p>"avgComments": 45,</p>
-<p>"topAuthors": ["John Doe", "Jane Smith"],</p>
-<p>"topHashtags": ["leadership", "growth", "mindset"]</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "searchType": "hashtag",
+  "hashtags": ["leadership", "marketing", "AI"],
+  "cookies": "[{\"name\":\"li_at\", ...}]",
+  "maxPostsPerSource": 50,
+  "minLikes": 100,
+  "minComments": 10,
+  "sortBy": "top",
+  "timeFilter": "past_week",
+  "includeAuthorInfo": true
+}
+</code></pre>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "posts": [
+    {
+      "id": "123",
+      "url": "https://linkedin.com/feed/update/...",
+      "text": "Post content...",
+      "likes": 1523,
+      "comments": 234,
+      "reposts": 89,
+      "postedAt": "2025-12-15T10:00:00Z",
+      "hashtags": ["leadership", "growth"],
+      "author": {
+        "name": "John Doe",
+        "headline": "CEO at Company",
+        "profileUrl": "https://linkedin.com/in/johndoe",
+        "followers": 50000
+      },
+      "hasImage": true,
+      "hasVideo": false,
+      "hasCarousel": false,
+      "hasDocument": true
+    }
+  ],
+  "stats": {
+    "totalPosts": 150,
+    "avgLikes": 523,
+    "avgComments": 45,
+    "topAuthors": ["John Doe", "Jane Smith"],
+    "topHashtags": ["leadership", "growth", "mindset"]
+  }
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>post_scraped</code> | Per post scraped | $0.02 |
+| <code>author_scraped</code> | Per author profile (if includeAuthorInfo) | $0.01 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>50 posts basic: $0.10 + (50 × $0.02) = <strong>$1.10</strong></li>
 <li>50 posts with author info: $0.10 + (50 × $0.02) + (50 × $0.01) = <strong>$1.60</strong></li>
 <li>100 posts with author info: $0.10 + (100 × $0.02) + (100 × $0.01) = <strong>$3.10</strong></li>
-</ul>
 
-<p>---</p>
+</ul>
+---
 <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Use Cases</h2>
 
-<p>linkedin post scraper, linkedin content scraper, linkedin data extraction, linkedin api, social media scraper, linkedin posts</p>
+<p>1. <strong>Content Inspiration</strong>: Find what's working in your niche
+2. <strong>Trend Research</strong>: Track trending topics and formats
+3. <strong>Voice Training</strong>: Collect diverse writing styles for AI training
+4. <strong>Competitor Analysis</strong>: See what content performs best</p>
 
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -594,7 +590,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -456,137 +456,112 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>TikTok Custom Audiences</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>TikTok Ads API - Create Audiences &amp; Lookalikes with Auto-Hashing</blockquote>
-<p>Create and manage TikTok Custom Audiences via the TikTok Marketing API. Upload customer files with automatic SHA256 hashing, create lookalike audiences, and manage segments for TikTok advertising campaigns.</p>
+            <h1>TikTok Custom Audiences - TikTok Ads API</h1>
+            <p>Create and manage TikTok Custom Audiences via TikTok Marketing API. Upload customer files with auto-hashing, create lookalike audiences, manage segments for TikTok advertising campaigns.</p>
+
 <h2>Features</h2>
+
 <h3>Audience Management</h3>
-<ul><li><strong>create_audience</strong> - Create a new custom audience</li>
+<ul>
+<li><strong>create_audience</strong> - Create a new custom audience</li>
 <li><strong>get_audience</strong> - Get details of a specific audience</li>
 <li><strong>list_audiences</strong> - List all custom audiences</li>
 <li><strong>update_audience</strong> - Update audience name</li>
 <li><strong>delete_audience</strong> - Delete a custom audience</li>
+
 </ul>
 <h3>User Management</h3>
-<ul><li><strong>upload_users</strong> - Upload users to audience (auto-hashes PII)</li>
+<ul>
+<li><strong>upload_users</strong> - Upload users to audience (auto-hashes PII)</li>
 <li><strong>get_audience_size</strong> - Get audience size and status</li>
+
 </ul>
 <h3>Advanced Features</h3>
-<ul><li><strong>create_lookalike</strong> - Create lookalike audience from source</li>
+<ul>
+<li><strong>create_lookalike</strong> - Create lookalike audience from source</li>
 <li><strong>share_audience</strong> - Share audience with another advertiser</li>
+
 </ul>
-<h2>Authentication</h2>
-<p>Requires TikTok Marketing API access token with:</p>
-<ul><li><code>Audience Management</code> permission</li>
-<li>Access to the advertiser account</li>
-</ul>
-<h3>Getting an Access Token</h3>
-<p>1. Create a TikTok for Business account</p>
-<p>2. Register as a developer at ads.tiktok.com/marketing_api</p>
-<p>3. Create an app and get API credentials</p>
-<p>4. Complete OAuth flow for access token</p>
-<h2>User Data Format</h2>
-<h3>Email Upload</h3>
-<pre><code>[
-<p>{ &quot;email&quot;: &quot;john@example.com&quot; },</p>
-<p>{ &quot;email&quot;: &quot;jane@example.com&quot; }</p>
-<p>]</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
 </code></pre>
-<h3>Phone Upload</h3>
-<pre><code>[
-<p>{ &quot;phone&quot;: &quot;+15551234567&quot; },</p>
-<p>{ &quot;phone&quot;: &quot;+15559876543&quot; }</p>
-<p>]</p>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
 </code></pre>
-<h3>Device ID Upload</h3>
-<pre><code>[
-<p>{ &quot;idfa&quot;: &quot;AEBE52E7-03EE-455A-B3C4-E57283966239&quot; },</p>
-<p>{ &quot;gaid&quot;: &quot;38400000-8cf0-11bd-b23e-10b96e40000d&quot; }</p>
-<p>]</p>
-</code></pre>
-<h2>Automatic Hashing</h2>
-<p>The actor automatically:</p>
-<p>1. Normalizes data (lowercase, trim whitespace)</p>
-<p>2. Removes special characters from phone numbers</p>
-<p>3. SHA256 hashes email and phone data</p>
-<p>If your data is already hashed, set <code>isAlreadyHashed: true</code> and use <code>EMAIL_SHA256</code> or <code>PHONE_SHA256</code> as fileType.</p>
-<h2>Audience Types</h2>
-<p>| Type | Description |</p>
-<p>|------|-------------|</p>
-<p>| CUSTOMER_FILE | Upload email, phone, or device IDs |</p>
-<p>| ENGAGEMENT | Users who engaged with TikTok content |</p>
-<p>| APP_ACTIVITY | Users from app install/events |</p>
-<p>| LEAD_GENERATION | Leads from TikTok lead forms |</p>
-<p>| BUSINESS_ACCOUNT | Followers/viewers of TikTok account |</p>
-<p>| SHOP_ACTIVITY | TikTok Shop customers |</p>
-<p>| OFFLINE | Offline event data |</p>
-<h2>Lookalike Options</h2>
-<p>| Type | Description |</p>
-<p>|------|-------------|</p>
-<p>| NARROW | Smallest, most similar audience (1-2%) |</p>
-<p>| BALANCED | Medium similarity and reach (2-5%) |</p>
-<p>| BROAD | Largest reach, less similar (5-10%) |</p>
-<h2>Use Cases</h2>
-<h3>Retarget Customers</h3>
-<pre><code>1. Export customer emails from CRM
-<p>2. Use upload_users with fileType: EMAIL</p>
-<p>3. Create TikTok ad campaigns targeting the audience</p>
-</code></pre>
-<h3>Expand Reach</h3>
-<pre><code>1. Create audience of best customers
-<p>2. Use create_lookalike with BALANCED type</p>
-<p>3. Reach similar users on TikTok</p>
-</code></pre>
-<h3>Cross-Account Sharing</h3>
-<pre><code>1. Create audience in main account
-<p>2. Use share_audience with agency account ID</p>
-<p>3. Agency can target same audience</p>
-</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
 <h2>Output Format</h2>
+
 <h3>Audience Object</h3>
 <pre><code>{
-<p>&quot;audience_id&quot;: &quot;7123456789012345678&quot;,</p>
-<p>&quot;name&quot;: &quot;High Value Customers&quot;,</p>
-<p>&quot;audience_type&quot;: &quot;CUSTOMER_FILE&quot;,</p>
-<p>&quot;cover_num&quot;: 15420,</p>
-<p>&quot;is_valid&quot;: true,</p>
-<p>&quot;is_expiring&quot;: false,</p>
-<p>&quot;create_time&quot;: &quot;2024-01-20 14:30:00&quot;,</p>
-<p>&quot;modify_time&quot;: &quot;2024-01-21 10:15:00&quot;</p>
-<p>}</p>
+  "audience_id": "7123456789012345678",
+  "name": "High Value Customers",
+  "audience_type": "CUSTOMER_FILE",
+  "cover_num": 15420,
+  "is_valid": true,
+  "is_expiring": false,
+  "create_time": "2024-01-20 14:30:00",
+  "modify_time": "2024-01-21 10:15:00"
+}
 </code></pre>
+
 <h3>Upload Response</h3>
 <pre><code>{
-<p>&quot;audience_id&quot;: &quot;7123456789012345678&quot;,</p>
-<p>&quot;upload_num&quot;: 1000,</p>
-<p>&quot;match_num&quot;: 650,</p>
-<p>&quot;match_rate&quot;: 65.0,</p>
-<p>&quot;status&quot;: &quot;PROCESSING&quot;</p>
-<p>}</p>
+  "audience_id": "7123456789012345678",
+  "upload_num": 1000,
+  "match_num": 650,
+  "match_rate": 65.0,
+  "status": "PROCESSING"
+}
 </code></pre>
-<h2>Rate Limits</h2>
-<ul><li>10 requests per second per app</li>
-<li>1000 audiences per advertiser</li>
-<li>10 million users per audience</li>
-<li>Recommended batch size: 500,000 users per upload</li>
-</ul>
-<h2>Minimum Audience Sizes</h2>
-<ul><li>Custom audiences: 1,000 matched users</li>
-<li>Lookalike audiences: Source must have 1,000+ users</li>
-</ul>
+
 <h2>Pricing</h2>
-<p>$0.01 per query (all tasks)</p>
-<h2>Compliance Notes</h2>
-<ul><li>Obtain proper consent before uploading user data</li>
-<li>Data is hashed before transmission to TikTok</li>
-<li>TikTok matches hashes against their user base</li>
-<li>Users must be 18+ for advertising targeting</li>
-<li>Follow TikTok&#x27;s advertising policies</li>
-</ul>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
+<h2>Use Cases</h2>
+
+<h3>Retarget Customers</h3>
+<pre><code>1. Export customer emails from CRM
+2. Use upload_users with fileType: EMAIL
+3. Create TikTok ad campaigns targeting the audience
+</code></pre>
+
+<h3>Expand Reach</h3>
+<pre><code>1. Create audience of best customers
+2. Use create_lookalike with BALANCED type
+3. Reach similar users on TikTok
+</code></pre>
+
+<h3>Cross-Account Sharing</h3>
+<pre><code>1. Create audience in main account
+2. Use share_audience with agency account ID
+3. Agency can target same audience
+</code></pre>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -600,7 +575,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,140 +457,80 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Local SEO MCP Server - AI Assistant Integration for Claude</h1>
+            <h1>Local SEO MCP Server for Claude & AI Assistants</h1>
+            <p>Connect Claude Desktop or any MCP-compatible AI to 26 local SEO tools. Includes: Citation God Mode (100+ directory scans), citation audits, GBP scraping, review responses, reputation scoring, sentiment analysis, Core Web Vitals, Lighthouse audits, PageSpeed Insights, technical SEO, and lead generation - all via natural language.</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<blockquote>Give Claude 14 local SEO superpowers through natural language</blockquote>
-
-<h2>Why Use This MCP Server?</h2>
-
-<p>Stop copying data between tools. This MCP (Model Context Protocol) server connects Claude Desktop directly to 14 specialized local SEO tools. Just ask Claude naturally:</p>
+<h2>Features</h2>
 
 <ul>
-<li>"Check if Joe's Plumbing has consistent NAP across all directories"</li>
-<li>"Audit the technical SEO for mywebsite.com and prioritize the fixes"</li>
-<li>"Find 20 HVAC companies in Denver with their contact info"</li>
-<li>"Generate a response to this angry 2-star review"</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
-
-<strong>One configuration. Infinite automations.</strong>
-
-<h2>Available Tools</h2>
-
-
 <h2>Quick Start</h2>
 
-<h3>Option 1: Run Standalone on Apify</h3>
-
-<p>Test any tool directly without Claude Desktop:</p>
-
 <pre><code>{
-<p>"demoMode": true,</p>
-<p>"tool": "check_citations",</p>
-<p>"toolInput": {</p>
-<p>"businessName": "Starbucks",</p>
-<p>"city": "Seattle",</p>
-<p>"state": "WA"</p>
-<p>}</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Option 2: Connect to Claude Desktop</h3>
+<h2>Demo Mode</h2>
 
-<p>Add to your <code>claude_desktop_config.json</code>:</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"mcpServers": {</p>
-<p>"local-seo": {</p>
-<p>"command": "npx",</p>
-<p>"args": [</p>
-<p>"-y",</p>
-<p>"@anthropic/mcp-server-apify",</p>
-<p>"--actor",</p>
-<p>"alizarin_refrigerator-owner/local-seo-mcp-server"</p>
-<p>],</p>
-<p>"env": {</p>
-<p>"APIFY_TOKEN": "your_apify_token_here"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<p>Then just chat with Claude:</p>
-
-<blockquote>"Run a citation audit for Joe's Pizza at 123 Main St, Chicago, IL"</blockquote>
-
-<blockquote>"What's the technical SEO score for competitor-website.com?"</blockquote>
-
-<blockquote>"Find 15 plumbers in Miami and export their phone numbers"</blockquote>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Required | Description |
+|-----------|----------|-------------|
+| <code>apifyToken</code> | Yes<em> | Your Apify API token (</em>not needed in demo mode) |
+| <code>anthropicApiKey</code> | No | For AI features like review response generation |
+| <code>demoMode</code> | No | Set <code>true</code> to see sample outputs without API calls |
+| <code>tool</code> | Yes | Which tool to run (see table above) |
+| <code>toolInput</code> | Yes | Tool-specific parameters |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor orchestrates other actors - you only pay for what you use:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor orchestrates other actors - you only pay for what you use:</p>
 
+<p>| Underlying Actor | Approximate Cost |
+|------------------|------------------|
+| Citation Checker | ~$0.05/check |
+| Technical SEO Auditor | $0.10/page |
+| PageSpeed Insights | $0.03/URL |
+| Review Scraper | ~$0.02/review |
+| Local Leads Scraper | ~$0.01/lead |</p>
 
-<h2>Automation Examples</h2>
-
-<h3>Zapier / Make.com Workflow</h3>
-
-<p>Trigger via webhook to automate:</p>
-<p>1. New client signs up → Run citation audit</p>
-<p>2. Weekly schedule → Monitor competitor rankings</p>
-<p>3. New review detected → Generate response</p>
-
-<h3>n8n Integration</h3>
-
-<pre><code>const result = await $http.request({
-<p>method: 'POST',</p>
-<p>url: 'https://api.apify.com/v2/acts/alizarin_refrigerator-owner~local-seo-mcp-server/runs',</p>
-<p>headers: { 'Content-Type': 'application/json' },</p>
-<p>body: {</p>
-<p>tool: 'generate_review_response',</p>
-<p>toolInput: {</p>
-<p>reviewText: items[0].json.review,</p>
-<p>rating: items[0].json.rating,</p>
-<p>businessName: 'My Business'</p>
-<p>}</p>
-<p>}</p>
-<p>});</p>
-</code></pre>
-
-<h2>Related Actors</h2>
-
-<p>This MCP server calls these specialized actors:</p>
+<h2>Use Cases</h2>
 
 <ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/citation-checker?fpr=kqpn7" target="_blank" rel="noopener">Citation Checker</a> - NAP consistency audits</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/local-business-intelligence-suite?fpr=kqpn7" target="_blank" rel="noopener">Local Business Intelligence Suite</a> - GBP data extraction</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/technical-seo-auditor?fpr=kqpn7" target="_blank" rel="noopener">Technical SEO Auditor</a> - On-page analysis</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/review-response-generator?fpr=kqpn7" target="_blank" rel="noopener">Review Response Generator</a> - AI review replies</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/local-leads-scraper?fpr=kqpn7" target="_blank" rel="noopener">Local Leads Scraper</a> - Lead generation</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/pagespeed-insights?fpr=kqpn7" target="_blank" rel="noopener">PageSpeed Insights</a> - Core Web Vitals</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<h2>Support</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980/apify-actors/issues" target="_blank" rel="noopener">Report issues</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Part of the Local SEO Automation Suite</strong> - 50+ Apify actors for automating local search optimization.
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -604,7 +544,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

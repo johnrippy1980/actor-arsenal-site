@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,143 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Amazon Product Scraper Product Intelligence at Scale</h1>
-            <p>Apify actor for Amazon Product Scraper Product Intelligence at Scale</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Scrape Amazon product data including prices, ratings, reviews, seller info, and availability. E-commerce competitive intelligence.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Product details</strong> - Title, price, images, features, variations</li>
+<li><strong>Reviews & ratings</strong> - Star rating, review count, review content</li>
+<li><strong>Bestseller rank</strong> - BSR and category rankings</li>
+<li><strong>Seller info</strong> - Brand, seller name, fulfillment type (FBA/FBM)</li>
+<li><strong>Prime status</strong> - Identify Prime-eligible products</li>
+<li><strong>Multi-marketplace</strong> - Support for US, UK, DE, FR, CA, AU, JP</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "searchQueries": ["wireless earbuds", "yoga mat"],
+  "marketplace": "amazon.com",
+  "maxProducts": 50,
+  "includeReviews": true
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>searchQueries</code> | array | - | Keywords to search on Amazon |
+| <code>productUrls</code> | array | - | Direct Amazon product URLs (ASINs) |
+| <code>categoryUrl</code> | string | - | Amazon category/bestseller page URL |
+| <code>marketplace</code> | string | "amazon.com" | Amazon marketplace domain |
+| <code>maxProducts</code> | number | 50 | Maximum products per search |
+| <code>includeReviews</code> | boolean | false | Scrape product reviews |
+| <code>maxReviewsPerProduct</code> | number | 10 | Max reviews per product |
+| <code>demoMode</code> | boolean | true | Run with sample data |
+| <code>webhookUrl</code> | string | - | URL for webhook delivery (Zapier, Make, n8n) |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "asin": "B0EXAMPLE123",
+  "title": "Sony Wireless Earbuds with Active Noise Cancellation",
+  "url": "https://www.amazon.com/dp/B0EXAMPLE123",
+  "price": "$49.99",
+  "originalPrice": "$64.99",
+  "currency": "USD",
+  "rating": 4.5,
+  "reviewCount": 3250,
+  "bsrRank": 156,
+  "bsrCategory": "Electronics > Headphones",
+  "brand": "Sony",
+  "seller": "Sony",
+  "fulfillment": "FBA",
+  "prime": true,
+  "inStock": true,
+  "images": ["https://m.media-amazon.com/images/I/..."],
+  "features": [
+    "High-quality audio with deep bass",
+    "Up to 30 hours battery life",
+    "Comfortable fit for all-day wear"
+  ],
+  "variations": [
+    { "name": "Color", "options": ["Black", "White", "Blue"] }
+  ],
+  "reviews": [
+    {
+      "author": "Happy Customer",
+      "rating": 5,
+      "title": "Amazing sound quality!",
+      "content": "These headphones exceeded my expectations...",
+      "date": "2025-12-20",
+      "verified": true,
+      "helpful": 45
+    }
+  ],
+  "searchQuery": "wireless earbuds"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>product_scraped</code> | Per product scraped | $0.01 |
+| <code>review_scraped</code> | Per review scraped | $0.005 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Scrape 100 products: 100 × $0.01 = <strong>$1.00</strong></li>
+<li>Scrape 100 products with 10 reviews each: $1.00 + 1000 × $0.005 = <strong>$6.00</strong></li>
+
+</ul>
+---
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Product research</strong> - Find winning products to sell</li>
+<li><strong>Pricing intelligence</strong> - Monitor competitor pricing</li>
+<li><strong>Market analysis</strong> - Understand category trends</li>
+<li><strong>Review mining</strong> - Extract customer feedback at scale</li>
+<li><strong>Brand monitoring</strong> - Track your products vs. competitors</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +471,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

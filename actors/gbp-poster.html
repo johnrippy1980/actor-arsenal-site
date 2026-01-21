@@ -457,15 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Google Business Profile Poster</h1>
-
-<blockquote><strong>Post to GBP automatically</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Automate posting to your Google Business Profile! Create updates, events, and offers with images and call-to-action buttons.</p>
+            <h1>Google Business Profile (GBP) Poster</h1>
+            <p>Google Business Profile Automation - Post updates, events, and offers to GBP/GMB automatically. Schedule local business content, attach images, add CTA buttons (Book, Order, Learn More). Perfect for local SEO, multi-location management, and marketing agencies. Cookie-based auth for reliable posting. Alternative to GMB API. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -475,76 +470,76 @@
 <li><strong>Offer Posts</strong> - Share deals with promo codes</li>
 <li><strong>Images</strong> - Attach photos to your posts</li>
 <li><strong>CTA Buttons</strong> - Add Book, Order, Learn More, etc.</li>
+
 </ul>
-
-<h2>Authentication</h2>
-
-<p>Two options:</p>
-<p>1. <strong>Email/Password</strong> - Works for accounts without 2FA</p>
-<p>2. <strong>Cookies</strong> - Export cookies from a logged-in session (recommended)</p>
-
-<h3>Exporting Cookies</h3>
-
-<p>1. Install a browser extension like "EditThisCookie"</p>
-<p>2. Log into Google Business Profile</p>
-<p>3. Export cookies as JSON</p>
-<p>4. Paste into the "Cookies" field</p>
-
-<h2>Example Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"cookies": "[{...exported cookies...}]",</p>
-<p>"businessUrl": "https://www.google.com/maps/place/Joes+Pizza",</p>
-<p>"postType": "update",</p>
-<p>"message": "Happy Friday! 🍕 Come grab a slice - 20% off all large pizzas today only!",</p>
-<p>"imageUrl": "https://example.com/pizza.jpg",</p>
-<p>"ctaType": "order",</p>
-<p>"ctaUrl": "https://joespizza.com/order"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h2>Output</h2>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"success": true,</p>
-<p>"postUrl": "https://business.google.com/posts/..."</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h2>Tips</h2>
+<h2>Input Parameters</h2>
 
-<ul>
-<li>Posts appear within minutes on Google Search and Maps</li>
-<li>Use high-quality images (min 400x300px)</li>
-<li>Include a CTA for better engagement</li>
-<li>Post regularly (2-3 times per week recommended)</li>
-</ul>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<p>---</p>
+<h2>Output Format</h2>
+
+<pre><code>{
+  "success": true,
+  "postUrl": "https://business.google.com/posts/..."
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>post_created</code> | Per GBP post created | $0.05 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>Single post: $0.10 + $0.05 = <strong>$0.15</strong></li>
 <li>Batch of 10 posts: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-</ul>
 
-<p>---</p>
+</ul>
+---
 
 <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Use Cases</h2>
 
-<p>gbp poster, google business profile poster, gmb automation, google posts api, local seo automation, business profile posting</p>
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
 
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -558,7 +553,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

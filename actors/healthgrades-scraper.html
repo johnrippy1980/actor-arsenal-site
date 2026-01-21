@@ -457,27 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Healthgrades Doctor & Healthcare Provider Scraper</h1>
-
-<blockquote>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Scrape Healthgrades for doctor profiles, patient reviews, ratings, and practice information. Essential for healthcare reputation monitoring and provider research.</p>
-
-<h2>Why Healthgrades Data is Valuable</h2>
-
-<p>Healthgrades is a leading healthcare provider review platform:</p>
-<ul>
-<li><strong>Patient Reviews</strong>: Verified reviews from actual patients</li>
-<li><strong>Provider Ratings</strong>: Overall ratings and category-specific scores</li>
-<li><strong>Credentials</strong>: Education, certifications, board certifications</li>
-<li><strong>Insurance</strong>: Insurance networks accepted</li>
-<li><strong>Practice Details</strong>: Office locations, hours, telehealth availability</li>
-<li><strong>Specialties</strong>: Detailed specialty and condition information</li>
-</ul>
+            <p>Scrape Healthgrades profiles for doctors, dentists, and healthcare providers. Extract patient reviews, ratings, specialties, board certifications, insurance accepted, hospital affiliations, and practice information. Essential for healthcare reputation monitoring and provider research. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -488,8 +471,119 @@
 <li><strong>Review Extraction</strong>: Patient reviews with ratings and dates</li>
 <li><strong>Insurance Filtering</strong>: Filter by accepted insurance</li>
 <li><strong>Credentials Data</strong>: Education, board certifications, awards</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Type: provider_profile, search, reviews, specialty_search |
+| <code>providerUrl</code> | string | Direct Healthgrades profile URL |
+| <code>providerName</code> | string | Doctor or provider name to search |
+| <code>specialty</code> | string | Medical specialty (Cardiologist, Dentist, etc.) |
+| <code>location</code> | string | City, State or ZIP code |
+| <code>insuranceAccepted</code> | string | Filter by insurance provider |
+| <code>minRating</code> | number | Minimum rating (1.0-5.0) |
+| <code>gender</code> | string | Filter by provider gender |
+| <code>acceptingNewPatients</code> | boolean | Only show providers accepting new patients |
+| <code>includeReviews</code> | boolean | Scrape patient reviews (default: true) |
+| <code>maxReviewsPerProvider</code> | number | Max reviews per provider (default: 25) |
+| <code>maxResults</code> | number | Maximum providers (default: 50) |
+| <code>proxyConfiguration</code> | object | Proxy settings |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<h3>Provider Output</h3>
+
+<pre><code>{
+  "providerName": "Dr. John Smith, MD",
+  "healthgradesUrl": "https://www.healthgrades.com/physician/dr-john-smith-abc123",
+  "npi": "1234567890",
+  "specialty": "Cardiologist",
+  "subspecialties": ["Interventional Cardiology", "Heart Failure"],
+  "rating": 4.8,
+  "reviewCount": 156,
+  "patientSatisfactionScore": 92,
+  "education": [
+    {
+      "type": "Medical School",
+      "institution": "Johns Hopkins University",
+      "year": 2005
+    }
+  ],
+  "boardCertifications": ["Cardiovascular Disease", "Internal Medicine"],
+  "yearsExperience": 19,
+  "gender": "Male",
+  "languages": ["English", "Spanish"],
+  "acceptingNewPatients": true,
+  "telehealth": true,
+  "insuranceAccepted": ["Aetna", "Blue Cross", "United Healthcare"],
+  "practiceLocations": [
+    {
+      "name": "Heart Care Clinic",
+      "address": "123 Medical Center Dr, Suite 200",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77001",
+      "phone": "(555) 123-4567"
+    }
+  ],
+  "conditionsTreated": ["Heart Disease", "Arrhythmia", "Hypertension"],
+  "proceduresPerformed": ["Cardiac Catheterization", "Stent Placement"],
+  "hospitalAffiliations": ["Memorial Hermann Hospital", "Houston Methodist"],
+  "awards": ["Top Doctor 2023", "Patient's Choice Award"],
+  "reviews": [
+    {
+      "reviewId": "hg123456",
+      "rating": 5,
+      "title": "Excellent cardiologist",
+      "text": "Dr. Smith is thorough and explains everything clearly...",
+      "date": "November 2024",
+      "waitTime": "Less than 15 minutes",
+      "recommendsDoctor": true,
+      "verified": true
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>provider_scraped</code> | Per provider profile scraped | $0.08 |
+| <code>review_scraped</code> | Per review extracted | $0.005 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 providers with 25 reviews each: $0.10 + (50 × $0.08) + (1250 × $0.005) = <strong>$10.35</strong></li>
+<li>100 providers, no reviews: $0.10 + (100 × $0.08) = <strong>$8.10</strong></li>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -499,176 +593,13 @@
 <li><strong>Patient Acquisition</strong>: Identify areas with provider gaps</li>
 <li><strong>Market Analysis</strong>: Analyze healthcare provider density by region</li>
 <li><strong>Insurance Network Mapping</strong>: Map which providers accept specific insurance</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<h3>Provider Output</h3>
-
-<pre><code>{
-<p>"providerName": "Dr. John Smith, MD",</p>
-<p>"healthgradesUrl": "https://www.healthgrades.com/physician/dr-john-smith-abc123",</p>
-<p>"npi": "1234567890",</p>
-<p>"specialty": "Cardiologist",</p>
-<p>"subspecialties": ["Interventional Cardiology", "Heart Failure"],</p>
-<p>"rating": 4.8,</p>
-<p>"reviewCount": 156,</p>
-<p>"patientSatisfactionScore": 92,</p>
-<p>"education": [</p>
-<p>{</p>
-<p>"type": "Medical School",</p>
-<p>"institution": "Johns Hopkins University",</p>
-<p>"year": 2005</p>
-<p>}</p>
-<p>],</p>
-<p>"boardCertifications": ["Cardiovascular Disease", "Internal Medicine"],</p>
-<p>"yearsExperience": 19,</p>
-<p>"gender": "Male",</p>
-<p>"languages": ["English", "Spanish"],</p>
-<p>"acceptingNewPatients": true,</p>
-<p>"telehealth": true,</p>
-<p>"insuranceAccepted": ["Aetna", "Blue Cross", "United Healthcare"],</p>
-<p>"practiceLocations": [</p>
-<p>{</p>
-<p>"name": "Heart Care Clinic",</p>
-<p>"address": "123 Medical Center Dr, Suite 200",</p>
-<p>"city": "Houston",</p>
-<p>"state": "TX",</p>
-<p>"zip": "77001",</p>
-<p>"phone": "(555) 123-4567"</p>
-<p>}</p>
-<p>],</p>
-<p>"conditionsTreated": ["Heart Disease", "Arrhythmia", "Hypertension"],</p>
-<p>"proceduresPerformed": ["Cardiac Catheterization", "Stent Placement"],</p>
-<p>"hospitalAffiliations": ["Memorial Hermann Hospital", "Houston Methodist"],</p>
-<p>"awards": ["Top Doctor 2023", "Patient's Choice Award"],</p>
-<p>"reviews": [</p>
-<p>{</p>
-<p>"reviewId": "hg123456",</p>
-<p>"rating": 5,</p>
-<p>"title": "Excellent cardiologist",</p>
-<p>"text": "Dr. Smith is thorough and explains everything clearly...",</p>
-<p>"date": "November 2024",</p>
-<p>"waitTime": "Less than 15 minutes",</p>
-<p>"recommendsDoctor": true,</p>
-<p>"verified": true</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-12-21T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<h3>Search for Cardiologists in Houston</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"specialty": "Cardiologist",</p>
-<p>"location": "Houston, TX",</p>
-<p>"minRating": 4.0,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Scrape Single Provider Profile</h3>
-
-<pre><code>{
-<p>"scrapeType": "provider_profile",</p>
-<p>"providerUrl": "https://www.healthgrades.com/physician/dr-john-smith-abc123",</p>
-<p>"includeReviews": true,</p>
-<p>"maxReviewsPerProvider": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Find Dentists Accepting Blue Cross</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"specialty": "Dentist",</p>
-<p>"location": "Chicago, IL",</p>
-<p>"insuranceAccepted": "Blue Cross",</p>
-<p>"acceptingNewPatients": true</p>
-<p>}</p>
-</code></pre>
-
-<h2>Specialties Supported</h2>
-
-<ul>
-<li>Primary Care / Family Medicine</li>
-<li>Cardiology</li>
-<li>Dermatology</li>
-<li>Dentistry</li>
-<li>Ophthalmology</li>
-<li>Orthopedics</li>
-<li>Psychiatry</li>
-<li>OB/GYN</li>
-<li>Pediatrics</li>
-<li>Oncology</li>
-<li>Neurology</li>
-<li>And many more...</li>
-</ul>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>50 providers with 25 reviews each: $0.10 + (50 × $0.08) + (1250 × $0.005) = <strong>$10.35</strong></li>
-<li>100 providers, no reviews: $0.10 + (100 × $0.08) = <strong>$8.10</strong></li>
-</ul>
-
-<h2>Rate Limiting & Best Practices</h2>
-
-<ul>
-<li>Built-in delays to respect Healthgrades servers</li>
-<li>Residential proxy recommended for reliability</li>
-<li>Maximum 500 providers per run</li>
-<li>Reviews limited per provider to prevent excessive requests</li>
-</ul>
-
-<h2>Legal Considerations</h2>
-
-<ul>
-<li>Use data for legitimate healthcare research purposes</li>
-<li>Comply with Healthgrades Terms of Service</li>
-<li>Do not use for fake reviews or spam</li>
-<li>Respect patient privacy in review data</li>
-<li>Check HIPAA compliance for your use case</li>
-</ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
-<ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>Healthcare CRM systems</li>
-<li>Databases (via API)</li>
-<li>Practice management software</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>healthgrades scraper, doctor reviews scraper, healthcare reviews, medical provider reviews, physician ratings, healthgrades data</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -682,7 +613,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

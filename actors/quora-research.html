@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Quora Content Research</h1>
-
-<strong>"Content Marketing Insights from Q&A"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Research trending questions and expert answers on Quora for content marketing insights. Discover what your audience is asking, identify content gaps, and find authoritative answers to inform your content strategy.</p>
+            <h1>Quora Research - Q&A Scraper</h1>
+            <p>Research Quora questions and answers for content marketing. Find trending topics, popular questions, and audience pain points. Perfect for content ideation and SEO keyword research. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -477,8 +470,63 @@
 <li><strong>Topic Tracking</strong>: Identify trending topics and themes</li>
 <li><strong>Expert Insights</strong>: Find industry experts and thought leaders</li>
 <li><strong>Content Ideas</strong>: Generate blog post and FAQ ideas from real questions</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "title": "What are the best strategies for local SEO in 2025?",
+  "url": "https://www.quora.com/What-are-the-best-strategies-for-local-SEO-in-2025",
+  "answerCount": 47,
+  "followerCount": 312,
+  "viewCount": 15600,
+  "topics": ["SEO", "Local Business", "Digital Marketing"],
+  "askedDate": "2025-10-15",
+  "topAnswers": [
+    {
+      "author": "Sarah Johnson",
+      "authorCredentials": "SEO Consultant, 10+ years experience",
+      "upvotes": 234,
+      "text": "Local SEO in 2025 is all about Google Business Profile optimization...",
+      "answeredDate": "2025-10-16"
+    }
+  ],
+  "scrapedAt": "2025-12-23T12:00:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><strong>$0.01</strong> per question scraped</li>
+<li><strong>$0.005</strong> per answer included</li>
+<li>Demo mode is free</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -487,116 +535,13 @@
 <li><strong>Thought Leadership</strong>: Identify questions to answer for visibility</li>
 <li><strong>Competitor Research</strong>: See what experts are saying in your space</li>
 <li><strong>FAQ Generation</strong>: Build FAQs from real user questions</li>
+
 </ul>
+---
 
-<h2>Input Configuration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-<p>"demoMode": false,</p>
-<p>"searchQuery": "local SEO strategies",</p>
-<p>"topics": ["SEO", "Digital Marketing"],</p>
-<p>"maxQuestions": 50,</p>
-<p>"includeAnswers": true,</p>
-<p>"minAnswerUpvotes": 10,</p>
-<p>"sortBy": "relevance"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Input Parameters</h3>
-
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"title": "What are the best strategies for local SEO in 2025?",</p>
-<p>"url": "https://www.quora.com/What-are-the-best-strategies-for-local-SEO-in-2025",</p>
-<p>"answerCount": 47,</p>
-<p>"followerCount": 312,</p>
-<p>"viewCount": 15600,</p>
-<p>"topics": ["SEO", "Local Business", "Digital Marketing"],</p>
-<p>"askedDate": "2025-10-15",</p>
-<p>"topAnswers": [</p>
-<p>{</p>
-<p>"author": "Sarah Johnson",</p>
-<p>"authorCredentials": "SEO Consultant, 10+ years experience",</p>
-<p>"upvotes": 234,</p>
-<p>"text": "Local SEO in 2025 is all about Google Business Profile optimization...",</p>
-<p>"answeredDate": "2025-10-16"</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2025-12-23T12:00:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Content Research Tips</h2>
-
-<p>1. <strong>Find Content Gaps</strong>: Questions with many followers but few answers = opportunity</p>
-<p>2. <strong>Identify Experts</strong>: Authors with high credentials are potential influencers</p>
-<p>3. <strong>Track Trends</strong>: Sort by recent to see emerging topics</p>
-<p>4. <strong>Long-form Ideas</strong>: High-upvote answers often make great blog post outlines</p>
-<p>5. <strong>FAQ Building</strong>: Multiple similar questions = FAQ section material</p>
-
-<h2>Pricing</h2>
-
-<ul>
-<li><strong>$0.01</strong> per question scraped</li>
-<li><strong>$0.005</strong> per answer included</li>
-<li>Demo mode is free</li>
-</ul>
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-<p>Automate content research workflows:</p>
-<p>1. Add the "Apify" app in Zapier</p>
-<p>2. Select "Run Actor" as the action</p>
-<p>3. Enter <code>alizarin_refrigerator-owner/quora-research</code> as the actor ID</p>
-<p>4. Send questions to your content calendar or Trello board</p>
-
-<h3>Make (Integromat)</h3>
-<p>Build content ideation pipelines:</p>
-<p>1. Add the Apify module to your Make scenario</p>
-<p>2. Select "Run an Actor" action</p>
-<p>3. Configure with your topic keywords</p>
-<p>4. Auto-create content briefs in Google Docs or Notion</p>
-
-<h3>n8n</h3>
-<p>1. Add the Apify node to your workflow</p>
-<p>2. Configure with your Apify API token</p>
-<p>3. Set actor ID to <code>alizarin_refrigerator-owner/quora-research</code></p>
-<p>4. Use AI nodes to generate blog outlines from questions</p>
-
-<h3>Webhooks</h3>
-<p>Receive research results via webhook:</p>
-<pre><code>{
-<p>"webhooks": [{</p>
-<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
-<p>"requestUrl": "https://your-app.com/webhook/quora-research"</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<h3>API</h3>
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~quora-research/runs?token=YOUR_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{"searchQuery": "local SEO tips", "maxQuestions": 50, "includeAnswers": true}'</p>
-</code></pre>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -610,7 +555,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

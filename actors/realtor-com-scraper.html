@@ -457,48 +457,156 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Realtor.com Scraper - Property Data</h1>
-
-<strong>"Realtor.com Scraper - Property Data"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape property listings from Realtor.com. Extract prices, descriptions, photos, agent contacts &amp; neighborhood data. Ideal for real estate market analysis &amp; lead generation.</p>
+            <p>Scrape real estate listings from Realtor.com by city, ZIP code, address, or landmark. Extract property details, prices, photos, agent info, and listing history. Perfect for real estate investors, agents, and market researchers.</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
+<li>Extracts data from web pages</li>
+<li>Handles pagination automatically</li>
+<li>Exports data to JSON/CSV</li>
+<li>Built-in proxy support</li>
+<li>Pay-per-result billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Integration Support</h2>
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
 
-<ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
-</ul>
+<h2>Demo Mode</h2>
 
-<h2>Author</h2>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free testing) |
+| <code>city</code> | string | No<em> | - | City to search (e.g., "San Francisco, CA") |
+| <code>zipCode</code> | string | No</em> | - | ZIP code to search (e.g., "94102") |
+| <code>address</code> | string | No<em> | - | Address to search around (with radius) |
+| <code>landmark</code> | string | No</em> | - | Search near a landmark or school |
+| <code>searchRadius</code> | integer | No | 5 | Radius in miles (for address/landmark) |
+| <code>priceMin</code> | integer | No | - | Minimum listing price |
+| <code>priceMax</code> | integer | No | - | Maximum listing price |
+| <code>bedsMin</code> | integer | No | - | Minimum bedrooms |
+| <code>bathsMin</code> | integer | No | - | Minimum bathrooms |
+| <code>propertyTypes</code> | array | No | all | Filter: single_family, condo, townhouse, land, multi_family, mobile, farm |
+| <code>listingStatus</code> | string | No | for_sale | Status: for_sale, pending, sold, for_rent |
+| <code>listedWithin</code> | integer | No | - | Only listings from last N days |
+| <code>maxResults</code> | integer | No | 50 | Maximum listings to scrape (1-500) |</p>
+
+<p>*At least one location parameter required (city, zipCode, address, or landmark)</p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Output Format</h2>
 
-<p>realtor com scraper, apify actor, web scraping, data extraction, automation</p>
+<p>Each listing includes:</p>
 
+<pre><code>{
+  "platform": "realtor.com",
+  "listingId": "RC-M1234567890",
+  "url": "https://www.realtor.com/realestateandhomes-detail/123-Main-St_San-Francisco_CA_94102_M12345-67890",
+  "address": "123 Main Street",
+  "addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",
+  "city": "San Francisco",
+  "state": "CA",
+  "zipCode": "94102",
+  "price": 1250000,
+  "priceFormatted": "$1,250,000",
+  "beds": 3,
+  "baths": 2,
+  "sqft": 1850,
+  "lotSize": "2,500 sqft",
+  "propertyType": "Single Family",
+  "yearBuilt": 1925,
+  "listingDate": "2025-12-20",
+  "daysOnMarket": 4,
+  "status": "Active",
+  "description": "Stunning Victorian home...",
+  "photos": [
+    "https://ap.rdcpix.com/123456789/abcdef-m0xd-w1020_h770_q80.jpg"
+  ],
+  "agent": {
+    "name": "Sarah Johnson",
+    "phone": "(415) 555-1234",
+    "company": "Coldwell Banker"
+  },
+  "features": ["Hardwood Floors", "Fireplace", "Garage", "Updated Kitchen"],
+  "coordinates": {
+    "lat": 37.7749,
+    "lng": -122.4194
+  },
+  "priceHistory": [
+    { "date": "2025-12-20", "price": 1250000, "event": "Listed" },
+    { "date": "2020-05-15", "price": 950000, "event": "Sold" }
+  ],
+  "scrapedAt": "2025-12-24T12:00:00Z"
+}
+</code></pre>
+
+<h3>Address Normalization</h3>
+
+<p>The <code>addressNormalized</code> field uses USPS-standard formatting for deduplication:</p>
+
+<ul>
+<li>Uppercase</li>
+<li>Standard abbreviations (Street → ST, Avenue → AVE, Boulevard → BLVD)</li>
+<li>No punctuation</li>
+<li>Format: <code>STREET, CITY, STATE ZIP</code></li>
+
+</ul>
+<strong>Use this field to deduplicate listings across Realtor.com, Redfin, and Zillow.</strong>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Per listing scraped | $0.05 |
+| Demo mode | Free |</p>
+
+<h3>Cost Examples</h3>
+
+<p>| Use Case | Listings | Cost |
+|----------|----------|------|
+| Daily new listings (1 city) | ~20 | $1.00 |
+| Weekly market analysis | ~200 | $10.00 |
+| Full city inventory | ~500 | $25.00 |</p>
+
+<strong>Compare to PropStream at $99/mo or CoStar at $500+/mo.</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +620,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

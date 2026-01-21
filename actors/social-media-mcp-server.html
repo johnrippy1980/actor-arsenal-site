@@ -457,177 +457,67 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Social Media MCP Server v1.0</h1>
+            <h1>Social Media MCP Server - Unified Multi-Platform Posting API</h1>
+            <p>35-in-1 MCP Server for comprehensive social media management. Includes: multi-platform posting (GBP, Facebook, Instagram, LinkedIn, Twitter, Reddit, Pinterest, TikTok), LinkedIn voice analysis & content generation, influencer discovery & marketing strategy, messaging automation (Discord, Slack, Telegram, WhatsApp), engagement analytics, and AI-powered content optimization. Ask Claude 'post this to all my social channels' or 'find fitness influencers on Instagram'.</p>
 
-<blockquote><strong>Unified Multi-Platform Social Posting for AI Assistants</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
 
-<p>MCP Server providing AI assistants with unified access to <strong>8 social media platforms</strong> through a single interface. Post to GBP, Facebook, Instagram, LinkedIn, Twitter/X, Reddit, Pinterest, and TikTok with consistent tool schemas.</p>
-
-<h2>Supported Platforms</h2>
-
-
-<h2>MCP Tools Available</h2>
-
-<h3>1. <code>post_to_gbp</code></h3>
-<p>Post content to Google Business Profile.</p>
+</ul>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"tool": "post_to_gbp",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "ya29...",</p>
-<p>"businessAccountId": "accounts/123/locations/456",</p>
-<p>"content": "Check out our holiday special!",</p>
-<p>"callToAction": { "actionType": "LEARN_MORE", "url": "https://..." }</p>
-<p>}</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>2. <code>post_to_facebook</code></h3>
-<p>Post to a Facebook Page.</p>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"tool": "post_to_facebook",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "EAAxx...",</p>
-<p>"pageId": "123456789",</p>
-<p>"message": "Exciting news from our team!",</p>
-<p>"link": "https://example.com"</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>3. <code>post_to_instagram</code></h3>
-<p>Post photos/videos to Instagram.</p>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"tool": "post_to_instagram",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "IGxx...",</p>
-<p>"userId": "17841400...",</p>
-<p>"imageUrl": "https://example.com/image.jpg",</p>
-<p>"caption": "New product launch! #excited"</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>4. <code>post_to_linkedin</code></h3>
-<p>Post to LinkedIn (personal or company page).</p>
+<h2>Pricing</h2>
 
-<pre><code>{
-<p>"tool": "post_to_linkedin",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "AQVxx...",</p>
-<p>"organizationId": "urn:li:organization:12345",</p>
-<p>"text": "Proud to announce our latest milestone!",</p>
-<p>"link": "https://company.com/news"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
-<h3>5. <code>post_to_twitter</code></h3>
-<p>Tweet to Twitter/X.</p>
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>platform_post</code> | Per successful platform post | $0.05 |</p>
 
-<pre><code>{
-<p>"tool": "post_to_twitter",</p>
-<p>"toolInput": {</p>
-<p>"apiKey": "xxx",</p>
-<p>"apiSecret": "xxx",</p>
-<p>"accessToken": "xxx",</p>
-<p>"accessSecret": "xxx",</p>
-<p>"tweet": "Just launched something amazing! 🚀"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<strong>Example costs:</strong>
+<ul>
+<li>Post to 1 platform: $0.10 + $0.05 = <strong>$0.15</strong></li>
+<li>Cross-post to 4 platforms: $0.10 + (4 × $0.05) = <strong>$0.30</strong></li>
+<li>Cross-post to all 8 platforms: $0.10 + (8 × $0.05) = <strong>$0.50</strong></li>
 
-<h3>6. <code>post_to_reddit</code></h3>
-<p>Post to a subreddit.</p>
-
-<pre><code>{
-<p>"tool": "post_to_reddit",</p>
-<p>"toolInput": {</p>
-<p>"clientId": "xxx",</p>
-<p>"clientSecret": "xxx",</p>
-<p>"username": "yourusername",</p>
-<p>"password": "xxx",</p>
-<p>"subreddit": "smallbusiness",</p>
-<p>"title": "How we grew our local business",</p>
-<p>"text": "Full story here..."</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>7. <code>post_to_pinterest</code></h3>
-<p>Create a Pin on Pinterest.</p>
-
-<pre><code>{
-<p>"tool": "post_to_pinterest",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "xxx",</p>
-<p>"boardId": "123456",</p>
-<p>"imageUrl": "https://example.com/image.jpg",</p>
-<p>"title": "DIY Home Decor Ideas",</p>
-<p>"description": "Transform your space with these tips",</p>
-<p>"link": "https://blog.example.com/decor"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>8. <code>post_to_tiktok</code></h3>
-<p>Post videos to TikTok.</p>
-
-<pre><code>{
-<p>"tool": "post_to_tiktok",</p>
-<p>"toolInput": {</p>
-<p>"accessToken": "xxx",</p>
-<p>"videoUrl": "https://storage.example.com/video.mp4",</p>
-<p>"description": "Behind the scenes! #bts #business"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>9. <code>cross_post</code></h3>
-<p>Post the same content across multiple platforms at once.</p>
-
-<pre><code>{
-<p>"tool": "cross_post",</p>
-<p>"toolInput": {</p>
-<p>"platforms": ["gbp", "facebook", "linkedin", "twitter"],</p>
-<p>"content": "Big announcement coming tomorrow! Stay tuned 🎉",</p>
-<p>"imageUrl": "https://example.com/teaser.jpg",</p>
-<p>"credentials": {</p>
-<p>"gbp": { "accessToken": "..." },</p>
-<p>"facebook": { "accessToken": "...", "pageId": "..." }</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>10. <code>schedule_post</code></h3>
-<p>Schedule a post for future publishing.</p>
-
-<pre><code>{
-<p>"tool": "schedule_post",</p>
-<p>"toolInput": {</p>
-<p>"platform": "gbp",</p>
-<p>"content": "Join us for our grand opening!",</p>
-<p>"scheduledTime": "2024-12-25T10:00:00Z",</p>
-<p>"credentials": { "accessToken": "..." }</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>11. <code>list_platforms</code></h3>
-<p>Get a list of all available platforms and tools.</p>
-
-<pre><code>{
-<p>"tool": "list_platforms"</p>
-<p>}</p>
-</code></pre>
-
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -636,56 +526,13 @@
 <li><strong>Marketing Automation</strong> - Integrate with workflows for scheduled posting</li>
 <li><strong>Content Campaigns</strong> - Cross-post announcements to all platforms at once</li>
 <li><strong>Agency Operations</strong> - Manage multiple client accounts efficiently</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>Post to 1 platform: $0.10 + $0.05 = <strong>$0.15</strong></li>
-<li>Cross-post to 4 platforms: $0.10 + (4 × $0.05) = <strong>$0.30</strong></li>
-<li>Cross-post to all 8 platforms: $0.10 + (8 × $0.05) = <strong>$0.50</strong></li>
-</ul>
-
-<h2>Integration with AI Assistants</h2>
-
-<h3>Claude Desktop / Cursor</h3>
-<p>Add to your Claude configuration:</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"social-media": {</p>
-<p>"url": "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~social-media-mcp-server/runs",</p>
-<p>"headers": {</p>
-<p>"Authorization": "Bearer YOUR_APIFY_TOKEN"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n / Make / Zapier</h3>
-<p>Use the Apify integration to call this actor with the desired tool and inputs.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test without actually posting. Returns realistic sample responses.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>social media mcp, multi-platform posting, social media api, cross-posting, facebook api, instagram api, linkedin api, twitter api, gbp posts, pinterest api, reddit api, tiktok api, ai social media, mcp server, social automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -699,7 +546,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

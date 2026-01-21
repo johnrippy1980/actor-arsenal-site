@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,171 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Airtable API - Database &amp; Records Automation</h1>
-            <p>Apify actor for Airtable API - Database &amp; Records Automation</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Automate Airtable bases with the official API. List, create, update, and delete records. Manage tables and fields. Sync data between Airtable and other systems. Perfect for CRM automation, inventory management, and data pipelines.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Record Operations</h3>
+<ul>
+<li><strong>List Records</strong> - Query records with filters, sorts, and views</li>
+<li><strong>Get Record</strong> - Retrieve a single record by ID</li>
+<li><strong>Create Record</strong> - Add new records to tables</li>
+<li><strong>Update Record</strong> - Modify existing records</li>
+<li><strong>Delete Record</strong> - Remove records</li>
+<li><strong>Batch Operations</strong> - Create, update, or delete up to 10 records at once</li>
+
+</ul>
+<h3>Table & Field Management</h3>
+<ul>
+<li><strong>List Tables</strong> - Get all tables in a base</li>
+<li><strong>Get Table</strong> - Retrieve table schema and fields</li>
+<li><strong>Create Table</strong> - Create new tables with custom fields</li>
+<li><strong>List Fields</strong> - Get field definitions</li>
+<li><strong>Create Field</strong> - Add new fields to tables</li>
+<li><strong>Update Field</strong> - Modify field properties</li>
+
+</ul>
+<h3>Base Operations</h3>
+<ul>
+<li><strong>List Bases</strong> - Get all bases you have access to</li>
+<li><strong>Get Base</strong> - Retrieve base metadata and tables</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform (see tasks below) |
+| accessToken | string | Yes<em> | Personal access token (</em>not needed for demoMode) |
+| baseId | string | No | Base ID (starts with 'app') |
+| tableIdOrName | string | No | Table ID (starts with 'tbl') or table name |
+| recordId | string | No | Record ID (starts with 'rec') |
+| fields | object | No | Field values for create/update |
+| filterByFormula | string | No | Airtable formula to filter records |
+| sort | array | No | Sort configuration |
+| view | string | No | View name or ID |
+| maxRecords | integer | No | Max records to return (default: 100) |
+| batchRecords | array | No | Records for batch operations |
+| webhookUrl | string | No | URL for webhook delivery |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
+<p>Results are saved to the default dataset:</p>
+
+<h3>List Records Result</h3>
+<pre><code>{
+  "task": "list_records",
+  "success": true,
+  "records": [
+    {
+      "id": "recXXXXXXXXXXXXXX",
+      "createdTime": "2024-12-01T10:00:00.000Z",
+      "fields": {
+        "Name": "Acme Corp",
+        "Status": "Active",
+        "Revenue": 5000000
+      }
+    }
+  ],
+  "total": 45,
+  "baseId": "appXXXXXXXXXXXXXX",
+  "tableIdOrName": "Companies"
+}
+</code></pre>
+
+<h3>Record Created</h3>
+<pre><code>{
+  "task": "create_record",
+  "success": true,
+  "record": {
+    "id": "recNewXXXXXXXXXX",
+    "createdTime": "2025-01-10T12:00:00.000Z",
+    "fields": {
+      "Name": "New Company Inc",
+      "Status": "Lead"
+    }
+  }
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:</p>
+
+<p>| Operation | Cost |
+|-----------|------|
+| List records | $0.02 |
+| Get record | $0.01 |
+| Create record | $0.02 |
+| Update record | $0.02 |
+| Delete record | $0.01 |
+| List tables/fields | $0.01 |
+| Create table/field | $0.03 |
+| List/get base | $0.01 |
+| Batch operations (per 10) | $0.05 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>CRM & Sales</h3>
+<ul>
+<li>Sync leads from web forms</li>
+<li>Update deal stages automatically</li>
+<li>Export customer data for analysis</li>
+
+</ul>
+<h3>Inventory Management</h3>
+<ul>
+<li>Track stock levels across locations</li>
+<li>Auto-update quantities from orders</li>
+<li>Generate low-stock alerts</li>
+
+</ul>
+<h3>Project Management</h3>
+<ul>
+<li>Create tasks from external triggers</li>
+<li>Update project statuses</li>
+<li>Sync with other PM tools</li>
+
+</ul>
+<h3>Content Operations</h3>
+<ul>
+<li>Manage editorial calendars</li>
+<li>Track content status</li>
+<li>Sync with publishing platforms</li>
+
+</ul>
+<h3>Data Pipelines</h3>
+<ul>
+<li>Import data from APIs</li>
+<li>Export to data warehouses</li>
+<li>Sync between systems</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +499,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

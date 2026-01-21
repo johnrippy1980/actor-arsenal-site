@@ -456,61 +456,85 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Giphy API</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>Search GIFs, Stickers, Emoji &amp; Clips - World&#x27;s Largest GIF Library</blockquote>
-<p>Access the world&#x27;s largest GIF library through the official Giphy API. Search millions of GIFs and stickers, get trending content, translate text to the perfect GIF, fetch random GIFs, and search animated emoji.</p>
+            <h1>Giphy API - Search GIFs, Stickers, Emoji &amp; Clips</h1>
+            <p>Access the world's largest GIF library through the Giphy API. Search millions of GIFs and stickers, get trending content, translate text to the perfect GIF, fetch random GIFs, and search animated emoji. Perfect for chatbots, social media automation, and content creation.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Search GIFs</strong> - Search millions of GIFs by keyword or phrase</li>
+
+<ul>
+<li><strong>Search GIFs</strong> - Search millions of GIFs by keyword or phrase</li>
 <li><strong>Trending GIFs</strong> - Get the hottest trending GIFs updated continuously</li>
-<li><strong>Translate to GIF</strong> - Convert text to the perfect matching GIF using Giphy&#x27;s algorithm</li>
+<li><strong>Translate to GIF</strong> - Convert text to the perfect matching GIF using Giphy's algorithm</li>
 <li><strong>Random GIF</strong> - Get a random GIF, optionally filtered by tag</li>
 <li><strong>Search Stickers</strong> - Search animated stickers with transparent backgrounds</li>
 <li><strong>Trending Stickers</strong> - Get trending sticker content</li>
-<li><strong>Search Emoji</strong> - Search Giphy&#x27;s animated emoji library</li>
+<li><strong>Search Emoji</strong> - Search Giphy's animated emoji library</li>
 <li><strong>Get GIF by ID</strong> - Retrieve a specific GIF by its Giphy ID</li>
+
 </ul>
-<h2>Tasks</h2>
-<h3>search_gifs</h3>
-<p>Search Giphy&#x27;s library of millions of GIFs by entering a word or phrase.</p>
-<h3>get_trending</h3>
-<p>Get the most relevant and engaging trending GIFs, updated continuously.</p>
-<h3>translate_to_gif</h3>
-<p>Convert words and phrases to the perfect GIF using Giphy&#x27;s special algorithm. Great for chatbots!</p>
-<h3>get_random</h3>
-<p>Get a random GIF. Optionally filter by tag for themed randomness.</p>
-<h3>search_stickers</h3>
-<p>Search animated stickers with transparent backgrounds - perfect for overlays.</p>
-<h3>get_trending_stickers</h3>
-<p>Get currently trending stickers.</p>
-<h3>search_emoji</h3>
-<p>Search Giphy&#x27;s uniquely diverse animated emoji library.</p>
-<h3>get_gif_by_id</h3>
-<p>Retrieve a specific GIF by its unique Giphy ID.</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<p>Each GIF result includes:
+<ul>
+<li>Multiple format URLs (original, downsized, preview, MP4, WebP)</li>
+<li>Dimensions and file sizes</li>
+<li>Title and source attribution</li>
+<li>Giphy URL for sharing</li></p>
+
+</ul>
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
 <h2>Use Cases</h2>
-<ul><li><strong>Chatbots</strong> - Auto-respond with relevant GIFs</li>
+
+<ul>
+<li><strong>Chatbots</strong> - Auto-respond with relevant GIFs</li>
 <li><strong>Social Media Automation</strong> - Add GIFs to scheduled posts</li>
 <li><strong>Content Creation</strong> - Find perfect reaction GIFs</li>
 <li><strong>Slack/Discord Bots</strong> - GIF commands for teams</li>
 <li><strong>Marketing Campaigns</strong> - Trending content discovery</li>
 <li><strong>App Development</strong> - GIF picker integration</li>
+
 </ul>
-<h2>API Key</h2>
-<p>Get your free Giphy API key at <a href="https://developers.giphy.com/" target="_blank" rel="noopener">developers.giphy.com</a>. Beta keys allow 100 requests/hour. For higher limits, upgrade to production.</p>
-<h2>Output Format</h2>
-<p>Each GIF result includes:</p>
-<ul><li>Multiple format URLs (original, downsized, preview, MP4, WebP)</li>
-<li>Dimensions and file sizes</li>
-<li>Title and source attribution</li>
-<li>Giphy URL for sharing</li>
-</ul>
-<h2>Pricing</h2>
-<p>$0.01 per query (all tasks)</p>
-<h2>Attribution</h2>
-<p>When using Giphy content, display &quot;Powered By GIPHY&quot; as required by their terms of service.</p>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -524,7 +548,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

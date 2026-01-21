@@ -462,23 +462,10 @@ Monitor Local SEO</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Google SERP Scraper - Extract Search Results, Rankings & SERP Features</h1>
-
-<p>Scrape Google search results including organic listings, local pack, featured snippets, People Also Ask, and ads. Perfect for SEO research, rank tracking, and competitive analysis.</p>
-
-<h2>Why Use Google SERP Scraper?</h2>
-
-<p>Understanding Google search results is critical for SEO success. This scraper helps you:</p>
-
-<ul>
-<li><strong>Track Rankings</strong>: Monitor keyword positions over time</li>
-<li><strong>Analyze SERP Features</strong>: Identify featured snippets and local pack opportunities</li>
-<li><strong>Research Competition</strong>: Analyze who ranks for target keywords</li>
-<li><strong>Study User Intent</strong>: Understand what Google shows for different queries</li>
-<li><strong>Monitor Local SEO</strong>: Track local pack positions and competitors</li>
-</ul>
+            <h1>Google SERP Scraper - Search Results, Rankings & SERP Features</h1>
+            <p>Scrape Google search results for SEO analysis, keyword research, and competitive intelligence. Extract organic results, featured snippets, People Also Ask, and local pack data. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
@@ -491,215 +478,145 @@ Monitor Local SEO</p>
 <li>People Also Ask questions</li>
 <li>Related searches</li>
 <li>Paid advertisements</li>
-</ul>
 
+</ul>
 <h3>Multi-Location Support</h3>
 
 <ul>
 <li>Any geographic location</li>
 <li>Desktop and mobile results</li>
 <li>Multiple language support</li>
-</ul>
 
+</ul>
 <h3>Data Extracted</h3>
 
+<p>| Field | Description |
+|-------|-------------|
+| Organic Results | Title, URL, description, position |
+| Local Pack | Business name, address, rating, reviews |
+| Featured Snippet | Content, source URL |
+| People Also Ask | Questions and answers |
+| Ads | Ad copy, display URL, position |
+| Related Searches | Suggested search queries |
+| Total Results | Estimated result count |
+| Search Metadata | Query, location, device |</p>
 
-<h2>Input Configuration</h2>
-
-<h3>Basic Search</h3>
-
-<pre><code>{
-<p>"queries": ["best pizza near me"],</p>
-<p>"location": "New York, NY, USA",</p>
-<p>"maxResults": 10</p>
-<p>}</p>
-</code></pre>
-
-<h3>Multiple Queries</h3>
-
-<pre><code>{
-<p>"queries": [</p>
-<p>"plumber chicago",</p>
-<p>"emergency plumber chicago",</p>
-<p>"24 hour plumber near me"</p>
-<p>],</p>
-<p>"location": "Chicago, IL, USA",</p>
-<p>"maxResults": 20</p>
-<p>}</p>
-</code></pre>
-
-<h3>Full SERP Analysis</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"queries": ["best crm software"],</p>
-<p>"location": "United States",</p>
-<p>"language": "en",</p>
-<p>"device": "desktop",</p>
-<p>"maxResults": 30,</p>
-<p>"includeAds": true,</p>
-<p>"includePAA": true,</p>
-<p>"includeLocalPack": true,</p>
-<p>"includeFeaturedSnippet": true,</p>
-<p>"includeRelatedSearches": true</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h3>Mobile Search</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"queries": ["restaurants near me"],</p>
-<p>"location": "Los Angeles, CA, USA",</p>
-<p>"device": "mobile",</p>
-<p>"maxResults": 10</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"query": "best pizza near me",</p>
-<p>"location": "New York, NY, USA",</p>
-<p>"device": "desktop",</p>
-<p>"language": "en",</p>
-<p>"totalResults": "About 458,000,000 results",</p>
-<p>"organicResults": [</p>
-<p>{</p>
-<p>"position": 1,</p>
-<p>"title": "Best Pizza in NYC - Top Rated Pizzerias",</p>
-<p>"url": "https://example.com/best-pizza-nyc",</p>
-<p>"displayUrl": "example.com &gt; food &gt; pizza",</p>
-<p>"description": "Discover the best pizza places in New York City..."</p>
-<p>}</p>
-<p>],</p>
-<p>"localPack": [</p>
-<p>{</p>
-<p>"position": 1,</p>
-<p>"businessName": "Joe's Pizza",</p>
-<p>"address": "7 Carmine St, New York, NY",</p>
-<p>"rating": 4.5,</p>
-<p>"reviewCount": 2847,</p>
-<p>"phone": "(212) 555-1234",</p>
-<p>"category": "Pizza restaurant"</p>
-<p>}</p>
-<p>],</p>
-<p>"featuredSnippet": {</p>
-<p>"content": "According to local reviews, the best pizza in NYC...",</p>
-<p>"sourceUrl": "https://example.com/pizza-guide",</p>
-<p>"type": "paragraph"</p>
-<p>},</p>
-<p>"peopleAlsoAsk": [</p>
-<p>{</p>
-<p>"question": "What is the best pizza place in NYC?",</p>
-<p>"answer": "Joe's Pizza is consistently rated...",</p>
-<p>"sourceUrl": "https://example.com"</p>
-<p>}</p>
-<p>],</p>
-<p>"relatedSearches": [</p>
-<p>"best pizza manhattan",</p>
-<p>"best pizza brooklyn",</p>
-<p>"best pizza near me open now"</p>
-<p>],</p>
-<p>"ads": [</p>
-<p>{</p>
-<p>"position": 1,</p>
-<p>"title": "Order Pizza Delivery - 50% Off First Order",</p>
-<p>"displayUrl": "pizzadelivery.com",</p>
-<p>"description": "Hot, fresh pizza delivered to your door..."</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-01-15T12:00:00Z"</p>
-<p>}</p>
+  "query": "best pizza near me",
+  "location": "New York, NY, USA",
+  "device": "desktop",
+  "language": "en",
+  "totalResults": "About 458,000,000 results",
+  "organicResults": [
+    {
+      "position": 1,
+      "title": "Best Pizza in NYC - Top Rated Pizzerias",
+      "url": "https://example.com/best-pizza-nyc",
+      "displayUrl": "example.com > food > pizza",
+      "description": "Discover the best pizza places in New York City..."
+    }
+  ],
+  "localPack": [
+    {
+      "position": 1,
+      "businessName": "Joe's Pizza",
+      "address": "7 Carmine St, New York, NY",
+      "rating": 4.5,
+      "reviewCount": 2847,
+      "phone": "(212) 555-1234",
+      "category": "Pizza restaurant"
+    }
+  ],
+  "featuredSnippet": {
+    "content": "According to local reviews, the best pizza in NYC...",
+    "sourceUrl": "https://example.com/pizza-guide",
+    "type": "paragraph"
+  },
+  "peopleAlsoAsk": [
+    {
+      "question": "What is the best pizza place in NYC?",
+      "answer": "Joe's Pizza is consistently rated...",
+      "sourceUrl": "https://example.com"
+    }
+  ],
+  "relatedSearches": [
+    "best pizza manhattan",
+    "best pizza brooklyn",
+    "best pizza near me open now"
+  ],
+  "ads": [
+    {
+      "position": 1,
+      "title": "Order Pizza Delivery - 50% Off First Order",
+      "displayUrl": "pizzadelivery.com",
+      "description": "Hot, fresh pizza delivered to your door..."
+    }
+  ],
+  "scrapedAt": "2024-01-15T12:00:00Z"
+}
 </code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.003 per search query</li></p>
+
+</ul>
+<strong>Example</strong>: 100 keyword searches = $0.30
 
 <h2>Use Cases</h2>
 
 <h3>SEO Rank Tracking</h3>
-<p>Monitor keyword rankings for your site and competitors over time.</p>
+Monitor keyword rankings for your site and competitors over time.
 
 <h3>SERP Feature Opportunities</h3>
-<p>Identify keywords with featured snippets, PAA, or local pack you can target.</p>
+Identify keywords with featured snippets, PAA, or local pack you can target.
 
 <h3>Competitor Analysis</h3>
-<p>Analyze which domains rank for your target keywords.</p>
+Analyze which domains rank for your target keywords.
 
 <h3>Local SEO Monitoring</h3>
-<p>Track local pack rankings and competitor positions.</p>
+Track local pack rankings and competitor positions.
 
 <h3>Content Gap Analysis</h3>
-<p>Discover what questions users ask to inform content strategy.</p>
+Discover what questions users ask to inform content strategy.
 
 <h3>PPC Research</h3>
-<p>Analyze ad copy and competitors' advertising strategies.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Enable <code>demoMode: true</code> to test with sample SERP data without making actual searches. Perfect for testing integrations and understanding output format.</p>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-result pricing:</p>
-<ul>
-<li>$0.003 per search query</li>
-</ul>
-
-<strong>Example</strong>: 100 keyword searches = $0.30
-
-<h2>Supported Languages</h2>
-
-<ul>
-<li>English (en)</li>
-<li>Spanish (es)</li>
-<li>French (fr)</li>
-<li>German (de)</li>
-<li>Italian (it)</li>
-<li>Portuguese (pt)</li>
-<li>Japanese (ja)</li>
-<li>Chinese (zh)</li>
-<li>Korean (ko)</li>
-<li>Arabic (ar)</li>
-</ul>
-
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Specific Locations</strong>: Use "City, State, Country" format for best accuracy</p>
-<p>2. <strong>Batch Queries</strong>: Process multiple keywords in single runs for efficiency</p>
-<p>3. <strong>Device Matters</strong>: Mobile and desktop results differ significantly</p>
-<p>4. <strong>Schedule Tracking</strong>: Use Apify scheduler for regular rank monitoring</p>
-
-<h2>Frequently Asked Questions</h2>
-
-<h3>How accurate are the rankings?</h3>
-<p>Results reflect real-time Google SERPs for the specified location and device.</p>
-
-<h3>Can I track rankings over time?</h3>
-<p>Yes, run scheduled scrapes and compare positions across datasets.</p>
-
-<h3>What about personalized results?</h3>
-<p>Scrapes use clean sessions without personalization for unbiased data.</p>
-
-<h3>How often should I scrape?</h3>
-<p>Daily for competitive keywords, weekly for broader monitoring.</p>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/semrush-keyword-research---volume-difficulty-related?fpr=kqpn7" target="_blank" rel="noopener">Semrush Keyword Research</a> - Keyword metrics</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/google-maps-scraper?fpr=kqpn7" target="_blank" rel="noopener">Google Maps Scraper</a> - Local business data</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
-<li><strong>Issues</strong>: Report bugs via Apify support</li>
-</ul>
+Analyze ad copy and competitors' advertising strategies.
 
 <p>---</p>
 
-<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Power your SEO strategy with real-time Google SERP data.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -713,7 +630,7 @@ Monitor Local SEO</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

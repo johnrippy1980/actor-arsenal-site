@@ -462,23 +462,10 @@ Competitive Analysis</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Manta Scraper - Extract Business Directory Listings & Company Data</h1>
-
-<p>Scrape comprehensive business information from Manta.com, one of the largest US small business directories. Extract company profiles, contact details, categories, and more for lead generation and market research.</p>
-
-<h2>Why Use Manta Scraper?</h2>
-
-<p>Manta hosts millions of small business listings across every industry. This scraper enables you to:</p>
-
-<ul>
-<li><strong>Build Lead Lists</strong>: Extract verified business contact information at scale</li>
-<li><strong>Research Markets</strong>: Analyze business density by industry and location</li>
-<li><strong>Enrich CRM Data</strong>: Add company details to existing customer records</li>
-<li><strong>Verify Citations</strong>: Check NAP consistency for local SEO campaigns</li>
-<li><strong>Competitive Analysis</strong>: Research competitors in specific markets</li>
-</ul>
+            <h1>Manta Scraper - Extract Business Listings & Company Data</h1>
+            <p>Scrape Manta business directory for company profiles, contact info, and business details. Extract phone numbers, addresses, and company descriptions. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
@@ -487,131 +474,108 @@ Competitive Analysis</p>
 <ul>
 <li><strong>Search Mode</strong>: Find businesses by keyword and location</li>
 <li><strong>Profile Mode</strong>: Extract detailed data from specific company pages</li>
-</ul>
 
+</ul>
 <h3>Data Extracted</h3>
 
+<p>| Field | Description |
+|-------|-------------|
+| Company Name | Official business name |
+| Industry/Category | Business classification |
+| Address | Full street address |
+| City, State, ZIP | Location details |
+| Phone Number | Primary contact number |
+| Website | Company website URL |
+| Description | Business description text |
+| Employee Count | Company size range |
+| Revenue | Estimated annual revenue |
+| Year Founded | Year business started |
+| SIC/NAICS Codes | Industry classification codes |
+| Hours of Operation | Business hours |
+| Social Links | Social media profile URLs |</p>
 
-<h2>Input Configuration</h2>
-
-<h3>Basic Search</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "restaurant",</p>
-<p>"location": "New York, NY",</p>
-<p>"maxResults": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Company Profile</h3>
-
-<pre><code>{
-<p>"scrapeType": "company_profile",</p>
-<p>"companyUrl": "https://www.manta.com/c/abc123/company-name"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Advanced Search</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "plumber",</p>
-<p>"location": "Chicago, IL",</p>
-<p>"maxResults": 500</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"companyName": "ABC Plumbing Services",</p>
-<p>"industry": "Plumbing",</p>
-<p>"address": "456 Oak Street",</p>
-<p>"city": "Chicago",</p>
-<p>"state": "IL",</p>
-<p>"zip": "60601",</p>
-<p>"phone": "(312) 555-1234",</p>
-<p>"website": "https://abcplumbing.com",</p>
-<p>"description": "Full-service residential and commercial plumbing...",</p>
-<p>"employeeCount": "5-10",</p>
-<p>"revenue": "$500K - $1M",</p>
-<p>"yearFounded": 2008,</p>
-<p>"sicCode": "1711",</p>
-<p>"naicsCode": "238220",</p>
-<p>"hours": "Mon-Fri 8AM-6PM",</p>
-<p>"socialLinks": {</p>
-<p>"facebook": "https://facebook.com/abcplumbing",</p>
-<p>"linkedin": "https://linkedin.com/company/abcplumbing"</p>
-<p>},</p>
-<p>"mantaUrl": "https://www.manta.com/c/..."</p>
-<p>}</p>
+  "companyName": "ABC Plumbing Services",
+  "industry": "Plumbing",
+  "address": "456 Oak Street",
+  "city": "Chicago",
+  "state": "IL",
+  "zip": "60601",
+  "phone": "(312) 555-1234",
+  "website": "https://abcplumbing.com",
+  "description": "Full-service residential and commercial plumbing...",
+  "employeeCount": "5-10",
+  "revenue": "$500K - $1M",
+  "yearFounded": 2008,
+  "sicCode": "1711",
+  "naicsCode": "238220",
+  "hours": "Mon-Fri 8AM-6PM",
+  "socialLinks": {
+    "facebook": "https://facebook.com/abcplumbing",
+    "linkedin": "https://linkedin.com/company/abcplumbing"
+  },
+  "mantaUrl": "https://www.manta.com/c/..."
+}
 </code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.002 per business listing extracted</li></p>
+
+</ul>
+<strong>Example</strong>: 500 business listings = $1.00
 
 <h2>Use Cases</h2>
 
 <h3>B2B Lead Generation</h3>
-<p>Extract business lists by industry and location for sales prospecting.</p>
+Extract business lists by industry and location for sales prospecting.
 
 <h3>Local SEO Citation Audits</h3>
-<p>Verify business NAP (Name, Address, Phone) consistency across directories.</p>
+Verify business NAP (Name, Address, Phone) consistency across directories.
 
 <h3>Market Research</h3>
-<p>Analyze business density and industry distribution in target markets.</p>
+Analyze business density and industry distribution in target markets.
 
 <h3>Data Enrichment</h3>
-<p>Add firmographic data to existing customer databases.</p>
+Add firmographic data to existing customer databases.
 
 <h3>Competitive Intelligence</h3>
-<p>Research competitor presence and business details.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Enable <code>demoMode: true</code> to test with sample data without actual scraping. Ideal for testing your integrations and understanding the output structure.</p>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-result pricing:</p>
-<ul>
-<li>$0.002 per business listing extracted</li>
-</ul>
-
-<strong>Example</strong>: 500 business listings = $1.00
-
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Be Specific</strong>: Use precise search terms for better targeting</p>
-<p>2. <strong>Location Format</strong>: Use "City, State" format (e.g., "Austin, TX")</p>
-<p>3. <strong>Batch by Category</strong>: Run separate searches for different industries</p>
-<p>4. <strong>Use Proxies</strong>: Residential proxies are enabled by default for reliability</p>
-
-<h2>Frequently Asked Questions</h2>
-
-<h3>What industries are covered?</h3>
-<p>Manta covers all business categories including retail, services, manufacturing, healthcare, and more.</p>
-
-<h3>How fresh is the data?</h3>
-<p>Data is scraped in real-time from Manta's current listings.</p>
-
-<h3>Can I export to CSV?</h3>
-<p>Yes, use Apify's built-in export to download results as CSV, JSON, or Excel.</p>
-
-<h3>Is there duplicate detection?</h3>
-<p>Results are deduplicated by company URL automatically.</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
-<li><strong>Issues</strong>: Report bugs via Apify support</li>
-</ul>
+Research competitor presence and business details.
 
 <p>---</p>
 
-<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Power your sales and marketing with comprehensive business data.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -625,7 +589,7 @@ Competitive Analysis</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

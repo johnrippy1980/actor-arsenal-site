@@ -466,164 +466,99 @@ AI Analysis - recommendations & fix suggestions</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Citation God Mode - Ultimate NAP Consistency Checker</h1>
+            <p>The most comprehensive citation checker on Apify. Combines Moz Local Listings, direct platform scraping (60+ directories), cross-validation engine, and AI-powered analysis. Get the definitive truth about your business citations.</p>
 
-<strong>"The Most Comprehensive Citation Checker on Apify"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>What Is Citation God Mode?</h2>
-
-<p>Citation God Mode is the ultimate citation checker that combines <strong>five powerful engines</strong> into one comprehensive solution:</p>
-
-<p>1. <strong>Moz Integration</strong> - Quick scan via Moz's free listing tool (50+ directories)</p>
-<p>2. <strong>Dedicated Scrapers</strong> - High-reliability scraping via purpose-built Apify actors for Yelp, Manta, Houzz, DoorDash, and Grubhub (85-95% confidence)</p>
-<p>3. <strong>Direct Scraping</strong> - Deep scrape of 60+ directory platforms with CSS selectors</p>
-<p>4. <strong>Cross-Validation Engine</strong> - Determines the "canonical" NAP by weighing data from multiple authoritative sources</p>
-<p>5. <strong>AI Analysis</strong> - Claude-powered recommendations and fix suggestions</p>
-
-<h2>Why Use This Over Other Checkers?</h2>
-
-
-<h2>Scan Modes</h2>
-
-<p>Choose your scan depth based on your needs:</p>
-
-
-<h2>Platforms Checked</h2>
-
-<h3>Critical (Weight: 10)</h3>
-<ul>
-<li>Google Business Profile</li>
-<li>Yelp</li>
-<li>Facebook</li>
-<li>Apple Maps</li>
-<li>Bing Places</li>
-</ul>
-
-<h3>Data Aggregators (Weight: 8)</h3>
-<ul>
-<li>Foursquare</li>
-<li>Data Axle</li>
-<li>Neustar Localeze</li>
-<li>Factual</li>
-<li>Acxiom/Infogroup</li>
-</ul>
-
-<h3>High Priority (Weight: 6)</h3>
-<ul>
-<li>Yellow Pages, BBB, TripAdvisor, MapQuest, SuperPages, Manta, Hotfrog</li>
-</ul>
-
-<h3>Medium Priority (Weight: 4)</h3>
-<ul>
-<li>Angi, Trustpilot, LinkedIn, Nextdoor, Merchant Circle, Brownbook, Citysearch</li>
-</ul>
-
-<h3>Industry-Specific (Weight: 3)</h3>
-<ul>
-<li><strong>Healthcare</strong>: Healthgrades</li>
-<li><strong>Legal</strong>: Avvo</li>
-<li><strong>Real Estate</strong>: Zillow</li>
-<li><strong>Home Services</strong>: HomeAdvisor, Houzz, Thumbtack</li>
-</ul>
-
-<h3>Food & Delivery (Weight: 2)</h3>
-<ul>
-<li>DoorDash, Grubhub, Uber Eats, OpenTable</li>
-</ul>
-
-<h3>Additional Directories (Weight: 1)</h3>
-<ul>
-<li>20+ more directories for complete coverage</li>
-</ul>
-
-<h2>Cross-Validation: Finding the Truth</h2>
-
-<p>The cross-validation engine uses <strong>weighted voting</strong> to determine your canonical NAP:</p>
-
-<pre><code>Canonical Name:    "Acme Plumbing Co" (85% confidence)
-<p>Canonical Address: "123 Main St, Miami, FL 33101" (92% confidence)</p>
-<p>Canonical Phone:   "(305) 555-1234" (78% confidence)</p>
-</code></pre>
-
-<p>Higher-weight sources (Google, Yelp, Facebook) have more influence on the canonical values.</p>
-
-<h2>AI Analysis</h2>
-
-<p>When enabled, Claude AI provides:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Health Score</strong> (0-100)</li>
-<li><strong>Correction Suggestions</strong> with priorities</li>
-<li><strong>Prioritized Actions</strong> for maximum impact</li>
-<li><strong>Estimated SEO Impact</strong> of fixes</li>
-</ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
 
-<h2>Output</h2>
+</ul>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"businessName": "Acme Plumbing Co",</p>
-<p>"overallScore": "B",</p>
-<p>"healthScore": 78,</p>
-<p>"canonicalNAP": {</p>
-<p>"canonicalName": "Acme Plumbing Co",</p>
-<p>"canonicalAddress": "123 Main St, Miami, FL 33101",</p>
-<p>"canonicalPhone": "(305) 555-1234",</p>
-<p>"confidence": 85</p>
-<p>},</p>
-<p>"summary": {</p>
-<p>"totalChecked": 45,</p>
-<p>"correct": 32,</p>
-<p>"incorrect": 8,</p>
-<p>"missing": 5</p>
-<p>},</p>
-<p>"aiAnalysis": {</p>
-<p>"overallHealthScore": 78,</p>
-<p>"summary": "Your citations are moderately healthy...",</p>
-<p>"correctionSuggestions": [...],</p>
-<p>"prioritizedActions": [...]</p>
-<p>},</p>
-<p>"mergedResults": [...]</p>
-<p>}</p>
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "businessName": "Acme Plumbing Co",
+  "overallScore": "B",
+  "healthScore": 78,
+  "canonicalNAP": {
+    "canonicalName": "Acme Plumbing Co",
+    "canonicalAddress": "123 Main St, Miami, FL 33101",
+    "canonicalPhone": "(305) 555-1234",
+    "confidence": 85
+  },
+  "summary": {
+    "totalChecked": 45,
+    "correct": 32,
+    "incorrect": 8,
+    "missing": 5
+  },
+  "aiAnalysis": {
+    "overallHealthScore": 78,
+    "summary": "Your citations are moderately healthy...",
+    "correctionSuggestions": [...],
+    "prioritizedActions": [...]
+  },
+  "mergedResults": [...]
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
 <li><strong>Quick Mode</strong>: $0.05 per check</li>
 <li><strong>Standard Mode</strong>: $0.15 per check</li>
 <li><strong>Deep Mode</strong>: $0.35 per check</li>
-<li><strong>God Mode</strong>: $0.50 per check</li>
-</ul>
+<li><strong>God Mode</strong>: $0.50 per check</li></p>
 
-<p>Demo mode is free.</p>
+</ul>
+Demo mode is free.
 
 <h2>Use Cases</h2>
 
 <h3>For Agencies</h3>
-<p>Run monthly audits for all clients. Export results to CSV for white-label reports.</p>
+Run monthly audits for all clients. Export results to CSV for white-label reports.
 
 <h3>For Local Businesses</h3>
-<p>Get a complete picture of your online presence. Know exactly which directories need updating.</p>
+Get a complete picture of your online presence. Know exactly which directories need updating.
 
 <h3>For SEO Professionals</h3>
-<p>Use the canonical NAP detection to advise clients on the "correct" business information.</p>
+Use the canonical NAP detection to advise clients on the "correct" business information.
 
-<h2>Webhook Integration</h2>
+<p>---</p>
 
-<p>Send results directly to your CRM, Zapier, or automation platform.</p>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h2>Author</h2>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -637,7 +572,7 @@ AI Analysis - recommendations & fix suggestions</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

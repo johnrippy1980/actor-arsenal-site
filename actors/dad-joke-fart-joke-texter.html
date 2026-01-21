@@ -466,51 +466,99 @@ SMS Deli</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Dad Joke &amp; Fart Joke Texter</h1>
-
-<strong>"Dad Joke &amp; Fart Joke Texter"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Automatically send random dad and fart jokes to your kids via SMS or webhook. Schedule it daily to maximize embarrassment. Because that&#x27;s what parents do.
-45+ Classic Dad Jokes
-30+ Fart Jokes
-SMS Deli</p>
+            <p>Automatically send random dad jokes and fart jokes to your kids via SMS (Twilio) or webhook. Schedule it daily to maximize embarrassment. Because that's what parents do.</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
+<li><strong>45+ Classic Dad Jokes</strong> - Eye-roll guaranteed</li>
+<li><strong>30+ Fart Jokes</strong> - For the sophisticated palette</li>
+<li><strong>SMS Delivery via Twilio</strong> - Text jokes directly to your kids</li>
+<li><strong>Webhook Support</strong> - Send to Slack, Discord, Zapier, Make, n8n</li>
+<li><strong>Personalization</strong> - Add your kid's name and custom signature</li>
+<li><strong>Emoji Support</strong> - Extra embarrassment with emoji</li>
+<li><strong>Demo Mode</strong> - Test without actually sending</li>
 
-<h2>Integration Support</h2>
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| jokeType | string | "both" | Type of jokes: "dad", "fart", "both", or "random" |
+| jokeCount | integer | 1 | Number of jokes to send (1-5) |
+| kidName | string | - | Your kid's name for personalization |
+| parentSignature | string | "- Dad" | How to sign off |
+| twilioAccountSid | string | - | Twilio Account SID |
+| twilioAuthToken | string | - | Twilio Auth Token |
+| twilioPhoneNumber | string | - | Your Twilio phone number |
+| recipientPhoneNumbers | array | [] | Phone numbers to send to |
+| webhookUrl | string | - | Webhook URL for notifications |
+| webhookPlatform | string | "custom" | Platform: zapier, make, n8n, slack, discord, custom |
+| includeEmoji | boolean | true | Add emoji to messages |
+| demoMode | boolean | true | Test mode (no actual sending) |</p>
+
+<h2>Output Format</h2>
+
+<p>Each joke sent generates a record with:</p>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><code>jokeType</code> - "dad" or "fart"</li>
+<li><code>joke</code> - The full joke text</li>
+<li><code>setup</code> - Setup line (if applicable)</li>
+<li><code>punchline</code> - Punchline (if applicable)</li>
+<li><code>recipient</code> - Who received it</li>
+<li><code>sentAt</code> - Timestamp</li>
+<li><code>sentVia</code> - Delivery method (sms, slack, discord, demo)</li>
+<li><code>embarrassmentLevel</code> - How cringy is this joke?</li>
+
 </ul>
+<h2>Pricing</h2>
 
-<h2>Author</h2>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+</ul>
+<h2>Use Cases</h2>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>dad joke fart joke texter, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -524,7 +572,7 @@ SMS Deli</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

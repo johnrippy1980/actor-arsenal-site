@@ -457,23 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>GBP Social Repurposer - Auto-Post Google Business Profile Content to All Social Platforms</h1>
-
-<p>Automatically transform and repurpose your Google Business Profile (GBP) posts for <strong>Facebook</strong>, <strong>Instagram</strong>, <strong>LinkedIn</strong>, and <strong>Twitter/X</strong> with AI-powered content optimization. Turn one GBP post into perfectly tailored content for every major social platform.</p>
-
-<h2>Why Use GBP Social Repurposer?</h2>
-
-<p>Managing multiple social media accounts is time-consuming. If you're already creating posts for Google Business Profile, why not maximize their reach? This actor:</p>
-
-<ul>
-<li><strong>Saves Hours Weekly</strong>: Post once on GBP, automatically distribute everywhere</li>
-<li><strong>AI-Optimized Content</strong>: Each platform gets content tailored to its unique requirements and audience expectations</li>
-<li><strong>Maintains Brand Consistency</strong>: Your message stays consistent while format adapts to each platform</li>
-<li><strong>Increases Visibility</strong>: Turn 1 post into 5 touchpoints across the web</li>
-<li><strong>Perfect for Local Businesses</strong>: Ideal for local SEO and multi-channel social media marketing</li>
-</ul>
+            <h1>GBP Social Repurposer - Auto-Post to Social Platforms</h1>
+            <p>Automatically repurpose Google Business Profile posts to Facebook, Instagram, LinkedIn, and Twitter/X with AI-powered content adaptation. Turn one GBP post into perfectly optimized content for every major social platform.</p>
 
 <h2>Features</h2>
 
@@ -486,12 +473,18 @@
 <li><strong>Instagram</strong>: Visual-first captions with strategic hashtags for discovery</li>
 <li><strong>LinkedIn</strong>: Professional, business-focused content with industry relevance</li>
 <li><strong>Facebook</strong>: Engaging storytelling format with calls-to-action</li>
-</ul>
 
+</ul>
 <h3>📱 Multi-Platform Support</h3>
 
 <p>Post to all major social platforms:</p>
 
+<p>| Platform | Character Limit | Images | Hashtags | Link Support |
+|----------|----------------|--------|----------|--------------|
+| Facebook | 63,206 | Up to 10 | Up to 30 | ✅ Yes |
+| Instagram | 2,200 | Up to 10 | Up to 30 | ❌ No (caption) |
+| LinkedIn | 3,000 | Up to 9 | 3-5 recommended | ✅ Yes |
+| Twitter/X | 280 | Up to 4 | 1-2 recommended | ✅ Yes |</p>
 
 <h3>⚙️ Flexible Scheduling Modes</h3>
 
@@ -499,8 +492,8 @@
 <li><strong>Preview Mode</strong>: Generate optimized content without posting - review before publishing</li>
 <li><strong>Immediate Mode</strong>: Post directly to all enabled platforms</li>
 <li><strong>Queue Mode</strong>: Save formatted posts for later scheduling</li>
-</ul>
 
+</ul>
 <h3>🎯 Customization Options</h3>
 
 <ul>
@@ -508,168 +501,48 @@
 <li>Add custom hashtags that appear on all posts</li>
 <li>Optionally link back to original GBP posts</li>
 <li>Enable/disable each social platform independently</li>
+
 </ul>
-
-<h2>How It Works</h2>
-
-<p>1. <strong>Provide GBP Posts</strong>: Input your Google Business Profile posts (text, images, post type)</p>
-<p>2. <strong>Configure Platforms</strong>: Enable the social channels you want to target</p>
-<p>3. <strong>Set AI Preferences</strong>: Choose tone, hashtags, and link preferences</p>
-<p>4. <strong>Run the Actor</strong>: The AI transforms each GBP post for every platform</p>
-<p>5. <strong>Review or Post</strong>: Preview the content or post immediately</p>
-
-<h2>Input Configuration</h2>
-
-<h3>GBP Posts Input</h3>
-
-<p>Provide your GBP posts in this format:</p>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"gbpPosts": [</p>
-<p>{</p>
-<p>"id": "post-123",</p>
-<p>"text": "We're excited to announce our new spring collection!",</p>
-<p>"imageUrls": ["https://example.com/spring-collection.jpg"],</p>
-<p>"postType": "update",</p>
-<p>"gbpUrl": "https://g.page/your-business/post/123"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
-
-<h3>Post Types Supported</h3>
-
-<ul>
-<li><strong>update</strong>: General business updates and news</li>
-<li><strong>event</strong>: Event announcements with dates and details</li>
-<li><strong>offer</strong>: Promotions, sales, and special offers with coupon codes</li>
-<li><strong>product</strong>: Product showcases and highlights</li>
-</ul>
-
-<h3>Platform Credentials</h3>
-
-<p>Each platform requires its own API credentials:</p>
-
-<strong>Facebook/Instagram:</strong>
-<ul>
-<li>Facebook Page ID</li>
-<li>Facebook Access Token (with <code>pages_manage_posts</code> permission)</li>
-<li>Instagram Business Account ID (for Instagram)</li>
-</ul>
-
-<strong>LinkedIn:</strong>
-<ul>
-<li>Organization ID (Company Page ID)</li>
-<li>OAuth Access Token (with <code>w_organization_social</code> permission)</li>
-</ul>
-
-<strong>Twitter/X:</strong>
-<ul>
-<li>API Key (Consumer Key)</li>
-<li>API Secret (Consumer Secret)</li>
-<li>Access Token</li>
-<li>Access Token Secret</li>
-</ul>
-
-<h2>Output Data</h2>
-
-<p>The actor outputs comprehensive results:</p>
-
-<pre><code>{
-<p>"businessName": "Your Business",</p>
-<p>"gbpPostsProcessed": 3,</p>
-<p>"platformsEnabled": ["facebook", "instagram", "linkedin", "twitter"],</p>
-<p>"scheduledPosts": [</p>
-<p>{</p>
-<p>"id": "post-1",</p>
-<p>"originalGBPPost": { /<em> original GBP post </em>/ },</p>
-<p>"platformContents": [</p>
-<p>{</p>
-<p>"platform": "twitter",</p>
-<p>"text": "🌸 Spring collection is HERE! New styles, fresh looks...",</p>
-<p>"hashtags": ["SpringFashion", "NewArrivals"],</p>
-<p>"characterCount": 142,</p>
-<p>"characterLimit": 280,</p>
-<p>"isWithinLimit": true</p>
-<p>}</p>
-<p>// ... other platforms</p>
-<p>],</p>
-<p>"status": "preview",</p>
-<p>"results": [</p>
-<p>{</p>
-<p>"platform": "facebook",</p>
-<p>"success": true,</p>
-<p>"postId": "123456789",</p>
-<p>"postUrl": "https://facebook.com/123456789"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>],</p>
-<p>"summary": {</p>
-<p>"totalGBPPosts": 3,</p>
-<p>"totalSocialPosts": 12,</p>
-<p>"byPlatform": {</p>
-<p>"facebook": 3,</p>
-<p>"instagram": 3,</p>
-<p>"linkedin": 3,</p>
-<p>"twitter": 3</p>
-<p>},</p>
-<p>"successfulPosts": 12,</p>
-<p>"failedPosts": 0</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h2>Use Cases</h2>
-
-<h3>Local Business Marketing</h3>
-<p>Maximize your Google Business Profile content by extending reach to all social platforms. Perfect for:</p>
-<ul>
-<li>Restaurants announcing specials</li>
-<li>Retail stores promoting sales</li>
-<li>Service businesses sharing updates</li>
-<li>Healthcare practices sharing health tips</li>
-</ul>
-
-<h3>Social Media Management Agencies</h3>
-<p>Streamline content distribution for multiple clients:</p>
-<ul>
-<li>Reduce manual posting time by 80%</li>
-<li>Ensure consistent cross-platform presence</li>
-<li>Preview all content before client approval</li>
-<li>Track success rates across platforms</li>
-</ul>
-
-<h3>Multi-Location Businesses</h3>
-<p>Manage social presence for multiple locations:</p>
-<ul>
-<li>Centralize content creation</li>
-<li>Maintain brand consistency</li>
-<li>Customize per-location as needed</li>
-</ul>
 
 <h2>Demo Mode</h2>
 
-<p>Enable <code>demoMode: true</code> to test the actor with sample GBP posts without requiring real API credentials. Demo mode:</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<ul>
-<li>Generates realistic sample GBP posts (update, event, offer types)</li>
-<li>Simulates AI content transformation for all platforms</li>
-<li>Returns complete output structure for integration testing</li>
-<li>No API calls are made in demo mode</li>
-</ul>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<p>Perfect for:</p>
-<ul>
-<li>Testing integrations before going live</li>
-<li>Understanding the output format</li>
-<li>Demonstrating capabilities to stakeholders</li>
-</ul>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses the pay-per-result pricing model:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses the pay-per-result pricing model:</p>
 
+<p>| Tier | Price | Description |
+|------|-------|-------------|
+| Per GBP Post | $0.01 | Each source GBP post processed |
+| AI Optimization | $0.005 | Per platform (when AI enabled) |
+| Direct Posting | $0.01 | Per successful post to social platform |</p>
 
 <strong>Example</strong>: Processing 10 GBP posts to 4 platforms with AI and immediate posting:
 <ul>
@@ -677,55 +550,41 @@
 <li>10 posts × 4 platforms × $0.005 = $0.20 (AI)</li>
 <li>10 posts × 4 platforms × $0.01 = $0.40 (posting)</li>
 <li><strong>Total: $0.70</strong></li>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Include Images</strong>: Posts with images perform better on all platforms</p>
-<p>2. <strong>Use AI Rewriting</strong>: The AI adaptation significantly improves engagement</p>
-<p>3. <strong>Add Custom Hashtags</strong>: Include your brand hashtag for consistency</p>
-<p>4. <strong>Test with Preview Mode</strong>: Always preview before enabling immediate posting</p>
-<p>5. <strong>Monitor Results</strong>: Check the success/failure rates and adjust as needed</p>
-
-<h2>Frequently Asked Questions</h2>
-
-<h3>Do I need API credentials for all platforms?</h3>
-<p>No! You can enable only the platforms you want to post to. Each platform is optional.</p>
-
-<h3>Can I preview posts before they go live?</h3>
-<p>Yes! Use <code>scheduleMode: "preview"</code> to generate all content without actually posting.</p>
-
-<h3>Does it work with GBP events and offers?</h3>
-<p>Absolutely. The AI is context-aware and optimizes event announcements and promotional offers appropriately for each platform.</p>
-
-<h3>What happens if a post fails?</h3>
-<p>Failed posts are logged with error details. Successful posts continue - one platform failure doesn't affect others.</p>
-
-<h3>Can I customize hashtags per platform?</h3>
-<p>The AI generates platform-appropriate hashtags, but you can also add custom hashtags that appear on all posts.</p>
-
-<h2>Related Actors</h2>
-
+<h3>Local Business Marketing</h3>
+Maximize your Google Business Profile content by extending reach to all social platforms. Perfect for:
 <ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/gbp-poster?fpr=kqpn7" target="_blank" rel="noopener">GBP Poster</a> - Post directly to Google Business Profile</li>
-<li><a href="https://apify.com/apify/facebook-pages-scraper?fpr=kqpn7" target="_blank" rel="noopener">Facebook Page Scraper</a> - Extract Facebook Page data</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/linkedin-profile-scraper?fpr=kqpn7" target="_blank" rel="noopener">LinkedIn Profile Scraper</a> - Extract LinkedIn data</li>
+<li>Restaurants announcing specials</li>
+<li>Retail stores promoting sales</li>
+<li>Service businesses sharing updates</li>
+<li>Healthcare practices sharing health tips</li>
+
 </ul>
-
-<h2>Support</h2>
-
+<h3>Social Media Management Agencies</h3>
+Streamline content distribution for multiple clients:
 <ul>
-<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
-<li><strong>Issues</strong>: Report bugs or request features via Apify support</li>
-<li><strong>Updates</strong>: Actor is actively maintained with regular updates</li>
+<li>Reduce manual posting time by 80%</li>
+<li>Ensure consistent cross-platform presence</li>
+<li>Preview all content before client approval</li>
+<li>Track success rates across platforms</li>
+
 </ul>
+<h3>Multi-Location Businesses</h3>
+Manage social presence for multiple locations:
+<ul>
+<li>Centralize content creation</li>
+<li>Maintain brand consistency</li>
+<li>Customize per-location as needed</li>
 
-<p>---</p>
+</ul>
+---
 
-<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Transform your local SEO strategy with automated social media distribution. One post, everywhere.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -739,7 +598,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

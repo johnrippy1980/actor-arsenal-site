@@ -456,15 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Acuity Scheduling API - Appointments &amp; Booking Data</h1>
-<strong>&quot;Appointment &amp; Booking Management&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Access Acuity Scheduling (Squarespace Scheduling) data for appointments, clients, calendars, availability, packages, and booking management. Perfect for consultants, coaches, therapists, salons, and service businesses.</p>
+            <p>Access Acuity Scheduling data for appointments, clients, calendars, availability, and packages. Perfect for consultants, coaches, salons, and service businesses using Acuity (Squarespace Scheduling) for online booking.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Appointments</strong>: Upcoming, past, and canceled appointments</li>
+
+<ul>
+<li><strong>Appointments</strong>: Upcoming, past, and canceled appointments</li>
 <li><strong>Clients</strong>: Client database with contact info and history</li>
 <li><strong>Calendars</strong>: Staff calendars and availability</li>
 <li><strong>Appointment Types</strong>: Service offerings and pricing</li>
@@ -473,55 +473,55 @@
 <li><strong>Forms</strong>: Intake forms and custom fields</li>
 <li><strong>Certificates</strong>: Gift certificates and credits</li>
 <li><strong>Demo Mode</strong>: Test with realistic sample data</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>Consultants &amp; Coaches</h3>
-<ul><li>Export client contact lists for marketing</li>
-<li>Analyze appointment trends and busy times</li>
-<li>Track package usage and revenue</li>
-<li>Generate client reports</li>
-</ul>
-<h3>Salons &amp; Spas</h3>
-<ul><li>Monitor stylist/therapist bookings</li>
-<li>Track no-shows and cancellations</li>
-<li>Analyze service popularity</li>
-<li>Export client data for promotions</li>
-</ul>
-<h3>Healthcare Providers</h3>
-<ul><li>Patient appointment history</li>
-<li>Availability management</li>
-<li>Intake form responses</li>
-<li>Compliance reporting</li>
-</ul>
-<h3>Business Analytics</h3>
-<ul><li>Revenue forecasting</li>
-<li>Capacity utilization</li>
-<li>Client retention analysis</li>
-<li>Marketing campaign tracking</li>
-</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
+
 <h3>Task Selection</h3>
-<ul><li><code>task</code>: Operation to perform</li>
-</ul>  - <code>get_appointments</code> - List appointments
-<p>- <code>get_appointment_details</code> - Get specific appointment</p>
-<p>- <code>get_clients</code> - List clients</p>
-<p>- <code>get_client_details</code> - Get client details</p>
-<p>- <code>get_calendars</code> - List calendars/staff</p>
-<p>- <code>get_availability</code> - Get available time slots</p>
-<p>- <code>get_appointment_types</code> - List service types</p>
-<p>- <code>get_packages</code> - List packages</p>
-<p>- <code>get_products</code> - List products</p>
-<p>- <code>get_coupons</code> - List discount coupons</p>
-<p>- <code>get_forms</code> - List intake forms</p>
-<p>- <code>get_certificates</code> - List gift certificates</p>
-<p>- <code>get_blocks</code> - List blocked time</p>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>get_appointments</code> - List appointments</li>
+<li><code>get_appointment_details</code> - Get specific appointment</li>
+<li><code>get_clients</code> - List clients</li>
+<li><code>get_client_details</code> - Get client details</li>
+<li><code>get_calendars</code> - List calendars/staff</li>
+<li><code>get_availability</code> - Get available time slots</li>
+<li><code>get_appointment_types</code> - List service types</li>
+<li><code>get_packages</code> - List packages</li>
+<li><code>get_products</code> - List products</li>
+<li><code>get_coupons</code> - List discount coupons</li>
+<li><code>get_forms</code> - List intake forms</li>
+<li><code>get_certificates</code> - List gift certificates</li>
+<li><code>get_blocks</code> - List blocked time</li>
+
+</ul>
 <h3>Authentication</h3>
-<ul><li><code>userId</code>: Acuity User ID</li>
+<ul>
+<li><code>userId</code>: Acuity User ID</li>
 <li><code>apiKey</code>: Acuity API Key</li>
 <li><code>demoMode</code>: Run with sample data</li>
+
 </ul>
 <h3>Filters</h3>
-<ul><li><code>appointmentId</code>: Specific appointment</li>
+<ul>
+<li><code>appointmentId</code>: Specific appointment</li>
 <li><code>clientId</code>: Filter by client</li>
 <li><code>calendarId</code>: Filter by calendar/staff</li>
 <li><code>appointmentTypeId</code>: Filter by service type</li>
@@ -529,109 +529,66 @@
 <li><code>email</code>: Filter by client email</li>
 <li><code>canceled</code>: Include canceled appointments</li>
 <li><code>month</code>: Month for availability</li>
+
 </ul>
-<h2>Example Output</h2>
-<h3>Appointments</h3>
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;task&quot;: &quot;get_appointments&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;appointments&quot;: [</p>
-<p>{</p>
-<p>&quot;id&quot;: 123456789,</p>
-<p>&quot;type&quot;: &quot;Consultation Call&quot;,</p>
-<p>&quot;datetime&quot;: &quot;2024-01-22T10:00:00-0800&quot;,</p>
-<p>&quot;endTime&quot;: &quot;2024-01-22T11:00:00-0800&quot;,</p>
-<p>&quot;duration&quot;: 60,</p>
-<p>&quot;client&quot;: {</p>
-<p>&quot;id&quot;: 98765,</p>
-<p>&quot;firstName&quot;: &quot;Jennifer&quot;,</p>
-<p>&quot;lastName&quot;: &quot;Smith&quot;,</p>
-<p>&quot;email&quot;: &quot;jennifer@email.com&quot;,</p>
-<p>&quot;phone&quot;: &quot;555-123-4567&quot;</p>
-<p>},</p>
-<p>&quot;calendar&quot;: {</p>
-<p>&quot;id&quot;: 1,</p>
-<p>&quot;name&quot;: &quot;Sarah Johnson&quot;</p>
-<p>},</p>
-<p>&quot;price&quot;: 150.00,</p>
-<p>&quot;paid&quot;: true,</p>
-<p>&quot;confirmationPage&quot;: &quot;https://acuity.com/...&quot;,</p>
-<p>&quot;location&quot;: &quot;Zoom&quot;,</p>
-<p>&quot;notes&quot;: &quot;Discuss Q1 strategy&quot;,</p>
-<p>&quot;canceled&quot;: false</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;totalCount&quot;: 45</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-<h3>Clients</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;get_clients&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;clients&quot;: [</p>
-<p>{</p>
-<p>&quot;id&quot;: 98765,</p>
-<p>&quot;firstName&quot;: &quot;Jennifer&quot;,</p>
-<p>&quot;lastName&quot;: &quot;Smith&quot;,</p>
-<p>&quot;email&quot;: &quot;jennifer@email.com&quot;,</p>
-<p>&quot;phone&quot;: &quot;555-123-4567&quot;,</p>
-<p>&quot;firstAppointment&quot;: &quot;2023-06-15&quot;,</p>
-<p>&quot;lastAppointment&quot;: &quot;2024-01-18&quot;,</p>
-<p>&quot;appointmentCount&quot;: 12,</p>
-<p>&quot;totalSpent&quot;: 1800.00,</p>
-<p>&quot;notes&quot;: &quot;Prefers afternoon appointments&quot;</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;totalCount&quot;: 250</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h3>Availability</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;get_availability&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;appointmentTypeId&quot;: 1,</p>
-<p>&quot;calendarId&quot;: 1,</p>
-<p>&quot;month&quot;: &quot;2024-01&quot;,</p>
-<p>&quot;availableSlots&quot;: [</p>
-<p>{ &quot;date&quot;: &quot;2024-01-22&quot;, &quot;time&quot;: &quot;09:00&quot;, &quot;datetime&quot;: &quot;2024-01-22T09:00:00-0800&quot; },</p>
-<p>{ &quot;date&quot;: &quot;2024-01-22&quot;, &quot;time&quot;: &quot;10:00&quot;, &quot;datetime&quot;: &quot;2024-01-22T10:00:00-0800&quot; },</p>
-<p>{ &quot;date&quot;: &quot;2024-01-22&quot;, &quot;time&quot;: &quot;14:00&quot;, &quot;datetime&quot;: &quot;2024-01-22T14:00:00-0800&quot; }</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h2>Getting Acuity API Credentials</h2>
-<p>1. Log in to your Acuity account</p>
-<p>2. Go to Integrations → API</p>
-<p>3. Find your User ID and API Key</p>
-<p>4. Use these in the actor configuration</p>
-<p>Note: API access requires Acuity Powerhouse plan or higher.</p>
-<h2>Integrations</h2>
-<p>Results can be sent directly to:</p>
-<ul><li><strong>Zapier</strong>: Automate appointment follow-ups</li>
-<li><strong>Make (Integromat)</strong>: Build booking workflows</li>
-<li><strong>n8n</strong>: Self-hosted automation</li>
-<li><strong>Custom Webhooks</strong>: Your CRM or analytics</li>
-</ul>
+
 <h2>Pricing</h2>
-<p>Pay only for what you use:</p>
-<ul><li><strong>Appointment Query</strong>: $0.01 per query</li>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Appointment Query</strong>: $0.01 per query</li>
 <li><strong>Client Lookup</strong>: $0.01 per lookup</li>
 <li><strong>Availability Check</strong>: $0.01 per check</li>
 <li><strong>Calendar Query</strong>: $0.005 per query</li>
-<li><strong>Package/Product Query</strong>: $0.005 per query</li>
+<li><strong>Package/Product Query</strong>: $0.005 per query</li></p>
+
 </ul>
-<h2>Support</h2>
-<ul><li><a href="https://developers.acuityscheduling.com/" target="_blank" rel="noopener">Acuity API Documentation</a></li>
-<li><a href="https://help.acuityscheduling.com/" target="_blank" rel="noopener">Acuity Help Center</a></li>
+<h2>Use Cases</h2>
+
+<h3>Consultants & Coaches</h3>
+<ul>
+<li>Export client contact lists for marketing</li>
+<li>Analyze appointment trends and busy times</li>
+<li>Track package usage and revenue</li>
+<li>Generate client reports</li>
+
 </ul>
-<h2>Legal</h2>
-<p>This actor integrates with the official Acuity Scheduling API. Users must have valid API credentials. Data usage is subject to Acuity/Squarespace Terms of Service.</p>
+<h3>Salons & Spas</h3>
+<ul>
+<li>Monitor stylist/therapist bookings</li>
+<li>Track no-shows and cancellations</li>
+<li>Analyze service popularity</li>
+<li>Export client data for promotions</li>
+
+</ul>
+<h3>Healthcare Providers</h3>
+<ul>
+<li>Patient appointment history</li>
+<li>Availability management</li>
+<li>Intake form responses</li>
+<li>Compliance reporting</li>
+
+</ul>
+<h3>Business Analytics</h3>
+<ul>
+<li>Revenue forecasting</li>
+<li>Capacity utilization</li>
+<li>Client retention analysis</li>
+<li>Marketing campaign tracking</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -645,7 +602,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

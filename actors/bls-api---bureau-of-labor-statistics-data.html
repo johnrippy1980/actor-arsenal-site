@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,93 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>BLS API - Bureau of Labor Statistics Data</h1>
-            <p>Apify actor for BLS API - Bureau of Labor Statistics Data</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Access Bureau of Labor Statistics data for employment, wages, prices, and productivity. Get unemployment rates, CPI inflation, job openings, wage data by industry and occupation.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Get Series</strong>: Retrieve any BLS time series by ID</li>
+<li><strong>Get Employment</strong>: Employment statistics by industry/area</li>
+<li><strong>Get CPI</strong>: Consumer Price Index inflation data</li>
+<li><strong>Get Wages</strong>: Wage and salary data by occupation</li>
+<li><strong>Get JOLTS</strong>: Job openings and labor turnover</li>
+<li><strong>Get PPI</strong>: Producer Price Index data</li>
+<li><strong>Get Productivity</strong>: Labor productivity statistics</li>
+<li><strong>Get Injuries</strong>: Workplace injury and illness data</li>
+<li><strong>Demo Mode</strong>: Test with sample data</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "dataSet": "unemployment",
+  "year": 2024
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li>Get Series: $0.01</li>
+<li>Get Employment: $0.01</li>
+<li>Get CPI: $0.01</li>
+<li>Get Wages: $0.01</li>
+<li>Get JOLTS: $0.01</li>
+<li>Get PPI: $0.01</li>
+<li>Get Productivity: $0.01</li>
+<li>Get Injuries: $0.01</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<ul>
+<li>Economic research and forecasting</li>
+<li>Labor market analysis</li>
+<li>Wage benchmarking</li>
+<li>Inflation monitoring</li>
+<li>Industry employment trends</li>
+<li>Regional economic comparisons</li>
+<li>HR compensation planning</li>
+<li>Sync to analytics platforms</li>
+
+</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +421,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

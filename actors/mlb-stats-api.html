@@ -457,212 +457,61 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>MLB Stats API</h1>
+            <h1>MLB Stats API - Baseball Data</h1>
+            <p>Fetch MLB baseball data including teams, players, schedules, standings, and game statistics from the official MLB Stats API.</p>
 
-<blockquote><strong>"Complete MLB Data in Clean JSON"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Simple Access to Official MLB Statistics</h2>
-
-<strong>The MLB Stats API exists but is complex and poorly documented.</strong> Hundreds of endpoints, nested responses, and frequent changes make it frustrating to use.
-
-<strong>What if you could get clean, simple MLB data with one API call?</strong>
-
-<p>The <strong>MLB Stats API</strong> actor wraps the official MLB API and returns clean, structured data:</p>
+<h2>Features</h2>
 
 <ul>
-<li>All 30 MLB teams with details</li>
-<li>Full 40-man rosters with player info</li>
-<li>Current division standings</li>
-<li>Complete game schedules</li>
-<li>Individual player statistics (batting & pitching)</li>
-<li>Box scores with play-by-play</li>
-<li>League leaders by category</li>
+<li>Direct API integration</li>
+<li>Structured JSON output</li>
+<li>Error handling and retries</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<strong>No API key required. No authentication needed. Just simple JSON responses.</strong>
-
-<p>---</p>
-
-<h2>Why Use This Instead of Direct API Access</h2>
-
-<h3>1. Clean Data Structure</h3>
-
-<p>Raw MLB API returns inconsistent, deeply nested JSON. We normalize everything.</p>
-
-<strong>Raw MLB API:</strong>
-<pre><code>{
-<p>"people": [{</p>
-<p>"id": 660271,</p>
-<p>"fullName": "Shohei Ohtani",</p>
-<p>"stats": [{</p>
-<p>"type": {"displayName": "season"},</p>
-<p>"splits": [{</p>
-<p>"stat": {"homeRuns": 54}</p>
-<p>}]</p>
-<p>}]</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<strong>Our API:</strong>
-<pre><code>{
-<p>"player": "Shohei Ohtani",</p>
-<p>"playerId": 660271,</p>
-<p>"team": "Los Angeles Dodgers",</p>
-<p>"homeRuns": 54,</p>
-<p>"battingAverage": ".310"</p>
-<p>}</p>
-</code></pre>
-
-<h3>2. No Authentication Needed</h3>
-
-<p>We handle all the complexity. You just make requests.</p>
-
-<h3>3. Stable Endpoints</h3>
-
-<p>MLB changes their API frequently. We maintain compatibility.</p>
-
-<h3>4. Both Batting and Pitching Stats</h3>
-
-<p>Get comprehensive stats for any player in one call.</p>
-
-<p>---</p>
-
-<h2>Available Tasks</h2>
-
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Get Current Standings</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"task": "standings"</p>
-<p>}</p>
+  "team": "NYY",
+  "season": 2024
+}
 </code></pre>
 
-<h3>Example 2: Get Team Roster</h3>
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"task": "team_roster",</p>
-<p>"teamId": 119</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>Example 3: Get Player Stats</h3>
+<h2>Pricing</h2>
 
-<pre><code>{
-<p>"task": "player_stats",</p>
-<p>"playerId": 660271,</p>
-<p>"season": "2024"</p>
-<p>}</p>
-</code></pre>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-<h3>Example 4: Today's Schedule</h3>
-
-<pre><code>{
-<p>"task": "schedule",</p>
-<p>"date": "2025-04-15"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Team IDs Reference</h2>
-
-
-<p>---</p>
-
-<h2>Output Examples</h2>
-
-<h3>Standings Response</h3>
-
-<pre><code>{
-<p>"task": "standings",</p>
-<p>"success": true,</p>
-<p>"data": {</p>
-<p>"season": "2024",</p>
-<p>"standings": [</p>
-<p>{</p>
-<p>"division": "AL East",</p>
-<p>"teams": [</p>
-<p>{</p>
-<p>"rank": 1,</p>
-<p>"team": "Baltimore Orioles",</p>
-<p>"teamId": 110,</p>
-<p>"wins": 91,</p>
-<p>"losses": 71,</p>
-<p>"pct": ".562",</p>
-<p>"gamesBack": "-",</p>
-<p>"wildCard": "-",</p>
-<p>"runsScored": 765,</p>
-<p>"runsAllowed": 640,</p>
-<p>"runDifferential": 125,</p>
-<p>"streak": "W3",</p>
-<p>"last10": "7-3"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Player Stats Response</h3>
-
-<pre><code>{
-<p>"task": "player_stats",</p>
-<p>"success": true,</p>
-<p>"data": {</p>
-<p>"player": {</p>
-<p>"id": 660271,</p>
-<p>"name": "Shohei Ohtani",</p>
-<p>"team": "Los Angeles Dodgers",</p>
-<p>"position": "DH",</p>
-<p>"jerseyNumber": 17,</p>
-<p>"bats": "L",</p>
-<p>"throws": "R",</p>
-<p>"batting": {</p>
-<p>"gamesPlayed": 159,</p>
-<p>"atBats": 636,</p>
-<p>"runs": 134,</p>
-<p>"hits": 197,</p>
-<p>"doubles": 38,</p>
-<p>"triples": 6,</p>
-<p>"homeRuns": 54,</p>
-<p>"rbi": 130,</p>
-<p>"stolenBases": 59,</p>
-<p>"battingAverage": ".310",</p>
-<p>"obp": ".390",</p>
-<p>"slg": ".646",</p>
-<p>"ops": "1.036"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Pay-Per-Event Pricing</h2>
-
-<strong>You only pay for what you use.</strong> No API key costs. No rate limit fees.
-
-
-<h3>Cost Examples</h3>
-
-
-<strong>Free tier available for testing.</strong>
-
-<p>---</p>
-
+</ul>
 <h2>Use Cases</h2>
 
 <h3>Fantasy Baseball</h3>
@@ -671,120 +520,42 @@
 <li><strong>Injury updates</strong>: Check player status</li>
 <li><strong>Waiver wire</strong>: Compare available players</li>
 <li><strong>Trade analysis</strong>: Compare player statistics</li>
-</ul>
 
+</ul>
 <h3>Sports Analytics</h3>
 <ul>
 <li><strong>Team performance</strong>: Analyze wins, losses, run differentials</li>
 <li><strong>Sabermetrics</strong>: Calculate WAR, wOBA, FIP, etc.</li>
 <li><strong>Trend analysis</strong>: Track performance over time</li>
 <li><strong>Predictive models</strong>: Feed data into ML models</li>
-</ul>
 
+</ul>
 <h3>Apps & Websites</h3>
 <ul>
 <li><strong>Live scores</strong>: Display current standings</li>
 <li><strong>Schedule displays</strong>: Show upcoming games</li>
 <li><strong>Stats pages</strong>: Build player stat cards</li>
 <li><strong>Team pages</strong>: Roster and team info</li>
-</ul>
 
+</ul>
 <h3>Media & Content</h3>
 <ul>
 <li><strong>Article research</strong>: Get accurate stats for articles</li>
 <li><strong>Broadcast support</strong>: Quick stats lookup</li>
 <li><strong>Social content</strong>: Stats for posts and graphics</li>
+
 </ul>
+---
+
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
 
 <p>---</p>
 
-<h2>API Integration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/mlb-stats-api').call({</p>
-<p>task: 'player_stats',</p>
-<p>playerId: 660271</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0].data.player);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~mlb-stats-api/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"task": "standings"</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Webhook Integration</h2>
-
-<h3>Webhook Payload Format</h3>
-
-<pre><code>{
-<p>"event": "task_completed",</p>
-<p>"timestamp": "2025-04-15T12:00:00.000Z",</p>
-<p>"actor": "mlb-stats-api",</p>
-<p>"task": "standings",</p>
-<p>"success": true,</p>
-<p>"data": { ... }</p>
-<p>}</p>
-</code></pre>
-
-<h3>Automation Ideas</h3>
-
-<ul>
-<li><strong>Daily standings</strong>: Update your database every morning</li>
-<li><strong>Game alerts</strong>: Trigger when your team plays</li>
-<li><strong>Stat tracking</strong>: Log player stats to Google Sheets</li>
-<li><strong>Discord bot</strong>: Post updates to your server</li>
-</ul>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>Historical data</strong>: Limited to current and recent seasons</li>
-<li><strong>Real-time</strong>: Not truly live (refresh every few minutes during games)</li>
-<li><strong>Rate limits</strong>: Built-in delays to respect MLB servers</li>
-<li><strong>Offseason</strong>: Limited data during winter months</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>mlb api, baseball api, mlb stats, baseball statistics, mlb standings, mlb scores, baseball data, mlb player stats, fantasy baseball api, sports data api, mlb schedule, baseball scraper, mlb data feed, sports analytics, sabermetrics</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -798,7 +569,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

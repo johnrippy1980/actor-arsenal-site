@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,101 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Tiktok Shop Scraper E-commerce Intelligence at Scale</h1>
-            <p>Apify actor for Tiktok Shop Scraper E-commerce Intelligence at Scale</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Scrape TikTok Shop for product data, prices, reviews, seller info, and sales metrics. E-commerce research, competitor analysis, and dropshipping product discovery.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Product Search</strong> - Search TikTok Shop by keywords</li>
+<li><strong>Product Details</strong> - Scrape individual product pages for full details</li>
+<li><strong>Shop/Seller Scraping</strong> - Extract all products from a seller's shop</li>
+<li><strong>Review Collection</strong> - Optional review scraping with ratings and content</li>
+<li><strong>Multi-Region Support</strong> - US, UK, Germany, Indonesia, Malaysia, Philippines, Singapore, Thailand, Vietnam</li>
+<li><strong>Demo Mode</strong> - Test with realistic sample data before running actual scrapes</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "searchQueries": ["wireless earbuds", "phone cases"],
+  "maxProducts": 50,
+  "region": "US",
+  "includeReviews": true
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>searchQueries</code> | array | <code>["wireless earbuds"]</code> | Keywords to search for products |
+| <code>productUrls</code> | array | <code>[]</code> | Direct TikTok Shop product URLs to scrape |
+| <code>shopUrls</code> | array | <code>[]</code> | Seller profile URLs to scrape all products from |
+| <code>maxProducts</code> | number | 50 | Maximum products to scrape per run (1-500 limit) |
+| <code>includeReviews</code> | boolean | false | Scrape product reviews (increases run time) |
+| <code>maxReviewsPerProduct</code> | number | 10 | Maximum reviews per product (1-50) |
+| <code>region</code> | string | "US" | TikTok Shop region (see Supported Regions below) |
+| <code>demoMode</code> | boolean | true | Run with sample data (no actual scraping) |
+| <code>webhookUrl</code> | string | - | URL for webhook delivery (Zapier, Make, n8n) |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing (optimized for Playwright browser automation):</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>product_scraped</code> | Per TikTok Shop product scraped with full details including price, images, and seller info | $0.035 |
+| <code>seller_scraped</code> | Per seller/shop profile scraped with ratings, followers, and product catalog | $0.05 |
+| <code>review_scraped</code> | Per product review extracted with rating, author, and helpfulness data | $0.008 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Scrape 100 products: 100 × $0.035 = <strong>$3.50</strong></li>
+<li>Scrape 100 products with 10 reviews each: $3.50 + 1000 × $0.008 = <strong>$11.50</strong></li>
+
+</ul>
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>E-commerce Research</strong> - Discover trending products and pricing strategies</li>
+<li><strong>Competitor Analysis</strong> - Monitor competitor product listings and prices</li>
+<li><strong>Dropshipping Discovery</strong> - Find hot-selling products with high sales volume</li>
+<li><strong>Market Intelligence</strong> - Track product availability and pricing across regions</li>
+<li><strong>Seller Research</strong> - Analyze top seller performance and product catalogs</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +429,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,69 +457,126 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Fire-Enrich</h1>
+            <h1>Firecrawl Enrich - Data Enrichment</h1>
+            <p>Multi-agent AI lead enrichment using Firecrawl web scraping and Claude AI. Enriches company/lead data with 5 specialized AI agents: Discovery, Company Profile, Financial Intel, Tech Stack, and Custom Fields. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>"5 AI Agents That Turn a Company Name into Complete Intelligence"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Manually Researching Every Lead</h2>
-
-<strong>You're currently doing:</strong> Google searches, LinkedIn stalking, checking Crunchbase, scanning websites, trying to find emails, manually entering data into your CRM.
-
-<strong>What if 5 AI agents did all of this in seconds?</strong>
-
-<strong>Fire-Enrich</strong> uses a multi-agent architecture where each agent builds on the previous context, creating a comprehensive company profile from just a name and website:
+<h2>Features</h2>
 
 <ul>
-<li><strong>Discovery Agent</strong> - Basic company information</li>
-<li><strong>Company Profile Agent</strong> - Industry, size, headquarters</li>
-<li><strong>Financial Intel Agent</strong> - Funding, revenue, investors</li>
-<li><strong>Tech Stack Agent</strong> - Technologies, CMS, analytics tools</li>
-<li><strong>Custom Fields Agent</strong> - Extract any data you define</li>
-</ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
 
-<strong>All with source attribution.</strong> Every data point links back to where it was found.
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>leads</code> | array | Yes<em> | - | Array of companies to enrich |
+| <code>leads[].companyName</code> | string | Yes | - | Company name |
+| <code>leads[].website</code> | string | Yes | - | Company website |
+| <code>leads[].city</code> | string | No | - | City (for disambiguation) |
+| <code>leads[].state</code> | string | No | - | State (for disambiguation) |
+| <code>agents</code> | array | No | all | Which agents to run |
+| <code>customFields</code> | array | No | - | Custom fields to extract |
+| <code>customFields[].name</code> | string | Yes | - | Field name (camelCase) |
+| <code>customFields[].description</code> | string | Yes | - | Description of what to extract |
+| <code>firecrawlApiKey</code> | string | Yes</em> | - | Firecrawl API key |
+| <code>anthropicApiKey</code> | string | Yes<em> | - | Anthropic API key (Claude) |
+| <code>openaiApiKey</code> | string | No | - | OpenAI key (fallback) |
+| <code>maxConcurrency</code> | integer | No | 3 | Parallel processing limit |
+| <code>demoMode</code> | boolean | No | false | Test with sample data |</p>
+
+</em>Not required in demo mode
 
 <p>---</p>
 
-<h2>How It Works</h2>
+<h2>Output Format</h2>
 
-<pre><code>Company Name + Website
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  DISCOVERY  │ → Name, Type, Description</p>
-<p>│    AGENT    │</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  COMPANY    │ → Industry, Size, HQ, Founded</p>
-<p>│   PROFILE   │</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  FINANCIAL  │ → Funding, Investors, Revenue</p>
-<p>│    INTEL    │</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  TECH STACK │ → Languages, CMS, Analytics, Ads</p>
-<p>│    SCAN     │</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│   CUSTOM    │ → Your defined fields</p>
-<p>│   FIELDS    │</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>Complete Company Intelligence</p>
+<pre><code>{
+  "companyName": "Stripe",
+  "website": "https://stripe.com",
+  "businessType": "B2B SaaS",
+  "description": "Financial infrastructure platform for businesses",
+  "industry": "Financial Technology",
+  "subIndustry": "Payment Processing",
+  "employeeCount": "5000+",
+  "yearFounded": "2010",
+  "headquarters": "San Francisco, CA",
+  "funding": "$8.7B",
+  "lastFundingRound": "Series I - March 2021",
+  "investors": ["Sequoia Capital", "Andreessen Horowitz", "Tiger Global"],
+  "revenueEstimate": "$14B+ (2023)",
+  "technologies": ["Ruby", "Go", "React", "AWS"],
+  "cms": null,
+  "analytics": ["Segment", "Amplitude"],
+  "advertising": ["Google Ads"],
+  "customFields": {
+    "hasEcommerce": false,
+    "targetMarket": "Developers and businesses"
+  },
+  "sources": [
+    { "url": "https://stripe.com/about", "field": "description" },
+    { "url": "https://stripe.com/newsroom", "field": "funding" }
+  ],
+  "enrichedAt": "2024-12-23T10:30:00Z",
+  "agentsUsed": ["discovery", "company_profile", "financial_intel", "tech_stack"],
+  "cost": 0.04
+}
 </code></pre>
 
-<p>Each agent receives the context from previous agents, enabling smarter, more accurate extraction.</p>
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<h3>BYOK (Bring Your Own Keys)</h3>
+You pay directly to each provider:</p>
+
+<p>| Provider | Cost | Purpose |
+|----------|------|---------|
+| <strong>Firecrawl</strong> | ~$0.001/page | Web scraping |
+| <strong>Anthropic</strong> | ~$0.01-0.03/lead | AI extraction (Claude Haiku) |
+| <strong>Apify</strong> | ~$0.10-0.25/run | Compute |</p>
+
+<h3>Cost Per Lead</h3>
+
+<p>| Agents Used | Estimated Cost |
+|-------------|----------------|
+| Discovery only | ~$0.01 |
+| Discovery + Profile | ~$0.02 |
+| All 4 agents | ~$0.03-0.05 |
+| All 4 + Custom Fields | ~$0.04-0.06 |</p>
+
+<h3>Cost Comparison</h3>
+
+<p>| Leads/Month | Fire-Enrich | ZoomInfo | Apollo |
+|-------------|-------------|----------|--------|
+| 100 | ~$5 | $99+ | $49+ |
+| 500 | ~$25 | $199+ | $99+ |
+| 1000 | ~$50 | $499+ | $199+ |</p>
+
+<strong>No monthly subscription. Pay per use.</strong>
 
 <p>---</p>
 
@@ -527,265 +584,64 @@
 
 <h3>1. Sales Lead Enrichment</h3>
 <pre><code>{
-<p>"leads": [</p>
-<p>{ "companyName": "Stripe", "website": "https://stripe.com" }</p>
-<p>],</p>
-<p>"agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
-<p>"firecrawlApiKey": "fc-xxx",</p>
-<p>"anthropicApiKey": "sk-ant-xxx"</p>
-<p>}</p>
+  "leads": [
+    { "companyName": "Stripe", "website": "https://stripe.com" }
+  ],
+  "agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],
+  "firecrawlApiKey": "fc-xxx",
+  "anthropicApiKey": "sk-ant-xxx"
+}
 </code></pre>
 
 <strong>Returns:</strong> Complete company profile with industry, employee count, funding history, tech stack.
 
 <h3>2. Competitive Intelligence</h3>
 <pre><code>{
-<p>"leads": [</p>
-<p>{ "companyName": "Competitor A", "website": "https://competitor.com" },</p>
-<p>{ "companyName": "Competitor B", "website": "https://rival.com" }</p>
-<p>],</p>
-<p>"agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
-<p>"customFields": [</p>
-<p>{ "name": "pricingModel", "description": "What pricing model do they use?" },</p>
-<p>{ "name": "targetMarket", "description": "Who is their primary target market?" }</p>
-<p>]</p>
-<p>}</p>
+  "leads": [
+    { "companyName": "Competitor A", "website": "https://competitor.com" },
+    { "companyName": "Competitor B", "website": "https://rival.com" }
+  ],
+  "agents": ["discovery", "company_profile", "financial_intel", "tech_stack"],
+  "customFields": [
+    { "name": "pricingModel", "description": "What pricing model do they use?" },
+    { "name": "targetMarket", "description": "Who is their primary target market?" }
+  ]
+}
 </code></pre>
 
 <h3>3. Investment Research</h3>
 <pre><code>{
-<p>"leads": [</p>
-<p>{ "companyName": "Startup Inc", "website": "https://startup.com" }</p>
-<p>],</p>
-<p>"agents": ["discovery", "company_profile", "financial_intel"],</p>
-<p>"customFields": [</p>
-<p>{ "name": "productMarketFit", "description": "Evidence of product-market fit" },</p>
-<p>{ "name": "competitiveAdvantage", "description": "What is their moat?" }</p>
-<p>]</p>
-<p>}</p>
+  "leads": [
+    { "companyName": "Startup Inc", "website": "https://startup.com" }
+  ],
+  "agents": ["discovery", "company_profile", "financial_intel"],
+  "customFields": [
+    { "name": "productMarketFit", "description": "Evidence of product-market fit" },
+    { "name": "competitiveAdvantage", "description": "What is their moat?" }
+  ]
+}
 </code></pre>
 
 <h3>4. Marketing Qualification</h3>
 <pre><code>{
-<p>"leads": [</p>
-<p>{ "companyName": "Prospect Corp", "website": "https://prospect.com" }</p>
-<p>],</p>
-<p>"agents": ["discovery", "company_profile", "tech_stack"],</p>
-<p>"customFields": [</p>
-<p>{ "name": "hasMarketing", "description": "Do they have a marketing team?" },</p>
-<p>{ "name": "adSpend", "description": "Evidence of advertising spend" }</p>
-<p>]</p>
-<p>}</p>
+  "leads": [
+    { "companyName": "Prospect Corp", "website": "https://prospect.com" }
+  ],
+  "agents": ["discovery", "company_profile", "tech_stack"],
+  "customFields": [
+    { "name": "hasMarketing", "description": "Do they have a marketing team?" },
+    { "name": "adSpend", "description": "Evidence of advertising spend" }
+  ]
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>AI Agents Deep Dive</h2>
-
-<h3>1. Discovery Agent</h3>
-<p>Extracts foundational company information:</p>
-
-<h3>2. Company Profile Agent</h3>
-<p>Builds on discovery context to extract:</p>
-
-<h3>3. Financial Intel Agent</h3>
-<p>Analyzes funding and financial information:</p>
-
-<h3>4. Tech Stack Agent</h3>
-<p>Identifies technologies used:</p>
-
-<h3>5. Custom Fields Agent</h3>
-<p>Extracts any user-defined fields based on accumulated context.</p>
-
 <p>---</p>
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<p>*Not required in demo mode</p>
-
-<p>---</p>
-
-<h2>Output Format</h2>
-
-<pre><code>{
-<p>"companyName": "Stripe",</p>
-<p>"website": "https://stripe.com",</p>
-<p>"businessType": "B2B SaaS",</p>
-<p>"description": "Financial infrastructure platform for businesses",</p>
-<p>"industry": "Financial Technology",</p>
-<p>"subIndustry": "Payment Processing",</p>
-<p>"employeeCount": "5000+",</p>
-<p>"yearFounded": "2010",</p>
-<p>"headquarters": "San Francisco, CA",</p>
-<p>"funding": "$8.7B",</p>
-<p>"lastFundingRound": "Series I - March 2021",</p>
-<p>"investors": ["Sequoia Capital", "Andreessen Horowitz", "Tiger Global"],</p>
-<p>"revenueEstimate": "$14B+ (2023)",</p>
-<p>"technologies": ["Ruby", "Go", "React", "AWS"],</p>
-<p>"cms": null,</p>
-<p>"analytics": ["Segment", "Amplitude"],</p>
-<p>"advertising": ["Google Ads"],</p>
-<p>"customFields": {</p>
-<p>"hasEcommerce": false,</p>
-<p>"targetMarket": "Developers and businesses"</p>
-<p>},</p>
-<p>"sources": [</p>
-<p>{ "url": "https://stripe.com/about", "field": "description" },</p>
-<p>{ "url": "https://stripe.com/newsroom", "field": "funding" }</p>
-<p>],</p>
-<p>"enrichedAt": "2024-12-23T10:30:00Z",</p>
-<p>"agentsUsed": ["discovery", "company_profile", "financial_intel", "tech_stack"],</p>
-<p>"cost": 0.04</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Pricing</h2>
-
-<h3>BYOK (Bring Your Own Keys)</h3>
-<p>You pay directly to each provider:</p>
-
-
-<h3>Cost Per Lead</h3>
-
-
-<h3>Cost Comparison</h3>
-
-
-<strong>No monthly subscription. Pay per use.</strong>
-
-<p>---</p>
-
-<h2>API Integration</h2>
-
-<h3>Using the Apify API</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_APIFY_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/fire-enrich').call({</p>
-<p>leads: [</p>
-<p>{ companyName: 'Stripe', website: 'https://stripe.com' },</p>
-<p>{ companyName: 'Notion', website: 'https://notion.so' }</p>
-<p>],</p>
-<p>agents: ['discovery', 'company_profile', 'financial_intel', 'tech_stack'],</p>
-<p>customFields: [</p>
-<p>{ name: 'targetMarket', description: 'Who is their target customer?' }</p>
-<p>],</p>
-<p>firecrawlApiKey: 'fc-xxx',</p>
-<p>anthropicApiKey: 'sk-ant-xxx',</p>
-<p>maxConcurrency: 5</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>items.forEach(company =&gt; {</p>
-<p>console.log(<code>${company.companyName}: ${company.industry}, ${company.employeeCount} employees</code>);</p>
-<p>});</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~fire-enrich/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"leads": [</p>
-<p>{ "companyName": "Stripe", "website": "https://stripe.com" }</p>
-<p>],</p>
-<p>"agents": ["discovery", "company_profile"],</p>
-<p>"firecrawlApiKey": "fc-xxx",</p>
-<p>"anthropicApiKey": "sk-ant-xxx"</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Demo Mode</h2>
-
-<p>Test the actor without API keys:</p>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>Returns sample data for Stripe and Notion with all agent outputs.</p>
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>Sales Teams</h3>
-<ul>
-<li>Enrich inbound leads automatically</li>
-<li>Build complete prospect profiles</li>
-<li>Identify high-value opportunities</li>
-</ul>
-
-<h3>Marketing Teams</h3>
-<ul>
-<li>Qualify MQLs with company data</li>
-<li>Segment by industry, size, funding</li>
-<li>Personalize outreach campaigns</li>
-</ul>
-
-<h3>Investors & VCs</h3>
-<ul>
-<li>Research portfolio candidates</li>
-<li>Due diligence automation</li>
-<li>Market mapping</li>
-</ul>
-
-<h3>Recruiters</h3>
-<ul>
-<li>Research target companies</li>
-<li>Identify growing companies</li>
-<li>Tech stack analysis for matching</li>
-</ul>
-
-<p>---</p>
-
-<h2>Integration with Your Pipeline</h2>
-
-<p>Fire-Enrich integrates with your existing enrichment queue:</p>
-
-<pre><code>// Add to enrichment pipeline
-<p>const result = await enrichmentQueue.addLead(lead, ['fire_enrich'], {</p>
-<p>priority: PRIORITY.SINGLE_LEAD</p>
-<p>});</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>Rate Limits</strong>: Respects Firecrawl rate limits</li>
-<li><strong>Private Companies</strong>: Limited financial data for private companies</li>
-<li><strong>Accuracy</strong>: AI-extracted data should be verified for critical decisions</li>
-<li><strong>Language</strong>: Best results for English-language websites</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support@alizarin_refrigerator-owner.com</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>lead enrichment, company data api, b2b lead enrichment, sales intelligence, company research automation, zoominfo alternative, apollo alternative, ai lead enrichment, multi-agent enrichment, company profile api, funding data, tech stack detection, firecrawl, claude ai</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -799,7 +655,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -232,9 +232,62 @@
         .hud-ammo { color: #ffcc00; }
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
+        .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -244,6 +297,7 @@
                 <a href="../api-docs.html">API Docs</a>
                 <a href="../faq.html">FAQ</a>
                 <a href="../partners.html">Weapons Locker</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
                 <a href="https://apify.com/alizarin_refrigerator-owner/google-stitch-ai-landing-page-generator?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
@@ -267,32 +321,186 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Google Stitch AI Landing Page Generator</h1>
-
-<p>Google Stitch AI Landing Page Generator - Apify actor for web scraping, data extraction, and automation. Built by John Rippy.</p>
+            <p>Generate high-converting landing pages using AI. Analyze competitor pages for design inspiration, extract client branding, and create SEO-optimized, AI-indexable landing pages with FAQs, CTAs, trust signals, and schema markup. Pay-per-event pricing. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
-<ul>
-<li><strong>Easy to Use</strong> - Simple input configuration</li>
-<li><strong>Reliable</strong> - Built on the Apify platform</li>
-<li><strong>Scalable</strong> - Handles large datasets</li>
-<li><strong>API Access</strong> - Integrate with your workflows</li>
-</ul>
 
+<ul>
+<li><strong>Competitor Analysis</strong>: Analyze up to 3 competitor landing pages for design patterns, CTAs, and content structure</li>
+<li><strong>Client Branding Extraction</strong>: Automatically extract colors, fonts, and tone from existing client websites</li>
+<li><strong>Conversion Optimization</strong>: Built-in CRO best practices with strategic CTA placement</li>
+<li><strong>SEO Ready</strong>: Meta tags, schema markup, and semantic HTML structure</li>
+<li><strong>AI Indexable</strong>: Structured content optimized for AI search engines (GEO)</li>
+<li><strong>Multiple Export Formats</strong>: HTML, React, Next.js, Webflow, WordPress</li>
+<li><strong>Webhook Support</strong>: Automatically POST results to your endpoint upon completion</li>
+<li><strong>Pay-per-event billing</strong>: Only pay for what you generate</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "demoMode": true,
+  "businessName": "Acme Solutions",
+  "targetKeywords": ["project management", "team collaboration"],
+  "pageGoal": "lead_generation"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description | Default |
+|-----------|------|----------|-------------|---------|
+| <code>competitorUrls</code> | array | No | Up to 3 competitor landing page URLs for inspiration | <code>[]</code> |
+| <code>clientUrl</code> | string | No | Client's current website for branding extraction | - |
+| <code>businessName</code> | string | No | Business name for the landing page | - |
+| <code>businessDescription</code> | string | No | Brief description of the business | - |
+| <code>targetKeywords</code> | array | No | Primary keywords for SEO optimization | <code>[]</code> |
+| <code>pageGoal</code> | string | No | Conversion goal (lead_generation, sales, appointment_booking, newsletter_signup, contact_form, phone_call) | <code>lead_generation</code> |
+| <code>includeSections</code> | array | No | Sections to include (hero, features, benefits, testimonials, faq, cta, pricing, trust_signals, about, contact) | All sections |
+| <code>colorScheme</code> | string | No | Color preference (auto, professional, modern, vibrant, minimal, dark) | <code>auto</code> |
+| <code>customPrompt</code> | string | No | Additional AI design instructions | - |
+| <code>exportFormat</code> | string | No | Output format (html, react, nextjs, webflow, wordpress) | <code>html</code> |
+| <code>firecrawlApiKey</code> | string | No<em> | Firecrawl API key for scraping (</em>required for production mode) | - |
+| <code>demoMode</code> | boolean | No | Run with sample data (no charges) | <code>true</code> |
+| <code>webhookUrl</code> | string | No | URL to POST the generated landing page data to upon completion | - |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  clientUrl: string;              // Client website URL
+  pageTitle: string;              // SEO-optimized page title
+  metaDescription: string;        // SEO meta description
+  htmlContent: string;            // Complete HTML content
+  cssContent: string;             // CSS styles
+  reactComponent?: string;        // React component (if exportFormat is 'react' or 'nextjs')
+  nextjsPage?: string;            // Next.js page (if exportFormat is 'nextjs')
+  webflowJson?: object;           // Webflow JSON (if exportFormat is 'webflow')
+  wordpressBlock?: string;        // WordPress block (if exportFormat is 'wordpress')
+  sections: Array<{
+    name: string;
+    content: string;
+    order: number;
+  }>;
+  schemaMarkup: object;           // JSON-LD schema markup
+  conversionScore: number;        // 0-100 conversion optimization score
+  seoScore: number;               // 0-100 SEO score
+  aiIndexScore: number;           // 0-100 AI indexability score
+  stitchProjectUrl?: string;      // Google Stitch project URL
+  competitorInsights: string[];   // Insights from competitor analysis
+  generatedAt: string;            // ISO timestamp
+}
+</code></pre>
+
+<h2>Landing Page Sections</h2>
+
+<p>| Section | Description |
+|---------|-------------|
+| <code>hero</code> | Main headline, subheadline, primary CTA, trust badges |
+| <code>features</code> | Feature cards with icons and descriptions |
+| <code>benefits</code> | Value propositions with quantified results |
+| <code>testimonials</code> | Customer quotes with names and titles |
+| <code>faq</code> | FAQ section with schema markup for AI/SEO |
+| <code>pricing</code> | Pricing tiers with feature comparison |
+| <code>cta</code> | Final call-to-action with form |
+| <code>trust_signals</code> | Client logos, certifications, awards |
+| <code>about</code> | Company story and stats |
+| <code>contact</code> | Contact form with fields |</p>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>landing_page_generated</code>: $0.50 per page</li>
+<li><code>competitor_analyzed</code>: $0.05 per URL</li></p>
+
+</ul>
+Demo mode runs are free!
+
+<h2>API Keys Required</h2>
+
+<p>For production mode (not demo):
+<ul>
+<li><strong>Firecrawl API Key</strong>: Get at https://firecrawl.dev - Required for scraping competitor and client pages</li></p>
+
+</ul>
 <h2>Use Cases</h2>
-<ul>
-<li>Data extraction and analysis</li>
-<li>Automation workflows</li>
-<li>Business intelligence</li>
-<li>Research and monitoring</li>
-</ul>
 
-<p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong></p>
+<p>1. <strong>Marketing Agencies</strong>: Generate landing pages for clients quickly
+2. <strong>Startups</strong>: Create professional pages without designers
+3. <strong>A/B Testing</strong>: Generate multiple page variations
+4. <strong>Competitor Research</strong>: Understand what works in your industry
+5. <strong>Lead Generation</strong>: Build conversion-optimized capture pages</p>
 
-<h2>Keywords</h2>
-<p>google, stitch, ai, landing, page, generator, apify, web scraping, data extraction, automation</p>
+<h2>Example Usage</h2>
+
+<h3>Basic Demo Run</h3>
+<pre><code>{
+  "demoMode": true,
+  "businessName": "Acme Solutions",
+  "targetKeywords": ["project management", "team collaboration"],
+  "pageGoal": "lead_generation"
+}
+</code></pre>
+
+<h3>Full Production Run</h3>
+<pre><code>{
+  "demoMode": false,
+  "competitorUrls": [
+    "https://competitor1.com/landing",
+    "https://competitor2.com/trial",
+    "https://competitor3.com/signup"
+  ],
+  "clientUrl": "https://client-website.com",
+  "businessName": "Client Business",
+  "businessDescription": "SaaS platform for project management",
+  "targetKeywords": ["project management software", "team collaboration tool"],
+  "pageGoal": "lead_generation",
+  "includeSections": ["hero", "features", "benefits", "testimonials", "faq", "pricing", "cta"],
+  "colorScheme": "auto",
+  "exportFormat": "nextjs",
+  "firecrawlApiKey": "fc-xxx...",
+  "webhookUrl": "https://yourserver.com/webhook/landing-pages"
+}
+</code></pre>
+
+<h3>With Webhook Delivery</h3>
+<pre><code>{
+  "demoMode": true,
+  "businessName": "My Company",
+  "pageGoal": "lead_generation",
+  "webhookUrl": "https://yourserver.com/api/landing-page-callback"
+}
+</code></pre>
+
+<p>The webhook receives a POST with this payload:
+<pre><code>{
+  "actorId": "stitch-landing-page-generator",
+  "runId": "abc123",
+  "data": { /<em> full output object </em>/ },
+  "timestamp": "2024-01-15T10:30:00Z"
+}
+</code></pre></p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -302,11 +510,11 @@
         </div>
     </footer>
 
-    <!-- DOOM HUD -->
+        <!-- DOOM HUD -->
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>
@@ -321,8 +529,14 @@
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor">ACTOR_COUNT</div>
+                <div class="hud-value hud-armor">323</div>
                 <div class="hud-label">ACTORS</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-secrets">0/3</div>
+                <div class="hud-label">SECRETS</div>
             </div>
         </div>
     </div>

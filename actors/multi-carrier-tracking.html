@@ -456,233 +456,136 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Multi-Carrier Package Tracking (USPS, UPS, FedEx)</h1>
-<blockquote><strong>&quot;One API, Three Carriers&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<h2>Track Packages Across All Major Carriers</h2>
-<strong>Managing shipments from multiple carriers is a pain.</strong> Different APIs, different authentication methods, different response formats. USPS uses XML, UPS requires OAuth, FedEx has its own auth flow.
-<strong>What if you could track any package with a single API call?</strong>
-<p>The <strong>Multi-Carrier Package Tracking</strong> actor automatically:</p>
-<ul><li>Detects the carrier from the tracking number format</li>
-<li>Authenticates with the appropriate carrier API</li>
-<li>Returns unified, structured tracking data</li>
-</ul>
-<strong>USPS, UPS, or FedEx — just paste the tracking number.</strong>
-<p>---</p>
+            <p>Track packages across USPS, UPS, and FedEx with a single API call. Auto-detects carrier from tracking number format.</p>
+
 <h2>Features</h2>
+
 <h3>Automatic Carrier Detection</h3>
+
 <p>No need to specify which carrier — the actor analyzes the tracking number format and routes to the correct API:</p>
-<p>| Carrier | Example Pattern | Detection |</p>
-<p>|---------|----------------|-----------|</p>
-<p>| <strong>UPS</strong> | <code>1Z999AA10123456784</code> | Starts with &quot;1Z&quot; + 16 chars |</p>
-<p>| <strong>USPS</strong> | <code>9400111899223456789012</code> | Starts with 94/92/93 + 20 digits |</p>
-<p>| <strong>FedEx</strong> | <code>794644790138</code> | 12-15 digits |</p>
+
+<p>| Carrier | Example Pattern | Detection |
+|---------|----------------|-----------|
+| <strong>UPS</strong> | <code>1Z999AA10123456784</code> | Starts with "1Z" + 16 chars |
+| <strong>USPS</strong> | <code>9400111899223456789012</code> | Starts with 94/92/93 + 20 digits |
+| <strong>FedEx</strong> | <code>794644790138</code> | 12-15 digits |</p>
+
 <h3>Unified Response Format</h3>
+
 <p>All carriers return the same structured data:</p>
-<ul><li>Current status and location</li>
+
+<ul>
+<li>Current status and location</li>
 <li>Estimated and actual delivery dates</li>
 <li>Full event history with timestamps</li>
 <li>Error handling with clear messages</li>
+
 </ul>
 <h3>Demo Mode</h3>
+
 <p>Test integrations without API credentials. Enable <code>demoMode: true</code> to get realistic sample data.</p>
+
 <p>---</p>
+
 <h2>Quick Start</h2>
-<h3>Track Multiple Packages</h3>
+
 <pre><code>{
-<p>&quot;trackingNumbers&quot;: [</p>
-<p>&quot;1Z999AA10123456784&quot;,</p>
-<p>&quot;9400111899223456789012&quot;,</p>
-<p>&quot;794644790138&quot;</p>
-<p>],</p>
-<p>&quot;demoMode&quot;: true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
-<h3>Production Mode with API Credentials</h3>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>&quot;trackingNumbers&quot;: [&quot;1Z999AA10123456784&quot;],</p>
-<p>&quot;demoMode&quot;: false,</p>
-<p>&quot;uspsUserId&quot;: &quot;YOUR_USPS_USER_ID&quot;,</p>
-<p>&quot;upsClientId&quot;: &quot;YOUR_UPS_CLIENT_ID&quot;,</p>
-<p>&quot;upsClientSecret&quot;: &quot;YOUR_UPS_CLIENT_SECRET&quot;,</p>
-<p>&quot;fedexApiKey&quot;: &quot;YOUR_FEDEX_API_KEY&quot;,</p>
-<p>&quot;fedexSecretKey&quot;: &quot;YOUR_FEDEX_SECRET_KEY&quot;</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-<p>---</p>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
 <h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;trackingNumber&quot;: &quot;1Z999AA10123456784&quot;,</p>
-<p>&quot;carrier&quot;: &quot;UPS&quot;,</p>
-<p>&quot;status&quot;: &quot;Delivered&quot;,</p>
-<p>&quot;statusDetail&quot;: &quot;DELIVERED&quot;,</p>
-<p>&quot;estimatedDelivery&quot;: null,</p>
-<p>&quot;deliveredDate&quot;: &quot;2025-01-13T14:23:00Z&quot;,</p>
-<p>&quot;lastUpdate&quot;: &quot;2025-01-13T14:23:00Z&quot;,</p>
-<p>&quot;location&quot;: &quot;Austin, TX 78701 US&quot;,</p>
-<p>&quot;events&quot;: [</p>
-<p>{</p>
-<p>&quot;timestamp&quot;: &quot;2025-01-13T14:23:00Z&quot;,</p>
-<p>&quot;status&quot;: &quot;Delivered&quot;,</p>
-<p>&quot;location&quot;: &quot;Austin, TX 78701 US&quot;,</p>
-<p>&quot;details&quot;: &quot;Left at front door&quot;</p>
-<p>},</p>
-<p>{</p>
-<p>&quot;timestamp&quot;: &quot;2025-01-13T08:15:00Z&quot;,</p>
-<p>&quot;status&quot;: &quot;Out For Delivery&quot;,</p>
-<p>&quot;location&quot;: &quot;Austin, TX 78701 US&quot;,</p>
-<p>&quot;details&quot;: &quot;On UPS vehicle for delivery&quot;</p>
-<p>},</p>
-<p>{</p>
-<p>&quot;timestamp&quot;: &quot;2025-01-12T22:45:00Z&quot;,</p>
-<p>&quot;status&quot;: &quot;Departed Facility&quot;,</p>
-<p>&quot;location&quot;: &quot;Dallas, TX 75261 US&quot;,</p>
-<p>&quot;details&quot;: &quot;Departed UPS facility&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "trackingNumber": "1Z999AA10123456784",
+  "carrier": "UPS",
+  "status": "Delivered",
+  "statusDetail": "DELIVERED",
+  "estimatedDelivery": null,
+  "deliveredDate": "2025-01-13T14:23:00Z",
+  "lastUpdate": "2025-01-13T14:23:00Z",
+  "location": "Austin, TX 78701 US",
+  "events": [
+    {
+      "timestamp": "2025-01-13T14:23:00Z",
+      "status": "Delivered",
+      "location": "Austin, TX 78701 US",
+      "details": "Left at front door"
+    },
+    {
+      "timestamp": "2025-01-13T08:15:00Z",
+      "status": "Out For Delivery",
+      "location": "Austin, TX 78701 US",
+      "details": "On UPS vehicle for delivery"
+    },
+    {
+      "timestamp": "2025-01-12T22:45:00Z",
+      "status": "Departed Facility",
+      "location": "Dallas, TX 75261 US",
+      "details": "Departed UPS facility"
+    }
+  ]
+}
 </code></pre>
+
 <p>---</p>
-<h2>API Credentials Setup</h2>
-<h3>USPS Web Tools (Free)</h3>
-<p>1. Go to <a href="https://www.usps.com/business/web-tools-apis/" target="_blank" rel="noopener">USPS Web Tools Registration</a></p>
-<p>2. Create a free account</p>
-<p>3. Copy your User ID</p>
-<h3>UPS Developer Portal</h3>
-<p>1. Go to <a href="https://developer.ups.com" target="_blank" rel="noopener">developer.ups.com</a></p>
-<p>2. Create an app to get Client ID and Secret</p>
-<p>3. Enable the Tracking API</p>
-<h3>FedEx Developer Portal</h3>
-<p>1. Go to <a href="https://developer.fedex.com" target="_blank" rel="noopener">developer.fedex.com</a></p>
-<p>2. Create a project</p>
-<p>3. Get your API Key and Secret Key</p>
-<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
 <h2>Use Cases</h2>
+
 <h3>E-commerce Order Tracking</h3>
+
 <p>Build customer-facing tracking pages that work with any carrier your suppliers use.</p>
+
 <h3>Shipping Automation</h3>
-<p>Trigger workflows when packages are delivered or delayed:</p>
-<ul><li>Send delivery confirmation emails</li>
+
+<p>Trigger workflows when packages are delivered or delayed:
+<ul>
+<li>Send delivery confirmation emails</li>
 <li>Update inventory systems</li>
-<li>Alert customers about delays</li>
+<li>Alert customers about delays</li></p>
+
 </ul>
 <h3>Logistics Dashboards</h3>
+
 <p>Monitor all shipments across carriers in a unified view.</p>
+
 <h3>Customer Support</h3>
+
 <p>Quickly look up any tracking number without switching between carrier websites.</p>
+
 <p>---</p>
-<h2>Pay-Per-Event Pricing</h2>
-<strong>You only pay for what you use.</strong> No monthly fees. No API key costs.
-<p>| Event | Description | Price |</p>
-<p>|-------|-------------|-------|</p>
-<p>| <code>tracking_lookup</code> | Each tracking number queried | $0.005 |</p>
-<h3>Cost Examples</h3>
-<p>| Usage | Monthly Cost |</p>
-<p>|-------|--------------|</p>
-<p>| 100 lookups | $0.50 |</p>
-<p>| 1,000 lookups | $5.00 |</p>
-<p>| 10,000 lookups | $50.00 |</p>
-<strong>Demo mode is free</strong> — test all you want before going live.
+
 <p>---</p>
-<h2>Tracking Number Patterns</h2>
-<h3>UPS</h3>
-<ul><li><code>1Z</code> + 16 alphanumeric characters (e.g., <code>1Z999AA10123456784</code>)</li>
-<li><code>T</code> + 10 digits (e.g., <code>T1234567890</code>)</li>
-<li>9 digits (e.g., <code>123456789</code>)</li>
-</ul>
-<h3>USPS</h3>
-<ul><li>22 digits starting with <code>94</code> (Priority Mail)</li>
-<li>22 digits starting with <code>92</code> (First Class)</li>
-<li>22 digits starting with <code>93</code> (Certified Mail)</li>
-<li>International: 2 letters + 9 digits + <code>US</code> (e.g., <code>LZ123456789US</code>)</li>
-</ul>
-<h3>FedEx</h3>
-<ul><li>12 digits (e.g., <code>794644790138</code>)</li>
-<li>15 digits</li>
-<li>22 digits starting with <code>96</code> (FedEx Ground)</li>
-</ul>
-<p>---</p>
-<h2>API Integration</h2>
-<h3>JavaScript/Node.js</h3>
-<pre><code>import { ApifyClient } from &#x27;apify-client&#x27;;
-<p>const client = new ApifyClient({ token: &#x27;YOUR_API_TOKEN&#x27; });</p>
-<p>const run = await client.actor(&#x27;localhowl/multi-carrier-tracking&#x27;).call({</p>
-<p>trackingNumbers: [&#x27;1Z999AA10123456784&#x27;],</p>
-<p>demoMode: true</p>
-<p>});</p>
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items);</p>
-</code></pre>
-<h3>cURL</h3>
-<pre><code>curl -X POST &quot;https://api.apify.com/v2/acts/localhowl~multi-carrier-tracking/runs?token=YOUR_API_TOKEN&quot; \
-<p>-H &quot;Content-Type: application/json&quot; \</p>
-<p>-d &#x27;{</p>
-<p>&quot;trackingNumbers&quot;: [&quot;1Z999AA10123456784&quot;],</p>
-<p>&quot;demoMode&quot;: true</p>
-<p>}&#x27;</p>
-</code></pre>
-<h3>Python</h3>
-<pre><code>from apify_client import ApifyClient
-<p>client = ApifyClient(&quot;YOUR_API_TOKEN&quot;)</p>
-<p>run = client.actor(&quot;localhowl/multi-carrier-tracking&quot;).call(run_input={</p>
-<p>&quot;trackingNumbers&quot;: [&quot;1Z999AA10123456784&quot;],</p>
-<p>&quot;demoMode&quot;: True</p>
-<p>})</p>
-<p>items = client.dataset(run[&quot;defaultDatasetId&quot;]).list_items().items</p>
-<p>print(items)</p>
-</code></pre>
-<p>---</p>
-<h2>Webhook Integration</h2>
-<p>Send tracking updates directly to your automation platform:</p>
-<pre><code>{
-<p>&quot;trackingNumbers&quot;: [&quot;1Z999AA10123456784&quot;],</p>
-<p>&quot;demoMode&quot;: false,</p>
-<p>&quot;webhookUrl&quot;: &quot;https://hooks.zapier.com/hooks/catch/12345/abcde/&quot;</p>
-<p>}</p>
-</code></pre>
-<h3>Supported Platforms</h3>
-<ul><li><strong>Zapier</strong>: Use &quot;Catch Hook&quot; trigger</li>
-<li><strong>Make (Integromat)</strong>: Use &quot;Webhook&quot; trigger</li>
-<li><strong>n8n</strong>: Use &quot;Webhook&quot; node</li>
-<li><strong>Custom endpoints</strong>: Any HTTPS POST endpoint</li>
-</ul>
-<p>---</p>
-<h2>Error Handling</h2>
-<p>The actor handles errors gracefully:</p>
-<pre><code>{
-<p>&quot;trackingNumber&quot;: &quot;INVALID123&quot;,</p>
-<p>&quot;carrier&quot;: &quot;Unknown&quot;,</p>
-<p>&quot;status&quot;: &quot;Error&quot;,</p>
-<p>&quot;error&quot;: &quot;Unable to detect carrier from tracking number format. Please verify the tracking number.&quot;</p>
-<p>}</p>
-</code></pre>
-<p>Common errors:</p>
-<ul><li>Missing API credentials for the detected carrier</li>
-<li>Invalid tracking number format</li>
-<li>Package not found in carrier system</li>
-<li>API rate limits or timeouts</li>
-</ul>
-<p>---</p>
-<h2>Limitations</h2>
-<ul><li><strong>Real-time delays</strong>: Carrier APIs may have 15-60 minute delays</li>
-<li><strong>Historical data</strong>: Only current tracking info, not archived shipments</li>
-<li><strong>Rate limits</strong>: Built-in delays respect carrier API limits</li>
-<li><strong>International</strong>: Limited support for non-US international tracking</li>
-</ul>
-<p>---</p>
-<h2>Support</h2>
-<ul><li><strong>Email</strong>: john@johnrippy.link</li>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<h2>Keywords</h2>
-<p>package tracking api, usps tracking api, ups tracking api, fedex tracking api, multi carrier tracking, shipping tracking, delivery tracking, package tracker, shipment tracking api, logistics api, ecommerce shipping, order tracking</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -696,7 +599,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

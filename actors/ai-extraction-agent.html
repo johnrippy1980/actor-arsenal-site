@@ -457,39 +457,104 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>AI Extraction Agent</h1>
+            <h1>AI Extraction Agent - Smart Scraper</h1>
+            <p>AI-powered web agent that autonomously extracts data from websites using natural language objectives. Uses Claude AI for intelligent extraction - NO Firecrawl dependency required. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>"Extract Anything from Any Website with Natural Language"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Paying for Expensive Web Scraping APIs</h2>
-
-<strong>You're currently paying for:</strong> Firecrawl ($16+/mo), Diffbot ($299/mo), Apify scrapers per use, or building custom scrapers for every website.
-
-<strong>What if you could just describe what you want?</strong>
-
-<p>The <strong>AI Extraction Agent</strong> uses Claude AI + Playwright to autonomously extract structured data from any website based on natural language objectives:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>No code required</strong> - Just describe what you want in plain English</li>
-<li><strong>No Firecrawl dependency</strong> - Uses Playwright for scraping (you control the cost)</li>
-<li><strong>Autonomous crawling</strong> - Follows links to find relevant content</li>
-<li><strong>Intelligent extraction</strong> - Claude AI understands context and extracts clean data</li>
-<li><strong>Schema support</strong> - Optionally provide JSON schema for structured output</li>
-<li><strong>BYOK</strong> - Bring your own Anthropic API key</li>
-</ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
 
-<strong>Pay only for what you use.</strong> Apify compute + your Claude API usage.
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>url</code> | string | Yes<em> | - | Starting URL to begin extraction |
+| <code>objective</code> | string | Yes</em> | - | Natural language description of what to extract |
+| <code>schema</code> | object | No | - | JSON schema to structure the output |
+| <code>maxPages</code> | integer | No | 5 | Maximum pages to crawl (1-50) |
+| <code>followLinks</code> | boolean | No | true | Whether to follow links to discover content |
+| <code>anthropicApiKey</code> | string | Yes<em> | - | Your Anthropic API key for Claude AI |
+| <code>demoMode</code> | boolean | No | false | Run with sample data (no API key required) |</p>
+
+</em>Required when not in demo mode
 
 <p>---</p>
 
-<h2>How It Works</h2>
+<h2>Output Format</h2>
 
+<pre><code>{
+  "success": true,
+  "url": "https://example.com",
+  "objective": "Find pricing plans",
+  "data": {
+    "plans": [
+      {
+        "name": "Starter",
+        "price": 29,
+        "features": ["Feature 1", "Feature 2"]
+      }
+    ]
+  },
+  "pagesScraped": 3,
+  "pagesVisited": [
+    "https://example.com",
+    "https://example.com/pricing"
+  ],
+  "extractedAt": "2024-12-23T10:30:00.000Z"
+}
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<h3>Apify Compute</h3>
+<ul>
+<li>Standard Playwright actor pricing</li>
+<li>~$0.25-0.50 per run (depends on pages scraped)</li></p>
+
+</ul>
+<h3>Anthropic API (BYOK)</h3>
+<ul>
+<li>Claude API usage: ~$0.003-0.015 per extraction</li>
+<li>Depends on page content size</li>
+<li>Uses claude-sonnet-4-20250514 for best results</li>
+
+</ul>
+<h3>Cost Comparison</h3>
+
+<p>| Task | This Actor | Firecrawl | Diffbot |
+|------|------------|-----------|---------|
+| Extract pricing from 1 site | ~$0.30 | $0.001/page + $16/mo | $299/mo |
+| Extract 100 product listings | ~$2.50 | $0.10 + $16/mo | $299/mo |
+| Monthly cost (100 extractions) | ~$30 | ~$26 | $299 |</p>
+
+<strong>No monthly subscription. Pay per use.</strong>
 
 <p>---</p>
 
@@ -497,267 +562,46 @@
 
 <h3>1. Competitive Pricing Intelligence</h3>
 <pre><code>{
-<p>"url": "https://competitor.com",</p>
-<p>"objective": "Find all pricing plans and list their names, monthly costs, annual discounts, and included features"</p>
-<p>}</p>
+  "url": "https://competitor.com",
+  "objective": "Find all pricing plans and list their names, monthly costs, annual discounts, and included features"
+}
 </code></pre>
 
 <h3>2. Lead Enrichment</h3>
 <pre><code>{
-<p>"url": "https://company.com",</p>
-<p>"objective": "Extract the leadership team with their names, titles, and LinkedIn profiles"</p>
-<p>}</p>
+  "url": "https://company.com",
+  "objective": "Extract the leadership team with their names, titles, and LinkedIn profiles"
+}
 </code></pre>
 
 <h3>3. Product Research</h3>
 <pre><code>{
-<p>"url": "https://store.com/products",</p>
-<p>"objective": "Get all products with name, price, description, SKU, and availability status"</p>
-<p>}</p>
+  "url": "https://store.com/products",
+  "objective": "Get all products with name, price, description, SKU, and availability status"
+}
 </code></pre>
 
 <h3>4. Content Aggregation</h3>
 <pre><code>{
-<p>"url": "https://blog.company.com",</p>
-<p>"objective": "Extract all blog posts with title, author, date, and summary"</p>
-<p>}</p>
+  "url": "https://blog.company.com",
+  "objective": "Extract all blog posts with title, author, date, and summary"
+}
 </code></pre>
 
 <h3>5. Job Listings</h3>
 <pre><code>{
-<p>"url": "https://company.com/careers",</p>
-<p>"objective": "Find all open positions with title, department, location, and requirements"</p>
-<p>}</p>
+  "url": "https://company.com/careers",
+  "objective": "Find all open positions with title, department, location, and requirements"
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Basic Extraction</h3>
-
-<pre><code>{
-<p>"url": "https://example-saas.com",</p>
-<p>"objective": "Find all pricing plans and list their names, prices, and features",</p>
-<p>"anthropicApiKey": "sk-ant-..."</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong>
-<pre><code>{
-<p>"success": true,</p>
-<p>"url": "https://example-saas.com",</p>
-<p>"objective": "Find all pricing plans...",</p>
-<p>"data": {</p>
-<p>"plans": [</p>
-<p>{</p>
-<p>"name": "Starter",</p>
-<p>"price": 29,</p>
-<p>"billingCycle": "monthly",</p>
-<p>"features": ["5 users", "10GB storage", "Email support"]</p>
-<p>},</p>
-<p>{</p>
-<p>"name": "Professional",</p>
-<p>"price": 79,</p>
-<p>"billingCycle": "monthly",</p>
-<p>"features": ["25 users", "100GB storage", "Priority support", "API access"]</p>
-<p>}</p>
-<p>]</p>
-<p>},</p>
-<p>"pagesScraped": 3,</p>
-<p>"pagesVisited": ["https://example.com", "https://example.com/pricing"],</p>
-<p>"extractedAt": "2024-12-23T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 2: With Schema (Structured Output)</h3>
-
-<pre><code>{
-<p>"url": "https://company.com/team",</p>
-<p>"objective": "Extract the leadership team information",</p>
-<p>"schema": {</p>
-<p>"type": "object",</p>
-<p>"properties": {</p>
-<p>"team": {</p>
-<p>"type": "array",</p>
-<p>"items": {</p>
-<p>"type": "object",</p>
-<p>"properties": {</p>
-<p>"name": { "type": "string" },</p>
-<p>"title": { "type": "string" },</p>
-<p>"linkedin": { "type": "string" }</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>},</p>
-<p>"anthropicApiKey": "sk-ant-..."</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 3: Demo Mode (No API Key Required)</h3>
-
-<pre><code>{
-<p>"demoMode": true,</p>
-<p>"objective": "Find the pricing information"</p>
-<p>}</p>
-</code></pre>
-
 <p>---</p>
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<p>*Required when not in demo mode</p>
-
-<p>---</p>
-
-<h2>Output Format</h2>
-
-<pre><code>{
-<p>"success": true,</p>
-<p>"url": "https://example.com",</p>
-<p>"objective": "Find pricing plans",</p>
-<p>"data": {</p>
-<p>"plans": [</p>
-<p>{</p>
-<p>"name": "Starter",</p>
-<p>"price": 29,</p>
-<p>"features": ["Feature 1", "Feature 2"]</p>
-<p>}</p>
-<p>]</p>
-<p>},</p>
-<p>"pagesScraped": 3,</p>
-<p>"pagesVisited": [</p>
-<p>"https://example.com",</p>
-<p>"https://example.com/pricing"</p>
-<p>],</p>
-<p>"extractedAt": "2024-12-23T10:30:00.000Z"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Pricing</h2>
-
-<h3>Apify Compute</h3>
-<ul>
-<li>Standard Playwright actor pricing</li>
-<li>~$0.25-0.50 per run (depends on pages scraped)</li>
-</ul>
-
-<h3>Anthropic API (BYOK)</h3>
-<ul>
-<li>Claude API usage: ~$0.003-0.015 per extraction</li>
-<li>Depends on page content size</li>
-<li>Uses claude-sonnet-4-20250514 for best results</li>
-</ul>
-
-<h3>Cost Comparison</h3>
-
-
-<strong>No monthly subscription. Pay per use.</strong>
-
-<p>---</p>
-
-<h2>API Integration</h2>
-
-<h3>Using the Apify API</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_APIFY_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/ai-extraction-agent').call({</p>
-<p>url: 'https://competitor.com/pricing',</p>
-<p>objective: 'Extract all pricing plans with features and costs',</p>
-<p>maxPages: 5,</p>
-<p>anthropicApiKey: 'sk-ant-...'</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0].data);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~ai-extraction-agent/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"url": "https://example.com",</p>
-<p>"objective": "Find the company contact information",</p>
-<p>"anthropicApiKey": "sk-ant-..."</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Why Choose This Over Firecrawl?</h2>
-
-
-<strong>Best for:</strong> Users who want full control over costs and extraction logic, or who already have an Anthropic API key.
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>Sales Teams</h3>
-<ul>
-<li>Extract competitor pricing for battlecards</li>
-<li>Gather prospect company information</li>
-<li>Build targeted lead lists</li>
-</ul>
-
-<h3>Product Managers</h3>
-<ul>
-<li>Competitive feature analysis</li>
-<li>Market research</li>
-<li>Pricing strategy research</li>
-</ul>
-
-<h3>Marketing Teams</h3>
-<ul>
-<li>Content research and aggregation</li>
-<li>Competitor blog analysis</li>
-<li>Social proof collection</li>
-</ul>
-
-<h3>Developers</h3>
-<ul>
-<li>API endpoint discovery</li>
-<li>Documentation extraction</li>
-<li>Data migration preparation</li>
-</ul>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>JavaScript-heavy SPAs</strong>: May require higher maxPages for full content discovery</li>
-<li><strong>Rate Limiting</strong>: Respects robots.txt and includes built-in delays</li>
-<li><strong>Content Length</strong>: Very large pages are truncated at 50,000 characters</li>
-<li><strong>Authentication</strong>: Cannot access login-protected content</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support@alizarin_refrigerator-owner.com</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>ai web scraper, natural language extraction, claude ai scraper, autonomous web agent, web data extraction, playwright scraper, ai data extraction, structured data extraction, website scraper, competitor analysis, pricing intelligence, lead enrichment, firecrawl alternative, no-code scraper, ai powered scraper</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -771,7 +615,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

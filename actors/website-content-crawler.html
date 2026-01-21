@@ -457,48 +457,101 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Website Content Crawler</h1>
-
-<strong>"Website Content Crawler"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Crawl websites and extract text content to feed AI models, LLM applications, vector databases, or RAG pipelines. The Actor supports rich formatting using Markdown, cleans the HTML, downloads files, an</p>
+            <p>Enhanced website crawler using Firecrawl's Crawl API for superior JS rendering, smart rate limiting, anti-bot bypass, and clean markdown extraction.</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
+<li><strong>Superior JS Rendering</strong> - Handles complex JavaScript-heavy websites</li>
+<li><strong>Anti-Bot Bypass</strong> - Built-in techniques to avoid blocking</li>
+<li><strong>Smart Rate Limiting</strong> - Automatic throttling to prevent IP bans</li>
+<li><strong>Clean Markdown Output</strong> - Get beautifully formatted content</li>
+<li><strong>Subdomain Crawling</strong> - Optionally include subdomains</li>
+<li><strong>URL Pattern Filtering</strong> - Include/exclude specific URL patterns</li>
+<li><strong>Screenshot Capture</strong> - Optional visual snapshots of pages</li>
+<li><strong>Geo-Targeting</strong> - Crawl from specific countries</li>
+<li><strong>Demo Mode</strong> - Test without an API key using sample data</li>
 
-<h2>Integration Support</h2>
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Field | Type | Description | Default |
+|-------|------|-------------|---------|
+| <code>url</code> | string | Website URL to crawl | Required |
+| <code>maxPages</code> | number | Maximum pages to crawl | 100 |
+| <code>maxDepth</code> | number | Maximum crawl depth | 5 |
+| <code>includeSubdomains</code> | boolean | Include subdomains | false |
+| <code>excludePatterns</code> | array | URL patterns to exclude (regex) | - |
+| <code>includePatterns</code> | array | Only include matching URLs (regex) | - |
+| <code>outputFormat</code> | string | Content format: markdown, html, text, links | markdown |
+| <code>includeScreenshots</code> | boolean | Capture page screenshots | false |
+| <code>waitForSelector</code> | string | CSS selector to wait for (JS-heavy sites) | - |
+| <code>country</code> | string | Country code for geo-targeting | - |
+| <code>firecrawlApiKey</code> | string | Your Firecrawl API key | - |
+| <code>webhookUrl</code> | string | URL for completion notification | - |
+| <code>demoMode</code> | boolean | Run with sample data | false |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "url": "https://example.com/page",
+  "title": "Page Title",
+  "description": "Meta description of the page",
+  "markdown": "# Page Title
+
+Full markdown content...",
+  "wordCount": 450,
+  "statusCode": 200,
+  "crawledAt": "2024-01-15T10:30:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses pay-per-event pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| Crawl Started | Charged when a website crawl is initiated | $0.02 |
+| Pages Crawled (per 10) | Charged per 10 pages successfully crawled | $0.01 |</p>
+
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><strong>Content Migration</strong> - Extract all content for website migrations</li>
+<li><strong>SEO Audits</strong> - Crawl sites for technical SEO analysis</li>
+<li><strong>Research & Analysis</strong> - Gather content for competitive research</li>
+<li><strong>Data Extraction</strong> - Collect structured data from websites</li>
+<li><strong>Archival</strong> - Create markdown backups of website content</li>
+<li><strong>Training Data</strong> - Gather content for AI/ML training datasets</li>
+
 </ul>
+---
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>website content crawler, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +565,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

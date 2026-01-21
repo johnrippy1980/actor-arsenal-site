@@ -456,21 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>NLWeb Compliance Checker</h1>
-<blockquote><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>Check if websites implement <strong>Microsoft&#x27;s NLWeb (Natural Language Web) protocol</strong> for AI assistant compatibility. Get a comprehensive AI-readiness score and actionable recommendations.</p>
-<h2>What is NLWeb?</h2>
-<p>NLWeb (Natural Language Web) is Microsoft&#x27;s emerging protocol that helps AI assistants understand and interact with websites. By implementing NLWeb, websites can:</p>
-<ul><li><strong>Enable AI conversations</strong> - Let AI assistants query your site naturally</li>
-<li><strong>Provide structured data</strong> - Expose schemas AI can understand</li>
-<li><strong>Define capabilities</strong> - Specify what interactions are supported</li>
-<li><strong>Improve discoverability</strong> - Help AI systems find and use your content</li>
-</ul>
+            <p>Check if websites implement Microsoft's NLWeb (Natural Language Web) protocol for AI assistant compatibility. Validates /.well-known/nlweb.json and associated schemas.</p>
+
 <h2>Features</h2>
-<ul><li><strong>NLWeb Detection</strong>: Check for <code>/.well-known/nlweb.json</code> presence and validity</li>
+
+<ul>
+<li><strong>NLWeb Detection</strong>: Check for <code>/.well-known/nlweb.json</code> presence and validity</li>
 <li><strong>Schema Validation</strong>: Verify referenced JSON-LD schemas are valid</li>
 <li><strong>llms.txt Check</strong>: Detect presence of the llms.txt AI information file</li>
 <li><strong>robots.txt Analysis</strong>: Find AI bot directives (GPTBot, Claude, Bard, etc.)</li>
@@ -478,162 +472,107 @@
 <li><strong>Actionable Recommendations</strong>: Specific steps to improve AI compatibility</li>
 <li><strong>Batch Processing</strong>: Check multiple sites at once</li>
 <li><strong>Webhook Integration</strong>: Get notified when checks complete</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>Website Audit</h3>
-<p>Check if your website is ready for the AI-first web. Identify gaps and get specific recommendations.</p>
-<h3>Competitive Analysis</h3>
-<p>Compare your AI readiness against competitors. See who&#x27;s ahead in AI accessibility.</p>
-<h3>Agency Reporting</h3>
-<p>Generate AI readiness reports for clients. Show the value of implementing modern web standards.</p>
-<h3>Developer Onboarding</h3>
-<p>Quickly understand a site&#x27;s AI capabilities before integration work.</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
-<p>| Parameter | Type | Description |</p>
-<p>|-----------|------|-------------|</p>
-<p>| <code>urls</code> | array | List of website URLs to check |</p>
-<p>| <code>checkSchemas</code> | boolean | Validate schemas in nlweb.json (default: true) |</p>
-<p>| <code>checkLLMsTxt</code> | boolean | Check for llms.txt file (default: true) |</p>
-<p>| <code>checkRobotsTxt</code> | boolean | Analyze robots.txt for AI directives (default: true) |</p>
-<p>| <code>webhookUrl</code> | string | Webhook URL for completion notification |</p>
-<p>| <code>demoMode</code> | boolean | Run with sample data (default: true) |</p>
-<h2>Output</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>urls</code> | array | List of website URLs to check |
+| <code>checkSchemas</code> | boolean | Validate schemas in nlweb.json (default: true) |
+| <code>checkLLMsTxt</code> | boolean | Check for llms.txt file (default: true) |
+| <code>checkRobotsTxt</code> | boolean | Analyze robots.txt for AI directives (default: true) |
+| <code>webhookUrl</code> | string | Webhook URL for completion notification |
+| <code>demoMode</code> | boolean | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;totalSites&quot;: 3,</p>
-<p>&quot;sitesWithNLWeb&quot;: 1,</p>
-<p>&quot;sitesAIReady&quot;: 1,</p>
-<p>&quot;averageScore&quot;: 65,</p>
-<p>&quot;results&quot;: [</p>
-<p>{</p>
-<p>&quot;url&quot;: &quot;https://example.com&quot;,</p>
-<p>&quot;hasNLWeb&quot;: true,</p>
-<p>&quot;nlwebUrl&quot;: &quot;https://example.com/.well-known/nlweb.json&quot;,</p>
-<p>&quot;nlwebConfig&quot;: {</p>
-<p>&quot;version&quot;: &quot;1.0&quot;,</p>
-<p>&quot;description&quot;: &quot;Example website with NLWeb support&quot;,</p>
-<p>&quot;capabilities&quot;: [&quot;query&quot;, &quot;search&quot;],</p>
-<p>&quot;schemas&quot;: [&quot;https://example.com/schema/main.json&quot;]</p>
-<p>},</p>
-<p>&quot;isValid&quot;: true,</p>
-<p>&quot;validationErrors&quot;: [],</p>
-<p>&quot;schemas&quot;: [</p>
-<p>{&quot;url&quot;: &quot;...&quot;, &quot;isValid&quot;: true, &quot;type&quot;: &quot;WebSite&quot;}</p>
-<p>],</p>
-<p>&quot;hasLLMsTxt&quot;: true,</p>
-<p>&quot;robotsTxtAIDirectives&quot;: [</p>
-<p>{&quot;userAgent&quot;: &quot;GPTBot&quot;, &quot;rule&quot;: &quot;allow&quot;}</p>
-<p>],</p>
-<p>&quot;score&quot;: 95,</p>
-<p>&quot;aiReady&quot;: true,</p>
-<p>&quot;recommendations&quot;: []</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "totalSites": 3,
+  "sitesWithNLWeb": 1,
+  "sitesAIReady": 1,
+  "averageScore": 65,
+  "results": [
+    {
+      "url": "https://example.com",
+      "hasNLWeb": true,
+      "nlwebUrl": "https://example.com/.well-known/nlweb.json",
+      "nlwebConfig": {
+        "version": "1.0",
+        "description": "Example website with NLWeb support",
+        "capabilities": ["query", "search"],
+        "schemas": ["https://example.com/schema/main.json"]
+      },
+      "isValid": true,
+      "validationErrors": [],
+      "schemas": [
+        {"url": "...", "isValid": true, "type": "WebSite"}
+      ],
+      "hasLLMsTxt": true,
+      "robotsTxtAIDirectives": [
+        {"userAgent": "GPTBot", "rule": "allow"}
+      ],
+      "score": 95,
+      "aiReady": true,
+      "recommendations": []
+    }
+  ]
+}
 </code></pre>
-<h2>Scoring System</h2>
-<p>| Factor | Max Points | Description |</p>
-<p>|--------|------------|-------------|</p>
-<p>| NLWeb Presence | 20 | Has <code>/.well-known/nlweb.json</code> |</p>
-<p>| Valid Config | 20 | nlweb.json passes validation |</p>
-<p>| Schema Validity | 20 | Referenced schemas are valid |</p>
-<p>| llms.txt | 15 | Has <code>/llms.txt</code> file |</p>
-<p>| robots.txt | 25 | Allows AI bots (GPTBot, Claude, etc.) |</p>
-<strong>AI Ready</strong>: Score ≥ 70
-<h2>AI Bots Checked</h2>
-<p>The actor checks robots.txt for these AI user agents:</p>
-<ul><li>GPTBot (OpenAI)</li>
-<li>ChatGPT-User (OpenAI)</li>
-<li>Google-Extended (Gemini)</li>
-<li>Claude-Web (Anthropic)</li>
-<li>anthropic-ai (Anthropic)</li>
-<li>CCBot (Common Crawl)</li>
-<li>Applebot-Extended (Apple)</li>
-<li>PerplexityBot (Perplexity)</li>
-<li>Bytespider (ByteDance)</li>
-<li>Amazonbot (Amazon)</li>
-</ul>
-<h2>Example Usage</h2>
-<h3>Basic Check</h3>
-<pre><code>{
-<p>&quot;urls&quot;: [&quot;https://microsoft.com&quot;, &quot;https://google.com&quot;],</p>
-<p>&quot;demoMode&quot;: false</p>
-<p>}</p>
-</code></pre>
-<h3>With Webhook</h3>
-<pre><code>{
-<p>&quot;urls&quot;: [&quot;https://yourdomain.com&quot;],</p>
-<p>&quot;webhookUrl&quot;: &quot;https://hooks.zapier.com/your-webhook&quot;,</p>
-<p>&quot;demoMode&quot;: false</p>
-<p>}</p>
-</code></pre>
-<h3>Schema Validation Only</h3>
-<pre><code>{
-<p>&quot;urls&quot;: [&quot;https://yourdomain.com&quot;],</p>
-<p>&quot;checkSchemas&quot;: true,</p>
-<p>&quot;checkLLMsTxt&quot;: false,</p>
-<p>&quot;checkRobotsTxt&quot;: false,</p>
-<p>&quot;demoMode&quot;: false</p>
-<p>}</p>
-</code></pre>
+
 <h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-<p>| Event | Price |</p>
-<p>|-------|-------|</p>
-<p>| <code>apify-actor-start</code> | $0.05 per run |</p>
-<p>| <code>site_checked</code> | $0.01 per site |</p>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Price |
+|-------|-------|
+| <code>apify-actor-start</code> | $0.05 per run |
+| <code>site_checked</code> | $0.01 per site |</p>
+
 <strong>Example costs:</strong>
-<ul><li>10 sites: $0.05 + (10 × $0.01) = <strong>$0.15</strong></li>
+<ul>
+<li>10 sites: $0.05 + (10 × $0.01) = <strong>$0.15</strong></li>
 <li>50 sites: $0.05 + (50 × $0.01) = <strong>$0.55</strong></li>
 <li>100 sites: $0.05 + (100 × $0.01) = <strong>$1.05</strong></li>
+
 </ul>
-<h2>NLWeb Implementation Guide</h2>
-<p>To make your site AI-ready:</p>
-<h3>1. Create nlweb.json</h3>
-<pre><code>// /.well-known/nlweb.json
-<p>{</p>
-<p>&quot;version&quot;: &quot;1.0&quot;,</p>
-<p>&quot;description&quot;: &quot;Your site description for AI assistants&quot;,</p>
-<p>&quot;contact&quot;: &quot;webmaster@yourdomain.com&quot;,</p>
-<p>&quot;capabilities&quot;: [&quot;query&quot;, &quot;search&quot;, &quot;navigate&quot;],</p>
-<p>&quot;schemas&quot;: [</p>
-<p>&quot;https://yourdomain.com/schema/organization.json&quot;</p>
-<p>],</p>
-<p>&quot;endpoints&quot;: {</p>
-<p>&quot;query&quot;: &quot;https://api.yourdomain.com/nlweb/query&quot;,</p>
-<p>&quot;search&quot;: &quot;https://api.yourdomain.com/nlweb/search&quot;</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h3>2. Add llms.txt</h3>
-<pre><code><h1>YourDomain.com</h1>
-<h2>About</h2>
-<p>Brief description of your website for AI systems.</p>
-<h2>Pages</h2>
-<ul><li>/about - Company information</li>
-<li>/products - Product catalog</li>
-<li>/contact - Contact details</li>
-</ul>
-<h2>API</h2>
-<ul><li>/api/v1 - REST API documentation</li>
-</ul></code></pre>
-<h3>3. Update robots.txt</h3>
-<pre><code>User-agent: GPTBot
-<p>Allow: /</p>
-<p>User-agent: Claude-Web</p>
-<p>Allow: /</p>
-<p>User-agent: Google-Extended</p>
-<p>Allow: /</p>
-</code></pre>
-<h2>Related Actors</h2>
-<ul><li><strong>IndexNow Submitter</strong> - Submit URLs for instant indexing</li>
-<li><strong>robots.txt Checker</strong> - Comprehensive robots.txt analysis</li>
-<li><strong>Technical SEO Auditor</strong> - Full site SEO audit</li>
-</ul>
-<h2>Support</h2>
-<p>For issues or feature requests, contact support.</p>
+<h2>Use Cases</h2>
+
+<h3>Website Audit</h3>
+Check if your website is ready for the AI-first web. Identify gaps and get specific recommendations.
+
+<h3>Competitive Analysis</h3>
+Compare your AI readiness against competitors. See who's ahead in AI accessibility.
+
+<h3>Agency Reporting</h3>
+Generate AI readiness reports for clients. Show the value of implementing modern web standards.
+
+<h3>Developer Onboarding</h3>
+Quickly understand a site's AI capabilities before integration work.
+
 <p>---</p>
-<h2>Keywords</h2>
-<p>nlweb, microsoft nlweb, ai ready websites, natural language web, llms.txt, ai seo, chatgpt compatibility, ai accessibility, structured data, json-ld, ai assistant integration</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -647,7 +586,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

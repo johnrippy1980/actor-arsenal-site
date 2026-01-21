@@ -457,9 +457,94 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Research any keyword with SEMrush data using your own API key (BYOK). Get search volume, keyword difficulty, CPC, SERP features, and discover related keywords - all in structured format for automation.</p>
+            <h1>SEMrush Keyword Research - Volume, Difficulty & Related</h1>
+            <p>Get comprehensive keyword data from SEMrush including search volume, keyword difficulty, CPC, SERP features, and related/phrase match keywords. BYOK (Bring Your Own Key) - use your SEMrush API key.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key (required for real data) |
+| <code>keywords</code> | array | - | Keywords to research |
+| <code>database</code> | string | us | Country database (45+ options) |
+| <code>includeRelatedKeywords</code> | boolean | true | Get related keywords |
+| <code>includePhraseMatch</code> | boolean | true | Get phrase match keywords |
+| <code>relatedLimit</code> | integer | 20 | Max related keywords per seed |
+| <code>phraseMatchLimit</code> | integer | 20 | Max phrase match per seed |
+| <code>minVolume</code> | integer | 0 | Filter by minimum volume |
+| <code>maxDifficulty</code> | integer | 100 | Filter by max difficulty |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.05 |
+| Keyword analyzed | Per seed keyword | $0.02 |
+| Related keywords fetched | Per batch | $0.01 |
+| Phrase match fetched | Per batch | $0.01 |
+| Webhook sent | Per notification | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Content Planning</h3>
+Find high-volume, low-competition topics.
+
+<h3>PPC Research</h3>
+Get CPC and competition data for ad planning.
+
+<h3>Competitor Keyword Gap</h3>
+Research what keywords competitors rank for.
+
+<h3>SEO Strategy</h3>
+Build keyword clusters around main topics.
+
+<h3>Client Reporting</h3>
+Export structured keyword data for reports.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -473,7 +558,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

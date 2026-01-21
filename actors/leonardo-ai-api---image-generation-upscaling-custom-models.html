@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,109 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Leonardo AI API - Image Generation, Upscaling &amp; Custom Models</h1>
-            <p>Apify actor for Leonardo AI API - Image Generation, Upscaling &amp; Custom Models</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Generate stunning AI images with Leonardo AI. Create images from text prompts, upscale existing images, generate variations, and use custom-trained models. Perfect for content creation, marketing, game assets, and creative automation.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Image Generation</h3>
+<ul>
+<li><strong>generate_image</strong> - Generate images from text prompts</li>
+<li><strong>get_generation</strong> - Get details of a specific generation</li>
+<li><strong>list_generations</strong> - List recent generations</li>
+<li><strong>list_user_generations</strong> - List your generations</li>
+
+</ul>
+<h3>Image Enhancement</h3>
+<ul>
+<li><strong>upscale_image</strong> - Upscale images to higher resolution</li>
+<li><strong>generate_variations</strong> - Create variations of existing images</li>
+
+</ul>
+<h3>Models</h3>
+<ul>
+<li><strong>list_models</strong> - List available generation models</li>
+<li><strong>get_model</strong> - Get details of a specific model</li>
+
+</ul>
+<h3>Account</h3>
+<ul>
+<li><strong>get_user_info</strong> - Get account info and credit balance</li>
+<li><strong>calculate_cost</strong> - Estimate cost before generating</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "task": "generate_image",
+  "success": true,
+  "result": {
+    "generationId": "gen_abc123",
+    "status": "COMPLETE",
+    "images": [
+      {
+        "id": "img_001",
+        "url": "https://cdn.leonardo.ai/...",
+        "nsfw": false,
+        "likeCount": 0
+      }
+    ],
+    "prompt": "A serene mountain landscape at sunset",
+    "modelId": "6bef9f1b-29cb-40c7-b9df-32b51c1f67d3",
+    "createdAt": "2024-01-20T14:30:00Z"
+  },
+  "creditCost": 7,
+  "timestamp": "2024-01-20T14:30:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
+<p>Note: Leonardo AI has its own credit system. Typical generation costs 5-8 credits.</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Content Creation</strong> - Generate blog images, social media visuals</li>
+<li><strong>Marketing</strong> - Create ad creatives, product mockups</li>
+<li><strong>Game Development</strong> - Generate game assets, concept art</li>
+<li><strong>E-commerce</strong> - Product visualization, lifestyle imagery</li>
+<li><strong>Design</strong> - Mood boards, style exploration</li>
+<li><strong>Stock Photos</strong> - Generate custom stock imagery</li>
+<li><strong>NFT Art</strong> - Create unique digital artwork</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +437,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

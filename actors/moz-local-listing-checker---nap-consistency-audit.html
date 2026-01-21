@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,91 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Moz Local Listing Checker - NAP Consistency Audit</h1>
-            <p>Apify actor for Moz Local Listing Checker - NAP Consistency Audit</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Automate Moz's Check Local Listings tool to check NAP consistency across directories</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Automated Form Submission</strong>: No manual data entry required</li>
+<li><strong>Complete Listing Analysis</strong>: Shows which directories have your business</li>
+<li><strong>NAP Consistency Report</strong>: Identifies mismatches in name, address, or phone</li>
+<li><strong>Duplicate Detection</strong>: Finds potential duplicate listings</li>
+<li><strong>Overall Score</strong>: Get a quick health score for your local presence</li>
+<li><strong>Webhook Integration</strong>: Send results to your CRM or automation tools</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<p>Each result includes:
+<ul>
+<li><code>businessName</code>: The business name checked</li>
+<li><code>address</code>: Full address used for the check</li>
+<li><code>totalListings</code>: Total number of directories where business was found</li>
+<li><code>completeListings</code>: Listings with accurate NAP</li>
+<li><code>incompleteListings</code>: Listings with missing or incorrect information</li>
+<li><code>duplicates</code>: Potential duplicate listings detected</li>
+<li><code>overallScore</code>: Letter grade (A-F) for listing health</li>
+<li><code>directories</code>: Array of individual directory results</li></p>
+
+</ul>
+<h3>Directory Result Fields</h3>
+<ul>
+<li><code>name</code>: Directory name (e.g., "Google", "Yelp")</li>
+<li><code>status</code>: found | not_found | incomplete | duplicate</li>
+<li><code>nameMatch</code>: boolean - does the name match?</li>
+<li><code>addressMatch</code>: boolean - does the address match?</li>
+<li><code>phoneMatch</code>: boolean - does the phone match?</li>
+<li><code>url</code>: Direct link to the listing (if found)</li>
+
+</ul>
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.10 per business check (free in demo mode)</p>
+
+<h2>Use Cases</h2>
+
+<h3>Local SEO Audits</h3>
+Include listing consistency in your technical SEO audits to identify citation issues.
+
+<h3>Client Onboarding</h3>
+Quickly assess a new client's local listing health before starting work.
+
+<h3>Competitor Research</h3>
+Check how well-distributed competitors are across local directories.
+
+<h3>Monthly Monitoring</h3>
+Schedule regular checks to track listing improvement over time.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +419,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

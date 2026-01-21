@@ -457,15 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Sentiment Analysis API</h1>
-
-<blockquote><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Analyze text sentiment using AI or rule-based analysis. Detect positive, negative, neutral, and mixed sentiments with emotion detection, confidence scores, and key phrase extraction.</p>
+            <h1>AI Sentiment Analysis API</h1>
+            <p>Analyze text sentiment using AI. Detect positive, negative, neutral tones with emotion detection, confidence scores, and key phrase extraction. Features: - Sentiment classification (positive, negative, neutral) - Confidence scores (0-100%) - Emotion detection (joy, anger, sadness, fear, surprise) - Key phrase extraction - Topic detection - Language detection - Batch text processing - Multi-language support Use Cases: - Review analysis - Social media monitoring - Customer feedback - Brand sentiment tracking - Content moderation BYOK Options: - OpenAI API key - Anthropic Claude API key - Google Gemini API key. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -477,7 +472,104 @@
 <li><strong>Batch Processing</strong>: Analyze multiple texts in a single run</li>
 <li><strong>Multi-Language</strong>: Support for English, Spanish, French, German, and more</li>
 <li><strong>Webhook Integration</strong>: Get notified when analysis completes</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>texts</code> | array | Array of texts to analyze (max 100 per run) |
+| <code>text</code> | string | Single text to analyze (use this OR texts array) |
+| <code>includeEmotions</code> | boolean | Detect specific emotions (default: true) |
+| <code>includeKeyPhrases</code> | boolean | Extract key phrases (default: true) |
+| <code>includeTopics</code> | boolean | Detect topics/subjects (default: false) |
+| <code>language</code> | string | Language code or "auto" (default: auto) |
+| <code>openaiApiKey</code> | string | Your OpenAI API key for GPT-4 analysis |
+| <code>anthropicApiKey</code> | string | Your Anthropic API key for Claude analysis |
+| <code>model</code> | string | Model to use: auto, gpt-4o-mini, gpt-4o, claude-3-haiku, claude-3-sonnet, rule-based |
+| <code>webhookUrl</code> | string | URL to receive completion notification |
+| <code>demoMode</code> | boolean | Return sample data for testing |</p>
+
+<h2>Output Format</h2>
+
+<p>The actor outputs a comprehensive analysis object:</p>
+
+<pre><code>{
+  "totalTexts": 3,
+  "overallSentiment": "mixed",
+  "averageScore": 0.07,
+  "results": [
+    {
+      "text": "I love this product! It's amazing.",
+      "sentiment": "positive",
+      "score": 0.92,
+      "confidence": 0.95,
+      "magnitude": 0.88,
+      "emotions": [
+        { "name": "joy", "score": 0.85 },
+        { "name": "surprise", "score": 0.15 }
+      ],
+      "keyPhrases": ["love this product", "amazing"],
+      "topics": ["product", "quality"],
+      "language": "en",
+      "model": "gpt-4o-mini",
+      "processingTime": 245
+    }
+  ],
+  "summary": {
+    "positive": 1,
+    "negative": 1,
+    "neutral": 1,
+    "mixed": 0
+  }
+}
+</code></pre>
+
+<h3>Sentiment Scores</h3>
+
+<ul>
+<li><strong>score</strong>: -1 (most negative) to 1 (most positive)</li>
+<li><strong>confidence</strong>: 0 to 1, how confident the model is</li>
+<li><strong>magnitude</strong>: 0 to 1, strength of the sentiment</li>
+
+</ul>
+<h3>Sentiment Categories</h3>
+
+<ul>
+<li><strong>positive</strong>: Score > 0.2</li>
+<li><strong>negative</strong>: Score < -0.2</li>
+<li><strong>neutral</strong>: Score between -0.2 and 0.2 with no mixed signals</li>
+<li><strong>mixed</strong>: Contains both positive and negative elements</li>
+
+</ul>
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses the pay-per-event pricing model:
+<ul>
+<li><strong>Base cost</strong>: $0.05 per run</li>
+<li><strong>Per text</strong>: $0.002 per text analyzed (rule-based)</li>
+<li><strong>AI models</strong>: Additional cost based on API token usage</li></p>
+
+</ul>
+Example: Analyzing 100 reviews with rule-based = ~$0.25
 
 <h2>Use Cases</h2>
 
@@ -488,159 +580,13 @@
 <li><strong>Content Moderation</strong>: Flag negative or toxic content</li>
 <li><strong>Market Research</strong>: Analyze survey responses and feedback</li>
 <li><strong>Brand Health</strong>: Monitor overall sentiment over time</li>
+
 </ul>
+---
 
-<h2>Input Parameters</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<p>The actor outputs a comprehensive analysis object:</p>
-
-<pre><code>{
-<p>"totalTexts": 3,</p>
-<p>"overallSentiment": "mixed",</p>
-<p>"averageScore": 0.07,</p>
-<p>"results": [</p>
-<p>{</p>
-<p>"text": "I love this product! It's amazing.",</p>
-<p>"sentiment": "positive",</p>
-<p>"score": 0.92,</p>
-<p>"confidence": 0.95,</p>
-<p>"magnitude": 0.88,</p>
-<p>"emotions": [</p>
-<p>{ "name": "joy", "score": 0.85 },</p>
-<p>{ "name": "surprise", "score": 0.15 }</p>
-<p>],</p>
-<p>"keyPhrases": ["love this product", "amazing"],</p>
-<p>"topics": ["product", "quality"],</p>
-<p>"language": "en",</p>
-<p>"model": "gpt-4o-mini",</p>
-<p>"processingTime": 245</p>
-<p>}</p>
-<p>],</p>
-<p>"summary": {</p>
-<p>"positive": 1,</p>
-<p>"negative": 1,</p>
-<p>"neutral": 1,</p>
-<p>"mixed": 0</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Sentiment Scores</h3>
-
-<ul>
-<li><strong>score</strong>: -1 (most negative) to 1 (most positive)</li>
-<li><strong>confidence</strong>: 0 to 1, how confident the model is</li>
-<li><strong>magnitude</strong>: 0 to 1, strength of the sentiment</li>
-</ul>
-
-<h3>Sentiment Categories</h3>
-
-<ul>
-<li><strong>positive</strong>: Score > 0.2</li>
-<li><strong>negative</strong>: Score < -0.2</li>
-<li><strong>neutral</strong>: Score between -0.2 and 0.2 with no mixed signals</li>
-<li><strong>mixed</strong>: Contains both positive and negative elements</li>
-</ul>
-
-<h2>Example Usage</h2>
-
-<h3>Basic Sentiment Analysis</h3>
-
-<pre><code>{
-<p>"texts": [</p>
-<p>"I love this product! It's amazing.",</p>
-<p>"Terrible customer service, never again.",</p>
-<p>"The package arrived on time."</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>AI-Powered Analysis</h3>
-
-<pre><code>{
-<p>"texts": ["Your product transformed my business! Thank you!"],</p>
-<p>"openaiApiKey": "sk-...",</p>
-<p>"model": "gpt-4o-mini",</p>
-<p>"includeEmotions": true,</p>
-<p>"includeKeyPhrases": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Review Batch Analysis</h3>
-
-<pre><code>{
-<p>"texts": [</p>
-<p>"5 stars! Best purchase ever.",</p>
-<p>"Product broke after 2 days.",</p>
-<p>"Good value for money.",</p>
-<p>"Shipping was slow but item was fine."</p>
-<p>],</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"model": "claude-3-haiku",</p>
-<p>"includeTopics": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>With Webhook Notification</h3>
-
-<pre><code>{
-<p>"texts": ["Great experience overall!"],</p>
-<p>"webhookUrl": "https://hooks.zapier.com/your-webhook-id"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Models Comparison</h2>
-
-
-<h2>Pricing</h2>
-
-<p>This actor uses the pay-per-event pricing model:</p>
-<ul>
-<li><strong>Base cost</strong>: $0.05 per run</li>
-<li><strong>Per text</strong>: $0.002 per text analyzed (rule-based)</li>
-<li><strong>AI models</strong>: Additional cost based on API token usage</li>
-</ul>
-
-<p>Example: Analyzing 100 reviews with rule-based = ~$0.25</p>
-
-<h2>Integration</h2>
-
-<h3>Zapier/Make/n8n</h3>
-
-<p>Use the webhook URL to trigger automations when analysis completes. The webhook payload includes:</p>
-<ul>
-<li>Total texts analyzed</li>
-<li>Overall sentiment</li>
-<li>Average score</li>
-<li>Summary counts</li>
-</ul>
-
-<h3>Supabase/Database</h3>
-
-<p>Store results in your database for trend analysis and reporting.</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li>Maximum 100 texts per run</li>
-<li>Text length limited to 2000 characters for AI models</li>
-<li>Rule-based analysis works best with English text</li>
-<li>AI models require valid API keys with sufficient credits</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>sentiment api, sentiment analysis, review sentiment, ai sentiment, text analysis, opinion mining, openai integration, claude integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -654,7 +600,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

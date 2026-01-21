@@ -457,240 +457,98 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>WordPress Integration</h1>
+            <h1>WordPress Integration - Auto Publisher</h1>
+            <p>Auto-publish content to WordPress from Apify actors. Create posts, pages, and custom post types via WordPress REST API. Perfect for content automation, blog syndication, and CMS workflows.</p>
 
-<blockquote><strong>"Auto-Publish to WordPress from Anywhere"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Seamless WordPress Publishing via REST API</h2>
-
-<strong>Stop manually copying content into WordPress.</strong> This actor auto-publishes posts, pages, and custom post types directly via the WordPress REST API.
-
-<strong>What can you do with this?</strong>
+<h2>Features</h2>
 
 <ul>
-<li>Create blog posts with featured images</li>
-<li>Publish pages with custom templates</li>
-<li>Update existing content</li>
-<li>Schedule posts for future publishing</li>
-<li>Support for custom post types (WooCommerce products, portfolios, etc.)</li>
-<li>Batch publish multiple pieces at once</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<strong>Automate your WordPress publishing workflow.</strong>
-
-<p>---</p>
-
-<h2>Why Use This?</h2>
-
-<h3>1. Connect Any Data Source to WordPress</h3>
-
-<p>Combine with other Apify actors to build powerful content pipelines:</p>
-
-<ul>
-<li><strong>AI-generated content</strong> → WordPress posts</li>
-<li><strong>Scraped news articles</strong> → WordPress aggregation site</li>
-<li><strong>Product data</strong> → WooCommerce products</li>
-<li><strong>Social media content</strong> → Cross-posted blog posts</li>
-</ul>
-
-<h3>2. No Plugin Required</h3>
-
-<p>Uses native WordPress REST API. Works with any WordPress site with REST API enabled (WordPress 4.7+).</p>
-
-<h3>3. Full Content Control</h3>
-
-<ul>
-<li>Set categories and tags</li>
-<li>Add featured images</li>
-<li>Set meta fields (SEO plugins, custom fields)</li>
-<li>Control post status (draft, publish, schedule)</li>
-<li>Custom post types supported</li>
-</ul>
-
-<h3>4. Webhook Notifications</h3>
-
-<p>Get notified when posts are published. Integrate with Zapier, Make, n8n.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Publish a Blog Post</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"action": "create_post",</p>
-<p>"wordpressUrl": "https://your-site.com",</p>
-<p>"authType": "application_password",</p>
-<p>"username": "your-username",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "My First Automated Post",</p>
-<p>"content": "&lt;p&gt;This post was created automatically via API!&lt;/p&gt;",</p>
-<p>"status": "publish",</p>
-<p>"categories": ["Technology", "Automation"],</p>
-<p>"tags": ["apify", "wordpress", "api"]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Schedule a Post for Later</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"action": "create_post",</p>
-<p>"wordpressUrl": "https://your-site.com",</p>
-<p>"authType": "application_password",</p>
-<p>"username": "admin",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "Scheduled Post",</p>
-<p>"content": "&lt;p&gt;This will go live on New Year's Day!&lt;/p&gt;",</p>
-<p>"status": "future",</p>
-<p>"date": "2025-01-01T09:00:00"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Create Page with Featured Image</h3>
-
-<pre><code>{
-<p>"action": "create_page",</p>
-<p>"wordpressUrl": "https://your-site.com",</p>
-<p>"authType": "application_password",</p>
-<p>"username": "admin",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "About Us",</p>
-<p>"content": "&lt;h2&gt;Our Story&lt;/h2&gt;&lt;p&gt;We started in 2020...&lt;/p&gt;",</p>
-<p>"status": "publish",</p>
-<p>"featuredImageUrl": "https://example.com/team-photo.jpg",</p>
-<p>"template": "page-about"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: Batch Create Multiple Posts</h3>
-
-<pre><code>{
-<p>"action": "create_post",</p>
-<p>"wordpressUrl": "https://your-site.com",</p>
-<p>"authType": "application_password",</p>
-<p>"username": "admin",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "Post 1",</p>
-<p>"content": "&lt;p&gt;First post content...&lt;/p&gt;",</p>
-<p>"status": "draft"</p>
-<p>},</p>
-<p>{</p>
-<p>"title": "Post 2",</p>
-<p>"content": "&lt;p&gt;Second post content...&lt;/p&gt;",</p>
-<p>"status": "draft"</p>
-<p>},</p>
-<p>{</p>
-<p>"title": "Post 3",</p>
-<p>"content": "&lt;p&gt;Third post content...&lt;/p&gt;",</p>
-<p>"status": "draft"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Authentication Methods</h2>
-
-<h3>Application Passwords (Recommended)</h3>
-
-<p>1. Go to <strong>Users → Profile</strong> in WordPress admin</p>
-<p>2. Scroll to <strong>Application Passwords</strong></p>
-<p>3. Enter a name (e.g., "Apify Integration")</p>
-<p>4. Click <strong>Add New Application Password</strong></p>
-<p>5. Copy the generated password</p>
-
-<pre><code>{
-<p>"authType": "application_password",</p>
-<p>"username": "your-username",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Basic Auth (with Plugin)</h3>
-
-<p>Requires the <a href="https://wordpress.org/plugins/application-passwords/" target="_blank" rel="noopener">Application Passwords</a> plugin for WordPress < 5.6.</p>
-
-<pre><code>{
-<p>"authType": "basic",</p>
-<p>"username": "your-username",</p>
-<p>"password": "your-password"</p>
-<p>}</p>
-</code></pre>
-
-<h3>JWT Token</h3>
-
-<p>Requires the <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/" target="_blank" rel="noopener">JWT Authentication</a> plugin.</p>
-
-<pre><code>{
-<p>"authType": "jwt",</p>
-<p>"jwtToken": "your-jwt-token"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>action</code> | string | Yes | <code>create_post</code>, <code>create_page</code>, <code>update_post</code> |
+| <code>wordpressUrl</code> | string | Yes | Your WordPress site URL |
+| <code>authType</code> | string | Yes | <code>application_password</code>, <code>basic</code>, or <code>jwt</code> |
+| <code>username</code> | string | Yes<em> | WordPress username |
+| <code>applicationPassword</code> | string | Yes</em> | Application password |
+| <code>posts</code> | array | Yes | Array of posts to create/update |
+| <code>webhookUrl</code> | string | No | Webhook for completion notification |
+| <code>demoMode</code> | boolean | No | Return sample data without publishing |</p>
 
 <h3>Post Object Properties</h3>
 
+<p>| Property | Type | Description |
+|----------|------|-------------|
+| <code>title</code> | string | Post title |
+| <code>content</code> | string | Post content (HTML) |
+| <code>status</code> | string | <code>draft</code>, <code>publish</code>, <code>future</code>, <code>pending</code> |
+| <code>date</code> | string | Publish date (ISO 8601) for scheduled posts |
+| <code>categories</code> | array | Category names or IDs |
+| <code>tags</code> | array | Tag names |
+| <code>featuredImageUrl</code> | string | URL of featured image to upload |
+| <code>excerpt</code> | string | Post excerpt |
+| <code>author</code> | number | Author user ID |
+| <code>meta</code> | object | Custom meta fields |
+| <code>template</code> | string | Page template slug |</p>
 
 <p>---</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"success": true,</p>
-<p>"action": "create_post",</p>
-<p>"totalPosts": 3,</p>
-<p>"created": 3,</p>
-<p>"failed": 0,</p>
-<p>"results": [</p>
-<p>{</p>
-<p>"title": "My First Automated Post",</p>
-<p>"postId": 1234,</p>
-<p>"postType": "post",</p>
-<p>"status": "publish",</p>
-<p>"url": "https://your-site.com/my-first-automated-post/",</p>
-<p>"publishedAt": "2025-12-23T12:00:00.000Z"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "success": true,
+  "action": "create_post",
+  "totalPosts": 3,
+  "created": 3,
+  "failed": 0,
+  "results": [
+    {
+      "title": "My First Automated Post",
+      "postId": 1234,
+      "postType": "post",
+      "status": "publish",
+      "url": "https://your-site.com/my-first-automated-post/",
+      "publishedAt": "2025-12-23T12:00:00.000Z"
+    }
+  ]
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Pay-Per-Event Pricing</h2>
+<h2>Pricing</h2>
 
-<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-
-<h3>Cost Examples</h3>
-
-
-<p>---</p>
-
+</ul>
 <h2>Use Cases</h2>
 
 <h3>Content Automation</h3>
@@ -698,158 +556,36 @@
 <li><strong>AI content pipeline</strong>: Generate → publish automatically</li>
 <li><strong>News aggregation</strong>: Scrape → format → publish</li>
 <li><strong>Content repurposing</strong>: Transform and publish across sites</li>
-</ul>
 
+</ul>
 <h3>Blog Networks</h3>
 <ul>
 <li><strong>Multi-site publishing</strong>: Push content to multiple WordPress sites</li>
 <li><strong>Syndication</strong>: Republish content across network</li>
 <li><strong>Guest posting</strong>: Automate contributor workflow</li>
-</ul>
 
+</ul>
 <h3>E-commerce (WooCommerce)</h3>
 <ul>
 <li><strong>Product imports</strong>: Create products from data sources</li>
 <li><strong>Inventory updates</strong>: Sync stock levels</li>
 <li><strong>Price updates</strong>: Batch update pricing</li>
-</ul>
 
+</ul>
 <h3>SEO & Marketing</h3>
 <ul>
 <li><strong>Programmatic SEO</strong>: Create location/keyword pages at scale</li>
 <li><strong>Landing pages</strong>: Generate from templates</li>
 <li><strong>A/B testing</strong>: Create page variants</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>Webhook Integration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Webhook Payload</h3>
-
-<pre><code>{
-<p>"event": "publish_completed",</p>
-<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
-<p>"actor": "wordpress-integration",</p>
-<p>"wordpressSite": "https://your-site.com",</p>
-<p>"action": "create_post",</p>
-<p>"totalPosts": 5,</p>
-<p>"created": 5,</p>
-<p>"failed": 0,</p>
-<p>"results": [...]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Common Automations</h3>
-
-<ul>
-<li><strong>Slack notification</strong>: Alert team when posts go live</li>
-<li><strong>Google Sheets</strong>: Log all published content</li>
-<li><strong>Social sharing</strong>: Auto-post to social when WordPress publishes</li>
-<li><strong>Analytics tracking</strong>: Log publish events</li>
-</ul>
-
-<p>---</p>
-
-<h2>API Integration</h2>
-
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/wordpress-integration').call({</p>
-<p>action: 'create_post',</p>
-<p>wordpressUrl: 'https://your-site.com',</p>
-<p>authType: 'application_password',</p>
-<p>username: 'admin',</p>
-<p>applicationPassword: 'xxxx xxxx xxxx xxxx xxxx xxxx',</p>
-<p>posts: [</p>
-<p>{</p>
-<p>title: 'Automated Post',</p>
-<p>content: '&lt;p&gt;Published via API&lt;/p&gt;',</p>
-<p>status: 'publish'</p>
-<p>}</p>
-<p>]</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0]);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~wordpress-integration/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"action": "create_post",</p>
-<p>"wordpressUrl": "https://your-site.com",</p>
-<p>"authType": "application_password",</p>
-<p>"username": "admin",</p>
-<p>"applicationPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "API Test Post",</p>
-<p>"content": "&lt;p&gt;Created via cURL&lt;/p&gt;",</p>
-<p>"status": "draft"</p>
-<p>}</p>
-<p>]</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Requirements</h2>
-
-<ul>
-<li>WordPress 4.7+ (REST API enabled)</li>
-<li>Application Passwords enabled (WordPress 5.6+ has this built-in)</li>
-<li>User with appropriate publishing permissions</li>
-<li>REST API accessible (not blocked by security plugins)</li>
-</ul>
-
-<p>---</p>
-
-<h2>Troubleshooting</h2>
-
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>Rate limits</strong>: WordPress may limit rapid requests</li>
-<li><strong>Image size</strong>: Large images may timeout</li>
-<li><strong>Custom fields</strong>: Requires meta fields registered in WordPress</li>
-<li><strong>Multisite</strong>: Each site needs separate configuration</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>wordpress api, wordpress automation, wordpress rest api, auto publish wordpress, wordpress integration, blog automation, content automation, wordpress headless cms, wordpress programmatic publishing, woocommerce api, batch wordpress publishing, wordpress webhook, zapier wordpress, make wordpress</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -863,7 +599,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,145 +457,141 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Lingo Asset Sync</h1>
+            <h1>Lingo Digital Asset Management (DAM) platform Asset Sync</h1>
+            <p>Sync and manage brand assets with Lingo DAM. List kits, search assets, download files, validate brand compliance, and distribute assets programmatically. Perfect for agencies managing multiple client brand kits. BYOK (Bring Your Own Key) - use your Lingo API credentials.</p>
 
-<strong>"Sync Brand Assets with Lingo DAM"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Sync and manage brand assets with <a href="https://www.lingoapp.com/" target="_blank" rel="noopener">Lingo DAM</a>. Perfect for agencies managing multiple client brand kits programmatically.</p>
-
-<h2>What This Does</h2>
-
-<p>Lingo is a Digital Asset Management (DAM) platform for organizing brand assets, design files, and style guides. This actor enables:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>List Kits</strong>: Get all brand kits in your Lingo space</li>
-<li><strong>List Sections</strong>: Browse sections within a kit (Logos, Colors, Fonts, etc.)</li>
-<li><strong>List Assets</strong>: Retrieve all assets in a section with metadata</li>
-<li><strong>Search Assets</strong>: Find assets by name, tags, or description</li>
-<li><strong>Download Assets</strong>: Download asset files in various formats</li>
-<li><strong>Sync Kit</strong>: Full synchronization of an entire brand kit</li>
-<li><strong>Validate Brand</strong>: Check brand compliance against guidelines</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Use Cases</h2>
-
-<h3>Agency Brand Management</h3>
 <pre><code>{
-<p>"task": "sync_kit",</p>
-<p>"kitId": "client-brand-kit-123",</p>
-<p>"includeMetadata": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
-<p>Keep client brand assets synchronized across your systems.</p>
 
-<h3>Asset Search & Discovery</h3>
-<pre><code>{
-<p>"task": "search_assets",</p>
-<p>"searchQuery": "logo primary",</p>
-<p>"assetTypes": ["image", "vector"]</p>
-<p>}</p>
-</code></pre>
-<p>Find specific assets across all your brand kits.</p>
+<h2>Demo Mode</h2>
 
-<h3>Brand Compliance Validation</h3>
-<pre><code>{
-<p>"task": "validate_brand",</p>
-<p>"kitId": "brand-guidelines-kit"</p>
-<p>}</p>
-</code></pre>
-<p>Ensure assets meet brand guidelines before distribution.</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<h3>Bulk Asset Download</h3>
 <pre><code>{
-<p>"task": "download_assets",</p>
-<p>"sectionId": "logos-section-456",</p>
-<p>"downloadFormat": "png"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-<p>Download all logos in a specific format for a campaign.</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>lingoApiKey</code> | string | Your Lingo API key (required unless demoMode) |
+| <code>lingoSpaceId</code> | string | The Lingo space ID to access |
+| <code>task</code> | string | Operation to perform (list_kits, search_assets, etc.) |
+| <code>kitId</code> | string | Kit ID for kit-specific operations |
+| <code>sectionId</code> | string | Section ID for section-specific operations |
+| <code>searchQuery</code> | string | Search term for asset search |
+| <code>assetTypes</code> | array | Filter by asset types (image, vector, font, etc.) |
+| <code>downloadFormat</code> | string | Preferred download format (original, png, jpg, svg, pdf) |
+| <code>includeMetadata</code> | boolean | Include full asset metadata (default: true) |
+| <code>demoMode</code> | boolean | Test with sample data |</p>
 
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Asset Object</h3>
 <pre><code>{
-<p>"id": "asset-123",</p>
-<p>"name": "Primary Logo",</p>
-<p>"type": "vector",</p>
-<p>"kit": "Client Brand Kit",</p>
-<p>"section": "Logos",</p>
-<p>"downloadUrl": "https://...",</p>
-<p>"thumbnailUrl": "https://...",</p>
-<p>"metadata": {</p>
-<p>"width": 1200,</p>
-<p>"height": 400,</p>
-<p>"format": "svg",</p>
-<p>"tags": ["primary", "horizontal", "full-color"],</p>
-<p>"description": "Primary horizontal logo for digital use"</p>
-<p>}</p>
-<p>}</p>
+  "id": "asset-123",
+  "name": "Primary Logo",
+  "type": "vector",
+  "kit": "Client Brand Kit",
+  "section": "Logos",
+  "downloadUrl": "https://...",
+  "thumbnailUrl": "https://...",
+  "metadata": {
+    "width": 1200,
+    "height": 400,
+    "format": "svg",
+    "tags": ["primary", "horizontal", "full-color"],
+    "description": "Primary horizontal logo for digital use"
+  }
+}
 </code></pre>
 
 <h3>Kit Object</h3>
 <pre><code>{
-<p>"id": "kit-456",</p>
-<p>"name": "Client Brand Kit",</p>
-<p>"sections": [</p>
-<p>{ "id": "sec-1", "name": "Logos", "assetCount": 12 },</p>
-<p>{ "id": "sec-2", "name": "Colors", "assetCount": 8 },</p>
-<p>{ "id": "sec-3", "name": "Typography", "assetCount": 4 }</p>
-<p>],</p>
-<p>"totalAssets": 24,</p>
-<p>"lastUpdated": "2024-12-28T10:00:00Z"</p>
-<p>}</p>
+  "id": "kit-456",
+  "name": "Client Brand Kit",
+  "sections": [
+    { "id": "sec-1", "name": "Logos", "assetCount": 12 },
+    { "id": "sec-2", "name": "Colors", "assetCount": 8 },
+    { "id": "sec-3", "name": "Typography", "assetCount": 4 }
+  ],
+  "totalAssets": 24,
+  "lastUpdated": "2024-12-28T10:00:00Z"
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
 <ul>
 <li><strong>$0.001</strong> per asset listed</li>
 <li><strong>$0.002</strong> per search performed</li>
 <li><strong>$0.005</strong> per asset downloaded</li>
 <li><strong>$0.01</strong> per validation check</li>
-<li><strong>$0.02</strong> per kit synced</li>
+<li><strong>$0.02</strong> per kit synced</li></p>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Demo Mode</h2>
+<h3>Agency Brand Management</h3>
+<pre><code>{
+  "task": "sync_kit",
+  "kitId": "client-brand-kit-123",
+  "includeMetadata": true
+}
+</code></pre>
+Keep client brand assets synchronized across your systems.
 
-<p>Set <code>demoMode: true</code> to test with sample brand kit data without using API credits.</p>
+<h3>Asset Search & Discovery</h3>
+<pre><code>{
+  "task": "search_assets",
+  "searchQuery": "logo primary",
+  "assetTypes": ["image", "vector"]
+}
+</code></pre>
+Find specific assets across all your brand kits.
 
-<h2>Getting Your Lingo API Key</h2>
+<h3>Brand Compliance Validation</h3>
+<pre><code>{
+  "task": "validate_brand",
+  "kitId": "brand-guidelines-kit"
+}
+</code></pre>
+Ensure assets meet brand guidelines before distribution.
 
-<p>1. Log into <a href="https://www.lingoapp.com/" target="_blank" rel="noopener">Lingo</a></p>
-<p>2. Go to Settings > API</p>
-<p>3. Generate a new API key</p>
-<p>4. Copy the key and space ID</p>
-
-<h2>Integration Ideas</h2>
-
-<ul>
-<li><strong>Sync to Supabase</strong>: Keep brand assets in your database</li>
-<li><strong>Design Automation</strong>: Pull assets for automated design generation</li>
-<li><strong>Brand Portal</strong>: Power a client-facing brand portal</li>
-<li><strong>Compliance Monitoring</strong>: Automated brand guideline checks</li>
-<li><strong>Asset Distribution</strong>: Programmatic asset delivery to teams</li>
-</ul>
+<h3>Bulk Asset Download</h3>
+<pre><code>{
+  "task": "download_assets",
+  "sectionId": "logos-section-456",
+  "downloadFormat": "png"
+}
+</code></pre>
+Download all logos in a specific format for a campaign.
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -609,7 +605,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Clutch.co Agency Scraper</h1>
-
-<strong>"B2B Agency Reviews & Ratings"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>2025 Zapier Automation Hero of the Year — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape B2B agency profiles from Clutch.co. Extract company info, reviews, ratings, pricing, services, clients, and portfolios. Perfect for B2B lead generation, competitive analysis, and vendor research.</p>
+            <h1>Clutch Scraper - B2B Reviews</h1>
+            <p>Scrape B2B agency profiles from Clutch.co. Extract company info, reviews, ratings, pricing, services, clients, and portfolios. Perfect for B2B lead generation and competitive analysis. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -478,8 +471,68 @@
 <li><strong>Services</strong>: Full list of services offered</li>
 <li><strong>Client Lists</strong>: Notable clients and portfolio</li>
 <li><strong>Filters</strong>: Search by category, location, minimum rating</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "name": "Digital Growth Agency",
+  "url": "https://clutch.co/profile/digital-growth-agency",
+  "rating": 4.9,
+  "reviewCount": 127,
+  "location": "New York, NY",
+  "minProjectSize": "$25,000+",
+  "hourlyRate": "$150 - $199/hr",
+  "employees": "50-249",
+  "founded": 2015,
+  "services": ["SEO", "PPC", "Content Marketing"],
+  "industries": ["eCommerce", "Healthcare"],
+  "description": "Award-winning digital marketing agency...",
+  "website": "https://digitalgrowthagency.com",
+  "clients": ["Fortune 500 Company", "Major Healthcare Provider"],
+  "reviews": [
+    {
+      "author": "Marketing Director",
+      "rating": 5,
+      "text": "Exceptional results..."
+    }
+  ],
+  "scrapedAt": "2025-12-23T12:00:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><strong>$0.02</strong> per agency scraped</li>
+<li>Demo mode is free</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -487,127 +540,13 @@
 <li><strong>Competitive Analysis</strong>: Research competitors in your space</li>
 <li><strong>Vendor Selection</strong>: Find the right agency for your project</li>
 <li><strong>Market Research</strong>: Understand agency landscape in any vertical</li>
+
 </ul>
+---
 
-<h2>Input Configuration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-<p>"demoMode": false,</p>
-<p>"searchQuery": "digital marketing agency",</p>
-<p>"location": "New York",</p>
-<p>"category": "digital-marketing",</p>
-<p>"minRating": 4.5,</p>
-<p>"maxResults": 50,</p>
-<p>"includeReviews": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Input Parameters</h3>
-
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"name": "Digital Growth Agency",</p>
-<p>"url": "https://clutch.co/profile/digital-growth-agency",</p>
-<p>"rating": 4.9,</p>
-<p>"reviewCount": 127,</p>
-<p>"location": "New York, NY",</p>
-<p>"minProjectSize": "$25,000+",</p>
-<p>"hourlyRate": "$150 - $199/hr",</p>
-<p>"employees": "50-249",</p>
-<p>"founded": 2015,</p>
-<p>"services": ["SEO", "PPC", "Content Marketing"],</p>
-<p>"industries": ["eCommerce", "Healthcare"],</p>
-<p>"description": "Award-winning digital marketing agency...",</p>
-<p>"website": "https://digitalgrowthagency.com",</p>
-<p>"clients": ["Fortune 500 Company", "Major Healthcare Provider"],</p>
-<p>"reviews": [</p>
-<p>{</p>
-<p>"author": "Marketing Director",</p>
-<p>"rating": 5,</p>
-<p>"text": "Exceptional results..."</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2025-12-23T12:00:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Categories</h2>
-
-<ul>
-<li><code>web-development</code> - Web Development</li>
-<li><code>mobile-app-development</code> - Mobile App Development</li>
-<li><code>digital-marketing</code> - Digital Marketing</li>
-<li><code>seo</code> - SEO</li>
-<li><code>ppc</code> - PPC</li>
-<li><code>social-media-marketing</code> - Social Media Marketing</li>
-<li><code>branding</code> - Branding</li>
-<li><code>ux-design</code> - UX Design</li>
-<li><code>it-services</code> - IT Services</li>
-<li><code>software-development</code> - Software Development</li>
-</ul>
-
-<h2>Pricing</h2>
-
-<ul>
-<li><strong>$0.02</strong> per agency scraped</li>
-<li>Demo mode is free</li>
-</ul>
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-<p>Automate B2B lead workflows with Zapier:</p>
-<p>1. Add the "Apify" app in Zapier</p>
-<p>2. Select "Run Actor" as the action</p>
-<p>3. Enter <code>alizarin_refrigerator-owner/clutch-scraper</code> as the actor ID</p>
-<p>4. Use results to create leads in your CRM (HubSpot, Salesforce, etc.)</p>
-
-<h3>Make (Integromat)</h3>
-<p>Build lead generation pipelines:</p>
-<p>1. Add the Apify module to your Make scenario</p>
-<p>2. Select "Run an Actor" action</p>
-<p>3. Configure with actor ID and search parameters</p>
-<p>4. Route agencies to Google Sheets, Airtable, or CRM</p>
-
-<h3>n8n</h3>
-<p>1. Add the Apify node to your workflow</p>
-<p>2. Configure with your Apify API token</p>
-<p>3. Set actor ID to <code>alizarin_refrigerator-owner/clutch-scraper</code></p>
-<p>4. Enrich leads with additional data nodes</p>
-
-<h3>Webhooks</h3>
-<p>Send scraped agencies directly to your CRM:</p>
-<pre><code>{
-<p>"webhooks": [{</p>
-<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
-<p>"requestUrl": "https://your-crm.com/webhook/clutch-leads"</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<h3>API</h3>
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~clutch-scraper/runs?token=YOUR_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{"searchQuery": "SEO agency", "location": "New York", "maxResults": 50}'</p>
-</code></pre>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -621,7 +560,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

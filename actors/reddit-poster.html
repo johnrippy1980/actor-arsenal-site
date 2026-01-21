@@ -474,15 +474,10 @@ NSFW/Spoiler - Mark posts appropriately</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Reddit Poster</h1>
-
-<blockquote><strong>Post to Reddit automatically</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Automate posting to Reddit! Create text posts, share links, and reply to threads.</p>
+            <p>Reddit Automation - Post text, links, images, and comments to any subreddit. Browser automation for reliable posting without API rate limits. Perfect for community engagement, content marketing, and brand building. Supports text posts, link shares, image uploads, and comment replies. Ideal for building Reddit presence and driving traffic. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -493,7 +488,63 @@ NSFW/Spoiler - Mark posts appropriately</p>
 <li><strong>Comments</strong> - Reply to existing threads</li>
 <li><strong>Flair Selection</strong> - Apply post flair</li>
 <li><strong>NSFW/Spoiler</strong> - Mark posts appropriately</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "success": true,
+  "postUrl": "https://www.reddit.com/r/localSEO/comments/xyz789/...",
+  "postId": "xyz789"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>post_created</code> | Per post created | $0.05 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Single post: $0.10 + $0.05 = <strong>$0.15</strong></li>
+<li>Batch of 10 posts: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
+
+</ul>
+---
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
+
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
+
+<p>---</p>
 
 <h2>Use Cases</h2>
 
@@ -503,135 +554,21 @@ NSFW/Spoiler - Mark posts appropriately</p>
 <li>Engage with customers in industry subreddits</li>
 <li>Answer questions related to your expertise</li>
 <li>Share blog content and promotions</li>
-</ul>
 
+</ul>
 <h3>For Marketing Agencies</h3>
 <ul>
 <li>Manage Reddit presence for multiple clients</li>
 <li>Schedule and automate Reddit engagement</li>
 <li>Monitor and respond to brand mentions</li>
 <li>Build community presence</li>
+
 </ul>
+---
 
-<h2>Authentication</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Two options:</p>
-<p>1. <strong>Username/Password</strong> - Works for accounts without 2FA</p>
-<p>2. <strong>Cookies</strong> - Export cookies from logged-in session (recommended)</p>
-
-<h2>Example Input</h2>
-
-<h3>Text Post</h3>
-<pre><code>{
-<p>"cookies": "[{...exported cookies...}]",</p>
-<p>"subreddit": "localSEO",</p>
-<p>"postType": "text",</p>
-<p>"title": "How I Improved My Client's Local Rankings in 30 Days",</p>
-<p>"content": "I wanted to share a case study from one of my recent clients...\n\nHere's what we did:\n1. Optimized GBP profile\n2. Built local citations\n3. Generated quality reviews\n\nResults: 40% increase in visibility!\n\nHappy to answer questions.",</p>
-<p>"flair": "Case Study"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Link Post</h3>
-<pre><code>{
-<p>"cookies": "[{...}]",</p>
-<p>"subreddit": "smallbusiness",</p>
-<p>"postType": "link",</p>
-<p>"title": "Ultimate Guide to Google Business Profile Optimization (2024)",</p>
-<p>"linkUrl": "https://myblog.com/gbp-optimization-guide"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Comment/Reply</h3>
-<pre><code>{
-<p>"cookies": "[{...}]",</p>
-<p>"postType": "comment",</p>
-<p>"replyToUrl": "https://www.reddit.com/r/localSEO/comments/abc123/how_do_i_rank_higher/",</p>
-<p>"content": "Great question! Here's what has worked for my clients:\n\n1. Make sure your NAP is consistent across all platforms\n2. Get more reviews - even 5-10 can make a difference\n3. Post regularly to your GBP\n\nHope this helps!"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"success": true,</p>
-<p>"postUrl": "https://www.reddit.com/r/localSEO/comments/xyz789/...",</p>
-<p>"postId": "xyz789"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Tips for Success</h2>
-
-<h3>Content Best Practices</h3>
-<ul>
-<li>Follow subreddit rules carefully</li>
-<li>Be genuinely helpful, not promotional</li>
-<li>Engage authentically with the community</li>
-<li>Use appropriate formatting (headers, lists, etc.)</li>
-<li>Disclose affiliations when required</li>
-</ul>
-
-<h3>Account Safety</h3>
-<ul>
-<li>Don't post too frequently (Reddit rate limits)</li>
-<li>Vary your content types</li>
-<li>Engage organically before posting promotionally</li>
-<li>Build karma through helpful comments first</li>
-</ul>
-
-<h3>Subreddit Selection</h3>
-<ul>
-<li>Research subreddit rules before posting</li>
-<li>Check if self-promotion is allowed</li>
-<li>Look for weekly promotional threads</li>
-<li>Consider niche subreddits for targeted reach</li>
-</ul>
-
-<h2>Useful Local Business Subreddits</h2>
-
-<ul>
-<li>r/localSEO - Local SEO strategies</li>
-<li>r/smallbusiness - Small business owners</li>
-<li>r/Entrepreneur - Entrepreneurship</li>
-<li>r/marketing - Marketing strategies</li>
-<li>r/SEO - Search engine optimization</li>
-<li>r/[YourCity] - Local community subreddits</li>
-</ul>
-
-<h2>Important Notes</h2>
-
-<ul>
-<li>Reddit has karma requirements for posting in some subreddits</li>
-<li>Some subreddits require account age minimums</li>
-<li>Follow Reddit's content policy and subreddit rules</li>
-<li>Use responsibly - Reddit communities value authenticity</li>
-</ul>
-
-<p>---</p>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>Single post: $0.10 + $0.05 = <strong>$0.15</strong></li>
-<li>Batch of 10 posts: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>reddit poster, reddit automation, reddit api, scheduled reddit posts, reddit content scheduler, subreddit posting</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -645,7 +582,7 @@ NSFW/Spoiler - Mark posts appropriately</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

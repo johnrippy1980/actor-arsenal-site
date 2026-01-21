@@ -457,106 +457,220 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Google Calendar Integration</h1>
-
-<strong>"Sync GBP Events with Google Calendar"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Sync Google Business Profile events, posts, and appointments with Google Calendar. Automatically create calendar events for scheduled posts and track important business dates.</p>
+            <p>Create Google Calendar events from Apify actors. Schedule follow-ups, reminders, meetings, and events based on actor results. Perfect for sales automation, appointment booking, and workflow scheduling.</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Post Scheduling Sync</strong>: Create calendar events for scheduled GBP posts</li>
-<li><strong>Appointment Integration</strong>: Sync business appointments to calendar</li>
-<li><strong>Event Reminders</strong>: Get notified before scheduled posts go live</li>
-<li><strong>Multi-Calendar Support</strong>: Sync to different calendars per client</li>
-<li><strong>Two-Way Sync</strong>: Changes in calendar update the schedule</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h2>Use Cases</h2>
-
-<ul>
-<li><strong>Agency Calendar Management</strong>: Track all client post schedules in one place</li>
-<li><strong>Team Collaboration</strong>: Share posting calendars with team members</li>
-<li><strong>Deadline Tracking</strong>: Never miss a scheduled post</li>
-<li><strong>Content Planning</strong>: Visualize your content calendar</li>
-</ul>
-
-<h2>Input Configuration</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": true,</p>
-<p>"action": "sync_posts",</p>
-<p>"calendarId": "primary",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"title": "Holiday Sale Post",</p>
-<p>"scheduledDate": "2025-12-25T10:00:00Z",</p>
-<p>"platform": "gbp"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Input Parameters</h3>
+<h2>Demo Mode</h2>
 
-
-<h2>Output</h2>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"success": true,</p>
-<p>"action": "sync_posts",</p>
-<p>"eventsCreated": 3,</p>
-<p>"eventsUpdated": 1,</p>
-<p>"events": [</p>
-<p>{</p>
-<p>"id": "abc123",</p>
-<p>"title": "Holiday Sale Post",</p>
-<p>"start": "2025-12-25T10:00:00Z",</p>
-<p>"platform": "gbp"</p>
-<p>}</p>
-<p>],</p>
-<p>"processedAt": "2025-12-23T12:00:00Z"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h2>Authentication</h2>
+<h2>Input Parameters</h2>
 
-<p>This actor requires Google OAuth authentication:</p>
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>accessToken</code> | string | Yes<em> | - | Google OAuth2 access token |
+| <code>refreshToken</code> | string | Yes</em> | - | Google OAuth2 refresh token |
+| <code>clientId</code> | string | Yes<em> | - | Google OAuth2 Client ID |
+| <code>clientSecret</code> | string | Yes</em> | - | Google OAuth2 Client Secret |
+| <code>calendarId</code> | string | No | <code>primary</code> | Target calendar ID |
+| <code>summary</code> | string | Yes | - | Event title |
+| <code>description</code> | string | No | - | Event description/notes |
+| <code>location</code> | string | No | - | Event location or address |
+| <code>startDateTime</code> | string | Yes | - | Start in ISO 8601 format |
+| <code>endDateTime</code> | string | Yes | - | End in ISO 8601 format |
+| <code>timeZone</code> | string | No | UTC | IANA time zone (e.g., <code>America/New_York</code>) |
+| <code>attendees</code> | array | No | - | Array of email addresses |
+| <code>sendNotifications</code> | boolean | No | true | Send email invites |
+| <code>conferenceData</code> | boolean | No | false | Add Google Meet link |
+| <code>colorId</code> | string | No | - | Event color (1-11) |
+| <code>recurrence</code> | array | No | - | RRULE for recurring events |
+| <code>reminders</code> | object | No | - | Custom reminder settings |
+| <code>bulkEvents</code> | array | No | - | Array of events for bulk creation |
+| <code>webhookUrl</code> | string | No | - | URL to send results to (Zapier, Make, n8n, etc.) |
+| <code>demoMode</code> | boolean | No | false | Test without creating events |</p>
 
-<p>1. Create a Google Cloud project</p>
-<p>2. Enable Google Calendar API</p>
-<p>3. Create OAuth 2.0 credentials</p>
-<p>4. Obtain access token with calendar scope</p>
-
-<h2>Pricing</h2>
-
-<ul>
-<li><strong>$0.001</strong> per event synced</li>
-<li>Demo mode is free</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<p>*Not required in demo mode</p>
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<h2>Output Format</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<pre><code>{
+  "success": true,
+  "eventId": "abc123xyz",
+  "htmlLink": "https://calendar.google.com/calendar/event?eid=xxx",
+  "hangoutLink": "https://meet.google.com/abc-defg-hij",
+  "summary": "Follow-up Call: Acme Corp",
+  "start": "2024-12-20T10:00:00-05:00",
+  "end": "2024-12-20T10:30:00-05:00",
+  "attendees": ["contact@acme.com"],
+  "createdAt": "2024-12-23T10:30:00Z"
+}
+</code></pre>
 
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<h3>Pay-Per-Event</h3></p>
+
+<p>| Component | Cost |
+|-----------|------|
+| Apify Compute | ~$0.001-0.005/event |
+| Google Calendar API | Free (within quotas) |</p>
+
+<h3>Cost Comparison</h3>
+
+<p>| Events/Month | This Actor | Calendly | Cal.com |
+|--------------|-----------|----------|---------|
+| 100 | ~$0.50 | $10/mo | $12/mo |
+| 500 | ~$2.50 | $10/mo | $12/mo |
+| 1,000 | ~$5 | $16/mo | $19/mo |</p>
+
+<strong>No monthly subscription. Pay per event created.</strong>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<h3>1. Sales Follow-up Scheduling</h3>
+
+<p>After scraping leads, auto-schedule follow-up calls:</p>
+
+<pre><code>{
+  "accessToken": "ya29.xxx",
+  "refreshToken": "1//xxx",
+  "clientId": "xxx.apps.googleusercontent.com",
+  "clientSecret": "xxx",
+  "summary": "Follow-up Call: Acme Corp",
+  "description": "Discuss partnership opportunity from lead scrape",
+  "startDateTime": "2024-12-20T10:00:00-05:00",
+  "endDateTime": "2024-12-20T10:30:00-05:00",
+  "timeZone": "America/New_York",
+  "attendees": ["contact@acme.com"],
+  "conferenceData": true
+}
+</code></pre>
+
+<h3>2. Content Calendar Management</h3>
+
+<p>Schedule content review meetings from scraped blog ideas:</p>
+
+<pre><code>{
+  "summary": "Content Review: Q1 Blog Posts",
+  "description": "Review 5 blog post drafts from competitor analysis",
+  "startDateTime": "2024-12-18T14:00:00-05:00",
+  "endDateTime": "2024-12-18T15:00:00-05:00",
+  "attendees": ["content@company.com", "seo@company.com"],
+  "colorId": "6"
+}
+</code></pre>
+
+<h3>3. Deadline Tracking</h3>
+
+<p>Create reminders from scraped deadline data:</p>
+
+<pre><code>{
+  "summary": "Deadline: Submit RFP Response",
+  "description": "RFP from scraped government contracts list",
+  "startDateTime": "2024-12-25T09:00:00-05:00",
+  "endDateTime": "2024-12-25T09:30:00-05:00",
+  "reminders": {
+    "useDefault": false,
+    "overrides": [
+      {"method": "email", "minutes": 1440},
+      {"method": "popup", "minutes": 60}
+    ]
+  }
+}
+</code></pre>
+
+<h3>4. Weekly Team Syncs</h3>
+
+<p>Create recurring events for regular meetings:</p>
+
+<pre><code>{
+  "summary": "Weekly SEO Standup",
+  "startDateTime": "2024-12-16T09:00:00-05:00",
+  "endDateTime": "2024-12-16T09:30:00-05:00",
+  "timeZone": "America/New_York",
+  "recurrence": ["RRULE:FREQ=WEEKLY;COUNT=12"],
+  "conferenceData": true
+}
+</code></pre>
+
+<h3>5. Bulk Event Creation</h3>
+
+<p>Schedule multiple events from a single actor run:</p>
+
+<pre><code>{
+  "bulkEvents": [
+    {
+      "summary": "Call: Lead 1 - Miami Plumber",
+      "startDateTime": "2024-12-20T09:00:00-05:00",
+      "endDateTime": "2024-12-20T09:30:00-05:00"
+    },
+    {
+      "summary": "Call: Lead 2 - Tampa HVAC",
+      "startDateTime": "2024-12-20T10:00:00-05:00",
+      "endDateTime": "2024-12-20T10:30:00-05:00"
+    },
+    {
+      "summary": "Call: Lead 3 - Orlando Electrician",
+      "startDateTime": "2024-12-20T11:00:00-05:00",
+      "endDateTime": "2024-12-20T11:30:00-05:00"
+    }
+  ]
+}
+</code></pre>
+
+<h3>6. Client Meeting Booking</h3>
+
+<p>Auto-create meetings when forms are submitted:</p>
+
+<pre><code>{
+  "summary": "Discovery Call: {{clientName}}",
+  "description": "Initial consultation requested via website form",
+  "startDateTime": "2024-12-20T14:00:00-05:00",
+  "endDateTime": "2024-12-20T14:45:00-05:00",
+  "attendees": ["{{clientEmail}}"],
+  "conferenceData": true,
+  "sendNotifications": true
+}
+</code></pre>
+
+<p>---</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -570,7 +684,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

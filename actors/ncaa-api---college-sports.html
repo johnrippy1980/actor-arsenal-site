@@ -463,15 +463,110 @@ Standings</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Fetch comprehensive NCAA college sports data including basketball rankings, football standings, team rosters, player statistics, and game schedules for all divisions.
-Basketball Data & Football Data
-Teams
-Rankings
-Schedule
-Scores
-Standings</p>
+            <h1>NCAA API - College Sports</h1>
+            <p>Fetch NCAA college sports data including basketball rankings, football standings, team rosters, player stats, and game schedules for all divisions.</p>
+
+<h2>Features</h2>
+
+<h3>Basketball Data</h3>
+<ul>
+<li><strong>Teams</strong> - All NCAA basketball teams by division and conference</li>
+<li><strong>Rankings</strong> - AP Poll, Coaches Poll, and NET rankings</li>
+<li><strong>Schedule</strong> - Game schedules with dates, times, and opponents</li>
+<li><strong>Scores</strong> - Live and final game scores</li>
+<li><strong>Standings</strong> - Conference and division standings</li>
+
+</ul>
+<h3>Football Data</h3>
+<ul>
+<li><strong>Teams</strong> - All NCAA football teams (FBS/FCS)</li>
+<li><strong>Rankings</strong> - AP Poll, Coaches Poll, and CFP rankings</li>
+<li><strong>Schedule</strong> - Weekly game schedules by week number</li>
+<li><strong>Scores</strong> - Game scores and results</li>
+<li><strong>Standings</strong> - Conference standings</li>
+
+</ul>
+<h3>Team & Player Data</h3>
+<ul>
+<li><strong>Team Roster</strong> - Current player rosters with positions, heights, weights</li>
+<li><strong>Player Stats</strong> - Individual player statistics</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<p>All tasks return a consistent JSON structure:</p>
+
+<pre><code>{
+    "task": "basketball_rankings",
+    "success": true,
+    "timestamp": "2024-12-29T12:00:00.000Z",
+    "sport": "basketball",
+    "division": "D1",
+    "gender": "mens",
+    "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses pay-per-event pricing:</p>
+
+<p>| Task | Price |
+|---|---|
+| Basketball Teams | $0.01 |
+| Basketball Rankings | $0.01 |
+| Basketball Schedule | $0.01 |
+| Basketball Scores | $0.01 |
+| Basketball Standings | $0.01 |
+| Football Teams | $0.01 |
+| Football Rankings | $0.01 |
+| Football Schedule | $0.01 |
+| Football Scores | $0.01 |
+| Football Standings | $0.01 |
+| Team Roster | $0.02 |
+| Player Stats | $0.02 |
+| Fantasy Projections | $0.03 |
+| Betting Odds | $0.05 |</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -485,7 +580,7 @@ Standings</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

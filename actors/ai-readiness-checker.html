@@ -457,151 +457,90 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>AI Readiness Checker (Howl IQ)</h1>
+            <h1>AI Readiness Checker - Website Scanner</h1>
+            <p>Analyze websites for AI readiness. Check if your site is optimized for ChatGPT, Claude, Perplexity, and other AI systems. Get actionable recommendations.</p>
 
-<blockquote><strong>Is your website ready for AI?</strong> Analyze your site's compatibility with ChatGPT, Claude, Perplexity, and other AI systems by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Why AI Readiness Matters</h2>
-
-<p>AI assistants like ChatGPT, Claude, and Perplexity are increasingly used to research businesses, answer questions, and make recommendations. If your website isn't optimized for AI:</p>
+<h2>Features</h2>
 
 <ul>
-<li>AI systems may misunderstand your business</li>
-<li>You could be left out of AI-generated recommendations</li>
-<li>Competitors with better-structured sites get cited instead</li>
-<li>Your content won't surface in AI-powered search</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<p>---</p>
-
-<h2>What This Actor Checks</h2>
-
-<h3>1. Structured Data (30% weight)</h3>
-<ul>
-<li>JSON-LD Schema.org markup</li>
-<li>Meta descriptions</li>
-<li>Open Graph tags</li>
-<li>Canonical URLs</li>
-</ul>
-
-<h3>2. Content Clarity (25% weight)</h3>
-<ul>
-<li>Heading hierarchy (H1, H2, H3)</li>
-<li>Paragraph content quality</li>
-<li>FAQ sections</li>
-<li>Structured lists</li>
-</ul>
-
-<h3>3. Semantic HTML (15% weight)</h3>
-<ul>
-<li>Use of <code><main></code>, <code><nav></code>, <code><article></code>, <code><section></code></li>
-<li>Proper <code><header></code> and <code><footer></code></li>
-<li>Table accessibility</li>
-</ul>
-
-<h3>4. Accessibility (10% weight)</h3>
-<ul>
-<li>Image alt text</li>
-<li>Language attributes</li>
-<li>Descriptive link text</li>
-</ul>
-
-<h3>5. Mobile-Friendly (10% weight)</h3>
-<ul>
-<li>Mobile viewport optimization</li>
-</ul>
-
-<h3>6. Page Speed (10% weight)</h3>
-<ul>
-<li>Load time considerations</li>
-</ul>
-
-<p>---</p>
-
 <h2>Quick Start</h2>
 
-<h3>Demo Mode (Free)</h3>
-
 <pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Single URL Analysis</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"url": "https://yourwebsite.com"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Batch Analysis</h3>
+<h2>Input Parameters</h2>
 
-<pre><code>{
-<p>"urls": [</p>
-<p>"https://yourwebsite.com",</p>
-<p>"https://yourwebsite.com/about",</p>
-<p>"https://yourwebsite.com/services"</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"score": {</p>
-<p>"overall": 78,</p>
-<p>"categories": {</p>
-<p>"contentClarity": 85,</p>
-<p>"structuredData": 65,</p>
-<p>"semanticHTML": 80,</p>
-<p>"accessibility": 90,</p>
-<p>"mobileFriendly": 75,</p>
-<p>"pageSpeed": 80</p>
-<p>}</p>
-<p>},</p>
-<p>"issues": [</p>
-<p>{</p>
-<p>"severity": "critical",</p>
-<p>"category": "Structured Data",</p>
-<p>"title": "No JSON-LD structured data",</p>
-<p>"description": "No Schema.org structured data found",</p>
-<p>"recommendation": "Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",</p>
-<p>"impact": "Structured data is the primary way AI systems understand your business"</p>
-<p>}</p>
-<p>],</p>
-<p>"strengths": [</p>
-<p>"Single H1 heading present - good for AI topic detection",</p>
-<p>"All images have alt text - AI can understand image content"</p>
-<p>],</p>
-<p>"recommendations": [</p>
-<p>"Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",</p>
-<p>"Add a 150-160 character meta description summarizing the page"</p>
-<p>],</p>
-<p>"readyForAI": true,</p>
-<p>"scannedAt": "2024-12-24T12:00:00Z"</p>
-<p>}</p>
+  "url": "https://example.com",
+  "score": {
+    "overall": 78,
+    "categories": {
+      "contentClarity": 85,
+      "structuredData": 65,
+      "semanticHTML": 80,
+      "accessibility": 90,
+      "mobileFriendly": 75,
+      "pageSpeed": 80
+    }
+  },
+  "issues": [
+    {
+      "severity": "critical",
+      "category": "Structured Data",
+      "title": "No JSON-LD structured data",
+      "description": "No Schema.org structured data found",
+      "recommendation": "Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",
+      "impact": "Structured data is the primary way AI systems understand your business"
+    }
+  ],
+  "strengths": [
+    "Single H1 heading present - good for AI topic detection",
+    "All images have alt text - AI can understand image content"
+  ],
+  "recommendations": [
+    "Add JSON-LD structured data (Organization, LocalBusiness, FAQPage, etc.)",
+    "Add a 150-160 character meta description summarizing the page"
+  ],
+  "readyForAI": true,
+  "scannedAt": "2024-12-24T12:00:00Z"
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Score Interpretation</h2>
+<h2>Pricing</h2>
 
-
-<strong>AI Ready</strong>: Sites scoring 70+ are considered "AI Ready"
-
-<p>---</p>
-
-<h2>Issue Severity Levels</h2>
-
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Per URL analyzed | $0.02 |
+| Demo mode | Free |</p>
 
 <p>---</p>
 
@@ -612,84 +551,29 @@
 <li>Audit your website before AI-driven traffic becomes mainstream</li>
 <li>Identify gaps that prevent AI from recommending your business</li>
 <li>Get actionable steps to improve AI visibility</li>
-</ul>
 
+</ul>
 <h3>For Agencies</h3>
 <ul>
 <li>Batch audit client websites</li>
 <li>Create AI readiness reports for proposals</li>
 <li>Track improvements over time</li>
-</ul>
 
+</ul>
 <h3>For Developers</h3>
 <ul>
 <li>Integrate AI readiness checks into CI/CD pipelines</li>
 <li>Monitor structured data implementation</li>
 <li>Validate Schema.org markup</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>Related Tools</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<p>---</p>
-
-<h2>Pricing</h2>
-
-
-<p>---</p>
-
-<h2>FAQ</h2>
-
-<h3>What makes a website "AI Ready"?</h3>
-
-<p>AI systems need clear, structured content to understand and cite your business. This includes:</p>
-<ul>
-<li>Schema.org structured data (JSON-LD)</li>
-<li>Clear content hierarchy (headings, paragraphs)</li>
-<li>Semantic HTML elements</li>
-<li>Accessible content (alt text, language tags)</li>
-</ul>
-
-<h3>How is this different from regular SEO?</h3>
-
-<p>Traditional SEO focuses on keywords and backlinks. AI readiness focuses on how well machines can <strong>understand</strong> your content, not just find it.</p>
-
-<h3>Does this affect Google rankings?</h3>
-
-<p>While not directly, many AI readiness factors (structured data, semantic HTML, accessibility) also improve traditional SEO.</p>
-
-<h3>How often should I run this check?</h3>
-
-<p>Run after major website changes, or monthly to track improvements.</p>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>Live Tool</strong>: <a href="https://aiready.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">aiready.alizarin_refrigerator-owner.com</a></li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>ai readiness checker, ai ready website, chatgpt optimization, claude ai seo, perplexity optimization, structured data checker, schema org validator, json-ld checker, semantic html checker, ai seo audit, ai visibility, ai citation optimization, llm optimization, ai assistant seo, generative ai optimization, howl iq, website ai score</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -703,7 +587,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

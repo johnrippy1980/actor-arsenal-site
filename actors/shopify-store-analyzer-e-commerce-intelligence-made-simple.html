@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,134 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Shopify Store Analyzer E-commerce Intelligence Made Simple</h1>
-            <p>Apify actor for Shopify Store Analyzer E-commerce Intelligence Made Simple</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Analyze Shopify stores to detect installed apps, themes, payment providers, and marketing integrations. Competitive intelligence for e-commerce.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>App detection</strong> - Identify 40+ popular Shopify apps (Klaviyo, Yotpo, ReCharge, etc.)</li>
+<li><strong>Theme identification</strong> - Detect premium and custom themes</li>
+<li><strong>Tech stack analysis</strong> - Analytics, marketing, reviews, payments, shipping tools</li>
+<li><strong>Social presence</strong> - Extract connected social media profiles</li>
+<li><strong>Business signals</strong> - Blog, reviews, loyalty programs, subscriptions, international</li>
+<li><strong>Product insights</strong> - Product count and price range analysis</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "storeUrls": ["https://allbirds.com", "https://gymshark.com"],
+  "detectApps": true,
+  "detectTheme": true,
+  "analyzeTechStack": true
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>storeUrls</code> | array | - | List of Shopify store URLs to analyze |
+| <code>detectApps</code> | boolean | true | Identify installed Shopify apps |
+| <code>detectTheme</code> | boolean | true | Identify the theme being used |
+| <code>analyzeTechStack</code> | boolean | true | Detect analytics and marketing tools |
+| <code>scrapeProducts</code> | boolean | true | Extract product count and samples |
+| <code>maxProductsPerStore</code> | number | 10 | Max products to scrape per store |
+| <code>demoMode</code> | boolean | true | Run with sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "storeName": "Allbirds",
+  "storeUrl": "https://allbirds.com",
+  "isShopify": true,
+  "shopifyPlan": "Shopify Plus",
+  "theme": {
+    "name": "Custom (Allbirds Theme)",
+    "version": "8.0.0",
+    "isPremium": true
+  },
+  "apps": [
+    { "name": "Klaviyo", "category": "email", "confidence": "HIGH" },
+    { "name": "Yotpo", "category": "reviews", "confidence": "HIGH" },
+    { "name": "Google Analytics", "category": "analytics", "confidence": "HIGH" }
+  ],
+  "appCount": 5,
+  "techStack": {
+    "analytics": ["Google Analytics", "Facebook Pixel"],
+    "marketing": ["Klaviyo"],
+    "reviews": ["Yotpo"],
+    "payments": ["Affirm"]
+  },
+  "signals": {
+    "hasBlog": true,
+    "hasReviews": true,
+    "hasLoyaltyProgram": true,
+    "hasSubscriptions": false,
+    "hasInternational": true,
+    "currencies": ["USD", "EUR", "GBP"]
+  },
+  "socialLinks": {
+    "instagram": "https://instagram.com/allbirds",
+    "facebook": "https://facebook.com/allbirds"
+  }
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>store_analyzed</code> | Per store analyzed | $0.05 |
+| <code>app_detected</code> | Per app detected | $0.01 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Analyze 10 stores (5 apps each): 10 × $0.05 + 50 × $0.01 = <strong>$1.00</strong></li>
+
+</ul>
+---
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +462,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

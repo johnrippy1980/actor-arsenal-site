@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,112 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Supabase API Database, Storage, Auth &amp; Project Management</h1>
-            <p>Apify actor for Supabase API Database, Storage, Auth &amp; Project Management</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Access Supabase programmatically. Query and manage databases, upload/download files from storage, manage authentication users, and control projects. Perfect for database automation, data migration, backup workflows, and Supabase-powered app integrations.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Database Operations</h3>
+<ul>
+<li><strong>query_table</strong> - Query any table with PostgREST filters, sorting, and pagination</li>
+<li><strong>insert_rows</strong> - Insert one or multiple rows into a table</li>
+<li><strong>update_rows</strong> - Update rows matching filter criteria</li>
+<li><strong>delete_rows</strong> - Delete rows matching filter criteria</li>
+<li><strong>list_tables</strong> - List all tables in your database</li>
+<li><strong>run_sql</strong> - Execute raw SQL queries (service_role key required)</li>
+
+</ul>
+<h3>Storage Operations</h3>
+<ul>
+<li><strong>list_buckets</strong> - List all storage buckets</li>
+<li><strong>list_files</strong> - List files in a bucket</li>
+<li><strong>download_file</strong> - Get download URL for a file</li>
+<li><strong>upload_file</strong> - Upload a file to storage from URL</li>
+<li><strong>delete_file</strong> - Delete a file from storage</li>
+
+</ul>
+<h3>Auth Operations</h3>
+<ul>
+<li><strong>list_users</strong> - List all authenticated users</li>
+<li><strong>get_user</strong> - Get user details by ID</li>
+<li><strong>create_user</strong> - Create a new user account</li>
+<li><strong>delete_user</strong> - Delete a user account</li>
+
+</ul>
+<h3>Project Management</h3>
+<ul>
+<li><strong>list_projects</strong> - List all your Supabase projects</li>
+<li><strong>get_project</strong> - Get project details</li>
+<li><strong>get_project_settings</strong> - Get project configuration and settings</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "task": "query_table",
+  "success": true,
+  "results": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  ],
+  "count": 1,
+  "pagination": {
+    "limit": 100,
+    "offset": 0
+  },
+  "timestamp": "2024-01-20T14:30:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Database Automation</strong> - Scheduled data exports, imports, and transformations</li>
+<li><strong>Data Migration</strong> - Move data between Supabase projects or from other sources</li>
+<li><strong>Backup Workflows</strong> - Automated data and file backups</li>
+<li><strong>User Management</strong> - Bulk user operations and sync with external systems</li>
+<li><strong>Content Management</strong> - Programmatic file uploads for CMS workflows</li>
+<li><strong>Analytics Pipelines</strong> - Extract data for reporting and analysis</li>
+<li><strong>Multi-tenant Apps</strong> - Manage multiple projects programmatically</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +440,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

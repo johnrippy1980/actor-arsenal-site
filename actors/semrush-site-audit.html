@@ -461,34 +461,10 @@ Notices</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>SEMrush Site Audit - Technical SEO Analysis with Auto-Cleanup</h1>
-
-<strong>"Run SEMrush Site Audits Without Using Up Your Project Quota"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Run comprehensive SEMrush Site Audits using your own API key (BYOK). The killer feature? <strong>Automatically delete the project after extracting results</strong> to save your precious project quota!</p>
-
-<h2>The Problem This Solves</h2>
-
-<p>SEMrush limits the number of projects you can have based on your plan:</p>
-<ul>
-<li><strong>Pro</strong>: 5 projects</li>
-<li><strong>Guru</strong>: 15 projects</li>
-<li><strong>Business</strong>: 40 projects</li>
-</ul>
-
-<p>If you're an agency or consultant running audits for multiple clients, you quickly run out of project slots. This actor:</p>
-
-<p>1. Creates a temporary project</p>
-<p>2. Runs a full site audit</p>
-<p>3. Extracts all issues and health score</p>
-<p>4. <strong>Deletes the project automatically</strong></p>
-<p>5. Returns your project slot for the next client!</p>
+            <p>Run SEMrush Site Audits using your own API key. Automatically creates a project, runs a comprehensive technical SEO audit, extracts all issues, and optionally deletes the project to save your quota. Perfect for agencies and consultants who need one-off audits without using up project slots.</p>
 
 <h2>Features</h2>
 
@@ -498,177 +474,96 @@ Notices</p>
 <li><strong>Errors</strong>: Critical issues (5xx, 4xx, broken links, mixed content)</li>
 <li><strong>Warnings</strong>: Important issues (missing meta, slow pages, redirect chains)</li>
 <li><strong>Notices</strong>: Minor issues (multiple H1s, thin content)</li>
-</ul>
 
+</ul>
 <h3>Smart Automation</h3>
 <ul>
 <li><strong>Auto-Cleanup</strong>: Delete project after audit to save quota</li>
 <li><strong>Existing Projects</strong>: Use an existing project instead of creating new</li>
 <li><strong>Wait or Fire-and-Forget</strong>: Wait for completion or return immediately</li>
 <li><strong>Configurable Crawl</strong>: Set page limits and subdomain options</li>
-</ul>
 
+</ul>
 <h3>Integration Ready</h3>
 <ul>
 <li><strong>Webhook Support</strong>: Zapier, Make, n8n, or custom endpoints</li>
 <li><strong>Structured Output</strong>: Clean JSON for automation workflows</li>
 <li><strong>API Units Tracking</strong>: Know how many SEMrush units you used</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key (required for real audits) |
+| <code>domain</code> | string | - | Domain to audit (e.g., example.com) |
+| <code>projectName</code> | string | auto | Custom project name |
+| <code>existingProjectId</code> | string | - | Use existing project instead of creating new |
+| <code>pageLimit</code> | integer | 500 | Pages to crawl (100-20,000) |
+| <code>crawlSubdomains</code> | boolean | false | Include subdomains |
+| <code>deleteProjectAfter</code> | boolean | true | Delete project to save quota |
+| <code>waitForCompletion</code> | boolean | true | Wait for audit to finish |
+| <code>maxWaitMinutes</code> | integer | 30 | Max wait time for completion |
+| <code>issueTypes</code> | array | all | Filter: errors, warnings, notices |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data (no API call) |</p>
 
-<h2>Example Usage</h2>
-
-<h3>Basic Audit with Auto-Cleanup</h3>
-<pre><code>{
-<p>"semrushApiKey": "your-api-key",</p>
-<p>"domain": "example.com",</p>
-<p>"deleteProjectAfter": true,</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<h3>Use Existing Project</h3>
-<pre><code>{
-<p>"semrushApiKey": "your-api-key",</p>
-<p>"existingProjectId": "643526670283248",</p>
-<p>"deleteProjectAfter": false,</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<h3>Large Site Audit</h3>
-<pre><code>{
-<p>"semrushApiKey": "your-api-key",</p>
-<p>"domain": "largesite.com",</p>
-<p>"pageLimit": 10000,</p>
-<p>"crawlSubdomains": true,</p>
-<p>"maxWaitMinutes": 60,</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<h3>With Webhook</h3>
-<pre><code>{
-<p>"semrushApiKey": "your-api-key",</p>
-<p>"domain": "client-site.com",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123/abc",</p>
-<p>"webhookPlatform": "zapier",</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output Example</h2>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"domain": "example.com",</p>
-<p>"projectId": "643526670283248",</p>
-<p>"snapshotId": "12345",</p>
-<p>"healthScore": 72,</p>
-<p>"pagesCrawled": 487,</p>
-<p>"totalErrors": 23,</p>
-<p>"totalWarnings": 265,</p>
-<p>"totalNotices": 62,</p>
-<p>"errors": [</p>
-<p>{</p>
-<p>"issueId": 2,</p>
-<p>"issueName": "4xx Client Errors",</p>
-<p>"issueType": "error",</p>
-<p>"count": 12,</p>
-<p>"description": "Pages returning 4xx client errors"</p>
-<p>}</p>
-<p>],</p>
-<p>"warnings": [...],</p>
-<p>"notices": [...],</p>
-<p>"auditDate": "2025-01-01T12:00:00.000Z",</p>
-<p>"projectDeleted": true,</p>
-<p>"apiUnitsUsed": 400</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-
-<h2>Issue Types Tracked</h2>
-
-<h3>Errors (Critical)</h3>
-<ul>
-<li>5xx Server Errors</li>
-<li>4xx Client Errors</li>
-<li>Broken Internal Links</li>
-<li>Mixed Content (HTTPS/HTTP)</li>
-<li>Duplicate Content</li>
-</ul>
-
-<h3>Warnings (Important)</h3>
-<ul>
-<li>Missing Meta Descriptions</li>
-<li>Missing H1 Tags</li>
-<li>Missing Image Alt Text</li>
-<li>Duplicate Title Tags</li>
-<li>Slow Page Speed</li>
-<li>Redirect Chains</li>
-<li>Broken External Links</li>
-</ul>
-
-<h3>Notices (Minor)</h3>
-<ul>
-<li>Multiple H1 Tags</li>
-<li>Low Word Count</li>
-<li>Large Page Size</li>
-<li>Too Many HTTP Requests</li>
-</ul>
-
-<h2>SEMrush API Units</h2>
-
-
-<strong>Typical full audit with cleanup: ~500 units</strong>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.10 |
+| Audit launched | Per audit started | $0.25 |
+| Audit completed | Per successful audit | $0.25 |
+| Project deleted | Per cleanup | $0.05 |</p>
 
 <strong>Note</strong>: You also use your own SEMrush API units.
 
 <h2>Use Cases</h2>
 
 <h3>Agency Client Audits</h3>
-<p>Run audits for multiple clients without filling up your project quota.</p>
+Run audits for multiple clients without filling up your project quota.
 
 <h3>Automated Monitoring</h3>
-<p>Schedule regular audits with webhook notifications.</p>
+Schedule regular audits with webhook notifications.
 
 <h3>SEO Reporting</h3>
-<p>Extract structured data for client reports.</p>
+Extract structured data for client reports.
 
 <h3>Competitive Analysis</h3>
-<p>Audit competitor sites one-off without permanent tracking.</p>
-
-<h2>Getting Your SEMrush API Key</h2>
-
-<p>1. Log in to <a href="https://www.semrush.com" target="_blank" rel="noopener">SEMrush</a></p>
-<p>2. Go to <strong>My Profile</strong> → <strong>API</strong> → <strong>Subscription Info</strong></p>
-<p>3. Copy your API key</p>
-<p>4. Paste into the <code>semrushApiKey</code> input field</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li>Audit completion time depends on site size (can take 5-30+ minutes)</li>
-<li>SEMrush API unit limits apply based on your subscription</li>
-<li>Project limits apply if not using auto-cleanup</li>
-<li>Some issue details require additional API calls (not included)</li>
-</ul>
+Audit competitor sites one-off without permanent tracking.
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>semrush site audit, technical seo audit, semrush api, byok semrush, seo automation, site health check, crawl errors, broken links, meta description audit, h1 audit, page speed audit, zapier integration, make integration, n8n integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -682,7 +577,7 @@ Notices</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

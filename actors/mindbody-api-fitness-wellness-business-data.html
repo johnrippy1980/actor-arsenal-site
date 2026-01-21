@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,151 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Mindbody API Fitness &amp; Wellness Business Data</h1>
-            <p>Apify actor for Mindbody API Fitness &amp; Wellness Business Data</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Access Mindbody data for fitness studios, gyms, salons, spas, and wellness businesses. Get classes, appointments, clients, staff, memberships, sales, and scheduling data. Perfect for fitness business analytics, client management, and booking integrations.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Class Management</strong>: Schedules, descriptions, enrollments, waitlists</li>
+<li><strong>Client Data</strong>: Profiles, visit history, purchases, memberships, account balances</li>
+<li><strong>Appointments</strong>: Booking data, appointment types, staff schedules</li>
+<li><strong>Staff Management</strong>: Staff profiles, permissions, availability</li>
+<li><strong>Sales & Products</strong>: Services, packages, memberships, retail products</li>
+<li><strong>Multi-Location</strong>: Support for multiple business locations</li>
+<li><strong>Demo Mode</strong>: Test with realistic sample data (no credentials required)</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<h3>Task Selection</h3>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>get_classes</code> - Get upcoming classes</li>
+<li><code>get_class_schedule</code> - Get class schedule</li>
+<li><code>get_class_descriptions</code> - Get class types/descriptions</li>
+<li><code>get_enrollments</code> - Get class enrollments</li>
+<li><code>get_clients</code> - Search/list clients</li>
+<li><code>get_client_details</code> - Get specific client info</li>
+<li><code>get_client_visits</code> - Get client visit history</li>
+<li><code>get_client_purchases</code> - Get client purchase history</li>
+<li><code>get_client_memberships</code> - Get client memberships</li>
+<li><code>get_appointments</code> - Get appointments</li>
+<li><code>get_appointment_types</code> - Get appointment types</li>
+<li><code>get_staff</code> - Get staff members</li>
+<li><code>get_staff_appointments</code> - Get staff schedules</li>
+<li><code>get_services</code> - Get services offered</li>
+<li><code>get_products</code> - Get retail products</li>
+<li><code>get_packages</code> - Get packages/bundles</li>
+<li><code>get_memberships</code> - Get membership types</li>
+<li><code>get_sales</code> - Get sales transactions</li>
+<li><code>get_locations</code> - Get business locations</li>
+<li><code>get_session_types</code> - Get session types</li>
+<li><code>get_resources</code> - Get resources (rooms, equipment)</li>
+
+</ul>
+<h3>Authentication</h3>
+<ul>
+<li><code>apiKey</code>: Mindbody API Key</li>
+<li><code>siteId</code>: Business Site ID</li>
+<li><code>authorization</code>: Staff authorization token</li>
+<li><code>demoMode</code>: Run with sample data</li>
+
+</ul>
+<h3>Filters</h3>
+<ul>
+<li><code>clientId</code>: Specific client lookup</li>
+<li><code>staffId</code>: Filter by staff member</li>
+<li><code>classId</code>: Specific class lookup</li>
+<li><code>startDate</code> / <code>endDate</code>: Date range</li>
+<li><code>locationId</code>: Filter by location</li>
+<li><code>programId</code>: Filter by program</li>
+<li><code>searchText</code>: Search term</li>
+
+</ul>
+<h3>Pagination</h3>
+<ul>
+<li><code>limit</code>: Max records (up to 200)</li>
+<li><code>offset</code>: Page offset</li>
+
+</ul>
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Class Query</strong>: $0.01 per query</li>
+<li><strong>Client Lookup</strong>: $0.01 per lookup</li>
+<li><strong>Client List</strong>: $0.02 per list</li>
+<li><strong>Appointment Query</strong>: $0.01 per query</li>
+<li><strong>Sales Query</strong>: $0.02 per query</li>
+<li><strong>Staff Query</strong>: $0.01 per query</li>
+<li><strong>Membership Query</strong>: $0.01 per query</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<h3>Fitness Studio Owners</h3>
+<ul>
+<li>Export client data for marketing campaigns</li>
+<li>Analyze class attendance and popularity</li>
+<li>Track membership sales and retention</li>
+<li>Generate reports on staff performance</li>
+
+</ul>
+<h3>Marketing Agencies</h3>
+<ul>
+<li>Sync Mindbody clients to email platforms</li>
+<li>Build automated follow-up sequences</li>
+<li>Create targeted campaigns based on visit history</li>
+<li>Track conversion from leads to members</li>
+
+</ul>
+<h3>Software Developers</h3>
+<ul>
+<li>Build custom dashboards and reporting</li>
+<li>Create booking widgets and integrations</li>
+<li>Sync data to CRM systems</li>
+<li>Automate membership management</li>
+
+</ul>
+<h3>Business Intelligence</h3>
+<ul>
+<li>Analyze revenue trends across locations</li>
+<li>Track client lifetime value</li>
+<li>Measure class and service profitability</li>
+<li>Forecast demand and capacity</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +479,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

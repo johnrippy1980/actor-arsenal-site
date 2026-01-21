@@ -189,9 +189,61 @@
             .actor-icon { width: 60px; height: 60px; }
         }
         body { padding-bottom: 90px; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -225,15 +277,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Klaviyo Analytics Exporter</h1>
-
-<strong>"Email Marketing Intelligence"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
+            <p>Export Klaviyo email marketing data including campaigns, flows, list growth, and revenue attribution.</p>
 
 <h2>Features</h2>
 
@@ -244,7 +291,127 @@
 <li><strong>Segment data</strong> - Audience segment performance</li>
 <li><strong>Revenue attribution</strong> - Email-driven revenue tracking</li>
 <li><strong>API-powered</strong> - Uses official Klaviyo API</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "apiKey": "pk_your_klaviyo_api_key",
+  "exportType": "ALL",
+  "dateRange": "30_DAYS",
+  "includeMetrics": true
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>apiKey</code> | string | - | Klaviyo Private API Key (required for live mode) |
+| <code>exportType</code> | string | "ALL" | Data to export (CAMPAIGNS, FLOWS, LISTS, SEGMENTS, METRICS, ALL) |
+| <code>dateRange</code> | string | "30_DAYS" | Time period (7_DAYS, 30_DAYS, 90_DAYS, 1_YEAR, ALL_TIME) |
+| <code>includeMetrics</code> | boolean | true | Include performance metrics |
+| <code>demoMode</code> | boolean | true | Run with sample data (no API key required) |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "account": {
+    "id": "acc_demo123",
+    "name": "Demo E-commerce Store",
+    "totalProfiles": 52000,
+    "totalLists": 5,
+    "totalFlows": 12
+  },
+  "campaigns": [
+    {
+      "id": "camp_1",
+      "name": "January Newsletter",
+      "subject": "🎉 New Year, New Products!",
+      "status": "sent",
+      "sentAt": "2026-01-02T10:00:00Z",
+      "recipients": 45000,
+      "delivered": 44550,
+      "opened": 15892,
+      "clicked": 3567,
+      "openRate": 35.7,
+      "clickRate": 8.0,
+      "revenue": 12450,
+      "ordersPlaced": 89
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow_1",
+      "name": "Welcome Series",
+      "status": "live",
+      "trigger": "Subscribed to list",
+      "emails": 5,
+      "recipients30d": 3200,
+      "revenue30d": 15600,
+      "openRate": 62.5,
+      "clickRate": 18.2
+    }
+  ],
+  "lists": [
+    {
+      "id": "list_1",
+      "name": "Newsletter Subscribers",
+      "type": "list",
+      "profileCount": 52000,
+      "growth30d": 2100,
+      "growthRate": 4.2
+    }
+  ],
+  "summary": {
+    "totalEmailsSent": 135000,
+    "avgOpenRate": 38.6,
+    "avgClickRate": 9.0,
+    "totalRevenue": 69700,
+    "dateRange": "30_DAYS"
+  }
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>export_completed</code> | Per export run | $0.10 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Export account data: 1 × $0.10 = <strong>$0.10</strong></li>
+<li>Daily exports for a month: 30 × $0.10 = <strong>$3.00</strong></li>
+
+</ul>
+---
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
+
+<p>---</p>
 
 <h2>Use Cases</h2>
 
@@ -254,58 +421,13 @@
 <li><strong>Cross-platform analysis</strong> - Combine with other marketing data</li>
 <li><strong>Benchmarking</strong> - Track performance over time</li>
 <li><strong>Audit & backup</strong> - Export account data for records</li>
+
 </ul>
+---
 
-<h2>Input</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-  "apiKey": "pk_your_klaviyo_api_key",
-  "exportType": "ALL",
-  "dateRange": "30_DAYS",
-  "includeMetrics": true
-}</code></pre>
-
-<h2>Output</h2>
-
-<pre><code>{
-  "account": {
-    "name": "Demo E-commerce Store",
-    "totalProfiles": 52000,
-    "totalLists": 5,
-    "totalFlows": 12
-  },
-  "campaigns": [
-    {
-      "name": "January Newsletter",
-      "subject": "New Year, New Products!",
-      "recipients": 45000,
-      "openRate": 35.7,
-      "clickRate": 8.0,
-      "revenue": 12450
-    }
-  ],
-  "summary": {
-    "totalEmailsSent": 135000,
-    "avgOpenRate": 38.6,
-    "avgClickRate": 9.0,
-    "totalRevenue": 69700
-  }
-}</code></pre>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<ul>
-<li><strong>export_completed</strong>: $0.10 per export run</li>
-</ul>
-
-<p><strong>Example:</strong> Daily exports for a month = $3.00</p>
-
-<h2>Author</h2>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 

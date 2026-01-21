@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,143 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Citation Checker AI</h1>
-            <p>Apify actor for Citation Checker AI</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>AI-Powered Citation Audit Tool - Check NAP (Name, Address, Phone) consistency across 36+ directories with Claude AI analysis. Get AI-generated correction suggestions, prioritized fix actions, and SEO impact estimates. Checks Google, Yelp, Facebook, Bing Places, Apple Maps, Yellow Pages, BBB, and more. BYOK (Bring Your Own Key) - use your Anthropic API key for AI features. Essential for local SEO agencies and multi-location businesses. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Core Citation Checking</h3>
+<ul>
+<li><strong>36+ Directories</strong> - Google, Yelp, Facebook, Bing, Apple Maps, BBB, and more</li>
+<li><strong>NAP Consistency</strong> - Detects mismatches in business name, address, phone</li>
+<li><strong>Listing Status</strong> - Shows found, missing, correct, or incorrect</li>
+<li><strong>Industry-Specific</strong> - Healthcare (Healthgrades), Legal (Avvo), Restaurant (TripAdvisor, OpenTable)</li>
+
+</ul>
+<h3>AI Analysis (BYOK - Bring Your Own Key)</h3>
+Provide your Anthropic API key to unlock Claude AI-powered features:
+
+<ul>
+<li><strong>Correction Suggestions</strong> - AI recommends specific fixes for each platform</li>
+<li><strong>Priority Actions</strong> - Ranked list of what to fix first for maximum impact</li>
+<li><strong>SEO Impact Estimate</strong> - Predicted ranking improvement if corrections are made</li>
+<li><strong>Health Score</strong> - 0-100 citation health rating</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Required | Description |
+|-----------|----------|-------------|
+| <code>businessName</code> | Yes | Exact name as it should appear |
+| <code>city</code> | Yes | City where business is located |
+| <code>state</code> | Yes | State abbreviation (e.g., NY, CA) |
+| <code>address</code> | No | Street address |
+| <code>phone</code> | No | Business phone number |
+| <code>website</code> | No | Business website URL |
+| <code>platforms</code> | No | Specific platforms to check (defaults to all) |
+| <code>providedUrls</code> | No | Pre-known listing URLs for faster checking |
+| <code>anthropicApiKey</code> | No | Your Anthropic API key for AI features |
+| <code>enableAiAnalysis</code> | No | Enable/disable AI analysis (default: true) |
+| <code>demoMode</code> | No | Return sample data without scraping |
+| <code>webhookUrl</code> | No | URL to POST results when complete |</p>
+
+<h2>Output Format</h2>
+
+<h3>Standard Output</h3>
+<pre><code>{
+  "summary": {
+    "total": 36,
+    "correct": 24,
+    "incorrect": 4,
+    "missing": 6,
+    "found": 2
+  },
+  "citations": [
+    {
+      "platform": "Google Business",
+      "status": "correct",
+      "url": "https://maps.google.com/...",
+      "nameMatch": true,
+      "addressMatch": true,
+      "phoneMatch": true
+    }
+  ]
+}
+</code></pre>
+
+<h3>With AI Analysis</h3>
+<pre><code>{
+  "summary": { ... },
+  "citations": [ ... ],
+  "aiAnalysis": {
+    "overallHealthScore": 72,
+    "summary": "Your citations are moderately healthy...",
+    "correctionSuggestions": [
+      {
+        "platform": "Yelp",
+        "field": "phone",
+        "currentValue": "(555) 123-4567",
+        "suggestedCorrection": "555-987-6543",
+        "priority": "high",
+        "reasoning": "Yelp is a high-authority directory..."
+      }
+    ],
+    "prioritizedActions": [
+      "Claim and update your Bing Places listing",
+      "Fix phone number on Yelp to match GBP",
+      "Add suite number to Facebook Business address"
+    ],
+    "estimatedImpact": "Fixing these issues could improve local pack visibility by 15-25%..."
+  }
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Base run | $0.10 |
+| Per directory checked | $0.01 |
+| AI Analysis (uses your own API key) | $0.00 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Check 20 directories (no AI): $0.30</li>
+<li>Check 36 directories + AI: $0.46 + your Anthropic API usage</li>
+
+</ul>
+<h2>Use Cases</h2>
+
+<p>1. <strong>Local SEO Agencies</strong> - Audit client citations at scale
+2. <strong>Multi-Location Businesses</strong> - Monitor NAP consistency across locations
+3. <strong>Franchise Operations</strong> - Ensure brand consistency across directories
+4. <strong>Reputation Management</strong> - Find and fix incorrect listings</p>
+
+<p>---</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +471,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

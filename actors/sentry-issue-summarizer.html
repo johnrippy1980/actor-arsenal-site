@@ -465,17 +465,10 @@ Multi-Project Support</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Sentry Issue Summarizer</h1>
-
-<strong>"AI Error Analysis & Daily Digests"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Get AI-powered summaries of your Sentry errors with root cause analysis and fix suggestions. Reduce alert fatigue with intelligent daily/weekly digests.</p>
+            <p>Get AI-powered summaries of your Sentry errors. Daily/weekly digests, root cause analysis, and fix suggestions using Claude, GPT-4, or Gemini. Perfect for staying on top of production issues without alert fatigue.</p>
 
 <h2>Features</h2>
 
@@ -486,8 +479,72 @@ Multi-Project Support</p>
 <li><strong>Trend Detection</strong>: Identify error spikes and regressions</li>
 <li><strong>Slack Integration</strong>: Send digests directly to your team channel</li>
 <li><strong>Multi-Project Support</strong>: Analyze multiple Sentry projects</li>
-</ul>
 
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Field | Type | Description |
+|-------|------|-------------|
+| demoMode | boolean | Test with sample data (default: true) |
+| sentryAuthToken | string | Your Sentry auth token |
+| sentryOrg | string | Sentry organization slug |
+| sentryProject | string | Sentry project slug |
+| task | string | Analysis type (daily_digest, fix_suggestions, etc.) |
+| timeRange | string | Time period (24h, 7d, etc.) |
+| aiProvider | string | AI for summaries (claude/openai/gemini) |
+| slackWebhook | string | Optional Slack webhook URL |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "task": "daily_digest",
+  "project": "my-app",
+  "summary": {
+    "totalIssues": 5,
+    "totalEvents": 1849,
+    "criticalCount": 0,
+    "errorCount": 4,
+    "warningCount": 1
+  },
+  "aiDigest": "## Daily Error Digest
+
+<strong>Executive Summary</strong>: ...",
+  "topPriorities": [
+    {
+      "issue": { "title": "TypeError...", "count": 847 },
+      "reason": "Unhandled exception affecting users"
+    }
+  ]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event pricing:
+<ul>
+<li>$0.01 per issue analyzed</li>
+<li>$0.03 for AI summary generation</li>
+<li>$0.05 for digest compilation</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -496,75 +553,13 @@ Multi-Project Support</p>
 <li>Rapid triage of production incidents</li>
 <li>Automated fix suggestions for common errors</li>
 <li>Post-release regression monitoring</li>
+
 </ul>
+---
 
-<h2>Input</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"task": "daily_digest",</p>
-<p>"project": "my-app",</p>
-<p>"summary": {</p>
-<p>"totalIssues": 5,</p>
-<p>"totalEvents": 1849,</p>
-<p>"criticalCount": 0,</p>
-<p>"errorCount": 4,</p>
-<p>"warningCount": 1</p>
-<p>},</p>
-<p>"aiDigest": "## Daily Error Digest\n\n<strong>Executive Summary</strong>: ...",</p>
-<p>"topPriorities": [</p>
-<p>{</p>
-<p>"issue": { "title": "TypeError...", "count": 847 },</p>
-<p>"reason": "Unhandled exception affecting users"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-event pricing:</p>
-<ul>
-<li>$0.01 per issue analyzed</li>
-<li>$0.03 for AI summary generation</li>
-<li>$0.05 for digest compilation</li>
-</ul>
-
-<h2>Getting Your Sentry Auth Token</h2>
-
-<p>1. Log into Sentry</p>
-<p>2. Go to Settings > Auth Tokens</p>
-<p>3. Create new token with <code>project:read</code> scope</p>
-<p>4. Copy the token</p>
-
-<h2>Slack Integration</h2>
-
-<p>1. Create a Slack app or use an existing one</p>
-<p>2. Add "Incoming Webhooks" feature</p>
-<p>3. Create a webhook for your channel</p>
-<p>4. Paste the webhook URL in the actor input</p>
-
-<h2>Example Slack Digest</h2>
-
-<pre><code>🔥 DAILY DIGEST - my-app
-
-<p>5 issues with 1,849 events</p>
-<p>🔴 0 critical | 🟠 4 errors | 🟡 1 warnings</p>
-
-<p>---</p>
-
-<h2>Executive Summary</h2>
-<p>Your application experienced 1,849 error events...</p>
-</code></pre>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -578,7 +573,7 @@ Multi-Project Support</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

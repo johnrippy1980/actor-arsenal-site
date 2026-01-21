@@ -457,27 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>GBP Post Scheduler v2.0</h1>
-
-<strong>"Automate Google Business Profile Posts, Photos & Videos"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Automate your Google Business Profile with scheduled posts, photo uploads, and video publishing. Manage your GBP content programmatically with batch processing and webhook integration.</p>
-
-<h2>What's New in v2.0</h2>
-
-<ul>
-<li><strong>Photo Upload</strong>: Upload photos to your GBP photo gallery</li>
-<li><strong>Video Upload</strong>: Add videos to showcase your business</li>
-<li><strong>Multiple Images</strong>: Add multiple images to a single post</li>
-<li><strong>Media Categories</strong>: Organize by Cover, Exterior, Interior, Product, Menu, etc.</li>
-<li><strong>Caption Support</strong>: Add captions to uploaded media</li>
-</ul>
+            <h1>GBP Post Scheduler</h1>
+            <p>Schedule and automatically publish posts to Google Business Profile. Perfect for content calendars and automated local SEO. Features: - Queue multiple posts for publishing - Schedule posts for specific dates/times - Support for all GBP post types (Update, Event, Offer) - Add images and call-to-action buttons - Batch processing - Retry on failure - Webhook notifications Post Types: - Updates: Regular business updates - Events: Time-bound events with dates - Offers: Promotions with codes and terms Call-to-Action Options: - Learn More - Book - Order Online - Shop - Sign Up - Call Configuration: - Publish immediately or schedule - Auto-retry on failures - Webhook integration for status updates Note: Requires Google account credentials with GBP access. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -486,16 +469,16 @@
 <li><strong>Updates</strong>: Regular business announcements</li>
 <li><strong>Events</strong>: Time-bound events with start/end dates</li>
 <li><strong>Offers</strong>: Promotions with coupon codes and terms</li>
-</ul>
 
+</ul>
 <h3>Media Support</h3>
 <ul>
 <li><strong>Photos in Posts</strong>: Add single or multiple images to posts</li>
 <li><strong>Videos in Posts</strong>: Attach videos to your updates</li>
 <li><strong>Standalone Media</strong>: Upload directly to GBP Photos section</li>
 <li><strong>Categories</strong>: COVER, PROFILE, LOGO, EXTERIOR, INTERIOR, PRODUCT, AT_WORK, FOOD_AND_DRINK, MENU, COMMON_AREA, ROOMS, TEAMS, ADDITIONAL</li>
-</ul>
 
+</ul>
 <h3>Call-to-Action Buttons</h3>
 <ul>
 <li>Learn More</li>
@@ -504,8 +487,8 @@
 <li>Shop</li>
 <li>Sign Up</li>
 <li>Call</li>
-</ul>
 
+</ul>
 <h3>Scheduling & Modes</h3>
 <ul>
 <li>Publish immediately</li>
@@ -513,186 +496,102 @@
 <li><code>posts_only</code>: Only create posts</li>
 <li><code>media_only</code>: Only upload photos/videos</li>
 <li><code>posts_and_media</code>: Do both</li>
-</ul>
 
+</ul>
 <h3>Integration</h3>
 <ul>
 <li>Webhook notifications (Zapier, Make, n8n)</li>
 <li>Batch processing</li>
 <li>JSON input for automation</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Input Examples</h2>
-
-<h3>Post with Multiple Images</h3>
 <pre><code>{
-<p>"posts": [</p>
-<p>{</p>
-<p>"content": "Check out our new summer collection!",</p>
-<p>"postType": "update",</p>
-<p>"imageUrls": [</p>
-<p>"https://example.com/summer1.jpg",</p>
-<p>"https://example.com/summer2.jpg",</p>
-<p>"https://example.com/summer3.jpg"</p>
-<p>],</p>
-<p>"callToAction": {</p>
-<p>"type": "SHOP",</p>
-<p>"url": "https://example.com/shop"</p>
-<p>}</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Post with Video</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"posts": [</p>
-<p>{</p>
-<p>"content": "Take a virtual tour of our facility!",</p>
-<p>"postType": "update",</p>
-<p>"videoUrl": "https://example.com/tour.mp4",</p>
-<p>"callToAction": {</p>
-<p>"type": "LEARN_MORE",</p>
-<p>"url": "https://example.com/about"</p>
-<p>}</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Upload Photos to Gallery</h3>
-<pre><code>{
-<p>"mediaMode": "media_only",</p>
-<p>"mediaItems": [</p>
-<p>{</p>
-<p>"type": "photo",</p>
-<p>"url": "https://example.com/exterior.jpg",</p>
-<p>"category": "EXTERIOR",</p>
-<p>"caption": "Our beautiful storefront"</p>
-<p>},</p>
-<p>{</p>
-<p>"type": "photo",</p>
-<p>"url": "https://example.com/interior.jpg",</p>
-<p>"category": "INTERIOR",</p>
-<p>"caption": "Cozy seating area"</p>
-<p>},</p>
-<p>{</p>
-<p>"type": "video",</p>
-<p>"url": "https://example.com/kitchen.mp4",</p>
-<p>"category": "AT_WORK",</p>
-<p>"caption": "Behind the scenes in our kitchen"</p>
-<p>}</p>
-<p>],</p>
-<p>"defaultMediaCategory": "ADDITIONAL"</p>
-<p>}</p>
-</code></pre>
+<h2>Input Parameters</h2>
 
-<h3>Combined Posts and Media</h3>
-<pre><code>{
-<p>"mediaMode": "posts_and_media",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"content": "Grand opening announcement!",</p>
-<p>"postType": "event",</p>
-<p>"eventTitle": "Grand Opening",</p>
-<p>"eventStartDate": "2025-01-20",</p>
-<p>"imageUrl": "https://example.com/grand-opening.jpg"</p>
-<p>}</p>
-<p>],</p>
-<p>"mediaItems": [</p>
-<p>{</p>
-<p>"type": "photo",</p>
-<p>"url": "https://example.com/logo.png",</p>
-<p>"category": "LOGO"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Dataset</h3>
 <pre><code>{
-<p>"businessName": "Your Business",</p>
-<p>"processedAt": "2025-01-01T...",</p>
-<p>"mediaMode": "posts_and_media",</p>
-<p>"summary": {</p>
-<p>"posts": {</p>
-<p>"total": 3,</p>
-<p>"published": 2,</p>
-<p>"scheduled": 1,</p>
-<p>"failed": 0</p>
-<p>},</p>
-<p>"media": {</p>
-<p>"total": 5,</p>
-<p>"uploaded": 5,</p>
-<p>"failed": 0</p>
-<p>}</p>
-<p>},</p>
-<p>"postResults": [...],</p>
-<p>"mediaResults": [...]</p>
-<p>}</p>
+  "businessName": "Your Business",
+  "processedAt": "2025-01-01T...",
+  "mediaMode": "posts_and_media",
+  "summary": {
+    "posts": {
+      "total": 3,
+      "published": 2,
+      "scheduled": 1,
+      "failed": 0
+    },
+    "media": {
+      "total": 5,
+      "uploaded": 5,
+      "failed": 0
+    }
+  },
+  "postResults": [...],
+  "mediaResults": [...]
+}
 </code></pre>
-
-<h2>Media Categories</h2>
-
-
-<h2>Use Cases</h2>
-
-<h3>Content Calendar</h3>
-<p>Schedule a month's worth of posts with images in one run.</p>
-
-<h3>Photo Gallery Management</h3>
-<p>Bulk upload photos organized by category.</p>
-
-<h3>Video Marketing</h3>
-<p>Upload promotional videos and virtual tours.</p>
-
-<h3>Multi-Location</h3>
-<p>Run for each location to keep all GBP profiles active.</p>
-
-<h3>Seasonal Campaigns</h3>
-<p>Pre-schedule holiday content with themed imagery.</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.10 |
+| Post published | Per post published | $0.05 |
+| Post scheduled | Per post scheduled | $0.05 |
+| Media uploaded | Per photo/video uploaded | $0.03 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>10 posts with images: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
 <li>20 photos uploaded: $0.10 + (20 × $0.03) = <strong>$0.70</strong></li>
 <li>5 posts + 10 media: $0.10 + (5 × $0.05) + (10 × $0.03) = <strong>$0.65</strong></li>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Limitations</h2>
+<h3>Content Calendar</h3>
+Schedule a month's worth of posts with images in one run.
 
-<ul>
-<li>Requires valid Google credentials</li>
-<li>2FA must be disabled or handled externally</li>
-<li>Images/videos must be accessible URLs</li>
-<li>Rate limits apply (don't post too frequently)</li>
-</ul>
+<h3>Photo Gallery Management</h3>
+Bulk upload photos organized by category.
 
-<h2>Security Notes</h2>
+<h3>Video Marketing</h3>
+Upload promotional videos and virtual tours.
 
-<ul>
-<li>Credentials are encrypted in Apify</li>
-<li>Use app-specific passwords when possible</li>
-<li>Consider using a dedicated Google account</li>
-</ul>
+<h3>Multi-Location</h3>
+Run for each location to keep all GBP profiles active.
+
+<h3>Seasonal Campaigns</h3>
+Pre-schedule holiday content with themed imagery.
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>gbp post scheduler, google business profile posts, gbp photos upload, gbp video upload, gmb posts automation, google posts scheduler, local seo posts, zapier integration, make integration, n8n integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -706,7 +605,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

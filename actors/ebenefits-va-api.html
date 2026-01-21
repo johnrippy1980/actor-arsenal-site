@@ -456,52 +456,82 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>eBenefits VA API</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>Veteran Self-Service Portal - Claims, Letters, Facilities &amp; Benefits</blockquote>
-<p>Access VA.gov self-service portal information and resources. Query claim types, letters and documents, direct deposit information, dependent management, VA facility locations, ID cards, travel pay, and appointment information.</p>
+            <h1>eBenefits/VA.gov API - Veteran Self-Service Portal</h1>
+            <p>Access VA.gov self-service portal information including claim status tracking, letters and documents, direct deposit setup, dependent management, and VA facility locations. Essential for veteran service applications and integrations.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Claim Types</strong> - Information on filing different VA claims</li>
-<li><strong>Letters &amp; Documents</strong> - VA letter types and how to obtain them</li>
+
+<ul>
+<li><strong>Claim Types</strong> - Information on filing different VA claims</li>
+<li><strong>Letters & Documents</strong> - VA letter types and how to obtain them</li>
 <li><strong>Direct Deposit</strong> - Banking and payment information management</li>
 <li><strong>Dependents</strong> - Adding and managing dependents</li>
 <li><strong>VA Facilities</strong> - Find VA hospitals, clinics, and regional offices</li>
 <li><strong>ID Cards</strong> - Veteran ID card information and eligibility</li>
 <li><strong>Travel Pay</strong> - Beneficiary travel reimbursement</li>
 <li><strong>Appointments</strong> - VA appointment scheduling information</li>
+
 </ul>
-<h2>Tasks</h2>
-<h3>get_claim_types</h3>
-<p>Information about different types of VA claims and how to file them.</p>
-<h3>get_letters_info</h3>
-<p>VA letters available to veterans and how to obtain them.</p>
-<h3>get_direct_deposit_info</h3>
-<p>Setting up and managing direct deposit for VA payments.</p>
-<h3>get_dependent_info</h3>
-<p>Adding, removing, and managing dependents for VA benefits.</p>
-<h3>find_va_facilities</h3>
-<p>Locate VA health facilities, benefits offices, and vet centers.</p>
-<h3>get_id_card_info</h3>
-<p>Veteran ID card types, eligibility, and application process.</p>
-<h3>get_travel_pay_info</h3>
-<p>Beneficiary travel reimbursement for VA medical appointments.</p>
-<h3>get_appointment_info</h3>
-<p>VA appointment scheduling, check-in, and management.</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
 <h2>Use Cases</h2>
-<ul><li>Veteran service organization portals</li>
+
+<ul>
+<li>Veteran service organization portals</li>
 <li>Benefits application assistance tools</li>
 <li>Healthcare navigation applications</li>
 <li>VA facility finder integrations</li>
 <li>Veteran onboarding platforms</li>
 <li>Claims support applications</li>
+
 </ul>
-<h2>Pricing</h2>
-<p>$0.01 per query (all tasks)</p>
-<h2>Important Note</h2>
-<p>This actor provides informational data about VA.gov services. For authenticated actions, veterans should use VA.gov directly with their credentials.</p>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -515,7 +545,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

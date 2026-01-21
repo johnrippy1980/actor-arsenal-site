@@ -457,188 +457,116 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Tech Stack Lookup Scraper</h1>
+            <h1>Tech Stack Scraper - Website Analyzer</h1>
+            <p>Identify technologies used by any website - CMS, frameworks, analytics, marketing tools, hosting, CDN, and more. Similar to BuiltWith or Wappalyzer.</p>
 
-<blockquote><strong>"Know What Your Prospects Are Using"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Paying $295/mo for BuiltWith</h2>
-
-<strong>You're currently paying:</strong> BuiltWith ($295/mo), Wappalyzer Pro ($99/mo), SimilarTech ($199/mo), StackShare Pro ($49/mo).
-
-<strong>What if you could detect tech stacks for pennies per site?</strong>
-
-<p>The <strong>Tech Stack Lookup Scraper</strong> identifies 200+ technologies on any website:</p>
+<h2>Features</h2>
 
 <ul>
-<li>CMS platforms (WordPress, Shopify, Wix, Squarespace, Drupal, Magento)</li>
-<li>JavaScript frameworks (React, Vue, Angular, Next.js, Nuxt, Gatsby)</li>
-<li>Analytics tools (Google Analytics 4, Mixpanel, Amplitude, Segment)</li>
-<li>Marketing automation (HubSpot, Mailchimp, Intercom, Drift)</li>
-<li>CDN/Hosting (AWS, Cloudflare, Vercel, Netlify)</li>
-<li>Security headers and SSL analysis</li>
-<li>E-commerce platforms and payment processors</li>
+<li>Extracts data from web pages</li>
+<li>Handles pagination automatically</li>
+<li>Exports data to JSON/CSV</li>
+<li>Built-in proxy support</li>
+<li>Pay-per-result billing</li>
+
 </ul>
-
-<strong>Pay only for what you use.</strong> No monthly subscriptions. No minimum commitments.
-
-<p>---</p>
-
-<h2>Why Choose This Over Traditional Tech Detection Tools</h2>
-
-<h3>1. Pay-Per-Site, Not Per-Month</h3>
-
-<p>Traditional tools: $100-$300/month for unlimited lookups.</p>
-
-<p>This actor: Pay per URL analyzed. Analyze 100 sites for ~$10. Analyze 1,000 for ~$75.</p>
-
-<strong>Analyze 500 competitor sites and still pay less than one BuiltWith subscription.</strong>
-
-<h3>2. 200+ Technologies Detected</h3>
-
-<p>We detect technologies across 10 categories:</p>
-
-
-<h3>3. Confidence Scores</h3>
-
-<p>Every detection includes a confidence percentage (0-100%) so you know how reliable each result is.</p>
-
-<h3>4. Bulk Processing with Webhooks</h3>
-
-<p>Process thousands of URLs in parallel. Get results delivered to your webhook when done.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Analyze Single Website</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"urls": ["https://stripe.com"],</p>
-<p>"detectCMS": true,</p>
-<p>"detectFrameworks": true,</p>
-<p>"detectAnalytics": true</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h3>Example 2: Competitor Tech Stack Audit</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"urls": [</p>
-<p>"https://competitor1.com",</p>
-<p>"https://competitor2.com",</p>
-<p>"https://competitor3.com"</p>
-<p>],</p>
-<p>"detectCMS": true,</p>
-<p>"detectFrameworks": true,</p>
-<p>"detectAnalytics": true,</p>
-<p>"detectMarketing": true,</p>
-<p>"detectHosting": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Lead Qualification (Find WordPress Sites)</h3>
-
-<pre><code>{
-<p>"urls": ["https://prospect1.com", "https://prospect2.com"],</p>
-<p>"detectCMS": true,</p>
-<p>"checkHeaders": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: With Webhook</h3>
-
-<pre><code>{
-<p>"urls": ["https://example.com"],</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Detection Methods</h2>
-
-<p>We use 5 detection methods for maximum accuracy:</p>
-
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>urls</code> | string[] | Yes | List of website URLs to analyze |
+| <code>detectCMS</code> | boolean | No | Detect CMS platforms (default: true) |
+| <code>detectFrameworks</code> | boolean | No | Detect JS frameworks (default: true) |
+| <code>detectAnalytics</code> | boolean | No | Detect analytics tools (default: true) |
+| <code>detectMarketing</code> | boolean | No | Detect marketing tools (default: true) |
+| <code>detectHosting</code> | boolean | No | Detect hosting/CDN (default: true) |
+| <code>checkHeaders</code> | boolean | No | Analyze HTTP headers (default: true) |
+| <code>webhookUrl</code> | string | No | Webhook URL for async results |
+| <code>demoMode</code> | boolean | No | Return sample data without scraping |</p>
 
 <p>---</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"scannedAt": "2025-12-23T12:00:00.000Z",</p>
-<p>"technologies": {</p>
-<p>"cms": [</p>
-<p>{ "name": "WordPress", "version": "6.4", "confidence": 100 }</p>
-<p>],</p>
-<p>"frameworks": [</p>
-<p>{ "name": "React", "version": "18.2", "confidence": 95 }</p>
-<p>],</p>
-<p>"analytics": [</p>
-<p>{ "name": "Google Analytics 4", "confidence": 100 },</p>
-<p>{ "name": "Hotjar", "confidence": 90 }</p>
-<p>],</p>
-<p>"marketing": [</p>
-<p>{ "name": "HubSpot", "confidence": 100 },</p>
-<p>{ "name": "Mailchimp", "confidence": 85 }</p>
-<p>],</p>
-<p>"hosting": [</p>
-<p>{ "name": "AWS", "confidence": 80 }</p>
-<p>],</p>
-<p>"cdn": [</p>
-<p>{ "name": "Cloudflare", "confidence": 100 }</p>
-<p>],</p>
-<p>"advertising": [</p>
-<p>{ "name": "Google Ads", "confidence": 100 },</p>
-<p>{ "name": "Facebook Pixel", "confidence": 95 }</p>
-<p>]</p>
-<p>},</p>
-<p>"headers": {</p>
-<p>"server": "nginx",</p>
-<p>"poweredBy": "PHP/8.1",</p>
-<p>"cacheControl": "max-age=3600"</p>
-<p>},</p>
-<p>"security": {</p>
-<p>"hasSSL": true,</p>
-<p>"hasHSTS": true,</p>
-<p>"hasCSP": false</p>
-<p>},</p>
-<p>"techCount": 12,</p>
-<p>"summary": {</p>
-<p>"cms": "WordPress",</p>
-<p>"framework": "React",</p>
-<p>"analytics": "Google Analytics 4, Hotjar",</p>
-<p>"hosting": "AWS",</p>
-<p>"cdn": "Cloudflare"</p>
-<p>}</p>
-<p>}</p>
+  "url": "https://example.com",
+  "scannedAt": "2025-12-23T12:00:00.000Z",
+  "technologies": {
+    "cms": [
+      { "name": "WordPress", "version": "6.4", "confidence": 100 }
+    ],
+    "frameworks": [
+      { "name": "React", "version": "18.2", "confidence": 95 }
+    ],
+    "analytics": [
+      { "name": "Google Analytics 4", "confidence": 100 },
+      { "name": "Hotjar", "confidence": 90 }
+    ],
+    "marketing": [
+      { "name": "HubSpot", "confidence": 100 },
+      { "name": "Mailchimp", "confidence": 85 }
+    ],
+    "hosting": [
+      { "name": "AWS", "confidence": 80 }
+    ],
+    "cdn": [
+      { "name": "Cloudflare", "confidence": 100 }
+    ],
+    "advertising": [
+      { "name": "Google Ads", "confidence": 100 },
+      { "name": "Facebook Pixel", "confidence": 95 }
+    ]
+  },
+  "headers": {
+    "server": "nginx",
+    "poweredBy": "PHP/8.1",
+    "cacheControl": "max-age=3600"
+  },
+  "security": {
+    "hasSSL": true,
+    "hasHSTS": true,
+    "hasCSP": false
+  },
+  "techCount": 12,
+  "summary": {
+    "cms": "WordPress",
+    "framework": "React",
+    "analytics": "Google Analytics 4, Hotjar",
+    "hosting": "AWS",
+    "cdn": "Cloudflare"
+  }
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Pay-Per-Event Pricing</h2>
+<h2>Pricing</h2>
 
-<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-
-<h3>Cost Examples</h3>
-
-
-<strong>Save 50-90% compared to monthly subscriptions for typical usage.</strong>
-
-<p>---</p>
-
+</ul>
 <h2>Use Cases</h2>
 
 <h3>Sales & Lead Generation</h3>
@@ -647,123 +575,36 @@
 <li><strong>Competitive intelligence</strong>: Discover competitor tech stacks</li>
 <li><strong>Upgrade opportunities</strong>: Find sites using outdated platforms</li>
 <li><strong>Target by CMS</strong>: Find all WordPress, Shopify, or Wix sites in a list</li>
-</ul>
 
+</ul>
 <h3>Marketing Agencies</h3>
 <ul>
 <li><strong>Client audits</strong>: Understand current tech landscape</li>
 <li><strong>Platform migration</strong>: Identify sites ready for upgrades</li>
 <li><strong>Integration planning</strong>: See what tools are already in use</li>
-</ul>
 
+</ul>
 <h3>SEO Agencies</h3>
 <ul>
 <li><strong>Technical audits</strong>: Detect analytics, SEO plugins, schemas</li>
 <li><strong>Competitor analysis</strong>: Compare your client's stack to competitors</li>
 <li><strong>Speed issues</strong>: Identify heavy scripts and plugins</li>
-</ul>
 
+</ul>
 <h3>Developers</h3>
 <ul>
 <li><strong>Research</strong>: Understand what technologies power successful sites</li>
 <li><strong>Proposals</strong>: Accurately scope projects by knowing current stack</li>
 <li><strong>Benchmarking</strong>: Compare technology adoption across industries</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>API Integration</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/tech-stack-scraper').call({</p>
-<p>urls: ['https://stripe.com', 'https://shopify.com'],</p>
-<p>detectCMS: true,</p>
-<p>detectFrameworks: true</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~tech-stack-scraper/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"urls": ["https://example.com"],</p>
-<p>"detectCMS": true,</p>
-<p>"detectFrameworks": true,</p>
-<p>"detectAnalytics": true</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Webhook Integration (Zapier, Make, n8n)</h2>
-
-<h3>Webhook Payload Format</h3>
-
-<pre><code>{
-<p>"event": "scan_completed",</p>
-<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
-<p>"actor": "tech-stack-scraper",</p>
-<p>"runId": "abc123",</p>
-<p>"urlsScanned": 10,</p>
-<p>"techsDetected": 47,</p>
-<p>"results": [...]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Common Automations</h3>
-
-<ul>
-<li><strong>CRM Enrichment</strong>: Add tech stack data to HubSpot, Salesforce contacts</li>
-<li><strong>Lead Scoring</strong>: Auto-score leads based on technologies used</li>
-<li><strong>Slack Alerts</strong>: Notify when competitor changes their stack</li>
-<li><strong>Google Sheets</strong>: Build a database of prospect tech stacks</li>
-</ul>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>Client-Side Only</strong>: Cannot detect server-side languages (PHP, Python, Ruby) definitively</li>
-<li><strong>Obfuscated Code</strong>: Some sites minify/obfuscate, reducing detection accuracy</li>
-<li><strong>Rate Limiting</strong>: Built-in delays to avoid being blocked</li>
-<li><strong>SPAs</strong>: Single-page apps may require JavaScript rendering</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>tech stack detector, technology lookup, builtwith alternative, wappalyzer alternative, website technology checker, cms detector, framework detector, analytics detector, website scraper, technology profiler, lead enrichment, sales intelligence, competitive analysis, technology detection api</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -777,7 +618,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

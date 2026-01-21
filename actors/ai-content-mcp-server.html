@@ -457,152 +457,60 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>AI Content MCP Server</h1>
+            <p>MCP Server exposing 6 AI content generation tools. Generate text with Claude/Gemini, create images with Imagen/DALL-E, extract data from any URL, and enrich leads with AI.</p>
 
-<strong>"6 AI Tools for Content, Images & Data"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>AI-ready content generation with 6 specialized tools.</strong> Generate text with Claude/Gemini, create images with Imagen/DALL-E, extract structured data from any URL, and enrich leads with AI - all through a unified MCP interface.
-
-<h2>What is MCP?</h2>
-
-<p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that allows AI assistants like Claude, ChatGPT, and Cursor to use external tools. This MCP Server exposes 6 AI content generation tools that AI assistants can call directly.</p>
-
-<h2>Available Tools</h2>
-
-<h3>1. generate_text</h3>
-<p>Generate high-quality text content using Claude or Gemini Pro models. Perfect for marketing copy, blog posts, social media content, and more.</p>
-
-<pre><code>{
-<p>"prompt": "Write a compelling product description for artisan coffee beans",</p>
-<p>"model": "claude",</p>
-<p>"maxTokens": 500,</p>
-<p>"temperature": 0.7</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Generated text, token usage, model info
-
-<h3>2. generate_text_flash</h3>
-<p>Generate text quickly using Gemini Flash for high-volume, cost-effective content generation.</p>
-
-<pre><code>{
-<p>"prompt": "Generate 5 social media post ideas for a fitness brand",</p>
-<p>"maxTokens": 300</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Generated text, token usage
-
-<h3>3. generate_image</h3>
-<p>Create images using Google Imagen 4. Ideal for marketing visuals, product imagery, and creative content.</p>
-
-<pre><code>{
-<p>"prompt": "A cozy coffee shop interior with warm lighting, modern minimalist design",</p>
-<p>"aspectRatio": "16:9",</p>
-<p>"style": "photorealistic"</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Image URL, generation metadata
-
-<h3>4. generate_image_studio</h3>
-<p>Create images using OpenAI DALL-E 3 with advanced editing capabilities and style control.</p>
-
-<pre><code>{
-<p>"prompt": "Professional headshot of a business executive, studio lighting",</p>
-<p>"size": "1024x1024",</p>
-<p>"quality": "hd",</p>
-<p>"style": "natural"</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Image URL, revised prompt, metadata
-
-<h3>5. extract_data</h3>
-<p>Extract structured data from any URL using Firecrawl. Perfect for scraping content, extracting product info, or gathering research data.</p>
-
-<pre><code>{
-<p>"url": "https://example.com/products/widget",</p>
-<p>"schema": {</p>
-<p>"name": "string",</p>
-<p>"price": "number",</p>
-<p>"description": "string",</p>
-<p>"features": ["string"]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Extracted structured data matching your schema
-
-<h3>6. enrich_lead</h3>
-<p>Enrich lead data using AI to find company info, social profiles, and business intelligence.</p>
-
-<pre><code>{
-<p>"email": "john@example.com",</p>
-<p>"name": "John Smith",</p>
-<p>"company": "Acme Corp"</p>
-<p>}</p>
-</code></pre>
-
-<strong>Returns:</strong> Enriched lead data with company info, social profiles, job title
-
-<h2>Quick Start</h2>
-
-<h3>Using with Apify (Direct)</h3>
-
-<pre><code># Run via API
-<p>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~ai-content-mcp-server/runs" \</p>
-<p>-H "Authorization: Bearer YOUR_APIFY_TOKEN" \</p>
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"tool": "generate_text",</p>
-<p>"toolInput": {</p>
-<p>"prompt": "Write a tagline for a local bakery",</p>
-<p>"model": "claude"</p>
-<p>},</p>
-<p>"demoMode": true</p>
-<p>}'</p>
-</code></pre>
-
-<h3>Using with Claude Desktop</h3>
-
-<p>Add to your Claude Desktop configuration (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code>):</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"ai-content": {</p>
-<p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic-ai/mcp-server-apify", "--actor", "alizarin_refrigerator-owner~ai-content-mcp-server"],</p>
-<p>"env": {</p>
-<p>"APIFY_TOKEN": "your_apify_token"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Using with n8n</h3>
-
-<p>Install the <code>n8n-nodes-johnrippy-seo</code> package for native n8n integration with this MCP server.</p>
-
-<h2>Example Prompts for AI Assistants</h2>
-
-<p>Once connected, you can ask your AI assistant:</p>
+<h2>Features</h2>
 
 <ul>
-<li>"Generate a blog post about sustainable living tips"</li>
-<li>"Create an image of a modern office space with plants"</li>
-<li>"Extract product information from this Amazon listing"</li>
-<li>"Enrich this lead with company and social data"</li>
-<li>"Write 10 social media posts for a restaurant launch"</li>
-<li>"Generate a professional headshot-style image"</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<strong>Pay-per-event pricing</strong> on Apify:
+<ul>
+<li>Base cost per run</li>
+<li>Additional costs based on underlying AI model usage (Claude, Gemini, DALL-E, Imagen)</li></p>
+
+</ul>
+Demo mode is free and returns realistic sample data.
 
 <h2>Use Cases</h2>
 
@@ -611,65 +519,34 @@
 <li>Generate social media content at scale</li>
 <li>Create on-brand marketing images</li>
 <li>Write email campaigns and ad copy</li>
-</ul>
 
+</ul>
 <h3>Sales Teams</h3>
 <ul>
 <li>Enrich leads with AI-powered research</li>
 <li>Generate personalized outreach messages</li>
 <li>Extract competitor pricing data</li>
-</ul>
 
+</ul>
 <h3>Content Creators</h3>
 <ul>
 <li>Generate blog post ideas and outlines</li>
 <li>Create supporting imagery for articles</li>
 <li>Research topics with data extraction</li>
-</ul>
 
+</ul>
 <h3>AI-First Workflows</h3>
 <ul>
 <li>Claude or ChatGPT can generate content on demand</li>
 <li>Automated content pipelines with AI generation</li>
 <li>Natural language interface to content creation</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Pay-per-event pricing</strong> on Apify:
-<ul>
-<li>Base cost per run</li>
-<li>Additional costs based on underlying AI model usage (Claude, Gemini, DALL-E, Imagen)</li>
-</ul>
-
-<p>Demo mode is free and returns realistic sample data.</p>
-
-<h2>Related Tools</h2>
-
-<p>This MCP Server bundles these underlying Apify actors:</p>
-<ul>
-<li><code>nanobanana-pro</code> - Claude/Gemini Pro text generation</li>
-<li><code>nanobanana-flash</code> - Gemini Flash text generation</li>
-<li><code>gemini-image-generator</code> - Google Imagen image generation</li>
-<li><code>ai-image-studio</code> - DALL-E image generation</li>
-<li><code>ai-extraction-agent</code> - Firecrawl data extraction</li>
-<li><code>fire-enrich</code> - AI lead enrichment</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/johnrippy1980/apify-actors/issues" target="_blank" rel="noopener">Issues</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<h2>License</h2>
-
-<p>MIT License - Free to use for any purpose.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -683,7 +560,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

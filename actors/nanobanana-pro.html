@@ -457,91 +457,82 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Nanobanana Pro - Premium AI Image Generator</h1>
+            <h1>Nano Banana Pro - Premium AI Image Generator</h1>
+            <p>Generate premium quality AI images using Google's Gemini 3 Pro model with 2K/4K resolution support. BYOK (Bring Your Own Key) for maximum cost control. Best text rendering and highest quality output.</p>
 
-<strong>"Premium 4K AI Images with Gemini Pro"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Generate <strong>premium quality</strong> AI images using Google's latest <strong>Gemini 3 Pro</strong> model. Up to <strong>4K resolution</strong> with superior text rendering and photorealistic output.</p>
-
-<h2>Why Nanobanana Pro?</h2>
+<h2>Features</h2>
 
 <ul>
-<li><strong>2K/4K Resolution</strong>: Generate images up to 3840x2160 (4K UHD)</li>
-<li><strong>Superior Text Rendering</strong>: Best-in-class text generation within images</li>
-<li><strong>Multiple Styles</strong>: Photorealistic, cinematic, digital art, anime, and more</li>
-<li><strong>BYOK Model</strong>: Use your own Google AI API key - pay only for what you use</li>
-<li><strong>Demo Mode</strong>: Test the actor without an API key</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Getting Your FREE Google AI API Key</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<p>1. Go to <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a></p>
-<p>2. Sign in with your Google account</p>
-<p>3. Click "Create API Key"</p>
-<p>4. Copy your API key and paste it in the actor input</p>
+<h2>Demo Mode</h2>
 
-<strong>It's completely free to get started!</strong> Google provides generous free tier usage.
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>googleApiKey</code> | string | Your Google AI Studio API key |
+| <code>prompt</code> | string | Describe the image you want to generate |
+| <code>numberOfImages</code> | integer | How many variations to generate (1-4, default: 4) |
+| <code>resolution</code> | string | Output resolution: 1K, 1.5K, 2K, or 4K |
+| <code>style</code> | string | Artistic style (photorealistic, cinematic, etc.) |
+| <code>negativePrompt</code> | string | Things to avoid in the image (optional) |
+| <code>demoMode</code> | boolean | Test with sample data (no API key needed) |</p>
 
-<h2>Resolution Options</h2>
+<h2>Output Format</h2>
 
-
-<h2>Style Options</h2>
-
-<ul>
-<li><strong>Photorealistic</strong>: True-to-life photography quality</li>
-<li><strong>Cinematic</strong>: Movie-like dramatic lighting</li>
-<li><strong>Digital Art</strong>: Modern digital illustration</li>
-<li><strong>Anime</strong>: Japanese animation style</li>
-<li><strong>Watercolor</strong>: Soft, artistic watercolor look</li>
-<li><strong>Oil Painting</strong>: Classic oil painting texture</li>
-<li><strong>3D Render</strong>: CGI/3D rendered look</li>
-<li><strong>Sketch</strong>: Hand-drawn pencil sketch style</li>
-</ul>
-
-<h2>Example Input</h2>
-
-<pre><code>{
-<p>"googleApiKey": "YOUR_GOOGLE_AI_API_KEY",</p>
-<p>"prompt": "A majestic mountain landscape at sunset with snow-capped peaks and a crystal clear lake reflection",</p>
-<p>"numberOfImages": 4,</p>
-<p>"resolution": "2048x2048",</p>
-<p>"style": "cinematic",</p>
-<p>"negativePrompt": "blurry, low quality, distorted"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
-
-<p>The actor outputs:</p>
+<p>The actor outputs:
 <ul>
 <li>Generated images saved to key-value store</li>
 <li>Public URLs for each image</li>
-<li>Metadata including prompt, resolution, style, and generation timestamp</li>
-</ul>
+<li>Metadata including prompt, resolution, style, and generation timestamp</li></p>
 
+</ul>
 <pre><code>{
-<p>"prompt": "A majestic mountain landscape...",</p>
-<p>"imageCount": 4,</p>
-<p>"resolution": "2048x2048",</p>
-<p>"style": "cinematic",</p>
-<p>"model": "gemini-3-pro-image-preview",</p>
-<p>"generatedAt": "2024-12-24T10:30:00Z",</p>
-<p>"images": [</p>
-<p>{ "index": 1, "url": "https://...", "mimeType": "image/png" },</p>
-<p>{ "index": 2, "url": "https://...", "mimeType": "image/png" }</p>
-<p>]</p>
-<p>}</p>
+    "prompt": "A majestic mountain landscape...",
+    "imageCount": 4,
+    "resolution": "2048x2048",
+    "style": "cinematic",
+    "model": "gemini-3-pro-image-preview",
+    "generatedAt": "2024-12-24T10:30:00Z",
+    "images": [
+        { "index": 1, "url": "https://...", "mimeType": "image/png" },
+        { "index": 2, "url": "https://...", "mimeType": "image/png" }
+    ]
+}
 </code></pre>
 
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses the BYOK (Bring Your Own Key) model:
+<ul>
+<li><strong>Apify Usage</strong>: Standard compute costs</li>
+<li><strong>Google Gemini Pro</strong>: Billed directly to your Google Cloud account</li>
+<li>Higher resolution images may consume more API credits</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -551,63 +542,13 @@
 <li><strong>Social Media</strong>: Premium quality content for all platforms</li>
 <li><strong>E-commerce</strong>: Product visualization and lifestyle imagery</li>
 <li><strong>Presentations</strong>: Executive-level visual content</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>This actor uses the BYOK (Bring Your Own Key) model:</p>
-<ul>
-<li><strong>Apify Usage</strong>: Standard compute costs</li>
-<li><strong>Google Gemini Pro</strong>: Billed directly to your Google Cloud account</li>
-<li>Higher resolution images may consume more API credits</li>
-</ul>
-
-<h2>Pro vs Flash</h2>
-
-
-<p>Choose <strong>Pro</strong> for marketing materials, print, and professional use.</p>
-<p>Choose <strong>Flash</strong> for quick iterations and budget-conscious projects.</p>
-
-<h2>Troubleshooting</h2>
-
-<h3>API Key Issues</h3>
-<ul>
-<li>Ensure your API key is valid at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">AI Studio</a></li>
-<li>Check you haven't exceeded your quota</li>
-</ul>
-
-<h3>Rate Limits</h3>
-<ul>
-<li>Google has rate limits - if you hit them, wait a few minutes</li>
-<li>Consider upgrading your Google Cloud tier for higher limits</li>
-</ul>
-
-<h3>Model Access</h3>
-<ul>
-<li>Gemini 3 Pro requires access to preview features</li>
-<li>Check <a href="https://ai.google.dev/" target="_blank" rel="noopener">Google AI documentation</a> for requirements</li>
-</ul>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/nanobanana-flash?fpr=kqpn7" target="_blank" rel="noopener">Nanobanana Flash</a> - Fast, budget-friendly alternative</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/gemini-image-generator?fpr=kqpn7" target="_blank" rel="noopener">Gemini Image Generator</a> - Imagen model</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Issues</strong>: Open a GitHub issue</li>
-<li><strong>Questions</strong>: Contact via LinkedIn</li>
-</ul>
-
-<h2>Keywords</h2>
-
-<p>AI image generation, Gemini 3 Pro, Google AI, text-to-image, BYOK, 4K images, 2K resolution, premium AI art, professional image generator, marketing images, print quality, cinematic images, photorealistic AI, high resolution, Nanobanana</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -621,7 +562,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

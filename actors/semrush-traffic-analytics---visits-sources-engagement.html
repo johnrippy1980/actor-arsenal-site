@@ -462,14 +462,92 @@ Bounce Rate</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Get comprehensive traffic analytics for any website using SEMrush data and your own API key (BYOK). Visits, unique visitors, engagement metrics, traffic sources & geographic distribution.
-Total Visits
-Unique Visitors
-Pages Per Visit
-Avg Visit Duration
-Bounce Rate</p>
+            <h1>SEMrush Traffic Analytics - Visits, Sources & Engagement</h1>
+            <p>Get comprehensive traffic analytics with SEMrush. Visits, unique visitors, bounce rate, pages per visit, visit duration, and traffic sources. BYOK (Bring Your Own Key) - use your SEMrush API key.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key |
+| <code>domains</code> | array | - | Domains to analyze |
+| <code>includeHistorical</code> | boolean | true | Get 12-month history |
+| <code>includeTrafficSources</code> | boolean | true | Get source breakdown |
+| <code>includeGeoDistribution</code> | boolean | true | Get country breakdown |
+| <code>geoLimit</code> | integer | 10 | Max countries to include |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.05 |
+| Domain analyzed | Per domain | $0.05 |
+| Traffic sources fetched | Per domain | $0.02 |
+| Geo distribution fetched | Per domain | $0.02 |
+| Historical data fetched | Per domain | $0.02 |
+| Webhook sent | Per notification | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Competitive Benchmarking</h3>
+Compare traffic metrics across competitors.
+
+<h3>Market Research</h3>
+Understand traffic patterns in your industry.
+
+<h3>Investment Due Diligence</h3>
+Analyze traffic for potential acquisitions.
+
+<h3>Client Reporting</h3>
+Generate traffic reports for clients.
+
+<h3>Geographic Targeting</h3>
+Identify top markets for expansion.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -483,7 +561,7 @@ Bounce Rate</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,38 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>AI-Powered Local Leads Scraper v2.3</h1>
-
-<blockquote><strong>Build targeted local business lead lists from Google Maps with AI Lead Scoring</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Scrape Google Maps for local business leads with <strong>AI-powered lead scoring and prioritization</strong>. Get names, phone numbers, websites, addresses, ratings, review counts, and Claude AI analysis for each lead. Perfect for lead generation, prospecting, and market research.</p>
-
-<h2>🤖 AI Lead Scoring (BYOK - Bring Your Own Key)</h2>
-
-<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
-
-<ul>
-<li><strong>Quality Score (0-100)</strong> - AI rates each lead's quality based on business data</li>
-<li><strong>Priority Tier</strong> - Hot/Warm/Cold classification for sales prioritization</li>
-<li><strong>Buying Signals</strong> - AI detects signals indicating readiness to purchase</li>
-<li><strong>Outreach Recommendations</strong> - Personalized suggestions for approaching each lead</li>
-<li><strong>Best Contact Method</strong> - AI recommends the optimal way to reach out</li>
-</ul>
-
-<h2>Use Cases</h2>
-
-<ul>
-<li><strong>Lead Generation</strong> - Build prioritized prospect lists with AI scoring</li>
-<li><strong>Market Research</strong> - Analyze competition in any market</li>
-<li><strong>Web Design Leads</strong> - Find businesses WITHOUT websites (hot leads!)</li>
-<li><strong>Review Management</strong> - Find businesses with low ratings who need help</li>
-<li><strong>B2B Prospecting</strong> - Get contact info for local businesses</li>
-<li><strong>Sales Prioritization</strong> - Focus on hot leads first with AI scoring</li>
-</ul>
+            <h1>Google Maps Local Leads Scraper</h1>
+            <p>Scrape Google Maps for local business leads with AI-powered lead scoring and prioritization. BYOK (Bring Your Own Key) - Use your Anthropic API key for Claude AI to analyze each lead and provide: quality score (0-100), priority tier (hot/warm/cold), buying signals, and personalized outreach recommendations. v2.3 AI Features: - Claude AI lead scoring and prioritization - Hot/warm/cold lead classification - Buying signal detection - Personalized outreach recommendations - Best contact method suggestions Kitchen Sink Features: - Hunter.io - Verified professional emails - Apollo.io - Decision-maker contacts with titles - Clearbit - Company info, social profiles, tech stack - Snov.io - Email finder and verification - FullContact - Company profiles with employee data - Lusha - B2B contacts with direct phone numbers - LinkedIn company page discovery (free) - Website email scraping (free) Core Features: - Google Maps business scraping (any location, any category) - Business name, address, phone, website - Rating and review count - Smart filtering (by rating, website presence) - Multiple email sources combined - Contact deduplication Integrations: - MCP Server for Claude AI assistant queries - Webhooks for Zapier, Make, n8n - Part of the John Rippy local SEO ecosystem. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -499,16 +471,16 @@
 <li><strong>Email Extraction</strong> - Optionally scrape emails from business websites</li>
 <li><strong>Smart Filtering</strong> - Filter by rating, website presence, and more</li>
 <li><strong>CSV/JSON Export</strong> - Download leads in your preferred format</li>
-</ul>
 
+</ul>
 <h3>AI Features (BYOK)</h3>
 <ul>
 <li><strong>Claude AI Lead Scoring</strong> - Every lead analyzed by Claude AI</li>
 <li><strong>Hot/Warm/Cold Classification</strong> - Instant sales prioritization</li>
 <li><strong>Buying Signal Detection</strong> - AI identifies ready-to-buy indicators</li>
 <li><strong>Personalized Outreach Tips</strong> - Unique recommendations per lead</li>
-</ul>
 
+</ul>
 <h3>Email Enrichment APIs (Optional BYOK)</h3>
 <ul>
 <li><strong>Hunter.io</strong> - Verified professional emails</li>
@@ -517,120 +489,79 @@
 <li><strong>Snov.io</strong> - Email finder and verification</li>
 <li><strong>FullContact</strong> - Company profiles with employee data</li>
 <li><strong>Lusha</strong> - B2B contacts with direct phone numbers</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Input Options</h2>
-
-<h3>Core Parameters</h3>
-
-<h3>AI Lead Scoring (BYOK)</h3>
-
-<h3>Email Enrichment APIs (BYOK)</h3>
-
-<h3>Other Options</h3>
-
-<h2>Example Inputs</h2>
-
-<h3>Basic Lead Scrape</h3>
 <pre><code>{
-<p>"searchQuery": "plumbers",</p>
-<p>"location": "Dallas, TX",</p>
-<p>"maxResults": 100</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h3>Web Design Leads (No Website)</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"searchQuery": "restaurants",</p>
-<p>"location": "Austin, TX",</p>
-<p>"maxResults": 200,</p>
-<p>"noWebsite": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Low-Rated Businesses (Reputation Management)</h3>
-<pre><code>{
-<p>"searchQuery": "dentists",</p>
-<p>"location": "Houston, TX",</p>
-<p>"maxResults": 50,</p>
-<p>"minRating": 1,</p>
-<p>"maxRating": 3.5</p>
-<p>}</p>
-</code></pre>
+<h2>Input Parameters</h2>
 
-<h3>Full Lead Enrichment</h3>
-<pre><code>{
-<p>"searchQuery": "lawyers",</p>
-<p>"location": "Miami, FL",</p>
-<p>"maxResults": 100,</p>
-<p>"includeEmail": true,</p>
-<p>"hasWebsite": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>With AI Lead Scoring (BYOK)</h3>
-<pre><code>{
-<p>"searchQuery": "plumbers",</p>
-<p>"location": "Dallas, TX",</p>
-<p>"maxResults": 50,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"enableAiScoring": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Demo Mode (No Real Scraping)</h3>
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <h3>Standard Lead Output</h3>
 <pre><code>{
-<p>"name": "Joe's Plumbing",</p>
-<p>"category": "Plumber",</p>
-<p>"address": "123 Main St, Dallas, TX 75201",</p>
-<p>"city": "Dallas",</p>
-<p>"state": "TX",</p>
-<p>"zipCode": "75201",</p>
-<p>"phone": "(214) 555-1234",</p>
-<p>"website": "https://joesplumbing.com",</p>
-<p>"email": "info@joesplumbing.com",</p>
-<p>"rating": 4.7,</p>
-<p>"reviewCount": 142,</p>
-<p>"priceLevel": "$$",</p>
-<p>"hours": "Open 24 hours",</p>
-<p>"googleMapsUrl": "https://maps.google.com/...",</p>
-<p>"placeId": "ChIJ...",</p>
-<p>"hasWebsite": true,</p>
-<p>"scrapedAt": "2024-12-26T00:00:00.000Z"</p>
-<p>}</p>
+  "name": "Joe's Plumbing",
+  "category": "Plumber",
+  "address": "123 Main St, Dallas, TX 75201",
+  "city": "Dallas",
+  "state": "TX",
+  "zipCode": "75201",
+  "phone": "(214) 555-1234",
+  "website": "https://joesplumbing.com",
+  "email": "info@joesplumbing.com",
+  "rating": 4.7,
+  "reviewCount": 142,
+  "priceLevel": "$$",
+  "hours": "Open 24 hours",
+  "googleMapsUrl": "https://maps.google.com/...",
+  "placeId": "ChIJ...",
+  "hasWebsite": true,
+  "scrapedAt": "2024-12-26T00:00:00.000Z"
+}
 </code></pre>
 
 <h3>With AI Lead Scoring (BYOK)</h3>
-<p>When you provide an Anthropic API key, each lead includes Claude AI analysis:</p>
+When you provide an Anthropic API key, each lead includes Claude AI analysis:
 <pre><code>{
-<p>"name": "Joe's Plumbing",</p>
-<p>"category": "Plumber",</p>
-<p>"address": "123 Main St, Dallas, TX 75201",</p>
-<p>"phone": "(214) 555-1234",</p>
-<p>"website": "https://joesplumbing.com",</p>
-<p>"rating": 4.7,</p>
-<p>"reviewCount": 142,</p>
-<p>"aiScoring": {</p>
-<p>"qualityScore": 85,</p>
-<p>"priorityTier": "hot",</p>
-<p>"signals": [</p>
-<p>"Strong online presence with high review count",</p>
-<p>"24/7 availability indicates serious business",</p>
-<p>"Premium pricing suggests budget for services"</p>
-<p>],</p>
-<p>"outreachRecommendation": "Lead with ROI-focused messaging. Mention their strong reviews and suggest ways to leverage that reputation for more business.",</p>
-<p>"bestContactMethod": "phone",</p>
-<p>"analyzedAt": "2024-12-26T12:00:00.000Z"</p>
-<p>}</p>
-<p>}</p>
+  "name": "Joe's Plumbing",
+  "category": "Plumber",
+  "address": "123 Main St, Dallas, TX 75201",
+  "phone": "(214) 555-1234",
+  "website": "https://joesplumbing.com",
+  "rating": 4.7,
+  "reviewCount": 142,
+  "aiScoring": {
+    "qualityScore": 85,
+    "priorityTier": "hot",
+    "signals": [
+      "Strong online presence with high review count",
+      "24/7 availability indicates serious business",
+      "Premium pricing suggests budget for services"
+    ],
+    "outreachRecommendation": "Lead with ROI-focused messaging. Mention their strong reviews and suggest ways to leverage that reputation for more business.",
+    "bestContactMethod": "phone",
+    "analyzedAt": "2024-12-26T12:00:00.000Z"
+  }
+}
 </code></pre>
 
 <h3>AI Priority Tiers Explained</h3>
@@ -638,58 +569,42 @@
 <li><strong>Hot</strong> (Score 80-100): High-quality leads ready to buy. Contact immediately.</li>
 <li><strong>Warm</strong> (Score 50-79): Good potential but may need nurturing.</li>
 <li><strong>Cold</strong> (Score 0-49): Lower priority. May be worth outreach but don't prioritize.</li>
-</ul>
 
+</ul>
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>lead_scraped</code> | Per lead scraped | $0.02 |
+| <code>email_extracted</code> | Per email extracted | $0.01 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>100 leads (no emails): $0.10 + (100 × $0.02) = <strong>$2.10</strong></li>
 <li>100 leads with emails: $0.10 + (100 × $0.02) + (100 × $0.01) = <strong>$3.10</strong></li>
 <li>500 leads (no emails): $0.10 + (500 × $0.02) = <strong>$10.10</strong></li>
+
 </ul>
-
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Be Specific</strong> - More specific searches get better results</p>
-<p>2. <strong>Use City + State</strong> - "Dallas, TX" works better than just "Dallas"</p>
-<p>3. <strong>Filter Smart</strong> - Use rating filters to find your ideal prospects</p>
-<p>4. <strong>Web Design Leads</strong> - The <code>noWebsite</code> filter is gold for web agencies</p>
-<p>5. <strong>Email Extraction</strong> - Only enable if you need emails (it's slower)</p>
-
-<h2>Limitations</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li>Maximum 500 leads per run (Google Maps pagination limits)</li>
-<li>Email extraction adds ~3 seconds per lead</li>
-<li>Some businesses may not have all data fields</li>
-<li>Rate limited to avoid detection</li>
+<li><strong>Lead Generation</strong> - Build prioritized prospect lists with AI scoring</li>
+<li><strong>Market Research</strong> - Analyze competition in any market</li>
+<li><strong>Web Design Leads</strong> - Find businesses WITHOUT websites (hot leads!)</li>
+<li><strong>Review Management</strong> - Find businesses with low ratings who need help</li>
+<li><strong>B2B Prospecting</strong> - Get contact info for local businesses</li>
+<li><strong>Sales Prioritization</strong> - Focus on hot leads first with AI scoring</li>
+
 </ul>
+---
 
-<h2>Integration Ideas</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<ul>
-<li>Export to CSV for your CRM</li>
-<li>Pipe to your email marketing tool</li>
-<li>Build automated prospecting workflows</li>
-<li>Feed into your sales dialer</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong> - Your Local SEO Partner
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>local leads scraper, lead generation, google maps leads, local business leads, b2b leads, sales leads, email finder</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -703,7 +618,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

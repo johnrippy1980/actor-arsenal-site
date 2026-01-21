@@ -456,124 +456,77 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Google Ads Offline Conversions</h1>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<blockquote>GCLID &amp; Enhanced Conversions - Upload Offline Sales to Google Ads</blockquote>
-<p>Upload offline conversions to Google Ads using GCLID click tracking, enhanced conversions with hashed PII, and store sales data for campaign attribution.</p>
+            <h1>Google Ads Offline Conversions - GCLID &amp; Enhanced Conversions</h1>
+            <p>Upload offline conversions to Google Ads using GCLID click tracking, enhanced conversions with hashed PII, and store sales data for campaign attribution.</p>
+
 <h2>Features</h2>
+
 <h3>Conversion Upload</h3>
-<ul><li><strong>upload_click_conversions</strong> - Upload conversions with GCLID</li>
+<ul>
+<li><strong>upload_click_conversions</strong> - Upload conversions with GCLID</li>
 <li><strong>upload_call_conversions</strong> - Upload phone call conversions</li>
 <li><strong>upload_enhanced_conversions</strong> - Upload with hashed PII (no GCLID needed)</li>
 <li><strong>upload_store_sales</strong> - Upload in-store transaction data</li>
+
 </ul>
 <h3>Conversion Actions</h3>
-<ul><li><strong>list_conversion_actions</strong> - List all conversion actions</li>
+<ul>
+<li><strong>list_conversion_actions</strong> - List all conversion actions</li>
 <li><strong>get_conversion_action</strong> - Get conversion action details</li>
 <li><strong>create_conversion_action</strong> - Create new conversion action</li>
 <li><strong>get_upload_status</strong> - Check upload job status</li>
+
 </ul>
-<h2>Conversion Types</h2>
-<h3>Click Conversions (GCLID)</h3>
-<p>Best match rate - requires capturing GCLID from ad clicks:</p>
+<h2>Quick Start</h2>
+
 <pre><code>{
-<p>&quot;gclid&quot;: &quot;EAIaIQobChMI...&quot;,</p>
-<p>&quot;conversionDateTime&quot;: &quot;2024-01-20 14:30:00-05:00&quot;,</p>
-<p>&quot;conversionValue&quot;: 99.99,</p>
-<p>&quot;currencyCode&quot;: &quot;USD&quot;,</p>
-<p>&quot;orderId&quot;: &quot;ORD-12345&quot;</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
-<h3>Enhanced Conversions (PII)</h3>
-<p>Match without GCLID using hashed customer data:</p>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>&quot;email&quot;: &quot;john@example.com&quot;,</p>
-<p>&quot;phone&quot;: &quot;+15551234567&quot;,</p>
-<p>&quot;firstName&quot;: &quot;John&quot;,</p>
-<p>&quot;lastName&quot;: &quot;Doe&quot;,</p>
-<p>&quot;conversionDateTime&quot;: &quot;2024-01-20 14:30:00-05:00&quot;,</p>
-<p>&quot;conversionValue&quot;: 99.99</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-<h3>Call Conversions</h3>
-<p>Track phone calls from ads:</p>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;callerId&quot;: &quot;+15551234567&quot;,</p>
-<p>&quot;callStartDateTime&quot;: &quot;2024-01-20 14:30:00-05:00&quot;,</p>
-<p>&quot;conversionDateTime&quot;: &quot;2024-01-20 15:00:00-05:00&quot;,</p>
-<p>&quot;conversionValue&quot;: 500.00</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-<h2>Click IDs</h2>
-<p>| ID Type | Source | Use Case |</p>
-<p>|---------|--------|----------|</p>
-<p>| gclid | URL parameter | Web clicks |</p>
-<p>| gbraid | App URL | iOS app installs |</p>
-<p>| wbraid | Web URL | Web-to-app |</p>
-<h2>Enhanced Conversion Fields</h2>
-<p>All PII is automatically SHA256 hashed:</p>
-<ul><li><code>email</code> - Customer email (most important)</li>
-<li><code>phone</code> - Phone in E.164 format</li>
-<li><code>firstName</code>, <code>lastName</code> - Customer name</li>
-<li><code>streetAddress</code> - Street address</li>
-<li><code>city</code>, <code>state</code>, <code>postalCode</code> - Location</li>
-<li><code>countryCode</code> - ISO country code</li>
-</ul>
-<h2>Consent (GDPR/EEA)</h2>
-<p>For EU users, include consent signals:</p>
-<pre><code>{
-<p>&quot;consent&quot;: {</p>
-<p>&quot;ad_user_data&quot;: &quot;GRANTED&quot;,</p>
-<p>&quot;ad_personalization&quot;: &quot;GRANTED&quot;</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<p>Values: <code>GRANTED</code>, <code>DENIED</code>, or <code>UNSPECIFIED</code></p>
-<h2>Conversion Actions</h2>
-<p>Before uploading, you need a conversion action:</p>
-<p>1. Use <code>list_conversion_actions</code> to find existing</p>
-<p>2. Or <code>create_conversion_action</code> to create new</p>
-<p>Conversion action defines:</p>
-<ul><li>Name and category</li>
-<li>Value settings</li>
-<li>Attribution window</li>
-<li>Counting method</li>
-</ul>
-<h2>Upload Timing</h2>
-<ul><li>Conversions must be within 90 days of click</li>
-<li>Recommended: Upload within 24 hours</li>
-<li>Allow 3 hours for processing</li>
-<li>Check status with <code>get_upload_status</code></li>
-</ul>
-<h2>Batch Upload</h2>
-<pre><code>{
-<p>&quot;task&quot;: &quot;upload_click_conversions&quot;,</p>
-<p>&quot;conversions&quot;: [</p>
-<p>{</p>
-<p>&quot;gclid&quot;: &quot;EAIaIQobChMI_1&quot;,</p>
-<p>&quot;conversionDateTime&quot;: &quot;2024-01-20 14:30:00-05:00&quot;,</p>
-<p>&quot;conversionValue&quot;: 99.99,</p>
-<p>&quot;orderId&quot;: &quot;ORD-001&quot;</p>
-<p>},</p>
-<p>{</p>
-<p>&quot;gclid&quot;: &quot;EAIaIQobChMI_2&quot;,</p>
-<p>&quot;conversionDateTime&quot;: &quot;2024-01-20 15:00:00-05:00&quot;,</p>
-<p>&quot;conversionValue&quot;: 149.99,</p>
-<p>&quot;orderId&quot;: &quot;ORD-002&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
+
 <h2>Pricing</h2>
-<p>$0.01 per query (all tasks)</p>
-<h2>Rate Limits</h2>
-<ul><li>10,000 operations per day</li>
-<li>10MB per upload request</li>
-<li>Batch up to 2,000 conversions per request</li>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.01 per query (all tasks)</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -587,7 +540,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

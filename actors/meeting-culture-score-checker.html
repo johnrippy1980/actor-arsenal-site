@@ -457,262 +457,180 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Meeting Culture Score Checker</h1>
+            <p>Analyze any company's meeting culture based on public signals from Glassdoor reviews, LinkedIn posts, and job listings. Get a meeting culture score before accepting a job offer.</p>
 
-<strong>"Know a Company's Meeting Culture Before You Join"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Analyze any company's meeting culture based on public signals from Glassdoor reviews, LinkedIn posts, and job listings. Get a meeting culture score before accepting a job offer!</p>
-
-<h2>What This Actor Does</h2>
-
-<p>Ever wondered if a company has a healthy meeting culture before you join? This actor analyzes public data to give you insights:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Glassdoor Reviews</strong>: Extracts meeting-related mentions from employee reviews</li>
-<li><strong>LinkedIn Posts</strong>: Analyzes company posts for async-first signals</li>
-<li><strong>Job Listings</strong>: Checks for "meeting-free" or "async-first" culture indicators</li>
-<li><strong>Overall Score</strong>: Calculates a Meeting Culture Score (0-100)</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h2>Perfect For</h2>
-
-<ul>
-<li><strong>Job Seekers</strong>: Research a company's meeting culture before accepting an offer</li>
-<li><strong>Recruiters</strong>: Understand how candidates perceive your company's culture</li>
-<li><strong>Consultants</strong>: Benchmark clients against industry standards</li>
-<li><strong>HR Teams</strong>: Track your company's public perception</li>
-<li><strong>Investors</strong>: Evaluate operational efficiency signals</li>
-</ul>
-
-<h2>Input Examples</h2>
-
-<h3>Simple Company Lookup</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"companyName": "Basecamp"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>With Company Domain</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"companyName": "GitLab",</p>
-<p>"companyDomain": "gitlab.com"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Direct URLs</h3>
+<h2>Input Parameters</h2>
 
-<pre><code>{
-<p>"companyName": "Netflix",</p>
-<p>"glassdoorUrl": "https://www.glassdoor.com/Reviews/Netflix-Reviews-E11891.htm",</p>
-<p>"linkedinUrl": "https://www.linkedin.com/company/netflix/",</p>
-<p>"maxReviews": 100</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Full Analysis</h3>
 
 <pre><code>{
-<p>"company": {</p>
-<p>"name": "Basecamp",</p>
-<p>"domain": "basecamp.com",</p>
-<p>"industry": "Software"</p>
-<p>},</p>
-<p>"meetingCultureScore": {</p>
-<p>"overall": 85,</p>
-<p>"breakdown": {</p>
-<p>"reviewSentiment": 90,</p>
-<p>"asyncSignals": 88,</p>
-<p>"workLifeBalance": 82,</p>
-<p>"jobListingSignals": 80</p>
-<p>}</p>
-<p>},</p>
-<p>"keyFindings": {</p>
-<p>"positive": [</p>
-<p>"Strong async-first culture mentioned in 67% of reviews",</p>
-<p>"No recurring meetings policy mentioned frequently",</p>
-<p>"'Deep work' valued in job listings"</p>
-<p>],</p>
-<p>"negative": [</p>
-<p>"Some remote employees mention timezone challenges",</p>
-<p>"Occasional all-hands can run long"</p>
-<p>],</p>
-<p>"neutral": [</p>
-<p>"Standard 1:1 meetings with managers"</p>
-<p>]</p>
-<p>},</p>
-<p>"reviewAnalysis": {</p>
-<p>"totalReviewed": 50,</p>
-<p>"meetingMentions": 23,</p>
-<p>"sentimentBreakdown": {</p>
-<p>"positive": 18,</p>
-<p>"neutral": 3,</p>
-<p>"negative": 2</p>
-<p>},</p>
-<p>"topKeywords": [</p>
-<p>{ "keyword": "async", "count": 15, "sentiment": "positive" },</p>
-<p>{ "keyword": "no meetings", "count": 8, "sentiment": "positive" },</p>
-<p>{ "keyword": "written communication", "count": 6, "sentiment": "positive" }</p>
-<p>],</p>
-<p>"quotes": [</p>
-<p>{</p>
-<p>"text": "Love the 'meetings are expensive' philosophy",</p>
-<p>"source": "Glassdoor",</p>
-<p>"sentiment": "positive"</p>
-<p>}</p>
-<p>]</p>
-<p>},</p>
-<p>"comparisonBenchmarks": {</p>
-<p>"vsIndustryAverage": "+25",</p>
-<p>"vsTopCompanies": "Top 10%",</p>
-<p>"similarCompanies": ["GitLab", "Automattic", "Buffer"]</p>
-<p>},</p>
-<p>"recommendations": {</p>
-<p>"forJobSeekers": "This company has an excellent meeting culture. You'll likely enjoy focused work time.",</p>
-<p>"forTheCompany": "Continue highlighting async culture in job postings - it's a competitive advantage."</p>
-<p>},</p>
-<p>"sources": {</p>
-<p>"glassdoor": 50,</p>
-<p>"linkedin": 15,</p>
-<p>"jobListings": 8</p>
-<p>},</p>
-<p>"cta": {</p>
-<p>"message": "Track your own meeting costs",</p>
-<p>"url": "https://meeting.alizarin_refrigerator-owner.com"</p>
-<p>}</p>
-<p>}</p>
+  "company": {
+    "name": "Basecamp",
+    "domain": "basecamp.com",
+    "industry": "Software"
+  },
+  "meetingCultureScore": {
+    "overall": 85,
+    "breakdown": {
+      "reviewSentiment": 90,
+      "asyncSignals": 88,
+      "workLifeBalance": 82,
+      "jobListingSignals": 80
+    }
+  },
+  "keyFindings": {
+    "positive": [
+      "Strong async-first culture mentioned in 67% of reviews",
+      "No recurring meetings policy mentioned frequently",
+      "'Deep work' valued in job listings"
+    ],
+    "negative": [
+      "Some remote employees mention timezone challenges",
+      "Occasional all-hands can run long"
+    ],
+    "neutral": [
+      "Standard 1:1 meetings with managers"
+    ]
+  },
+  "reviewAnalysis": {
+    "totalReviewed": 50,
+    "meetingMentions": 23,
+    "sentimentBreakdown": {
+      "positive": 18,
+      "neutral": 3,
+      "negative": 2
+    },
+    "topKeywords": [
+      { "keyword": "async", "count": 15, "sentiment": "positive" },
+      { "keyword": "no meetings", "count": 8, "sentiment": "positive" },
+      { "keyword": "written communication", "count": 6, "sentiment": "positive" }
+    ],
+    "quotes": [
+      {
+        "text": "Love the 'meetings are expensive' philosophy",
+        "source": "Glassdoor",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "comparisonBenchmarks": {
+    "vsIndustryAverage": "+25",
+    "vsTopCompanies": "Top 10%",
+    "similarCompanies": ["GitLab", "Automattic", "Buffer"]
+  },
+  "recommendations": {
+    "forJobSeekers": "This company has an excellent meeting culture. You'll likely enjoy focused work time.",
+    "forTheCompany": "Continue highlighting async culture in job postings - it's a competitive advantage."
+  },
+  "sources": {
+    "glassdoor": 50,
+    "linkedin": 15,
+    "jobListings": 8
+  },
+  "cta": {
+    "message": "Track your own meeting costs",
+    "url": "https://meeting.localhowl.com"
+  }
+}
 </code></pre>
 
 <h3>Score Only</h3>
 
 <pre><code>{
-<p>"company": "Basecamp",</p>
-<p>"meetingCultureScore": 85,</p>
-<p>"grade": "A",</p>
-<p>"summary": "Excellent meeting culture with strong async-first practices"</p>
-<p>}</p>
+  "company": "Basecamp",
+  "meetingCultureScore": 85,
+  "grade": "A",
+  "summary": "Excellent meeting culture with strong async-first practices"
+}
 </code></pre>
 
-<h2>Meeting Culture Score Methodology</h2>
+<h2>Pricing</h2>
 
-<h3>Score Interpretation</h3>
-
-
-<h3>Factors Analyzed</h3>
-
-<strong>Positive Signals (+score)</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li>"async-first" / "remote-friendly" mentions</li>
-<li>"meeting-free days" policies</li>
-<li>"deep work" / "focused time" culture</li>
-<li>"written communication" preference</li>
-<li>"no recurring meetings" philosophy</li>
-<li>Work-life balance praise</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-
-<strong>Negative Signals (-score)</strong>
-<ul>
-<li>"too many meetings" complaints</li>
-<li>"death by meetings" mentions</li>
-<li>"back-to-back" references</li>
-<li>"meeting fatigue" / "Zoom fatigue"</li>
-<li>"could have been an email" mentions</li>
-<li>Calendar overload complaints</li>
-</ul>
-
-<h3>Data Sources Weight</h3>
-
-<ul>
-<li>Glassdoor Reviews: 50%</li>
-<li>LinkedIn Posts: 25%</li>
-<li>Job Listings: 25%</li>
-</ul>
-
 <h2>Use Cases</h2>
 
 <h3>1. Pre-Interview Research</h3>
 
-<pre><code>const result = await apifyClient.actor("alizarin_refrigerator-owner/meeting-culture-score-checker").call({
-<p>companyName: "Stripe"</p>
-<p>});</p>
+<pre><code>const result = await apifyClient.actor("localhowl/meeting-culture-score-checker").call({
+  companyName: "Stripe"
+});
 
-<p>if (result.meetingCultureScore.overall &gt;= 70) {</p>
-<p>console.log("This company has a healthy meeting culture!");</p>
-<p>} else {</p>
-<p>console.log("Warning: Consider asking about meeting culture in your interview");</p>
-<p>}</p>
-</code></pre>
+<p>if (result.meetingCultureScore.overall >= 70) {
+  console.log("This company has a healthy meeting culture!");
+} else {
+  console.log("Warning: Consider asking about meeting culture in your interview");
+}
+</code></pre></p>
 
 <h3>2. Competitive Analysis</h3>
 
 <pre><code>const companies = ["Netflix", "Google", "Meta", "Amazon"];
-<p>const results = [];</p>
+const results = [];
 
-<p>for (const company of companies) {</p>
-<p>const result = await analyze({ companyName: company });</p>
-<p>results.push({ company, score: result.meetingCultureScore.overall });</p>
-<p>}</p>
+<p>for (const company of companies) {
+  const result = await analyze({ companyName: company });
+  results.push({ company, score: result.meetingCultureScore.overall });
+}</p>
 
-<p>// Compare meeting cultures across companies</p>
-<p>results.sort((a, b) =&gt; b.score - a.score);</p>
-</code></pre>
+<p>// Compare meeting cultures across companies
+results.sort((a, b) => b.score - a.score);
+</code></pre></p>
 
 <h3>3. Employer Branding Research</h3>
 
 <pre><code>const result = await analyze({
-<p>companyName: "Your Company",</p>
-<p>maxReviews: 100</p>
-<p>});</p>
+  companyName: "Your Company",
+  maxReviews: 100
+});
 
-<p>console.log("Your public meeting culture score:", result.meetingCultureScore.overall);</p>
-<p>console.log("Key concerns:", result.keyFindings.negative);</p>
-</code></pre>
-
-<h2>Limitations</h2>
-
-<ul>
-<li>Analysis is based on publicly available data only</li>
-<li>Small companies may have limited data</li>
-<li>Results reflect public perception, not internal reality</li>
-<li>Data freshness depends on review frequency</li>
-<li>Some industries may have different meeting norms</li>
-</ul>
-
-<h2>Related Tools</h2>
-
-<ul>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/calendar-ics-analyzer?fpr=kqpn7" target="_blank" rel="noopener">Calendar ICS Analyzer</a></strong>: Analyze your own calendar</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/meeting-roi-calculator?fpr=kqpn7" target="_blank" rel="noopener">Meeting ROI Calculator</a></strong>: Calculate meeting costs</li>
-<li><strong><a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker</a></strong>: Real-time tracking Chrome extension</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: https://meeting.alizarin_refrigerator-owner.com/docs</li>
-<li><strong>Email</strong>: support@alizarin_refrigerator-owner.com</li>
-<li><strong>Issues</strong>: Report bugs or request features</li>
-</ul>
+<p>console.log("Your public meeting culture score:", result.meetingCultureScore.overall);
+console.log("Key concerns:", result.keyFindings.negative);
+</code></pre></p>
 
 <p>---</p>
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<em>Part of the <a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker</a> productivity suite by <a href="https://alizarin_refrigerator-owner.com" target="_blank" rel="noopener">LocalHowl</a></em>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -726,7 +644,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

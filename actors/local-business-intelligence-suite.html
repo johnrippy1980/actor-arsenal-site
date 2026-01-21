@@ -469,51 +469,139 @@ You&#x27;re currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), Ga
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Local Business Intelligence Suite</h1>
-
-<strong>"Local Business Intelligence Suite"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>God Mode for Local SEO
-
-Stop Paying for 10+ Separate Local SEO Tools
-You&#x27;re currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), </p>
+            <p>Stop paying for 10+ separate local SEO tools. This suite combines 19 intelligence modules into one powerful actor. NEW in v1.6: Reputation Aggregator with smart business-type detection - auto-scrapes relevant platforms based on GBP category (restaurants get Yelp/TripAdvisor/DoorDash/GrubHub, attorneys get Avvo, healthcare gets HealthGrades, etc). BYOK support for D&B Direct+, TripAdvisor API, G2 API. Plus: GBP scraping, multi-platform reviews, LocalFalcon-style grid ranking, citation audits, Reddit intelligence, and US Census market data. Replaces BrightLocal, LocalFalcon, Moz Local, GatherUp, and more. Pay only for what you use (~$2 for full audit). Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Integration Support</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
-</ul>
+<h2>Demo Mode</h2>
 
-<h2>Author</h2>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<h2>Input Parameters</h2>
+
+<h3>Required for All Tasks</h3>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>task</code> | string | The intelligence task to run (18 options) |
+| <code>businessName</code> | string | Name of the business to analyze |
+| <code>city</code> | string | City where the business is located |
+| <code>state</code> | string | State abbreviation (e.g., "NY", "CA") |</p>
+
+<h3>Optional Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>address</code> | string | - | Street address (improves accuracy) |
+| <code>phone</code> | string | - | Business phone number |
+| <code>website</code> | string | - | Business website URL |
+| <code>gbpUrl</code> | string | - | Direct GBP URL (skips search) |
+| <code>keywords</code> | array | - | Keywords for SERP tracking |
+| <code>gridSize</code> | number | 3 | Map grid size (7 = 7x7 = 49 points) |
+| <code>gridRadius</code> | number | 1 | Distance between grid points (miles) |
+| <code>competitors</code> | array | - | Competitor business names |
+| <code>reviewPlatforms</code> | array | ["google", "yelp"] | Platforms to scrape reviews from |
+| <code>maxReviews</code> | number | 100 | Max reviews per platform |
+| <code>maxPages</code> | number | 50 | Max pages to crawl for website analysis |
+| <code>includeSentiment</code> | boolean | true | Include AI sentiment analysis for reviews |
+| <code>zipCode</code> | string | - | ZIP code for market intelligence (Census data) |
+| <code>webhookUrl</code> | string | - | Webhook URL for Zapier/Make/n8n integration |</p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Output Format</h2>
 
-<p>local business intelligence suite, apify actor, web scraping, data extraction, automation</p>
+<p>All tasks return structured JSON:</p>
 
+<pre><code>{
+  "task": "market_intelligence",
+  "status": "success",
+  "businessName": "Joe's Pizza",
+  "location": "New York, NY",
+  "timestamp": "2024-12-18T20:00:00.000Z",
+  "duration": 12000,
+  "dataPoints": 25,
+  "data": {
+    "location": {
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001",
+      "county": "New York County",
+      "stateFips": "36",
+      "countyFips": "061"
+    },
+    "population": {
+      "current": 21102,
+      "medianIncome": 78250,
+      "growthRate": 0.012,
+      "projected5Year": 22384
+    },
+    "competition": {
+      "localEstablishments": 127,
+      "localEmployees": 1893,
+      "avgEmployeesPerBusiness": 14.9,
+      "marketSharePotential": 823000
+    },
+    "marketSizing": {
+      "estimatedLocalMarket": 104521000,
+      "dollarsUpForGrabs5Year": 12800000
+    },
+    "projections": {
+      "projected5YearCompetitors": 142,
+      "projected5YearMarket": 117300000,
+      "opportunities": [...]
+    },
+    "dataSources": ["US Census Bureau", "County Business Patterns", "SBA"]
+  },
+  "billingEvents": [...]
+}
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -527,7 +615,7 @@ You&#x27;re currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), Ga
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

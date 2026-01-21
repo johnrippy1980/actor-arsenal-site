@@ -479,111 +479,52 @@ Content Analysis</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Technical SEO Auditor - AI-Powered On-Page Analysis</h1>
+            <p>Comprehensive on-page SEO audit analyzing 50+ ranking factors including meta tags, headings, images, links, structured data, Core Web Vitals, and mobile-friendliness. Get AI-powered recommendations for improvements.</p>
 
-<blockquote><strong>Audit 50+ SEO ranking factors with AI recommendations</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>What This Actor Does</h2>
-
-<p>The <strong>Technical SEO Auditor</strong> performs comprehensive on-page SEO analysis:</p>
-
-<p>1. <strong>Meta Tag Analysis</strong> - Title, description, OG tags, Twitter cards</p>
-<p>2. <strong>Heading Structure</strong> - H1-H6 hierarchy and keyword presence</p>
-<p>3. <strong>Image Optimization</strong> - Alt tags, file sizes, lazy loading</p>
-<p>4. <strong>Link Analysis</strong> - Internal/external links, broken links, nofollow</p>
-<p>5. <strong>Structured Data</strong> - JSON-LD validation, Schema.org markup</p>
-<p>6. <strong>Core Web Vitals</strong> - LCP, FID, CLS estimates</p>
-<p>7. <strong>Mobile Friendliness</strong> - Viewport, touch targets, responsive design</p>
-<p>8. <strong>Content Analysis</strong> - Word count, keyword density, readability</p>
-
-<p>---</p>
-
-<h2>Why Use This Actor?</h2>
-
-<h3>The Problem with Manual Audits</h3>
-
-<p>SEO audits typically require:</p>
 <ul>
-<li>Multiple tools (Screaming Frog, Lighthouse, Schema validators)</li>
-<li>Manual data compilation and analysis</li>
-<li>Subjective interpretation of results</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h3>AI-Powered Intelligence</h3>
-
-<p>This actor provides:</p>
-<ul>
-<li><strong>Unified Score (0-100)</strong> - Single metric combining all factors</li>
-<li><strong>Prioritized Issues</strong> - Sorted by SEO impact</li>
-<li><strong>AI Recommendations</strong> - Context-aware suggestions</li>
-<li><strong>Competitor Comparison</strong> - Benchmark against industry standards</li>
-</ul>
-
-<p>---</p>
-
-<h2>Use Cases</h2>
-
-<h3>1. Client Onboarding Audits</h3>
-<p>Run comprehensive audits for new SEO clients to identify quick wins.</p>
-
-<h3>2. Pre-Launch Technical Review</h3>
-<p>Ensure new sites meet all SEO requirements before going live.</p>
-
-<h3>3. Competitor Analysis</h3>
-<p>Compare your technical SEO against competitors.</p>
-
-<h3>4. Ongoing Monitoring</h3>
-<p>Schedule regular audits to catch regressions early.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Single Page Audit</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"includeAIRecommendations": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Multi-Page Crawl</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"crawlDepth": 2,</p>
-<p>"maxPages": 20,</p>
-<p>"checkStructuredData": true,</p>
-<p>"checkAccessibility": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Demo Mode (Free Testing)</h3>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: With AI Enhancement (BYOK)</h3>
-
-<pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"includeAIRecommendations": true,</p>
-<p>"anthropicApiKey": "sk-ant-..."</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free, no crawling) |
+| <code>url</code> | string | No<em> | - | Single URL to audit |
+| <code>urls</code> | array | No</em> | - | Array of URLs to audit |
+| <code>crawlDepth</code> | integer | No | 1 | How deep to crawl (1-5) |
+| <code>maxPages</code> | integer | No | 10 | Max pages per URL (1-100) |
+| <code>checkMobile</code> | boolean | No | true | Test mobile friendliness |
+| <code>checkStructuredData</code> | boolean | No | true | Validate JSON-LD |
+| <code>checkAccessibility</code> | boolean | No | true | Basic a11y checks |
+| <code>includeAIRecommendations</code> | boolean | No | true | Generate AI recommendations |
+| <code>anthropicApiKey</code> | string | No | - | BYOK for enhanced AI |
+| <code>webhookUrl</code> | string | No | - | Webhook for integrations |</p>
 
 <p>*Either <code>url</code> or <code>urls</code> required unless using <code>demoMode</code></p>
 
@@ -592,206 +533,138 @@ Content Analysis</p>
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
-<p>"overallScore": 78,</p>
+  "url": "https://example.com",
+  "timestamp": "2024-12-25T12:00:00.000Z",
+  "overallScore": 78,
 
-<p>"meta": {</p>
-<p>"title": "Example Domain - Your Title Here",</p>
-<p>"titleLength": 28,</p>
-<p>"titleScore": 85,</p>
-<p>"description": "This is the meta description...",</p>
-<p>"descriptionLength": 142,</p>
-<p>"descriptionScore": 90,</p>
-<p>"hasCanonical": true,</p>
-<p>"canonicalUrl": "https://example.com/",</p>
-<p>"hasRobots": true,</p>
-<p>"robotsContent": "index, follow"</p>
-<p>},</p>
+<p>"meta": {
+    "title": "Example Domain - Your Title Here",
+    "titleLength": 28,
+    "titleScore": 85,
+    "description": "This is the meta description...",
+    "descriptionLength": 142,
+    "descriptionScore": 90,
+    "hasCanonical": true,
+    "canonicalUrl": "https://example.com/",
+    "hasRobots": true,
+    "robotsContent": "index, follow"
+  },</p>
 
-<p>"headings": {</p>
-<p>"h1Count": 1,</p>
-<p>"h1Text": ["Main Heading"],</p>
-<p>"h2Count": 5,</p>
-<p>"headingHierarchyValid": true,</p>
-<p>"score": 95</p>
-<p>},</p>
+<p>"headings": {
+    "h1Count": 1,
+    "h1Text": ["Main Heading"],
+    "h2Count": 5,
+    "headingHierarchyValid": true,
+    "score": 95
+  },</p>
 
-<p>"images": {</p>
-<p>"total": 12,</p>
-<p>"withAlt": 10,</p>
-<p>"withoutAlt": 2,</p>
-<p>"lazyLoaded": 8,</p>
-<p>"oversized": 1,</p>
-<p>"score": 75</p>
-<p>},</p>
+<p>"images": {
+    "total": 12,
+    "withAlt": 10,
+    "withoutAlt": 2,
+    "lazyLoaded": 8,
+    "oversized": 1,
+    "score": 75
+  },</p>
 
-<p>"links": {</p>
-<p>"internal": 24,</p>
-<p>"external": 8,</p>
-<p>"nofollow": 3,</p>
-<p>"broken": 0,</p>
-<p>"score": 100</p>
-<p>},</p>
+<p>"links": {
+    "internal": 24,
+    "external": 8,
+    "nofollow": 3,
+    "broken": 0,
+    "score": 100
+  },</p>
 
-<p>"structuredData": {</p>
-<p>"hasJsonLd": true,</p>
-<p>"types": ["Organization", "WebPage"],</p>
-<p>"errors": [],</p>
-<p>"warnings": ["Missing 'logo' property"],</p>
-<p>"score": 85</p>
-<p>},</p>
+<p>"structuredData": {
+    "hasJsonLd": true,
+    "types": ["Organization", "WebPage"],
+    "errors": [],
+    "warnings": ["Missing 'logo' property"],
+    "score": 85
+  },</p>
 
-<p>"performance": {</p>
-<p>"lcpEstimate": "2.1s",</p>
-<p>"clsEstimate": "0.05",</p>
-<p>"domSize": 1245,</p>
-<p>"resourceCount": 34,</p>
-<p>"score": 72</p>
-<p>},</p>
+<p>"performance": {
+    "lcpEstimate": "2.1s",
+    "clsEstimate": "0.05",
+    "domSize": 1245,
+    "resourceCount": 34,
+    "score": 72
+  },</p>
 
-<p>"mobile": {</p>
-<p>"hasViewport": true,</p>
-<p>"viewportContent": "width=device-width, initial-scale=1",</p>
-<p>"touchTargetsAdequate": true,</p>
-<p>"fontSizeAdequate": true,</p>
-<p>"score": 95</p>
-<p>},</p>
+<p>"mobile": {
+    "hasViewport": true,
+    "viewportContent": "width=device-width, initial-scale=1",
+    "touchTargetsAdequate": true,
+    "fontSizeAdequate": true,
+    "score": 95
+  },</p>
 
-<p>"content": {</p>
-<p>"wordCount": 1250,</p>
-<p>"paragraphCount": 15,</p>
-<p>"readabilityScore": 68,</p>
-<p>"hasKeywordInTitle": true,</p>
-<p>"hasKeywordInH1": true,</p>
-<p>"score": 80</p>
-<p>},</p>
+<p>"content": {
+    "wordCount": 1250,
+    "paragraphCount": 15,
+    "readabilityScore": 68,
+    "hasKeywordInTitle": true,
+    "hasKeywordInH1": true,
+    "score": 80
+  },</p>
 
-<p>"issues": [</p>
-<p>{</p>
-<p>"severity": "high",</p>
-<p>"category": "images",</p>
-<p>"issue": "2 images missing alt text",</p>
-<p>"recommendation": "Add descriptive alt text to images",</p>
-<p>"affectedElements": ["img.hero-image", "img.product-photo"]</p>
-<p>}</p>
-<p>],</p>
+<p>"issues": [
+    {
+      "severity": "high",
+      "category": "images",
+      "issue": "2 images missing alt text",
+      "recommendation": "Add descriptive alt text to images",
+      "affectedElements": ["img.hero-image", "img.product-photo"]
+    }
+  ],</p>
 
-<p>"recommendations": [</p>
-<p>{</p>
-<p>"priority": 1,</p>
-<p>"category": "images",</p>
-<p>"issue": "Missing alt text on 2 images",</p>
-<p>"recommendation": "Add descriptive alt text that includes relevant keywords",</p>
-<p>"impact": "medium",</p>
-<p>"effort": "low"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Scoring System</h2>
-
-<p>The actor calculates scores (0-100) for each category:</p>
-
-
-<p>---</p>
-
-<h2>AI Recommendations</h2>
-
-<h3>Without Anthropic API Key</h3>
-<p>Uses rule-based recommendations based on:</p>
-<ul>
-<li>Industry best practices</li>
-<li>Common SEO issues</li>
-<li>Priority scoring by impact</li>
-</ul>
-
-<h3>With Anthropic API Key (BYOK)</h3>
-<p>Enhanced analysis using Claude to:</p>
-<ul>
-<li>Identify nuanced issues</li>
-<li>Provide context-aware suggestions</li>
-<li>Prioritize by business impact</li>
-<li>Generate custom action items</li>
-</ul>
-
-<p>---</p>
-
-<h2>Webhook Integration</h2>
-
-<h3>Webhook Payload</h3>
-
-<pre><code>{
-<p>"event": "technical_seo_audit_complete",</p>
-<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
-<p>"actor": "technical-seo-auditor",</p>
-<p>"status": "success",</p>
-<p>"pagesAudited": 10,</p>
-<p>"avgScore": 78,</p>
-<p>"results": [...]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>SEO Agencies</h3>
-<ul>
-<li>Client onboarding audits</li>
-<li>Monthly technical reviews</li>
-<li>Competitor benchmarking</li>
-</ul>
-
-<h3>Web Developers</h3>
-<ul>
-<li>Pre-launch checklists</li>
-<li>CI/CD integration</li>
-<li>Technical debt tracking</li>
-</ul>
-
-<h3>Marketing Teams</h3>
-<ul>
-<li>Campaign landing page audits</li>
-<li>Content optimization</li>
-<li>Performance monitoring</li>
-</ul>
+<p>"recommendations": [
+    {
+      "priority": 1,
+      "category": "images",
+      "issue": "Missing alt text on 2 images",
+      "recommendation": "Add descriptive alt text that includes relevant keywords",
+      "impact": "medium",
+      "effort": "low"
+    }
+  ]
+}
+</code></pre></p>
 
 <p>---</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
 <li><strong>Demo Mode</strong>: Free (sample data)</li>
 <li><strong>Standard Usage</strong>: Apify compute units only</li>
-<li><strong>AI Recommendations</strong>: Rule-based free, Claude BYOK for enhanced</li>
+<li><strong>AI Recommendations</strong>: Rule-based free, Claude BYOK for enhanced</li></p>
+
 </ul>
+---
+
+<h2>Use Cases</h2>
+
+<h3>1. Client Onboarding Audits</h3>
+Run comprehensive audits for new SEO clients to identify quick wins.
+
+<h3>2. Pre-Launch Technical Review</h3>
+Ensure new sites meet all SEO requirements before going live.
+
+<h3>3. Competitor Analysis</h3>
+Compare your technical SEO against competitors.
+
+<h3>4. Ongoing Monitoring</h3>
+Schedule regular audits to catch regressions early.
 
 <p>---</p>
 
-<h2>Related Actors</h2>
-
-<ul>
-<li><strong>PageSpeed Intelligence</strong> - Performance + Tech Stack analysis</li>
-<li><strong>Robots.txt Checker</strong> - Crawl directive validation</li>
-<li><strong>Sitemap Generator</strong> - XML sitemap creation</li>
-</ul>
-
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>technical seo audit, on-page seo, meta tags analyzer, heading structure, image optimization, alt text checker, broken link checker, structured data validator, schema.org, json-ld, core web vitals, mobile friendly test, seo score, ai recommendations, website crawler, seo analysis tool</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -805,7 +678,7 @@ Content Analysis</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

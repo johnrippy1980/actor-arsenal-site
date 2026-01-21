@@ -457,20 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Industry Research Suite - Market Intelligence API</h1>
-
-<strong>"Market Intelligence from Multiple Data Sources"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Comprehensive industry research and market intelligence powered by multiple data sources and AI analysis. Get actionable insights for any industry or market segment.</p>
-
-<h2>Data Sources</h2>
-
+            <p>Comprehensive industry research using Google Trends, US Census Bureau, SBA.gov, IBISWorld (BYOK), and Statista (BYOK). AI-powered summaries with Claude, GPT-4, or Gemini.</p>
 
 <h2>Features</h2>
 
@@ -481,108 +471,113 @@
 <li><strong>Geographic Focus</strong>: National, state, or city-level research</li>
 <li><strong>Trend Analysis</strong>: Historical data and future projections</li>
 <li><strong>Competitive Intelligence</strong>: Market size, growth rates, key players</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Getting Started</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<h3>Free Sources (No API Key Required)</h3>
+<h2>Demo Mode</h2>
 
-<p>1. <strong>Google Trends</strong>: Automatically included</p>
-<p>2. <strong>Census Bureau</strong>: Uses public API endpoints</p>
-<p>3. <strong>SBA.gov</strong>: Uses public developer API</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<h3>Premium Sources (BYOK)</h3>
-
-<p>#### IBISWorld API</p>
-<p>1. Go to <a href="https://www.ibisworld.com/access/api/" target="_blank" rel="noopener">IBISWorld API Access</a></p>
-<p>2. Contact sales for API credentials</p>
-<p>3. Enter your API key in the actor input</p>
-
-<p>#### Statista API</p>
-<p>1. Visit <a href="https://www.statista.com/accounts/individuals" target="_blank" rel="noopener">Statista Accounts</a></p>
-<p>2. Subscribe to a plan with API access</p>
-<p>3. Generate API key in your account settings</p>
-
-<h3>AI Summary Providers (BYOK)</h3>
-
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
 <h3>Research Configuration</h3>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>industry</code> | string | Industry or business type to research |
+| <code>naicsCode</code> | string | Optional NAICS code for precise targeting |
+| <code>location</code> | string | Geographic focus (city, state, or country) |
+| <code>keywords</code> | array | Additional keywords for trend analysis |</p>
 
 <h3>Data Source Settings</h3>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>dataSources</code> | object | Enable/disable specific sources |
+| <code>googleTrendsTimeframe</code> | string | Time range: past_hour to past_5_years |
+| <code>ibisWorldApiKey</code> | string | IBISWorld API key (BYOK) |
+| <code>statistaApiKey</code> | string | Statista API key (BYOK) |</p>
 
 <h3>AI Summary Settings</h3>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>aiSummary</code> | boolean | Generate AI executive summary |
+| <code>aiProvider</code> | string | claude, openai, or gemini |
+| <code>anthropicApiKey</code> | string | Anthropic API key for Claude |
+| <code>openaiApiKey</code> | string | OpenAI API key for GPT-4 |
+| <code>googleApiKey</code> | string | Google AI key for Gemini |</p>
 
-<h2>Example Input</h2>
-
-<pre><code>{
-<p>"industry": "Digital Marketing Agencies",</p>
-<p>"location": "United States",</p>
-<p>"keywords": ["SEO", "PPC", "social media marketing"],</p>
-<p>"dataSources": {</p>
-<p>"googleTrends": true,</p>
-<p>"censusBureau": true,</p>
-<p>"sba": true,</p>
-<p>"ibisworld": true,</p>
-<p>"statista": false</p>
-<p>},</p>
-<p>"googleTrendsTimeframe": "past_year",</p>
-<p>"ibisWorldApiKey": "YOUR_IBISWORLD_KEY",</p>
-<p>"aiSummary": true,</p>
-<p>"aiProvider": "claude",</p>
-<p>"anthropicApiKey": "YOUR_ANTHROPIC_KEY"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"industry": "Digital Marketing Agencies",</p>
-<p>"naicsCode": "541810",</p>
-<p>"location": "United States",</p>
-<p>"generatedAt": "2024-12-24T10:30:00Z",</p>
-<p>"dataSources": ["googleTrends", "censusBureau", "sba", "ibisworld"],</p>
+    "industry": "Digital Marketing Agencies",
+    "naicsCode": "541810",
+    "location": "United States",
+    "generatedAt": "2024-12-24T10:30:00Z",
+    "dataSources": ["googleTrends", "censusBureau", "sba", "ibisworld"],
 
-<p>"googleTrends": {</p>
-<p>"interestOverTime": [...],</p>
-<p>"relatedQueries": [...],</p>
-<p>"geographicBreakdown": [...]</p>
-<p>},</p>
+<p>"googleTrends": {
+        "interestOverTime": [...],
+        "relatedQueries": [...],
+        "geographicBreakdown": [...]
+    },</p>
 
-<p>"censusBureau": {</p>
-<p>"businessCount": 45000,</p>
-<p>"employeeCount": 350000,</p>
-<p>"annualPayroll": "$28.5B",</p>
-<p>"demographicData": {...}</p>
-<p>},</p>
+<p>"censusBureau": {
+        "businessCount": 45000,
+        "employeeCount": 350000,
+        "annualPayroll": "$28.5B",
+        "demographicData": {...}
+    },</p>
 
-<p>"sba": {</p>
-<p>"smallBusinessCount": 42000,</p>
-<p>"averageRevenue": "$1.2M",</p>
-<p>"loanData": {...}</p>
-<p>},</p>
+<p>"sba": {
+        "smallBusinessCount": 42000,
+        "averageRevenue": "$1.2M",
+        "loanData": {...}
+    },</p>
 
-<p>"ibisworld": {</p>
-<p>"marketSize": "$65.2B",</p>
-<p>"growthRate": "8.5%",</p>
-<p>"majorPlayers": [...],</p>
-<p>"industryOutlook": "..."</p>
-<p>},</p>
+<p>"ibisworld": {
+        "marketSize": "$65.2B",
+        "growthRate": "8.5%",
+        "majorPlayers": [...],
+        "industryOutlook": "..."
+    },</p>
 
-<p>"aiSummary": {</p>
-<p>"provider": "claude",</p>
-<p>"executiveSummary": "The digital marketing agency industry...",</p>
-<p>"keyInsights": [...],</p>
-<p>"opportunities": [...],</p>
-<p>"threats": [...],</p>
-<p>"recommendations": [...]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<p>"aiSummary": {
+        "provider": "claude",
+        "executiveSummary": "The digital marketing agency industry...",
+        "keyInsights": [...],
+        "opportunities": [...],
+        "threats": [...],
+        "recommendations": [...]
+    }
+}
+</code></pre></p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Component | Cost |
+|-----------|------|
+| Apify Compute | Standard rates |
+| Google Trends | Free |
+| Census Bureau | Free |
+| SBA.gov | Free |
+| IBISWorld | Your subscription |
+| Statista | Your subscription |
+| AI Summaries | Your API costs |</p>
 
 <h2>Use Cases</h2>
 
@@ -591,89 +586,34 @@
 <li>Market size and growth potential</li>
 <li>Competitive landscape analysis</li>
 <li>Investment opportunity assessment</li>
-</ul>
 
+</ul>
 <h3>Sales & Marketing</h3>
 <ul>
 <li>Target market identification</li>
 <li>Industry trend monitoring</li>
 <li>Lead qualification research</li>
-</ul>
 
+</ul>
 <h3>Due Diligence</h3>
 <ul>
 <li>M&A research</li>
 <li>Investor presentations</li>
 <li>Business valuation support</li>
-</ul>
 
+</ul>
 <h3>Consulting</h3>
 <ul>
 <li>Client industry analysis</li>
 <li>Strategic planning support</li>
 <li>Market entry research</li>
+
 </ul>
+---
 
-<h2>Census Bureau Data Available</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<ul>
-<li><strong>County Business Patterns</strong>: Establishment counts, employment, payroll</li>
-<li><strong>Annual Business Survey</strong>: Minority/women-owned business data</li>
-<li><strong>Economic Census</strong>: Detailed industry statistics (every 5 years)</li>
-<li><strong>Population Estimates</strong>: Demographics for market sizing</li>
-</ul>
-
-<h2>SBA Data Available</h2>
-
-<ul>
-<li><strong>Small Business Profiles</strong>: State-by-state statistics</li>
-<li><strong>Loan Data</strong>: SBA lending by industry and location</li>
-<li><strong>Size Standards</strong>: Official small business definitions by NAICS</li>
-<li><strong>Contracting Data</strong>: Government procurement by industry</li>
-</ul>
-
-<h2>NAICS Code Reference</h2>
-
-<p>Common industry codes for research:</p>
-
-
-<p>Find more at <a href="https://www.census.gov/naics/" target="_blank" rel="noopener">census.gov/naics</a></p>
-
-<h2>Pricing</h2>
-
-
-<h2>Pro Tips</h2>
-
-<p>1. <strong>Use NAICS Codes</strong>: More precise than text searches for official data</p>
-<p>2. <strong>Combine Sources</strong>: Cross-reference trends with census data</p>
-<p>3. <strong>AI Summaries</strong>: Let AI synthesize insights from multiple sources</p>
-<p>4. <strong>Geographic Focus</strong>: Start broad, then narrow to specific markets</p>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/local-business-intelligence-suite?fpr=kqpn7" target="_blank" rel="noopener">Local Business Intelligence Suite</a> - Local SEO intelligence</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/google-trends-scraper?fpr=kqpn7" target="_blank" rel="noopener">Google Trends Scraper</a> - Dedicated trends analysis</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/competitor-monitor?fpr=kqpn7" target="_blank" rel="noopener">Competitor Monitor</a> - Competitive intelligence</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Issues</strong>: Open a GitHub issue</li>
-<li><strong>Questions</strong>: Contact via LinkedIn</li>
-</ul>
-
-<h2>Keywords</h2>
-
-<p>Industry research, market intelligence, Google Trends, Census Bureau, SBA, IBISWorld, Statista, market analysis, business research, NAICS, industry reports, market size, competitive analysis, AI summary, Claude, GPT-4, Gemini, business intelligence, market research API</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -687,7 +627,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

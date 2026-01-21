@@ -457,32 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Moz Local Listing Checker - NAP Consistency Audit</h1>
-
-<strong>"NAP Consistency Audit Across 50+ Directories"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Automate Moz's "Check Local Listings" tool to verify your business NAP (Name, Address, Phone) consistency across 50+ directories.</p>
-
-<h2>What It Does</h2>
-
-<p>This actor uses Playwright to automate the Moz Check Local Listings form at https://moz.com/products/local/check-listing. It submits your business information and extracts the results, giving you a comprehensive view of your local listing presence.</p>
-
-<h2>Directories Checked</h2>
-
-<p>Moz checks your business across major directories including:</p>
-<ul>
-<li><strong>Search Engines</strong>: Google, Bing, Apple Maps</li>
-<li><strong>Social/Reviews</strong>: Facebook, Yelp, TripAdvisor, Foursquare</li>
-<li><strong>Data Aggregators</strong>: Factual, Acxiom, Localeze, Infogroup</li>
-<li><strong>Industry Sites</strong>: YellowPages, SuperPages, CitySearch</li>
-<li><strong>And 40+ more directories</strong></li>
-</ul>
+            <p>Automate Moz's Check Local Listings tool to check NAP consistency across directories</p>
 
 <h2>Features</h2>
 
@@ -493,25 +471,34 @@
 <li><strong>Duplicate Detection</strong>: Finds potential duplicate listings</li>
 <li><strong>Overall Score</strong>: Get a quick health score for your local presence</li>
 <li><strong>Webhook Integration</strong>: Send results to your CRM or automation tools</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Use Cases</h2>
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
 
-<h3>Local SEO Audits</h3>
-<p>Include listing consistency in your technical SEO audits to identify citation issues.</p>
+<h2>Demo Mode</h2>
 
-<h3>Client Onboarding</h3>
-<p>Quickly assess a new client's local listing health before starting work.</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<h3>Competitor Research</h3>
-<p>Check how well-distributed competitors are across local directories.</p>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<h3>Monthly Monitoring</h3>
-<p>Schedule regular checks to track listing improvement over time.</p>
+<h2>Input Parameters</h2>
 
-<h2>Output</h2>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<p>Each result includes:</p>
+<h2>Output Format</h2>
+
+<p>Each result includes:
 <ul>
 <li><code>businessName</code>: The business name checked</li>
 <li><code>address</code>: Full address used for the check</li>
@@ -520,9 +507,9 @@
 <li><code>incompleteListings</code>: Listings with missing or incorrect information</li>
 <li><code>duplicates</code>: Potential duplicate listings detected</li>
 <li><code>overallScore</code>: Letter grade (A-F) for listing health</li>
-<li><code>directories</code>: Array of individual directory results</li>
-</ul>
+<li><code>directories</code>: Array of individual directory results</li></p>
 
+</ul>
 <h3>Directory Result Fields</h3>
 <ul>
 <li><code>name</code>: Directory name (e.g., "Google", "Yelp")</li>
@@ -531,26 +518,32 @@
 <li><code>addressMatch</code>: boolean - does the address match?</li>
 <li><code>phoneMatch</code>: boolean - does the phone match?</li>
 <li><code>url</code>: Direct link to the listing (if found)</li>
-</ul>
 
+</ul>
 <h2>Pricing</h2>
 
-<p>$0.10 per business check (free in demo mode)</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+$0.10 per business check (free in demo mode)</p>
 
-<h2>Limitations</h2>
+<h2>Use Cases</h2>
 
-<ul>
-<li>Moz may rate-limit excessive requests</li>
-<li>Some directories require manual verification</li>
-<li>Results depend on Moz's current directory coverage</li>
-</ul>
+<h3>Local SEO Audits</h3>
+Include listing consistency in your technical SEO audits to identify citation issues.
 
-<h2>Author</h2>
+<h3>Client Onboarding</h3>
+Quickly assess a new client's local listing health before starting work.
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<h3>Competitor Research</h3>
+Check how well-distributed competitors are across local directories.
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<h3>Monthly Monitoring</h3>
+Schedule regular checks to track listing improvement over time.
 
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -564,7 +557,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

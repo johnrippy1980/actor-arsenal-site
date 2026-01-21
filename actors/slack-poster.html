@@ -458,17 +458,10 @@ Validation Mode</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Slack Bot Poster</h1>
-
-<strong>"Automated Slack Messaging & Alerts"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Send automated messages to Slack workspaces using your bot token. Perfect for notifications, alerts, scheduled updates, and team automation.</p>
+            <p>Send automated messages to Slack channels using your bot token. Perfect for notifications, alerts, and automated team updates.</p>
 
 <h2>Features</h2>
 
@@ -480,122 +473,66 @@ Validation Mode</p>
 <li><strong>Thread Replies</strong>: Reply to existing message threads</li>
 <li><strong>Custom Branding</strong>: Override bot name and icon per message</li>
 <li><strong>Validation Mode</strong>: Test channel access before posting</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Setup</h2>
-
-<h3>1. Create a Slack App</h3>
-
-<p>1. Go to <a href="https://api.slack.com/apps" target="_blank" rel="noopener">Slack API Apps</a></p>
-<p>2. Click "Create New App" > "From scratch"</p>
-<p>3. Name your app and select your workspace</p>
-<p>4. Go to "OAuth & Permissions"</p>
-<p>5. Add Bot Token Scopes: <code>chat:write</code>, <code>chat:write.public</code></p>
-<p>6. Click "Install to Workspace"</p>
-<p>7. Copy the <strong>Bot User OAuth Token</strong> (starts with <code>xoxb-</code>)</p>
-
-<h3>2. Get Channel ID</h3>
-
-<p>1. Right-click the channel in Slack</p>
-<p>2. Click "Copy Link"</p>
-<p>3. The channel ID is the last part of the URL (e.g., <code>C1234567890</code>)</p>
-
-<h2>Usage Examples</h2>
-
-<h3>Simple Message</h3>
 <pre><code>{
-<p>"botToken": "xoxb-your-token",</p>
-<p>"channelId": "C1234567890",</p>
-<p>"message": "Hello from Apify! :wave:"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Rich Block Kit Message</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"botToken": "xoxb-your-token",</p>
-<p>"channelId": "C1234567890",</p>
-<p>"blocks": "[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"<em>New Lead Alert</em> :bell:\\nJohn Smith just signed up!\"}},{\"type\":\"divider\"},{\"type\":\"section\",\"fields\":[{\"type\":\"mrkdwn\",\"text\":\"<em>Email:</em>\\njohn@example.com\"},{\"type\":\"mrkdwn\",\"text\":\"<em>Source:</em>\\nGoogle Ads\"}]}]"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Multi-Channel Broadcast</h3>
-<pre><code>{
-<p>"botToken": "xoxb-your-token",</p>
-<p>"channelIds": ["C1234567890", "C0987654321", "C5555555555"],</p>
-<p>"message": ":mega: Important announcement for all teams!"</p>
-<p>}</p>
-</code></pre>
+<h2>Input Parameters</h2>
 
-<h3>Thread Reply</h3>
-<pre><code>{
-<p>"botToken": "xoxb-your-token",</p>
-<p>"channelId": "C1234567890",</p>
-<p>"threadTs": "1234567890.123456",</p>
-<p>"message": "Adding more details to this thread...",</p>
-<p>"replyBroadcast": true</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>Custom Bot Appearance</h3>
-<pre><code>{
-<p>"botToken": "xoxb-your-token",</p>
-<p>"channelId": "C1234567890",</p>
-<p>"message": "Daily sales report ready!",</p>
-<p>"username": "Sales Bot",</p>
-<p>"iconEmoji": ":chart_with_upwards_trend:"</p>
-<p>}</p>
-</code></pre>
+<h2>Output Format</h2>
 
-<h2>Output</h2>
-
-<p>Each successful post returns:</p>
+<p>Each successful post returns:
 <pre><code>{
-<p>"channelId": "C1234567890",</p>
-<p>"channelName": "general",</p>
-<p>"messageTs": "1234567890.123456",</p>
-<p>"content": "Hello from Apify!",</p>
-<p>"status": "sent",</p>
-<p>"sentAt": "2024-01-15T10:30:00.000Z",</p>
-<p>"permalink": "https://workspace.slack.com/archives/C1234567890/p1234567890123456"</p>
-<p>}</p>
-</code></pre>
+  "channelId": "C1234567890",
+  "channelName": "general",
+  "messageTs": "1234567890.123456",
+  "content": "Hello from Apify!",
+  "status": "sent",
+  "sentAt": "2024-01-15T10:30:00.000Z",
+  "permalink": "https://workspace.slack.com/archives/C1234567890/p1234567890123456"
+}
+</code></pre></p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
 <li><strong>Message Sent</strong>: $0.005 per message</li>
-<li><strong>Channel Validated</strong>: $0.002 per validation</li>
-</ul>
+<li><strong>Channel Validated</strong>: $0.002 per validation</li></p>
 
-<h2>Block Kit Resources</h2>
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li><a href="https://app.slack.com/block-kit-builder" target="_blank" rel="noopener">Block Kit Builder</a> - Visual builder</li>
-<li><a href="https://api.slack.com/reference/block-kit/blocks" target="_blank" rel="noopener">Block Kit Reference</a> - Documentation</li>
-<li><a href="https://api.slack.com/reference/surfaces/formatting" target="_blank" rel="noopener">Message Formatting</a> - Markdown guide</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<h2>Tips</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<ul>
-<li>Use Block Kit Builder to design messages visually, then copy the JSON</li>
-<li>Test with <code>validateOnly: true</code> before sending to production channels</li>
-<li>For DMs, use user IDs (starting with <code>U</code>) as channel IDs</li>
-<li>Schedule runs with Apify's scheduler for recurring messages</li>
-<li>Combine with webhooks for event-driven notifications</li>
-</ul>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, visit <a href="https://johnrippy.link" target="_blank" rel="noopener">johnrippy.link</a></p>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -609,7 +546,7 @@ Validation Mode</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

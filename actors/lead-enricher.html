@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Lead Enricher - BYOK Multi-Provider</h1>
-
-<strong>"10+ Enrichment Providers, Your Keys"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Enrich your leads with company and contact data from <strong>10+ enrichment providers</strong> using your own API keys. Perfect for sales prospecting, lead scoring, CRM enrichment, and account-based marketing.</p>
+            <h1>Lead Enrichment API Multi-Provider B2B Data Enrichment</h1>
+            <p>Enrich leads with company and contact data from 10+ B2B data providers using BYOK (Bring Your Own Key). Cascade enrichment tries providers in order until data is found. Supports Apollo.io, Clearbit, ZoomInfo, Hunter.io, Lusha, Snov.io, RocketReach, FullContact, IPinfo, and People Data Labs. Get company data (industry, size, revenue, tech stack), contact data (job title, phone, LinkedIn, seniority), and email verification. Perfect for sales prospecting, CRM enrichment, lead scoring, and account-based marketing.</p>
 
 <h2>Features</h2>
 
@@ -479,100 +472,114 @@
 <li><strong>Contact Data</strong>: Job title, phone, email verification, LinkedIn, seniority level</li>
 <li><strong>Webhook Support</strong>: Send results to any endpoint when enrichment completes</li>
 <li><strong>Demo Mode</strong>: Test the actor with sample data before using real API credits</li>
+
 </ul>
-
-<h2>Supported Providers</h2>
-
-
-<h2>Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": false,</p>
-<p>"leads": [</p>
-<p>{</p>
-<p>"email": "john@example.com",</p>
-<p>"company": "Example Inc",</p>
-<p>"domain": "example.com"</p>
-<p>}</p>
-<p>],</p>
-<p>"enrichmentProviders": ["apollo", "clearbit", "fullcontact"],</p>
-<p>"apolloApiKey": "your-apollo-key",</p>
-<p>"clearbitApiKey": "your-clearbit-key",</p>
-<p>"enrichCompanyData": true,</p>
-<p>"enrichContactData": true,</p>
-<p>"webhookUrl": "https://your-webhook.com/endpoint"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h2>Output</h2>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "demoMode": false,
+  "leads": [
+    {
+      "email": "john@example.com",
+      "company": "Example Inc",
+      "domain": "example.com"
+    }
+  ],
+  "enrichmentProviders": ["apollo", "clearbit", "fullcontact"],
+  "apolloApiKey": "your-apollo-key",
+  "clearbitApiKey": "your-clearbit-key",
+  "enrichCompanyData": true,
+  "enrichContactData": true,
+  "webhookUrl": "https://your-webhook.com/endpoint"
+}
+</code></pre>
+
+<h2>Output Format</h2>
 
 <p>Each enriched lead includes:</p>
 
 <pre><code>{
-<p>"email": "john@example.com",</p>
-<p>"company": "Example Inc",</p>
-<p>"domain": "example.com",</p>
-<p>"enrichedAt": "2025-12-28T12:00:00Z",</p>
-<p>"enrichmentSource": "apollo",</p>
-<p>"company_data": {</p>
-<p>"name": "Example Inc",</p>
-<p>"domain": "example.com",</p>
-<p>"industry": "Technology",</p>
-<p>"employeeCount": 500,</p>
-<p>"revenue": "$50M - $100M",</p>
-<p>"founded": 2015,</p>
-<p>"location": {</p>
-<p>"city": "San Francisco",</p>
-<p>"state": "CA",</p>
-<p>"country": "USA"</p>
-<p>},</p>
-<p>"description": "...",</p>
-<p>"techStack": ["Salesforce", "HubSpot"],</p>
-<p>"socialProfiles": {</p>
-<p>"linkedin": "...",</p>
-<p>"twitter": "..."</p>
-<p>}</p>
-<p>},</p>
-<p>"contact_data": {</p>
-<p>"firstName": "John",</p>
-<p>"lastName": "Smith",</p>
-<p>"jobTitle": "VP of Sales",</p>
-<p>"phone": "+1 555-123-4567",</p>
-<p>"emailVerified": true,</p>
-<p>"seniority": "VP",</p>
-<p>"linkedinUrl": "..."</p>
-<p>}</p>
-<p>}</p>
+  "email": "john@example.com",
+  "company": "Example Inc",
+  "domain": "example.com",
+  "enrichedAt": "2025-12-28T12:00:00Z",
+  "enrichmentSource": "apollo",
+  "company_data": {
+    "name": "Example Inc",
+    "domain": "example.com",
+    "industry": "Technology",
+    "employeeCount": 500,
+    "revenue": "$50M - $100M",
+    "founded": 2015,
+    "location": {
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "USA"
+    },
+    "description": "...",
+    "techStack": ["Salesforce", "HubSpot"],
+    "socialProfiles": {
+      "linkedin": "...",
+      "twitter": "..."
+    }
+  },
+  "contact_data": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "jobTitle": "VP of Sales",
+    "phone": "+1 555-123-4567",
+    "emailVerified": true,
+    "seniority": "VP",
+    "linkedinUrl": "..."
+  }
+}
 </code></pre>
-
-<h2>Use Cases</h2>
-
-<h3>Sales Prospecting</h3>
-<p>Enrich leads from LinkedIn, trade shows, or web forms with verified contact details and company information.</p>
-
-<h3>CRM Data Hygiene</h3>
-<p>Fill in missing company and contact data in your CRM to improve segmentation and personalization.</p>
-
-<h3>Account-Based Marketing</h3>
-<p>Get detailed company intelligence including tech stack, employee count, and revenue for targeting.</p>
-
-<h3>Lead Scoring</h3>
-<p>Use enriched data points like company size, industry, and seniority to score and prioritize leads.</p>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:
 <ul>
 <li><strong>$0.01 per lead enriched</strong> (actor usage)</li>
-<li>Plus your provider API costs (Apollo, Clearbit, etc.)</li>
+<li>Plus your provider API costs (Apollo, Clearbit, etc.)</li></p>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Demo Mode</h2>
+<h3>Sales Prospecting</h3>
+Enrich leads from LinkedIn, trade shows, or web forms with verified contact details and company information.
 
-<p>Set <code>demoMode: true</code> to test the actor with sample data without using any API credits. Perfect for understanding the output format before running on real leads.</p>
+<h3>CRM Data Hygiene</h3>
+Fill in missing company and contact data in your CRM to improve segmentation and personalization.
+
+<h3>Account-Based Marketing</h3>
+Get detailed company intelligence including tech stack, employee count, and revenue for targeting.
+
+<h3>Lead Scoring</h3>
+Use enriched data points like company size, industry, and seniority to score and prioritize leads.
 
 <p>---</p>
 
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -586,7 +593,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

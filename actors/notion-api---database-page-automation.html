@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,182 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Notion API - Database &amp; Page Automation</h1>
-            <p>Apify actor for Notion API - Database &amp; Page Automation</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Automate Notion workspaces with the official API. Query databases, create/update pages, manage blocks, search content, and sync data. Perfect for CMS automation, content pipelines, and knowledge base management.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Database Operations</h3>
+<ul>
+<li><strong>Query Database</strong> - Filter and sort database entries</li>
+<li><strong>Get Database</strong> - Retrieve database schema and properties</li>
+<li><strong>Create Database</strong> - Create new databases with custom properties</li>
+<li><strong>Update Database</strong> - Modify database title and properties</li>
+
+</ul>
+<h3>Page Management</h3>
+<ul>
+<li><strong>Get Page</strong> - Retrieve page properties</li>
+<li><strong>Create Page</strong> - Create new pages in databases or as subpages</li>
+<li><strong>Update Page</strong> - Modify page properties</li>
+<li><strong>Batch Create</strong> - Create multiple pages in one run</li>
+
+</ul>
+<h3>Block Operations</h3>
+<ul>
+<li><strong>Get Block</strong> - Retrieve block content</li>
+<li><strong>Get Block Children</strong> - List child blocks (page content)</li>
+<li><strong>Append Blocks</strong> - Add content to pages</li>
+<li><strong>Update Block</strong> - Modify block content</li>
+<li><strong>Delete Block</strong> - Remove blocks</li>
+
+</ul>
+<h3>Search & Discovery</h3>
+<ul>
+<li><strong>Search</strong> - Find pages and databases by title</li>
+
+</ul>
+<h3>User & Comments</h3>
+<ul>
+<li><strong>List Users</strong> - Get workspace members</li>
+<li><strong>Get User</strong> - Retrieve user details</li>
+<li><strong>List Comments</strong> - Get page/block comments</li>
+<li><strong>Create Comment</strong> - Add comments to pages</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform (see tasks below) |
+| accessToken | string | Yes<em> | Notion integration token (</em>not needed for demoMode) |
+| databaseId | string | No | Database ID for database operations |
+| pageId | string | No | Page ID for page operations |
+| blockId | string | No | Block ID for block operations |
+| searchQuery | string | No | Search text for search task |
+| searchFilter | string | No | Filter by 'page' or 'database' |
+| filter | object | No | Database filter (JSON) |
+| sorts | array | No | Database sort configuration |
+| pageTitle | string | No | Title for new page |
+| properties | object | No | Properties for create/update |
+| content | array | No | Block content array |
+| batchPages | array | No | Pages for batch creation |
+| webhookUrl | string | No | URL for webhook delivery |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
+<p>Results are saved to the default dataset:</p>
+
+<h3>Query Result</h3>
+<pre><code>{
+  "task": "query_database",
+  "success": true,
+  "pages": [
+    {
+      "id": "abc123...",
+      "url": "https://notion.so/...",
+      "properties": {
+        "Name": { "title": [{ "plain_text": "Project Alpha" }] },
+        "Status": { "select": { "name": "In Progress" } }
+      }
+    }
+  ],
+  "total": 15,
+  "databaseId": "xyz789..."
+}
+</code></pre>
+
+<h3>Page Created</h3>
+<pre><code>{
+  "task": "create_page",
+  "success": true,
+  "page": {
+    "id": "new123...",
+    "url": "https://notion.so/...",
+    "created_time": "2025-01-10T12:00:00.000Z"
+  }
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:</p>
+
+<p>| Operation | Cost |
+|-----------|------|
+| Search | $0.01 |
+| Query database | $0.02 |
+| Get database/page/block | $0.01 |
+| Create database | $0.05 |
+| Create page | $0.03 |
+| Update database/page/block | $0.02 |
+| Delete block | $0.01 |
+| Append blocks | $0.02 |
+| List users/comments | $0.01 |
+| Create comment | $0.02 |
+| Batch create (per page) | $0.03 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>CMS & Content Management</h3>
+<ul>
+<li>Sync blog posts from Notion to website</li>
+<li>Auto-publish content based on status</li>
+<li>Update metadata across pages</li>
+
+</ul>
+<h3>Project Management</h3>
+<ul>
+<li>Create tasks from external sources</li>
+<li>Update project statuses automatically</li>
+<li>Generate reports from databases</li>
+
+</ul>
+<h3>Knowledge Base</h3>
+<ul>
+<li>Search and retrieve documentation</li>
+<li>Auto-organize content</li>
+<li>Sync with external systems</li>
+
+</ul>
+<h3>Data Pipelines</h3>
+<ul>
+<li>Import data to Notion databases</li>
+<li>Export Notion data for analysis</li>
+<li>Sync between Notion and other tools</li>
+
+</ul>
+<h3>Automation Workflows</h3>
+<ul>
+<li>Trigger actions on database changes</li>
+<li>Create pages from form submissions</li>
+<li>Update records from API calls</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +510,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

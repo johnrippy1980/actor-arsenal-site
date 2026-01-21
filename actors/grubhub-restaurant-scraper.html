@@ -457,48 +457,158 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Grubhub Restaurant Scraper</h1>
-
-<strong>"Grubhub Restaurant Scraper"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape restaurant data from Grubhub including menus, prices, ratings, and delivery information. Extract detailed business information and menu items for market research, price monitoring, or competito</p>
+            <p>Scrape Grubhub for restaurant listings, menus, prices, ratings, and delivery info. Extract restaurant data for food delivery market research. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
-<ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
-
-<h2>Integration Support</h2>
+<h3>Multi-Mode Scraping</h3>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><strong>Search Mode</strong>: Find restaurants by cuisine and location</li>
+<li><strong>Profile Mode</strong>: Extract detailed info from specific restaurant pages</li>
+<li><strong>Menu Mode</strong>: Deep extraction of menu items and pricing</li>
+
 </ul>
+<h3>Cuisine Types Supported</h3>
 
-<h2>Author</h2>
+<ul>
+<li>Pizza</li>
+<li>Chinese</li>
+<li>Mexican</li>
+<li>Italian</li>
+<li>Indian</li>
+<li>Thai</li>
+<li>Japanese (Sushi)</li>
+<li>American</li>
+<li>Mediterranean</li>
+<li>And more...</li>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+</ul>
+<h3>Data Extracted</h3>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<p>| Field | Description |
+|-------|-------------|
+| Restaurant Name | Business name |
+| Cuisine Types | Food categories |
+| Address | Full address |
+| Rating | Customer rating |
+| Review Count | Total reviews |
+| Delivery Fee | Base delivery cost |
+| Minimum Order | Order minimum |
+| Delivery Time | Estimated delivery |
+| Price Level | $ to $$$$ |
+| Menu Categories | Menu sections |
+| Menu Items | Individual dishes |
+| Item Prices | Current pricing |
+| Item Descriptions | Dish details |
+| Dietary Tags | Vegetarian, vegan, gluten-free |
+| Operating Hours | Restaurant hours |</p>
+
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "restaurantName": "Chicago Deep Dish Pizza",
+  "cuisineTypes": ["Pizza", "Italian"],
+  "address": "789 Michigan Ave, Chicago, IL 60611",
+  "rating": 4.6,
+  "reviewCount": 1247,
+  "deliveryFee": "$3.99",
+  "minimumOrder": "$15.00",
+  "deliveryTime": "30-45 min",
+  "priceLevel": "$$",
+  "menu": [
+    {
+      "category": "Deep Dish Pizzas",
+      "items": [
+        {
+          "name": "Classic Deep Dish",
+          "price": "$24.99",
+          "description": "Chunky tomato sauce, mozzarella, choice of toppings",
+          "dietaryTags": [],
+          "sizes": ["Small", "Medium", "Large"]
+        }
+      ]
+    },
+    {
+      "category": "Salads",
+      "items": [
+        {
+          "name": "Caesar Salad",
+          "price": "$8.99",
+          "description": "Romaine, parmesan, croutons",
+          "dietaryTags": ["vegetarian"]
+        }
+      ]
+    }
+  ],
+  "operatingHours": {
+    "monday": "11:00 AM - 11:00 PM",
+    "friday": "11:00 AM - 1:00 AM"
+  },
+  "grubhubUrl": "https://www.grubhub.com/restaurant/..."
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.003 per restaurant listing</li>
+<li>$0.001 per menu item extracted</li></p>
+
+</ul>
+<strong>Example</strong>: 100 restaurants with 40 menu items each = $4.30
+
+<h2>Use Cases</h2>
+
+<h3>Competitive Pricing Intelligence</h3>
+Monitor competitor menu prices and identify pricing opportunities.
+
+<h3>Market Entry Research</h3>
+Analyze restaurant saturation before opening new locations.
+
+<h3>Menu Engineering</h3>
+Compare menu structures and bestsellers across similar restaurants.
+
+<h3>Food Industry Analytics</h3>
+Generate reports on cuisine trends and market dynamics.
+
+<h3>Franchise Analysis</h3>
+Track chain restaurant performance across different markets.
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>grubhub restaurant scraper, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +622,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

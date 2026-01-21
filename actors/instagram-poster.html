@@ -457,15 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Instagram Poster</h1>
-
-<blockquote><strong>Post images to Instagram automatically</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>Automate posting images to Instagram! Supports captions and hashtags.</p>
+            <p>Instagram Automation Tool - Post images to Instagram with captions and hashtags. No API required - uses secure browser automation. Perfect for social media marketing, content scheduling, and brand management. Supports feed posts with optimal image handling. Ideal for agencies managing multiple accounts. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -474,86 +469,77 @@
 <li><strong>Captions</strong> - Add descriptions to your posts</li>
 <li><strong>Hashtags</strong> - Include relevant hashtags</li>
 <li><strong>Location Tags</strong> - Add location (when available)</li>
+
 </ul>
-
-<h2>Authentication</h2>
-
-<strong>Cookies are strongly recommended</strong> - Instagram has aggressive bot detection.
-
-<p>1. <strong>Cookies</strong> - Export cookies from logged-in session (recommended)</p>
-<p>2. <strong>Username/Password</strong> - May trigger verification</p>
-
-<h2>Example Input</h2>
-
-<h3>Basic Post</h3>
-<pre><code>{
-<p>"cookies": "[{...exported cookies...}]",</p>
-<p>"imageUrl": "https://example.com/product-photo.jpg",</p>
-<p>"caption": "Introducing our new spring collection! Fresh styles for the new season.",</p>
-<p>"hashtags": ["fashion", "springcollection", "newstyles", "shoplocal"]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Business Post</h3>
-<pre><code>{
-<p>"cookies": "[{...}]",</p>
-<p>"imageUrl": "https://example.com/team-photo.jpg",</p>
-<p>"caption": "Meet our amazing team! We're here to help you with all your needs. Stop by and say hello!",</p>
-<p>"hashtags": ["teamwork", "smallbusiness", "supportlocal", "behindthescenes"]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"success": true,</p>
-<p>"postId": "ABC123...",</p>
-<p>"postUrl": "https://instagram.com/p/ABC123..."</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h2>Tips</h2>
+<h2>Demo Mode</h2>
 
-<ul>
-<li>Use high-quality square or 4:5 ratio images</li>
-<li>Keep captions engaging and authentic</li>
-<li>Use 5-15 relevant hashtags</li>
-<li>Post during peak engagement hours</li>
-</ul>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<h2>Important Notes</h2>
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
-<ul>
-<li>Instagram has strong bot detection - always use cookies</li>
-<li>First-time posts may require phone verification</li>
-<li>Avoid posting too frequently (space posts by at least 1 hour)</li>
-</ul>
+<h2>Input Parameters</h2>
 
-<p>---</p>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "success": true,
+  "postId": "ABC123...",
+  "postUrl": "https://instagram.com/p/ABC123..."
+}
+</code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>post_created</code> | Per post created | $0.05 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>Single post: $0.10 + $0.05 = <strong>$0.15</strong></li>
 <li>Batch of 10 posts: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-</ul>
 
-<p>---</p>
+</ul>
+---
 
 <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Use Cases</h2>
 
-<p>instagram poster, instagram automation, social media automation, instagram api, scheduled instagram posts, instagram content scheduler</p>
+<ul>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
 
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -567,7 +553,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

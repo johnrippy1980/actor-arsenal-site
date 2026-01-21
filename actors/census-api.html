@@ -456,199 +456,168 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>US Census Bureau API - Demographics &amp; Population Data</h1>
-<strong>&quot;US Census Bureau Data&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Access comprehensive US Census Bureau data including American Community Survey (ACS) demographics, population estimates, economic indicators, business statistics, and geographic data. Get population, income, education, housing, employment, and health data for any US location.</p>
+            <p>Access US Census Bureau data including ACS demographics, population estimates, economic indicators, business statistics, and geographic data. Get population by age, race, income, education, housing, and more for any US location down to ZIP code level.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Population Data</strong>: Total population, age distribution, sex ratio, growth trends</li>
+
+<ul>
+<li><strong>Population Data</strong>: Total population, age distribution, sex ratio, growth trends</li>
 <li><strong>Demographics</strong>: Race, ethnicity, ancestry, language, citizenship</li>
-<li><strong>Income &amp; Poverty</strong>: Household income, per capita income, poverty rates, SNAP benefits</li>
+<li><strong>Income & Poverty</strong>: Household income, per capita income, poverty rates, SNAP benefits</li>
 <li><strong>Housing</strong>: Home values, rent, occupancy, units, year built, heating fuel</li>
 <li><strong>Education</strong>: Educational attainment, school enrollment, field of degree</li>
 <li><strong>Employment</strong>: Labor force, occupation, industry, commute times</li>
 <li><strong>Business Statistics</strong>: Establishments, employees, payroll by industry</li>
 <li><strong>Health Insurance</strong>: Coverage rates, types, uninsured population</li>
 <li><strong>Demo Mode</strong>: Test with realistic sample data (no API key required)</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>Market Research</h3>
-<ul><li>Analyze target demographics for product launches</li>
-<li>Site selection for retail and commercial development</li>
-<li>Competitive market analysis by geography</li>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "dataSet": "unemployment",
+  "year": 2024
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
 </ul>
-<h3>Real Estate</h3>
-<ul><li>Neighborhood demographic profiles</li>
-<li>Income and housing value trends</li>
-<li>Population growth projections</li>
-</ul>
-<h3>Business Planning</h3>
-<ul><li>Workforce availability analysis</li>
-<li>Customer demographic profiling</li>
-<li>Market sizing and TAM calculation</li>
-</ul>
-<h3>Academic Research</h3>
-<ul><li>Demographic trend analysis</li>
-<li>Socioeconomic studies</li>
-<li>Public policy research</li>
-</ul>
-<h3>Government &amp; Nonprofit</h3>
-<ul><li>Grant application data</li>
-<li>Community needs assessment</li>
-<li>Service area planning</li>
-</ul>
+To get customized results, simply provide your own input parameters.
+
 <h2>Input Parameters</h2>
+
 <h3>Task Selection</h3>
-<ul><li><code>task</code>: Operation to perform</li>
-</ul>  - <code>get_population</code> - Total population and age/sex breakdown
-<p>- <code>get_demographics</code> - Race, ethnicity, ancestry data</p>
-<p>- <code>get_income</code> - Household and per capita income</p>
-<p>- <code>get_housing</code> - Housing units, values, rent, occupancy</p>
-<p>- <code>get_education</code> - Educational attainment levels</p>
-<p>- <code>get_employment</code> - Labor force and occupation data</p>
-<p>- <code>get_business_stats</code> - Business establishments and employees</p>
-<p>- <code>get_poverty</code> - Poverty rates and public assistance</p>
-<p>- <code>get_health_insurance</code> - Insurance coverage rates</p>
-<p>- <code>get_commuting</code> - Commute times and transportation modes</p>
-<p>- <code>get_migration</code> - Geographic mobility data</p>
-<p>- <code>compare_locations</code> - Compare multiple areas</p>
-<p>- <code>get_zip_profile</code> - Complete ZIP code profile</p>
-<p>- <code>get_county_profile</code> - Complete county profile</p>
-<p>- <code>get_state_profile</code> - Complete state profile</p>
-<p>- <code>custom_query</code> - Custom variable query</p>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>get_population</code> - Total population and age/sex breakdown</li>
+<li><code>get_demographics</code> - Race, ethnicity, ancestry data</li>
+<li><code>get_income</code> - Household and per capita income</li>
+<li><code>get_housing</code> - Housing units, values, rent, occupancy</li>
+<li><code>get_education</code> - Educational attainment levels</li>
+<li><code>get_employment</code> - Labor force and occupation data</li>
+<li><code>get_business_stats</code> - Business establishments and employees</li>
+<li><code>get_poverty</code> - Poverty rates and public assistance</li>
+<li><code>get_health_insurance</code> - Insurance coverage rates</li>
+<li><code>get_commuting</code> - Commute times and transportation modes</li>
+<li><code>get_migration</code> - Geographic mobility data</li>
+<li><code>compare_locations</code> - Compare multiple areas</li>
+<li><code>get_zip_profile</code> - Complete ZIP code profile</li>
+<li><code>get_county_profile</code> - Complete county profile</li>
+<li><code>get_state_profile</code> - Complete state profile</li>
+<li><code>custom_query</code> - Custom variable query</li>
+
+</ul>
 <h3>Authentication</h3>
-<ul><li><code>apiKey</code>: Census API key (free at census.gov/developers)</li>
+<ul>
+<li><code>apiKey</code>: Census API key (free at census.gov/developers)</li>
 <li><code>demoMode</code>: Run with sample data (no key required)</li>
+
 </ul>
 <h3>Dataset Selection</h3>
-<ul><li><code>dataset</code>: Data source</li>
-</ul>  - <code>acs5</code> - ACS 5-Year (most geographies, smoothed estimates)
-<p>- <code>acs1</code> - ACS 1-Year (larger areas only, most current)</p>
-<p>- <code>pep</code> - Population Estimates Program</p>
-<p>- <code>dec</code> - Decennial Census</p>
-<p>- <code>cbp</code> - County Business Patterns</p>
-<p>- <code>abs</code> - Annual Business Survey</p>
+<ul>
+<li><code>dataset</code>: Data source</li>
+<li><code>acs5</code> - ACS 5-Year (most geographies, smoothed estimates)</li>
+<li><code>acs1</code> - ACS 1-Year (larger areas only, most current)</li>
+<li><code>pep</code> - Population Estimates Program</li>
+<li><code>dec</code> - Decennial Census</li>
+<li><code>cbp</code> - County Business Patterns</li>
+<li><code>abs</code> - Annual Business Survey</li>
+
+</ul>
 <h3>Geography</h3>
-<ul><li><code>state</code>: 2-digit state FIPS code</li>
+<ul>
+<li><code>state</code>: 2-digit state FIPS code</li>
 <li><code>county</code>: 3-digit county FIPS code</li>
 <li><code>place</code>: City/town FIPS code</li>
 <li><code>zipCode</code>: 5-digit ZIP code (ZCTA)</li>
 <li><code>tract</code>: Census tract code</li>
 <li><code>stateName</code>: State name (alternative to FIPS)</li>
+
 </ul>
 <h3>Custom Queries</h3>
-<ul><li><code>variables</code>: Comma-separated variable codes</li>
+<ul>
+<li><code>variables</code>: Comma-separated variable codes</li>
 <li><code>tableGroup</code>: Census table group code</li>
+
 </ul>
-<h2>Common State FIPS Codes</h2>
-<p>| State | FIPS | State | FIPS |</p>
-<p>|-------|------|-------|------|</p>
-<p>| California | 06 | New York | 36 |</p>
-<p>| Texas | 48 | Florida | 12 |</p>
-<p>| Illinois | 17 | Pennsylvania | 42 |</p>
-<p>| Ohio | 39 | Georgia | 13 |</p>
-<p>| Michigan | 26 | North Carolina | 37 |</p>
-<h2>Example Output</h2>
-<h3>Population Data</h3>
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;task&quot;: &quot;get_population&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;geography&quot;: {</p>
-<p>&quot;state&quot;: &quot;California&quot;,</p>
-<p>&quot;stateFips&quot;: &quot;06&quot;</p>
-<p>},</p>
-<p>&quot;totalPopulation&quot;: 39538223,</p>
-<p>&quot;populationByAge&quot;: {</p>
-<p>&quot;under5&quot;: 2415206,</p>
-<p>&quot;age5to17&quot;: 6428591,</p>
-<p>&quot;age18to24&quot;: 3785934,</p>
-<p>&quot;age25to44&quot;: 11234789,</p>
-<p>&quot;age45to64&quot;: 9876234,</p>
-<p>&quot;age65plus&quot;: 5797469</p>
-<p>},</p>
-<p>&quot;medianAge&quot;: 37.3,</p>
-<p>&quot;sexRatio&quot;: {</p>
-<p>&quot;male&quot;: 19487571,</p>
-<p>&quot;female&quot;: 20050652,</p>
-<p>&quot;percentMale&quot;: 49.3</p>
-<p>},</p>
-<p>&quot;year&quot;: 2023,</p>
-<p>&quot;dataset&quot;: &quot;acs5&quot;</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-<h3>Income Data</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;get_income&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;geography&quot;: {</p>
-<p>&quot;state&quot;: &quot;California&quot;,</p>
-<p>&quot;county&quot;: &quot;San Francisco&quot;,</p>
-<p>&quot;countyFips&quot;: &quot;075&quot;</p>
-<p>},</p>
-<p>&quot;medianHouseholdIncome&quot;: 126187,</p>
-<p>&quot;meanHouseholdIncome&quot;: 178945,</p>
-<p>&quot;perCapitaIncome&quot;: 84673,</p>
-<p>&quot;householdsByIncome&quot;: {</p>
-<p>&quot;under25k&quot;: 12.3,</p>
-<p>&quot;income25kTo50k&quot;: 14.2,</p>
-<p>&quot;income50kTo75k&quot;: 11.8,</p>
-<p>&quot;income75kTo100k&quot;: 10.1,</p>
-<p>&quot;income100kTo150k&quot;: 15.6,</p>
-<p>&quot;income150kTo200k&quot;: 10.2,</p>
-<p>&quot;over200k&quot;: 25.8</p>
-<p>},</p>
-<p>&quot;giniIndex&quot;: 0.512</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h2>Common Census Variables</h2>
-<p>| Variable | Description |</p>
-<p>|----------|-------------|</p>
-<p>| B01001_001E | Total Population |</p>
-<p>| B01002_001E | Median Age |</p>
-<p>| B19013_001E | Median Household Income |</p>
-<p>| B19301_001E | Per Capita Income |</p>
-<p>| B25077_001E | Median Home Value |</p>
-<p>| B25064_001E | Median Gross Rent |</p>
-<p>| B15003_022E | Bachelor&#x27;s Degree |</p>
-<p>| B23025_002E | In Labor Force |</p>
-<p>| B27001_001E | Health Insurance Coverage |</p>
-<h2>Getting Your API Key</h2>
-<p>1. Visit <a href="https://www.census.gov/developers/" target="_blank" rel="noopener">census.gov/developers</a></p>
-<p>2. Click &quot;Request a Key&quot;</p>
-<p>3. Enter your email and organization</p>
-<p>4. Receive key instantly via email</p>
-<p>5. Use it in the <code>apiKey</code> input field</p>
-<p>Note: Limited queries work without a key in demo mode.</p>
-<h2>Integrations</h2>
-<p>Results can be sent directly to:</p>
-<ul><li><strong>Zapier</strong>: Automate demographic data workflows</li>
-<li><strong>Make (Integromat)</strong>: Build market research pipelines</li>
-<li><strong>n8n</strong>: Self-hosted automation</li>
-<li><strong>Custom Webhooks</strong>: Your data warehouse</li>
-</ul>
+
 <h2>Pricing</h2>
-<p>Pay only for what you use:</p>
-<ul><li><strong>Population Query</strong>: $0.01 per query</li>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Population Query</strong>: $0.01 per query</li>
 <li><strong>Demographics Query</strong>: $0.01 per query</li>
 <li><strong>Income/Housing Query</strong>: $0.01 per query</li>
 <li><strong>Location Profile</strong>: $0.02 per profile</li>
 <li><strong>Custom Query</strong>: $0.01 per query</li>
-<li><strong>Location Comparison</strong>: $0.02 per comparison</li>
+<li><strong>Location Comparison</strong>: $0.02 per comparison</li></p>
+
 </ul>
-<h2>Support</h2>
-<ul><li><a href="https://www.census.gov/data/developers.html" target="_blank" rel="noopener">Census API Documentation</a></li>
-<li><a href="https://www.census.gov/programs-surveys/acs/data/data-via-api.html" target="_blank" rel="noopener">ACS Data via API</a></li>
-<li><a href="https://api.census.gov/data.html" target="_blank" rel="noopener">Variable Search</a></li>
+<h2>Use Cases</h2>
+
+<h3>Market Research</h3>
+<ul>
+<li>Analyze target demographics for product launches</li>
+<li>Site selection for retail and commercial development</li>
+<li>Competitive market analysis by geography</li>
+
 </ul>
-<h2>Legal</h2>
-<p>This actor uses the official US Census Bureau API. Data is public domain and provided by the US government. No restrictions on commercial use.</p>
+<h3>Real Estate</h3>
+<ul>
+<li>Neighborhood demographic profiles</li>
+<li>Income and housing value trends</li>
+<li>Population growth projections</li>
+
+</ul>
+<h3>Business Planning</h3>
+<ul>
+<li>Workforce availability analysis</li>
+<li>Customer demographic profiling</li>
+<li>Market sizing and TAM calculation</li>
+
+</ul>
+<h3>Academic Research</h3>
+<ul>
+<li>Demographic trend analysis</li>
+<li>Socioeconomic studies</li>
+<li>Public policy research</li>
+
+</ul>
+<h3>Government & Nonprofit</h3>
+<ul>
+<li>Grant application data</li>
+<li>Community needs assessment</li>
+<li>Service area planning</li>
+
+</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -662,7 +631,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

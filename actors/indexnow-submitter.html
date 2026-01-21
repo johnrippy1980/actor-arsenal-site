@@ -456,140 +456,112 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>IndexNow URL Submitter</h1>
-<blockquote><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>Submit URLs to search engines <strong>instantly</strong> using the IndexNow protocol. Get your new and updated content indexed within minutes instead of waiting days for crawlers to discover changes.</p>
-<h2>What is IndexNow?</h2>
-<p>IndexNow is an open protocol supported by Bing, Yandex, and Seznam that allows websites to notify search engines immediately when content is created, updated, or deleted. Instead of waiting for search engines to crawl your site, you can proactively tell them about changes.</p>
-<strong>Benefits:</strong>
-<ul><li>⚡ <strong>Instant indexing</strong> - URLs indexed within minutes, not days</li>
-<li>🌐 <strong>Multi-engine support</strong> - One submission notifies Bing, Yandex, and Seznam</li>
-<li>💰 <strong>Save crawl budget</strong> - Search engines don&#x27;t need to repeatedly crawl your site</li>
-<li>🔄 <strong>Real-time updates</strong> - Perfect for news, e-commerce, and dynamic content</li>
-</ul>
+            <p>Submit URLs to Bing, Yandex, and Seznam instantly via the IndexNow protocol. Get your new and updated content indexed within minutes instead of waiting for crawlers.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Batch Submission</strong>: Submit up to 10,000 URLs per run</li>
+
+<ul>
+<li><strong>Batch Submission</strong>: Submit up to 10,000 URLs per run</li>
 <li><strong>Multi-Engine</strong>: Submit to Bing, Yandex, Seznam, or all at once via IndexNow</li>
-<li><strong>Auto Key Generation</strong>: Automatically generate an API key if you don&#x27;t have one</li>
+<li><strong>Auto Key Generation</strong>: Automatically generate an API key if you don't have one</li>
 <li><strong>URL Validation</strong>: Validates URL format and host consistency</li>
 <li><strong>Webhook Integration</strong>: Get notified when submission completes</li>
 <li><strong>Demo Mode</strong>: Test the actor without making real API calls</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>Content Publishing</h3>
-<p>Notify search engines immediately when you publish new blog posts, articles, or product pages.</p>
-<h3>E-Commerce Updates</h3>
-<p>Submit product pages when prices change, inventory updates, or new items are added.</p>
-<h3>News Websites</h3>
-<p>Get breaking news indexed within minutes for maximum visibility.</p>
-<h3>SEO Automation</h3>
-<p>Integrate with your CI/CD pipeline to submit URLs after deployments.</p>
-<h3>Social Media Syndication</h3>
-<p>Combined with our poster actors, automatically submit posted content URLs.</p>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
-<p>| Parameter | Type | Description |</p>
-<p>|-----------|------|-------------|</p>
-<p>| <code>urls</code> | array | List of URLs to submit (max 10,000) |</p>
-<p>| <code>apiKey</code> | string | Your IndexNow API key (auto-generated if not provided) |</p>
-<p>| <code>searchEngine</code> | string | Endpoint: indexnow, bing, yandex, or seznam |</p>
-<p>| <code>host</code> | string | Domain host (extracted from URLs if not provided) |</p>
-<p>| <code>keyLocation</code> | string | URL where key file is hosted |</p>
-<p>| <code>webhookUrl</code> | string | Webhook URL for completion notification |</p>
-<p>| <code>demoMode</code> | boolean | Run with sample data (default: true) |</p>
-<h2>Output</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>urls</code> | array | List of URLs to submit (max 10,000) |
+| <code>apiKey</code> | string | Your IndexNow API key (auto-generated if not provided) |
+| <code>searchEngine</code> | string | Endpoint: indexnow, bing, yandex, or seznam |
+| <code>host</code> | string | Domain host (extracted from URLs if not provided) |
+| <code>keyLocation</code> | string | URL where key file is hosted |
+| <code>webhookUrl</code> | string | Webhook URL for completion notification |
+| <code>demoMode</code> | boolean | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;totalUrls&quot;: 3,</p>
-<p>&quot;submitted&quot;: 3,</p>
-<p>&quot;failed&quot;: 0,</p>
-<p>&quot;skipped&quot;: 0,</p>
-<p>&quot;results&quot;: [</p>
-<p>{</p>
-<p>&quot;url&quot;: &quot;https://example.com/blog/new-post&quot;,</p>
-<p>&quot;status&quot;: &quot;success&quot;,</p>
-<p>&quot;responseCode&quot;: 200,</p>
-<p>&quot;message&quot;: &quot;URLs submitted successfully&quot;</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;apiKey&quot;: &quot;abc123def456...&quot;,</p>
-<p>&quot;keyLocationUrl&quot;: &quot;https://example.com/abc123def456.txt&quot;,</p>
-<p>&quot;searchEngine&quot;: &quot;indexnow&quot;,</p>
-<p>&quot;submittedAt&quot;: &quot;2024-12-30T10:30:00.000Z&quot;</p>
-<p>}</p>
+  "totalUrls": 3,
+  "submitted": 3,
+  "failed": 0,
+  "skipped": 0,
+  "results": [
+    {
+      "url": "https://example.com/blog/new-post",
+      "status": "success",
+      "responseCode": 200,
+      "message": "URLs submitted successfully"
+    }
+  ],
+  "apiKey": "abc123def456...",
+  "keyLocationUrl": "https://example.com/abc123def456.txt",
+  "searchEngine": "indexnow",
+  "submittedAt": "2024-12-30T10:30:00.000Z"
+}
 </code></pre>
-<h2>Setup Instructions</h2>
-<h3>1. Host Your API Key</h3>
-<p>After running the actor, you&#x27;ll receive an API key. You must host this key as a text file on your domain:</p>
-<p>1. Create a text file containing ONLY your API key</p>
-<p>2. Upload it to your website root: <code>https://yourdomain.com/{apiKey}.txt</code></p>
-<p>3. The file should be accessible publicly</p>
-<strong>Example:</strong>
-<ul><li>API Key: <code>abc123def456789</code></li>
-<li>File location: <code>https://yourdomain.com/abc123def456789.txt</code></li>
-<li>File contents: <code>abc123def456789</code></li>
-</ul>
-<h3>2. Submit URLs</h3>
-<pre><code>{
-<p>&quot;urls&quot;: [</p>
-<p>&quot;https://yourdomain.com/new-blog-post&quot;,</p>
-<p>&quot;https://yourdomain.com/updated-product&quot;,</p>
-<p>&quot;https://yourdomain.com/breaking-news&quot;</p>
-<p>],</p>
-<p>&quot;apiKey&quot;: &quot;abc123def456789&quot;</p>
-<p>}</p>
-</code></pre>
-<h2>Response Codes</h2>
-<p>| Code | Meaning |</p>
-<p>|------|---------|</p>
-<p>| 200 | URLs submitted successfully |</p>
-<p>| 202 | URLs accepted for processing |</p>
-<p>| 400 | Invalid request format |</p>
-<p>| 403 | Invalid API key or key file not found |</p>
-<p>| 422 | URLs don&#x27;t match host or protocol mismatch |</p>
-<p>| 429 | Rate limit exceeded (too many requests) |</p>
+
 <h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-<p>| Event | Price |</p>
-<p>|-------|-------|</p>
-<p>| <code>apify-actor-start</code> | $0.05 per run |</p>
-<p>| <code>urls_submitted</code> | $0.001 per URL |</p>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Price |
+|-------|-------|
+| <code>apify-actor-start</code> | $0.05 per run |
+| <code>urls_submitted</code> | $0.001 per URL |</p>
+
 <strong>Example costs:</strong>
-<ul><li>100 URLs: $0.05 + (100 × $0.001) = <strong>$0.15</strong></li>
+<ul>
+<li>100 URLs: $0.05 + (100 × $0.001) = <strong>$0.15</strong></li>
 <li>1,000 URLs: $0.05 + (1,000 × $0.001) = <strong>$1.05</strong></li>
 <li>10,000 URLs: $0.05 + (10,000 × $0.001) = <strong>$10.05</strong></li>
+
 </ul>
-<h2>Integration Examples</h2>
-<h3>With Webhook (Zapier/Make/n8n)</h3>
-<pre><code>{
-<p>&quot;urls&quot;: [&quot;https://example.com/new-page&quot;],</p>
-<p>&quot;apiKey&quot;: &quot;your-key&quot;,</p>
-<p>&quot;webhookUrl&quot;: &quot;https://hooks.zapier.com/your-webhook&quot;</p>
-<p>}</p>
-</code></pre>
-<h3>Scheduled Sitemap Submission</h3>
-<p>Combine with our Sitemap Generator actor to:</p>
-<p>1. Generate/crawl sitemap</p>
-<p>2. Extract URLs</p>
-<p>3. Submit to IndexNow</p>
-<h2>Best Practices</h2>
-<p>1. <strong>Host the key file</strong> - Without it, submissions will fail with 403</p>
-<p>2. <strong>Consistent host</strong> - All URLs must be from the same domain</p>
-<p>3. <strong>Submit changes only</strong> - Don&#x27;t submit unchanged pages</p>
-<p>4. <strong>Use webhooks</strong> - Get notified of success/failure</p>
-<p>5. <strong>Store your key</strong> - Reuse the same key for all future submissions</p>
-<h2>Limitations</h2>
-<ul><li>Maximum 10,000 URLs per run</li>
-<li>All URLs must be from the same domain</li>
-<li>Key file must be hosted and publicly accessible</li>
-<li>Rate limits may apply if submitting too frequently</li>
-</ul>
-<h2>Support</h2>
-<p>For issues or feature requests, contact support.</p>
+<h2>Use Cases</h2>
+
+<h3>Content Publishing</h3>
+Notify search engines immediately when you publish new blog posts, articles, or product pages.
+
+<h3>E-Commerce Updates</h3>
+Submit product pages when prices change, inventory updates, or new items are added.
+
+<h3>News Websites</h3>
+Get breaking news indexed within minutes for maximum visibility.
+
+<h3>SEO Automation</h3>
+Integrate with your CI/CD pipeline to submit URLs after deployments.
+
+<h3>Social Media Syndication</h3>
+Combined with our poster actors, automatically submit posted content URLs.
+
 <p>---</p>
-<h2>Keywords</h2>
-<p>indexnow, bing instant indexing, url submission api, search engine indexing, seo automation, yandex indexnow, instant indexing</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -603,7 +575,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

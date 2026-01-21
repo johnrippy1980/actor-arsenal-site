@@ -457,29 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Meeting ROI Calculator API</h1>
-
-<strong>"Calculate the True Cost of Your Meetings"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Calculate the true cost of your meetings with instant ROI analysis, annual projections, and "Could Have Been an Email" scores.</p>
-
-<h2>What This Actor Does</h2>
-
-<p>This actor provides a powerful API for calculating meeting costs and analyzing meeting ROI. Perfect for:</p>
-
-<ul>
-<li><strong>Bloggers</strong>: Embed meeting cost calculations in productivity articles</li>
-<li><strong>Consultants</strong>: Generate reports for clients on meeting efficiency</li>
-<li><strong>HR Teams</strong>: Analyze organizational meeting costs</li>
-<li><strong>Developers</strong>: Build meeting cost features into your apps</li>
-<li><strong>Dashboard Builders</strong>: Add meeting metrics to executive dashboards</li>
-</ul>
+            <h1>Meeting ROI Calculator</h1>
+            <p>Calculate the true cost of meetings. Get instant ROI analysis, annual projections, and 'Could Have Been an Email' scores. Perfect for embedding in blogs, dashboards, and productivity tools.</p>
 
 <h2>Features</h2>
 
@@ -490,119 +471,92 @@
 <li><strong>Recurring Meeting Analysis</strong>: Project annual costs for recurring meetings</li>
 <li><strong>Multiple Output Formats</strong>: Full analysis, summary, or embeddable snippets</li>
 <li><strong>Multi-Currency Support</strong>: USD, EUR, GBP, CAD, AUD</li>
+
 </ul>
-
-<h2>Input Examples</h2>
-
-<h3>Simple Meeting Cost</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"title": "Weekly Team Sync",</p>
-<p>"durationMinutes": 60,</p>
-<p>"attendeeCount": 5,</p>
-<p>"averageSalary": 100000</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Recurring Meeting with Analysis</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"title": "Daily Standup",</p>
-<p>"durationMinutes": 15,</p>
-<p>"attendeeCount": 8,</p>
-<p>"averageSalary": 85000,</p>
-<p>"isRecurring": true,</p>
-<p>"recurrencePattern": "daily",</p>
-<p>"hasAgenda": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Role-Based Costing</h3>
+<h2>Input Parameters</h2>
 
-<pre><code>{
-<p>"title": "Product Review",</p>
-<p>"durationMinutes": 90,</p>
-<p>"attendeeRoles": [</p>
-<p>{ "role": "VP", "count": 1, "salary": 250000 },</p>
-<p>{ "role": "Director", "count": 2, "salary": 180000 },</p>
-<p>{ "role": "Manager", "count": 3, "salary": 120000 },</p>
-<p>{ "role": "Engineer", "count": 4, "salary": 100000 }</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>Batch Analysis</h3>
-
-<pre><code>{
-<p>"meetings": [</p>
-<p>{ "title": "Weekly Sync", "durationMinutes": 60, "attendeeCount": 5, "averageSalary": 100000, "isRecurring": true, "recurrencePattern": "weekly" },</p>
-<p>{ "title": "Monthly Review", "durationMinutes": 120, "attendeeCount": 15, "averageSalary": 120000, "isRecurring": true, "recurrencePattern": "monthly" },</p>
-<p>{ "title": "Daily Standup", "durationMinutes": 15, "attendeeCount": 6, "averageSalary": 90000, "isRecurring": true, "recurrencePattern": "daily" }</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Full Output Format</h3>
 
 <pre><code>{
-<p>"meeting": {</p>
-<p>"title": "Weekly Team Sync",</p>
-<p>"duration": {</p>
-<p>"minutes": 60,</p>
-<p>"hours": 1</p>
-<p>},</p>
-<p>"attendees": 5</p>
-<p>},</p>
-<p>"cost": {</p>
-<p>"perMeeting": 240.38,</p>
-<p>"hourlyBurn": 240.38,</p>
-<p>"perMinute": 4.01,</p>
-<p>"currency": "USD"</p>
-<p>},</p>
-<p>"annual": {</p>
-<p>"occurrences": 52,</p>
-<p>"totalCost": 12500,</p>
-<p>"totalHours": 260</p>
-<p>},</p>
-<p>"emailScore": {</p>
-<p>"score": 65,</p>
-<p>"label": "Likely Could Be Async",</p>
-<p>"factors": [</p>
-<p>{ "factor": "Title suggests sync/update", "impact": 15 },</p>
-<p>{ "factor": "Recurring meeting", "impact": 10 },</p>
-<p>{ "factor": "No agenda provided", "impact": 15 }</p>
-<p>],</p>
-<p>"recommendation": "Consider replacing with a Slack channel update or weekly email digest"</p>
-<p>},</p>
-<p>"insights": {</p>
-<p>"costPerDecision": "Unknown - track outcomes to measure",</p>
-<p>"attendeeEfficiency": "Average - consider if all 5 need to attend",</p>
-<p>"timeOfDaySuggestion": "Mornings tend to be more productive for syncs"</p>
-<p>},</p>
-<p>"comparison": {</p>
-<p>"vsEmail": { "timeSaved": 55, "costSaved": 220 },</p>
-<p>"vsLoom": { "timeSaved": 45, "costSaved": 180 },</p>
-<p>"vsSlack": { "timeSaved": 50, "costSaved": 200 }</p>
-<p>},</p>
-<p>"cta": {</p>
-<p>"message": "Want real-time meeting cost tracking?",</p>
-<p>"url": "https://meeting.alizarin_refrigerator-owner.com",</p>
-<p>"product": "Meeting Cost Tracker Chrome Extension"</p>
-<p>}</p>
-<p>}</p>
+  "meeting": {
+    "title": "Weekly Team Sync",
+    "duration": {
+      "minutes": 60,
+      "hours": 1
+    },
+    "attendees": 5
+  },
+  "cost": {
+    "perMeeting": 240.38,
+    "hourlyBurn": 240.38,
+    "perMinute": 4.01,
+    "currency": "USD"
+  },
+  "annual": {
+    "occurrences": 52,
+    "totalCost": 12500,
+    "totalHours": 260
+  },
+  "emailScore": {
+    "score": 65,
+    "label": "Likely Could Be Async",
+    "factors": [
+      { "factor": "Title suggests sync/update", "impact": 15 },
+      { "factor": "Recurring meeting", "impact": 10 },
+      { "factor": "No agenda provided", "impact": 15 }
+    ],
+    "recommendation": "Consider replacing with a Slack channel update or weekly email digest"
+  },
+  "insights": {
+    "costPerDecision": "Unknown - track outcomes to measure",
+    "attendeeEfficiency": "Average - consider if all 5 need to attend",
+    "timeOfDaySuggestion": "Mornings tend to be more productive for syncs"
+  },
+  "comparison": {
+    "vsEmail": { "timeSaved": 55, "costSaved": 220 },
+    "vsLoom": { "timeSaved": 45, "costSaved": 180 },
+    "vsSlack": { "timeSaved": 50, "costSaved": 200 }
+  },
+  "cta": {
+    "message": "Want real-time meeting cost tracking?",
+    "url": "https://meeting.localhowl.com",
+    "product": "Meeting Cost Tracker Chrome Extension"
+  }
+}
 </code></pre>
 
 <h3>Summary Output Format</h3>
 
 <pre><code>{
-<p>"title": "Weekly Team Sync",</p>
-<p>"costPerMeeting": "$240",</p>
-<p>"annualCost": "$12,500",</p>
-<p>"emailScore": 65,</p>
-<p>"recommendation": "Consider async alternatives"</p>
-<p>}</p>
+  "title": "Weekly Team Sync",
+  "costPerMeeting": "$240",
+  "annualCost": "$12,500",
+  "emailScore": 65,
+  "recommendation": "Consider async alternatives"
+}
 </code></pre>
 
 <h3>Embed Output Format</h3>
@@ -610,27 +564,34 @@
 <p>Perfect for embedding in blogs or dashboards:</p>
 
 <pre><code>{
-<p>"html": "&lt;div class='meeting-cost-widget'&gt;...&lt;/div&gt;",</p>
-<p>"markdown": "<strong>Meeting Cost</strong>: $240/meeting | <strong>Annual</strong>: $12,500 | <strong>Email Score</strong>: 65%",</p>
-<p>"plainText": "This meeting costs $240 per occurrence ($12,500/year). Email Score: 65% - likely could be async."</p>
-<p>}</p>
+  "html": "<div class='meeting-cost-widget'>...</div>",
+  "markdown": "<strong>Meeting Cost</strong>: $240/meeting | <strong>Annual</strong>: $12,500 | <strong>Email Score</strong>: 65%",
+  "plainText": "This meeting costs $240 per occurrence ($12,500/year). Email Score: 65% - likely could be async."
+}
 </code></pre>
 
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
 <h3>1. Blog Embeds</h3>
 
 <p>Add meeting cost calculations to your productivity blog posts:</p>
 
-<pre><code>const result = await apifyClient.actor("alizarin_refrigerator-owner/meeting-roi-calculator").call({
-<p>title: "Weekly Team Meeting",</p>
-<p>durationMinutes: 60,</p>
-<p>attendeeCount: 8,</p>
-<p>averageSalary: 100000,</p>
-<p>outputFormat: "embed"</p>
-<p>});</p>
-<p>console.log(result.markdown);</p>
-<p>// <strong>Meeting Cost</strong>: $384/meeting | <strong>Annual</strong>: $20,000 | <strong>Email Score</strong>: 72%</p>
+<pre><code>const result = await apifyClient.actor("localhowl/meeting-roi-calculator").call({
+  title: "Weekly Team Meeting",
+  durationMinutes: 60,
+  attendeeCount: 8,
+  averageSalary: 100000,
+  outputFormat: "embed"
+});
+console.log(result.markdown);
+// <strong>Meeting Cost</strong>: $384/meeting | <strong>Annual</strong>: $20,000 | <strong>Email Score</strong>: 72%
 </code></pre>
 
 <h3>2. Organizational Audit</h3>
@@ -638,107 +599,41 @@
 <p>Analyze all recurring meetings in your organization:</p>
 
 <pre><code>const meetings = [
-<p>// Export from Google Calendar or enter manually</p>
-<p>];</p>
+  // Export from Google Calendar or enter manually
+];
 
-<p>const result = await apifyClient.actor("alizarin_refrigerator-owner/meeting-roi-calculator").call({</p>
-<p>meetings: meetings</p>
-<p>});</p>
+<p>const result = await apifyClient.actor("localhowl/meeting-roi-calculator").call({
+  meetings: meetings
+});</p>
 
-<p>console.log(<code>Total Annual Meeting Cost: $${result.summary.totalAnnualCost}</code>);</p>
-<p>console.log(<code>Meetings that could be emails: ${result.summary.asyncCandidates}</code>);</p>
-<p>console.log(<code>Potential Savings: $${result.summary.potentialSavings}</code>);</p>
-</code></pre>
+<p>console.log(<code>Total Annual Meeting Cost: $${result.summary.totalAnnualCost}</code>);
+console.log(<code>Meetings that could be emails: ${result.summary.asyncCandidates}</code>);
+console.log(<code>Potential Savings: $${result.summary.potentialSavings}</code>);
+</code></pre></p>
 
 <h3>3. Meeting Request Validation</h3>
 
 <p>Before scheduling, check if the meeting is worth it:</p>
 
-<pre><code>const validation = await apifyClient.actor("alizarin_refrigerator-owner/meeting-roi-calculator").call({
-<p>title: "Quick sync",</p>
-<p>durationMinutes: 30,</p>
-<p>attendeeCount: 2,</p>
-<p>averageSalary: 100000,</p>
-<p>hasAgenda: false</p>
-<p>});</p>
+<pre><code>const validation = await apifyClient.actor("localhowl/meeting-roi-calculator").call({
+  title: "Quick sync",
+  durationMinutes: 30,
+  attendeeCount: 2,
+  averageSalary: 100000,
+  hasAgenda: false
+});
 
-<p>if (validation.emailScore.score &gt; 70) {</p>
-<p>console.log("Consider sending an email instead!");</p>
-<p>console.log(validation.emailScore.recommendation);</p>
-<p>}</p>
-</code></pre>
-
-<h2>"Could Have Been an Email" Score Methodology</h2>
-
-<p>The Email Score (0-100) predicts how likely a meeting could be handled asynchronously:</p>
-
-
-<h3>Factors That Increase Score (more likely async):</h3>
-
-<ul>
-<li>Title contains "sync", "update", "status", "check-in"</li>
-<li>Short duration (< 30 minutes)</li>
-<li>Only 2 attendees</li>
-<li>No agenda provided</li>
-<li>Recurring meeting</li>
-</ul>
-
-<h3>Factors That Decrease Score (more likely necessary):</h3>
-
-<ul>
-<li>External attendees (clients, vendors)</li>
-<li>Title contains "brainstorm", "planning", "workshop"</li>
-<li>Longer, structured sessions</li>
-<li>Clear agenda provided</li>
-</ul>
-
-<h2>Integrations</h2>
-
-<p>This actor works great with:</p>
-
-<ul>
-<li><strong>Zapier</strong>: Trigger cost calculations on calendar events</li>
-<li><strong>Make (Integromat)</strong>: Build meeting cost workflows</li>
-<li><strong>Google Sheets</strong>: Import meeting data, export cost analysis</li>
-<li><strong>Slack</strong>: Post meeting costs to channels</li>
-<li><strong>Custom Dashboards</strong>: Embed via API</li>
-</ul>
-
-<h2>Rate Limits & Pricing</h2>
-
-<ul>
-<li><strong>Free tier</strong>: 100 calculations/month</li>
-<li><strong>Paid</strong>: Standard Apify compute pricing applies</li>
-</ul>
-
-<h2>Related Tools</h2>
-
-<p>Looking for more meeting productivity tools?</p>
-
-<ul>
-<li><strong><a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker Chrome Extension</a></strong>: Real-time cost overlay in Google Meet</li>
-<li><strong>Calendar ICS Analyzer</strong>: Upload your calendar for full analysis</li>
-<li><strong>Meeting Culture Score Checker</strong>: Analyze any company's meeting culture</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: https://meeting.alizarin_refrigerator-owner.com/docs</li>
-<li><strong>Email</strong>: support@alizarin_refrigerator-owner.com</li>
-<li><strong>Issues</strong>: Report bugs or request features</li>
-</ul>
+<p>if (validation.emailScore.score > 70) {
+  console.log("Consider sending an email instead!");
+  console.log(validation.emailScore.recommendation);
+}
+</code></pre></p>
 
 <p>---</p>
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<em>Part of the <a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker</a> productivity suite by <a href="https://alizarin_refrigerator-owner.com" target="_blank" rel="noopener">LocalHowl</a></em>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -752,7 +647,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

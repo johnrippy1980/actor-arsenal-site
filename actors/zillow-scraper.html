@@ -457,194 +457,57 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Zillow Property Scraper</h1>
+            <h1>Zillow Scraper - Home Listings</h1>
+            <p>Scrape real estate listings from Zillow by city, ZIP code, address, or landmark. Extract property details, Zestimate values, tax history, photos, and more. Perfect for real estate investors, agents, and market researchers.</p>
 
-<blockquote><strong>Scrape property listings from Zillow</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>The Most Comprehensive Real Estate Data</h2>
-
-<strong>Tired of manually searching Zillow?</strong> This actor automates real estate data collection from America's most-visited real estate website, with 220+ million unique monthly visitors.
-
-<h3>What You Get:</h3>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Property Details</strong>: Address, beds, baths, square footage, lot size, year built</li>
-<li><strong>Zestimate®</strong>: Zillow's proprietary home valuation estimate</li>
-<li><strong>Rent Zestimate</strong>: Estimated rental value for investment analysis</li>
-<li><strong>Pricing Data</strong>: Current price, price history, days on Zillow</li>
-<li><strong>Tax History</strong>: Historical tax assessments and payments</li>
-<li><strong>Listing Info</strong>: Status (for sale, pending, sold, for rent), MLS ID</li>
-<li><strong>Photos</strong>: All property images with CDN URLs</li>
-<li><strong>Agent Contact</strong>: Agent name, phone, brokerage</li>
-<li><strong>Location Data</strong>: City, state, ZIP, normalized address for deduplication</li>
-<li><strong>Property Features</strong>: Amenities, upgrades, special features</li>
+<li>Extracts data from web pages</li>
+<li>Handles pagination automatically</li>
+<li>Exports data to JSON/CSV</li>
+<li>Built-in proxy support</li>
+<li>Pay-per-result billing</li>
+
 </ul>
-
-<h3>Search Options:</h3>
-
-<ul>
-<li><strong>By City</strong>: Search any US city (e.g., "San Francisco, CA")</li>
-<li><strong>By ZIP Code</strong>: Target specific neighborhoods (e.g., "94102")</li>
-<li><strong>By Address + Radius</strong>: Find homes near a specific location</li>
-<li><strong>By Landmark/School</strong>: Search near schools, parks, or landmarks</li>
-<li><strong>Listing Status</strong>: For sale, pending, recently sold, or for rent</li>
-</ul>
-
-<p>---</p>
-
-<h2>Why Zillow?</h2>
-
-<p>Zillow dominates online real estate with:</p>
-
-<ul>
-<li><strong>220M+ monthly visitors</strong> (more than any competitor)</li>
-<li><strong>Zestimate®</strong> valuations for 100M+ homes</li>
-<li><strong>For Sale By Owner (FSBO)</strong> listings not on MLS</li>
-<li><strong>Coming Soon</strong> listings before they hit the market</li>
-<li><strong>Rental listings</strong> from landlords and property managers</li>
-<li><strong>Historical data</strong> going back 20+ years</li>
-</ul>
-
-<p>---</p>
-
-<h2>Stop Paying for Expensive Real Estate Data</h2>
-
-<h3>Traditional Real Estate Data Costs:</h3>
-
-
-<h3>This Actor:</h3>
-
-<ul>
-<li><strong>$0.05</strong> per listing scraped</li>
-<li><strong>Demo mode is free</strong> — test before you pay</li>
-<li>No monthly subscription</li>
-<li>No minimum commitment</li>
-</ul>
-
-<strong>Scrape 500 listings for $25</strong> — that's one day of PropStream.
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>Real Estate Investors</h3>
-<ul>
-<li>Find investment properties across multiple markets</li>
-<li>Compare Zestimates to listing prices for deal hunting</li>
-<li>Track price reductions in target neighborhoods</li>
-<li>Monitor new listings daily with scheduled runs</li>
-</ul>
-
-<h3>Real Estate Agents</h3>
-<ul>
-<li>Competitive market analysis (CMAs)</li>
-<li>Track competing listings in your territory</li>
-<li>Research comparable properties for clients</li>
-<li>Find FSBO sellers for listing opportunities</li>
-</ul>
-
-<h3>Property Managers</h3>
-<ul>
-<li>Monitor rental property values with Rent Zestimates</li>
-<li>Track comparable rents by neighborhood</li>
-<li>Identify expansion opportunities in new markets</li>
-</ul>
-
-<h3>Wholesalers</h3>
-<ul>
-<li>Find distressed properties quickly</li>
-<li>Monitor days-on-Zillow for motivated sellers</li>
-<li>Track price reductions and stale listings</li>
-</ul>
-
-<h3>Appraisers & Analysts</h3>
-<ul>
-<li>Gather comparable sales data</li>
-<li>Track market trends over time</li>
-<li>Access tax assessment history</li>
-<li>Build comprehensive property databases</li>
-</ul>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Search by City</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"city": "San Francisco, CA",</p>
-<p>"priceMax": 1500000,</p>
-<p>"bedsMin": 3,</p>
-<p>"maxResults": 100</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h3>Example 2: Search by ZIP Code (New Listings Only)</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"zipCode": "90210",</p>
-<p>"daysOnZillow": 7,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Search Near a School</h3>
-
-<pre><code>{
-<p>"landmark": "Stanford University",</p>
-<p>"searchRadius": 10,</p>
-<p>"priceMin": 500000,</p>
-<p>"priceMax": 2000000,</p>
-<p>"propertyTypes": ["house", "condo"]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: Investment Property Search</h3>
-
-<pre><code>{
-<p>"city": "Miami, FL",</p>
-<p>"propertyTypes": ["multi_family"],</p>
-<p>"priceMax": 1000000,</p>
-<p>"maxResults": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 5: Rental Properties</h3>
-
-<pre><code>{
-<p>"city": "Austin, TX",</p>
-<p>"listingStatus": "for_rent",</p>
-<p>"bedsMin": 2,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 6: Recently Sold (Comps)</h3>
-
-<pre><code>{
-<p>"zipCode": "33139",</p>
-<p>"listingStatus": "recently_sold",</p>
-<p>"maxResults": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 7: Demo Mode (Free Testing)</h3>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free testing) |
+| <code>city</code> | string | No<em> | - | City to search (e.g., "San Francisco, CA") |
+| <code>zipCode</code> | string | No</em> | - | ZIP code to search (e.g., "94102") |
+| <code>address</code> | string | No<em> | - | Address to search around (with radius) |
+| <code>landmark</code> | string | No</em> | - | Search near a landmark or school |
+| <code>searchRadius</code> | integer | No | 5 | Radius in miles (for address/landmark) |
+| <code>priceMin</code> | integer | No | - | Minimum listing price |
+| <code>priceMax</code> | integer | No | - | Maximum listing price |
+| <code>bedsMin</code> | integer | No | - | Minimum bedrooms |
+| <code>bathsMin</code> | integer | No | - | Minimum bathrooms |
+| <code>propertyTypes</code> | array | No | all | Filter: house, condo, townhouse, lot, multi_family, manufactured, apartment |
+| <code>listingStatus</code> | string | No | for_sale | Status: for_sale, pending, recently_sold, for_rent |
+| <code>daysOnZillow</code> | integer | No | - | Only listings on Zillow for up to N days |
+| <code>maxResults</code> | integer | No | 50 | Maximum listings to scrape (1-500) |</p>
 
 <p>*At least one location parameter required (city, zipCode, address, or landmark)</p>
 
@@ -655,51 +518,51 @@
 <p>Each listing includes:</p>
 
 <pre><code>{
-<p>"platform": "zillow.com",</p>
-<p>"listingId": "ZL-12345678",</p>
-<p>"url": "https://www.zillow.com/homedetails/123-Main-St_San-Francisco-CA-94102/12345678_zpid/",</p>
-<p>"address": "123 Main Street",</p>
-<p>"addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",</p>
-<p>"city": "San Francisco",</p>
-<p>"state": "CA",</p>
-<p>"zipCode": "94102",</p>
-<p>"price": 1350000,</p>
-<p>"priceFormatted": "$1,350,000",</p>
-<p>"zestimate": 1380000,</p>
-<p>"rentZestimate": 5200,</p>
-<p>"beds": 3,</p>
-<p>"baths": 2,</p>
-<p>"sqft": 1850,</p>
-<p>"lotSize": "2,500 sqft",</p>
-<p>"propertyType": "Single Family",</p>
-<p>"yearBuilt": 1920,</p>
-<p>"listingDate": "2025-12-18",</p>
-<p>"daysOnZillow": 6,</p>
-<p>"status": "For Sale",</p>
-<p>"description": "Stunning Victorian home...",</p>
-<p>"photos": [</p>
-<p>"https://photos.zillowstatic.com/fp/12345678-cc_ft_960.webp"</p>
-<p>],</p>
-<p>"agent": {</p>
-<p>"name": "Michael Chen",</p>
-<p>"phone": "(415) 555-9876",</p>
-<p>"company": "Compass"</p>
-<p>},</p>
-<p>"features": ["Hardwood Floors", "Fireplace", "Garage", "Updated Kitchen"],</p>
-<p>"coordinates": {</p>
-<p>"lat": 37.7749,</p>
-<p>"lng": -122.4194</p>
-<p>},</p>
-<p>"priceHistory": [</p>
-<p>{ "date": "2025-12-18", "price": 1350000, "event": "Listed for sale" },</p>
-<p>{ "date": "2018-04-20", "price": 980000, "event": "Sold" }</p>
-<p>],</p>
-<p>"taxHistory": [</p>
-<p>{ "year": 2024, "taxPaid": 12500, "assessment": 1050000 },</p>
-<p>{ "year": 2023, "taxPaid": 12100, "assessment": 1020000 }</p>
-<p>],</p>
-<p>"scrapedAt": "2025-12-24T12:00:00Z"</p>
-<p>}</p>
+  "platform": "zillow.com",
+  "listingId": "ZL-12345678",
+  "url": "https://www.zillow.com/homedetails/123-Main-St_San-Francisco-CA-94102/12345678_zpid/",
+  "address": "123 Main Street",
+  "addressNormalized": "123 MAIN ST, SAN FRANCISCO, CA 94102",
+  "city": "San Francisco",
+  "state": "CA",
+  "zipCode": "94102",
+  "price": 1350000,
+  "priceFormatted": "$1,350,000",
+  "zestimate": 1380000,
+  "rentZestimate": 5200,
+  "beds": 3,
+  "baths": 2,
+  "sqft": 1850,
+  "lotSize": "2,500 sqft",
+  "propertyType": "Single Family",
+  "yearBuilt": 1920,
+  "listingDate": "2025-12-18",
+  "daysOnZillow": 6,
+  "status": "For Sale",
+  "description": "Stunning Victorian home...",
+  "photos": [
+    "https://photos.zillowstatic.com/fp/12345678-cc_ft_960.webp"
+  ],
+  "agent": {
+    "name": "Michael Chen",
+    "phone": "(415) 555-9876",
+    "company": "Compass"
+  },
+  "features": ["Hardwood Floors", "Fireplace", "Garage", "Updated Kitchen"],
+  "coordinates": {
+    "lat": 37.7749,
+    "lng": -122.4194
+  },
+  "priceHistory": [
+    { "date": "2025-12-18", "price": 1350000, "event": "Listed for sale" },
+    { "date": "2018-04-20", "price": 980000, "event": "Sold" }
+  ],
+  "taxHistory": [
+    { "year": 2024, "taxPaid": 12500, "assessment": 1050000 },
+    { "year": 2023, "taxPaid": 12100, "assessment": 1020000 }
+  ],
+  "scrapedAt": "2025-12-24T12:00:00Z"
+}
 </code></pre>
 
 <h3>Address Normalization</h3>
@@ -711,202 +574,45 @@
 <li>Standard abbreviations (Street → ST, Avenue → AVE, Boulevard → BLVD)</li>
 <li>No punctuation</li>
 <li>Format: <code>STREET, CITY, STATE ZIP</code></li>
+
 </ul>
-
 <strong>Use this field to deduplicate listings across Zillow, Redfin, and Realtor.com.</strong>
-
-<p>---</p>
-
-<h2>Use Cases & Workflows</h2>
-
-<h3>Daily New Listings Alert</h3>
-
-<p>Run this actor on a schedule (Apify Scheduler) to get new listings daily:</p>
-
-<pre><code>{
-<p>"city": "Austin, TX",</p>
-<p>"daysOnZillow": 1,</p>
-<p>"priceMax": 800000,</p>
-<p>"bedsMin": 3</p>
-<p>}</p>
-</code></pre>
-
-<strong>Integrate with webhooks</strong> to get alerts in Slack, email, or your CRM.
-
-<h3>Zestimate Arbitrage Strategy</h3>
-
-<p>Find underpriced properties by comparing listing price to Zestimate:</p>
-
-<p>1. Scrape listings for your target market</p>
-<p>2. Filter where <code>price < zestimate * 0.95</code> (5%+ below Zestimate)</p>
-<p>3. Investigate properties with biggest gaps</p>
-<p>4. Make competitive offers on underpriced homes</p>
-
-<h3>Rental Market Analysis</h3>
-
-<p>Track rental prices and calculate cap rates:</p>
-
-<pre><code>{
-<p>"city": "Denver, CO",</p>
-<p>"listingStatus": "for_sale",</p>
-<p>"propertyTypes": ["house", "multi_family"],</p>
-<p>"maxResults": 200</p>
-<p>}</p>
-</code></pre>
-
-<p>Compare <code>price</code> to <code>rentZestimate</code> to calculate potential ROI.</p>
-
-<h3>Investment Property Pipeline</h3>
-
-<p>Build an automated deal-finding system:</p>
-
-<p>1. <strong>Scrape</strong>: Run daily for target areas</p>
-<p>2. <strong>Filter</strong>: Price reductions, high days-on-Zillow, below Zestimate</p>
-<p>3. <strong>Enrich</strong>: Add owner info, liens, tax data</p>
-<p>4. <strong>Score</strong>: Calculate potential ROI using Rent Zestimate</p>
-<p>5. <strong>Alert</strong>: Send to your deal pipeline</p>
-
-<p>---</p>
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-
-<p>Automate your real estate workflow:</p>
-
-<p>1. Add the "Apify" app in Zapier</p>
-<p>2. Select "Run Actor" as the action</p>
-<p>3. Enter <code>alizarin_refrigerator-owner/zillow-scraper</code> as the actor ID</p>
-<p>4. Connect to Google Sheets, Airtable, or your CRM</p>
-
-<h3>Make (Integromat)</h3>
-
-<p>Build complex property research automations:</p>
-
-<p>1. Add the Apify module to your Make scenario</p>
-<p>2. Select "Run an Actor" action</p>
-<p>3. Configure with your search criteria</p>
-<p>4. Route listings to multiple destinations</p>
-
-<h3>n8n</h3>
-
-<p>Self-hosted automation:</p>
-
-<p>1. Add the Apify node to your workflow</p>
-<p>2. Configure with your Apify API token</p>
-<p>3. Set actor ID to <code>alizarin_refrigerator-owner/zillow-scraper</code></p>
-<p>4. Process listings with custom logic</p>
-
-<h3>API</h3>
-
-<p>Direct API integration:</p>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~zillow-scraper/runs?token=YOUR_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"city": "San Francisco, CA",</p>
-<p>"priceMax": 1500000,</p>
-<p>"bedsMin": 3,</p>
-<p>"maxResults": 100</p>
-<p>}'</p>
-</code></pre>
-
-<h3>Webhooks</h3>
-
-<p>Get notified when scraping completes:</p>
-
-<pre><code>{
-<p>"webhooks": [{</p>
-<p>"eventTypes": ["ACTOR.RUN.SUCCEEDED"],</p>
-<p>"requestUrl": "https://your-app.com/webhook/zillow-listings"</p>
-<p>}]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Part of the Real Estate Scraper Suite</h2>
-
-<p>This actor is designed to work with the complete real estate aggregation system:</p>
-
-
-<strong>Subscribe to the Real Estate Aggregator</strong> to search all platforms at once and automatically deduplicate listings that appear on multiple sites.
 
 <p>---</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Per listing scraped | $0.05 |
+| Demo mode | Free |</p>
 
 <h3>Cost Examples</h3>
 
+<p>| Use Case | Listings | Cost |
+|----------|----------|------|
+| Daily new listings (1 city) | ~20 | $1.00 |
+| Weekly market analysis | ~200 | $10.00 |
+| Full city inventory | ~500 | $25.00 |</p>
 
 <strong>Compare to PropStream at $99/mo or CoStar at $500+/mo.</strong>
 
 <p>---</p>
 
-<h2>Limitations</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Rate Limiting</strong>: Built-in delays to avoid blocks</li>
-<li><strong>US Only</strong>: Zillow primarily covers US markets</li>
-<li><strong>Active Listings</strong>: Best for current listings; historical data may be limited</li>
-<li><strong>Zestimate Availability</strong>: Not all properties have Zestimate values</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<p>---</p>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h2>FAQ</h2>
-
-<h3>How is this different from the Redfin and Realtor scrapers?</h3>
-
-<p>Zillow has unique data including:</p>
-<ul>
-<li><strong>Zestimate</strong> valuations not available elsewhere</li>
-<li><strong>Rent Zestimate</strong> for rental value analysis</li>
-<li><strong>FSBO listings</strong> not on MLS</li>
-<li><strong>Tax history</strong> and assessment data</li>
-<li><strong>Coming Soon</strong> listings before they hit other sites</li>
-</ul>
-
-<h3>How accurate is the Zestimate?</h3>
-
-<p>Zillow claims a median error rate of 2-3% for on-market homes and 7-8% for off-market homes. Use it as a data point, not gospel.</p>
-
-<h3>Can I scrape sold properties?</h3>
-
-<p>Yes! Set <code>listingStatus</code> to <code>"recently_sold"</code> to get recently sold properties for comparable analysis.</p>
-
-<h3>How do I deduplicate across platforms?</h3>
-
-<p>Use the <code>addressNormalized</code> field to match listings. The upcoming <strong>real-estate-aggregator</strong> handles this automatically.</p>
-
-<h3>Is this legal?</h3>
-
-<p>This actor scrapes publicly available data. Review Zillow's terms of service for your use case. We recommend using data for personal research, market analysis, and non-commercial purposes.</p>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>zillow scraper, zillow api alternative, zestimate scraper, zillow data extraction, real estate scraper, property listings, home scraper, zillow api, real estate data, zillow zestimate, property data extraction, zillow alternative, real estate automation, property search automation, zillow listings export, real estate investor tools, wholesale real estate, investment property finder, propstream alternative, batchleads alternative, real estate leads, redfin alternative, realtor alternative, home buyer tools, zillow data, property database, real estate api, zillow rentals scraper, rent zestimate scraper</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -920,7 +626,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

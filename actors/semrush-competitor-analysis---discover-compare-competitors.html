@@ -457,9 +457,92 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Discover and analyze your competitors with SEMrush data using your own API key (BYOK). Find organic and paid competitors, compare traffic and keywords, and understand competitive positioning.</p>
+            <h1>SEMrush Competitor Analysis - Discover & Compare Competitors</h1>
+            <p>Discover and analyze competitors with SEMrush. Find organic and paid competitors, compare traffic, keywords, and market positioning. BYOK (Bring Your Own Key) - use your SEMrush API key.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>semrushApiKey</code> | string | - | Your SEMrush API key |
+| <code>domain</code> | string | - | Your domain to analyze |
+| <code>database</code> | string | us | Country database |
+| <code>competitorType</code> | string | organic | organic, paid, or both |
+| <code>competitorLimit</code> | integer | 20 | Max competitors to find |
+| <code>includeCommonKeywords</code> | boolean | true | Get shared keywords |
+| <code>commonKeywordsLimit</code> | integer | 10 | Max common keywords |
+| <code>webhookUrl</code> | string | - | Webhook endpoint |
+| <code>webhookPlatform</code> | string | custom | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | true | Return sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Description | Price |
+|-------|-------------|-------|
+| Actor start | Base cost per run | $0.05 |
+| Domain analyzed | Per domain | $0.05 |
+| Organic competitors fetched | Per batch | $0.02 |
+| Paid competitors fetched | Per batch | $0.02 |
+| Webhook sent | Per notification | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Competitive Intelligence</h3>
+Discover who you're really competing against.
+
+<h3>Market Analysis</h3>
+Understand your competitive landscape.
+
+<h3>Keyword Gap Analysis</h3>
+Find keywords competitors rank for that you don't.
+
+<h3>PPC Strategy</h3>
+Identify who's bidding on your keywords.
+
+<h3>Client Onboarding</h3>
+Quickly assess competitive environment for new clients.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -473,7 +556,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

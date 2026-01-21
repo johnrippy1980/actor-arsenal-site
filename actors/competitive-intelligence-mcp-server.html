@@ -462,239 +462,70 @@ Research companies</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Competitive Intelligence MCP Server</h1>
+            <p>16-in-1 MCP Server for comprehensive competitive and industry intelligence. Includes: competitor monitoring, Facebook Ads scraping, tech stack detection, B2B review platforms (G2, Capterra, Clutch, GoodFirms), Glassdoor employer reviews, Crunchbase funding data, consumer reviews (Trustpilot, BBB, Yelp), Quora insights, Reddit discussions, SEO news aggregation, and full industry research. Ask Claude 'research my competitors in the CRM space' or 'what are people saying about Company X on Reddit'.</p>
 
-<strong>9-in-1 MCP server for AI-powered competitor analysis.</strong> Use with Claude, GPT, or any AI assistant that supports MCP tools.
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>🎯 What This Actor Does</h2>
-
-<p>This MCP server bundles 9 competitive intelligence tools into a single endpoint. AI assistants can call any tool to:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Monitor competitors</strong> - Track rankings, reviews, and online activity</li>
-<li><strong>Analyze Facebook Ads</strong> - See what ads competitors are running</li>
-<li><strong>Detect tech stacks</strong> - Know what technologies competitors use</li>
-<li><strong>Aggregate B2B reviews</strong> - Pull reviews from Clutch, G2, Capterra, GoodFirms</li>
-<li><strong>Research companies</strong> - Get Glassdoor reviews and Crunchbase funding data</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
-
-<p>---</p>
-
-<h2>🛠️ Available Tools</h2>
-
-
-<p>---</p>
-
-<h2>💰 Pricing (Pay-Per-Event)</h2>
-
-
-<strong>Demo mode is FREE</strong> - Test any tool with sample data before using real credits.
-
-<p>---</p>
-
-<h2>🚀 Quick Start</h2>
-
-<h3>Demo Mode (Free)</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"tool": "monitor_competitors",</p>
-<p>"demoMode": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Real Data</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"apifyToken": "your_apify_token",</p>
-<p>"tool": "monitor_competitors",</p>
-<p>"toolInput": {</p>
-<p>"competitors": [</p>
-<p>{ "name": "Competitor A", "location": "New York, NY" },</p>
-<p>{ "name": "Competitor B", "location": "Los Angeles, CA" }</p>
-<p>]</p>
-<p>},</p>
-<p>"demoMode": false</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<p>---</p>
+<h2>Input Parameters</h2>
 
-<h2>📋 Tool Input Examples</h2>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>monitor_competitors</h3>
-<pre><code>{
-<p>"tool": "monitor_competitors",</p>
-<p>"toolInput": {</p>
-<p>"competitors": [</p>
-<p>{ "name": "Acme Corp", "location": "San Francisco, CA", "website": "https://acme.com" }</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scrape_facebook_ads</h3>
-<pre><code>{
-<p>"tool": "scrape_facebook_ads",</p>
-<p>"toolInput": {</p>
-<p>"searchQuery": "digital marketing",</p>
-<p>"country": "US",</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scan_tech_stack</h3>
-<pre><code>{
-<p>"tool": "scan_tech_stack",</p>
-<p>"toolInput": {</p>
-<p>"url": "https://competitor.com"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scrape_glassdoor</h3>
-<pre><code>{
-<p>"tool": "scrape_glassdoor",</p>
-<p>"toolInput": {</p>
-<p>"companyName": "Salesforce"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scrape_crunchbase</h3>
-<pre><code>{
-<p>"tool": "scrape_crunchbase",</p>
-<p>"toolInput": {</p>
-<p>"companyName": "Stripe"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scrape_clutch (B2B Reviews)</h3>
-<pre><code>{
-<p>"tool": "scrape_clutch",</p>
-<p>"toolInput": {</p>
-<p>"companyUrl": "https://clutch.co/profile/company-name"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>scrape_g2 (Software Reviews)</h3>
-<pre><code>{
-<p>"tool": "scrape_g2",</p>
-<p>"toolInput": {</p>
-<p>"productUrl": "https://www.g2.com/products/product-name"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>🔗 MCP Integration</h2>
-
-<h3>Claude Desktop</h3>
-
-<p>Add to your <code>claude_desktop_config.json</code>:</p>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"mcpServers": {</p>
-<p>"competitive-intelligence": {</p>
-<p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic/mcp-client", "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~competitive-intelligence-mcp-server/runs?token=YOUR_TOKEN"]</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>n8n / Make / Zapier</h3>
+<h2>Pricing</h2>
 
-<p>Use the webhook URL parameter to receive results:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-<pre><code>{
-<p>"tool": "monitor_competitors",</p>
-<p>"toolInput": { ... },</p>
-<p>"webhookUrl": "https://your-webhook-endpoint.com/receive"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>📊 Sample Output</h2>
-
-<h3>monitor_competitors</h3>
-<pre><code>{
-<p>"tool": "monitor_competitors",</p>
-<p>"competitors": [</p>
-<p>{</p>
-<p>"name": "Competitor A",</p>
-<p>"location": "New York, NY",</p>
-<p>"googleRating": 4.5,</p>
-<p>"reviewCount": 150,</p>
-<p>"rankingPosition": 3,</p>
-<p>"recentActivity": ["New blog post", "Price change detected"]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>scan_tech_stack</h3>
-<pre><code>{
-<p>"tool": "scan_tech_stack",</p>
-<p>"url": "https://competitor.com",</p>
-<p>"technologies": {</p>
-<p>"cms": "WordPress",</p>
-<p>"ecommerce": "WooCommerce",</p>
-<p>"analytics": ["Google Analytics", "Hotjar"],</p>
-<p>"marketing": ["HubSpot", "Mailchimp"],</p>
-<p>"hosting": "AWS"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>🔧 Use Cases</h2>
-
-<p>1. <strong>Competitor Monitoring</strong> - Track multiple competitors' online presence, rankings, and reviews</p>
-<p>2. <strong>Ad Intelligence</strong> - See what Facebook ads competitors are running in your market</p>
-<p>3. <strong>Technology Research</strong> - Identify the tech stack powering competitor websites</p>
-<p>4. <strong>Reputation Analysis</strong> - Aggregate reviews from B2B platforms (Clutch, G2, Capterra)</p>
-<p>5. <strong>Funding Tracking</strong> - Monitor competitor funding rounds and investor activity</p>
-<p>6. <strong>Employee Insights</strong> - Get Glassdoor reviews to understand competitor culture</p>
-
-<p>---</p>
-
-<h2>❓ FAQ</h2>
-
-<strong>Q: What's the difference between demo mode and real data?</strong>
-<p>A: Demo mode returns realistic sample data instantly (free). Real data mode calls the actual scrapers and returns live data (pay-per-event pricing).</p>
-
-<strong>Q: Can I use this without an AI assistant?</strong>
-<p>A: Yes! Call the Apify API directly or use the Apify console to run the actor.</p>
-
-<strong>Q: How do I get an Apify token?</strong>
-<p>A: Sign up at <a href="https://apify.com?fpr=kqpn7" target="_blank" rel="noopener">apify.com</a> and find your API token in Settings → Integrations.</p>
-
-<p>---</p>
-
-<h2>📞 Support</h2>
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report bugs or request features</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -708,7 +539,7 @@ Research companies</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

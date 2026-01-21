@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,174 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Canva Connect API - Design Automation &amp; Export</h1>
-            <p>Apify actor for Canva Connect API - Design Automation &amp; Export</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Automate Canva designs with the Connect API. Create designs, manage assets, export to PDF/PNG/JPG/MP4, autofill brand templates, and organize folders. Perfect for marketing automation and design workflows.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Design Management</h3>
+<ul>
+<li><strong>List Designs</strong> - Browse all your Canva designs with search</li>
+<li><strong>Get Design</strong> - Retrieve design metadata and URLs</li>
+<li><strong>Create Design</strong> - Create new designs from presets or custom dimensions</li>
+
+</ul>
+<h3>Export & Download</h3>
+<ul>
+<li><strong>Export Design</strong> - Export to PDF, PNG, JPG, GIF, PPTX, or MP4</li>
+<li><strong>Batch Export</strong> - Export multiple designs in one run</li>
+<li><strong>Get Export Status</strong> - Check async export job status</li>
+
+</ul>
+<h3>Asset Management</h3>
+<ul>
+<li><strong>Upload Assets</strong> - Upload images, fonts, and files from URLs</li>
+<li><strong>Get Asset</strong> - Retrieve asset metadata</li>
+<li><strong>Delete Asset</strong> - Remove assets from your library</li>
+
+</ul>
+<h3>Folder Organization</h3>
+<ul>
+<li><strong>List Folders</strong> - Browse your folder structure</li>
+<li><strong>Create Folder</strong> - Create new folders for organization</li>
+<li><strong>List Folder Items</strong> - See contents of any folder</li>
+<li><strong>Move to Folder</strong> - Organize designs and assets</li>
+
+</ul>
+<h3>Brand Templates (Enterprise)</h3>
+<ul>
+<li><strong>List Brand Templates</strong> - Browse available templates</li>
+<li><strong>Get Template Dataset</strong> - See autofill fields</li>
+<li><strong>Autofill Template</strong> - Generate designs from templates with data</li>
+
+</ul>
+<h3>User Management</h3>
+<ul>
+<li><strong>Get User Profile</strong> - Retrieve user info and team ID</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform (see tasks below) |
+| accessToken | string | Yes<em> | Canva OAuth access token (</em>not needed for demoMode) |
+| designId | string | No | Design ID for get/export operations |
+| assetId | string | No | Asset ID for get/delete operations |
+| folderId | string | No | Folder ID for folder operations |
+| brandTemplateId | string | No | Brand template ID for autofill (Enterprise) |
+| designTitle | string | No | Title for new design |
+| designType | string | No | Preset type or 'custom' |
+| exportFormat | string | No | Export format: pdf, png, jpg, gif, pptx, mp4 |
+| exportQuality | integer | No | Quality 1-100 (for jpg/png) |
+| batchDesignIds | array | No | Design IDs for batch export |
+| webhookUrl | string | No | URL for webhook delivery |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
+<p>Results are saved to the default dataset:</p>
+
+<h3>Export Result</h3>
+<pre><code>{
+  "task": "export_design",
+  "success": true,
+  "export": {
+    "id": "export_abc123",
+    "status": "completed",
+    "urls": ["https://export.canva.com/..."],
+    "format": "png",
+    "designId": "DAFxxxxx"
+  }
+}
+</code></pre>
+
+<h3>Batch Export Result</h3>
+<pre><code>{
+  "task": "batch_export",
+  "success": true,
+  "exports": [
+    {
+      "designId": "DAFxxxxx",
+      "exportId": "export_001",
+      "status": "completed",
+      "urls": ["https://export.canva.com/..."],
+      "format": "pdf"
+    }
+  ],
+  "total": 3,
+  "requested": 3
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:</p>
+
+<p>| Operation | Cost |
+|-----------|------|
+| List designs/assets/folders | $0.01 |
+| Get design/asset/folder | $0.01 |
+| Create design | $0.05 |
+| Export design | $0.05 |
+| Batch export (per design) | $0.05 |
+| Upload asset | $0.03 |
+| Delete asset | $0.01 |
+| Autofill template | $0.10 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Marketing Automation</h3>
+<ul>
+<li>Auto-generate social media graphics from templates</li>
+<li>Export campaign assets in multiple formats</li>
+<li>Batch process design exports for campaigns</li>
+
+</ul>
+<h3>E-commerce</h3>
+<ul>
+<li>Create product graphics at scale using brand templates</li>
+<li>Auto-generate promotional banners with product data</li>
+<li>Export product images for multiple platforms</li>
+
+</ul>
+<h3>Content Creation</h3>
+<ul>
+<li>Automate YouTube thumbnail generation</li>
+<li>Create blog post graphics from templates</li>
+<li>Batch export presentation slides</li>
+
+</ul>
+<h3>Agency Workflows</h3>
+<ul>
+<li>Manage client assets across folders</li>
+<li>Autofill client brand templates</li>
+<li>Export client deliverables in bulk</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +502,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

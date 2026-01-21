@@ -462,23 +462,10 @@ Franchise Research</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>DoorDash Scraper - Extract Restaurant & Store Data with Menus</h1>
-
-<p>Scrape comprehensive data from DoorDash including restaurants, stores, menus, pricing, and ratings. Perfect for market research, competitive analysis, and food industry intelligence.</p>
-
-<h2>Why Use DoorDash Scraper?</h2>
-
-<p>DoorDash is the #1 food delivery platform in the US. This scraper helps you:</p>
-
-<ul>
-<li><strong>Analyze Menu Pricing</strong>: Track competitor menu items and pricing</li>
-<li><strong>Research Markets</strong>: Understand restaurant density by location and cuisine</li>
-<li><strong>Monitor Competition</strong>: Track ratings, reviews, and menu changes</li>
-<li><strong>Build Restaurant Databases</strong>: Create comprehensive food service listings</li>
-<li><strong>Franchise Research</strong>: Analyze chain restaurant presence and performance</li>
-</ul>
+            <p>Scrape DoorDash for restaurant and store listings, menus, prices, ratings, and delivery info. Extract data for food delivery market analysis. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
@@ -488,8 +475,8 @@ Franchise Research</p>
 <li><strong>Search Mode</strong>: Find stores by keyword and location</li>
 <li><strong>Profile Mode</strong>: Extract detailed info from specific store pages</li>
 <li><strong>Menu Mode</strong>: Deep dive into menu items and pricing</li>
-</ul>
 
+</ul>
 <h3>Store Types Supported</h3>
 
 <ul>
@@ -498,149 +485,117 @@ Franchise Research</p>
 <li>Convenience Stores</li>
 <li>Alcohol/Liquor Stores</li>
 <li>Retail/Retail Stores</li>
-</ul>
 
+</ul>
 <h3>Data Extracted</h3>
 
+<p>| Field | Description |
+|-------|-------------|
+| Store Name | Restaurant/store name |
+| Store Type | Category (restaurant, grocery, etc.) |
+| Cuisine Types | Food categories served |
+| Address | Full delivery address |
+| Rating | Average customer rating |
+| Review Count | Total reviews |
+| Delivery Fee | Base delivery charge |
+| Delivery Time | Estimated delivery range |
+| Price Level | $, $$, $$$, $$$$ |
+| Menu Items | Full menu with categories |
+| Item Prices | Current pricing |
+| Item Descriptions | Menu item details |
+| Popular Items | Highlighted dishes |
+| Operating Hours | Store hours |</p>
 
-<h2>Input Configuration</h2>
-
-<h3>Basic Search</h3>
-
-<pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "burger",</p>
-<p>"location": "San Francisco, CA",</p>
-<p>"maxResults": 100</p>
-<p>}</p>
-</code></pre>
-
-<h3>Store Profile</h3>
-
-<pre><code>{
-<p>"scrapeType": "store_profile",</p>
-<p>"storeUrl": "https://www.doordash.com/store/restaurant-name-123456",</p>
-<p>"includeMenu": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Filtered Search</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "pizza",</p>
-<p>"location": "Los Angeles, CA",</p>
-<p>"storeType": "restaurant",</p>
-<p>"includeMenu": true,</p>
-<p>"maxResults": 200</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"storeName": "Burger Palace",</p>
-<p>"storeType": "restaurant",</p>
-<p>"cuisineTypes": ["American", "Burgers", "Fast Food"],</p>
-<p>"address": "123 Main St, San Francisco, CA 94102",</p>
-<p>"rating": 4.7,</p>
-<p>"reviewCount": 892,</p>
-<p>"deliveryFee": "$2.99",</p>
-<p>"deliveryTime": "25-35 min",</p>
-<p>"priceLevel": "$$",</p>
-<p>"menu": [</p>
-<p>{</p>
-<p>"category": "Burgers",</p>
-<p>"items": [</p>
-<p>{</p>
-<p>"name": "Classic Cheeseburger",</p>
-<p>"price": "$12.99",</p>
-<p>"description": "1/2 lb beef patty with cheddar...",</p>
-<p>"isPopular": true</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>],</p>
-<p>"operatingHours": {</p>
-<p>"monday": "11:00 AM - 10:00 PM",</p>
-<p>"tuesday": "11:00 AM - 10:00 PM"</p>
-<p>},</p>
-<p>"doordashUrl": "https://www.doordash.com/store/..."</p>
-<p>}</p>
+  "storeName": "Burger Palace",
+  "storeType": "restaurant",
+  "cuisineTypes": ["American", "Burgers", "Fast Food"],
+  "address": "123 Main St, San Francisco, CA 94102",
+  "rating": 4.7,
+  "reviewCount": 892,
+  "deliveryFee": "$2.99",
+  "deliveryTime": "25-35 min",
+  "priceLevel": "$$",
+  "menu": [
+    {
+      "category": "Burgers",
+      "items": [
+        {
+          "name": "Classic Cheeseburger",
+          "price": "$12.99",
+          "description": "1/2 lb beef patty with cheddar...",
+          "isPopular": true
+        }
+      ]
+    }
+  ],
+  "operatingHours": {
+    "monday": "11:00 AM - 10:00 PM",
+    "tuesday": "11:00 AM - 10:00 PM"
+  },
+  "doordashUrl": "https://www.doordash.com/store/..."
+}
 </code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.003 per store listing</li>
+<li>$0.001 per menu item extracted</li></p>
+
+</ul>
+<strong>Example</strong>: 100 restaurants with 50 menu items each = $5.30
 
 <h2>Use Cases</h2>
 
 <h3>Competitive Pricing Analysis</h3>
-<p>Monitor competitor menu prices and special offers in your market.</p>
+Monitor competitor menu prices and special offers in your market.
 
 <h3>Market Expansion Research</h3>
-<p>Analyze restaurant density and cuisine distribution before entering new markets.</p>
+Analyze restaurant density and cuisine distribution before entering new markets.
 
 <h3>Menu Optimization</h3>
-<p>Compare menu structures and pricing across similar restaurants.</p>
+Compare menu structures and pricing across similar restaurants.
 
 <h3>Franchise Performance</h3>
-<p>Track chain restaurant ratings and presence across locations.</p>
+Track chain restaurant ratings and presence across locations.
 
 <h3>Food Industry Reports</h3>
-<p>Generate comprehensive food delivery market reports.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Enable <code>demoMode: true</code> to test with sample data. Perfect for testing integrations and understanding output format before running production scrapes.</p>
-
-<h2>Pricing</h2>
-
-<p>Pay-per-result pricing:</p>
-<ul>
-<li>$0.003 per store listing</li>
-<li>$0.001 per menu item extracted</li>
-</ul>
-
-<strong>Example</strong>: 100 restaurants with 50 menu items each = $5.30
-
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Use Delivery Addresses</strong>: Location should be a valid delivery address</p>
-<p>2. <strong>Filter by Store Type</strong>: Focus on specific categories for cleaner data</p>
-<p>3. <strong>Include Menus Selectively</strong>: Menu extraction adds time and cost</p>
-<p>4. <strong>Batch by Cuisine</strong>: Run separate searches for different food types</p>
-
-<h2>Frequently Asked Questions</h2>
-
-<h3>Does this include real-time delivery availability?</h3>
-<p>Yes, the scraper captures current delivery status and estimated times.</p>
-
-<h3>Can I track price changes over time?</h3>
-<p>Yes, run scheduled scrapes and compare results to track pricing trends.</p>
-
-<h3>What about DashPass pricing?</h3>
-<p>DashPass member pricing is indicated when available.</p>
-
-<h3>How often should I rescrape?</h3>
-<p>Menus and prices can change frequently - weekly scrapes recommended for pricing data.</p>
-
-<h2>Related Actors</h2>
-
-<ul>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/grubhub-scraper?fpr=kqpn7" target="_blank" rel="noopener">Grubhub Scraper</a> - Compare with Grubhub data</li>
-<li><a href="https://apify.com/alizarin_refrigerator-owner/yelp-scraper?fpr=kqpn7" target="_blank" rel="noopener">Yelp Scraper</a> - Restaurant reviews and ratings</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: Full input schema available in the Input tab</li>
-<li><strong>Issues</strong>: Report bugs via Apify support</li>
-</ul>
+Generate comprehensive food delivery market reports.
 
 <p>---</p>
 
-<strong>Built by John Rippy - 2025 Zapier Automation Hero of the Year</strong>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Power your food industry research with comprehensive DoorDash data.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -654,7 +609,7 @@ Franchise Research</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

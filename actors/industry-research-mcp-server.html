@@ -457,171 +457,72 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Industry Research MCP Server v1.0</h1>
+            <h1>Industry Research MCP Server for AI Assistants</h1>
+            <p>MCP Server providing AI assistants with unified access to industry research, market trends, competitor analysis, and business intelligence tools. SEO news aggregation, Quora research, Crunchbase data, Clutch/G2 reviews, and industry-specific insights. By John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>Market Intelligence & Industry Research for AI Assistants</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
+<ul>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
 
-<p>MCP Server providing AI assistants with unified access to <strong>industry research, market trends, competitor analysis, and business intelligence</strong> through a single interface. SEO news aggregation, Quora insights, Crunchbase data, review platform aggregation, and Reddit discussions.</p>
-
-<h2>Supported Research Sources</h2>
-
-
-<h2>MCP Tools Available</h2>
-
-<h3>1. <code>get_seo_news</code></h3>
-<p>Get latest SEO news and industry trends.</p>
+</ul>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"tool": "get_seo_news",</p>
-<p>"toolInput": {</p>
-<p>"topics": ["google updates", "local seo", "ai search"],</p>
-<p>"maxArticles": 20</p>
-<p>}</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>2. <code>research_quora</code></h3>
-<p>Research industry topics on Quora.</p>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"tool": "research_quora",</p>
-<p>"toolInput": {</p>
-<p>"query": "best marketing automation tools 2025",</p>
-<p>"maxResults": 15</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>3. <code>get_crunchbase_data</code></h3>
-<p>Get company data from Crunchbase.</p>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"tool": "get_crunchbase_data",</p>
-<p>"toolInput": {</p>
-<p>"companyName": "Anthropic",</p>
-<p>"includeInvestors": true,</p>
-<p>"includeFunding": true</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<h3>4. <code>get_clutch_reviews</code></h3>
-<p>Get agency reviews from Clutch.</p>
+<h2>Pricing</h2>
 
-<pre><code>{
-<p>"tool": "get_clutch_reviews",</p>
-<p>"toolInput": {</p>
-<p>"category": "seo-companies",</p>
-<p>"location": "United States",</p>
-<p>"maxResults": 20</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
-<h3>5. <code>get_g2_reviews</code></h3>
-<p>Get software reviews from G2.</p>
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>actor-start</code> | Base cost per run | $0.10 |
+| <code>seo_news_fetched</code> | Per news aggregation | $0.05 |
+| <code>quora_researched</code> | Per Quora research | $0.08 |
+| <code>crunchbase_data</code> | Per company lookup | $0.10 |
+| <code>review_scraped</code> | Per review platform | $0.05 |
+| <code>reddit_researched</code> | Per Reddit research | $0.05 |
+| <code>market_intelligence</code> | Per full report | $0.25 |</p>
 
-<pre><code>{
-<p>"tool": "get_g2_reviews",</p>
-<p>"toolInput": {</p>
-<p>"productName": "HubSpot Marketing Hub",</p>
-<p>"maxReviews": 25</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
+<strong>Example costs:</strong>
+<ul>
+<li>SEO News: $0.10 + $0.05 = <strong>$0.15</strong></li>
+<li>Market Intelligence: $0.10 + $0.25 = <strong>$0.35</strong></li>
+<li>Competitor Research: $0.10 + $0.15 = <strong>$0.25</strong></li>
 
-<h3>6. <code>get_goodfirms_reviews</code></h3>
-<p>Get company reviews from GoodFirms.</p>
-
-<pre><code>{
-<p>"tool": "get_goodfirms_reviews",</p>
-<p>"toolInput": {</p>
-<p>"category": "digital-marketing",</p>
-<p>"location": "New York",</p>
-<p>"maxResults": 15</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>7. <code>analyze_industry_trends</code></h3>
-<p>Comprehensive industry trend analysis.</p>
-
-<pre><code>{
-<p>"tool": "analyze_industry_trends",</p>
-<p>"toolInput": {</p>
-<p>"industry": "Digital Marketing",</p>
-<p>"timeframe": "6 months",</p>
-<p>"includeSentiment": true</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>8. <code>get_reddit_discussions</code></h3>
-<p>Get Reddit discussions on industry topics.</p>
-
-<pre><code>{
-<p>"tool": "get_reddit_discussions",</p>
-<p>"toolInput": {</p>
-<p>"subreddits": ["marketing", "SEO", "digital_marketing"],</p>
-<p>"query": "AI marketing tools",</p>
-<p>"maxPosts": 30</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>9. <code>research_competitors</code></h3>
-<p>Research competitors in an industry.</p>
-
-<pre><code>{
-<p>"tool": "research_competitors",</p>
-<p>"toolInput": {</p>
-<p>"businessName": "Acme Agency",</p>
-<p>"industry": "Digital Marketing",</p>
-<p>"location": "Chicago",</p>
-<p>"maxCompetitors": 10</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>10. <code>get_company_contacts</code></h3>
-<p>Get company contact information and enrichment.</p>
-
-<pre><code>{
-<p>"tool": "get_company_contacts",</p>
-<p>"toolInput": {</p>
-<p>"companyName": "Example Corp",</p>
-<p>"domain": "example.com",</p>
-<p>"includeEmails": true</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>11. <code>run_market_intelligence</code></h3>
-<p>Complete market intelligence report.</p>
-
-<pre><code>{
-<p>"tool": "run_market_intelligence",</p>
-<p>"toolInput": {</p>
-<p>"industry": "SaaS Marketing",</p>
-<p>"includeTrends": true,</p>
-<p>"includeCompetitors": true,</p>
-<p>"includeNews": true</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>12. <code>list_tools</code></h3>
-<p>Get a list of all available industry research tools.</p>
-
-<pre><code>{
-<p>"tool": "list_tools"</p>
-<p>}</p>
-</code></pre>
-
+</ul>
 <h2>Use Cases</h2>
 
 <ul>
@@ -630,56 +531,13 @@
 <li><strong>Review Aggregation</strong> - Collect reviews from multiple platforms</li>
 <li><strong>Lead Research</strong> - Enrich company data for sales outreach</li>
 <li><strong>Content Research</strong> - Find trending topics and questions</li>
+
 </ul>
+---
 
-<h2>Pricing</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-
-<strong>Example costs:</strong>
-<ul>
-<li>SEO News: $0.10 + $0.05 = <strong>$0.15</strong></li>
-<li>Market Intelligence: $0.10 + $0.25 = <strong>$0.35</strong></li>
-<li>Competitor Research: $0.10 + $0.15 = <strong>$0.25</strong></li>
-</ul>
-
-<h2>Integration with AI Assistants</h2>
-
-<h3>Claude Desktop / Cursor</h3>
-<p>Add to your Claude configuration:</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"industry-research": {</p>
-<p>"url": "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~industry-research-mcp-server/runs",</p>
-<p>"headers": {</p>
-<p>"Authorization": "Bearer YOUR_APIFY_TOKEN"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n / Make / Zapier</h3>
-<p>Use the Apify integration to call this actor with the desired tool and inputs.</p>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test without actual API calls. Returns realistic sample industry research data.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>industry research mcp, market intelligence, competitor analysis, seo news aggregator, quora research, crunchbase api, clutch reviews, g2 reviews, reddit scraper, mcp server, business intelligence</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -693,7 +551,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

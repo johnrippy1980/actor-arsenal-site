@@ -456,15 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>World Bank API - Global Development Data</h1>
-<strong>&quot;Global Development Data&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Access World Bank global development indicators. Get GDP, population, poverty rates, education, health metrics, and economic data for 200+ countries spanning 60+ years of historical data.</p>
+            <p>Access World Bank global development indicators. Get GDP, population, poverty rates, education, health metrics, and economic data for 200+ countries spanning 60+ years.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Get Indicator</strong>: Any World Bank indicator by code</li>
+
+<ul>
+<li><strong>Get Indicator</strong>: Any World Bank indicator by code</li>
 <li><strong>Get Country Data</strong>: All indicators for a country</li>
 <li><strong>Get GDP</strong>: GDP and economic growth data</li>
 <li><strong>Get Population</strong>: Demographics and population stats</li>
@@ -473,18 +473,59 @@
 <li><strong>Get Health</strong>: Life expectancy, mortality, healthcare</li>
 <li><strong>Get Climate</strong>: CO2 emissions, energy, environment</li>
 <li><strong>Demo Mode</strong>: Test with sample data</li>
+
 </ul>
-<h2>Popular Indicators</h2>
-<ul><li>NY.GDP.MKTP.CD: GDP (current US$)</li>
-<li>NY.GDP.PCAP.CD: GDP per capita</li>
-<li>SP.POP.TOTL: Total population</li>
-<li>SI.POV.DDAY: Poverty headcount</li>
-<li>SE.ADT.LITR.ZS: Adult literacy rate</li>
-<li>SP.DYN.LE00.IN: Life expectancy</li>
-<li>EN.ATM.CO2E.PC: CO2 emissions per capita</li>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li>Get Indicator: $0.01</li>
+<li>Country Data: $0.01</li>
+<li>GDP Data: $0.01</li>
+<li>Population: $0.01</li>
+<li>Poverty Data: $0.01</li>
+<li>Education: $0.01</li>
+<li>Health: $0.01</li>
+<li>Climate: $0.01</li></p>
+
 </ul>
 <h2>Use Cases</h2>
-<ul><li>Economic research</li>
+
+<ul>
+<li>Economic research</li>
 <li>Market sizing by country</li>
 <li>Development analysis</li>
 <li>Investment research</li>
@@ -492,23 +533,17 @@
 <li>Policy analysis</li>
 <li>ESG reporting</li>
 <li>Global benchmarking</li>
+
 </ul>
-<h2>Coverage</h2>
-<ul><li>217 countries and territories</li>
-<li>1,600+ development indicators</li>
-<li>Data from 1960 to present</li>
-<li>Annual and quarterly data</li>
-</ul>
-<h2>Pricing</h2>
-<ul><li>Get Indicator: $0.01</li>
-<li>Country Data: $0.01</li>
-<li>GDP Data: $0.01</li>
-<li>Population: $0.01</li>
-<li>Poverty Data: $0.01</li>
-<li>Education: $0.01</li>
-<li>Health: $0.01</li>
-<li>Climate: $0.01</li>
-</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -522,7 +557,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

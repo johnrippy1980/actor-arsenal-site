@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,132 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Indeed Jobs Scraper B2B Hiring Intent Signals</h1>
-            <p>Apify actor for Indeed Jobs Scraper B2B Hiring Intent Signals</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Scrape Indeed job postings to identify hiring intent, company growth signals, and competitive intelligence for B2B sales.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Job details</strong> - Title, company, location, description, requirements</li>
+<li><strong>Company insights</strong> - Industry insights and growth indicators</li>
+<li><strong>Salary data</strong> - When available in job postings</li>
+<li><strong>Job type</strong> - Full-time, Part-time, Contract, Temporary, Internship</li>
+<li><strong>Experience level</strong> - Entry, Mid, Senior, Manager, Director</li>
+<li><strong>Multi-filter</strong> - Experience level, date posted, location, job type</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<pre><code>{
+  "keywords": ["marketing manager", "software engineer"],
+  "location": "United States",
+  "jobType": "ALL",
+  "datePosted": "LAST_7_DAYS",
+  "limit": 50
+}
+</code></pre>
+
+<h3>Input Parameters</h3>
+
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| <code>keywords</code> | array | - | Job titles or keywords to search |
+| <code>location</code> | string | "United States" | Location filter |
+| <code>jobType</code> | string | "ALL" | Job type (FULL_TIME, PART_TIME, CONTRACT, TEMPORARY, INTERNSHIP) |
+| <code>experienceLevel</code> | string | "ALL" | Experience filter (ENTRY_LEVEL, MID_LEVEL, SENIOR_LEVEL, MANAGER, DIRECTOR) |
+| <code>datePosted</code> | string | "LAST_7_DAYS" | Date filter (LAST_24_HOURS, LAST_3_DAYS, LAST_7_DAYS, LAST_14_DAYS) |
+| <code>limit</code> | number | 50 | Maximum jobs to scrape |
+| <code>demoMode</code> | boolean | true | Run with sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "jobId": "IND-1704412800000-0",
+  "title": "Senior Marketing Manager",
+  "company": "Google",
+  "companyUrl": "https://indeed.com/cmp/Google",
+  "location": "San Francisco, CA",
+  "jobType": "Full-time",
+  "jobUrl": "https://indeed.com/viewjob?jk=abc123",
+  "description": "We are looking for a Marketing Manager to join our team...",
+  "requirements": [
+    "5+ years of marketing experience",
+    "Bachelor's degree in Marketing or related field",
+    "Strong communication skills"
+  ],
+  "benefits": [
+    "Competitive salary and equity",
+    "Health, dental, and vision insurance",
+    "Flexible PTO policy"
+  ],
+  "salary": "$120,000 - $180,000",
+  "experienceLevel": "Senior level",
+  "postedDate": "2026-01-09",
+  "postedAgo": "7 days ago",
+  "isRemote": false,
+  "isUrgent": false,
+  "skills": ["Marketing Strategy", "Digital Marketing", "Team Leadership"],
+  "companyRating": 4.5,
+  "companyReviews": 12453
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>job_scraped</code> | Per job listing scraped | $0.01 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>Scrape 100 jobs: 100 × $0.01 = <strong>$1.00</strong></li>
+<li>Scrape 500 jobs: 500 × $0.01 = <strong>$5.00</strong></li>
+
+</ul>
+---
+
+<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
+
+<p>---</p>
+
+<h2>Use Cases</h2>
+
+<ul>
+<li><strong>Sales intelligence</strong> - Companies hiring = companies spending</li>
+<li><strong>Competitive research</strong> - See what roles competitors are filling</li>
+<li><strong>Market trends</strong> - Track which skills are in demand</li>
+<li><strong>Talent mapping</strong> - Understand hiring patterns by industry</li>
+<li><strong>Lead generation</strong> - Identify growing companies</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +460,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

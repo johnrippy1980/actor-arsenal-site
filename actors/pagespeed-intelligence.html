@@ -467,119 +467,52 @@ AI Recommendations - Actionable advice tailored to your stack</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>PageSpeed Intelligence - Complete Website Performance Analysis with AI</h1>
+            <h1>PageSpeed Intelligence Complete Web Performance Analysis w/AI</h1>
+            <p>Comprehensive website performance intelligence suite combining Google PageSpeed Insights (real-user CrUX data), Lighthouse audits, Tech Stack detection, and AI-powered optimization recommendations. Get actionable insights tailored to your specific tech stack. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>PSI + Lighthouse + Tech Stack + AI Recommendations in One Actor</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Why This Actor Exists</h2>
-
-<p>Most performance tools give you data without context. You get a list of issues, but no guidance on <em>what to actually do</em> based on your specific tech stack.</p>
-
-<strong>PageSpeed Intelligence</strong> combines:
-
-<p>1. <strong>Google PageSpeed Insights</strong> - Real-user CrUX data + lab metrics</p>
-<p>2. <strong>Lighthouse Audits</strong> - Detailed performance, accessibility, SEO audits</p>
-<p>3. <strong>Tech Stack Detection</strong> - Identify CMS, frameworks, analytics, CDN, hosting</p>
-<p>4. <strong>AI Recommendations</strong> - Actionable optimization advice tailored to your stack</p>
-
-<p>---</p>
-
-<h2>What Makes This Different</h2>
-
-<h3>The Problem with Generic Recommendations</h3>
-
-<p>"Reduce JavaScript execution time" is useless advice if you don't know:</p>
 <ul>
-<li>Are they using React, Vue, or vanilla JS?</li>
-<li>Is the site on WordPress with heavy plugins?</li>
-<li>Are they using a CDN?</li>
-<li>What analytics/tracking scripts are loading?</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h3>Stack-Aware Recommendations</h3>
-
-<p>This actor detects 50+ technologies and provides recommendations that actually make sense:</p>
-
-
-<p>---</p>
-
-<h2>Use Cases</h2>
-
-<h3>1. Client Onboarding Audits</h3>
-<p>Run a comprehensive performance audit in minutes instead of hours. Get a complete picture of their site's performance, tech stack, and prioritized recommendations.</p>
-
-<h3>2. Competitor Analysis</h3>
-<p>Compare performance metrics and tech stacks across multiple competitors. Identify what high-performing competitors are doing differently.</p>
-
-<h3>3. Performance Optimization Projects</h3>
-<p>Get a prioritized list of issues with estimated impact, specific to their technology stack.</p>
-
-<h3>4. Pre/Post Optimization Reports</h3>
-<p>Document before and after metrics to show the ROI of performance work.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Full Analysis</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"strategy": "both",</p>
-<p>"includePageSpeedInsights": true,</p>
-<p>"includeLighthouse": true,</p>
-<p>"includeTechStack": true,</p>
-<p>"includeAIRecommendations": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Tech Stack Only</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"includeTechStack": true,</p>
-<p>"includePageSpeedInsights": false,</p>
-<p>"includeLighthouse": false</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Batch Competitor Analysis</h3>
-
-<pre><code>{
-<p>"urls": [</p>
-<p>"https://yoursite.com",</p>
-<p>"https://competitor1.com",</p>
-<p>"https://competitor2.com"</p>
-<p>],</p>
-<p>"strategy": "mobile"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: With Webhook</h3>
-
-<pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 5: Demo Mode (Free Testing)</h3>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free, no API calls) |
+| <code>url</code> | string | No<em> | - | Single URL to analyze |
+| <code>urls</code> | array | No</em> | - | Array of URLs to analyze |
+| <code>strategy</code> | string | No | "both" | "mobile", "desktop", or "both" |
+| <code>includePageSpeedInsights</code> | boolean | No | true | Get CrUX real-user data |
+| <code>includeLighthouse</code> | boolean | No | true | Run detailed Lighthouse audits |
+| <code>includeTechStack</code> | boolean | No | true | Detect technologies used |
+| <code>includeAIRecommendations</code> | boolean | No | true | Generate AI optimization advice |
+| <code>pageSpeedApiKey</code> | string | No | - | Google PageSpeed API key |
+| <code>anthropicApiKey</code> | string | No | - | For AI recommendations (optional) |
+| <code>webhookUrl</code> | string | No | - | Webhook URL for integrations |</p>
 
 <p>*Either <code>url</code> or <code>urls</code> is required (unless using <code>demoMode</code>)</p>
 
@@ -588,229 +521,113 @@ AI Recommendations - Actionable advice tailored to your stack</p>
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
-<p>"overallScore": 78,</p>
+  "url": "https://example.com",
+  "timestamp": "2024-12-25T12:00:00.000Z",
+  "overallScore": 78,
 
-<p>"pageSpeedInsights": {</p>
-<p>"mobile": {</p>
-<p>"performanceScore": 72,</p>
-<p>"hasFieldData": true,</p>
-<p>"coreWebVitals": {</p>
-<p>"lcp": { "value": 2.8, "rating": "needs-improvement" },</p>
-<p>"fid": { "value": 45, "rating": "good" },</p>
-<p>"cls": { "value": 0.15, "rating": "needs-improvement" }</p>
-<p>}</p>
-<p>},</p>
-<p>"desktop": {</p>
-<p>"performanceScore": 89,</p>
-<p>"hasFieldData": true,</p>
-<p>"coreWebVitals": {</p>
-<p>"lcp": { "value": 1.2, "rating": "good" },</p>
-<p>"fid": { "value": 12, "rating": "good" },</p>
-<p>"cls": { "value": 0.02, "rating": "good" }</p>
-<p>}</p>
-<p>}</p>
-<p>},</p>
+<p>"pageSpeedInsights": {
+    "mobile": {
+      "performanceScore": 72,
+      "hasFieldData": true,
+      "coreWebVitals": {
+        "lcp": { "value": 2.8, "rating": "needs-improvement" },
+        "fid": { "value": 45, "rating": "good" },
+        "cls": { "value": 0.15, "rating": "needs-improvement" }
+      }
+    },
+    "desktop": {
+      "performanceScore": 89,
+      "hasFieldData": true,
+      "coreWebVitals": {
+        "lcp": { "value": 1.2, "rating": "good" },
+        "fid": { "value": 12, "rating": "good" },
+        "cls": { "value": 0.02, "rating": "good" }
+      }
+    }
+  },</p>
 
-<p>"lighthouse": {</p>
-<p>"performance": 72,</p>
-<p>"accessibility": 85,</p>
-<p>"bestPractices": 92,</p>
-<p>"seo": 98,</p>
-<p>"opportunities": [</p>
-<p>{</p>
-<p>"id": "render-blocking-resources",</p>
-<p>"title": "Eliminate render-blocking resources",</p>
-<p>"potentialSavings": "1,450ms"</p>
-<p>}</p>
-<p>],</p>
-<p>"diagnostics": [...]</p>
-<p>},</p>
+<p>"lighthouse": {
+    "performance": 72,
+    "accessibility": 85,
+    "bestPractices": 92,
+    "seo": 98,
+    "opportunities": [
+      {
+        "id": "render-blocking-resources",
+        "title": "Eliminate render-blocking resources",
+        "potentialSavings": "1,450ms"
+      }
+    ],
+    "diagnostics": [...]
+  },</p>
 
-<p>"techStack": {</p>
-<p>"cms": "WordPress 6.4",</p>
-<p>"ecommerce": "WooCommerce 8.3",</p>
-<p>"framework": null,</p>
-<p>"analytics": ["Google Analytics 4", "Meta Pixel", "Hotjar"],</p>
-<p>"cdn": "Cloudflare",</p>
-<p>"hosting": "WP Engine",</p>
-<p>"security": ["Cloudflare WAF", "SSL"],</p>
-<p>"marketing": ["HubSpot", "Mailchimp"],</p>
-<p>"other": ["Google Tag Manager", "reCAPTCHA"]</p>
-<p>},</p>
+<p>"techStack": {
+    "cms": "WordPress 6.4",
+    "ecommerce": "WooCommerce 8.3",
+    "framework": null,
+    "analytics": ["Google Analytics 4", "Meta Pixel", "Hotjar"],
+    "cdn": "Cloudflare",
+    "hosting": "WP Engine",
+    "security": ["Cloudflare WAF", "SSL"],
+    "marketing": ["HubSpot", "Mailchimp"],
+    "other": ["Google Tag Manager", "reCAPTCHA"]
+  },</p>
 
-<p>"recommendations": [</p>
-<p>{</p>
-<p>"priority": 1,</p>
-<p>"category": "performance",</p>
-<p>"issue": "Large Contentful Paint is slow on mobile (2.8s)",</p>
-<p>"recommendation": "For WordPress + WooCommerce: Enable LiteSpeed Cache or WP Rocket with preload feature. Consider implementing Cloudflare APO for full-page edge caching.",</p>
-<p>"estimatedImpact": "high",</p>
-<p>"difficulty": "medium"</p>
-<p>},</p>
-<p>{</p>
-<p>"priority": 2,</p>
-<p>"category": "performance",</p>
-<p>"issue": "Multiple analytics scripts blocking render",</p>
-<p>"recommendation": "Move GA4, Meta Pixel, and Hotjar to Google Tag Manager with delayed loading. Use GTM's trigger on 'DOM Ready' or 'Window Loaded' instead of 'Page View'.",</p>
-<p>"estimatedImpact": "medium",</p>
-<p>"difficulty": "low"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Tech Stack Detection</h2>
-
-<p>This actor detects 50+ technologies across these categories:</p>
-
-
-<p>---</p>
-
-<h2>AI Recommendations</h2>
-
-<p>When <code>includeAIRecommendations</code> is enabled (default), the actor generates:</p>
-
-<p>1. <strong>Prioritized Action Items</strong> - Ranked by impact and difficulty</p>
-<p>2. <strong>Stack-Specific Advice</strong> - Recommendations that work with your tech</p>
-<p>3. <strong>Quick Wins</strong> - Low-effort, high-impact changes</p>
-<p>4. <strong>Strategic Improvements</strong> - Larger projects worth planning</p>
-
-<h3>Without Anthropic API Key</h3>
-<p>Uses rule-based recommendations based on detected tech stack.</p>
-
-<h3>With Anthropic API Key</h3>
-<p>Uses Claude to generate more nuanced, context-aware recommendations.</p>
-
-<p>---</p>
-
-<h2>Webhook Integration</h2>
-
-<h3>Webhook Payload</h3>
-
-<pre><code>{
-<p>"event": "analysis_complete",</p>
-<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
-<p>"actor": "pagespeed-intelligence",</p>
-<p>"runId": "abc123",</p>
-<p>"status": "success",</p>
-<p>"summary": {</p>
-<p>"urlsAnalyzed": 3,</p>
-<p>"avgPerformanceScore": 76,</p>
-<p>"criticalIssues": 4,</p>
-<p>"recommendations": 12</p>
-<p>},</p>
-<p>"results": [...]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Integration Examples</h3>
-
-<strong>Zapier</strong>: Send results to Google Sheets, notify Slack on critical issues
-<strong>Make</strong>: Build complex workflows with conditional actions
-<strong>n8n</strong>: Self-hosted automation with full control
-
-<p>---</p>
-
-<h2>API Usage</h2>
-
-<h3>Using the Apify API</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/pagespeed-intelligence').call({</p>
-<p>url: 'https://example.com',</p>
-<p>strategy: 'both',</p>
-<p>includeAIRecommendations: true</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0].recommendations);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~pagespeed-intelligence/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"url": "https://example.com",</p>
-<p>"strategy": "mobile",</p>
-<p>"includeAIRecommendations": true</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>SEO Agencies</h3>
-<ul>
-<li>Client onboarding audits in minutes</li>
-<li>Monthly performance reporting</li>
-<li>Competitor analysis with tech stack comparison</li>
-</ul>
-
-<h3>Web Developers</h3>
-<ul>
-<li>Pre-launch performance checks</li>
-<li>Optimization project planning</li>
-<li>Stack-aware debugging</li>
-</ul>
-
-<h3>Marketing Teams</h3>
-<ul>
-<li>Landing page performance optimization</li>
-<li>A/B test impact analysis</li>
-<li>Tracking script audit</li>
-</ul>
+<p>"recommendations": [
+    {
+      "priority": 1,
+      "category": "performance",
+      "issue": "Large Contentful Paint is slow on mobile (2.8s)",
+      "recommendation": "For WordPress + WooCommerce: Enable LiteSpeed Cache or WP Rocket with preload feature. Consider implementing Cloudflare APO for full-page edge caching.",
+      "estimatedImpact": "high",
+      "difficulty": "medium"
+    },
+    {
+      "priority": 2,
+      "category": "performance",
+      "issue": "Multiple analytics scripts blocking render",
+      "recommendation": "Move GA4, Meta Pixel, and Hotjar to Google Tag Manager with delayed loading. Use GTM's trigger on 'DOM Ready' or 'Window Loaded' instead of 'Page View'.",
+      "estimatedImpact": "medium",
+      "difficulty": "low"
+    }
+  ]
+}
+</code></pre></p>
 
 <p>---</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
 <li><strong>Demo Mode</strong>: Free (sample data, no API calls)</li>
 <li><strong>Standard Usage</strong>: Apify compute units only</li>
-<li><strong>With API Keys</strong>: Higher rate limits, enhanced AI recommendations</li>
+<li><strong>With API Keys</strong>: Higher rate limits, enhanced AI recommendations</li></p>
+
 </ul>
+---
+
+<h2>Use Cases</h2>
+
+<h3>1. Client Onboarding Audits</h3>
+Run a comprehensive performance audit in minutes instead of hours. Get a complete picture of their site's performance, tech stack, and prioritized recommendations.
+
+<h3>2. Competitor Analysis</h3>
+Compare performance metrics and tech stacks across multiple competitors. Identify what high-performing competitors are doing differently.
+
+<h3>3. Performance Optimization Projects</h3>
+Get a prioritized list of issues with estimated impact, specific to their technology stack.
+
+<h3>4. Pre/Post Optimization Reports</h3>
+Document before and after metrics to show the ROI of performance work.
 
 <p>---</p>
 
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>CrUX Data</strong>: Requires sufficient traffic (may not be available for new sites)</li>
-<li><strong>Tech Detection</strong>: Some obfuscated or custom technologies may not be detected</li>
-<li><strong>AI Recommendations</strong>: Quality depends on Anthropic API availability</li>
-</ul>
-
 <p>---</p>
 
-<h2>Related Actors</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<ul>
-<li><strong>PageSpeed Insights</strong> - Simpler, PSI-only version without tech stack or AI</li>
-<li><strong>Google Lighthouse Checker</strong> - Detailed Lighthouse audits with custom configs</li>
-<li><strong>Tech Stack Scraper</strong> - Standalone tech stack detection</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>pagespeed insights, lighthouse audit, core web vitals, tech stack detection, website performance, seo audit, web performance optimization, crux data, chrome ux report, lcp optimization, ai recommendations, wordpress performance, shopify speed, react optimization, next.js performance</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -824,7 +641,7 @@ AI Recommendations - Actionable advice tailored to your stack</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

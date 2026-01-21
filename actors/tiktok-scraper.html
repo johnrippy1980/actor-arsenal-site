@@ -456,208 +456,134 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>TikTok Creator &amp; Video Scraper</h1>
-<strong>&quot;Extract 25+ Data Points Per Creator. Engagement Analytics Built-In. Influencer Research Made Easy.&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<strong>Enterprise-grade TikTok scraper</strong> that extracts 25+ data points per creator with built-in engagement analytics and video performance metrics. Perfect for <strong>influencer marketing, competitor analysis, and trend research</strong>.
-<h2>Why TikTok Data is Valuable</h2>
-<p>TikTok is the fastest-growing social platform with unmatched engagement:</p>
-<ul><li><strong>1B+ Active Users</strong>: Massive reach for brand partnerships</li>
-<li><strong>Highest Engagement</strong>: 5-10x higher than Instagram/YouTube</li>
-<li><strong>Viral Potential</strong>: Content discovery algorithm drives massive reach</li>
-<li><strong>Gen Z Dominance</strong>: #1 platform for 18-34 demographics</li>
-<li><strong>E-commerce Integration</strong>: TikTok Shop driving real conversions</li>
+            <p>Scrape TikTok profiles, videos, and hashtags. Extract follower counts, engagement metrics, video stats, and creator data for influencer research and competitive analysis. Built by John Rippy (https://johnrippy.link/).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Extracts data from web pages</li>
+<li>Handles pagination automatically</li>
+<li>Exports data to JSON/CSV</li>
+<li>Built-in proxy support</li>
+<li>Pay-per-result billing</li>
+
 </ul>
-<h2>Key Features</h2>
-<h3>📊 25+ Data Points Per Creator</h3>
-<ul><li>Username, nickname, bio, avatar</li>
-<li>Follower/following/likes counts</li>
-<li>Video count &amp; account verification status</li>
-<li>Average views, likes, comments, shares per video</li>
-<li><strong>Engagement rate calculation</strong> (true performance metric)</li>
-<li>Email extraction from bio (influencer outreach)</li>
-<li>Recent video performance data</li>
-</ul>
-<h3>🎥 Video-Level Analytics</h3>
-<ul><li>View count, likes, comments, shares, saves</li>
-<li>Video duration &amp; hashtags used</li>
-<li>Sound/music attribution</li>
-<li>Thumbnail URLs for preview</li>
-<li>Ad detection (sponsored content flagging)</li>
-<li>Individual video engagement rates</li>
-</ul>
-<h3>🔍 Multiple Scrape Modes</h3>
-<p>| Mode | Description |</p>
-<p>|------|-------------|</p>
-<p>| <strong>Profiles</strong> | Scrape specific creator profiles with all metrics |</p>
-<p>| <strong>Hashtags</strong> | Find trending videos under specific hashtags |</p>
-<p>| <strong>Sounds</strong> | Discover creators using specific sounds/music |</p>
-<p>| <strong>Search</strong> | Search for creators by keyword or niche |</p>
-<h3>⚡ Built-In Filtering</h3>
-<ul><li><strong>Minimum Followers</strong>: Filter out small accounts</li>
-<li><strong>Minimum Views</strong>: Focus on viral content only</li>
-<li><strong>Sort Options</strong>: By followers, likes, views, engagement, recency</li>
-<li><strong>Verified Filter</strong>: Target only verified creators</li>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>scrapeType</code> | string | Mode: profiles, hashtags, sounds, search |
+| <code>usernames</code> | array | TikTok usernames to scrape (without @) |
+| <code>hashtags</code> | array | Hashtags to find videos (without #) |
+| <code>searchQueries</code> | array | Search terms for creators or videos |
+| <code>sounds</code> | array | TikTok sound/music IDs |
+| <code>includeVideos</code> | boolean | Include recent videos (default: true) |
+| <code>videosPerProfile</code> | number | Videos per creator (default: 12, max: 100) |
+| <code>maxResults</code> | number | Maximum results (default: 50, max: 500) |
+| <code>minFollowers</code> | number | Minimum follower threshold |
+| <code>minViews</code> | number | Minimum video views threshold |
+| <code>sortBy</code> | string | Sort: followers, likes, views, engagement, recent |
+| <code>proxyConfiguration</code> | object | Residential proxy required for TikTok |
+| <code>demoMode</code> | boolean | Test with sample data |</p>
+
+<h2>Output Format</h2>
+
+<h3>Creator Profile Output</h3>
+
+<pre><code>{
+  "username": "charlidamelio",
+  "nickname": "Charli D'Amelio",
+  "bio": "dancer | exclusive content on instagram",
+  "profileUrl": "https://tiktok.com/@charlidamelio",
+  "avatarUrl": "https://p16-sign.tiktokcdn-us.com/...",
+  "followers": 155000000,
+  "following": 1200,
+  "likes": 11800000000,
+  "videoCount": 2847,
+  "verified": true,
+  "privateAccount": false,
+  "avgViews": 45000000,
+  "avgLikes": 3500000,
+  "avgComments": 45000,
+  "avgShares": 120000,
+  "engagementRate": 8.12,
+  "recentVideos": [
+    {
+      "id": "7312456789012345678",
+      "url": "https://tiktok.com/@charlidamelio/video/7312456789012345678",
+      "description": "new dance 💃 #fyp #dance #viral",
+      "createTime": "2024-12-15T18:30:00.000Z",
+      "duration": 32,
+      "views": 52000000,
+      "likes": 4200000,
+      "comments": 52000,
+      "shares": 145000,
+      "saves": 890000,
+      "hashtags": ["fyp", "dance", "viral"],
+      "mentions": [],
+      "soundName": "Original Sound - Charli",
+      "isAd": false,
+      "engagementRate": 8.42
+    }
+  ],
+  "scrapedAt": "2024-12-21T10:30:00.000Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>profile_scraped</code> | Per creator profile | $0.05 |
+| <code>video_scraped</code> | Per video extracted | $0.002 |</p>
+
+<strong>Example costs:</strong>
+<ul>
+<li>50 creators with 12 videos each: $0.10 + (50 × $0.05) + (600 × $0.002) = <strong>$3.80</strong></li>
+<li>100 creators, no videos: $0.10 + (100 × $0.05) = <strong>$5.10</strong></li>
+
 </ul>
 <h2>Use Cases</h2>
-<ul><li><strong>Influencer Discovery</strong>: Find creators in your niche by engagement, not just follower count</li>
+
+<ul>
+<li><strong>Influencer Discovery</strong>: Find creators in your niche by engagement, not just follower count</li>
 <li><strong>Competitive Analysis</strong>: Track competitor brand mentions and influencer partnerships</li>
 <li><strong>Trend Research</strong>: Identify trending hashtags, sounds, and content formats</li>
 <li><strong>Talent Scouting</strong>: Discover rising creators before they blow up</li>
 <li><strong>Market Research</strong>: Analyze audience demographics and content preferences</li>
 <li><strong>Brand Safety</strong>: Vet influencer content before partnerships</li>
+
 </ul>
-<h2>Input Parameters</h2>
-<p>| Parameter | Type | Description |</p>
-<p>|-----------|------|-------------|</p>
-<p>| <code>scrapeType</code> | string | Mode: profiles, hashtags, sounds, search |</p>
-<p>| <code>usernames</code> | array | TikTok usernames to scrape (without @) |</p>
-<p>| <code>hashtags</code> | array | Hashtags to find videos (without #) |</p>
-<p>| <code>searchQueries</code> | array | Search terms for creators or videos |</p>
-<p>| <code>sounds</code> | array | TikTok sound/music IDs |</p>
-<p>| <code>includeVideos</code> | boolean | Include recent videos (default: true) |</p>
-<p>| <code>videosPerProfile</code> | number | Videos per creator (default: 12, max: 100) |</p>
-<p>| <code>maxResults</code> | number | Maximum results (default: 50, max: 500) |</p>
-<p>| <code>minFollowers</code> | number | Minimum follower threshold |</p>
-<p>| <code>minViews</code> | number | Minimum video views threshold |</p>
-<p>| <code>sortBy</code> | string | Sort: followers, likes, views, engagement, recent |</p>
-<p>| <code>proxyConfiguration</code> | object | Residential proxy required for TikTok |</p>
-<p>| <code>demoMode</code> | boolean | Test with sample data |</p>
-<h2>Output</h2>
-<h3>Creator Profile Output</h3>
-<pre><code>{
-<p>&quot;username&quot;: &quot;charlidamelio&quot;,</p>
-<p>&quot;nickname&quot;: &quot;Charli D&#x27;Amelio&quot;,</p>
-<p>&quot;bio&quot;: &quot;dancer | exclusive content on instagram&quot;,</p>
-<p>&quot;profileUrl&quot;: &quot;https://tiktok.com/@charlidamelio&quot;,</p>
-<p>&quot;avatarUrl&quot;: &quot;https://p16-sign.tiktokcdn-us.com/...&quot;,</p>
-<p>&quot;followers&quot;: 155000000,</p>
-<p>&quot;following&quot;: 1200,</p>
-<p>&quot;likes&quot;: 11800000000,</p>
-<p>&quot;videoCount&quot;: 2847,</p>
-<p>&quot;verified&quot;: true,</p>
-<p>&quot;privateAccount&quot;: false,</p>
-<p>&quot;avgViews&quot;: 45000000,</p>
-<p>&quot;avgLikes&quot;: 3500000,</p>
-<p>&quot;avgComments&quot;: 45000,</p>
-<p>&quot;avgShares&quot;: 120000,</p>
-<p>&quot;engagementRate&quot;: 8.12,</p>
-<p>&quot;recentVideos&quot;: [</p>
-<p>{</p>
-<p>&quot;id&quot;: &quot;7312456789012345678&quot;,</p>
-<p>&quot;url&quot;: &quot;https://tiktok.com/@charlidamelio/video/7312456789012345678&quot;,</p>
-<p>&quot;description&quot;: &quot;new dance 💃 #fyp #dance #viral&quot;,</p>
-<p>&quot;createTime&quot;: &quot;2024-12-15T18:30:00.000Z&quot;,</p>
-<p>&quot;duration&quot;: 32,</p>
-<p>&quot;views&quot;: 52000000,</p>
-<p>&quot;likes&quot;: 4200000,</p>
-<p>&quot;comments&quot;: 52000,</p>
-<p>&quot;shares&quot;: 145000,</p>
-<p>&quot;saves&quot;: 890000,</p>
-<p>&quot;hashtags&quot;: [&quot;fyp&quot;, &quot;dance&quot;, &quot;viral&quot;],</p>
-<p>&quot;mentions&quot;: [],</p>
-<p>&quot;soundName&quot;: &quot;Original Sound - Charli&quot;,</p>
-<p>&quot;isAd&quot;: false,</p>
-<p>&quot;engagementRate&quot;: 8.42</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;scrapedAt&quot;: &quot;2024-12-21T10:30:00.000Z&quot;</p>
-<p>}</p>
-</code></pre>
-<h2>Example Usage</h2>
-<h3>Scrape Multiple Creators</h3>
-<pre><code>{
-<p>&quot;scrapeType&quot;: &quot;profiles&quot;,</p>
-<p>&quot;usernames&quot;: [&quot;charlidamelio&quot;, &quot;khaby.lame&quot;, &quot;bellapoarch&quot;],</p>
-<p>&quot;includeVideos&quot;: true,</p>
-<p>&quot;videosPerProfile&quot;: 20</p>
-<p>}</p>
-</code></pre>
-<h3>Find Fitness Influencers</h3>
-<pre><code>{
-<p>&quot;scrapeType&quot;: &quot;search&quot;,</p>
-<p>&quot;searchQueries&quot;: [&quot;fitness trainer&quot;, &quot;workout motivation&quot;],</p>
-<p>&quot;minFollowers&quot;: 100000,</p>
-<p>&quot;sortBy&quot;: &quot;engagement&quot;,</p>
-<p>&quot;maxResults&quot;: 50</p>
-<p>}</p>
-</code></pre>
-<h3>Scrape Trending Hashtag</h3>
-<pre><code>{
-<p>&quot;scrapeType&quot;: &quot;hashtags&quot;,</p>
-<p>&quot;hashtags&quot;: [&quot;smallbusiness&quot;, &quot;entrepreneur&quot;],</p>
-<p>&quot;minViews&quot;: 100000,</p>
-<p>&quot;maxResults&quot;: 100</p>
-<p>}</p>
-</code></pre>
-<h3>Find Creators Using Trending Sound</h3>
-<pre><code>{
-<p>&quot;scrapeType&quot;: &quot;sounds&quot;,</p>
-<p>&quot;sounds&quot;: [&quot;7123456789012345678&quot;],</p>
-<p>&quot;sortBy&quot;: &quot;views&quot;,</p>
-<p>&quot;maxResults&quot;: 50</p>
-<p>}</p>
-</code></pre>
-<h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
-<p>| Event | Description | Price |</p>
-<p>|-------|-------------|-------|</p>
-<p>| <code>apify-actor-start</code> | Base cost per run | $0.10 |</p>
-<p>| <code>profile_scraped</code> | Per creator profile | $0.05 |</p>
-<p>| <code>video_scraped</code> | Per video extracted | $0.002 |</p>
-<strong>Example costs:</strong>
-<ul><li>50 creators with 12 videos each: $0.10 + (50 × $0.05) + (600 × $0.002) = <strong>$3.80</strong></li>
-<li>100 creators, no videos: $0.10 + (100 × $0.05) = <strong>$5.10</strong></li>
-</ul>
-<h2>Proxy Requirements</h2>
-<p>TikTok requires <strong>residential proxies</strong> for reliable scraping:</p>
-<ul><li>Datacenter proxies will be blocked</li>
-<li>Apify residential proxy recommended</li>
-<li>Automatic rotation handled internally</li>
-</ul>
-<h2>Rate Limiting &amp; Best Practices</h2>
-<ul><li>Built-in delays to respect TikTok&#x27;s servers</li>
-<li>Fingerprint rotation for browser sessions</li>
-<li>Maximum 500 profiles per run</li>
-<li>Video limits per profile to prevent excessive requests</li>
-</ul>
-<h2>Engagement Rate Formula</h2>
-<p>Engagement Rate is calculated as:</p>
-<pre><code>((Likes + Comments + Shares) / Views) × 100
-</code></pre>
-<p>TikTok benchmark engagement rates:</p>
-<p>| Tier | Followers | Typical ER |</p>
-<p>|------|-----------|------------|</p>
-<p>| Nano | 1K-10K | 8-15% |</p>
-<p>| Micro | 10K-100K | 5-10% |</p>
-<p>| Mid | 100K-500K | 4-7% |</p>
-<p>| Macro | 500K-1M | 3-5% |</p>
-<p>| Mega | 1M+ | 2-4% |</p>
-<h2>Integration</h2>
-<p>Export data to:</p>
-<ul><li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>Airtable</li>
-<li>CRM systems (via webhook)</li>
-<li>Databases (via Apify API)</li>
-</ul>
-<h2>Legal Considerations</h2>
-<ul><li>Use data for legitimate business purposes</li>
-<li>Comply with TikTok Terms of Service</li>
-<li>Do not use for spam or harassment</li>
-<li>Respect creator privacy and content rights</li>
-</ul>
-<h2>Support</h2>
-<p>For issues or feature requests, contact support.</p>
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<h2>Keywords</h2>
-<p>tiktok scraper, tiktok api, tiktok influencer data, tiktok analytics, tiktok creator scraper, tiktok video scraper, influencer marketing, social media scraping, tiktok engagement rate</p>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -671,7 +597,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

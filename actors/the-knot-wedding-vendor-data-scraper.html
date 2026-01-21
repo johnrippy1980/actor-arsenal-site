@@ -232,9 +232,62 @@
         .hud-ammo { color: #ffcc00; }
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
+        .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -244,6 +297,7 @@
                 <a href="../api-docs.html">API Docs</a>
                 <a href="../faq.html">FAQ</a>
                 <a href="../partners.html">Weapons Locker</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
                 <a href="https://apify.com/alizarin_refrigerator-owner/the-knot-wedding-vendor-data-scraper?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
@@ -267,32 +321,202 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>The Knot Wedding Vendor Data Scraper</h1>
-
-<p>The Knot Wedding Vendor Data Scraper - Apify actor for web scraping, data extraction, and automation. Built by John Rippy.</p>
+            <p>Scrape wedding vendor listings from The Knot - photographers, venues, caterers, florists, DJs, and more with reviews, pricing, and contact info.</p>
 
 <h2>Features</h2>
-<ul>
-<li><strong>Easy to Use</strong> - Simple input configuration</li>
-<li><strong>Reliable</strong> - Built on the Apify platform</li>
-<li><strong>Scalable</strong> - Handles large datasets</li>
-<li><strong>API Access</strong> - Integrate with your workflows</li>
-</ul>
 
+<h3>18 Vendor Categories</h3>
+
+<p>| Category | Description |
+|----------|-------------|
+| <code>wedding-photographers</code> | Wedding and engagement photography |
+| <code>wedding-venues</code> | Ceremony and reception venues |
+| <code>wedding-videographers</code> | Wedding films and cinematography |
+| <code>wedding-florists</code> | Floral design and arrangements |
+| <code>wedding-caterers</code> | Food and beverage service |
+| <code>wedding-djs</code> | Music and entertainment |
+| <code>wedding-bands</code> | Live bands and musicians |
+| <code>wedding-planners</code> | Full and partial planning services |
+| <code>wedding-cakes</code> | Cakes and desserts |
+| <code>bridal-salons</code> | Wedding dresses and bridal wear |
+| <code>wedding-hair-makeup</code> | Beauty services |
+| <code>wedding-invitations</code> | Stationery and invitations |
+| <code>wedding-rentals</code> | Tables, chairs, linens |
+| <code>wedding-transportation</code> | Limos, shuttles, vintage cars |
+| <code>wedding-officiants</code> | Ministers, officiants, celebrants |
+| <code>wedding-jewelers</code> | Rings and jewelry |
+| <code>photo-booths</code> | Photo booth rentals |
+| <code>wedding-decor</code> | Decor and lighting |</p>
+
+<h3>Complete Vendor Profiles</h3>
+
+<p>Each vendor includes:
+<ul>
+<li>Business name and description</li>
+<li>Full address and location</li>
+<li>Phone, email, and website</li>
+<li>Average rating and review count</li>
+<li>Price range ($ to $$$$)</li>
+<li>Services offered</li>
+<li>Awards (Best of Weddings, Hall of Fame)</li>
+<li>Social media links</li>
+<li>Gallery images</li></p>
+
+</ul>
+<h3>Optional Review Scraping</h3>
+
+<p>Enable <code>includeReviews: true</code> to extract individual customer reviews with:
+<ul>
+<li>Author name</li>
+<li>Rating (1-5 stars)</li>
+<li>Review date</li>
+<li>Wedding date</li>
+<li>Full review text</li>
+<li>Verified status</li></p>
+
+</ul>
+---
+
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>location</code> | string | Yes | City and state (e.g., "Austin, TX") |
+| <code>categories</code> | array | No | Vendor categories to scrape |
+| <code>maxResults</code> | integer | No | Max vendors per category (default: 50) |
+| <code>includeReviews</code> | boolean | No | Scrape individual reviews |
+| <code>maxReviewsPerVendor</code> | integer | No | Max reviews per vendor (default: 10) |
+| <code>demoMode</code> | boolean | No | Use sample data (default: true) |</p>
+
+<p>---</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "name": "Elegant Moments Photography",
+  "category": "wedding-photographers",
+  "subcategory": "Photography",
+  "location": "Austin, TX",
+  "city": "Austin",
+  "state": "TX",
+  "address": "123 Main St, Austin, TX 78701",
+  "rating": 4.9,
+  "reviewCount": 287,
+  "priceRange": "$$$",
+  "priceLevel": 3,
+  "phone": "(512) 555-0123",
+  "email": "info@elegantmoments.com",
+  "website": "https://elegantmoments.com",
+  "theKnotUrl": "https://www.theknot.com/marketplace/elegant-moments-photography-austin-tx",
+  "description": "Award-winning wedding photography capturing your special moments...",
+  "services": [
+    "Engagement Sessions",
+    "Full Day Coverage",
+    "Second Photographer",
+    "Drone Photography",
+    "Photo Albums"
+  ],
+  "images": [
+    "https://media-api.theknot.com/images/...",
+    "https://media-api.theknot.com/images/..."
+  ],
+  "awards": [
+    "The Knot Best of Weddings 2024",
+    "The Knot Best of Weddings 2023"
+  ],
+  "reviews": [
+    {
+      "author": "Sarah M.",
+      "rating": 5,
+      "date": "2024-10-15",
+      "title": "Absolutely Stunning Photos!",
+      "text": "They captured every special moment perfectly...",
+      "weddingDate": "2024-09-28",
+      "verified": true
+    }
+  ],
+  "socialMedia": {
+    "instagram": "https://instagram.com/elegantmoments",
+    "facebook": "https://facebook.com/elegantmoments",
+    "pinterest": "https://pinterest.com/elegantmoments"
+  },
+  "scrapedAt": "2025-01-14T12:00:00.000Z"
+}
+</code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
 <h2>Use Cases</h2>
+
+<h3>Wedding Planning Apps</h3>
+
+<p>Build a wedding vendor directory with real data. Let couples search, filter, and compare vendors by location, category, price, and rating.</p>
+
+<h3>Market Research</h3>
+
+<p>Analyze the wedding vendor market in any city:
 <ul>
-<li>Data extraction and analysis</li>
-<li>Automation workflows</li>
-<li>Business intelligence</li>
-<li>Research and monitoring</li>
+<li>Average pricing by category</li>
+<li>Competition density</li>
+<li>Rating distributions</li>
+<li>Popular services</li></p>
+
 </ul>
+<h3>Lead Generation</h3>
 
-<p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong></p>
+<p>Identify wedding vendors for B2B sales:
+<ul>
+<li>Vendors without websites</li>
+<li>Low-rated vendors (opportunity for improvement services)</li>
+<li>New vendors without reviews</li>
+<li>Vendors missing social media presence</li></p>
 
-<h2>Keywords</h2>
-<p>the, knot, wedding, vendor, data, scraper, apify, web scraping, data extraction, automation</p>
+</ul>
+<h3>Competitive Analysis</h3>
+
+<p>Research competitors in your wedding vendor market:
+<ul>
+<li>Compare pricing strategies</li>
+<li>Analyze service offerings</li>
+<li>Track awards and recognition</li>
+<li>Monitor customer feedback</li></p>
+
+</ul>
+---
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -302,11 +526,11 @@
         </div>
     </footer>
 
-    <!-- DOOM HUD -->
+        <!-- DOOM HUD -->
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>
@@ -321,8 +545,14 @@
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor">ACTOR_COUNT</div>
+                <div class="hud-value hud-armor">323</div>
                 <div class="hud-label">ACTORS</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-stat">
+                <div class="hud-value hud-secrets">0/3</div>
+                <div class="hud-label">SECRETS</div>
             </div>
         </div>
     </div>

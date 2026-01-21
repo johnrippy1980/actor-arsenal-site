@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,165 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>NPI Registry - Healthcare Provider Search</h1>
-            <p>Apify actor for NPI Registry - Healthcare Provider Search</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Search the NPPES NPI Registry for healthcare providers, physicians, and organizations. Look up by NPI number, name, specialty, location, or organization. Perfect for healthcare marketing, provider verification, and medical data enrichment.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<h3>Provider Search</h3>
+<ul>
+<li><strong>Search Providers</strong> - Find individual healthcare providers by name, specialty, location</li>
+<li><strong>Lookup NPI</strong> - Get details for a specific NPI number</li>
+<li><strong>Search Organizations</strong> - Find healthcare organizations, hospitals, clinics</li>
+<li><strong>Search by Specialty</strong> - Find providers by taxonomy/specialty</li>
+<li><strong>Search by Location</strong> - Find providers in a specific city, state, or ZIP</li>
+<li><strong>Batch Lookup</strong> - Look up multiple NPI numbers at once</li>
+
+</ul>
+<h3>Data Available</h3>
+<ul>
+<li>Provider name and credentials</li>
+<li>Practice address and phone</li>
+<li>Mailing address</li>
+<li>Taxonomy codes (specialties)</li>
+<li>License information</li>
+<li>Authorized official (for organizations)</li>
+<li>Other identifiers</li>
+<li>Enumeration date</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| task | string | Yes | Operation to perform |
+| npiNumber | string | No | Exact 10-digit NPI number |
+| firstName | string | No | Provider first name |
+| lastName | string | No | Provider last name |
+| organizationName | string | No | Organization name |
+| taxonomyDescription | string | No | Specialty/taxonomy text |
+| city | string | No | City for location search |
+| state | string | No | Two-letter state code |
+| postalCode | string | No | ZIP code |
+| enumerationType | string | No | NPI-1 (individual) or NPI-2 (organization) |
+| npiNumbers | array | No | Array of NPIs for batch lookup |
+| limit | integer | No | Max results (default: 50, max: 200) |
+| skip | integer | No | Results to skip for pagination |
+| webhookUrl | string | No | URL to send results |
+| demoMode | boolean | No | Run with sample data (default: true) |</p>
+
+<h2>Output Format</h2>
+
+<p>Results are saved to the default dataset:</p>
+
+<h3>Provider Search Results</h3>
+<pre><code>{
+  "task": "search_providers",
+  "success": true,
+  "result_count": 15,
+  "providers": [
+    {
+      "number": 1234567890,
+      "enumeration_type": "NPI-1",
+      "basic": {
+        "first_name": "JOHN",
+        "last_name": "SMITH",
+        "credential": "MD",
+        "gender": "M",
+        "enumeration_date": "2007-05-23",
+        "last_updated": "2024-11-15",
+        "status": "A"
+      },
+      "addresses": [
+        {
+          "address_purpose": "LOCATION",
+          "address_1": "123 Medical Plaza",
+          "city": "Los Angeles",
+          "state": "CA",
+          "postal_code": "90210",
+          "telephone_number": "310-555-0100"
+        }
+      ],
+      "taxonomies": [
+        {
+          "code": "207R00000X",
+          "desc": "Internal Medicine",
+          "primary": true,
+          "state": "CA",
+          "license": "A123456"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:</p>
+
+<p>| Operation | Cost |
+|-----------|------|
+| Search providers | $0.02 |
+| Lookup NPI | $0.01 |
+| Search organizations | $0.02 |
+| Search by specialty | $0.02 |
+| Search by location | $0.02 |
+| Batch lookup (per NPI) | $0.01 |</p>
+
+<h2>Use Cases</h2>
+
+<h3>Healthcare Marketing</h3>
+<ul>
+<li>Build targeted provider lists</li>
+<li>Verify provider information</li>
+<li>Enrich CRM data with NPI details</li>
+
+</ul>
+<h3>Credentialing</h3>
+<ul>
+<li>Verify provider credentials</li>
+<li>Confirm NPI numbers</li>
+<li>Check specialty information</li>
+
+</ul>
+<h3>Healthcare Analytics</h3>
+<ul>
+<li>Analyze provider distribution</li>
+<li>Track specialty trends</li>
+<li>Geographic analysis</li>
+
+</ul>
+<h3>Referral Networks</h3>
+<ul>
+<li>Find specialists in an area</li>
+<li>Build referral databases</li>
+<li>Provider directory updates</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +493,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

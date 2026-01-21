@@ -231,9 +231,61 @@
         .hud-health { color: #ff3333; }
         .hud-armor { color: #00ff88; }
         .hud-secrets { color: #ff6600; }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -267,29 +319,151 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>ServiceTitan API HVAC, Plumbing &amp; Electrical Contractor Data</h1>
-            <p>Apify actor for ServiceTitan API HVAC, Plumbing &amp; Electrical Contractor Data</p>
-            
-            <h2>Features</h2>
-            <ul>
-                <li>Easy to use with simple input configuration</li>
-                <li>Fast and reliable data extraction</li>
-                <li>Supports demo mode for testing</li>
-                <li>Integrates with Apify platform tools</li>
-            </ul>
+            <p>Access ServiceTitan data for home services businesses. Get jobs, customers, invoices, technicians, estimates, dispatch, inventory, memberships, and marketing data. Perfect for HVAC, plumbing, electrical, and other trade contractors.</p>
 
-            <h2>Quick Start</h2>
-            <pre><code>{
-  "demoMode": true
-}</code></pre>
+<h2>Features</h2>
 
-            <h2>Support</h2>
-            <ul>
-                <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-                <li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-            </ul>
+<ul>
+<li><strong>Jobs & Dispatch</strong>: Job details, scheduling, dispatch board, technician assignments</li>
+<li><strong>CRM</strong>: Customers, locations, leads, bookings, contacts</li>
+<li><strong>Financials</strong>: Invoices, payments, estimates, pricebook</li>
+<li><strong>Workforce</strong>: Technicians, performance metrics, payroll</li>
+<li><strong>Operations</strong>: Inventory, equipment, service agreements</li>
+<li><strong>Marketing</strong>: Campaigns, calls, lead tracking</li>
+<li><strong>Memberships</strong>: Membership programs and service agreements</li>
+<li><strong>Demo Mode</strong>: Test with realistic sample data (no credentials required)</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<h3>Task Selection</h3>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>get_jobs</code> - Get jobs list</li>
+<li><code>get_job_details</code> - Get specific job details</li>
+<li><code>get_customers</code> - Get customers</li>
+<li><code>get_customer_details</code> - Get customer details</li>
+<li><code>get_locations</code> - Get service locations</li>
+<li><code>get_leads</code> - Get sales leads</li>
+<li><code>get_bookings</code> - Get bookings</li>
+<li><code>get_estimates</code> - Get estimates</li>
+<li><code>get_invoices</code> - Get invoices</li>
+<li><code>get_payments</code> - Get payments</li>
+<li><code>get_technicians</code> - Get technicians</li>
+<li><code>get_technician_performance</code> - Get tech performance</li>
+<li><code>get_dispatch_board</code> - Get dispatch board</li>
+<li><code>get_inventory</code> - Get inventory items</li>
+<li><code>get_equipment</code> - Get equipment records</li>
+<li><code>get_memberships</code> - Get memberships</li>
+<li><code>get_service_agreements</code> - Get service agreements</li>
+<li><code>get_marketing_campaigns</code> - Get campaigns</li>
+<li><code>get_calls</code> - Get call records</li>
+<li><code>get_payroll</code> - Get payroll data</li>
+
+</ul>
+<h3>Authentication</h3>
+<ul>
+<li><code>clientId</code>: OAuth Client ID</li>
+<li><code>clientSecret</code>: OAuth Client Secret</li>
+<li><code>appKey</code>: Application Key</li>
+<li><code>tenantId</code>: Tenant ID</li>
+<li><code>demoMode</code>: Run with sample data</li>
+
+</ul>
+<h3>Filters</h3>
+<ul>
+<li><code>jobId</code>: Specific job lookup</li>
+<li><code>customerId</code>: Filter by customer</li>
+<li><code>technicianId</code>: Filter by technician</li>
+<li><code>startDate</code> / <code>endDate</code>: Date range</li>
+<li><code>jobStatus</code>: Filter by status</li>
+<li><code>businessUnitId</code>: Filter by business unit</li>
+<li><code>campaignId</code>: Filter by campaign</li>
+
+</ul>
+<h3>Pagination</h3>
+<ul>
+<li><code>limit</code>: Max records (up to 500)</li>
+<li><code>offset</code>: Page offset</li>
+
+</ul>
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Jobs Query</strong>: $0.01 per query</li>
+<li><strong>Customer Lookup</strong>: $0.01 per lookup</li>
+<li><strong>Invoice Query</strong>: $0.01 per query</li>
+<li><strong>Technician Performance</strong>: $0.02 per query</li>
+<li><strong>Dispatch Board</strong>: $0.02 per query</li>
+<li><strong>Marketing Data</strong>: $0.01 per query</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<h3>HVAC Contractors</h3>
+<ul>
+<li>Track job completion rates and revenue</li>
+<li>Monitor technician performance and efficiency</li>
+<li>Analyze seasonal demand patterns</li>
+<li>Export customer data for marketing</li>
+
+</ul>
+<h3>Plumbing Companies</h3>
+<ul>
+<li>Manage service calls and dispatch</li>
+<li>Track inventory and parts usage</li>
+<li>Monitor invoice collection rates</li>
+<li>Analyze customer lifetime value</li>
+
+</ul>
+<h3>Electrical Contractors</h3>
+<ul>
+<li>Schedule and dispatch technicians</li>
+<li>Track estimates vs. completed jobs</li>
+<li>Monitor marketing campaign ROI</li>
+<li>Manage membership programs</li>
+
+</ul>
+<h3>Multi-Trade Operations</h3>
+<ul>
+<li>Unified reporting across business units</li>
+<li>Cross-sell analysis between services</li>
+<li>Capacity planning and forecasting</li>
+<li>Franchise performance comparison</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
             <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
@@ -305,7 +479,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo">149,000</div>
+                <div class="hud-value hud-ammo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

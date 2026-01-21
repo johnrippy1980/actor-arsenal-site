@@ -457,48 +457,120 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Manta Business Search Scraper</h1>
-
-<strong>"Manta Business Search Scraper"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Professional Manta.com Business Search Scraper extracts comprehensive business data from Manta. Automatically collects company profiles, contact info, ratings &amp; descriptions in structured JSON format.</p>
+            <p>Scrape Manta business directory for company profiles, contact info, and business details. Extract phone numbers, addresses, and company descriptions. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
-<ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
-</ul>
-
-<h2>Integration Support</h2>
+<h3>Multi-Mode Scraping</h3>
 
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
+<li><strong>Search Mode</strong>: Find businesses by keyword and location</li>
+<li><strong>Profile Mode</strong>: Extract detailed data from specific company pages</li>
+
 </ul>
+<h3>Data Extracted</h3>
 
-<h2>Author</h2>
+<p>| Field | Description |
+|-------|-------------|
+| Company Name | Official business name |
+| Industry/Category | Business classification |
+| Address | Full street address |
+| City, State, ZIP | Location details |
+| Phone Number | Primary contact number |
+| Website | Company website URL |
+| Description | Business description text |
+| Employee Count | Company size range |
+| Revenue | Estimated annual revenue |
+| Year Founded | Year business started |
+| SIC/NAICS Codes | Industry classification codes |
+| Hours of Operation | Business hours |
+| Social Links | Social media profile URLs |</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<h2>Quick Start</h2>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "companyName": "ABC Plumbing Services",
+  "industry": "Plumbing",
+  "address": "456 Oak Street",
+  "city": "Chicago",
+  "state": "IL",
+  "zip": "60601",
+  "phone": "(312) 555-1234",
+  "website": "https://abcplumbing.com",
+  "description": "Full-service residential and commercial plumbing...",
+  "employeeCount": "5-10",
+  "revenue": "$500K - $1M",
+  "yearFounded": 2008,
+  "sicCode": "1711",
+  "naicsCode": "238220",
+  "hours": "Mon-Fri 8AM-6PM",
+  "socialLinks": {
+    "facebook": "https://facebook.com/abcplumbing",
+    "linkedin": "https://linkedin.com/company/abcplumbing"
+  },
+  "mantaUrl": "https://www.manta.com/c/..."
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result pricing:
+<ul>
+<li>$0.002 per business listing extracted</li></p>
+
+</ul>
+<strong>Example</strong>: 500 business listings = $1.00
+
+<h2>Use Cases</h2>
+
+<h3>B2B Lead Generation</h3>
+Extract business lists by industry and location for sales prospecting.
+
+<h3>Local SEO Citation Audits</h3>
+Verify business NAP (Name, Address, Phone) consistency across directories.
+
+<h3>Market Research</h3>
+Analyze business density and industry distribution in target markets.
+
+<h3>Data Enrichment</h3>
+Add firmographic data to existing customer databases.
+
+<h3>Competitive Intelligence</h3>
+Research competitor presence and business details.
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>manta business search scraper, apify actor, web scraping, data extraction, automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +584,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

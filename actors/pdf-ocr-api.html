@@ -457,108 +457,49 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>PDF OCR API</h1>
+            <h1>PDF OCR API - Document Extraction</h1>
+            <p>Extract text from PDF files using OCR. Supports scanned documents, images, and multi-page PDFs. Returns structured text with page numbers and confidence scores. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>"Extract Text from Any PDF for Pennies"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Paying for Expensive OCR Services</h2>
-
-<strong>You're currently paying:</strong> Adobe Acrobat Pro ($22.99/mo), ABBYY FineReader ($199/year), Google Document AI ($1.50/1000 pages), Amazon Textract ($1.50/1000 pages).
-
-<strong>What if you could extract text for a fraction of the cost?</strong>
-
-<p>The <strong>PDF OCR API</strong> extracts text from any PDF - scanned documents, image-based PDFs, and multi-page files:</p>
+<h2>Features</h2>
 
 <ul>
-<li>Scanned document support (OCR)</li>
-<li>Multi-page processing (any length)</li>
-<li>14 language support (English, Spanish, French, German, Chinese, Japanese, and more)</li>
-<li>Table structure preservation</li>
-<li>Multiple output formats (text, JSON, Markdown)</li>
-<li>Confidence scores per page</li>
-<li>Page-by-page results</li>
+<li>Direct API integration</li>
+<li>Structured JSON output</li>
+<li>Error handling and retries</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<strong>Pay only for what you use.</strong> No monthly subscriptions. No minimum commitments.
-
-<p>---</p>
-
-<h2>Why Choose This Over Traditional OCR Services</h2>
-
-<h3>1. Pay-Per-Page, Not Per-Month</h3>
-
-<p>Traditional tools: $20-$200/month for your business.</p>
-
-<p>This actor: Pay per page processed. Process 100 pages for ~$5. Process 1,000 for ~$40.</p>
-
-<strong>Process 500 pages/month and still pay less than an Adobe subscription.</strong>
-
-<h3>2. Support for Any PDF</h3>
-
-<ul>
-<li><strong>Scanned PDFs</strong>: Image-based documents from scanners</li>
-<li><strong>Digital PDFs</strong>: Native text extraction (faster, more accurate)</li>
-<li><strong>Mixed PDFs</strong>: Pages with both text and images</li>
-<li><strong>Multi-page</strong>: No limit on document length</li>
-</ul>
-
-<h3>3. 14 Languages Supported</h3>
-
-
-<h3>4. Table Detection</h3>
-
-<p>Preserve table structure from scanned documents. Get rows and columns as structured data.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Extract Text from URL</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"pdfUrl": "https://example.com/document.pdf",</p>
-<p>"language": "eng",</p>
-<p>"outputFormat": "text"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Process Specific Pages</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"pdfUrl": "https://example.com/document.pdf",</p>
-<p>"pageRange": "1-5",</p>
-<p>"language": "eng",</p>
-<p>"detectTables": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: Multi-Language Document</h3>
-
-<pre><code>{
-<p>"pdfUrl": "https://example.com/document.pdf",</p>
-<p>"language": "spa",</p>
-<p>"outputFormat": "json"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: With Webhook</h3>
-
-<pre><code>{
-<p>"pdfUrl": "https://example.com/document.pdf",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/12345/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| <code>pdfUrl</code> | string | Yes<em> | URL of the PDF file to process |
+| <code>pdfBase64</code> | string | Yes</em> | Base64-encoded PDF (alternative to URL) |
+| <code>language</code> | string | No | OCR language hint (default: eng) |
+| <code>pageRange</code> | string | No | Pages to process (e.g., "1-5" or "1,3,5") |
+| <code>outputFormat</code> | string | No | Output format: text, json, markdown |
+| <code>detectTables</code> | boolean | No | Attempt to preserve table structure |
+| <code>webhookUrl</code> | string | No | Webhook URL for async results |
+| <code>demoMode</code> | boolean | No | Return sample output without processing |</p>
 
 <p>*Either <code>pdfUrl</code> or <code>pdfBase64</code> is required</p>
 
@@ -567,48 +508,43 @@
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"success": true,</p>
-<p>"fileName": "document.pdf",</p>
-<p>"totalPages": 5,</p>
-<p>"processedPages": 5,</p>
-<p>"language": "eng",</p>
-<p>"processingTime": 2.3,</p>
-<p>"pages": [</p>
-<p>{</p>
-<p>"pageNumber": 1,</p>
-<p>"text": "This is the extracted text from page 1...",</p>
-<p>"confidence": 95.2,</p>
-<p>"wordCount": 342,</p>
-<p>"hasImages": true,</p>
-<p>"tables": [</p>
-<p>{</p>
-<p>"rows": 5,</p>
-<p>"columns": 3,</p>
-<p>"data": [["Header1", "Header2", "Header3"], ...]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>],</p>
-<p>"fullText": "Complete document text concatenated...",</p>
-<p>"wordCount": 1250,</p>
-<p>"averageConfidence": 94.5</p>
-<p>}</p>
+  "success": true,
+  "fileName": "document.pdf",
+  "totalPages": 5,
+  "processedPages": 5,
+  "language": "eng",
+  "processingTime": 2.3,
+  "pages": [
+    {
+      "pageNumber": 1,
+      "text": "This is the extracted text from page 1...",
+      "confidence": 95.2,
+      "wordCount": 342,
+      "hasImages": true,
+      "tables": [
+        {
+          "rows": 5,
+          "columns": 3,
+          "data": [["Header1", "Header2", "Header3"], ...]
+        }
+      ]
+    }
+  ],
+  "fullText": "Complete document text concatenated...",
+  "wordCount": 1250,
+  "averageConfidence": 94.5
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Pay-Per-Event Pricing</h2>
+<h2>Pricing</h2>
 
-<strong>You only pay for what you use.</strong> No monthly fees. No minimums.
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-
-<h3>Cost Examples</h3>
-
-
-<strong>For low-to-medium volume, save compared to subscriptions. For high volume, competitive with cloud APIs.</strong>
-
-<p>---</p>
-
+</ul>
 <h2>Use Cases</h2>
 
 <h3>Document Digitization</h3>
@@ -616,160 +552,43 @@
 <li><strong>Archive processing</strong>: Make historical documents searchable</li>
 <li><strong>Paper to digital</strong>: Convert scanned documents to text</li>
 <li><strong>Record keeping</strong>: Digitize contracts, invoices, receipts</li>
-</ul>
 
+</ul>
 <h3>Data Extraction</h3>
 <ul>
 <li><strong>Invoice processing</strong>: Extract line items, totals, dates</li>
 <li><strong>Form processing</strong>: Pull data from scanned forms</li>
 <li><strong>Contract analysis</strong>: Extract key terms and clauses</li>
-</ul>
 
+</ul>
 <h3>Research & Academia</h3>
 <ul>
 <li><strong>Academic papers</strong>: Extract text from PDF research papers</li>
 <li><strong>Book scanning</strong>: Digitize book chapters and pages</li>
 <li><strong>Citation extraction</strong>: Pull references from documents</li>
-</ul>
 
+</ul>
 <h3>Legal & Compliance</h3>
 <ul>
 <li><strong>Legal discovery</strong>: Process large document sets</li>
 <li><strong>Contract review</strong>: Extract text for analysis</li>
 <li><strong>Compliance audits</strong>: Digitize paper records</li>
-</ul>
 
+</ul>
 <h3>Developers</h3>
 <ul>
 <li><strong>API integration</strong>: RESTful JSON responses</li>
 <li><strong>Webhook support</strong>: Async processing for large documents</li>
 <li><strong>Multiple formats</strong>: Text, JSON, or Markdown output</li>
+
 </ul>
+---
 
 <p>---</p>
 
-<h2>Confidence Scores</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>Each page includes a confidence score (0-100%):</p>
-
-
-<p>Low confidence usually indicates:</p>
-<ul>
-<li>Poor scan quality</li>
-<li>Unusual fonts</li>
-<li>Handwritten text</li>
-<li>Low resolution images</li>
-</ul>
-
-<p>---</p>
-
-<h2>API Integration</h2>
-
-<h3>Using the Apify API (JavaScript)</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/pdf-ocr-api').call({</p>
-<p>pdfUrl: 'https://example.com/document.pdf',</p>
-<p>language: 'eng',</p>
-<p>outputFormat: 'json'</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0].fullText);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"pdfUrl": "https://example.com/document.pdf",</p>
-<p>"language": "eng"</p>
-<p>}'</p>
-</code></pre>
-
-<h3>Base64 Upload (for local files)</h3>
-
-<pre><code># Convert PDF to base64
-<p>base64 document.pdf &gt; document_b64.txt</p>
-
-<h1>Send to API</h1>
-<p>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~pdf-ocr-api/runs?token=YOUR_API_TOKEN" \</p>
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"pdfBase64": "'$(cat document_b64.txt)'",</p>
-<p>"language": "eng"</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Webhook Integration (Zapier, Make, n8n)</h2>
-
-<h3>Webhook Payload Format</h3>
-
-<pre><code>{
-<p>"event": "ocr_completed",</p>
-<p>"timestamp": "2025-12-23T12:00:00.000Z",</p>
-<p>"actor": "pdf-ocr-api",</p>
-<p>"runId": "abc123",</p>
-<p>"totalPages": 10,</p>
-<p>"processedPages": 10,</p>
-<p>"averageConfidence": 92.5,</p>
-<p>"fullText": "...",</p>
-<p>"pages": [...]</p>
-<p>}</p>
-</code></pre>
-
-<h3>Common Automations</h3>
-
-<ul>
-<li><strong>Google Drive</strong>: Save extracted text alongside PDFs</li>
-<li><strong>Notion/Coda</strong>: Create searchable document database</li>
-<li><strong>Slack</strong>: Notify when processing completes</li>
-<li><strong>CRM</strong>: Attach extracted text to records</li>
-</ul>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>File Size</strong>: Maximum 50MB per PDF</li>
-<li><strong>Handwriting</strong>: Limited support for handwritten text</li>
-<li><strong>Complex Layouts</strong>: Multi-column layouts may merge incorrectly</li>
-<li><strong>Image Quality</strong>: Low-resolution scans reduce accuracy</li>
-<li><strong>Encrypted PDFs</strong>: Password-protected PDFs not supported</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Email</strong>: john@johnrippy.link</li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<ul>
-<li><strong>GitHub</strong>: Report issues on the repository</li>
-</ul>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>pdf ocr, pdf text extraction, ocr api, scanned pdf to text, document digitization, pdf scraper, image to text, optical character recognition, pdf parser, document processing, invoice ocr, form extraction, adobe alternative, abbyy alternative, tesseract ocr, multi-language ocr</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -783,7 +602,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

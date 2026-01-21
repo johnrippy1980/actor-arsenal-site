@@ -459,329 +459,70 @@ Get Core Web Vitals performance, accessibility, SEO & recommendations for any we
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>🚀 Google Lighthouse Checker - Core Web Vitals & Performance Audits at Scale</h1>
+            <h1>Google Lighthouse Checker Core Web Vitals & Performance Audits</h1>
+            <p>Run Google Lighthouse audits at scale. Get Core Web Vitals, performance, accessibility, SEO, and best practices scores for any URL or batch of URLs. Features: - Performance score (0-100) - Core Web Vitals (LCP, FID, CLS) - Accessibility audit - SEO audit - Best practices audit - PWA readiness check - Mobile and desktop modes - Batch URL processing Metrics: - First Contentful Paint (FCP) - Largest Contentful Paint (LCP) - Time to Interactive (TTI) - Total Blocking Time (TBT) - Cumulative Layout Shift (CLS) - Speed Index Ideal for: - Website performance monitoring - SEO audits - Accessibility compliance - Core Web Vitals tracking. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<strong>"Core Web Vitals & Performance Audits at Scale"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Stop paying $500+/month for PageSpeed Insights API. Run unlimited Lighthouse audits for a fraction of the cost.</strong>
-
-<p>Get instant Core Web Vitals (LCP, FID, CLS), performance scores, accessibility audits, SEO analysis, and actionable optimization recommendations for any website—or thousands of URLs in batch.</p>
-
-<p>---</p>
-
-<h2>⚡ Why This Actor?</h2>
-
-
-<p>---</p>
-
-<h2>📊 What You Get</h2>
-
-<h3>Core Web Vitals (Google's Ranking Factors)</h3>
-
-
-<h3>Category Scores (0-100)</h3>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Performance</strong> - Page speed and loading optimization</li>
-<li><strong>Accessibility</strong> - WCAG compliance and usability</li>
-<li><strong>Best Practices</strong> - Modern web development standards</li>
-<li><strong>SEO</strong> - Search engine optimization factors</li>
-<li><strong>PWA</strong> - Progressive Web App readiness</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h3>Actionable Insights</h3>
-
-<ul>
-<li><strong>Opportunities</strong> - Specific fixes with estimated time savings</li>
-<li><strong>Diagnostics</strong> - Technical issues affecting performance</li>
-<li><strong>Screenshots</strong> - Visual timeline of page load</li>
-<li><strong>Full Report</strong> - Complete Lighthouse JSON for deep analysis</li>
-</ul>
-
-<p>---</p>
-
-<h2>🎯 Use Cases</h2>
-
-<h3>SEO Agencies</h3>
-<ul>
-<li>Audit all client websites monthly</li>
-<li>Track Core Web Vitals improvements</li>
-<li>Generate performance reports automatically</li>
-<li>Identify pages hurting search rankings</li>
-</ul>
-
-<h3>E-commerce Sites</h3>
-<ul>
-<li>Monitor product page performance</li>
-<li>Ensure mobile checkout speed</li>
-<li>Track performance across thousands of SKUs</li>
-<li>Alert when pages slow down</li>
-</ul>
-
-<h3>Web Developers</h3>
-<ul>
-<li>CI/CD performance testing</li>
-<li>Pre-launch audits</li>
-<li>A/B test performance impact</li>
-<li>Monitor third-party script bloat</li>
-</ul>
-
-<h3>Enterprise Teams</h3>
-<ul>
-<li>Company-wide website audits</li>
-<li>Compliance monitoring</li>
-<li>Performance benchmarking</li>
-<li>Automated reporting to stakeholders</li>
-</ul>
-
-<p>---</p>
-
-<h2>📥 Input Parameters</h2>
-
-
-<h3>Example Input</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"urls": [</p>
-<p>"https://example.com",</p>
-<p>"https://example.com/products",</p>
-<p>"https://example.com/checkout"</p>
-<p>],</p>
-<p>"device": "mobile",</p>
-<p>"categories": ["performance", "seo"],</p>
-<p>"includeScreenshots": true,</p>
-<p>"webhookUrl": "https://hooks.zapier.com/..."</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<p>---</p>
+<h2>Demo Mode</h2>
 
-<h2>📤 Output Format</h2>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"url": "https://example.com",</p>
-<p>"fetchTime": "2024-01-15T10:30:00.000Z",</p>
-<p>"device": "mobile",</p>
-<p>"scores": {</p>
-<p>"performance": 85,</p>
-<p>"accessibility": 92,</p>
-<p>"bestPractices": 88,</p>
-<p>"seo": 95,</p>
-<p>"pwa": 45</p>
-<p>},</p>
-<p>"coreWebVitals": {</p>
-<p>"LCP": 2100,</p>
-<p>"FID": 45,</p>
-<p>"CLS": 0.05,</p>
-<p>"FCP": 1200,</p>
-<p>"TTFB": 320,</p>
-<p>"TBT": 180,</p>
-<p>"SI": 2800,</p>
-<p>"TTI": 3200</p>
-<p>},</p>
-<p>"grade": "B",</p>
-<p>"passedAudits": 42,</p>
-<p>"failedAudits": 8,</p>
-<p>"opportunities": [</p>
-<p>{</p>
-<p>"id": "unused-javascript",</p>
-<p>"title": "Remove unused JavaScript",</p>
-<p>"description": "Remove unused JavaScript to reduce bytes consumed by network activity.",</p>
-<p>"score": 0.45,</p>
-<p>"savings": "0.8 s"</p>
-<p>}</p>
-<p>],</p>
-<p>"diagnostics": [</p>
-<p>{</p>
-<p>"id": "dom-size",</p>
-<p>"title": "Avoid an excessive DOM size",</p>
-<p>"description": "A large DOM will increase memory usage.",</p>
-<p>"displayValue": "1,234 elements"</p>
-<p>}</p>
-<p>],</p>
-<p>"screenshots": {</p>
-<p>"final": "data:image/jpeg;base64,...",</p>
-<p>"thumbnails": ["data:image/jpeg;base64,..."]</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<p>---</p>
+<h2>Input Parameters</h2>
 
-<h2>🔗 Webhook Integration</h2>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<p>Receive results automatically when audits complete:</p>
-
-<h3>Zapier</h3>
-<p>1. Create a "Webhooks by Zapier" trigger</p>
-<p>2. Choose "Catch Hook"</p>
-<p>3. Copy the webhook URL to input</p>
-<p>4. Trigger actions based on scores</p>
-
-<h3>Make (Integromat)</h3>
-<p>1. Create a "Webhooks" module</p>
-<p>2. Choose "Custom webhook"</p>
-<p>3. Copy URL and add to actor input</p>
-<p>4. Build automations on results</p>
-
-<h3>n8n</h3>
-<p>1. Add "Webhook" node</p>
-<p>2. Set to POST method</p>
-<p>3. Use URL in actor input</p>
-<p>4. Process scores in workflow</p>
-
-<h3>Webhook Payload</h3>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"event": "lighthouse_audit_completed",</p>
-<p>"timestamp": "2024-01-15T10:30:00.000Z",</p>
-<p>"actor": "google-lighthouse-checker",</p>
-<p>"urlsAudited": 3,</p>
-<p>"results": [</p>
-<p>{</p>
-<p>"url": "https://example.com",</p>
-<p>"scores": { "performance": 85, "seo": 95 },</p>
-<p>"grade": "B",</p>
-<p>"coreWebVitals": { "LCP": 2100, "CLS": 0.05 }</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
-<p>---</p>
+<h2>Pricing</h2>
 
-<h2>💰 Pricing</h2>
-
-
-<em>Prices are estimates. Actual costs depend on Apify compute usage.</em>
-
-<p>---</p>
-
-<h2>🏃 Quick Start</h2>
-
-<h3>1. Single URL Audit</h3>
-
-<pre><code>{
-<p>"url": "https://yoursite.com",</p>
-<p>"device": "mobile"</p>
-<p>}</p>
-</code></pre>
-
-<h3>2. Batch Audit</h3>
-
-<pre><code>{
-<p>"urls": ["https://site1.com", "https://site2.com", "https://site3.com"],</p>
-<p>"maxConcurrency": 3</p>
-<p>}</p>
-</code></pre>
-
-<h3>3. With Webhook</h3>
-
-<pre><code>{
-<p>"url": "https://yoursite.com",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123/abc"</p>
-<p>}</p>
-</code></pre>
-
-<h3>4. Demo Mode (Free)</h3>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>🔧 API Integration</h2>
-
-<h3>Using Apify API</h3>
-
-<pre><code>const { ApifyClient } = require('apify-client');
-
-<p>const client = new ApifyClient({ token: 'YOUR_API_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/google-lighthouse-checker').call({</p>
-<p>urls: ['https://example.com'],</p>
-<p>device: 'mobile',</p>
-<p>categories: ['performance', 'seo']</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~google-lighthouse-checker/runs?token=YOUR_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{"url": "https://example.com", "device": "mobile"}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>📈 Understanding Scores</h2>
-
-<h3>Performance Grade Scale</h3>
-
-
-<h3>Core Web Vitals Thresholds</h3>
-
-
-<p>---</p>
-
-<h2>🆚 Comparison</h2>
-
-
-<p>---</p>
-
-<h2>📝 Changelog</h2>
-
-<h3>v1.0.0 (2024-12)</h3>
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li>Initial release</li>
-<li>Core Web Vitals extraction</li>
-<li>Mobile and desktop device emulation</li>
-<li>Batch URL processing</li>
-<li>Webhook integration</li>
-<li>Demo mode for testing</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
-
-<p>---</p>
-
-<h2>🏷️ Keywords</h2>
-
-<p>google lighthouse, core web vitals, page speed, performance audit, web vitals, LCP, FID, CLS, website speed test, SEO audit, accessibility audit, lighthouse api, pagespeed insights alternative, website performance, mobile speed test, desktop speed test, web performance monitoring, site speed checker, lighthouse batch, performance score, best practices audit, pwa audit, web optimization, page load time, speed index, time to interactive, largest contentful paint, cumulative layout shift, first input delay, lighthouse automation, performance testing api</p>
-
-<p>---</p>
-
-<h2>🤝 Support</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Issues</strong>: <a href="https://github.com/alizarin_refrigerator-owner/apify-actors/issues" target="_blank" rel="noopener">GitHub Issues</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<ul>
-<li><strong>Documentation</strong>: <a href="https://docs.apify.com" target="_blank" rel="noopener">Apify Docs</a></li>
-</ul>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>google lighthouse, pagespeed insights, core web vitals, website performance audit, seo audit, lighthouse api, website speed test, zapier integration, make integration, n8n integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -795,7 +536,7 @@ Get Core Web Vitals performance, accessibility, SEO & recommendations for any we
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

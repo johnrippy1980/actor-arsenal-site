@@ -457,26 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>LinkedIn Voice Trainer & AI Content Generator</h1>
-
-<strong>"Train AI on Your LinkedIn Writing Style"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Train AI on your unique LinkedIn writing style, then generate authentic posts that sound exactly like you. Perfect for building a consistent personal brand while saving hours on content creation.</p>
-
-<h2>Why This Actor?</h2>
-
-<p>Writing authentic LinkedIn content takes time. This actor:</p>
-
-<p>1. <strong>Analyzes your existing posts</strong> to understand your unique voice</p>
-<p>2. <strong>Creates a reusable voice profile</strong> capturing your tone, style, and patterns</p>
-<p>3. <strong>Generates new posts</strong> that sound exactly like you wrote them</p>
-<p>4. <strong>Improves drafts</strong> to match your authentic style</p>
+            <p>Train AI on your unique LinkedIn writing style, then generate authentic posts that sound exactly like you. BYOK support for OpenAI, Claude, and Gemini. Features: - Analyze your past posts for voice patterns - Extract writing style, tone, and vocabulary - Generate new posts matching your voice - Multi-model support (OpenAI, Claude, Gemini) - Topic and keyword customization - Engagement optimization suggestions Voice Analysis: - Sentence structure patterns - Vocabulary and terminology - Emoji and hashtag usage - Hook and CTA styles - Content length preferences Content Generation: - Generate posts on any topic - Match your authentic voice - Include relevant hashtags - Optimize for engagement - A/B test variations BYOK Support: - OpenAI (GPT-4, GPT-3.5) - Anthropic Claude - Google Gemini. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
@@ -486,205 +470,72 @@
 <li><strong>Performance Analysis</strong>: Understand what makes YOUR posts successful</li>
 <li><strong>Topic Suggestions</strong>: Get ideas that fit your voice and niche</li>
 <li><strong>Draft Improvement</strong>: Enhance existing content to match your style</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Tasks</h2>
-
-<h3>1. <code>analyze_voice</code> - Create Voice Profile</h3>
-
-<p>Analyze your LinkedIn posts to extract your unique writing voice.</p>
-
-<strong>Input:</strong>
 <pre><code>{
-<p>"task": "analyze_voice",</p>
-<p>"aiProvider": "claude",</p>
-<p>"claudeApiKey": "sk-ant-...",</p>
-<p>"posts": [</p>
-<p>{</p>
-<p>"text": "Your post content...",</p>
-<p>"likes": 500,</p>
-<p>"comments": 50,</p>
-<p>"reposts": 20,</p>
-<p>"hashtags": ["leadership", "growth"],</p>
-<p>"contentType": "text"</p>
-<p>}</p>
-<p>],</p>
-<p>"saveVoiceProfile": true,</p>
-<p>"voiceProfileName": "my-voice"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<strong>Output:</strong> Detailed voice profile with tone, style patterns, hook/CTA patterns, vocabulary preferences.
+<h2>Demo Mode</h2>
 
-<h3>2. <code>generate_post</code> - Create New Posts</h3>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
-<p>Generate LinkedIn posts in your voice.</p>
-
-<strong>Input:</strong>
 <pre><code>{
-<p>"task": "generate_post",</p>
-<p>"aiProvider": "claude",</p>
-<p>"claudeApiKey": "sk-ant-...",</p>
-<p>"voiceProfileId": "my-voice",</p>
-<p>"topic": "How I increased my team's productivity by 40%",</p>
-<p>"contentType": "text",</p>
-<p>"includeHashtags": true,</p>
-<p>"variations": 3</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<strong>Output:</strong> Generated post matching your voice, plus alternative versions.
+<h2>Input Parameters</h2>
 
-<h3>3. <code>improve_draft</code> - Enhance Existing Content</h3>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<p>Make your draft sound more like "you."</p>
+<h2>Output Format</h2>
 
-<strong>Input:</strong>
 <pre><code>{
-<p>"task": "improve_draft",</p>
-<p>"aiProvider": "openai",</p>
-<p>"openaiApiKey": "sk-...",</p>
-<p>"voiceProfileId": "my-voice",</p>
-<p>"draft": "Here's my draft post that needs improvement...",</p>
-<p>"feedback": "Make it more engaging, add a question CTA"</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-
-<h3>4. <code>suggest_topics</code> - Get Content Ideas</h3>
-
-<p>Get topic ideas that fit your voice and niche.</p>
-
-<strong>Input:</strong>
-<pre><code>{
-<p>"task": "suggest_topics",</p>
-<p>"aiProvider": "gemini",</p>
-<p>"geminiApiKey": "...",</p>
-<p>"voiceProfileId": "my-voice",</p>
-<p>"industry": "SaaS",</p>
-<p>"recentTopics": ["productivity", "remote work"]</p>
-<p>}</p>
-</code></pre>
-
-<h3>5. <code>analyze_performance</code> - Understand What Works</h3>
-
-<p>Analyze which patterns drive engagement for YOU.</p>
-
-<h2>Workflow: Training to Posting</h2>
-
-<h3>Step 1: Scrape Your Posts</h3>
-<p>Use <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-profile-scraper?fpr=kqpn7" target="_blank" rel="noopener">LinkedIn Profile Scraper</a> to get your recent posts.</p>
-
-<h3>Step 2: Train Your Voice</h3>
-<pre><code>{
-<p>"task": "analyze_voice",</p>
-<p>"aiProvider": "claude",</p>
-<p>"claudeApiKey": "your-key",</p>
-<p>"posts": "{{ output from step 1 }}",</p>
-<p>"saveVoiceProfile": true,</p>
-<p>"voiceProfileName": "my-linkedin-voice"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Step 3: Generate Content</h3>
-<pre><code>{
-<p>"task": "generate_post",</p>
-<p>"voiceProfileId": "my-linkedin-voice",</p>
-<p>"topic": "Why I stopped using email for team communication"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Step 4: Post to LinkedIn</h3>
-<p>Use <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-poster?fpr=kqpn7" target="_blank" rel="noopener">LinkedIn Poster</a> to publish.</p>
-
-<h2>Voice Profile Storage</h2>
-
-<p>Voice profiles are stored in Apify Key-Value Store for reuse:</p>
-
-<ul>
-<li><strong>Save</strong>: Set <code>saveVoiceProfile: true</code> and provide a <code>voiceProfileName</code></li>
-<li><strong>Load</strong>: Use <code>voiceProfileId</code> to load a previously saved profile</li>
-<li><strong>Export</strong>: The profile is also in the actor output for external storage</li>
-</ul>
-
-<h2>AI Provider Comparison</h2>
-
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
 
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>voice_analyzed</code> | Per voice profile created | $0.15 |
+| <code>post_generated</code> | Per post generated | $0.05 |
+| <code>draft_improved</code> | Per draft improved | $0.05 |
+| <code>topics_suggested</code> | Per topic suggestion set | $0.03 |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>Analyze voice + generate 5 posts: $0.10 + $0.15 + (5 × $0.05) = <strong>$0.50</strong></li>
 <li>Generate 10 posts (existing voice): $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-</ul>
 
+</ul>
 <em>Plus your AI provider's API costs</em>
 
-<h2>Tips for Best Results</h2>
-
-<p>1. <strong>Use 10-20 posts</strong> for voice analysis (more = better accuracy)</p>
-<p>2. <strong>Include high-performing posts</strong> - they represent your best voice</p>
-<p>3. <strong>Re-train monthly</strong> as your style evolves</p>
-<p>4. <strong>Combine with scrapers</strong> for automated workflows</p>
-
-<h2>Integration with Zapier/Make/n8n</h2>
-
-<p>This actor works great in automation workflows:</p>
-
-<p>1. Trigger: Weekly schedule</p>
-<p>2. Action 1: Run linkedin-profile-scraper for new posts</p>
-<p>3. Action 2: Run linkedin-voice-trainer to generate content</p>
-<p>4. Action 3: Send to approval (Slack, email, etc.)</p>
-<p>5. Action 4: On approval, post via linkedin-poster</p>
-
-<h2>LinkedIn Authentication</h2>
-
-<p>When using <code>linkedinProfileUrl</code> to automatically scrape posts, you'll need to provide LinkedIn credentials:</p>
-
-<h3>Option 1: Email/Password (Simple, but MFA must be disabled)</h3>
-<p>Provide <code>linkedinEmail</code> and <code>linkedinPassword</code> in the input. Works for accounts without 2FA/MFA.</p>
-
-<h3>Option 2: Cookies (Recommended, works with MFA)</h3>
-<p>If you have <strong>Multi-Factor Authentication (MFA/2FA) enabled</strong>, you <strong>must use cookies</strong>.</p>
-
-<strong>Step 1:</strong> Install a cookie export extension:
-<ul>
-<li><strong><a href="https://cookie-editor.com/" target="_blank" rel="noopener">Cookie-Editor</a></strong> by <a href="https://github.com/Moustachauve/cookie-editor" target="_blank" rel="noopener">Moustachauve</a> - Clean interface, supports Chrome/Firefox/Edge/Safari</li>
-<li><strong><a href="http://www.editthiscookie.com/" target="_blank" rel="noopener">EditThisCookie</a></strong> by <a href="https://github.com/ETCExtensions/Edit-This-Cookie" target="_blank" rel="noopener">Francesco Capano</a> - Chrome extension, classic choice</li>
-</ul>
-
-<strong>Step 2:</strong> Log into LinkedIn in your browser
-
-<strong>Step 3:</strong> Click the cookie extension icon, then:
-<ul>
-<li><strong>Cookie-Editor:</strong> Click "Export" → "Export as JSON"</li>
-<li><strong>EditThisCookie:</strong> Click the export button (looks like ↓)</li>
-</ul>
-
-<strong>Step 4:</strong> Paste the JSON array when running the LinkedIn Profile Scraper
-
-<p>The most important cookie is <code>li_at</code> - this is your LinkedIn session token.</p>
-
-<h2>Support</h2>
+<h2>Use Cases</h2>
 
 <ul>
-<li><a href="https://github.com/alizarin_refrigerator-owner/linkedin-voice-trainer" target="_blank" rel="noopener">Documentation</a></li>
-<li><a href="https://github.com/alizarin_refrigerator-owner/linkedin-voice-trainer/issues" target="_blank" rel="noopener">Issues</a></li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+---
 
-<p>---</p>
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>linkedin voice trainer, ai writing assistant, content personalization, brand voice ai, linkedin content ai, openai integration, claude integration, gemini integration</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -698,7 +549,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

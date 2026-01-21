@@ -203,9 +203,61 @@
             .actor-header-content { flex-direction: column; }
             .actor-icon { width: 60px; height: 60px; }
         }
+    
+        /* ===== CRT SCANLINE OVERLAY ===== */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* ===== RED VIGNETTE ===== */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* ===== PAIN FLASH ===== */
+        .pain-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9996;
+            background: rgba(255, 0, 0, 0);
+            transition: background 0.1s;
+        }
+        .pain-flash.active {
+            background: rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- DOOM Visual Effects -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+    <div class="pain-flash"></div>
+
     <nav>
         <div class="container">
             <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
@@ -239,24 +291,168 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>US Census Bureau Demographics & Population Data API</h1>
-            
-            <blockquote><strong>Built by</strong> <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-            
-            <blockquote>2025 Zapier Automation Hero of the Year &mdash; <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
-            
-            <p>US Census Bureau Demographics & Population Data API</p>
-            
-            <h2>Actor ID</h2>
-            <p><code>DTDVjizzDg5Z8w0qg</code></p>
-            
-            <p><a href="https://apify.com/alizarin_refrigerator-owner/us-census-bureau-demographics-population-data-api?fpr=kqpn7" target="_blank" rel="noopener">View full documentation on Apify &rarr;</a></p>
-            
-            <p>---</p>
-            
-            <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></strong>
+            <p>Access US Census Bureau data including ACS demographics, population estimates, economic indicators, business statistics, and geographic data. Get population by age, race, income, education, housing, and more for any US location down to ZIP code level.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Population Data</strong>: Total population, age distribution, sex ratio, growth trends</li>
+<li><strong>Demographics</strong>: Race, ethnicity, ancestry, language, citizenship</li>
+<li><strong>Income & Poverty</strong>: Household income, per capita income, poverty rates, SNAP benefits</li>
+<li><strong>Housing</strong>: Home values, rent, occupancy, units, year built, heating fuel</li>
+<li><strong>Education</strong>: Educational attainment, school enrollment, field of degree</li>
+<li><strong>Employment</strong>: Labor force, occupation, industry, commute times</li>
+<li><strong>Business Statistics</strong>: Establishments, employees, payroll by industry</li>
+<li><strong>Health Insurance</strong>: Coverage rates, types, uninsured population</li>
+<li><strong>Demo Mode</strong>: Test with realistic sample data (no API key required)</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "dataSet": "unemployment",
+  "year": 2024
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<h3>Task Selection</h3>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>get_population</code> - Total population and age/sex breakdown</li>
+<li><code>get_demographics</code> - Race, ethnicity, ancestry data</li>
+<li><code>get_income</code> - Household and per capita income</li>
+<li><code>get_housing</code> - Housing units, values, rent, occupancy</li>
+<li><code>get_education</code> - Educational attainment levels</li>
+<li><code>get_employment</code> - Labor force and occupation data</li>
+<li><code>get_business_stats</code> - Business establishments and employees</li>
+<li><code>get_poverty</code> - Poverty rates and public assistance</li>
+<li><code>get_health_insurance</code> - Insurance coverage rates</li>
+<li><code>get_commuting</code> - Commute times and transportation modes</li>
+<li><code>get_migration</code> - Geographic mobility data</li>
+<li><code>compare_locations</code> - Compare multiple areas</li>
+<li><code>get_zip_profile</code> - Complete ZIP code profile</li>
+<li><code>get_county_profile</code> - Complete county profile</li>
+<li><code>get_state_profile</code> - Complete state profile</li>
+<li><code>custom_query</code> - Custom variable query</li>
+
+</ul>
+<h3>Authentication</h3>
+<ul>
+<li><code>apiKey</code>: Census API key (free at census.gov/developers)</li>
+<li><code>demoMode</code>: Run with sample data (no key required)</li>
+
+</ul>
+<h3>Dataset Selection</h3>
+<ul>
+<li><code>dataset</code>: Data source</li>
+<li><code>acs5</code> - ACS 5-Year (most geographies, smoothed estimates)</li>
+<li><code>acs1</code> - ACS 1-Year (larger areas only, most current)</li>
+<li><code>pep</code> - Population Estimates Program</li>
+<li><code>dec</code> - Decennial Census</li>
+<li><code>cbp</code> - County Business Patterns</li>
+<li><code>abs</code> - Annual Business Survey</li>
+
+</ul>
+<h3>Geography</h3>
+<ul>
+<li><code>state</code>: 2-digit state FIPS code</li>
+<li><code>county</code>: 3-digit county FIPS code</li>
+<li><code>place</code>: City/town FIPS code</li>
+<li><code>zipCode</code>: 5-digit ZIP code (ZCTA)</li>
+<li><code>tract</code>: Census tract code</li>
+<li><code>stateName</code>: State name (alternative to FIPS)</li>
+
+</ul>
+<h3>Custom Queries</h3>
+<ul>
+<li><code>variables</code>: Comma-separated variable codes</li>
+<li><code>tableGroup</code>: Census table group code</li>
+
+</ul>
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Population Query</strong>: $0.01 per query</li>
+<li><strong>Demographics Query</strong>: $0.01 per query</li>
+<li><strong>Income/Housing Query</strong>: $0.01 per query</li>
+<li><strong>Location Profile</strong>: $0.02 per profile</li>
+<li><strong>Custom Query</strong>: $0.01 per query</li>
+<li><strong>Location Comparison</strong>: $0.02 per comparison</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<h3>Market Research</h3>
+<ul>
+<li>Analyze target demographics for product launches</li>
+<li>Site selection for retail and commercial development</li>
+<li>Competitive market analysis by geography</li>
+
+</ul>
+<h3>Real Estate</h3>
+<ul>
+<li>Neighborhood demographic profiles</li>
+<li>Income and housing value trends</li>
+<li>Population growth projections</li>
+
+</ul>
+<h3>Business Planning</h3>
+<ul>
+<li>Workforce availability analysis</li>
+<li>Customer demographic profiling</li>
+<li>Market sizing and TAM calculation</li>
+
+</ul>
+<h3>Academic Research</h3>
+<ul>
+<li>Demographic trend analysis</li>
+<li>Socioeconomic studies</li>
+<li>Public policy research</li>
+
+</ul>
+<h3>Government & Nonprofit</h3>
+<ul>
+<li>Grant application data</li>
+<li>Community needs assessment</li>
+<li>Service area planning</li>
+
+</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 

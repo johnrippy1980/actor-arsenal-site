@@ -457,9 +457,126 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Comprehensive lottery data analyzer for Powerball and Mega Millions. Access historical drawings, run statistical analysis, track hot/cold numbers, get next drawing info, and receive automated notifications via webhook.</p>
+            <h1>Lottery Analyzer - Powerball & Mega Millions</h1>
+            <p>Historical lottery data analyzer with statistical analysis, hot/cold numbers, frequency tracking, and result notifications. Covers Powerball and Mega Millions with webhook support for Zapier, Make, and n8n.</p>
+
+<h2>Features</h2>
+
+<h3>📊 Statistical Analysis</h3>
+| Analysis Type | Description |
+|--------------|-------------|
+| Hot Numbers | Most frequently drawn in selected period |
+| Cold Numbers | Least frequently drawn numbers |
+| Overdue Numbers | Numbers that haven't appeared recently |
+| Pair Analysis | Most common number combinations |
+| Gap Analysis | Average drawings between appearances |
+| Day Patterns | Win patterns by day of week |
+| Jackpot Trends | Historical jackpot growth patterns |
+
+<h3>🎰 Lottery Coverage</h3>
+<ul>
+<li><strong>Powerball</strong>: All drawings since 1992 (Wed & Sat)</li>
+<li><strong>Mega Millions</strong>: All drawings since 2002 (Tue & Fri)</li>
+
+</ul>
+<h3>📅 Real-Time Information</h3>
+<ul>
+<li>Latest drawing results</li>
+<li>Next drawing date/time with countdown</li>
+<li>Estimated jackpot and cash value</li>
+<li>Drawing history</li>
+
+</ul>
+<h3>🔔 Automated Notifications</h3>
+<ul>
+<li>Webhook support for Zapier, Make, n8n</li>
+<li>Jackpot threshold alerts</li>
+<li>New result notifications</li>
+<li>Number match alerts</li>
+
+</ul>
+<h3>✅ Number Checker</h3>
+Check your regular numbers against historical drawings to see:
+<ul>
+<li>How often your combination has hit</li>
+<li>Best historical match</li>
+<li>Prize tier matches</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
+</ul>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>lottery</code> | string | powerball, megamillions, or both |
+| <code>mode</code> | string | latest_results, historical_data, analysis, next_drawing, check_numbers, full_report |
+| <code>analysisType</code> | string | hot_cold, frequency, overdue, pairs, gaps, day_patterns, jackpot_trends, all |
+| <code>analysisPeriod</code> | number | Days to analyze (0 = all time) |
+| <code>historicalLimit</code> | number | Max drawings to fetch (1-5000) |
+| <code>checkNumbers</code> | string | Your numbers to check (e.g., "5,17,23,44,62,14") |
+| <code>jackpotThreshold</code> | number | Alert when jackpot exceeds this amount |
+| <code>webhookUrl</code> | string | URL for notifications |
+| <code>webhookTriggers</code> | array | new_results, jackpot_threshold, number_match, always |
+| <code>webhookPlatform</code> | string | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | Test with sample data |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Actor start | $0.10 |
+| Lottery data fetch | $0.05 per lottery |
+| Analysis run | $0.05 per analysis |
+| Number check | $0.02 |</p>
+
+<strong>Demo mode is FREE</strong> - Test with sample data before using real credits.
+
+<h2>Use Cases</h2>
+
+<p>1. <strong>Number Research</strong> - Analyze patterns for fun/curiosity
+2. <strong>Pool Management</strong> - Track numbers for office lottery pools
+3. <strong>Result Tracking</strong> - Get automated notifications when drawings happen
+4. <strong>Jackpot Alerts</strong> - Know when mega jackpots are available
+5. <strong>Historical Analysis</strong> - Research lottery trends over time</p>
+
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -473,7 +590,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

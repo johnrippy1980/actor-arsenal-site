@@ -457,130 +457,76 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>🚗 Automobile Scraper - Multi-Source Car Listing Aggregator</h1>
-
-<strong>"Multi-Source Car Listing Aggregator"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Scrape vehicle listings from <strong>5 major automotive marketplaces</strong> in a single run:</p>
-
-<ul>
-<li><strong>Cars.com</strong> - Largest automotive marketplace</li>
-<li><strong>Autotrader</strong> - Premium auto listings</li>
-<li><strong>Edmunds</strong> - Expert reviews + listings</li>
-<li><strong>TrueCar</strong> - Transparent pricing data</li>
-<li><strong>CarMax</strong> - Used car superstore</li>
-</ul>
+            <h1>Multi-Source Car Listing Aggregator Automobile Scraper</h1>
+            <p>Scrape vehicle listings from 5 major automotive marketplaces: Cars.com, Autotrader, Edmunds, TrueCar, and CarMax. Get pricing, mileage, VIN, dealer info, photos, and specs. Perfect for dealerships, auto industry analytics, and market research.</p>
 
 <h2>Features</h2>
 
-<p>✅ <strong>Multi-Source Aggregation</strong> - One query, 5 sources</p>
-<p>✅ <strong>Comprehensive Data</strong> - Price, mileage, VIN, photos, dealer info</p>
-<p>✅ <strong>Advanced Filters</strong> - Year, price, mileage, body type, fuel, color</p>
-<p>✅ <strong>VIN Decoding</strong> - Free NHTSA API integration for specs</p>
-<p>✅ <strong>Webhook Support</strong> - Zapier, Make, n8n, custom endpoints</p>
-<p>✅ <strong>Demo Mode</strong> - Test with sample data</p>
+<p>✅ <strong>Multi-Source Aggregation</strong> - One query, 5 sources
+✅ <strong>Comprehensive Data</strong> - Price, mileage, VIN, photos, dealer info
+✅ <strong>Advanced Filters</strong> - Year, price, mileage, body type, fuel, color
+✅ <strong>VIN Decoding</strong> - Free NHTSA API integration for specs
+✅ <strong>Webhook Support</strong> - Zapier, Make, n8n, custom endpoints
+✅ <strong>Demo Mode</strong> - Test with sample data</p>
 
-<h2>Output Data</h2>
-
-<p>Each vehicle listing includes:</p>
-
-
-<h2>Use Cases</h2>
-
-<p>🏪 <strong>Dealerships</strong> - Monitor competitor pricing</p>
-<p>📊 <strong>Market Research</strong> - Track inventory trends</p>
-<p>💰 <strong>Arbitrage</strong> - Find underpriced vehicles</p>
-<p>📱 <strong>App Development</strong> - Build car shopping apps</p>
-<p>🤖 <strong>Lead Generation</strong> - Find motivated sellers</p>
-<p>📈 <strong>Analytics</strong> - Price depreciation studies</p>
-
-<h2>Example Input</h2>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"searchQuery": "Toyota Camry",</p>
-<p>"location": "90210",</p>
-<p>"searchRadius": 100,</p>
-<p>"sources": ["cars.com", "autotrader", "carmax"],</p>
-<p>"condition": "used",</p>
-<p>"minYear": 2020,</p>
-<p>"maxPrice": 35000,</p>
-<p>"maxMileage": 50000,</p>
-<p>"maxResults": 50</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h2>Example Output</h2>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"title": "2022 Toyota Camry SE",</p>
-<p>"price": 28995,</p>
-<p>"mileage": 25430,</p>
-<p>"year": 2022,</p>
-<p>"make": "Toyota",</p>
-<p>"model": "Camry",</p>
-<p>"trim": "SE",</p>
-<p>"vin": "4T1G11AK5NU123456",</p>
-<p>"condition": "Used",</p>
-<p>"exteriorColor": "Midnight Black",</p>
-<p>"interiorColor": "Black",</p>
-<p>"fuelType": "Gasoline",</p>
-<p>"transmission": "Automatic",</p>
-<p>"drivetrain": "FWD",</p>
-<p>"engine": "2.5L 4-Cylinder",</p>
-<p>"mpgCity": 28,</p>
-<p>"mpgHighway": 39,</p>
-<p>"photos": [</p>
-<p>"https://example.com/photo1.jpg",</p>
-<p>"https://example.com/photo2.jpg"</p>
-<p>],</p>
-<p>"dealerName": "Beverly Hills Toyota",</p>
-<p>"dealerPhone": "(310) 555-1234",</p>
-<p>"dealerAddress": "9001 Wilshire Blvd, Beverly Hills, CA 90210",</p>
-<p>"listingUrl": "https://www.cars.com/vehicledetail/abc123",</p>
-<p>"source": "cars.com",</p>
-<p>"scrapedAt": "2024-12-24T15:30:00Z"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h2>Webhook Integration</h2>
+<h2>Input Parameters</h2>
 
-<p>Send results to Zapier, Make, n8n, or any webhook endpoint:</p>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"searchQuery": "Honda CR-V",</p>
-<p>"location": "10001",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef"</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-result model:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-result model:</p>
 
+<p>| Event | Cost |
+|-------|------|
+| Vehicle scraped | $0.02 |
+| VIN decoded | $0.01 |
+| Photo extracted | $0.005 |</p>
 
-<h2>Demo Mode</h2>
+<h2>Use Cases</h2>
 
-<p>Test the actor with sample data:</p>
-
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<p>Returns 5 sample vehicles (one from each source) without real scraping.</p>
+<p>🏪 <strong>Dealerships</strong> - Monitor competitor pricing
+📊 <strong>Market Research</strong> - Track inventory trends
+💰 <strong>Arbitrage</strong> - Find underpriced vehicles
+📱 <strong>App Development</strong> - Build car shopping apps
+🤖 <strong>Lead Generation</strong> - Find motivated sellers
+📈 <strong>Analytics</strong> - Price depreciation studies</p>
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -594,7 +540,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

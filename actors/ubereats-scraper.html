@@ -461,17 +461,10 @@ Delivery Info</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Uber Eats Restaurant Scraper</h1>
-
-<em>'Extract Restaurant Data from Uber Eats for Market Research'</em>
-
-<p>by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link" target="_blank" rel="noopener">johnrippy.link</a></p>
-
-<a href="https://community.zapier.com/blog-2/announcing-our-2025-zapier-community-heroes-16612" target="_blank" rel="noopener">2025 Zapier Automation Hero of the Year</a> — Project Phoenix: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://johnrippy.link" target="_blank" rel="noopener">Read more →</a>
-
-<p>Scrape Uber Eats for restaurant listings, menus, prices, ratings, and delivery information. Perfect for food delivery market research, competitor analysis, and restaurant discovery.</p>
+            <p>Scrape Uber Eats for restaurant listings, menus, prices, ratings, and delivery info. Extract restaurant data for food delivery market research. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
 
 <h2>Features</h2>
 
@@ -482,123 +475,92 @@ Delivery Info</p>
 <li><strong>Delivery Info</strong> - Delivery fees, time estimates, and Uber One eligibility</li>
 <li><strong>Multi-Cuisine Support</strong> - Filter by 13+ cuisine types</li>
 <li><strong>Demo Mode</strong> - Test with sample data before scraping</li>
+
 </ul>
-
-<h2>Quick Start (Demo Mode)</h2>
-
-<p>Run the actor with default settings to see sample restaurant data:</p>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": true,</p>
-<p>"searchTerm": "pizza",</p>
-<p>"location": "San Francisco, CA",</p>
-<p>"cuisineType": "all",</p>
-<p>"maxResults": 20</p>
-<p>}</p>
+  "url": "https://example.com",
+  "maxResults": 100
+}
 </code></pre>
 
-<h2>Search for Restaurants</h2>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"demoMode": false,</p>
-<p>"scrapeType": "search",</p>
-<p>"searchTerm": "sushi",</p>
-<p>"location": "New York, NY",</p>
-<p>"cuisineType": "japanese",</p>
-<p>"maxResults": 50,</p>
-<p>"includeMenu": true</p>
-<p>}</p>
-</code></pre>
-
-<h2>Scrape Specific Restaurant</h2>
-
-<pre><code>{
-<p>"demoMode": false,</p>
-<p>"scrapeType": "store_profile",</p>
-<p>"storeUrl": "https://www.ubereats.com/store/restaurant-name",</p>
-<p>"includeMenu": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| scrapeType | string | "search" | Type: "store_profile", "search", or "menu" |
+| storeUrl | string | - | Direct Uber Eats store URL |
+| searchTerm | string | "pizza" | Restaurant name, cuisine, or food type |
+| location | string | "San Francisco, CA" | Delivery location |
+| cuisineType | string | "all" | Filter by cuisine type |
+| includeMenu | boolean | true | Extract menu items and prices |
+| maxResults | integer | 50 | Maximum restaurants to scrape (1-500) |
+| proxyConfiguration | object | Apify Proxy | Proxy settings |
+| demoMode | boolean | true | Return sample data without scraping |</p>
 
-<h2>Cuisine Types</h2>
-
-<ul>
-<li><code>all</code> - All cuisines</li>
-<li><code>american</code> - American food</li>
-<li><code>chinese</code> - Chinese cuisine</li>
-<li><code>mexican</code> - Mexican food</li>
-<li><code>italian</code> - Italian cuisine</li>
-<li><code>japanese</code> - Japanese/Sushi</li>
-<li><code>indian</code> - Indian cuisine</li>
-<li><code>thai</code> - Thai food</li>
-<li><code>fast_food</code> - Fast food</li>
-<li><code>pizza</code> - Pizza places</li>
-<li><code>burgers</code> - Burger joints</li>
-<li><code>healthy</code> - Healthy options</li>
-<li><code>breakfast</code> - Breakfast/Brunch</li>
-</ul>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <p>Each restaurant record includes:</p>
 
 <pre><code>{
-<p>"name": "Sakura Sushi",</p>
-<p>"url": "https://www.ubereats.com/store/sakura-sushi",</p>
-<p>"address": "123 Main St",</p>
-<p>"city": "San Francisco",</p>
-<p>"state": "CA",</p>
-<p>"zipCode": "94102",</p>
-<p>"cuisineType": "Japanese",</p>
-<p>"cuisineTypes": ["Japanese", "Sushi", "Asian"],</p>
-<p>"rating": 4.7,</p>
-<p>"reviewCount": 234,</p>
-<p>"priceRange": "$$",</p>
-<p>"deliveryFee": 2.99,</p>
-<p>"deliveryTime": "25-35 min",</p>
-<p>"uberOneEligible": true,</p>
-<p>"isOpen": true,</p>
-<p>"menu": [</p>
-<p>{</p>
-<p>"name": "Dragon Roll",</p>
-<p>"description": "Eel, avocado, cucumber with eel sauce",</p>
-<p>"price": 16.99,</p>
-<p>"category": "Sushi Rolls"</p>
-<p>}</p>
-<p>],</p>
-<p>"scrapedAt": "2024-01-15T10:30:00.000Z"</p>
-<p>}</p>
+    "name": "Sakura Sushi",
+    "url": "https://www.ubereats.com/store/sakura-sushi",
+    "address": "123 Main St",
+    "city": "San Francisco",
+    "state": "CA",
+    "zipCode": "94102",
+    "cuisineType": "Japanese",
+    "cuisineTypes": ["Japanese", "Sushi", "Asian"],
+    "rating": 4.7,
+    "reviewCount": 234,
+    "priceRange": "$$",
+    "deliveryFee": 2.99,
+    "deliveryTime": "25-35 min",
+    "uberOneEligible": true,
+    "isOpen": true,
+    "menu": [
+        {
+            "name": "Dragon Roll",
+            "description": "Eel, avocado, cucumber with eel sauce",
+            "price": 16.99,
+            "category": "Sushi Rolls"
+        }
+    ],
+    "scrapedAt": "2024-01-15T10:30:00.000Z"
+}
 </code></pre>
 
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
+</ul>
 <h2>Use Cases</h2>
 
-<p>1. <strong>Competitive Analysis</strong> - Research restaurant pricing and menus in your area</p>
-<p>2. <strong>Market Research</strong> - Analyze food delivery trends by cuisine type</p>
-<p>3. <strong>Restaurant Discovery</strong> - Find top-rated restaurants in any location</p>
-<p>4. <strong>Menu Comparison</strong> - Compare prices across similar restaurants</p>
-<p>5. <strong>Local SEO</strong> - Build citation data for food service businesses</p>
+<p>1. <strong>Competitive Analysis</strong> - Research restaurant pricing and menus in your area
+2. <strong>Market Research</strong> - Analyze food delivery trends by cuisine type
+3. <strong>Restaurant Discovery</strong> - Find top-rated restaurants in any location
+4. <strong>Menu Comparison</strong> - Compare prices across similar restaurants
+5. <strong>Local SEO</strong> - Build citation data for food service businesses</p>
 
-<h2>Integration with Citation God Mode</h2>
+<p>---</p>
 
-<p>This actor integrates with our <a href="https://apify.com/alizarin_refrigerator-owner/citation-god-mode?fpr=kqpn7" target="_blank" rel="noopener">Citation God Mode</a> actor for comprehensive local business citation checking. When scanning food service businesses, Citation God Mode automatically uses this dedicated scraper for more reliable Uber Eats data.</p>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h2>Pro Tips</h2>
-
-<p>1. <strong>Start in Demo Mode</strong> - Test your configuration before actual scraping</p>
-<p>2. <strong>Use Specific Searches</strong> - Narrow searches produce more relevant results</p>
-<p>3. <strong>Include Menu Data</strong> - Set <code>includeMenu: true</code> for full restaurant profiles</p>
-<p>4. <strong>Respect Rate Limits</strong> - Keep <code>maxResults</code> reasonable for stable operation</p>
-<p>5. <strong>Combine with Other Scrapers</strong> - Use with DoorDash and Grubhub scrapers for complete market coverage</p>
-
-<h2>Support</h2>
-
-<p>Having issues? Report bugs at the actor's issues page.</p>
-
-<p>Built with Playwright and Apify SDK for reliable food delivery platform scraping.</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -612,7 +574,7 @@ Delivery Info</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

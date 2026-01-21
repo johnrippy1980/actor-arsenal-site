@@ -457,48 +457,115 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Facebook Posts Scraper</h1>
-
-<strong>"Facebook Posts Scraper"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
-
-<p>---</p>
-
-<p>Extract data from hundreds of Facebook posts from one or multiple Facebook pages and profiles. Get post URL, post text, page or profile URL, timestamp, number of likes, shares, comments, and more. Dow</p>
+            <p>Discover competitor Facebook ads by scraping Meta's Ad Library. Find active and inactive ads, see creatives, and analyze messaging. No per-campaign fees. Features: - Search by Page ID or search term - Active and inactive ad filtering - Ad creative extraction (images, videos, text) - CTA button detection - Demographic targeting data (where available) - Date first/last seen - Country-specific filtering Use Cases: - Competitive ad intelligence - Creative inspiration research - Client pitch decks (show competitor ads) - Industry trend analysis - Ad frequency monitoring Why Use This: - Paid ad library scrapers charge $4+ per 1000 campaigns - This actor uses your Apify compute only - Same data from Meta's public Ad Library - Perfect for agencies analyzing multiple competitors Integrations: - Part of the John Rippy actor ecosystem - Works with Local Business Intelligence Suite - MCP Server compatible for AI assistant queries Note: Scrapes Meta's public Ad Library API. Respects rate limits. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Automated data extraction</strong> - Efficiently scrapes and processes data</li>
-<li><strong>Reliable output</strong> - Structured JSON results ready for integration</li>
-<li><strong>Scalable</strong> - Handles large workloads with ease</li>
-<li><strong>Cloud-ready</strong> - Runs on Apify platform with built-in scheduling</li>
+<li>Scrape ads by Facebook Page ID</li>
+<li>Search ads by keyword</li>
+<li>Filter by country and status</li>
+<li>Extract ad creatives, text, and targeting info</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<h2>Integration Support</h2>
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
 
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<strong>By Page ID:</strong>
+<pre><code>{
+  "pageIds": ["123456789", "987654321"],
+  "countryCode": "US",
+  "maxItems": 50
+}
+</code></pre>
+
+<strong>By Search Term:</strong>
+<pre><code>{
+  "searchTerm": "plumber austin",
+  "countryCode": "US",
+  "maxItems": 50
+}
+</code></pre>
+
+<h2>Output Format</h2>
+
+<p>Each ad returns:</p>
+
+<pre><code>{
+  "id": "fb-123-...",
+  "pageId": "123456789",
+  "pageName": "Joe's Plumbing",
+  "bodyText": "Need a plumber? Call us today!",
+  "callToAction": "Learn More",
+  "imageUrls": ["https://..."],
+  "videoUrl": null,
+  "adFormat": "image",
+  "startDate": "2024-12-01T00:00:00Z",
+  "isActive": true,
+  "targetLocations": ["US"],
+  "destinationUrl": "https://joesplumbing.com",
+  "adLibraryUrl": "https://www.facebook.com/ads/library/?id=..."
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing:</p>
+
+<p>| Event | Description | Price |
+|-------|-------------|-------|
+| <code>apify-actor-start</code> | Base cost per run | $0.10 |
+| <code>ad_scraped</code> | Per ad scraped | $0.01 |</p>
+
+<strong>Example costs:</strong>
 <ul>
-<li><strong>Webhooks</strong> - Receive real-time notifications when runs complete</li>
-<li><strong>Zapier</strong> - Connect to 5,000+ apps with native Zapier integration</li>
-<li><strong>Make (Integromat)</strong> - Build complex automation workflows</li>
-<li><strong>n8n</strong> - Self-hosted workflow automation support</li>
-</ul>
+<li>Scrape 50 ads: $0.10 + (50 × $0.01) = <strong>$0.60</strong></li>
+<li>Scrape 100 ads: $0.10 + (100 × $0.01) = <strong>$1.10</strong></li>
 
-<h2>Author</h2>
+</ul>
+---
 
 <strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
 
-<blockquote>&#127942; <strong>2025 Zapier Automation Hero of the Year</strong> &mdash; <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more &rarr;</a></blockquote>
+<p>> 🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></p>
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<h2>Use Cases</h2>
 
-<p>facebook posts scraper, apify actor, web scraping, data extraction, automation</p>
+<ul>
+<li>Competitor ad research</li>
+<li>Market intelligence</li>
+<li>Ad creative inspiration</li>
+<li>Campaign analysis</li>
 
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -512,7 +579,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

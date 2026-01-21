@@ -457,296 +457,86 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>📰 SEO News Aggregator - AI-Powered Content Curation</h1>
-
-<strong>"AI-Curated SEO Industry News"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Aggregate the latest SEO news from top industry sources and transform them into ready-to-post content with AI summarization.</p>
-
-<h2>Sources</h2>
-
+            <h1>SEO News Aggregator - AI-Powered Content Curation</h1>
+            <p>Aggregate the latest SEO news from Search Engine Journal, Search Engine Land, Moz, Ahrefs, and more. Uses BYOK AI to summarize articles and optionally generate images for social posts.</p>
 
 <h2>Features</h2>
 
-<p>✅ <strong>Multi-Source Aggregation</strong> - One actor, 6 sources</p>
-<p>✅ <strong>RSS Feed Parsing</strong> - Fast, reliable article fetching</p>
-<p>✅ <strong>BYOK AI Summarization</strong> - Use your Claude or GPT API key</p>
-<p>✅ <strong>Multiple Summary Styles</strong> - Professional, Twitter, LinkedIn, Newsletter</p>
-<p>✅ <strong>Image Generation</strong> - Create social post images with Gemini</p>
-<p>✅ <strong>Category Filtering</strong> - Focus on topics that matter</p>
-<p>✅ <strong>Scheduled Runs</strong> - Set up daily news digests</p>
-<p>✅ <strong>Webhook Support</strong> - Send to Zapier, Make, n8n</p>
-<p>✅ <strong>Key-Value Store</strong> - Tracks last scrape to avoid duplicates</p>
+<p>✅ <strong>Multi-Source Aggregation</strong> - One actor, 6 sources
+✅ <strong>RSS Feed Parsing</strong> - Fast, reliable article fetching
+✅ <strong>BYOK AI Summarization</strong> - Use your Claude or GPT API key
+✅ <strong>Multiple Summary Styles</strong> - Professional, Twitter, LinkedIn, Newsletter
+✅ <strong>Image Generation</strong> - Create social post images with Gemini
+✅ <strong>Category Filtering</strong> - Focus on topics that matter
+✅ <strong>Scheduled Runs</strong> - Set up daily news digests
+✅ <strong>Webhook Support</strong> - Send to Zapier, Make, n8n
+✅ <strong>Key-Value Store</strong> - Tracks last scrape to avoid duplicates</p>
 
-<h2>How It Works</h2>
+<h2>Quick Start</h2>
 
-<pre><code>┌─────────────────────────────────────────────────┐
-<p>│              SEO News Aggregator                │</p>
-<p>├─────────────────────────────────────────────────┤</p>
-<p>│                                                 │</p>
-<p>│  RSS Feeds ──► Parse ──► Filter by Time/Cat    │</p>
-<p>│                           │                     │</p>
-<p>│                           ▼                     │</p>
-<p>│                    Full Article                 │</p>
-<p>│                    Extraction                   │</p>
-<p>│                           │                     │</p>
-<p>│                           ▼                     │</p>
-<p>│              ┌────────────────────┐             │</p>
-<p>│              │  AI Summarization  │             │</p>
-<p>│              │  (Claude/GPT)      │             │</p>
-<p>│              └────────────────────┘             │</p>
-<p>│                           │                     │</p>
-<p>│                           ▼                     │</p>
-<p>│              ┌────────────────────┐             │</p>
-<p>│              │  Image Generation  │             │</p>
-<p>│              │  (Gemini)          │             │</p>
-<p>│              └────────────────────┘             │</p>
-<p>│                           │                     │</p>
-<p>│                           ▼                     │</p>
-<p>│              Dataset + Webhook                  │</p>
-<p>│                                                 │</p>
-<p>└─────────────────────────────────────────────────┘</p>
-</code></pre>
-
-<h2>Input Schema</h2>
-
-
-<h3>Available Sources</h3>
-<ul>
-<li><code>searchenginejournal</code></li>
-<li><code>searchengineland</code></li>
-<li><code>moz</code></li>
-<li><code>ahrefs</code></li>
-<li><code>neilpatel</code></li>
-<li><code>backlinko</code></li>
-</ul>
-
-<h3>Available Categories</h3>
-<ul>
-<li><code>seo</code></li>
-<li><code>google</code></li>
-<li><code>content-marketing</code></li>
-<li><code>link-building</code></li>
-<li><code>technical-seo</code></li>
-<li><code>local-seo</code></li>
-<li><code>ppc</code></li>
-<li><code>social-media</code></li>
-<li><code>ai</code></li>
-<li><code>algorithm-updates</code></li>
-</ul>
-
-<h3>Summary Styles</h3>
-
-<h2>Output Schema</h2>
-
-<p>Each article in the dataset includes:</p>
-
-
-<h2>Use Cases</h2>
-
-<p>📱 <strong>Social Media Management</strong> - Auto-post SEO news to your channels</p>
-<p>📧 <strong>Newsletter Curation</strong> - Compile weekly/daily digests automatically</p>
-<p>🤖 <strong>Content Ideation</strong> - Find trending topics for your own content</p>
-<p>📊 <strong>Industry Monitoring</strong> - Track algorithm updates and industry changes</p>
-<p>🎓 <strong>Team Education</strong> - Keep your marketing team informed</p>
-<p>🔔 <strong>Competitive Intelligence</strong> - Monitor what competitors are writing about</p>
-
-<h2>Example Inputs</h2>
-
-<h3>Daily News Digest (All Sources)</h3>
 <pre><code>{
-<p>"sources": ["searchenginejournal", "searchengineland", "moz", "ahrefs"],</p>
-<p>"maxArticlesPerSource": 5,</p>
-<p>"hoursLookback": 24,</p>
-<p>"summarizeArticles": true,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"summaryStyle": "newsletter"</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Algorithm Updates Only</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"sources": ["searchenginejournal", "searchengineland"],</p>
-<p>"categories": ["algorithm-updates", "google"],</p>
-<p>"hoursLookback": 48,</p>
-<p>"summarizeArticles": true,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"summaryStyle": "professional"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>LinkedIn Content Pipeline</h3>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>"sources": ["moz", "ahrefs", "backlinko"],</p>
-<p>"categories": ["seo", "link-building"],</p>
-<p>"maxArticlesPerSource": 3,</p>
-<p>"hoursLookback": 24,</p>
-<p>"summarizeArticles": true,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"summaryStyle": "linkedin",</p>
-<p>"generateImages": true,</p>
-<p>"geminiApiKey": "AIza..."</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-
-<h3>Quick Test</h3>
-<pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>With Webhook (Zapier/Make/n8n)</h3>
-<pre><code>{
-<p>"sources": ["searchenginejournal"],</p>
-<p>"maxArticlesPerSource": 10,</p>
-<p>"hoursLookback": 24,</p>
-<p>"summarizeArticles": true,</p>
-<p>"anthropicApiKey": "sk-ant-...",</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef/"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Output</h2>
-
-<h3>Standard Article</h3>
-<pre><code>{
-<p>"title": "Google Confirms December 2024 Core Update Rolling Out",</p>
-<p>"url": "https://www.searchenginejournal.com/google-december-2024-core-update/123456/",</p>
-<p>"source": "Search Engine Journal",</p>
-<p>"author": "Matt Southern",</p>
-<p>"publishedAt": "2024-12-24T10:30:00Z",</p>
-<p>"category": "algorithm-updates",</p>
-<p>"summary": "Google has confirmed the rollout of the December 2024 core update, which is expected to take 2-3 weeks to complete. Key changes focus on improving content quality signals and reducing spam.",</p>
-<p>"linkedInPost": "🚨 Google December 2024 Core Update is LIVE!\n\nKey takeaways:\n• Rolling out over 2-3 weeks\n• Focus on content quality signals\n• Spam reduction improvements\n\nWhat does this mean for your site? Time to review your content strategy!\n\n#SEO #Google #DigitalMarketing",</p>
-<p>"imageUrl": "https://storage.googleapis.com/...",</p>
-<p>"scrapedAt": "2024-12-24T15:30:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Demo Mode Output (5 sample articles)</h3>
-<p>Returns realistic sample data including:</p>
-<ul>
-<li>Google algorithm update news</li>
-<li>AI Overviews impact study</li>
-<li>Technical SEO fixes guide</li>
-<li>Link building strategies</li>
-<li>Local SEO ranking factors</li>
-</ul>
-
-<h2>Scheduling</h2>
-
-<p>Set up automated runs in Apify:</p>
-
-<p>1. Go to your actor's <strong>Schedules</strong> tab</p>
-<p>2. Create a new schedule (e.g., "Daily 9 AM EST")</p>
-<p>3. Configure input with your API keys</p>
-<p>4. Add webhook URL for automatic delivery</p>
-
-<strong>Recommended schedules:</strong>
-<ul>
-<li><strong>Daily digest</strong>: Run once per day with <code>hoursLookback: 24</code></li>
-<li><strong>Breaking news</strong>: Run every 6 hours with <code>hoursLookback: 6</code></li>
-<li><strong>Weekly roundup</strong>: Run once per week with <code>hoursLookback: 168</code></li>
-</ul>
-
-<h2>Apify Integration</h2>
-
-<p>This actor uses internal Apify features:</p>
-
-<ul>
-<li><strong>Key-Value Store</strong> - Stores <code>lastScrapedAt</code> to avoid duplicate articles across runs</li>
-<li><strong>Named Datasets</strong> - Persist articles for historical analysis</li>
-<li><strong>Actor.call()</strong> - Calls <code>gemini-image-generator</code> actor for image generation</li>
-<li><strong>Webhooks</strong> - Send results to Zapier, Make, n8n, or custom endpoints</li>
-</ul>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event model:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event model:</p>
 
+<p>| Event | Cost | Description |
+|-------|------|-------------|
+| <code>article_scraped</code> | $0.01 | Each article fetched from RSS |
+| <code>article_summarized</code> | $0.02 | Each article summarized with AI |
+| <code>image_generated</code> | $0.05 | Each image created via Gemini |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>20 articles with summaries = $0.20 + $0.40 = <strong>$0.60</strong></li>
 <li>With images: + $1.00 = <strong>$1.60 total</strong></li>
-</ul>
 
+</ul>
 <strong>Note:</strong> AI API costs (Claude/OpenAI/Gemini) are billed directly by those providers using your BYOK keys.
 
-<h2>FAQ</h2>
+<h2>Use Cases</h2>
 
-<h3>Why do I need to provide my own API keys?</h3>
-<p>This is a BYOK (Bring Your Own Key) model. Your Claude/OpenAI/Gemini API keys are used directly, so you control costs and rate limits. Keys are encrypted and never stored.</p>
-
-<h3>Why are some articles missing summaries?</h3>
-<ul>
-<li>AI summarization requires either <code>anthropicApiKey</code> or <code>openaiApiKey</code></li>
-<li>If both APIs fail, the original content snippet is used</li>
-<li>Check your API key validity and rate limits</li>
-</ul>
-
-<h3>How do I avoid duplicate articles?</h3>
-<p>The actor uses Apify's Key-Value Store to track <code>lastScrapedAt</code>. Subsequent runs only fetch articles published after the last run.</p>
-
-<h3>Can I add custom sources?</h3>
-<p>Currently, only the 6 built-in sources are supported. Custom RSS feeds may be added in future versions.</p>
-
-<h3>How long does it take?</h3>
-<ul>
-<li>Without AI: ~10-30 seconds</li>
-<li>With AI summarization: ~1-2 minutes (depends on article count)</li>
-<li>With image generation: ~3-5 minutes</li>
-</ul>
-
-<h3>What if a source is down?</h3>
-<p>Failed sources are logged but don't stop the run. Other sources continue normally.</p>
-
-<h2>Error Handling</h2>
-
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-<p>1. Create a Zapier webhook trigger</p>
-<p>2. Add webhook URL to input</p>
-<p>3. Use "Parse JSON" action to process articles</p>
-<p>4. Connect to social media apps</p>
-
-<h3>Make (Integromat)</h3>
-<pre><code>{
-<p>"webhookUrl": "https://hook.us1.make.com/..."</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n</h3>
-<pre><code>{
-<p>"webhookUrl": "https://your-n8n.com/webhook/..."</p>
-<p>}</p>
-</code></pre>
-
-<h3>Buffer / Hootsuite</h3>
-<p>Use Zapier or Make as an intermediary to connect to social scheduling tools.</p>
-
-<h2>Best Practices</h2>
-
-<p>1. <strong>Start with demo mode</strong> - Test the actor before using API credits</p>
-<p>2. <strong>Use category filters</strong> - Focus on relevant topics to reduce costs</p>
-<p>3. <strong>Schedule appropriately</strong> - Match <code>hoursLookback</code> to schedule frequency</p>
-<p>4. <strong>Monitor API usage</strong> - Check your AI provider dashboards for costs</p>
-<p>5. <strong>Use webhooks</strong> - Automate delivery to your workflow tools</p>
+<p>📱 <strong>Social Media Management</strong> - Auto-post SEO news to your channels
+📧 <strong>Newsletter Curation</strong> - Compile weekly/daily digests automatically
+🤖 <strong>Content Ideation</strong> - Find trending topics for your own content
+📊 <strong>Industry Monitoring</strong> - Track algorithm updates and industry changes
+🎓 <strong>Team Education</strong> - Keep your marketing team informed
+🔔 <strong>Competitive Intelligence</strong> - Monitor what competitors are writing about</p>
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -760,7 +550,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

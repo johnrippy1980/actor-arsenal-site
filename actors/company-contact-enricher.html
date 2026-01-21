@@ -463,258 +463,82 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>🏢 Company Contact Enricher - Website to B2B Leads</h1>
-
-<strong>"Transform Websites into B2B Contact Data"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Transform company website URLs into enriched B2B contact data. Automatically scrapes team pages, detects email patterns, cross-references LinkedIn profiles, and identifies decision makers.</p>
+            <h1>Company Contact Enricher - Website to B2B Leads</h1>
+            <p>Transform company website URLs into enriched B2B contact data. Scrapes team pages, detects email patterns, cross-references LinkedIn profiles, and identifies decision makers.</p>
 
 <h2>Features</h2>
 
-<p>✅ <strong>Website Scanning</strong> - Crawls company sites for team/about pages</p>
-<p>✅ <strong>Contact Extraction</strong> - Finds names, titles, emails, phone numbers</p>
-<p>✅ <strong>Email Pattern Detection</strong> - Detects patterns like first.last@company.com</p>
-<p>✅ <strong>LinkedIn Integration</strong> - Cross-references with LinkedIn profiles</p>
-<p>✅ <strong>Title Filtering</strong> - Focus on decision makers (CEO, CTO, etc.)</p>
-<p>✅ <strong>Webhook Support</strong> - Integrate with Zapier, Make, n8n</p>
-<p>✅ <strong>Demo Mode</strong> - Test with sample data</p>
+<p>✅ <strong>Website Scanning</strong> - Crawls company sites for team/about pages
+✅ <strong>Contact Extraction</strong> - Finds names, titles, emails, phone numbers
+✅ <strong>Email Pattern Detection</strong> - Detects patterns like first.last@company.com
+✅ <strong>LinkedIn Integration</strong> - Cross-references with LinkedIn profiles
+✅ <strong>Title Filtering</strong> - Focus on decision makers (CEO, CTO, etc.)
+✅ <strong>Webhook Support</strong> - Integrate with Zapier, Make, n8n
+✅ <strong>Demo Mode</strong> - Test with sample data</p>
 
-<h2>How It Works</h2>
+<h2>Quick Start</h2>
 
-<pre><code>┌─────────────────────────────────────────────────────┐
-<p>│            Company Contact Enricher                  │</p>
-<p>├─────────────────────────────────────────────────────┤</p>
-<p>│                                                     │</p>
-<p>│  Website URLs ──► Crawl Team Pages ──► Extract     │</p>
-<p>│                                          │          │</p>
-<p>│                                          ▼          │</p>
-<p>│                               ┌─────────────────┐   │</p>
-<p>│                               │ Name, Title,    │   │</p>
-<p>│                               │ Email, Phone    │   │</p>
-<p>│                               └─────────────────┘   │</p>
-<p>│                                          │          │</p>
-<p>│              ┌───────────────────────────┴───┐      │</p>
-<p>│              ▼                               ▼      │</p>
-<p>│     ┌─────────────────┐          ┌────────────────┐ │</p>
-<p>│     │ Email Pattern   │          │ LinkedIn       │ │</p>
-<p>│     │ Detection       │          │ Lookup         │ │</p>
-<p>│     └─────────────────┘          └────────────────┘ │</p>
-<p>│              │                               │      │</p>
-<p>│              └───────────────┬───────────────┘      │</p>
-<p>│                              ▼                      │</p>
-<p>│                     Enriched Dataset                │</p>
-<p>│                                                     │</p>
-<p>└─────────────────────────────────────────────────────┘</p>
-</code></pre>
-
-<h2>Input Schema</h2>
-
-
-<p>*Required unless <code>demoMode</code> is <code>true</code></p>
-
-<h2>Output Schema</h2>
-
-<p>Each contact in the dataset includes:</p>
-
-
-<h2>Use Cases</h2>
-
-<p>🎯 <strong>Sales Prospecting</strong> - Build targeted lead lists from competitor or prospect websites</p>
-<p>📧 <strong>Email Outreach</strong> - Find decision-maker emails for cold outreach campaigns</p>
-<p>🔗 <strong>LinkedIn Campaigns</strong> - Get profile URLs for connection requests</p>
-<p>📊 <strong>Market Research</strong> - Map company org structures and leadership teams</p>
-<p>🤝 <strong>Partnership Development</strong> - Find the right contacts at potential partners</p>
-<p>🔍 <strong>Competitor Analysis</strong> - Identify key personnel at competing companies</p>
-
-<h2>Example Input</h2>
-
-<h3>Basic Usage</h3>
 <pre><code>{
-<p>"websiteUrls": [</p>
-<p>"https://acme-corp.com",</p>
-<p>"https://example-startup.io"</p>
-<p>],</p>
-<p>"lookupLinkedIn": true,</p>
-<p>"detectEmailPattern": true,</p>
-<p>"targetTitles": ["CEO", "CTO", "VP Sales", "Marketing Director"],</p>
-<p>"maxContactsPerSite": 10</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Focus on C-Suite Only</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
 <pre><code>{
-<p>"websiteUrls": ["https://enterprise-company.com"],</p>
-<p>"targetTitles": ["CEO", "CFO", "CTO", "COO", "CMO"],</p>
-<p>"maxContactsPerSite": 5,</p>
-<p>"lookupLinkedIn": true</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Quick Test with Demo Mode</h3>
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-
-<h3>With Webhook Integration</h3>
-<pre><code>{
-<p>"websiteUrls": ["https://target-company.com"],</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123456/abcdef/",</p>
-<p>"targetTitles": ["Director", "Manager", "Head of"]</p>
-<p>}</p>
-</code></pre>
-
-<h2>Example Output</h2>
-
-<h3>Single Contact</h3>
-<pre><code>{
-<p>"name": "Jane Smith",</p>
-<p>"title": "Chief Executive Officer",</p>
-<p>"email": "jane.smith@acme-corp.com",</p>
-<p>"emailConfidence": 0.95,</p>
-<p>"phone": "+1 (555) 123-4567",</p>
-<p>"linkedInUrl": "https://linkedin.com/in/janesmith",</p>
-<p>"company": "Acme Corporation",</p>
-<p>"companyDomain": "acme-corp.com",</p>
-<p>"source": "team page",</p>
-<p>"scrapedAt": "2024-12-24T15:30:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<h3>Demo Mode Output (5 sample contacts)</h3>
-<pre><code>[
-<p>{</p>
-<p>"name": "Jane Smith",</p>
-<p>"title": "Chief Executive Officer",</p>
-<p>"email": "jane.smith@acme-corp.com",</p>
-<p>"emailConfidence": 0.95,</p>
-<p>"company": "Acme Corporation"</p>
-<p>},</p>
-<p>{</p>
-<p>"name": "Michael Johnson",</p>
-<p>"title": "Chief Technology Officer",</p>
-<p>"email": "michael.johnson@acme-corp.com",</p>
-<p>"emailConfidence": 0.95,</p>
-<p>"company": "Acme Corporation"</p>
-<p>}</p>
-<p>]</p>
-</code></pre>
-
-<h2>Email Pattern Detection</h2>
-
-<p>The actor detects these common email patterns:</p>
-
-
-<p>If an email is found on the page, <code>emailConfidence</code> is <code>1.0</code>. If derived from a pattern, <code>emailConfidence</code> is <code>0.75</code>.</p>
-
-<h2>Team Page Detection</h2>
-
-<p>The actor automatically searches for these common paths:</p>
-
-<ul>
-<li><code>/team</code>, <code>/our-team</code></li>
-<li><code>/about</code>, <code>/about-us</code></li>
-<li><code>/leadership</code>, <code>/management</code></li>
-<li><code>/people</code>, <code>/staff</code></li>
-<li><code>/who-we-are</code></li>
-<li><code>/company/team</code>, <code>/company/about</code></li>
-</ul>
-
-<p>It also follows internal links containing keywords like "team", "about", "leadership", and "people".</p>
-
-<h2>Apify Integration</h2>
-
-<p>This actor can call other actors for enhanced enrichment:</p>
-
-<ul>
-<li><strong>linkedin-profile-scraper</strong> - Enriches with LinkedIn data</li>
-<li><strong>website-crawler</strong> - For deep website scanning</li>
-</ul>
 
 <h2>Pricing</h2>
 
-<p>Pay-per-event model:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay-per-event model:</p>
 
+<p>| Event | Cost | Description |
+|-------|------|-------------|
+| <code>website_scanned</code> | $0.05 | Each company website scanned |
+| <code>contact_enriched</code> | $0.02 | Each contact found with email or LinkedIn |
+| <code>linkedin_lookup</code> | $0.03 | Each LinkedIn profile lookup |</p>
 
 <strong>Example costs:</strong>
 <ul>
 <li>10 websites × 5 contacts each = $0.50 + $1.00 = <strong>$1.50</strong></li>
 <li>With LinkedIn lookups: + $1.50 = <strong>$3.00 total</strong></li>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>FAQ</h2>
-
-<h3>Why are some contacts missing emails?</h3>
-<ul>
-<li>Some team pages only list names and photos without contact info</li>
-<li>The actor will attempt to derive emails using detected patterns</li>
-<li>Check <code>emailConfidence</code> - values below 1.0 indicate derived emails</li>
-</ul>
-
-<h3>Why doesn't LinkedIn lookup work for all contacts?</h3>
-<ul>
-<li>LinkedIn profiles may not exist or may have privacy settings</li>
-<li>Name + company matching isn't always reliable</li>
-<li>The actor only charges for successful lookups</li>
-</ul>
-
-<h3>How long does it take?</h3>
-<ul>
-<li>~5-10 seconds per website</li>
-<li>LinkedIn lookups add ~2-3 seconds per contact</li>
-<li>Demo mode completes instantly</li>
-</ul>
-
-<h3>Can I filter by specific departments?</h3>
-<ul>
-<li>Yes! Use <code>targetTitles</code> with department-specific keywords</li>
-<li>Example: <code>["Sales", "Marketing", "Business Development"]</code></li>
-</ul>
-
-<h3>What if a website blocks scraping?</h3>
-<ul>
-<li>The actor uses Apify's residential proxy pool</li>
-<li>Most websites are accessible, but some may block</li>
-<li>Failed websites are logged but don't count toward billing</li>
-</ul>
-
-<h2>Error Handling</h2>
-
-
-<h2>Integrations</h2>
-
-<h3>Zapier</h3>
-<p>Send results to Zapier when the run completes:</p>
-<pre><code>{
-<p>"websiteUrls": ["https://example.com"],</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/..."</p>
-<p>}</p>
-</code></pre>
-
-<h3>Make (Integromat)</h3>
-<pre><code>{
-<p>"webhookUrl": "https://hook.us1.make.com/..."</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n</h3>
-<pre><code>{
-<p>"webhookUrl": "https://your-n8n.com/webhook/..."</p>
-<p>}</p>
-</code></pre>
+<p>🎯 <strong>Sales Prospecting</strong> - Build targeted lead lists from competitor or prospect websites
+📧 <strong>Email Outreach</strong> - Find decision-maker emails for cold outreach campaigns
+🔗 <strong>LinkedIn Campaigns</strong> - Get profile URLs for connection requests
+📊 <strong>Market Research</strong> - Map company org structures and leadership teams
+🤝 <strong>Partnership Development</strong> - Find the right contacts at potential partners
+🔍 <strong>Competitor Analysis</strong> - Identify key personnel at competing companies</p>
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -728,7 +552,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

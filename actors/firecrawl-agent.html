@@ -457,67 +457,111 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Firecrawl Agent</h1>
+            <h1>Firecrawl Agent - Web Crawler</h1>
+            <p>AI-powered autonomous web agent that navigates websites, handles complex interactions, and extracts structured data using natural language goals. Powered by Firecrawl's Agent API. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 
-<blockquote><strong>"AI That Navigates Websites Like a Human, Extracts Data Like a Pro"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Stop Writing Custom Scrapers for Every Website</h2>
-
-<strong>You're currently doing:</strong> Building different scrapers for each website, handling pagination manually, dealing with JavaScript-rendered content, writing complex CSS selectors.
-
-<strong>What if you could just describe what you want?</strong>
-
-<strong>Firecrawl Agent</strong> uses Firecrawl's autonomous Agent API to navigate websites intelligently and extract exactly what you need:
+<h2>Features</h2>
 
 <ul>
-<li><strong>Natural Language Goals</strong> - Describe extraction in plain English</li>
-<li><strong>Autonomous Navigation</strong> - AI decides which links to click</li>
-<li><strong>Smart Pagination</strong> - Automatically handles "Load More" and infinite scroll</li>
-<li><strong>JavaScript Rendering</strong> - Full browser rendering for SPAs</li>
-<li><strong>Backtracking</strong> - Recovers from dead ends automatically</li>
-</ul>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
 
-<strong>Powered by Firecrawl's Agent API</strong> - the same technology behind production web scraping systems.
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>url</code> | string | Yes<em> | - | Starting URL for extraction |
+| <code>objective</code> | string | Yes</em> | - | Natural language description of what to extract |
+| <code>schema</code> | object | No | - | JSON schema for structured output |
+| <code>maxSteps</code> | integer | No | 10 | Maximum navigation actions |
+| <code>allowBacktracking</code> | boolean | No | true | Allow agent to try alternative paths |
+| <code>firecrawlApiKey</code> | string | Yes<em> | - | Your Firecrawl API key |
+| <code>demoMode</code> | boolean | No | false | Test with sample data |</p>
+
+</em>Not required in demo mode
 
 <p>---</p>
 
-<h2>How It Works</h2>
+<h2>Output Format</h2>
 
-<pre><code>URL + Natural Language Goal
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  GOAL       │ Parse user objective</p>
-<p>│  ANALYSIS   │ Identify data requirements</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  STRATEGIC  │ Find likely paths to data</p>
-<p>│  NAVIGATION │ Click links, fill forms</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  CONTENT    │ Render JavaScript</p>
-<p>│  EXTRACTION │ Scrape clean content</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  DATA       │ Apply optional schema</p>
-<p>│  STRUCTURING│ Format as JSON</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>┌─────────────┐</p>
-<p>│  VALIDATION │ Verify data meets goal</p>
-<p>│             │ Backtrack if needed</p>
-<p>└─────────────┘</p>
-<p>↓</p>
-<p>Clean JSON Output</p>
+<pre><code>{
+  "success": true,
+  "url": "https://example.com",
+  "objective": "Find pricing plans",
+  "data": {
+    "plans": [
+      {
+        "name": "Starter",
+        "price": 29,
+        "features": ["5 users", "10GB storage"]
+      },
+      {
+        "name": "Pro",
+        "price": 99,
+        "features": ["Unlimited users", "100GB storage", "Priority support"]
+      }
+    ]
+  },
+  "stepsUsed": 4,
+  "pagesVisited": [
+    "https://example.com",
+    "https://example.com/pricing"
+  ],
+  "extractedAt": "2024-12-23T10:30:00Z"
+}
 </code></pre>
+
+<p>---</p>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<h3>BYOK (Bring Your Own Key)</h3></p>
+
+<p>| Provider | Cost | Purpose |
+|----------|------|---------|
+| <strong>Firecrawl</strong> | ~$0.01-0.05/extraction | Agent API usage |
+| <strong>Apify</strong> | ~$0.10-0.25/run | Compute |</p>
+
+<h3>Cost Per Extraction</h3>
+
+<p>| Complexity | Estimated Cost |
+|------------|----------------|
+| Single page | ~$0.01-0.02 |
+| 2-5 pages | ~$0.02-0.03 |
+| Complex multi-page | ~$0.03-0.05 |</p>
+
+<h3>Cost Comparison</h3>
+
+<p>| Task | Firecrawl Agent | Custom Scraper Development |
+|------|-----------------|---------------------------|
+| Extract pricing from 1 site | ~$0.03 | 2-4 hours dev time |
+| Scrape 100 product listings | ~$0.50 | 1-2 days dev time |
+| Monthly extraction (100 sites) | ~$5 | Maintenance + hosting |</p>
+
+<strong>No development time. No maintenance. Pay per use.</strong>
 
 <p>---</p>
 
@@ -526,287 +570,88 @@
 <h3>1. Competitive Pricing Research</h3>
 
 <pre><code>{
-<p>"url": "https://competitor.com",</p>
-<p>"objective": "Find all pricing plans, their monthly and annual costs, and included features"</p>
-<p>}</p>
+  "url": "https://competitor.com",
+  "objective": "Find all pricing plans, their monthly and annual costs, and included features"
+}
 </code></pre>
 
 <strong>Returns:</strong>
 <pre><code>{
-<p>"plans": [</p>
-<p>{</p>
-<p>"name": "Starter",</p>
-<p>"monthlyPrice": 29,</p>
-<p>"annualPrice": 290,</p>
-<p>"features": ["5 users", "10GB storage", "Email support"]</p>
-<p>},</p>
-<p>{</p>
-<p>"name": "Pro",</p>
-<p>"monthlyPrice": 99,</p>
-<p>"annualPrice": 990,</p>
-<p>"features": ["Unlimited users", "100GB storage", "Priority support"]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+  "plans": [
+    {
+      "name": "Starter",
+      "monthlyPrice": 29,
+      "annualPrice": 290,
+      "features": ["5 users", "10GB storage", "Email support"]
+    },
+    {
+      "name": "Pro",
+      "monthlyPrice": 99,
+      "annualPrice": 990,
+      "features": ["Unlimited users", "100GB storage", "Priority support"]
+    }
+  ]
+}
 </code></pre>
 
 <h3>2. Job Listings Extraction</h3>
 
 <pre><code>{
-<p>"url": "https://company.com/careers",</p>
-<p>"objective": "Extract all software engineering job openings with title, location, and requirements"</p>
-<p>}</p>
+  "url": "https://company.com/careers",
+  "objective": "Extract all software engineering job openings with title, location, and requirements"
+}
 </code></pre>
 
 <h3>3. Product Catalog Scraping</h3>
 
 <pre><code>{
-<p>"url": "https://store.com/products",</p>
-<p>"objective": "Get all products with name, price, description, and availability",</p>
-<p>"schema": {</p>
-<p>"type": "array",</p>
-<p>"items": {</p>
-<p>"type": "object",</p>
-<p>"properties": {</p>
-<p>"name": { "type": "string" },</p>
-<p>"price": { "type": "number" },</p>
-<p>"inStock": { "type": "boolean" }</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
+  "url": "https://store.com/products",
+  "objective": "Get all products with name, price, description, and availability",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "inStock": { "type": "boolean" }
+      }
+    }
+  }
+}
 </code></pre>
 
 <h3>4. Company Research</h3>
 
 <pre><code>{
-<p>"url": "https://company.com",</p>
-<p>"objective": "Find the leadership team, their titles, and LinkedIn profiles"</p>
-<p>}</p>
+  "url": "https://company.com",
+  "objective": "Find the leadership team, their titles, and LinkedIn profiles"
+}
 </code></pre>
 
 <h3>5. Event/Conference Extraction</h3>
 
 <pre><code>{
-<p>"url": "https://conference.com",</p>
-<p>"objective": "Extract the conference schedule with session titles, speakers, times, and room locations"</p>
-<p>}</p>
+  "url": "https://conference.com",
+  "objective": "Extract the conference schedule with session titles, speakers, times, and room locations"
+}
 </code></pre>
 
 <h3>6. Documentation Scraping</h3>
 
 <pre><code>{
-<p>"url": "https://docs.example.com",</p>
-<p>"objective": "Extract all API endpoints with their methods, parameters, and descriptions"</p>
-<p>}</p>
+  "url": "https://docs.example.com",
+  "objective": "Extract all API endpoints with their methods, parameters, and descriptions"
+}
 </code></pre>
 
 <p>---</p>
 
-<h2>Input Parameters</h2>
-
-
-<p>*Not required in demo mode</p>
-
 <p>---</p>
 
-<h2>Output Format</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<pre><code>{
-<p>"success": true,</p>
-<p>"url": "https://example.com",</p>
-<p>"objective": "Find pricing plans",</p>
-<p>"data": {</p>
-<p>"plans": [</p>
-<p>{</p>
-<p>"name": "Starter",</p>
-<p>"price": 29,</p>
-<p>"features": ["5 users", "10GB storage"]</p>
-<p>},</p>
-<p>{</p>
-<p>"name": "Pro",</p>
-<p>"price": 99,</p>
-<p>"features": ["Unlimited users", "100GB storage", "Priority support"]</p>
-<p>}</p>
-<p>]</p>
-<p>},</p>
-<p>"stepsUsed": 4,</p>
-<p>"pagesVisited": [</p>
-<p>"https://example.com",</p>
-<p>"https://example.com/pricing"</p>
-<p>],</p>
-<p>"extractedAt": "2024-12-23T10:30:00Z"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Pricing</h2>
-
-<h3>BYOK (Bring Your Own Key)</h3>
-
-
-<h3>Cost Per Extraction</h3>
-
-
-<h3>Cost Comparison</h3>
-
-
-<strong>No development time. No maintenance. Pay per use.</strong>
-
-<p>---</p>
-
-<h2>API Integration</h2>
-
-<h3>Using the Apify API</h3>
-
-<pre><code>import { ApifyClient } from 'apify-client';
-
-<p>const client = new ApifyClient({ token: 'YOUR_APIFY_TOKEN' });</p>
-
-<p>const run = await client.actor('alizarin_refrigerator-owner/firecrawl-agent').call({</p>
-<p>url: 'https://competitor.com/pricing',</p>
-<p>objective: 'Extract all pricing plans with features and costs',</p>
-<p>firecrawlApiKey: 'fc-xxx'</p>
-<p>});</p>
-
-<p>const { items } = await client.dataset(run.defaultDatasetId).listItems();</p>
-<p>console.log(items[0].data);</p>
-</code></pre>
-
-<h3>Using cURL</h3>
-
-<pre><code>curl -X POST "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~firecrawl-agent/runs?token=YOUR_API_TOKEN" \
-<p>-H "Content-Type: application/json" \</p>
-<p>-d '{</p>
-<p>"url": "https://example.com/pricing",</p>
-<p>"objective": "Find all pricing plans with their features",</p>
-<p>"firecrawlApiKey": "fc-xxx"</p>
-<p>}'</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Demo Mode</h2>
-
-<p>Test the actor without an API key:</p>
-
-<pre><code>{
-<p>"demoMode": true,</p>
-<p>"url": "https://example-saas.com",</p>
-<p>"objective": "Find the pricing information"</p>
-<p>}</p>
-</code></pre>
-
-<p>Returns sample pricing data extraction.</p>
-
-<p>---</p>
-
-<h2>Firecrawl Agent vs Fire-Enrich</h2>
-
-
-<strong>Use Firecrawl Agent</strong> when you need to extract arbitrary data from any website.
-
-<strong>Use Fire-Enrich</strong> when you specifically need to enrich company/lead information.
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>Sales Teams</h3>
-<ul>
-<li>Extract competitor pricing</li>
-<li>Gather prospect information</li>
-<li>Build target account lists</li>
-</ul>
-
-<h3>Product Managers</h3>
-<ul>
-<li>Competitive analysis</li>
-<li>Feature comparison research</li>
-<li>Market research</li>
-</ul>
-
-<h3>Developers</h3>
-<ul>
-<li>API documentation scraping</li>
-<li>Data migration projects</li>
-<li>Integration research</li>
-</ul>
-
-<h3>Researchers</h3>
-<ul>
-<li>Content aggregation</li>
-<li>Data collection for analysis</li>
-<li>Automated research tasks</li>
-</ul>
-
-<p>---</p>
-
-<h2>Advanced Features</h2>
-
-<h3>Schema Enforcement</h3>
-
-<p>Force output to match a specific structure:</p>
-
-<pre><code>{
-<p>"url": "https://store.com/products",</p>
-<p>"objective": "Get all products",</p>
-<p>"schema": {</p>
-<p>"type": "array",</p>
-<p>"items": {</p>
-<p>"type": "object",</p>
-<p>"properties": {</p>
-<p>"name": { "type": "string" },</p>
-<p>"price": { "type": "number" },</p>
-<p>"sku": { "type": "string" },</p>
-<p>"inStock": { "type": "boolean" }</p>
-<p>},</p>
-<p>"required": ["name", "price"]</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Backtracking</h3>
-
-<p>When <code>allowBacktracking: true</code> (default), the agent will:</p>
-<p>1. Try the most likely path to find data</p>
-<p>2. If unsuccessful, backtrack and try alternative paths</p>
-<p>3. Continue until data is found or maxSteps is reached</p>
-
-<p>---</p>
-
-<h2>Limitations</h2>
-
-<ul>
-<li><strong>Authentication</strong>: Cannot access login-protected content</li>
-<li><strong>Rate Limits</strong>: Respects Firecrawl's API rate limits</li>
-<li><strong>Captchas</strong>: Cannot bypass CAPTCHA challenges</li>
-<li><strong>Heavy JavaScript</strong>: Very complex SPAs may require more steps</li>
-<li><strong>Dynamic Content</strong>: Real-time updating content may vary between runs</li>
-</ul>
-
-<p>---</p>
-
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support@alizarin_refrigerator-owner.com</p>
-
-<p>Get your Firecrawl API key at <a href="https://firecrawl.dev" target="_blank" rel="noopener">firecrawl.dev</a></p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>firecrawl, web scraping agent, ai web scraper, autonomous web extraction, natural language scraper, javascript scraper, spa scraper, web data extraction, pricing scraper, product catalog scraper, competitor research, no-code scraper, firecrawl api, intelligent web crawler</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -820,7 +665,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

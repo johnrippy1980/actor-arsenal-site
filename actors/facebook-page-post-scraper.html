@@ -457,17 +457,10 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Facebook Page Post Scraper</h1>
-
-<strong>"Extract Posts, Engagement & Content from Any Public Facebook Page"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Powerful Facebook Page scraper</strong> that extracts posts, engagement metrics (likes, comments, shares), images, videos, and posting dates from any public Facebook Page. Perfect for competitive analysis, content research, and social media monitoring.
+            <p>Scrape posts from public Facebook Pages. Extract post content, images, videos, engagement metrics (likes, comments, shares), and posting dates. Perfect for competitive analysis and content research.</p>
 
 <h2>Features</h2>
 
@@ -478,8 +471,8 @@
 <li>Videos with thumbnails</li>
 <li>Shared links with titles</li>
 <li>Posting dates and timestamps</li>
-</ul>
 
+</ul>
 <h3>💬 Engagement Metrics</h3>
 <ul>
 <li>Likes/Reactions count</li>
@@ -487,152 +480,90 @@
 <li>Shares count</li>
 <li>Reaction breakdown (like, love, haha, wow, sad, angry)</li>
 <li>Top comments extraction</li>
-</ul>
 
+</ul>
 <h3>🔍 Smart Filtering</h3>
 <ul>
 <li>Filter by date range</li>
 <li>Filter by content type (text, images, videos, links)</li>
 <li>Limit posts per page</li>
 <li>Skip sponsored content</li>
-</ul>
 
+</ul>
 <h3>🔗 Easy Integration</h3>
 <ul>
 <li>Webhook support (Zapier, Make, n8n)</li>
 <li>Export to CSV, JSON, Excel</li>
 <li>Real-time notifications</li>
+
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Description |
+|-----------|------|-------------|
+| <code>pageUrls</code> | array | Facebook Page URLs to scrape |
+| <code>pageUsernames</code> | array | Facebook Page usernames/handles |
+| <code>maxPostsPerPage</code> | number | Max posts to scrape per page (1-100) |
+| <code>includeComments</code> | boolean | Scrape top comments for each post |
+| <code>maxCommentsPerPost</code> | number | Max comments per post (1-50) |
+| <code>dateFrom</code> | string | Only scrape posts from this date (YYYY-MM-DD) |
+| <code>dateTo</code> | string | Only scrape posts up to this date (YYYY-MM-DD) |
+| <code>contentType</code> | string | Filter: all, text_only, with_images, with_videos, with_links |
+| <code>webhookUrl</code> | string | URL for webhook notifications |
+| <code>webhookPlatform</code> | string | zapier, make, n8n, custom |
+| <code>demoMode</code> | boolean | Test with sample data |</p>
 
-<h2>Example Usage</h2>
-
-<h3>Scrape Multiple Pages</h3>
-
-<pre><code>{
-<p>"pageUrls": [</p>
-<p>"https://www.facebook.com/meta",</p>
-<p>"https://www.facebook.com/nike"</p>
-<p>],</p>
-<p>"maxPostsPerPage": 50,</p>
-<p>"includeComments": true,</p>
-<p>"maxCommentsPerPost": 5</p>
-<p>}</p>
-</code></pre>
-
-<h3>Filter by Date Range</h3>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"pageUsernames": ["starbucks"],</p>
-<p>"maxPostsPerPage": 100,</p>
-<p>"dateFrom": "2024-01-01",</p>
-<p>"dateTo": "2024-12-31",</p>
-<p>"contentType": "with_images"</p>
-<p>}</p>
-</code></pre>
-
-<h3>With Webhook Integration</h3>
-
-<pre><code>{
-<p>"pageUrls": ["https://www.facebook.com/competitor"],</p>
-<p>"maxPostsPerPage": 25,</p>
-<p>"webhookUrl": "https://hooks.zapier.com/hooks/catch/123/abc",</p>
-<p>"webhookPlatform": "zapier"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output Example</h2>
-
-<pre><code>{
-<p>"postId": "fb-meta-1234567890",</p>
-<p>"pageId": "meta",</p>
-<p>"pageName": "Meta",</p>
-<p>"pageUrl": "https://www.facebook.com/meta",</p>
-<p>"postUrl": "https://www.facebook.com/meta/posts/1234567890",</p>
-<p>"content": "Exciting news! We just launched our new VR headset...",</p>
-<p>"contentPreview": "Exciting news! We just launched our new VR headset...",</p>
-<p>"postType": "image",</p>
-<p>"imageUrls": [</p>
-<p>"https://scontent.xx.fbcdn.net/..."</p>
-<p>],</p>
-<p>"likes": 15420,</p>
-<p>"comments": 892,</p>
-<p>"shares": 234,</p>
-<p>"reactions": {</p>
-<p>"like": 10000,</p>
-<p>"love": 3500,</p>
-<p>"haha": 120,</p>
-<p>"wow": 1800,</p>
-<p>"sad": 0,</p>
-<p>"angry": 0</p>
-<p>},</p>
-<p>"topComments": [</p>
-<p>{</p>
-<p>"author": "John D.",</p>
-<p>"text": "Can't wait to try this!",</p>
-<p>"likes": 156</p>
-<p>}</p>
-<p>],</p>
-<p>"postedAt": "2024-12-20T14:30:00.000Z",</p>
-<p>"isSponsored": false,</p>
-<p>"isPinned": true,</p>
-<p>"scrapedAt": "2024-12-21T10:15:00.000Z"</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
+| Event | Cost |
+|-------|------|
+| Actor start | $0.10 |
+| Per page scraped | $0.05 |
+| Per post scraped | $0.005 |</p>
 
 <strong>Demo mode is FREE</strong> - Test with sample data before using real credits.
 
 <h2>Use Cases</h2>
 
-<p>1. <strong>Competitive Analysis</strong> - Monitor competitor Facebook activity</p>
-<p>2. <strong>Content Research</strong> - Find top-performing post types and topics</p>
-<p>3. <strong>Brand Monitoring</strong> - Track mentions and engagement</p>
-<p>4. <strong>Influencer Research</strong> - Analyze influencer posting patterns</p>
-<p>5. <strong>Market Research</strong> - Understand audience interests</p>
-<p>6. <strong>Social Proof</strong> - Collect testimonials and positive comments</p>
-<p>7. <strong>Trend Analysis</strong> - Identify viral content patterns</p>
-
-<h2>Rate Limiting</h2>
-
-<ul>
-<li>Built-in delays to respect Facebook servers</li>
-<li>Residential proxy recommended for reliability</li>
-<li>Maximum 100 posts per page per run</li>
-<li>Respects robots.txt guidelines</li>
-</ul>
-
-<h2>Legal Considerations</h2>
-
-<ul>
-<li>Only scrapes publicly available data</li>
-<li>Use for legitimate business purposes</li>
-<li>Comply with Facebook Terms of Service</li>
-<li>Do not use for spam or harassment</li>
-<li>Respect user privacy</li>
-</ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
-<ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>CRM systems (via webhook)</li>
-<li>Databases (via API)</li>
-<li>Zapier/Make/n8n workflows</li>
-</ul>
+<p>1. <strong>Competitive Analysis</strong> - Monitor competitor Facebook activity
+2. <strong>Content Research</strong> - Find top-performing post types and topics
+3. <strong>Brand Monitoring</strong> - Track mentions and engagement
+4. <strong>Influencer Research</strong> - Analyze influencer posting patterns
+5. <strong>Market Research</strong> - Understand audience interests
+6. <strong>Social Proof</strong> - Collect testimonials and positive comments
+7. <strong>Trend Analysis</strong> - Identify viral content patterns</p>
 
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -646,7 +577,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

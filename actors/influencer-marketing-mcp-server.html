@@ -457,274 +457,80 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Influencer Marketing MCP Server</h1>
+            <p>Model Context Protocol server for influencer marketing. Provides unified access to influencer discovery, analysis, strategy generation, and social media posting across Instagram, TikTok, YouTube, LinkedIn, and Twitter. Built by John Rippy (https://johnrippy.link/).</p>
 
-<strong>"12 AI-Powered Tools. 5 Platform Coverage. One Unified API."</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<strong>Enterprise-grade MCP (Model Context Protocol) server</strong> that provides unified access to influencer marketing tools across Instagram, TikTok, YouTube, LinkedIn, and Twitter. Includes <strong>AI-powered analysis, strategy generation, and multi-platform posting</strong> in one integrated toolkit.
-
-<h2>Why Use an Influencer Marketing MCP Server?</h2>
-
-<p>The influencer marketing landscape is fragmented across dozens of tools:</p>
 <ul>
-<li><strong>Multiple APIs</strong>: Each platform requires different integrations</li>
-<li><strong>No Unified Data</strong>: Creator data scattered across sources</li>
-<li><strong>Manual Strategy</strong>: Campaign planning done in spreadsheets</li>
-<li><strong>Disconnected Posting</strong>: Separate tools for each platform</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
-
-<p>This MCP server unifies everything into <strong>12 callable tools</strong> that work together seamlessly.</p>
-
-<h2>Key Features</h2>
-
-<h3>🔧 12 Integrated Tools</h3>
-
-
-<h3>🤖 AI-Powered Features (BYOK)</h3>
-<ul>
-<li><strong>Engagement Authenticity Detection</strong>: AI flags fake followers/engagement</li>
-<li><strong>Content Analysis</strong>: Understand creator's voice and style</li>
-<li><strong>Strategy Generation</strong>: Full campaign plans with budget allocation</li>
-<li><strong>ROI Projections</strong>: Estimate campaign performance before spending</li>
-<li><strong>Competitor Analysis</strong>: Benchmark against industry rivals</li>
-</ul>
-
-<h3>🌐 5-Platform Coverage</h3>
-<ul>
-<li><strong>Instagram</strong>: Profiles, posts, stories, reels</li>
-<li><strong>TikTok</strong>: Profiles, videos, engagement metrics</li>
-<li><strong>YouTube</strong>: Channels, videos, subscriber analytics</li>
-<li><strong>LinkedIn</strong>: Profiles, posts, B2B metrics</li>
-<li><strong>Twitter/X</strong>: Profiles, tweets, engagement data</li>
-</ul>
-
-<h2>Available Tools</h2>
-
-<h3>1. <code>discover_influencers</code></h3>
-<p>Find influencers across platforms by niche, location, and follower tier.</p>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"name": "discover_influencers",</p>
-<p>"arguments": {</p>
-<p>"niche": "fitness",</p>
-<p>"platforms": ["instagram", "tiktok"],</p>
-<p>"tier": "micro",</p>
-<p>"location": "Los Angeles",</p>
-<p>"maxResults": 50</p>
-<p>}</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<strong>Response includes:</strong>
-<ul>
-<li>Creator profiles with follower counts</li>
-<li>Engagement rates per platform</li>
-<li>Contact information (if available)</li>
-<li>Discovery score ranking</li>
-</ul>
+<h2>Demo Mode</h2>
 
-<p>---</p>
-
-<h3>2. <code>analyze_influencer</code></h3>
-<p>Deep analysis of any influencer profile with AI insights.</p>
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"name": "analyze_influencer",</p>
-<p>"arguments": {</p>
-<p>"username": "fitness_guru",</p>
-<p>"platform": "instagram",</p>
-<p>"analysisDepth": "deep"</p>
-<p>}</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<strong>Response includes:</strong>
-<ul>
-<li>Authenticity score (fake follower detection)</li>
-<li>Audience demographics</li>
-<li>Content themes and frequency</li>
-<li>Brand safety assessment</li>
-<li>Partnership fit recommendations</li>
-</ul>
+<h2>Input Parameters</h2>
 
-<p>---</p>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>3. <code>generate_strategy</code></h3>
-<p>Generate comprehensive influencer marketing strategy.</p>
+<h2>Output Format</h2>
 
 <pre><code>{
-<p>"name": "generate_strategy",</p>
-<p>"arguments": {</p>
-<p>"brandName": "FitLife Supplements",</p>
-<p>"industry": "health and fitness",</p>
-<p>"budget": 50000,</p>
-<p>"campaignGoals": ["brand awareness", "product launch"],</p>
-<p>"duration": "3 months",</p>
-<p>"platforms": ["instagram", "tiktok", "youtube"]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<strong>Response includes:</strong>
-<ul>
-<li>Recommended influencer tiers and count</li>
-<li>Budget allocation per platform</li>
-<li>Content calendar with themes</li>
-<li>Outreach email templates</li>
-<li>KPI targets and tracking plan</li>
-<li>ROI projections</li>
-</ul>
-
-<p>---</p>
-
-<h3>4. <code>compare_influencers</code></h3>
-<p>Side-by-side comparison of multiple influencers.</p>
-
-<pre><code>{
-<p>"name": "compare_influencers",</p>
-<p>"arguments": {</p>
-<p>"influencers": [</p>
-<p>{"username": "creator1", "platform": "instagram"},</p>
-<p>{"username": "creator2", "platform": "instagram"}</p>
-<p>],</p>
-<p>"criteria": ["engagement", "authenticity", "reach"]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h3>5. <code>estimate_campaign_cost</code></h3>
-<p>Estimate costs before outreach.</p>
-
-<pre><code>{
-<p>"name": "estimate_campaign_cost",</p>
-<p>"arguments": {</p>
-<p>"influencers": ["@creator1", "@creator2"],</p>
-<p>"contentTypes": ["post", "reel", "story"],</p>
-<p>"quantity": 3</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h3>6-9. Scraping Tools</h3>
-<p>Scrape profiles from any platform:</p>
-
-<pre><code>{"name": "scrape_tiktok_profile", "arguments": {"profiles": ["charlidamelio"]}}
-<p>{"name": "scrape_youtube_channel", "arguments": {"channels": ["@MrBeast"]}}</p>
-<p>{"name": "scrape_instagram_profile", "arguments": {"profiles": ["therock"]}}</p>
-<p>{"name": "scrape_linkedin_profile", "arguments": {"profiles": ["https://linkedin.com/in/..."]}}</p>
-</code></pre>
-
-<p>---</p>
-
-<h3>10-12. Posting Tools</h3>
-<p>Post content to any platform:</p>
-
-<pre><code>{"name": "post_to_instagram", "arguments": {"imageUrl": "...", "caption": "...", "sessionCookie": "..."}}
-<p>{"name": "post_to_linkedin", "arguments": {"content": "...", "sessionCookie": "..."}}</p>
-<p>{"name": "post_to_twitter", "arguments": {"content": "...", "sessionCookie": "..."}}</p>
-</code></pre>
-
-<h2>Input Configuration</h2>
-
-<pre><code>{
-<p>"apifyToken": "your-apify-api-token",</p>
-<p>"openaiApiKey": "optional-openai-key",</p>
-<p>"anthropicApiKey": "optional-anthropic-key",</p>
-<p>"defaultPlatforms": ["instagram", "tiktok"],</p>
-<p>"proxyConfiguration": {}</p>
-<p>}</p>
-</code></pre>
-
-
-<h2>BYOK (Bring Your Own Key)</h2>
-
-<p>This server supports <strong>Bring Your Own Key</strong> for AI providers:</p>
-
-
-<p>You can use either provider. If both are provided, OpenAI is used by default.</p>
-
-<h2>Influencer Tiers</h2>
-
-<p>The server uses industry-standard tier classifications:</p>
-
-
-<h2>MCP Integration</h2>
-
-<h3>Claude Desktop Configuration</h3>
-
-<p>Add to your <code>claude_desktop_config.json</code>:</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"influencer-marketing": {</p>
-<p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic-ai/apify-mcp-server"],</p>
-<p>"env": {</p>
-<p>"APIFY_TOKEN": "your-token",</p>
-<p>"ACTOR_ID": "alizarin_refrigerator-owner/influencer-marketing-mcp-server"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Cline/Continue Configuration</h3>
-
-<pre><code>{
-<p>"servers": {</p>
-<p>"influencer": {</p>
-<p>"type": "apify",</p>
-<p>"actorId": "alizarin_refrigerator-owner/influencer-marketing-mcp-server",</p>
-<p>"token": "your-apify-token"</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h2>Underlying Actors</h2>
-
-<p>This MCP server orchestrates these Apify actors:</p>
-
-
-<h2>Output</h2>
-
-<pre><code>{
-<p>"status": "ready",</p>
-<p>"serverName": "influencer-marketing-mcp-server",</p>
-<p>"toolCount": 12,</p>
-<p>"tools": [</p>
-<p>"discover_influencers",</p>
-<p>"analyze_influencer",</p>
-<p>"generate_strategy",</p>
-<p>"scrape_tiktok_profile",</p>
-<p>"scrape_youtube_channel",</p>
-<p>"scrape_instagram_profile",</p>
-<p>"scrape_linkedin_profile",</p>
-<p>"post_to_instagram",</p>
-<p>"post_to_linkedin",</p>
-<p>"post_to_twitter",</p>
-<p>"compare_influencers",</p>
-<p>"estimate_campaign_cost"</p>
-<p>],</p>
-<p>"defaultPlatforms": ["instagram", "tiktok"],</p>
-<p>"aiEnabled": true</p>
-<p>}</p>
+  "status": "ready",
+  "serverName": "influencer-marketing-mcp-server",
+  "toolCount": 12,
+  "tools": [
+    "discover_influencers",
+    "analyze_influencer",
+    "generate_strategy",
+    "scrape_tiktok_profile",
+    "scrape_youtube_channel",
+    "scrape_instagram_profile",
+    "scrape_linkedin_profile",
+    "post_to_instagram",
+    "post_to_linkedin",
+    "post_to_twitter",
+    "compare_influencers",
+    "estimate_campaign_cost"
+  ],
+  "defaultPlatforms": ["instagram", "tiktok"],
+  "aiEnabled": true
+}
 </code></pre>
 
 <h2>Pricing</h2>
 
-<p>This actor uses <strong>pay-per-event</strong> pricing based on underlying actor calls:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+This actor uses <strong>pay-per-event</strong> pricing based on underlying actor calls:</p>
 
+<p>| Operation | Approximate Cost |
+|-----------|-----------------|
+| Discovery (50 influencers) | ~$3.00 |
+| Deep Analysis (1 influencer) | ~$1.50 |
+| Strategy Generation | ~$2.00 |
+| Profile Scrape (per profile) | ~$0.10 |
+| Social Post (per post) | ~$0.25 |</p>
 
 <h2>Use Cases</h2>
 
@@ -734,24 +540,13 @@
 <li><strong>AI Assistants</strong>: Empower Claude/GPT with influencer data</li>
 <li><strong>Automation</strong>: Programmatic influencer outreach pipelines</li>
 <li><strong>Reporting</strong>: Generate comprehensive campaign reports</li>
+
 </ul>
+---
 
-<h2>Support</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>For issues or feature requests, contact support.</p>
-
-<p>---</p>
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>influencer marketing, mcp server, model context protocol, influencer api, social media marketing, influencer discovery, influencer analytics, ai marketing, instagram api, tiktok api, youtube api, linkedin api, influencer campaign, creator economy</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -765,7 +560,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

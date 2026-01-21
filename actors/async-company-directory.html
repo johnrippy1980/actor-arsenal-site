@@ -457,264 +457,172 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Async-Friendly Company Directory</h1>
+            <p>Discover companies with meeting-light, async-first cultures. Search by industry, size, location, and remote policy. Perfect for job seekers who value focused work time.</p>
 
-<strong>"Find Meeting-Light, Async-First Companies"</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<p>Discover companies with meeting-light, async-first cultures. Perfect for job seekers who value focused work time and hate "death by meetings."</p>
-
-<h2>What This Actor Does</h2>
-
-<p>This actor maintains a curated directory of companies known for healthy meeting cultures. Search by:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>Industry</strong>: Tech, Fintech, Healthcare, E-commerce, etc.</li>
-<li><strong>Size</strong>: Startup to Enterprise</li>
-<li><strong>Remote Policy</strong>: Fully remote, remote-first, hybrid</li>
-<li><strong>Location</strong>: Global, USA, Europe, Asia, etc.</li>
-<li><strong>Async Score</strong>: Filter by meeting culture score</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h2>Perfect For</h2>
-
-<ul>
-<li><strong>Job Seekers</strong>: Find employers that respect your time</li>
-<li><strong>Remote Workers</strong>: Discover truly async-first companies</li>
-<li><strong>HR/Recruiters</strong>: Benchmark against async-friendly competitors</li>
-<li><strong>Career Coaches</strong>: Recommend companies to clients</li>
-<li><strong>Journalists</strong>: Research workplace trends</li>
-</ul>
-
-<h2>Featured Companies</h2>
-
-<p>Our directory includes verified async-friendly companies like:</p>
-
-<ul>
-<li><strong>Basecamp</strong> - Pioneered the "meetings are expensive" philosophy</li>
-<li><strong>GitLab</strong> - 2000+ employees, fully remote, async-first handbook</li>
-<li><strong>Automattic</strong> - WordPress.com, distributed workforce</li>
-<li><strong>Buffer</strong> - Transparent async culture</li>
-<li><strong>Doist</strong> - Makers of Todoist, async communication advocates</li>
-<li><strong>Zapier</strong> - Remote-first since 2011</li>
-<li><strong>Notion</strong> - Docs-first culture</li>
-<li><strong>Linear</strong> - Minimal meetings, focus on deep work</li>
-<li><strong>Stripe</strong> - Written communication culture</li>
-<li>And many more...</li>
-</ul>
-
-<h2>Input Examples</h2>
-
-<h3>Browse All Async Companies</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"minAsyncScore": 70</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Remote Tech Startups</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"industry": "technology",</p>
-<p>"companySize": "startup",</p>
-<p>"remotePolicy": "fully_remote",</p>
-<p>"minAsyncScore": 80</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
 
-<h3>Enterprise Companies in Europe</h3>
+<h2>Input Parameters</h2>
 
-<pre><code>{
-<p>"companySize": "enterprise",</p>
-<p>"location": "europe",</p>
-<p>"minAsyncScore": 60</p>
-<p>}</p>
-</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<h3>Search for Specific Companies</h3>
-
-<pre><code>{
-<p>"searchQuery": "GitLab"</p>
-<p>}</p>
-</code></pre>
-
-<h2>Output</h2>
+<h2>Output Format</h2>
 
 <h3>Company Entry</h3>
 
 <pre><code>{
-<p>"company": {</p>
-<p>"name": "GitLab",</p>
-<p>"domain": "gitlab.com",</p>
-<p>"description": "DevOps platform delivered as a single application",</p>
-<p>"logo": "https://gitlab.com/logo.png"</p>
-<p>},</p>
-<p>"asyncScore": 92,</p>
-<p>"asyncGrade": "A+",</p>
-<p>"industry": "technology",</p>
-<p>"size": {</p>
-<p>"category": "large",</p>
-<p>"employees": "2000+"</p>
-<p>},</p>
-<p>"remotePolicy": {</p>
-<p>"type": "fully_remote",</p>
-<p>"description": "All-remote company since founding"</p>
-<p>},</p>
-<p>"location": {</p>
-<p>"headquarters": "San Francisco, CA (virtual)",</p>
-<p>"region": "global"</p>
-<p>},</p>
-<p>"asyncCulture": {</p>
-<p>"highlights": [</p>
-<p>"No recurring meetings required",</p>
-<p>"Comprehensive async handbook",</p>
-<p>"Written communication first",</p>
-<p>"Meeting-free focus days",</p>
-<p>"All meetings optional"</p>
-<p>],</p>
-<p>"policies": [</p>
-<p>"Bias towards async communication",</p>
-<p>"Record all meetings for async viewing",</p>
-<p>"15-minute default meeting length",</p>
-<p>"No 'quick syncs' - use GitLab issues"</p>
-<p>],</p>
-<p>"tools": ["GitLab Issues", "Slack (async)", "Loom", "Google Docs"]</p>
-<p>},</p>
-<p>"workLifeBalance": {</p>
-<p>"rating": 4.5,</p>
-<p>"flexibleHours": true,</p>
-<p>"unlimitedPTO": true</p>
-<p>},</p>
-<p>"sources": {</p>
-<p>"glassdoor": "https://glassdoor.com/gitlab",</p>
-<p>"handbook": "https://handbook.gitlab.com",</p>
-<p>"careers": "https://about.gitlab.com/jobs"</p>
-<p>},</p>
-<p>"lastVerified": "2024-03-15",</p>
-<p>"addedDate": "2023-01-01"</p>
-<p>}</p>
+  "company": {
+    "name": "GitLab",
+    "domain": "gitlab.com",
+    "description": "DevOps platform delivered as a single application",
+    "logo": "https://gitlab.com/logo.png"
+  },
+  "asyncScore": 92,
+  "asyncGrade": "A+",
+  "industry": "technology",
+  "size": {
+    "category": "large",
+    "employees": "2000+"
+  },
+  "remotePolicy": {
+    "type": "fully_remote",
+    "description": "All-remote company since founding"
+  },
+  "location": {
+    "headquarters": "San Francisco, CA (virtual)",
+    "region": "global"
+  },
+  "asyncCulture": {
+    "highlights": [
+      "No recurring meetings required",
+      "Comprehensive async handbook",
+      "Written communication first",
+      "Meeting-free focus days",
+      "All meetings optional"
+    ],
+    "policies": [
+      "Bias towards async communication",
+      "Record all meetings for async viewing",
+      "15-minute default meeting length",
+      "No 'quick syncs' - use GitLab issues"
+    ],
+    "tools": ["GitLab Issues", "Slack (async)", "Loom", "Google Docs"]
+  },
+  "workLifeBalance": {
+    "rating": 4.5,
+    "flexibleHours": true,
+    "unlimitedPTO": true
+  },
+  "sources": {
+    "glassdoor": "https://glassdoor.com/gitlab",
+    "handbook": "https://handbook.gitlab.com",
+    "careers": "https://about.gitlab.com/jobs"
+  },
+  "lastVerified": "2024-03-15",
+  "addedDate": "2023-01-01"
+}
 </code></pre>
 
 <h3>Directory Summary</h3>
 
 <pre><code>{
-<p>"totalCompanies": 247,</p>
-<p>"filteredResults": 45,</p>
-<p>"averageAsyncScore": 78,</p>
-<p>"topIndustries": [</p>
-<p>{ "industry": "technology", "count": 156 },</p>
-<p>{ "industry": "fintech", "count": 34 },</p>
-<p>{ "industry": "ecommerce", "count": 28 }</p>
-<p>],</p>
-<p>"companies": [...]</p>
-<p>}</p>
+  "totalCompanies": 247,
+  "filteredResults": 45,
+  "averageAsyncScore": 78,
+  "topIndustries": [
+    { "industry": "technology", "count": 156 },
+    { "industry": "fintech", "count": 34 },
+    { "industry": "ecommerce", "count": 28 }
+  ],
+  "companies": [...]
+}
 </code></pre>
 
-<h2>Async Score Methodology</h2>
+<h2>Pricing</h2>
 
-<p>Companies are scored (0-100) based on:</p>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-
-<h3>Score Interpretation</h3>
-
-
+</ul>
 <h2>Use Cases</h2>
 
 <h3>1. Job Search Integration</h3>
 
 <pre><code>// Find remote tech companies with great async culture
-<p>const companies = await apifyClient.actor("alizarin_refrigerator-owner/async-company-directory").call({</p>
-<p>industry: "technology",</p>
-<p>remotePolicy: "fully_remote",</p>
-<p>minAsyncScore: 80,</p>
-<p>limit: 20</p>
-<p>});</p>
+const companies = await apifyClient.actor("localhowl/async-company-directory").call({
+  industry: "technology",
+  remotePolicy: "fully_remote",
+  minAsyncScore: 80,
+  limit: 20
+});
 
-<p>for (const company of companies) {</p>
-<p>console.log(<code>${company.name}: ${company.asyncScore}/100</code>);</p>
-<p>console.log(<code>  Careers: ${company.sources.careers}</code>);</p>
-<p>}</p>
-</code></pre>
+<p>for (const company of companies) {
+  console.log(<code>${company.name}: ${company.asyncScore}/100</code>);
+  console.log(<code>  Careers: ${company.sources.careers}</code>);
+}
+</code></pre></p>
 
 <h3>2. Competitive Benchmarking</h3>
 
 <pre><code>// Compare your company to async leaders
-<p>const leaders = await apifyClient.actor("alizarin_refrigerator-owner/async-company-directory").call({</p>
-<p>industry: "fintech",</p>
-<p>sortBy: "async_score",</p>
-<p>limit: 10</p>
-<p>});</p>
+const leaders = await apifyClient.actor("localhowl/async-company-directory").call({
+  industry: "fintech",
+  sortBy: "async_score",
+  limit: 10
+});
 
-<p>console.log("Top async-friendly fintech companies:");</p>
-<p>leaders.forEach((c, i) =&gt; {</p>
-<p>console.log(<code>${i + 1}. ${c.name} (${c.asyncScore}/100)</code>);</p>
-<p>});</p>
-</code></pre>
+<p>console.log("Top async-friendly fintech companies:");
+leaders.forEach((c, i) => {
+  console.log(<code>${i + 1}. ${c.name} (${c.asyncScore}/100)</code>);
+});
+</code></pre></p>
 
 <h3>3. Content Creation</h3>
 
 <pre><code>// Get data for "Top Async Companies" blog post
-<p>const topCompanies = await apifyClient.actor("alizarin_refrigerator-owner/async-company-directory").call({</p>
-<p>sortBy: "async_score",</p>
-<p>limit: 25,</p>
-<p>includeDetails: true</p>
-<p>});</p>
+const topCompanies = await apifyClient.actor("localhowl/async-company-directory").call({
+  sortBy: "async_score",
+  limit: 25,
+  includeDetails: true
+});
 
-<p>// Generate blog content with company details</p>
-</code></pre>
-
-<h2>Data Sources</h2>
-
-<p>We compile data from:</p>
-
-<ul>
-<li>Company handbooks and public documentation</li>
-<li>Glassdoor and LinkedIn reviews</li>
-<li>Blog posts and press releases</li>
-<li>Job listings analysis</li>
-<li>Employee testimonials</li>
-<li>Direct company verification</li>
-</ul>
-
-<h2>Nominate a Company</h2>
-
-<p>Know a company with great async culture? Submit it for review:</p>
-
-<ul>
-<li><strong>Email</strong>: directory@alizarin_refrigerator-owner.com</li>
-<li><strong>Requirements</strong>: Public evidence of async-first policies</li>
-</ul>
-
-<h2>Related Tools</h2>
-
-<ul>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/meeting-culture-score-checker?fpr=kqpn7" target="_blank" rel="noopener">Meeting Culture Score Checker</a></strong>: Analyze any company</li>
-<li><strong><a href="https://apify.com/alizarin_refrigerator-owner/calendar-ics-analyzer?fpr=kqpn7" target="_blank" rel="noopener">Calendar ICS Analyzer</a></strong>: Analyze your own calendar</li>
-<li><strong><a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker</a></strong>: Track meeting costs in real-time</li>
-</ul>
-
-<h2>Support</h2>
-
-<ul>
-<li><strong>Documentation</strong>: https://meeting.alizarin_refrigerator-owner.com/docs</li>
-<li><strong>Email</strong>: support@alizarin_refrigerator-owner.com</li>
-</ul>
+<p>// Generate blog content with company details
+</code></pre></p>
 
 <p>---</p>
 
-<h2>Author</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<em>Part of the <a href="https://meeting.alizarin_refrigerator-owner.com" target="_blank" rel="noopener">Meeting Cost Tracker</a> productivity suite by <a href="https://alizarin_refrigerator-owner.com" target="_blank" rel="noopener">LocalHowl</a></em>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -728,7 +636,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

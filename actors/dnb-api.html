@@ -456,15 +456,15 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Dun &amp; Bradstreet API - DUNS Lookup &amp; Company Intelligence</h1>
-<strong>&quot;Business Intelligence &amp; Insights&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Access the D&amp;B Direct+ API for comprehensive business data. Search companies, lookup DUNS numbers, get firmographics, credit scores, risk ratings, beneficial ownership, and more. Essential for B2B sales intelligence, credit decisions, supplier risk management, and KYC/AML compliance.</p>
+            <p>Access D&B Direct+ API for company search, DUNS number lookup, firmographics, credit scores, risk ratings, beneficial ownership, corporate linkage, and business verification. Essential for B2B sales, credit decisions, supplier risk, and KYC compliance.</p>
+
 <h2>Features</h2>
-<ul><li><strong>Company Search &amp; Match</strong>: Find companies and resolve to DUNS numbers</li>
+
+<ul>
+<li><strong>Company Search & Match</strong>: Find companies and resolve to DUNS numbers</li>
 <li><strong>Firmographics</strong>: Employee count, revenue, industry codes, locations</li>
 <li><strong>Credit Scores</strong>: Commercial credit scores and payment predictions</li>
 <li><strong>Risk Ratings</strong>: Viability ratings, financial stress scores, failure predictors</li>
@@ -473,57 +473,57 @@
 <li><strong>Public Records</strong>: Liens, judgments, suits, UCC filings, bankruptcies</li>
 <li><strong>KYC Compliance</strong>: Know Your Customer and business verification data</li>
 <li><strong>Demo Mode</strong>: Test with realistic sample data (no credentials required)</li>
+
 </ul>
-<h2>Use Cases</h2>
-<h3>B2B Sales &amp; Marketing</h3>
-<ul><li>Enrich CRM leads with firmographic data</li>
-<li>Score accounts by company size and revenue</li>
-<li>Identify decision-makers and contacts</li>
-<li>Find similar companies (competitors/prospects)</li>
-</ul>
-<h3>Credit &amp; Finance</h3>
-<ul><li>Assess creditworthiness before extending terms</li>
-<li>Monitor customer financial health</li>
-<li>Predict payment behavior</li>
-<li>Automate credit decisions</li>
-</ul>
-<h3>Supplier Risk Management</h3>
-<ul><li>Evaluate vendor financial stability</li>
-<li>Monitor supply chain risk</li>
-<li>Due diligence on new suppliers</li>
-<li>Track supplier performance indicators</li>
-</ul>
-<h3>Compliance &amp; KYC</h3>
-<ul><li>Verify business identity</li>
-<li>Beneficial ownership transparency</li>
-<li>Anti-money laundering screening</li>
-<li>Sanctions and watchlist checks</li>
-</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
 <h2>Input Parameters</h2>
+
 <h3>Task Selection</h3>
-<ul><li><code>task</code>: Operation to perform</li>
-</ul>  - <code>search_company</code> - Search companies by name/location
-<p>- <code>match_company</code> - Match company to DUNS number</p>
-<p>- <code>get_company_profile</code> - Detailed company profile</p>
-<p>- <code>get_firmographics</code> - Company size, revenue, industry</p>
-<p>- <code>get_credit_score</code> - Commercial credit score</p>
-<p>- <code>get_risk_rating</code> - Viability and risk assessment</p>
-<p>- <code>get_financial_stress</code> - Financial stress score</p>
-<p>- <code>get_payment_info</code> - Payment history and trends</p>
-<p>- <code>get_beneficial_ownership</code> - Ownership structure</p>
-<p>- <code>get_corporate_linkage</code> - Parent/subsidiary tree</p>
-<p>- <code>get_public_records</code> - Liens, judgments, suits</p>
-<p>- <code>get_contacts</code> - Executive contacts</p>
-<p>- <code>find_competitors</code> - Similar companies</p>
-<p>- <code>kyc_compliance</code> - KYC/AML verification</p>
-<p>- <code>batch_match</code> - Batch DUNS matching</p>
+<ul>
+<li><code>task</code>: Operation to perform</li>
+<li><code>search_company</code> - Search companies by name/location</li>
+<li><code>match_company</code> - Match company to DUNS number</li>
+<li><code>get_company_profile</code> - Detailed company profile</li>
+<li><code>get_firmographics</code> - Company size, revenue, industry</li>
+<li><code>get_credit_score</code> - Commercial credit score</li>
+<li><code>get_risk_rating</code> - Viability and risk assessment</li>
+<li><code>get_financial_stress</code> - Financial stress score</li>
+<li><code>get_payment_info</code> - Payment history and trends</li>
+<li><code>get_beneficial_ownership</code> - Ownership structure</li>
+<li><code>get_corporate_linkage</code> - Parent/subsidiary tree</li>
+<li><code>get_public_records</code> - Liens, judgments, suits</li>
+<li><code>get_contacts</code> - Executive contacts</li>
+<li><code>find_competitors</code> - Similar companies</li>
+<li><code>kyc_compliance</code> - KYC/AML verification</li>
+<li><code>batch_match</code> - Batch DUNS matching</li>
+
+</ul>
 <h3>Authentication</h3>
-<ul><li><code>username</code>: D&amp;B Direct API username</li>
-<li><code>password</code>: D&amp;B Direct API password</li>
+<ul>
+<li><code>username</code>: D&B Direct API username</li>
+<li><code>password</code>: D&B Direct API password</li>
 <li><code>demoMode</code>: Run with sample data (no credentials required)</li>
+
 </ul>
 <h3>Company Identification</h3>
-<ul><li><code>dunsNumber</code>: 9-digit D-U-N-S number</li>
+<ul>
+<li><code>dunsNumber</code>: 9-digit D-U-N-S number</li>
 <li><code>companyName</code>: Company name for search</li>
 <li><code>countryCode</code>: ISO country code (US, GB, DE, etc.)</li>
 <li><code>state</code>: State or province</li>
@@ -532,151 +532,100 @@
 <li><code>streetAddress</code>: Street address</li>
 <li><code>telephoneNumber</code>: Phone number</li>
 <li><code>registrationNumber</code>: Business registration (EIN, etc.)</li>
+
 </ul>
 <h3>Industry Filters</h3>
-<ul><li><code>naicsCode</code>: NAICS industry code</li>
+<ul>
+<li><code>naicsCode</code>: NAICS industry code</li>
 <li><code>sicCode</code>: SIC industry code</li>
+
 </ul>
 <h3>Match Settings</h3>
-<ul><li><code>matchType</code>: Basic or Advanced matching</li>
+<ul>
+<li><code>matchType</code>: Basic or Advanced matching</li>
 <li><code>confidenceLowerLimit</code>: Minimum confidence (1-10)</li>
 <li><code>maxCandidates</code>: Max results to return</li>
+
 </ul>
 <h3>Product Selection</h3>
-<ul><li><code>productCode</code>: D&amp;B data product</li>
-</ul>  - <code>DCP_STD</code> - Standard Company Profile
-<p>- <code>DCP_ENH</code> - Enhanced Company Profile</p>
-<p>- <code>DCP_PREM</code> - Premium Company Profile</p>
-<p>- <code>BIR</code> - Business Information Report</p>
-<p>- <code>COMPR</code> - Comprehensive Report</p>
-<p>- <code>CPTR</code> - Compact Report</p>
-<p>- <code>BBR</code> - Business Background Report</p>
+<ul>
+<li><code>productCode</code>: D&B data product</li>
+<li><code>DCP_STD</code> - Standard Company Profile</li>
+<li><code>DCP_ENH</code> - Enhanced Company Profile</li>
+<li><code>DCP_PREM</code> - Premium Company Profile</li>
+<li><code>BIR</code> - Business Information Report</li>
+<li><code>COMPR</code> - Comprehensive Report</li>
+<li><code>CPTR</code> - Compact Report</li>
+<li><code>BBR</code> - Business Background Report</li>
+
+</ul>
 <h3>Webhook Delivery</h3>
-<ul><li><code>webhookUrl</code>: Send results to Zapier, Make, n8n</li>
+<ul>
+<li><code>webhookUrl</code>: Send results to Zapier, Make, n8n</li>
+
 </ul>
-<h2>Example Output</h2>
-<h3>Company Match</h3>
+<h2>Output Format</h2>
+
 <pre><code>{
-<p>&quot;task&quot;: &quot;match_company&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;matchCandidates&quot;: [</p>
-<p>{</p>
-<p>&quot;dunsNumber&quot;: &quot;001234567&quot;,</p>
-<p>&quot;companyName&quot;: &quot;ACME CORPORATION&quot;,</p>
-<p>&quot;confidence&quot;: 9,</p>
-<p>&quot;matchGrade&quot;: &quot;AAAAAA&quot;,</p>
-<p>&quot;address&quot;: {</p>
-<p>&quot;street&quot;: &quot;123 Main Street&quot;,</p>
-<p>&quot;city&quot;: &quot;New York&quot;,</p>
-<p>&quot;state&quot;: &quot;NY&quot;,</p>
-<p>&quot;postalCode&quot;: &quot;10001&quot;,</p>
-<p>&quot;country&quot;: &quot;United States&quot;</p>
-<p>},</p>
-<p>&quot;telephone&quot;: &quot;212-555-1234&quot;,</p>
-<p>&quot;employeeCount&quot;: 5000,</p>
-<p>&quot;salesRevenue&quot;: 500000000</p>
-<p>}</p>
-<p>],</p>
-<p>&quot;totalCandidates&quot;: 1</p>
-<p>}</p>
-<p>}</p>
+  "data": [...]
+}
 </code></pre>
-<h3>Company Profile</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;get_company_profile&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;dunsNumber&quot;: &quot;001234567&quot;,</p>
-<p>&quot;companyName&quot;: &quot;ACME CORPORATION&quot;,</p>
-<p>&quot;tradestyleName&quot;: &quot;ACME&quot;,</p>
-<p>&quot;primaryAddress&quot;: {</p>
-<p>&quot;street&quot;: &quot;123 Main Street&quot;,</p>
-<p>&quot;city&quot;: &quot;New York&quot;,</p>
-<p>&quot;state&quot;: &quot;NY&quot;,</p>
-<p>&quot;postalCode&quot;: &quot;10001&quot;,</p>
-<p>&quot;country&quot;: &quot;United States&quot;</p>
-<p>},</p>
-<p>&quot;telephone&quot;: &quot;212-555-1234&quot;,</p>
-<p>&quot;yearStarted&quot;: 1985,</p>
-<p>&quot;incorporationDate&quot;: &quot;1985-03-15&quot;,</p>
-<p>&quot;incorporationState&quot;: &quot;DE&quot;,</p>
-<p>&quot;businessType&quot;: &quot;Corporation&quot;,</p>
-<p>&quot;employeesHere&quot;: 500,</p>
-<p>&quot;employeesTotal&quot;: 5000,</p>
-<p>&quot;annualSales&quot;: 500000000,</p>
-<p>&quot;naicsCode&quot;: &quot;541512&quot;,</p>
-<p>&quot;naicsDescription&quot;: &quot;Computer Systems Design Services&quot;,</p>
-<p>&quot;sicCode&quot;: &quot;7371&quot;,</p>
-<p>&quot;sicDescription&quot;: &quot;Computer Programming Services&quot;,</p>
-<p>&quot;stockExchange&quot;: &quot;NYSE&quot;,</p>
-<p>&quot;tickerSymbol&quot;: &quot;ACME&quot;,</p>
-<p>&quot;executives&quot;: [</p>
-<p>{</p>
-<p>&quot;name&quot;: &quot;John Smith&quot;,</p>
-<p>&quot;title&quot;: &quot;Chief Executive Officer&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h3>Credit Score</h3>
-<pre><code>{
-<p>&quot;task&quot;: &quot;get_credit_score&quot;,</p>
-<p>&quot;success&quot;: true,</p>
-<p>&quot;data&quot;: {</p>
-<p>&quot;dunsNumber&quot;: &quot;001234567&quot;,</p>
-<p>&quot;companyName&quot;: &quot;ACME CORPORATION&quot;,</p>
-<p>&quot;commercialCreditScore&quot;: 85,</p>
-<p>&quot;creditScoreClass&quot;: 1,</p>
-<p>&quot;creditScoreClassDescription&quot;: &quot;Low Risk&quot;,</p>
-<p>&quot;paymentBehavior&quot;: &quot;Prompt&quot;,</p>
-<p>&quot;averageDaysBeyondTerms&quot;: 5,</p>
-<p>&quot;paydexScore&quot;: 80,</p>
-<p>&quot;paydexScoreNorm&quot;: 72,</p>
-<p>&quot;creditLimit&quot;: 1000000</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-<h2>D&amp;B Products Reference</h2>
-<p>| Product | Code | Description |</p>
-<p>|---------|------|-------------|</p>
-<p>| Standard Profile | DCP_STD | Basic firmographics and identifiers |</p>
-<p>| Enhanced Profile | DCP_ENH | Includes financial data |</p>
-<p>| Premium Profile | DCP_PREM | Full company intelligence |</p>
-<p>| Business Info Report | BIR | Comprehensive analysis |</p>
-<p>| Comprehensive Report | COMPR | Complete business data |</p>
-<p>| Compact Report | CPTR | Condensed overview |</p>
-<h2>Getting D&amp;B API Credentials</h2>
-<p>1. Visit <a href="https://developer.dnb.com/" target="_blank" rel="noopener">D&amp;B Developer Portal</a></p>
-<p>2. Register for a developer account</p>
-<p>3. Request sandbox credentials for testing</p>
-<p>4. Contact D&amp;B sales for production access</p>
-<h2>Integrations</h2>
-<p>Results can be sent directly to:</p>
-<ul><li><strong>Zapier</strong>: Automate lead enrichment workflows</li>
-<li><strong>Make (Integromat)</strong>: Build data enrichment pipelines</li>
-<li><strong>n8n</strong>: Self-hosted automation</li>
-<li><strong>Custom Webhooks</strong>: Your CRM or data warehouse</li>
-</ul>
+
 <h2>Pricing</h2>
-<p>Pay only for what you use:</p>
-<ul><li><strong>Company Search</strong>: $0.02 per search</li>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+Pay only for what you use:
+<ul>
+<li><strong>Company Search</strong>: $0.02 per search</li>
 <li><strong>DUNS Match</strong>: $0.03 per match</li>
 <li><strong>Company Profile</strong>: $0.05 per lookup</li>
 <li><strong>Credit Score</strong>: $0.08 per lookup</li>
 <li><strong>Risk Rating</strong>: $0.08 per lookup</li>
 <li><strong>Beneficial Ownership</strong>: $0.10 per lookup</li>
-<li><strong>KYC Compliance</strong>: $0.15 per verification</li>
+<li><strong>KYC Compliance</strong>: $0.15 per verification</li></p>
+
 </ul>
-<p>Note: D&amp;B API access requires a separate subscription with Dun &amp; Bradstreet.</p>
-<h2>Support</h2>
-<ul><li><a href="https://developer.dnb.com/" target="_blank" rel="noopener">D&amp;B Developer Portal</a></li>
-<li><a href="https://directplus.documentation.dnb.com/" target="_blank" rel="noopener">D&amp;B Direct+ Documentation</a></li>
-<li><a href="https://github.com/apify/actor-templates/issues" target="_blank" rel="noopener">Actor Issues</a></li>
+Note: D&B API access requires a separate subscription with Dun & Bradstreet.
+
+<h2>Use Cases</h2>
+
+<h3>B2B Sales & Marketing</h3>
+<ul>
+<li>Enrich CRM leads with firmographic data</li>
+<li>Score accounts by company size and revenue</li>
+<li>Identify decision-makers and contacts</li>
+<li>Find similar companies (competitors/prospects)</li>
+
 </ul>
-<h2>Legal</h2>
-<p>This actor integrates with the official D&amp;B Direct+ API. Users must have valid D&amp;B API credentials. Data usage is subject to D&amp;B Terms of Service.</p>
+<h3>Credit & Finance</h3>
+<ul>
+<li>Assess creditworthiness before extending terms</li>
+<li>Monitor customer financial health</li>
+<li>Predict payment behavior</li>
+<li>Automate credit decisions</li>
+
+</ul>
+<h3>Supplier Risk Management</h3>
+<ul>
+<li>Evaluate vendor financial stability</li>
+<li>Monitor supply chain risk</li>
+<li>Due diligence on new suppliers</li>
+<li>Track supplier performance indicators</li>
+
+</ul>
+<h3>Compliance & KYC</h3>
+<ul>
+<li>Verify business identity</li>
+<li>Beneficial ownership transparency</li>
+<li>Anti-money laundering screening</li>
+<li>Sanctions and watchlist checks</li>
+
+</ul>
+---
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -690,7 +639,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

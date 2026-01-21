@@ -457,202 +457,96 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Avvo Attorney Scraper - Legal Professional Data</h1>
-
-<blockquote><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
-
-<blockquote>2025 Zapier Automation Hero of the Year - <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more</a></blockquote>
-
-<p>Scrape attorney profiles from Avvo with comprehensive data including ratings, reviews, practice areas, education, bar admissions, awards, and contact information. Built with Crawlee and Playwright for reliable anti-bot evasion using browser fingerprinting and stealth mode.</p>
-
-<h2>Why Avvo Data is Valuable</h2>
-
-<p>Avvo is the leading legal directory for attorney research:</p>
-<ul>
-<li><strong>Avvo Rating</strong>: Proprietary attorney rating system (1-10 scale)</li>
-<li><strong>Client Reviews</strong>: Verified client feedback and testimonials</li>
-<li><strong>Comprehensive Profiles</strong>: Education, bar admissions, awards, languages</li>
-<li><strong>Practice Area Focus</strong>: Detailed specialty information</li>
-<li><strong>Legal Industry Standard</strong>: Most attorneys maintain active Avvo profiles</li>
-</ul>
+            <p>Scrape attorney profiles, reviews, ratings, and contact info from Avvo. Great for legal industry research, competitive analysis, and lead generation.</p>
 
 <h2>Features</h2>
 
 <ul>
-<li><strong>Search by Query</strong>: Natural language searches like "personal injury lawyer seattle"</li>
-<li><strong>Location-Based</strong>: Target specific cities and states</li>
-<li><strong>Practice Area Filter</strong>: Filter by legal specialties</li>
-<li><strong>Review Extraction</strong>: Optionally scrape individual client reviews</li>
-<li><strong>Anti-Bot Evasion</strong>: Browser fingerprinting and stealth mode via Crawlee</li>
-<li><strong>Residential Proxies</strong>: Built-in support for proxy rotation</li>
-</ul>
+<li>Extracts data from web pages</li>
+<li>Handles pagination automatically</li>
+<li>Exports data to JSON/CSV</li>
+<li>Built-in proxy support</li>
+<li>Pay-per-result billing</li>
 
-<h2>Use Cases</h2>
-
-<ul>
-<li><strong>Legal Lead Generation</strong>: Build targeted attorney prospect lists</li>
-<li><strong>Competitive Analysis</strong>: Monitor competitor ratings and reviews</li>
-<li><strong>Legal Market Research</strong>: Analyze attorney density by practice area</li>
-<li><strong>Reputation Monitoring</strong>: Track reviews and ratings over time</li>
-<li><strong>Referral Networks</strong>: Find attorneys by specialty and location</li>
-<li><strong>Legal Tech Integration</strong>: Feed data into CRM systems</li>
 </ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "maxResults": 100
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
 
 <h2>Input Parameters</h2>
 
-<pre><code>{
-  "searchQueries": ["personal injury lawyer seattle wa"],
-  "locations": ["seattle-wa", "los-angeles-ca"],
-  "practiceAreas": ["personal-injury", "family", "criminal-defense"],
-  "maxResults": 50,
-  "includeReviews": false,
-  "maxReviews": 10,
-  "proxyConfiguration": {
-    "useApifyProxy": true,
-    "apifyProxyGroups": ["RESIDENTIAL"]
-  }
-}</code></pre>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
-<ul>
-<li><strong>searchQueries</strong>: Natural language search queries</li>
-<li><strong>locations</strong>: Location slugs like "seattle-wa", "new-york-ny"</li>
-<li><strong>practiceAreas</strong>: Practice area slugs like "personal-injury", "family"</li>
-<li><strong>maxResults</strong>: Maximum attorneys per search (1-500, default: 50)</li>
-<li><strong>includeReviews</strong>: Scrape individual reviews (slower)</li>
-<li><strong>maxReviews</strong>: Max reviews per attorney if enabled (1-100)</li>
-<li><strong>proxyConfiguration</strong>: Proxy settings (RESIDENTIAL recommended)</li>
-</ul>
-
-<h2>Output</h2>
-
-<h3>Attorney Profile Output</h3>
+<h2>Output Format</h2>
 
 <pre><code>{
-  "name": "John Smith",
-  "rating": 4.8,
-  "reviewCount": 45,
-  "avvoRating": 9.5,
-  "practiceAreas": ["Personal Injury", "Car Accidents", "Wrongful Death"],
-  "location": "Seattle, WA",
-  "address": "123 Main St, Seattle, WA 98101",
-  "phone": "(206) 555-1234",
-  "website": "https://smithlaw.com",
-  "email": "john@smithlaw.com",
-  "yearsExperience": 15,
-  "education": ["Harvard Law School", "University of Washington"],
-  "barAdmissions": ["Washington State Bar", "US District Court"],
-  "awards": ["Super Lawyers 2024", "Top 100 Trial Lawyers"],
-  "languages": ["English", "Spanish"],
-  "imageUrl": "https://avvo.com/...",
-  "firmName": "Smith & Associates",
-  "profileUrl": "https://www.avvo.com/attorneys/...",
-  "scrapedAt": "2025-01-14T21:45:00.000Z",
-  "reviews": [
-    {
-      "author": "Client A",
-      "rating": 5,
-      "date": "2025-01-10",
-      "text": "Excellent representation...",
-      "helpful": 12
-    }
-  ]
-}</code></pre>
+  "data": [...]
+}
+</code></pre>
 
-<h2>Example Usage</h2>
+<h2>Pricing</h2>
 
-<h3>Find Personal Injury Lawyers</h3>
-
-<pre><code>{
-  "searchQueries": ["personal injury lawyer seattle wa"],
-  "maxResults": 100,
-  "includeReviews": true,
-  "maxReviews": 5
-}</code></pre>
-
-<h3>Multi-Location Attorney Search</h3>
-
-<pre><code>{
-  "locations": ["seattle-wa", "portland-or", "san-francisco-ca"],
-  "practiceAreas": ["family"],
-  "maxResults": 50,
-  "includeReviews": false
-}</code></pre>
-
-<h3>Comprehensive Attorney Data</h3>
-
-<pre><code>{
-  "searchQueries": ["divorce attorney new york"],
-  "maxResults": 25,
-  "includeReviews": true,
-  "maxReviews": 20
-}</code></pre>
-
-<h2>Data Fields Extracted</h2>
-
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
-<li><strong>Name</strong>: Attorney's full name</li>
-<li><strong>Rating</strong>: Client star rating (1-5 scale)</li>
-<li><strong>Review Count</strong>: Total number of client reviews</li>
-<li><strong>Avvo Rating</strong>: Proprietary Avvo rating (1-10 scale)</li>
-<li><strong>Practice Areas</strong>: List of legal specialties</li>
-<li><strong>Location</strong>: City and state</li>
-<li><strong>Address</strong>: Full office address</li>
-<li><strong>Phone</strong>: Contact phone number</li>
-<li><strong>Website</strong>: Attorney or firm website</li>
-<li><strong>Email</strong>: Contact email if available</li>
-<li><strong>Years Experience</strong>: Years practicing law</li>
-<li><strong>Education</strong>: Law schools attended</li>
-<li><strong>Bar Admissions</strong>: State bar memberships</li>
-<li><strong>Awards</strong>: Professional recognitions</li>
-<li><strong>Languages</strong>: Languages spoken</li>
-<li><strong>Firm Name</strong>: Law firm name</li>
-<li><strong>Reviews</strong>: Individual review text, rating, author, date</li>
+<li><code>data_point</code>: $0.01 per result</li></p>
+
 </ul>
+<h2>Use Cases</h2>
 
-<h2>Anti-Bot Technology</h2>
-
-<p>This scraper uses advanced anti-detection techniques:</p>
+<h3>Lead Generation</h3>
 <ul>
-<li><strong>Browser Fingerprinting</strong>: Generates realistic browser fingerprints</li>
-<li><strong>Stealth Mode</strong>: Overrides webdriver detection</li>
-<li><strong>Human-like Delays</strong>: Random delays between requests</li>
-<li><strong>Residential Proxies</strong>: Recommended for best results</li>
-<li><strong>Rate Limiting</strong>: Controlled request rate (10/min)</li>
+<li>Build targeted lists of attorneys for legal tech sales</li>
+<li>Find lawyers by practice area and location</li>
+<li>Export to CRM for outreach campaigns</li>
+
 </ul>
-
-<h2>Best Practices</h2>
-
+<h3>Legal Industry Research</h3>
 <ul>
-<li>Use RESIDENTIAL proxy group for best success rate</li>
-<li>Start with smaller maxResults to test</li>
-<li>Enable reviews only when needed (significantly slower)</li>
-<li>Use specific location slugs for targeted results</li>
-<li>Combine with other legal directories for comprehensive data</li>
+<li>Analyze competitive landscape in specific markets</li>
+<li>Compare attorney ratings and review counts</li>
+<li>Track attorney density by geography</li>
+
 </ul>
-
-<h2>Integration</h2>
-
-<p>Export data to:</p>
+<h3>Reputation Monitoring</h3>
 <ul>
-<li>Google Sheets</li>
-<li>CSV/Excel</li>
-<li>CRM systems (via webhook)</li>
-<li>Legal practice management software</li>
-<li>Marketing automation platforms</li>
+<li>Monitor attorney ratings over time</li>
+<li>Track new client reviews</li>
+<li>Benchmark against competitors</li>
+
 </ul>
+<h3>Recruiting</h3>
+<ul>
+<li>Find attorneys with specific credentials</li>
+<li>Identify top-rated lawyers in practice areas</li>
+<li>Source candidates by location and experience</li>
 
-<h2>Support</h2>
-
-<p>For issues or feature requests, contact support through Apify.</p>
+</ul>
+---
 
 <p>---</p>
 
-<h2>Keywords</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<p>avvo scraper, attorney scraper, lawyer scraper, legal directory scraper, avvo rating, attorney reviews, legal lead generation, law firm data, attorney profiles</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -666,7 +560,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

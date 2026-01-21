@@ -456,53 +456,69 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>Government &amp; Research MCP Server - Unified Data Access</h1>
-<strong>&quot;Government Research Intelligence&quot;</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-<p>---</p>
-<p>Unified MCP (Model Context Protocol) server providing single-interface access to 16 government and research data sources. Query multiple APIs simultaneously, aggregate results, and use smart routing for natural language queries.</p>
-<h2>Connected Data Sources</h2>
-<h3>Research &amp; Science</h3>
-<ul><li><strong>NIH Grants</strong> - Research funding from all NIH institutes</li>
-<li><strong>ClinicalTrials.gov</strong> - Clinical study registry</li>
-<li><strong>PubMed/NCBI</strong> - 36M+ biomedical citations</li>
-<li><strong>USPTO</strong> - Patents and trademarks</li>
+            <p>Unified MCP server for government and research data. Query 16 data sources through one interface: NIH, PubMed, ClinicalTrials, SEC, FRED, USPTO, BLS, CDC, NOAA, World Bank, and more. Smart routing and cross-source queries.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
-<h3>Economic &amp; Financial</h3>
-<ul><li><strong>FRED</strong> - Federal Reserve economic data</li>
-<li><strong>SEC EDGAR</strong> - Company filings and financials</li>
-<li><strong>BLS</strong> - Employment, wages, CPI data</li>
-<li><strong>World Bank</strong> - Global development indicators</li>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "query": "example search"
+}
+</code></pre>
+
+<h2>Demo Mode (Enabled by Default)</h2>
+
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
+
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
+
 </ul>
-<h3>Government Data</h3>
-<ul><li><strong>SAM.gov</strong> - Federal contracts</li>
-<li><strong>Grants.gov</strong> - Federal grant opportunities</li>
-<li><strong>NPI Registry</strong> - Healthcare providers</li>
-<li><strong>Census</strong> - Demographics and population</li>
-<li><strong>SBA</strong> - Small business data</li>
-<li><strong>Data.gov</strong> - 300K+ government datasets</li>
+To get customized results, simply provide your own input parameters.
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li>Query (single source): $0.02</li>
+<li>Multi-query (per source): $0.01</li>
+<li>Smart Search: $0.03</li>
+<li>Aggregate: $0.03</li>
+<li>List Sources: $0.005</li>
+<li>Get Source Info: $0.005</li></p>
+
 </ul>
-<h3>Health &amp; Environment</h3>
-<ul><li><strong>CDC</strong> - Public health data</li>
-<li><strong>NOAA</strong> - Weather, climate, ocean data</li>
-</ul>
-<h2>Operations</h2>
-<h3>query</h3>
-<p>Query a single data source with specific task and parameters.</p>
-<h3>multi_query</h3>
-<p>Query multiple data sources in parallel. Returns aggregated results.</p>
-<h3>smart_search</h3>
-<p>Natural language query that automatically routes to relevant sources.</p>
-<h3>aggregate</h3>
-<p>Combine data from multiple sources with cross-referencing.</p>
-<h3>list_sources</h3>
-<p>Get list of all available data sources and their capabilities.</p>
-<h3>get_source_info</h3>
-<p>Get detailed information about a specific data source.</p>
 <h2>Use Cases</h2>
-<ul><li>Research intelligence platforms</li>
+
+<ul>
+<li>Research intelligence platforms</li>
 <li>Grant prospecting systems</li>
 <li>Economic analysis dashboards</li>
 <li>Healthcare market research</li>
@@ -510,15 +526,17 @@
 <li>Competitive intelligence</li>
 <li>Academic research tools</li>
 <li>Policy analysis platforms</li>
+
 </ul>
-<h2>Pricing</h2>
-<ul><li>Query (single source): $0.02</li>
-<li>Multi-query (per source): $0.01</li>
-<li>Smart Search: $0.03</li>
-<li>Aggregate: $0.03</li>
-<li>List Sources: $0.005</li>
-<li>Get Source Info: $0.005</li>
-</ul>
+<h2>API Reference</h2>
+
+<p>See official API documentation for details.</p>
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -532,7 +550,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

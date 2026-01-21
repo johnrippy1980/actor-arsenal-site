@@ -473,308 +473,176 @@ AI-Powered Recommendations</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
             <h1>GSC Data Analyzer - AI-Powered Search Console Insights</h1>
+            <p>Analyze GSC data to identify keyword opportunities, CTR optimization, page performance issues, and get AI-powered recommendations for improving search visibility.</p>
 
-<blockquote><strong>Transform Google Search Console data into actionable SEO strategies</strong> by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></blockquote>
+<h2>Features</h2>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>What This Actor Does</h2>
-
-<p>The <strong>GSC Data Analyzer</strong> transforms raw Google Search Console data into actionable insights:</p>
-
-<p>1. <strong>Keyword Opportunity Analysis</strong> - Find high-impression, low-CTR queries</p>
-<p>2. <strong>Position Gap Analysis</strong> - Identify keywords close to top 3 rankings</p>
-<p>3. <strong>CTR Optimization</strong> - Benchmark against position-based CTR curves</p>
-<p>4. <strong>Page Performance</strong> - Analyze which pages drive the most traffic</p>
-<p>5. <strong>Trending Queries</strong> - Spot emerging search opportunities</p>
-<p>6. <strong>Cannibalization Detection</strong> - Find pages competing for same keywords</p>
-<p>7. <strong>AI-Powered Recommendations</strong> - Get prioritized action items</p>
-
-<p>---</p>
-
-<h2>Why Use This Actor?</h2>
-
-<h3>The Problem with Raw GSC Data</h3>
-
-<p>Google Search Console provides valuable data, but:</p>
 <ul>
-<li>Thousands of rows make analysis overwhelming</li>
-<li>No built-in prioritization or scoring</li>
-<li>Requires spreadsheet expertise to extract insights</li>
-<li>Manual comparison against benchmarks</li>
+<li>Automated data collection</li>
+<li>Structured output format</li>
+<li>Error handling</li>
+<li>Pay-per-event billing</li>
+
 </ul>
-
-<h3>AI-Powered Intelligence</h3>
-
-<p>This actor provides:</p>
-<ul>
-<li><strong>Opportunity Scoring (0-100)</strong> - Prioritized by potential impact</li>
-<li><strong>Position Buckets</strong> - Grouped by optimization strategy</li>
-<li><strong>CTR Benchmarks</strong> - Compare against industry standards</li>
-<li><strong>AI Recommendations</strong> - Context-aware action items</li>
-</ul>
-
-<p>---</p>
-
-<h2>Use Cases</h2>
-
-<h3>1. Monthly SEO Reporting</h3>
-<p>Generate insights for client reports without manual analysis.</p>
-
-<h3>2. Quick Win Identification</h3>
-<p>Find keywords ranking positions 4-10 that need a small push.</p>
-
-<h3>3. Content Gap Analysis</h3>
-<p>Identify queries where you're getting impressions but not clicks.</p>
-
-<h3>4. Cannibalization Audit</h3>
-<p>Find pages competing against each other in search results.</p>
-
-<p>---</p>
-
-<h2>Quick Start Examples</h2>
-
-<h3>Example 1: Demo Mode (Free Testing)</h3>
+<h2>Quick Start</h2>
 
 <pre><code>{
-<p>"demoMode": true</p>
-<p>}</p>
+  "input": "your input here"
+}
 </code></pre>
 
-<h3>Example 2: Analyze Pasted GSC Data</h3>
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
 
 <pre><code>{
-<p>"gscData": "[{\"query\":\"best plumber miami\",\"clicks\":45,\"impressions\":1200,\"ctr\":0.0375,\"position\":4.2},{\"query\":\"plumber near me\",\"clicks\":120,\"impressions\":3500,\"ctr\":0.0343,\"position\":3.1}]",</p>
-<p>"siteUrl": "https://miami-plumber.com",</p>
-<p>"analysisType": "comprehensive"</p>
-<p>}</p>
+  "demoMode": true,
+  ...
+}
 </code></pre>
-
-<h3>Example 3: CTR Optimization Focus</h3>
-
-<pre><code>{
-<p>"gscData": "...",</p>
-<p>"analysisType": "ctr_optimization",</p>
-<p>"minImpressions": 500,</p>
-<p>"targetPosition": 5</p>
-<p>}</p>
-</code></pre>
-
-<h3>Example 4: With AI Enhancement (BYOK)</h3>
-
-<pre><code>{
-<p>"gscData": "...",</p>
-<p>"includeAIInsights": true,</p>
-<p>"anthropicApiKey": "sk-ant-..."</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
 
 <h2>Input Parameters</h2>
 
+<p>| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| <code>demoMode</code> | boolean | No | false | Run with sample data (free, no API calls) |
+| <code>gscData</code> | string | No<em> | - | GSC data as JSON string |
+| <code>siteUrl</code> | string | No | - | Website URL for context |
+| <code>dateRange</code> | string | No | last28days | Time period for analysis |
+| <code>analysisType</code> | string | No | comprehensive | Focus area |
+| <code>minImpressions</code> | integer | No | 100 | Minimum impressions filter |
+| <code>minClicks</code> | integer | No | 0 | Minimum clicks filter |
+| <code>targetPosition</code> | number | No | 3 | Target position for recommendations |
+| <code>includeAIInsights</code> | boolean | No | true | Enable AI recommendations |
+| <code>anthropicApiKey</code> | string | No | - | BYOK for enhanced AI |
+| <code>webhookUrl</code> | string | No | - | Webhook for integrations |</p>
 
-<p>*Required unless using <code>demoMode</code></p>
+</em>Required unless using <code>demoMode</code>
 
 <p>---</p>
 
 <h2>Output Format</h2>
 
 <pre><code>{
-<p>"siteUrl": "https://example.com",</p>
-<p>"analysisDate": "2024-12-25T12:00:00.000Z",</p>
-<p>"dateRange": "last28days",</p>
+  "siteUrl": "https://example.com",
+  "analysisDate": "2024-12-25T12:00:00.000Z",
+  "dateRange": "last28days",
 
-<p>"summary": {</p>
-<p>"totalQueries": 1250,</p>
-<p>"totalClicks": 15420,</p>
-<p>"totalImpressions": 425000,</p>
-<p>"avgCtr": 0.0363,</p>
-<p>"avgPosition": 12.4,</p>
-<p>"opportunityScore": 78</p>
-<p>},</p>
+<p>"summary": {
+    "totalQueries": 1250,
+    "totalClicks": 15420,
+    "totalImpressions": 425000,
+    "avgCtr": 0.0363,
+    "avgPosition": 12.4,
+    "opportunityScore": 78
+  },</p>
 
-<p>"positionBuckets": {</p>
-<p>"top3": { "count": 45, "clicks": 8500, "avgCtr": 0.12 },</p>
-<p>"positions4to10": { "count": 120, "clicks": 4200, "avgCtr": 0.045 },</p>
-<p>"positions11to20": { "count": 280, "clicks": 1800, "avgCtr": 0.018 },</p>
-<p>"positions21plus": { "count": 805, "clicks": 920, "avgCtr": 0.005 }</p>
-<p>},</p>
+<p>"positionBuckets": {
+    "top3": { "count": 45, "clicks": 8500, "avgCtr": 0.12 },
+    "positions4to10": { "count": 120, "clicks": 4200, "avgCtr": 0.045 },
+    "positions11to20": { "count": 280, "clicks": 1800, "avgCtr": 0.018 },
+    "positions21plus": { "count": 805, "clicks": 920, "avgCtr": 0.005 }
+  },</p>
 
-<p>"keywordOpportunities": [</p>
-<p>{</p>
-<p>"query": "best plumber miami",</p>
-<p>"clicks": 45,</p>
-<p>"impressions": 1200,</p>
-<p>"ctr": 0.0375,</p>
-<p>"position": 4.2,</p>
-<p>"opportunityScore": 92,</p>
-<p>"recommendation": "Strong position with high impressions. Optimize title tag and meta description to improve CTR from 3.75% to 8%+ expected at position 4."</p>
-<p>}</p>
-<p>],</p>
+<p>"keywordOpportunities": [
+    {
+      "query": "best plumber miami",
+      "clicks": 45,
+      "impressions": 1200,
+      "ctr": 0.0375,
+      "position": 4.2,
+      "opportunityScore": 92,
+      "recommendation": "Strong position with high impressions. Optimize title tag and meta description to improve CTR from 3.75% to 8%+ expected at position 4."
+    }
+  ],</p>
 
-<p>"ctrOpportunities": [</p>
-<p>{</p>
-<p>"query": "emergency plumber 24/7",</p>
-<p>"position": 2.1,</p>
-<p>"currentCtr": 0.085,</p>
-<p>"expectedCtr": 0.18,</p>
-<p>"ctrGap": -0.095,</p>
-<p>"impressions": 800,</p>
-<p>"potentialClicks": 76,</p>
-<p>"recommendation": "CTR significantly below benchmark for position 2. Review title tag for click-worthiness."</p>
-<p>}</p>
-<p>],</p>
+<p>"ctrOpportunities": [
+    {
+      "query": "emergency plumber 24/7",
+      "position": 2.1,
+      "currentCtr": 0.085,
+      "expectedCtr": 0.18,
+      "ctrGap": -0.095,
+      "impressions": 800,
+      "potentialClicks": 76,
+      "recommendation": "CTR significantly below benchmark for position 2. Review title tag for click-worthiness."
+    }
+  ],</p>
 
-<p>"pagePerformance": [</p>
-<p>{</p>
-<p>"page": "/services/emergency-plumbing",</p>
-<p>"clicks": 450,</p>
-<p>"impressions": 8500,</p>
-<p>"avgPosition": 5.2,</p>
-<p>"topQueries": ["emergency plumber", "24 hour plumber"],</p>
-<p>"score": 85</p>
-<p>}</p>
-<p>],</p>
+<p>"pagePerformance": [
+    {
+      "page": "/services/emergency-plumbing",
+      "clicks": 450,
+      "impressions": 8500,
+      "avgPosition": 5.2,
+      "topQueries": ["emergency plumber", "24 hour plumber"],
+      "score": 85
+    }
+  ],</p>
 
-<p>"cannibalization": [</p>
-<p>{</p>
-<p>"query": "miami plumber reviews",</p>
-<p>"competingPages": [</p>
-<p>"/reviews",</p>
-<p>"/testimonials"</p>
-<p>],</p>
-<p>"recommendation": "Consolidate content or add canonical to prevent split rankings."</p>
-<p>}</p>
-<p>],</p>
+<p>"cannibalization": [
+    {
+      "query": "miami plumber reviews",
+      "competingPages": [
+        "/reviews",
+        "/testimonials"
+      ],
+      "recommendation": "Consolidate content or add canonical to prevent split rankings."
+    }
+  ],</p>
 
-<p>"aiInsights": {</p>
-<p>"summary": "Your site has strong visibility in local plumbing searches with 45 queries in top 3 positions. Key opportunities exist in improving CTR for emergency service queries and consolidating review-related content.",</p>
-<p>"topPriorities": [</p>
-<p>{</p>
-<p>"priority": 1,</p>
-<p>"action": "Optimize title tags for position 4-10 queries",</p>
-<p>"impact": "high",</p>
-<p>"effort": "low",</p>
-<p>"queries": ["best plumber miami", "affordable plumber"]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Analysis Types</h2>
-
-
-<p>---</p>
-
-<h2>CTR Benchmarks</h2>
-
-<p>Expected CTR by position (organic search):</p>
-
-
-<p>---</p>
-
-<h2>AI Recommendations</h2>
-
-<h3>Without Anthropic API Key</h3>
-<p>Uses rule-based analysis:</p>
-<ul>
-<li>CTR vs benchmark comparisons</li>
-<li>Position improvement potential</li>
-<li>Quick win identification</li>
-</ul>
-
-<h3>With Anthropic API Key (BYOK)</h3>
-<p>Enhanced analysis using Claude:</p>
-<ul>
-<li>Context-aware recommendations</li>
-<li>Competitive insights</li>
-<li>Content strategy suggestions</li>
-<li>Prioritized action plans</li>
-</ul>
-
-<p>---</p>
-
-<h2>Webhook Integration</h2>
-
-<h3>Webhook Payload</h3>
-
-<pre><code>{
-<p>"event": "gsc_analysis_complete",</p>
-<p>"timestamp": "2024-12-25T12:00:00.000Z",</p>
-<p>"actor": "gsc-data-analyzer",</p>
-<p>"status": "success",</p>
-<p>"siteUrl": "https://example.com",</p>
-<p>"summary": {...},</p>
-<p>"topOpportunities": [...]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>Perfect For</h2>
-
-<h3>SEO Agencies</h3>
-<ul>
-<li>Automated client reporting</li>
-<li>Opportunity identification</li>
-<li>Performance tracking</li>
-</ul>
-
-<h3>In-House SEO Teams</h3>
-<ul>
-<li>Monthly analysis</li>
-<li>Quick win discovery</li>
-<li>Content prioritization</li>
-</ul>
-
-<h3>Content Marketers</h3>
-<ul>
-<li>Keyword research validation</li>
-<li>Content gap analysis</li>
-<li>Performance benchmarking</li>
-</ul>
+<p>"aiInsights": {
+    "summary": "Your site has strong visibility in local plumbing searches with 45 queries in top 3 positions. Key opportunities exist in improving CTR for emergency service queries and consolidating review-related content.",
+    "topPriorities": [
+      {
+        "priority": 1,
+        "action": "Optimize title tags for position 4-10 queries",
+        "impact": "high",
+        "effort": "low",
+        "queries": ["best plumber miami", "affordable plumber"]
+      }
+    ]
+  }
+}
+</code></pre></p>
 
 <p>---</p>
 
 <h2>Pricing</h2>
 
+<p>This actor uses <strong>pay-per-event</strong> billing:
 <ul>
 <li><strong>Demo Mode</strong>: Free (sample data)</li>
 <li><strong>Standard Usage</strong>: Apify compute units only</li>
-<li><strong>AI Insights</strong>: Rule-based free, Claude BYOK for enhanced</li>
+<li><strong>AI Insights</strong>: Rule-based free, Claude BYOK for enhanced</li></p>
+
 </ul>
+---
+
+<h2>Use Cases</h2>
+
+<h3>1. Monthly SEO Reporting</h3>
+Generate insights for client reports without manual analysis.
+
+<h3>2. Quick Win Identification</h3>
+Find keywords ranking positions 4-10 that need a small push.
+
+<h3>3. Content Gap Analysis</h3>
+Identify queries where you're getting impressions but not clicks.
+
+<h3>4. Cannibalization Audit</h3>
+Find pages competing against each other in search results.
 
 <p>---</p>
 
-<h2>Related Actors</h2>
-
-<ul>
-<li><strong>Technical SEO Auditor</strong> - On-page SEO analysis</li>
-<li><strong>Robots.txt Checker</strong> - Crawl directive validation</li>
-<li><strong>PageSpeed Intelligence</strong> - Performance analysis</li>
-</ul>
-
 <p>---</p>
 
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>Keywords</h2>
-
-<p>google search console, gsc data analysis, keyword opportunities, ctr optimization, position tracking, seo reporting, search analytics, keyword research, serp analysis, content optimization, ai seo recommendations, search visibility, organic traffic analysis, seo automation</p>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -788,7 +656,7 @@ AI-Powered Recommendations</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

@@ -457,9 +457,99 @@
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <p>Automated website performance testing using GTmetrix. Get Core Web Vitals, PageSpeed scores, waterfall analysis & optimization recommendations. Batch test multiple URLs.</p>
+            <h1>GTmetrix Performance Tester</h1>
+            <p>Test website performance using GTmetrix API. Get PageSpeed scores, Core Web Vitals (LCP, FID, CLS), loading times, and actionable optimization recommendations. BYOK (Bring Your Own Key) supported for free GTmetrix API. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Performance Scores</strong>: GTmetrix Grade, Performance Score, Structure Score</li>
+<li><strong>Core Web Vitals</strong>: LCP, TBT, CLS - the metrics Google uses for ranking</li>
+<li><strong>Loading Metrics</strong>: First Contentful Paint, Time to Interactive, Fully Loaded Time</li>
+<li><strong>Multiple Locations</strong>: Test from 7 global server locations</li>
+<li><strong>BYOK Support</strong>: Bring your own free GTmetrix API key</li>
+
+</ul>
+<h2>Quick Start</h2>
+
+<pre><code>{
+  "input": "your input here"
+}
+</code></pre>
+
+<h2>Demo Mode</h2>
+
+<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
+
+<pre><code>{
+  "demoMode": true,
+  ...
+}
+</code></pre>
+
+<h2>Input Parameters</h2>
+
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
+
+<h2>Output Format</h2>
+
+<pre><code>{
+  "url": "https://example.com",
+  "gtmetrixGrade": "A",
+  "performanceScore": 92,
+  "structureScore": 88,
+  "largestContentfulPaint": 1245,
+  "totalBlockingTime": 150,
+  "cumulativeLayoutShift": 0.05,
+  "firstContentfulPaint": 890,
+  "timeToInteractive": 2100,
+  "fullyLoadedTime": 3500,
+  "pageSize": 1524000,
+  "requests": 45,
+  "reportUrl": "https://gtmetrix.com/reports/...",
+  "recommendations": [
+    {
+      "name": "Serve images in next-gen formats",
+      "score": 45,
+      "savings": "234 KB"
+    }
+  ],
+  "testedAt": "2025-12-23T12:00:00Z"
+}
+</code></pre>
+
+<h2>Pricing</h2>
+
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><strong>$0.01</strong> per URL tested</li>
+<li>Demo mode is free</li>
+<li>BYOK uses your own GTmetrix credits</li></p>
+
+</ul>
+<h2>Use Cases</h2>
+
+<h3>SEO Performance Audit</h3>
+Test your site and competitors to benchmark performance.
+
+<h3>Core Web Vitals Monitoring</h3>
+Track LCP, TBT, CLS over time to ensure Google ranking signals stay healthy.
+
+<h3>Before/After Optimization</h3>
+Test before making changes, optimize, then test again to measure improvement.
+
+<h3>Multi-Location Testing</h3>
+Test from different regions to ensure global performance.
+
+<p>---</p>
+
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
+
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -473,7 +563,7 @@
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>

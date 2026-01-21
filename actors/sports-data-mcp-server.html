@@ -464,410 +464,78 @@ WWE</p>
         </div>
     </section>
 
-    <section class="content">
+        <section class="content">
         <div class="container">
-            <h1>Sports Data MCP Server</h1>
+            <h1>62-in-1 Sports Data MCP Server</h1>
+            <p>62 MCP tools for sports data: NHL, MLB, NBA, NFL, NCAA, Premier League, and WWE. Includes teams, rosters, standings, player stats, schedules, game stats, injury reports, and more.</p>
 
-<strong>62-in-1 MCP server for comprehensive sports data.</strong> Get NHL hockey, MLB baseball, Premier League soccer, NBA basketball, NFL football, NCAA college sports, and WWE wrestling stats with AI assistants like Claude, GPT, or any MCP-compatible tool. Now includes <strong>injury reports</strong> for all major leagues!
-
-<strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
-<p>---</p>
-
-<h2>🎯 What This Actor Does</h2>
-
-<p>This MCP server bundles 62 sports data tools into a single endpoint. AI assistants can call any tool to:</p>
+<h2>Features</h2>
 
 <ul>
-<li><strong>NHL Hockey</strong> (9 tools) - Teams, rosters, standings, player stats, game boxscores, schedules, league leaders, <strong>injury reports</strong></li>
-<li><strong>MLB Baseball</strong> (9 tools) - Teams, rosters, standings, player stats, game boxscores, schedules, league leaders, <strong>injury reports</strong></li>
-<li><strong>Premier League Soccer</strong> (9 tools) - Standings, fixtures, teams, scorers, match details, head-to-head stats, <strong>injury reports</strong></li>
-<li><strong>NBA Basketball</strong> (8 tools) - Teams, rosters, standings, player stats, game stats, schedules, leaders, <strong>injury reports</strong></li>
-<li><strong>NFL Football</strong> (8 tools) - Teams, rosters, standings, player stats, game stats, schedules, leaders, <strong>injury reports</strong></li>
-<li><strong>NCAA College Sports</strong> (11 tools) - Basketball & football teams, rankings, schedules, standings, rosters, player stats, <strong>injury reports</strong></li>
-<li><strong>WWE Wrestling</strong> (8 tools) - Superstars, championships, events, match results, show schedules, profiles</li>
+<li>Model Context Protocol (MCP) compatible</li>
+<li>Works with Claude and other AI assistants</li>
+<li>Structured data output</li>
+<li>Multiple data sources</li>
+
 </ul>
+<h2>Quick Start</h2>
 
-<p>---</p>
+<pre><code>{
+  "team": "NYY",
+  "season": 2024
+}
+</code></pre>
 
-<h2>🛠️ Available Tools (62 Total)</h2>
+<h2>Demo Mode (Enabled by Default)</h2>
 
-<h3>NHL Hockey (9 tools)</h3>
+<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
 
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<ul>
+<li>Test the actor without any configuration</li>
+<li>See real sample data from the actual API</li>
+<li>Verify the output format before integrating</li></p>
 
-<h3>MLB Baseball (9 tools)</h3>
+</ul>
+To get customized results, simply provide your own input parameters.
 
+<h2>Input Parameters</h2>
 
-<h3>Premier League Soccer (9 tools)</h3>
+<p>| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| See input schema | | | |</p>
 
+<h2>Output Format</h2>
 
-<h3>NBA Basketball (8 tools)</h3>
+<pre><code>{
+  "data": [...]
+}
+</code></pre>
 
+<h2>Pricing</h2>
 
-<h3>NFL Football (8 tools)</h3>
+<p>This actor uses <strong>pay-per-event</strong> billing:
+<ul>
+<li><code>data_point</code>: $0.01 per result</li></p>
 
-
-<h3>NCAA College Sports (11 tools)</h3>
-
-
-<h3>WWE Wrestling (8 tools)</h3>
-
-
-<p>---</p>
-
-<h2>💰 Pricing (Pay-Per-Event)</h2>
-
-
-<strong>Demo mode is FREE</strong> - Test any tool with sample data before using real credits.
-
-<p>---</p>
-
-<h2>🎲 Fantasy Sports & Betting Use Cases</h2>
-
-<h3>Fantasy Sports Integration</h3>
-
-<p>This MCP server is perfect for building fantasy sports tools:</p>
+</ul>
+<h2>Use Cases</h2>
 
 <ul>
-<li><strong>Player projections</strong> - Get real-time stats to power projection models</li>
-<li><strong>Roster analysis</strong> - Compare players across positions</li>
-<li><strong>Injury reports</strong> - Monitor player availability</li>
-<li><strong>Matchup analysis</strong> - Evaluate opponent defenses</li>
-<li><strong>Waiver wire research</strong> - Identify trending players</li>
+<li>Data collection</li>
+<li>Research</li>
+<li>Automation</li>
+
 </ul>
+<h2>API Reference</h2>
 
-<h3>Sports Betting Analysis</h3>
-
-<p>Use the data for legal sports betting research:</p>
-
-<ul>
-<li><strong>Team form</strong> - Track recent performance and trends</li>
-<li><strong>Head-to-head history</strong> - Analyze historical matchups</li>
-<li><strong>Player props research</strong> - Get detailed player statistics</li>
-<li><strong>Line movement analysis</strong> - Compare stats to betting lines</li>
-<li><strong>Injury impact</strong> - Assess how injuries affect team performance</li>
-</ul>
+<p>See official API documentation for details.</p>
 
 <p>---</p>
 
-<h2>🚀 Quick Start</h2>
+<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
 
-<h3>Demo Mode (Free)</h3>
-
-<pre><code>{
-<p>"tool": "nhl_standings",</p>
-<p>"demoMode": true</p>
-<p>}</p>
-</code></pre>
-
-<h3>Real Data</h3>
-
-<pre><code>{
-<p>"apifyToken": "your_apify_token",</p>
-<p>"footballDataApiKey": "your_football_data_key",</p>
-<p>"tool": "premier_league_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024</p>
-<p>},</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>📋 Tool Input Examples</h2>
-
-<h3>NHL Tools</h3>
-
-<p>#### nhl_standings</p>
-<pre><code>{
-<p>"tool": "nhl_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": "20242025"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### nhl_player_stats</p>
-<pre><code>{
-<p>"tool": "nhl_player_stats",</p>
-<p>"toolInput": {</p>
-<p>"playerId": 8478402</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>MLB Tools</h3>
-
-<p>#### mlb_standings</p>
-<pre><code>{
-<p>"tool": "mlb_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### mlb_player_stats</p>
-<pre><code>{
-<p>"tool": "mlb_player_stats",</p>
-<p>"toolInput": {</p>
-<p>"playerId": 545361,</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>Premier League Tools</h3>
-
-<p>#### premier_league_standings</p>
-<pre><code>{
-<p>"tool": "premier_league_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### premier_league_scorers</p>
-<pre><code>{
-<p>"tool": "premier_league_scorers",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024,</p>
-<p>"limit": 10</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>NBA Tools</h3>
-
-<p>#### nba_standings</p>
-<pre><code>{
-<p>"tool": "nba_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### nba_player_stats</p>
-<pre><code>{
-<p>"tool": "nba_player_stats",</p>
-<p>"toolInput": {</p>
-<p>"playerId": 201566,</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>NFL Tools</h3>
-
-<p>#### nfl_standings</p>
-<pre><code>{
-<p>"tool": "nfl_standings",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### nfl_schedule</p>
-<pre><code>{
-<p>"tool": "nfl_schedule",</p>
-<p>"toolInput": {</p>
-<p>"season": 2024,</p>
-<p>"week": 15</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>NCAA Tools</h3>
-
-<p>#### ncaa_basketball_rankings</p>
-<pre><code>{
-<p>"tool": "ncaa_basketball_rankings",</p>
-<p>"toolInput": {</p>
-<p>"poll": "ap"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### ncaa_football_schedule</p>
-<pre><code>{
-<p>"tool": "ncaa_football_schedule",</p>
-<p>"toolInput": {</p>
-<p>"week": 12,</p>
-<p>"conference": "SEC"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>WWE Tools</h3>
-
-<p>#### wwe_superstars</p>
-<pre><code>{
-<p>"tool": "wwe_superstars",</p>
-<p>"toolInput": {</p>
-<p>"brand": "raw"</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<p>#### wwe_championships</p>
-<pre><code>{
-<p>"tool": "wwe_championships",</p>
-<p>"demoMode": false</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>🔗 MCP Integration</h2>
-
-<h3>Claude Desktop</h3>
-
-<p>Add to your <code>claude_desktop_config.json</code>:</p>
-
-<pre><code>{
-<p>"mcpServers": {</p>
-<p>"sports-data": {</p>
-<p>"command": "npx",</p>
-<p>"args": ["-y", "@anthropic/mcp-client", "https://api.apify.com/v2/acts/alizarin_refrigerator-owner~sports-data-mcp-server/runs?token=YOUR_TOKEN"]</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-</code></pre>
-
-<h3>n8n / Make / Zapier</h3>
-
-<p>Use the webhook URL parameter to receive results:</p>
-
-<pre><code>{
-<p>"tool": "nba_standings",</p>
-<p>"toolInput": { "season": 2024 },</p>
-<p>"webhookUrl": "https://your-webhook-endpoint.com/receive"</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>📊 Sample Output</h2>
-
-<h3>nhl_standings</h3>
-<pre><code>{
-<p>"tool": "nhl_standings",</p>
-<p>"standings": [</p>
-<p>{</p>
-<p>"division": "Central",</p>
-<p>"teams": [</p>
-<p>{</p>
-<p>"team": "Winnipeg Jets",</p>
-<p>"abbreviation": "WPG",</p>
-<p>"wins": 32,</p>
-<p>"losses": 12,</p>
-<p>"otLosses": 3,</p>
-<p>"points": 67,</p>
-<p>"gamesPlayed": 47</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>nba_standings</h3>
-<pre><code>{
-<p>"tool": "nba_standings",</p>
-<p>"standings": [</p>
-<p>{</p>
-<p>"conference": "Eastern",</p>
-<p>"teams": [</p>
-<p>{</p>
-<p>"team": "Cleveland Cavaliers",</p>
-<p>"wins": 31,</p>
-<p>"losses": 4,</p>
-<p>"pct": ".886",</p>
-<p>"gamesBack": "-"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>nfl_standings</h3>
-<pre><code>{
-<p>"tool": "nfl_standings",</p>
-<p>"standings": [</p>
-<p>{</p>
-<p>"division": "AFC North",</p>
-<p>"teams": [</p>
-<p>{</p>
-<p>"team": "Pittsburgh Steelers",</p>
-<p>"wins": 10,</p>
-<p>"losses": 3,</p>
-<p>"ties": 0,</p>
-<p>"pct": ".769"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<h3>wwe_superstars</h3>
-<pre><code>{
-<p>"tool": "wwe_superstars",</p>
-<p>"brand": "raw",</p>
-<p>"superstars": [</p>
-<p>{</p>
-<p>"name": "Cody Rhodes",</p>
-<p>"role": "Champion",</p>
-<p>"championships": ["WWE Championship"],</p>
-<p>"finisher": "Cross Rhodes"</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
-</code></pre>
-
-<p>---</p>
-
-<h2>🔧 API Sources</h2>
-
-
-<p>---</p>
-
-<h2>❓ FAQ</h2>
-
-<strong>Q: What's the difference between demo mode and real data?</strong>
-<p>A: Demo mode returns realistic sample data instantly (free). Real data mode calls the actual APIs and returns live data.</p>
-
-<strong>Q: Do I need API keys?</strong>
-<p>A: NHL, MLB, NBA, NFL, NCAA, and WWE are free public APIs. Premier League requires a free API key from football-data.org.</p>
-
-<strong>Q: Can I use this for fantasy sports?</strong>
-<p>A: Yes! The player stats, standings, and schedule data is perfect for building fantasy sports tools, projection models, and analysis dashboards.</p>
-
-<strong>Q: Can I use this without an AI assistant?</strong>
-<p>A: Yes! Call the Apify API directly or use the Apify console to run the actor.</p>
-
-<strong>Q: How often is the data updated?</strong>
-<p>A: Live data is fetched in real-time from official APIs. Demo mode data is static sample data.</p>
-
-<p>---</p>
-
-<h2>📞 Support</h2>
-
-<ul>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/johnrippy1980" target="_blank" rel="noopener">Report bugs or request features</a></li>
-<li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></li>
-<li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li>
-</ul>
-
-<blockquote>🏆 <strong>2025 Zapier Automation Hero of the Year</strong> — <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Project Phoenix</a>: A 95-step AI sales pipeline cutting development time by 50%. <a href="https://zapier.com/blog/zappy-awards-winners-2025/" target="_blank" rel="noopener">Read more →</a></blockquote>
-
+            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
         </div>
     </section>
 
@@ -881,7 +549,7 @@ WWE</p>
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">149,000</div>
+                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
                 <div class="hud-label">KILLS</div>
             </div>
         </div>
