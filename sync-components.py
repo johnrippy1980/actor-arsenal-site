@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Sync navigation and HUD across all HTML pages to match the homepage.
-This script updates the nav and HUD in all pages to exactly match index.html.
+This script updates the nav, HUD, and their CSS in all pages.
 """
 
 import os
@@ -84,7 +84,7 @@ HUD_ROOT = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">296</div>
+                <div class="hud-value hud-armor" id="hudArmor">304</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
@@ -116,7 +116,7 @@ HUD_ACTORS = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">296</div>
+                <div class="hud-value hud-armor" id="hudArmor">304</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
@@ -128,6 +128,94 @@ HUD_ACTORS = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
     </div>'''
 
+# Canonical CSS for difficulty selector and music button (from homepage)
+NAV_CSS = '''        /* ===== DIFFICULTY SELECTOR ===== */
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn, .music-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+        .difficulty-btn:hover, .music-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid var(--accent-red);
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-option.active {
+            color: var(--accent-yellow);
+        }'''
+
 # Files to skip
 SKIP_FILES = ['index.html']  # Homepage is the canonical source
 
@@ -135,10 +223,7 @@ SKIP_FILES = ['index.html']  # Homepage is the canonical source
 def replace_nav(content, is_actor_page):
     """Replace the navigation block with the canonical version."""
     nav_template = NAV_ACTORS if is_actor_page else NAV_ROOT
-
-    # Pattern to match the entire nav block
     pattern = r'<nav>[\s\S]*?</nav>'
-
     if re.search(pattern, content):
         return re.sub(pattern, nav_template.strip(), content)
     return content
@@ -151,14 +236,12 @@ def find_hud_block(content):
     if idx < 0:
         return None, None
 
-    # Also check for comment before the HUD
     comment_idx = content.rfind('<!--', max(0, idx - 100), idx)
     if comment_idx >= 0 and 'DOOM HUD' in content[comment_idx:idx]:
         start_idx = comment_idx
     else:
         start_idx = idx
 
-    # Count divs to find the end
     count = 0
     i = idx
     while i < len(content):
@@ -172,14 +255,12 @@ def find_hud_block(content):
                 return start_idx, i
         else:
             i += 1
-
     return None, None
 
 
 def replace_hud(content, is_actor_page):
     """Replace the HUD block with the canonical version."""
     hud_template = HUD_ACTORS if is_actor_page else HUD_ROOT
-
     start, end = find_hud_block(content)
     if start is not None and end is not None:
         return content[:start] + hud_template.strip() + content[end:]
@@ -190,8 +271,46 @@ def add_hud_if_missing(content, is_actor_page):
     """Add HUD before closing </body> if it doesn't exist."""
     if '<div class="doom-hud">' not in content:
         hud_template = HUD_ACTORS if is_actor_page else HUD_ROOT
-        # Insert before </body>
         content = re.sub(r'(</body>)', '\n' + hud_template + '\n\\1', content)
+    return content
+
+
+def replace_nav_css(content):
+    """Replace the difficulty selector and music button CSS with canonical version."""
+    # Pattern to find the difficulty selector CSS block
+    # This matches from "/* ===== DIFFICULTY SELECTOR =====" to the end of .difficulty-option.active block
+    pattern = r'/\*\s*=+\s*DIFFICULTY SELECTOR\s*=+\s*\*/[\s\S]*?\.difficulty-option\.active\s*\{[^}]*\}'
+
+    if re.search(pattern, content):
+        return re.sub(pattern, NAV_CSS.strip(), content)
+
+    # If the old pattern doesn't exist, look for individual classes and replace them
+    # First check for separate .difficulty-selector block
+    old_patterns = [
+        r'\.difficulty-selector\s*\{[^}]*\}',
+        r'\.difficulty-btn\s*\{[^}]*\}',
+        r'\.difficulty-btn:hover\s*\{[^}]*\}',
+        r'\.difficulty-menu\s*\{[^}]*\}',
+        r'\.difficulty-menu\.show\s*\{[^}]*\}',
+        r'\.difficulty-option\s*\{[^}]*\}',
+        r'\.difficulty-option:hover\s*\{[^}]*\}',
+        r'\.difficulty-option\.active\s*\{[^}]*\}',
+        r'\.music-btn\s*\{[^}]*\}',
+        r'\.music-btn::after\s*\{[^}]*\}',
+        r'\.music-btn\.playing\s*\{[^}]*\}',
+        r'\.music-btn\.playing::after\s*\{[^}]*\}',
+        r'\.music-btn:hover\s*\{[^}]*\}',
+        r'@keyframes\s+musicPulse\s*\{[^}]*\{[^}]*\}[^}]*\}',
+    ]
+
+    # Remove all old nav CSS
+    for pat in old_patterns:
+        content = re.sub(pat, '', content)
+
+    # Find </style> and insert CSS before it (if CSS was removed)
+    if '.difficulty-selector' not in content:
+        content = re.sub(r'(</style>)', NAV_CSS + '\n    \\1', content, count=1)
+
     return content
 
 
@@ -208,8 +327,11 @@ def process_file(file_path):
 
         original = content
 
-        # Replace navigation
+        # Replace navigation HTML
         content = replace_nav(content, is_actor_page)
+
+        # Replace navigation CSS
+        content = replace_nav_css(content)
 
         # Replace HUD
         content = replace_hud(content, is_actor_page)
@@ -229,10 +351,7 @@ def process_file(file_path):
 
 
 def main():
-    # Get all HTML files
     html_files = list(BASE_DIR.glob('*.html')) + list(BASE_DIR.glob('actors/*.html'))
-
-    # Filter out skip files
     html_files = [f for f in html_files if f.name not in SKIP_FILES]
 
     print(f"Found {len(html_files)} files to process")

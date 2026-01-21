@@ -191,85 +191,24 @@
     
         
         /* Difficulty Selector */
-        .difficulty-selector { position: relative; display: inline-block; }
-        .difficulty-btn {
-            background: transparent;
-            border: 1px solid #ff3366;
-            color: #ff3366;
-            padding: 0.4rem 0.8rem;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .difficulty-btn:hover { background: #ff3366; color: #000; }
-        .difficulty-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #111;
-            border: 1px solid #ff3366;
-            display: none;
-            flex-direction: column;
-            min-width: 200px;
-            z-index: 1002;
-        }
-        .difficulty-menu.show { display: flex; }
-        .difficulty-option {
-            padding: 0.8rem;
-            color: #888;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            text-align: left;
-            transition: all 0.2s;
-        }
-        .difficulty-option:hover { background: #ff3366; color: #000; }
-        .difficulty-option.active { color: #ffcc00; }
+        
+        
+        
+        
+        
+        
+        
+        
 
         
         /* Music Button */
-        .music-btn {
-            font-size: 1.2rem;
-            padding: 0.4rem 0.8rem;
-            margin-left: 0.5rem;
-            border: 2px solid #ffcc00;
-            color: #ffcc00;
-            background: rgba(255, 204, 0, 0.1);
-            animation: musicPulse 2s ease-in-out infinite;
-            position: relative;
-            cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
+        
+        
+        
+        
+        
         }
-        .music-btn::after {
-            content: 'E1M1';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
-            color: #ffcc00;
-            white-space: nowrap;
-        }
-        .music-btn.playing {
-            background: #ffcc00;
-            color: #000;
-            animation: none;
-            box-shadow: 0 0 15px #ffcc00;
-        }
-        .music-btn.playing::after {
-            content: 'PLAYING';
-        }
-        @keyframes musicPulse {
-            0%, 100% { box-shadow: 0 0 5px #ffcc00; }
-            50% { box-shadow: 0 0 20px #ffcc00, 0 0 30px #ff3366; }
-        }
-        .music-btn:hover {
-            background: #ffcc00;
-            color: #000;
-        }
+        
 
         /* ===== DOOM EFFECTS ===== */
         body { padding-bottom: 90px; }
@@ -398,6 +337,92 @@
         .demon-left.peek { left: -20px; opacity: 1; }
         .demon-right.peek { right: -20px; opacity: 1; }
 
+            /* ===== DIFFICULTY SELECTOR ===== */
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn, .music-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+        .difficulty-btn:hover, .music-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            border: 1px solid var(--accent-red);
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            z-index: 1002;
+        }
+        .difficulty-menu.show { display: flex; }
+        .difficulty-option {
+            padding: 0.8rem;
+            color: #888;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .difficulty-option:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .difficulty-option.active {
+            color: var(--accent-yellow);
+        }
     </style>
 </head>
 <body>
@@ -548,7 +573,7 @@ Get Core Web Vitals performance, accessibility, SEO & recommendations for any we
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">296</div>
+                <div class="hud-value hud-armor" id="hudArmor">304</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
