@@ -128,6 +128,103 @@ HUD_ACTORS = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
     </div>'''
 
+# Canonical CSS for HUD (from homepage)
+HUD_CSS = '''        /* ===== DOOM HUD (Classic Grey Metal Style) ===== */
+        .doom-hud {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    #5a5a5a 0px, #5a5a5a 2px,
+                    #6a6a6a 2px, #6a6a6a 4px,
+                    #4a4a4a 4px, #4a4a4a 6px,
+                    #555 6px, #555 8px
+                ),
+                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
+            border-top: 4px solid #7a7a7a;
+            border-bottom: 4px solid #2a2a2a;
+            box-shadow:
+                inset 0 2px 0 #8a8a8a,
+                inset 0 -2px 0 #2a2a2a,
+                0 -4px 8px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            font-family: 'Press Start 2P', cursive;
+            padding: 0;
+            gap: 0;
+        }
+        .hud-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background:
+                linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
+            border-left: 3px solid #6a6a6a;
+            border-right: 3px solid #2a2a2a;
+            border-top: 2px solid #7a7a7a;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+        .hud-section::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 2px solid #1a1a1a;
+            border-radius: 2px;
+            z-index: -1;
+        }
+        .hud-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 0 0.5rem;
+        }
+        .hud-value {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+            letter-spacing: 2px;
+        }
+        .hud-label {
+            font-size: 0.5rem;
+            color: #888;
+            text-shadow: 1px 1px 0 #000;
+            text-transform: uppercase;
+        }
+        .hud-face-container {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+            border: 3px solid #5a5a5a;
+            border-bottom-color: #1a1a1a;
+            border-right-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .hud-face {
+            width: 60px;
+            height: 60px;
+            image-rendering: pixelated;
+        }
+        .hud-ammo { color: #ffcc00; }
+        .hud-health { color: #ff3333; }
+        .hud-armor { color: #00ff88; }
+        .hud-secrets { color: #ff6600; }'''
+
 # Canonical CSS for difficulty selector and music button (from homepage)
 NAV_CSS = '''        /* ===== DIFFICULTY SELECTOR ===== */
         .difficulty-selector {
@@ -275,41 +372,32 @@ def add_hud_if_missing(content, is_actor_page):
     return content
 
 
+def replace_hud_css(content):
+    """Replace the HUD CSS with canonical version."""
+    # Pattern to find the HUD CSS block
+    pattern = r'/\*\s*=+\s*DOOM HUD[^*]*=+\s*\*/[\s\S]*?\.hud-secrets\s*\{[^}]*\}'
+
+    if re.search(pattern, content):
+        return re.sub(pattern, HUD_CSS.strip(), content)
+
+    # If HUD CSS doesn't exist, add it before </style>
+    if '.doom-hud' not in content or '.hud-section' not in content:
+        content = re.sub(r'(</style>)', '\n' + HUD_CSS + '\n    \\1', content, count=1)
+
+    return content
+
+
 def replace_nav_css(content):
     """Replace the difficulty selector and music button CSS with canonical version."""
     # Pattern to find the difficulty selector CSS block
-    # This matches from "/* ===== DIFFICULTY SELECTOR =====" to the end of .difficulty-option.active block
     pattern = r'/\*\s*=+\s*DIFFICULTY SELECTOR\s*=+\s*\*/[\s\S]*?\.difficulty-option\.active\s*\{[^}]*\}'
 
     if re.search(pattern, content):
         return re.sub(pattern, NAV_CSS.strip(), content)
 
-    # If the old pattern doesn't exist, look for individual classes and replace them
-    # First check for separate .difficulty-selector block
-    old_patterns = [
-        r'\.difficulty-selector\s*\{[^}]*\}',
-        r'\.difficulty-btn\s*\{[^}]*\}',
-        r'\.difficulty-btn:hover\s*\{[^}]*\}',
-        r'\.difficulty-menu\s*\{[^}]*\}',
-        r'\.difficulty-menu\.show\s*\{[^}]*\}',
-        r'\.difficulty-option\s*\{[^}]*\}',
-        r'\.difficulty-option:hover\s*\{[^}]*\}',
-        r'\.difficulty-option\.active\s*\{[^}]*\}',
-        r'\.music-btn\s*\{[^}]*\}',
-        r'\.music-btn::after\s*\{[^}]*\}',
-        r'\.music-btn\.playing\s*\{[^}]*\}',
-        r'\.music-btn\.playing::after\s*\{[^}]*\}',
-        r'\.music-btn:hover\s*\{[^}]*\}',
-        r'@keyframes\s+musicPulse\s*\{[^}]*\{[^}]*\}[^}]*\}',
-    ]
-
-    # Remove all old nav CSS
-    for pat in old_patterns:
-        content = re.sub(pat, '', content)
-
-    # Find </style> and insert CSS before it (if CSS was removed)
+    # If nav CSS doesn't exist, add it before </style>
     if '.difficulty-selector' not in content:
-        content = re.sub(r'(</style>)', NAV_CSS + '\n    \\1', content, count=1)
+        content = re.sub(r'(</style>)', '\n' + NAV_CSS + '\n    \\1', content, count=1)
 
     return content
 
@@ -333,7 +421,10 @@ def process_file(file_path):
         # Replace navigation CSS
         content = replace_nav_css(content)
 
-        # Replace HUD
+        # Replace HUD CSS
+        content = replace_hud_css(content)
+
+        # Replace HUD HTML
         content = replace_hud(content, is_actor_page)
 
         # Add HUD if missing
