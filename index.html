@@ -813,8 +813,11 @@
             text-align: center;
             padding: 0.75rem 1rem;
             font-size: 0.95rem;
-            position: relative;
-            z-index: 100;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
             border-bottom: 2px solid var(--blood-red);
             animation: banner-pulse 3s ease-in-out infinite;
         }
@@ -839,7 +842,7 @@
             min-height: 80vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 130px;
         }
         .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
         .badge {
