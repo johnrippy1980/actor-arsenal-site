@@ -1,17 +1,5 @@
 [
   {
-    "id": "ANiGozdvIHZqJPn1P",
-    "name": "price-drop-tracker",
-    "title": "Price Drop Tracker - Monitor Any E-commerce Product",
-    "description": "Track prices on Amazon, Shopify, eBay, Walmart, Target, Etsy & more. Get alerts when prices drop below your threshold. Monitor stock availability. Schedule daily runs to never miss a deal.",
-    "pictureUrl": "images/price-drop-tracker.png",
-    "categories": [
-      "ECOMMERCE",
-      "AUTOMATION",
-      "MARKETING"
-    ]
-  },
-  {
     "id": "baA4Az12N8znG6uJ7",
     "name": "firecrawl-website-crawler",
     "title": "Firecrawl Website Crawler",
@@ -44,18 +32,6 @@
     "categories": [
       "SEO_TOOLS",
       "DEVELOPER_TOOLS",
-      "AUTOMATION"
-    ]
-  },
-  {
-    "id": "5S8Zfhls8N8RY6o6U",
-    "name": "apple-maps-scraper",
-    "title": "Apple Maps Scraper",
-    "description": "Extract business data from Apple Maps including Apple's proprietary percentage-based ratings, aggregated reviews from Yelp and TripAdvisor, business hours, addresses, phone numbers, and websites. Get data Google doesn't have.",
-    "pictureUrl": "images/apple-maps-scraper.png",
-    "categories": [
-      "LEAD_GENERATION",
-      "SEO_TOOLS",
       "AUTOMATION"
     ]
   },
