@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weapons Locker | Partner Tools & Power-Ups | Actor Arsenal</title>
-    <meta name="description" content="Essential partner tools that power the Actor Arsenal. Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, and Crawlee - the weapons behind every automation.">
-    <meta name="keywords" content="Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, Crawlee, anti-detect browser, web scraping library, SEO tools, web scraping, automation, marketing automation, AI coding">
+    <meta name="description" content="Essential partner tools that power the Actor Arsenal. Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, Crawlee, Zapier, Make, and n8n - the weapons behind every automation.">
+    <meta name="keywords" content="Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, Crawlee, Zapier, Make, n8n, anti-detect browser, web scraping library, SEO tools, web scraping, automation, workflow automation, no-code automation, marketing automation, AI coding">
     <meta name="author" content="John Rippy">
     <meta name="robots" content="index, follow">
 
@@ -364,6 +364,70 @@
                     "@type": "Answer",
                     "text": "Puppeteer and Playwright are browser automation libraries - they control browsers but don't handle scraping infrastructure. Crawlee is a scraping framework that uses Puppeteer or Playwright under the hood, adding request queuing, automatic scaling, proxy management, data storage, and anti-blocking features that you'd otherwise build yourself."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Zapier and how does it work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zapier is a no-code automation platform that connects over 8,000 apps to automate workflows. You create Zaps - automated workflows triggered by events in one app that perform actions in other apps. For example, when you receive an email with an attachment, Zapier can automatically save it to Dropbox and notify your team on Slack."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the difference between Zapier and Make?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zapier is easier to use with more app integrations (8,000+ vs 1,800+), making it great for simple automations. Make (formerly Integromat) offers more powerful visual workflow building with advanced data transformation, branching, and error handling - better for complex, multi-step scenarios. Zapier is often pricier at scale."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Zapier have AI capabilities?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Zapier now includes AI features like AI Agents that can perform tasks autonomously, AI Chatbots for customer support, and AI-powered workflow building with Canvas. You can also connect to 400+ AI tools and models including ChatGPT, Claude, and custom AI models to add intelligence to your automations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Make and what happened to Integromat?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Make is the rebranded version of Integromat, which was acquired by Celonis in 2020. The platform retained all of Integromat's powerful visual automation capabilities while expanding integrations and adding new features. Existing Integromat users were migrated to Make with their workflows intact."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why choose Make over Zapier?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Make excels at complex workflows with its visual scenario builder that shows data flow clearly. It offers better data transformation, more flexible branching logic, and superior error handling. Make is also significantly more cost-effective at scale - you pay for operations, not tasks, making complex automations cheaper."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is n8n and why would I self-host it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "n8n is an open source workflow automation platform that you can self-host or use as a cloud service. Self-hosting gives you complete control over your data, unlimited executions, and the ability to customize the platform. It's ideal for businesses with strict data privacy requirements or those wanting to avoid per-execution pricing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does n8n compare to Zapier and Make?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "n8n offers similar functionality to Zapier and Make but with the option to self-host. It has fewer native integrations (400+ vs 8,000+) but allows custom code nodes in JavaScript or Python for anything not covered. The fair-code license makes it free for personal use, with affordable team pricing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use AI with n8n workflows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, n8n has native integrations with OpenAI, Anthropic Claude, and other AI providers. You can build AI-powered workflows that process documents, generate content, analyze data, and more. The code nodes also let you integrate any AI API or run local models if you're self-hosting."
+                }
             }
         ]
     }
@@ -554,6 +618,9 @@
         .partner-card[data-partner="googleworkspace"] { --card-color: #4285f4; --card-rgb: 66, 133, 244; }
         .partner-card[data-partner="camoufox"] { --card-color: #ff6b35; --card-rgb: 255, 107, 53; }
         .partner-card[data-partner="crawlee"] { --card-color: #00d27a; --card-rgb: 0, 210, 122; }
+        .partner-card[data-partner="zapier"] { --card-color: #ff4a00; --card-rgb: 255, 74, 0; }
+        .partner-card[data-partner="make"] { --card-color: #6d28d9; --card-rgb: 109, 40, 217; }
+        .partner-card[data-partner="n8n"] { --card-color: #ea4b71; --card-rgb: 234, 75, 113; }
 
         .partner-logo {
             height: 60px;
@@ -1253,6 +1320,54 @@
                 </ul>
                 <a href="https://crawlee.dev/" class="partner-cta" target="_blank" rel="noopener">Get Crawlee</a>
             </article>
+
+            <!-- Zapier -->
+            <article class="partner-card" data-partner="zapier">
+                <div class="power-level">LVL 97</div>
+                <img src="images/zapier-logo.svg" alt="Zapier Logo" class="partner-logo" loading="lazy">
+                <h2 class="partner-name">ZAPIER</h2>
+                <p class="partner-tagline">Automate Everything. Connect 8,000+ Apps.</p>
+                <p class="partner-description">The automation platform that connects your entire tech stack. Build workflows in minutes with 8,000+ app integrations, AI-powered agents, and chatbots. No code required - just point, click, and automate.</p>
+                <ul class="partner-features">
+                    <li>8,000+ app integrations</li>
+                    <li>AI agents & chatbots built-in</li>
+                    <li>Visual workflow builder (Canvas)</li>
+                    <li>No-code automation in minutes</li>
+                </ul>
+                <a href="https://zapier.com/" class="partner-cta" target="_blank" rel="noopener">Try Zapier</a>
+            </article>
+
+            <!-- Make -->
+            <article class="partner-card" data-partner="make">
+                <div class="power-level">LVL 96</div>
+                <img src="images/make-logo.svg" alt="Make Logo" class="partner-logo" loading="lazy">
+                <h2 class="partner-name">MAKE</h2>
+                <p class="partner-tagline">Visual Automation For Complex Workflows</p>
+                <p class="partner-description">Formerly Integromat, Make is the visual automation platform for building sophisticated workflows. Drag-and-drop interface with powerful data transformation, branching logic, and error handling for enterprise-grade automations.</p>
+                <ul class="partner-features">
+                    <li>Visual drag-and-drop scenario builder</li>
+                    <li>Advanced data routing & transformation</li>
+                    <li>1,800+ app integrations</li>
+                    <li>Complex branching & error handling</li>
+                </ul>
+                <a href="https://www.make.com/" class="partner-cta" target="_blank" rel="noopener">Try Make</a>
+            </article>
+
+            <!-- n8n -->
+            <article class="partner-card" data-partner="n8n">
+                <div class="power-level">LVL 94</div>
+                <img src="images/n8n-logo.svg" alt="n8n Logo" class="partner-logo" loading="lazy">
+                <h2 class="partner-name">N8N</h2>
+                <p class="partner-tagline">Self-Hosted Workflow Automation</p>
+                <p class="partner-description">The open source automation platform you can self-host. Full control over your data with 400+ integrations, custom code nodes, and AI capabilities. Fair-code licensed - free for personal use, affordable for teams.</p>
+                <ul class="partner-features">
+                    <li>Self-hosted or cloud deployment</li>
+                    <li>400+ native integrations</li>
+                    <li>Custom JavaScript/Python code nodes</li>
+                    <li>AI workflow capabilities</li>
+                </ul>
+                <a href="https://n8n.io/" class="partner-cta" target="_blank" rel="noopener">Try n8n</a>
+            </article>
         </div>
     </section>
 
@@ -1640,6 +1755,102 @@
                 </div>
                 <div class="faq-answer">
                     <p>Puppeteer and Playwright are browser automation libraries - they control browsers but don't handle scraping infrastructure. Crawlee is a scraping framework that uses Puppeteer or Playwright under the hood, adding request queuing, automatic scaling, proxy management, data storage, and anti-blocking features that you'd otherwise build yourself.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zapier FAQs -->
+        <div class="faq-partner" data-partner="zapier">
+            <div class="faq-partner-header">ZAPIER</div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Zapier and how does it work?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Zapier is a no-code automation platform that connects over 8,000 apps to automate workflows. You create "Zaps" - automated workflows triggered by events in one app that perform actions in other apps. For example, when you receive an email with an attachment, Zapier can automatically save it to Dropbox and notify your team on Slack.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What's the difference between Zapier and Make?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Zapier is easier to use with more app integrations (8,000+ vs 1,800+), making it great for simple automations. Make (formerly Integromat) offers more powerful visual workflow building with advanced data transformation, branching, and error handling - better for complex, multi-step scenarios. Zapier is often pricier at scale.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Does Zapier have AI capabilities?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Zapier now includes AI features like AI Agents that can perform tasks autonomously, AI Chatbots for customer support, and AI-powered workflow building with Canvas. You can also connect to 400+ AI tools and models including ChatGPT, Claude, and custom AI models to add intelligence to your automations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Make FAQs -->
+        <div class="faq-partner" data-partner="make">
+            <div class="faq-partner-header">MAKE</div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Make and what happened to Integromat?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Make is the rebranded version of Integromat, which was acquired by Celonis in 2020. The platform retained all of Integromat's powerful visual automation capabilities while expanding integrations and adding new features. Existing Integromat users were migrated to Make with their workflows intact.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Why choose Make over Zapier?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Make excels at complex workflows with its visual scenario builder that shows data flow clearly. It offers better data transformation, more flexible branching logic, and superior error handling. Make is also significantly more cost-effective at scale - you pay for operations, not tasks, making complex automations cheaper.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can Make handle complex data transformations?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Make is excellent at data transformation. It includes built-in functions for parsing, formatting, and manipulating data between apps. You can work with arrays, JSON, XML, and complex data structures. The visual interface shows exactly how data flows and transforms through your scenario.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- n8n FAQs -->
+        <div class="faq-partner" data-partner="n8n">
+            <div class="faq-partner-header">N8N</div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is n8n and why would I self-host it?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>n8n is an open source workflow automation platform that you can self-host or use as a cloud service. Self-hosting gives you complete control over your data, unlimited executions, and the ability to customize the platform. It's ideal for businesses with strict data privacy requirements or those wanting to avoid per-execution pricing.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does n8n compare to Zapier and Make?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>n8n offers similar functionality to Zapier and Make but with the option to self-host. It has fewer native integrations (400+ vs 8,000+) but allows custom code nodes in JavaScript or Python for anything not covered. The fair-code license makes it free for personal use, with affordable team pricing.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use AI with n8n workflows?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, n8n has native integrations with OpenAI, Anthropic Claude, and other AI providers. You can build AI-powered workflows that process documents, generate content, analyze data, and more. The code nodes also let you integrate any AI API or run local models if you're self-hosting.</p>
                 </div>
             </div>
         </div>
