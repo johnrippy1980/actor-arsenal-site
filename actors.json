@@ -1683,7 +1683,7 @@
     "name": "youtube-channel-video-scraper",
     "title": "YouTube Channel & Video Scraper",
     "description": "Enterprise-grade YouTube scraper that extracts 30+ data points per channel with built-in subscriber analytics, video performance metrics, and engagement calculations. Perfect for influencer marketing, competitor analysis, and content strategy research.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-yVnNslfQy9addmmqS-8TwAheXwWH-Screenshot_2026-01-01_at_1.37.45_PM.png",
+    "pictureUrl": "images/youtube-channel-video-scraper.png",
     "categories": [
       "VIDEOS",
       "SOCIAL_MEDIA",
@@ -2374,7 +2374,7 @@
     "name": "zenoti-api-enterprise-spa-salon-management",
     "title": "Zenoti API Enterprise Spa & Salon Management",
     "description": "Enterprise Spa & Salon Management - Appointments, Clients, Memberships & Sales\n\nAccess Zenoti data for enterprise spas, salons, and wellness centers. Get appointments, clients, services, memberships, staff, inventory, and sales data. Ideal for multi-location spa and salon businesses.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-UovJYIupxtYONsfVM-smQGzN1cYQ-Screenshot_2026-01-13_at_7.32.06_AM.png",
+    "pictureUrl": "images/zenoti-api-enterprise-spa-salon-management.png",
     "categories": [
       "DEVELOPER_TOOLS",
       "OTHER",
@@ -2638,7 +2638,7 @@
     "name": "wounded-warrior-resources-api---support-for-injured-veterans",
     "title": "Wounded Warrior Resources API - Support for Injured Veterans",
     "description": "Access comprehensive resources for wounded, ill, and injured service members and veterans. Query VA polytrauma centers, adaptive sports programs, caregiver support, prosthetics services, rehabilitation programs, specialized housing, and veteran service organizations.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-0uwLUyigivfxRdf1A-poKvzvg1et-Screenshot_2026-01-12_at_1.07.33_PM.png",
+    "pictureUrl": "images/wounded-warrior-resources-api---support-for-injured-veterans.png",
     "categories": [
       "OTHER",
       "AUTOMATION",
