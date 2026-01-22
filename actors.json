@@ -1,5 +1,17 @@
 [
   {
+    "id": "ANiGozdvIHZqJPn1P",
+    "name": "price-drop-tracker",
+    "title": "Price Drop Tracker - Monitor Any E-commerce Product",
+    "description": "Track prices on Amazon, Shopify, eBay, Walmart, Target, Etsy & more. Get alerts when prices drop below your threshold. Monitor stock availability. Schedule daily runs to never miss a deal.",
+    "pictureUrl": "images/price-drop-tracker.png",
+    "categories": [
+      "ECOMMERCE",
+      "AUTOMATION",
+      "MARKETING"
+    ]
+  },
+  {
     "id": "baA4Az12N8znG6uJ7",
     "name": "firecrawl-website-crawler",
     "title": "Firecrawl Website Crawler",
@@ -3027,6 +3039,303 @@
       "AI",
       "DEVELOPER_TOOLS",
       "OTHER"
+    ]
+  },
+  {
+    "id": "nrtmiXkuzd6UGsfQp",
+    "name": "multi-carrier-package-tracking-usps-ups-fedex",
+    "title": "Multi-Carrier Package Tracking (USPS, UPS, FedEx)",
+    "description": "Multi-Carrier Package Tracking (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/multi-carrier-package-tracking-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ]
+  },
+  {
+    "id": "8W0fqW8wlK6ELafQj",
+    "name": "the-knot-wedding-vendor-data-scraper",
+    "title": "The Knot Wedding Vendor Data Scraper",
+    "description": "The Knot Wedding Vendor Data Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/the-knot-wedding-vendor-data-scraper.png",
+    "categories": [
+      "SCRAPERS",
+      "LIFESTYLE"
+    ]
+  },
+  {
+    "id": "y62GjUqigX7QJWtsi",
+    "name": "shipping-rate-comparison-usps-ups-fedex",
+    "title": "Shipping Rate Comparison (USPS, UPS, FedEx)",
+    "description": "Shipping Rate Comparison (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/shipping-rate-comparison-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ]
+  },
+  {
+    "id": "sJ9GfmV1EHet8M7wT",
+    "name": "shipping-location-finder-usps-ups-fedex",
+    "title": "Shipping Location Finder (USPS, UPS, FedEx)",
+    "description": "Shipping Location Finder (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/shipping-location-finder-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ]
+  },
+  {
+    "id": "T8uWNcE5gBGcYsJXl",
+    "name": "bing-maps-scraper-extract-local-business-data",
+    "title": "Bing Maps Scraper Extract Local Business Data",
+    "description": "Bing Maps Scraper Extract Local Business Data - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/bing-maps-scraper-extract-local-business-data.png",
+    "categories": [
+      "SCRAPERS",
+      "LOCAL_SEO"
+    ]
+  },
+  {
+    "id": "cbYzgkcU7ze3W84u0",
+    "name": "avvo-avvo-com-attorney-scraper",
+    "title": "Avvo (Avvo.com) Attorney Scraper",
+    "description": "Avvo (Avvo.com) Attorney Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/avvo-avvo-com-attorney-scraper.png",
+    "categories": [
+      "SCRAPERS"
+    ]
+  },
+  {
+    "id": "5S8Zfhls8N8RY6o6U",
+    "name": "apple-maps-business-listings-scraper",
+    "title": "Apple Maps Business Listings Scraper",
+    "description": "Apple Maps Business Listings Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/apple-maps-business-listings-scraper.png",
+    "categories": [
+      "SCRAPERS",
+      "LOCAL_SEO"
+    ]
+  },
+  {
+    "id": "wir0js6nxpP4QhvlZ",
+    "name": "tiktok-shop-scraper-e-commerce-intelligence-at-scale",
+    "title": "Tiktok Shop Scraper E-commerce Intelligence at Scale",
+    "description": "Tiktok Shop Scraper E-commerce Intelligence at Scale - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/tiktok-shop-scraper-e-commerce-intelligence-at-scale.png",
+    "categories": [
+      "SCRAPERS",
+      "SOCIAL",
+      "AI"
+    ]
+  },
+  {
+    "id": "GV1bMmEa6yBCO1aAn",
+    "name": "firecrawl-pro-advanced-web-scraping-full-firecrawl-features",
+    "title": "Firecrawl Pro Advanced Web Scraping Full Firecrawl Features",
+    "description": "Firecrawl Pro Advanced Web Scraping Full Firecrawl Features - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/firecrawl-pro-advanced-web-scraping-full-firecrawl-features.png",
+    "categories": [
+      "SCRAPERS",
+      "API",
+      "FIRECRAWL"
+    ]
+  },
+  {
+    "id": "hCy7IvRJhhneFUuSm",
+    "name": "firecrawl-website-change-monitor---track-page-changes-with-ai",
+    "title": "Firecrawl Website Change Monitor - Track Page Changes with AI",
+    "description": "Firecrawl Website Change Monitor - Track Page Changes with AI - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/firecrawl-website-change-monitor---track-page-changes-with-ai.png",
+    "categories": [
+      "AI",
+      "FIRECRAWL"
+    ]
+  },
+  {
+    "id": "wmdRUj1s6QM0EbsRJ",
+    "name": "influencer-strategy-generator---ai-powered-campaign-planning",
+    "title": "Influencer Strategy Generator - AI-Powered Campaign Planning",
+    "description": "Influencer Strategy Generator - AI-Powered Campaign Planning - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/influencer-strategy-generator---ai-powered-campaign-planning.png",
+    "categories": [
+      "SOCIAL",
+      "AI"
+    ]
+  },
+  {
+    "id": "zM1WJEw6c6I3VFjME",
+    "name": "influencer-discovery---find-influencers-across-social-platforms",
+    "title": "Influencer Discovery - Find Influencers Across Social Platforms",
+    "description": "Influencer Discovery - Find Influencers Across Social Platforms - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/influencer-discovery---find-influencers-across-social-platforms.png",
+    "categories": [
+      "SOCIAL"
+    ]
+  },
+  {
+    "id": "ZO7ucoXlZXSXsumhR",
+    "name": "deep-influencer-analyzer-actor",
+    "title": "Deep Influencer Analyzer Actor",
+    "description": "Deep Influencer Analyzer Actor - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/deep-influencer-analyzer-actor.png",
+    "categories": [
+      "SOCIAL",
+      "AI"
+    ]
+  },
+  {
+    "id": "ZKVS9Uhvn9cAV1sSP",
+    "name": "indeed-jobs-scraper-b2b-hiring-intent-signals",
+    "title": "Indeed Jobs Scraper B2B Hiring Intent Signals",
+    "description": "Indeed Jobs Scraper B2B Hiring Intent Signals - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/indeed-jobs-scraper-b2b-hiring-intent-signals.png",
+    "categories": [
+      "SCRAPERS",
+      "JOBS"
+    ]
+  },
+  {
+    "id": "eNX3pzYemYKyf7yXO",
+    "name": "dating-trends-aggregator",
+    "title": "Dating Trends Aggregator",
+    "description": "Dating Trends Aggregator - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/dating-trends-aggregator.png",
+    "categories": [
+      "LIFESTYLE"
+    ]
+  },
+  {
+    "id": "LVhRFOQcsjvcnra7I",
+    "name": "localfalcon-gbp-monitor",
+    "title": "LocalFalcon GBP Monitor",
+    "description": "LocalFalcon GBP Monitor - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/local-seo.svg",
+    "categories": [
+      "LOCAL_SEO"
+    ]
+  },
+  {
+    "id": "QkhOD86ZO7kA6at6n",
+    "name": "firecrawl-search---llm-ready-content",
+    "title": "Firecrawl Search - LLM-ready content",
+    "description": "Firecrawl Search - LLM-ready content - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "FIRECRAWL"
+    ]
+  },
+  {
+    "id": "1aMnmW4xd9QQDaDoo",
+    "name": "geo-citation-analyzer",
+    "title": "GEO Citation Analyzer - AI Citation Source Finder",
+    "description": "GEO Citation Analyzer - AI Citation Source Finder - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "AI"
+    ]
+  },
+  {
+    "id": "YpGx837jYIrXtlJgJ",
+    "name": "google-stitch-ai-landing-page-generator",
+    "title": "Google Stitch AI Landing Page Generator",
+    "description": "Google Stitch AI Landing Page Generator - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/ai.svg",
+    "categories": [
+      "AI"
+    ]
+  },
+  {
+    "id": "bqxorqILuZLDSMg5H",
+    "name": "hubspot-company-enrichment-fuzzy-matcher-for-clay",
+    "title": "HubSpot Company Enrichment & Fuzzy Matcher for Clay",
+    "description": "HubSpot Company Enrichment & Fuzzy Matcher for Clay - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "LEAD_GEN"
+    ]
+  },
+  {
+    "id": "hIAY5gmtjogCv5y1d",
+    "name": "firecrawl-ai-powered-web-search-scrape",
+    "title": "Firecrawl AI-Powered Web Search & Scrape",
+    "description": "Firecrawl AI-Powered Web Search & Scrape - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "AI",
+      "FIRECRAWL"
+    ]
+  },
+  {
+    "id": "wcvnAvJFfw6iHgwcN",
+    "name": "tech-stack-lead-finder",
+    "title": "Tech Stack Lead Finder",
+    "description": "Tech Stack Lead Finder - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "LEAD_GEN"
+    ]
+  },
+  {
+    "id": "LqbAUSrJuV8fA4wwa",
+    "name": "ecwid-store-e-commerce-scraper",
+    "title": "Ecwid Store E-Commerce Scraper",
+    "description": "Ecwid Store E-Commerce Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SCRAPERS",
+      "ECOMMERCE"
+    ]
+  },
+  {
+    "id": "UnLQUVtANPuUj6Woe",
+    "name": "lightspeed-ecom-scraper",
+    "title": "Lightspeed eCom Store Scraper",
+    "description": "Lightspeed eCom Store Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SCRAPERS",
+      "ECOMMERCE"
+    ]
+  },
+  {
+    "id": "pwegBndcmJEG4A2gq",
+    "name": "lightspeed-inventory-reconciler",
+    "title": "Lightspeed Inventory Reconciler",
+    "description": "Lightspeed Inventory Reconciler - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "ANiGozdvIHZqJPn1P",
+    "name": "price-drop-tracker---monitor-any-e-commerce-product",
+    "title": "Price Drop Tracker - Monitor Any E-commerce Product",
+    "description": "Price Drop Tracker - Monitor Any E-commerce Product - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "ECOMMERCE"
+    ]
+  },
+  {
+    "id": "velYDBsFkLXUpDYNa",
+    "name": "square-merchant-finder-discover-businesses-using-square",
+    "title": "Square Merchant Finder Discover Businesses Using Square",
+    "description": "Square Merchant Finder Discover Businesses Using Square - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/local-seo.svg",
+    "categories": [
+      "LOCAL_SEO"
+    ]
+  },
+  {
+    "id": "ecvImN3D2jfsZaHdt",
+    "name": "ai-visibility-suite---dark-visitors-alternative",
+    "title": "Ai Visibility Suite - Dark Visitors Alternative",
+    "description": "Ai Visibility Suite - Dark Visitors Alternative - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/ai.svg",
+    "categories": [
+      "AI"
     ]
   }
 ]

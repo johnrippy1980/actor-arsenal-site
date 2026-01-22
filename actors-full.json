@@ -1,5 +1,67 @@
 [
   {
+    "title": "Price Drop Tracker - Monitor Any E-commerce Product",
+    "name": "price-drop-tracker",
+    "username": "alizarin_refrigerator-owner",
+    "stats": {
+      "totalBuilds": 5,
+      "totalRuns": 12,
+      "totalUsers": 2,
+      "totalUsers7Days": 1,
+      "totalUsers30Days": 1,
+      "totalUsers90Days": 1,
+      "lastRunStartedAt": "2026-01-22T17:59:39.368Z",
+      "actorReviewCount": 0,
+      "actorReviewRating": 0,
+      "bookmarkCount": 0,
+      "publicActorRunStats30Days": {
+        "ABORTED": 0,
+        "FAILED": 0,
+        "SUCCEEDED": 12,
+        "TIMED-OUT": 0,
+        "TOTAL": 12
+      }
+    },
+    "description": "Track prices on Amazon, Shopify, eBay, Walmart, Target, Etsy & more. Get alerts when prices drop below your threshold. Monitor stock availability. Schedule daily runs to never miss a deal.",
+    "categories": [
+      "ECOMMERCE",
+      "AUTOMATION",
+      "MARKETING"
+    ],
+    "pictureUrl": "images/price-drop-tracker.png",
+    "notice": "NONE",
+    "bookmarkCount": 0,
+    "actorReviewRating": 0,
+    "actorReviewCount": 0,
+    "badge": null,
+    "isWhiteListedForAgenticPayments": false,
+    "userPictureUrl": "",
+    "userFullName": "John Rippy",
+    "currentPricingInfo": {
+      "minimalMaxTotalChargeUsd": 2,
+      "pricingModel": "PAY_PER_EVENT",
+      "isPriceChangeNotificationSuppressed": false,
+      "pricingPerEvent": {
+        "actorChargeEvents": {
+          "product-tracked": {
+            "eventTitle": "Product Tracked",
+            "eventDescription": "Charged for each product URL that is successfully scraped and price-checked",
+            "isOneTimeEvent": false,
+            "eventPriceUsd": 0.02
+          },
+          "price-alert-triggered": {
+            "eventTitle": "Price Alert Triggered",
+            "eventDescription": "Charged when a price change or stock status change triggers an alert notification",
+            "isOneTimeEvent": false,
+            "eventPriceUsd": 0.01
+          }
+        }
+      }
+    },
+    "url": "https://apify.com/alizarin_refrigerator-owner/price-drop-tracker---monitor-any-e-commerce-product",
+    "id": "ANiGozdvIHZqJPn1P"
+  },
+  {
     "title": "Apple Maps Scraper",
     "name": "apple-maps-scraper",
     "username": "alizarin_refrigerator-owner",
@@ -117,7 +179,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "vehicle_scraped": {
             "eventTitle": "Vehicle scraped",
@@ -199,7 +261,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "product_scraped": {
             "eventTitle": "Product Scraped",
@@ -275,7 +337,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -357,7 +419,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "website_scanned": {
             "eventTitle": "Website Scanned",
@@ -439,7 +501,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "company_scraped": {
             "eventTitle": "Company Scraped",
@@ -521,7 +583,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_audit": {
             "eventTitle": "Page Audit",
@@ -603,7 +665,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -673,7 +735,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_scraped": {
             "eventTitle": "Post Scraped",
@@ -749,7 +811,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "site_analyzed": {
             "eventTitle": "Site Analyzed",
@@ -831,7 +893,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -907,7 +969,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "citation_check": {
             "eventTitle": "Citation Check",
@@ -977,7 +1039,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url-analysis": {
             "eventTitle": "URL Analysis",
@@ -1113,7 +1175,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "email_validated": {
             "eventTitle": "email_validated",
@@ -1195,7 +1257,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "match_fetched": {
             "eventTitle": "Match Fetched",
@@ -1272,12 +1334,12 @@
             "eventTitle": "Actor Start",
             "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
             "isOneTimeEvent": true,
-            "eventPriceUsd": 0.00005
+            "eventPriceUsd": 5e-05
           },
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "backlinks-analysis": {
             "eventTitle": "Backlinks Analysis",
@@ -1347,7 +1409,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_processed": {
             "eventTitle": "Page Processed",
@@ -1429,7 +1491,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "company_scraped": {
             "eventTitle": "Company Scraped",
@@ -1511,7 +1573,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -1593,7 +1655,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "LEAD_ENRICHED": {
             "eventTitle": "Lead Enriched",
@@ -1681,7 +1743,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "item_scraped": {
             "eventTitle": "Item Scraped",
@@ -1757,7 +1819,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -1833,7 +1895,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "agency_scraped": {
             "eventTitle": "Agency Scraped",
@@ -1915,7 +1977,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -1997,7 +2059,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -2067,7 +2129,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -2149,7 +2211,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "message_sent": {
             "eventTitle": "Message Sent",
@@ -2231,7 +2293,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "lead_scraped": {
             "eventTitle": "Lead Scraped",
@@ -2307,7 +2369,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_scraped": {
             "eventTitle": "Page Scraped",
@@ -2383,7 +2445,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "tweet_posted": {
             "eventTitle": "Tweet Posted",
@@ -2453,7 +2515,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -2535,7 +2597,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url_tested": {
             "eventTitle": "URL Tested",
@@ -2617,7 +2679,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url-analysis": {
             "eventTitle": "URL Analysis",
@@ -2723,7 +2785,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -2793,7 +2855,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "question_scraped": {
             "eventTitle": "Question Scraped",
@@ -2875,7 +2937,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_scraped": {
             "eventTitle": "Each post Scraped",
@@ -2957,7 +3019,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "business_profile": {
             "eventTitle": "Business Profile",
@@ -3039,7 +3101,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "video_posted": {
             "eventTitle": "Video Posted",
@@ -3109,7 +3171,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_crawled": {
             "eventTitle": "Page Crawled",
@@ -3179,7 +3241,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "source_queried": {
             "eventTitle": "Source Queried",
@@ -3267,7 +3329,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "provider_scraped": {
             "eventTitle": "Provider Scraped",
@@ -3343,7 +3405,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -3425,7 +3487,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "audit_run": {
             "eventTitle": "Audit Run",
@@ -3495,7 +3557,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "voice_analyzed": {
             "eventTitle": "Voice Analyzed",
@@ -3583,7 +3645,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "citation_submitted": {
             "eventTitle": "Citation Submitted",
@@ -3653,7 +3715,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -3723,7 +3785,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "game_fetched": {
             "eventTitle": "Game Fetched",
@@ -3805,7 +3867,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -3875,7 +3937,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "nfl-teams": {
             "eventTitle": "NFL Teams",
@@ -3999,7 +4061,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -4081,7 +4143,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url-checked": {
             "eventTitle": "URL Checked",
@@ -4163,7 +4225,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_extracted": {
             "eventTitle": "Page Extracted",
@@ -4245,7 +4307,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "EMAIL_SENTIMENT_BATCH": {
             "eventTitle": "Email sentiment batch",
@@ -4315,7 +4377,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_scheduled": {
             "eventTitle": "Post Scheduled",
@@ -4391,7 +4453,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "company_enriched": {
             "eventTitle": "Company Enriched",
@@ -4473,7 +4535,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "profile_searched": {
             "eventTitle": "Profile Searched",
@@ -4555,7 +4617,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "channel_scraped": {
             "eventTitle": "Channel Scraped",
@@ -4637,7 +4699,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "ASSET_LISTED": {
             "eventTitle": "Asset Listed",
@@ -4731,7 +4793,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "lottery-data-fetch": {
             "eventTitle": "Lottery Data Fetch",
@@ -4813,7 +4875,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url_tested": {
             "eventTitle": "URL Tested",
@@ -4894,7 +4956,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "business-listing": {
             "eventTitle": "Business Listing",
@@ -4964,7 +5026,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "calendar-analyzed": {
             "eventTitle": "Calendar Analysis Completed",
@@ -5034,7 +5096,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "list_templates": {
             "eventTitle": "List Templates",
@@ -5140,7 +5202,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "article_scraped": {
             "eventTitle": "Article Scraped",
@@ -5222,7 +5284,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "roster-fetch": {
             "eventTitle": "WWE Superstars",
@@ -5334,7 +5396,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_created": {
             "eventTitle": "Post Created",
@@ -5404,7 +5466,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_processed": {
             "eventTitle": "Post Processed",
@@ -5480,7 +5542,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "agency_scraped": {
             "eventTitle": "Agency Scraped",
@@ -5561,7 +5623,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "game_fetched": {
             "eventTitle": "Game Fetched",
@@ -5643,7 +5705,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "business-checked": {
             "eventTitle": "Business Checked",
@@ -5725,7 +5787,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "professional_scraped": {
             "eventTitle": "Professional Scraped",
@@ -5801,7 +5863,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "RECIPE_SEARCH": {
             "eventTitle": "Recipe Search",
@@ -5943,7 +6005,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "nba-teams": {
             "eventTitle": "NBA Teams List",
@@ -6067,7 +6129,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -6143,7 +6205,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "gsc_analysis": {
             "eventTitle": "GSC Data Analysis",
@@ -6225,7 +6287,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post-repurposed": {
             "eventTitle": "Post Repurposed",
@@ -6295,7 +6357,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "ncaa-basketball-teams": {
             "eventTitle": "NCAA Basketball Teams",
@@ -6419,7 +6481,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "product_scraped": {
             "eventTitle": "Product Scraped",
@@ -6495,7 +6557,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "business_scraped": {
             "eventTitle": "Business Scraped",
@@ -6571,7 +6633,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "response_generated": {
             "eventTitle": "Response Generated",
@@ -6641,7 +6703,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "post_published": {
             "eventTitle": "Post Published",
@@ -6723,7 +6785,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "serp-query": {
             "eventTitle": "SERP Query",
@@ -6841,7 +6903,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -6923,7 +6985,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "store-listing": {
             "eventTitle": "Store Listing",
@@ -7055,7 +7117,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "text_analyzed": {
             "eventTitle": "Text Analyzed",
@@ -7125,7 +7187,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "image_generated": {
             "eventTitle": "Image Generated",
@@ -7201,7 +7263,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "audit_quick": {
             "eventTitle": "Quick Audit",
@@ -7283,7 +7345,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "ad_scraped": {
             "eventTitle": "Ad Scraped",
@@ -7353,7 +7415,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "CITATION_CHECKED": {
             "eventTitle": "Citation Checked",
@@ -7453,7 +7515,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_aggregated": {
             "eventTitle": "Listing Aggregated",
@@ -7535,7 +7597,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -7605,7 +7667,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -7687,7 +7749,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "message-sent": {
             "eventTitle": "Message Sent",
@@ -7763,7 +7825,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "restaurant-listing": {
             "eventTitle": "Restaurant Listing",
@@ -7839,7 +7901,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "review_scraped": {
             "eventTitle": "Review Scraped",
@@ -7915,7 +7977,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "url-submitted": {
             "eventTitle": "URL Submitted",
@@ -7997,7 +8059,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "audit-launched": {
             "eventTitle": "Audit Launched",
@@ -8079,7 +8141,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -8173,7 +8235,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "competitor_monitored": {
             "eventTitle": "Competitor Monitored",
@@ -8249,7 +8311,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "schema_generated": {
             "eventTitle": "Schema Generated",
@@ -8319,7 +8381,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "robots_txt_analysis": {
             "eventTitle": "Robots.txt Analysis",
@@ -8401,7 +8463,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "calendar-analyzed": {
             "eventTitle": "Calendar Analysis Completed",
@@ -8471,7 +8533,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "grid-scan": {
             "eventTitle": "Local Grid Scan",
@@ -8559,7 +8621,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -8635,7 +8697,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "onpage-audit": {
             "eventTitle": "On-Page SEO Audit",
@@ -8705,7 +8767,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "profile_scraped": {
             "eventTitle": "Profile Scraped",
@@ -8781,7 +8843,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "site_analyzed": {
             "eventTitle": "Site Analyzed",
@@ -8863,7 +8925,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "result_scraped": {
             "eventTitle": "Result Scraped",
@@ -8933,7 +8995,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -9015,7 +9077,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "directory-search": {
             "eventTitle": "Directory Search Performed",
@@ -9085,7 +9147,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "serp-query": {
             "eventTitle": "SERP Query",
@@ -9211,7 +9273,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "keyword_analyzed": {
             "eventTitle": "Keyword Analyzed",
@@ -9343,7 +9405,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "gap_analysis_complete": {
             "eventTitle": "Gap Analysis Complete",
@@ -9419,7 +9481,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "event_created": {
             "eventTitle": "Event Created",
@@ -9501,7 +9563,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "company-analyzed": {
             "eventTitle": "Company Culture Analyzed",
@@ -9571,7 +9633,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "professional-result": {
             "eventTitle": "Professional Result",
@@ -9653,7 +9715,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "WORKSPACE_SENTIMENT_ANALYSIS": {
             "eventTitle": "Workplace sentiment analysis",
@@ -9723,7 +9785,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -9805,7 +9867,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "competitor_analyzed": {
             "eventTitle": "Competitor Analyzed",
@@ -9911,7 +9973,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "restaurant-scraped": {
             "eventTitle": "Restaurant Scraped",
@@ -9993,7 +10055,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "article_found": {
             "eventTitle": "Article Found",
@@ -10069,7 +10131,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "site-checked": {
             "eventTitle": "Website Checked",
@@ -10157,7 +10219,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "TEAMS_ANALYSIS_RUN": {
             "eventTitle": "Teams Meeting Analysis",
@@ -10239,7 +10301,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -10333,7 +10395,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "pin_created": {
             "eventTitle": "Pin Created",
@@ -10403,7 +10465,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "domain_analyzed": {
             "eventTitle": "Domain Analyzed",
@@ -10491,7 +10553,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "review_scraped": {
             "eventTitle": "Review Scraped",
@@ -10561,12 +10623,12 @@
             "eventTitle": "Actor Start",
             "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
             "isOneTimeEvent": true,
-            "eventPriceUsd": 0.00005
+            "eventPriceUsd": 5e-05
           },
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "tool-execution": {
             "eventTitle": "Tool Execution",
@@ -10737,7 +10799,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "issue_analyzed": {
             "eventTitle": "Issue Analyzed",
@@ -10812,7 +10874,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "mcp-tool-call": {
             "eventTitle": "MCP Tool Call",
@@ -10923,7 +10985,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "discovery_run": {
             "eventTitle": "Discovery Run",
@@ -11084,7 +11146,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "zip_analyzed": {
             "eventTitle": "ZIP Analyzed",
@@ -11159,7 +11221,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "campaign_analyzed": {
             "eventTitle": "Campaign Analyzed",
@@ -11271,7 +11333,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "MCP_TOOL_CALL": {
             "eventTitle": "MCP Tool Call",
@@ -11358,7 +11420,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "transcript_processed": {
             "eventTitle": "Transcript Processed",
@@ -11675,7 +11737,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "page_analyzed": {
             "eventTitle": "Page Analyzed",
@@ -11794,7 +11856,7 @@
           "apify-default-dataset-item": {
             "eventTitle": "result",
             "eventDescription": "Single result in the default dataset.",
-            "eventPriceUsd": 0.00001
+            "eventPriceUsd": 1e-05
           },
           "listing_scraped": {
             "eventTitle": "Listing Scraped",
@@ -11816,5 +11878,498 @@
     },
     "id": "6Uzuu74v3rDfxTh4B",
     "url": "https://apify.com/alizarin_refrigerator-owner/the-yellow-pages-scraper"
+  },
+  {
+    "id": "nrtmiXkuzd6UGsfQp",
+    "name": "multi-carrier-package-tracking-usps-ups-fedex",
+    "title": "Multi-Carrier Package Tracking (USPS, UPS, FedEx)",
+    "description": "Multi-Carrier Package Tracking (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/multi-carrier-package-tracking-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ],
+    "stats": {
+      "totalRuns": 56,
+      "lastRunStartedAt": "2026-01-22T04:05:49.156Z"
+    },
+    "createdAt": "2026-01-14T21:35:13.039Z",
+    "modifiedAt": "2026-01-17T00:34:12.766Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "8W0fqW8wlK6ELafQj",
+    "name": "the-knot-wedding-vendor-data-scraper",
+    "title": "The Knot Wedding Vendor Data Scraper",
+    "description": "The Knot Wedding Vendor Data Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/the-knot-wedding-vendor-data-scraper.png",
+    "categories": [
+      "SCRAPERS",
+      "LIFESTYLE"
+    ],
+    "stats": {
+      "totalRuns": 53,
+      "lastRunStartedAt": "2026-01-20T21:41:49.264Z"
+    },
+    "createdAt": "2026-01-14T21:35:15.986Z",
+    "modifiedAt": "2026-01-17T21:34:08.432Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "y62GjUqigX7QJWtsi",
+    "name": "shipping-rate-comparison-usps-ups-fedex",
+    "title": "Shipping Rate Comparison (USPS, UPS, FedEx)",
+    "description": "Shipping Rate Comparison (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/shipping-rate-comparison-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-22T04:05:48.723Z"
+    },
+    "createdAt": "2026-01-14T21:35:18.676Z",
+    "modifiedAt": "2026-01-17T00:33:12.927Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "sJ9GfmV1EHet8M7wT",
+    "name": "shipping-location-finder-usps-ups-fedex",
+    "title": "Shipping Location Finder (USPS, UPS, FedEx)",
+    "description": "Shipping Location Finder (USPS, UPS, FedEx) - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/shipping-location-finder-usps-ups-fedex.png",
+    "categories": [
+      "LOGISTICS"
+    ],
+    "stats": {
+      "totalRuns": 55,
+      "lastRunStartedAt": "2026-01-22T04:05:48.328Z"
+    },
+    "createdAt": "2026-01-14T21:35:22.630Z",
+    "modifiedAt": "2026-01-17T00:35:12.284Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "T8uWNcE5gBGcYsJXl",
+    "name": "bing-maps-scraper-extract-local-business-data",
+    "title": "Bing Maps Scraper Extract Local Business Data",
+    "description": "Bing Maps Scraper Extract Local Business Data - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/bing-maps-scraper-extract-local-business-data.png",
+    "categories": [
+      "SCRAPERS",
+      "LOCAL_SEO"
+    ],
+    "stats": {
+      "totalRuns": 55,
+      "lastRunStartedAt": "2026-01-20T04:41:47.275Z"
+    },
+    "createdAt": "2026-01-14T21:46:26.669Z",
+    "modifiedAt": "2026-01-17T21:35:50.865Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "cbYzgkcU7ze3W84u0",
+    "name": "avvo-avvo-com-attorney-scraper",
+    "title": "Avvo (Avvo.com) Attorney Scraper",
+    "description": "Avvo (Avvo.com) Attorney Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/avvo-avvo-com-attorney-scraper.png",
+    "categories": [
+      "SCRAPERS"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-20T04:23:48.976Z"
+    },
+    "createdAt": "2026-01-14T21:56:14.029Z",
+    "modifiedAt": "2026-01-19T14:54:39.125Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "5S8Zfhls8N8RY6o6U",
+    "name": "apple-maps-business-listings-scraper",
+    "title": "Apple Maps Business Listings Scraper",
+    "description": "Apple Maps Business Listings Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/apple-maps-business-listings-scraper.png",
+    "categories": [
+      "SCRAPERS",
+      "LOCAL_SEO"
+    ],
+    "stats": {
+      "totalRuns": 60,
+      "lastRunStartedAt": "2026-01-22T15:47:50.136Z"
+    },
+    "createdAt": "2026-01-14T22:35:00.826Z",
+    "modifiedAt": "2026-01-19T14:54:46.221Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "wir0js6nxpP4QhvlZ",
+    "name": "tiktok-shop-scraper-e-commerce-intelligence-at-scale",
+    "title": "Tiktok Shop Scraper E-commerce Intelligence at Scale",
+    "description": "Tiktok Shop Scraper E-commerce Intelligence at Scale - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/tiktok-shop-scraper-e-commerce-intelligence-at-scale.png",
+    "categories": [
+      "SCRAPERS",
+      "SOCIAL",
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 76,
+      "lastRunStartedAt": "2026-01-22T04:43:55.201Z"
+    },
+    "createdAt": "2026-01-15T13:21:04.694Z",
+    "modifiedAt": "2026-01-22T14:40:16.400Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "GV1bMmEa6yBCO1aAn",
+    "name": "firecrawl-pro-advanced-web-scraping-full-firecrawl-features",
+    "title": "Firecrawl Pro Advanced Web Scraping Full Firecrawl Features",
+    "description": "Firecrawl Pro Advanced Web Scraping Full Firecrawl Features - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/firecrawl-pro-advanced-web-scraping-full-firecrawl-features.png",
+    "categories": [
+      "SCRAPERS",
+      "API",
+      "FIRECRAWL"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-21T17:17:55.304Z"
+    },
+    "createdAt": "2026-01-15T13:58:05.755Z",
+    "modifiedAt": "2026-01-15T14:17:13.006Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "hCy7IvRJhhneFUuSm",
+    "name": "firecrawl-website-change-monitor---track-page-changes-with-ai",
+    "title": "Firecrawl Website Change Monitor - Track Page Changes with AI",
+    "description": "Firecrawl Website Change Monitor - Track Page Changes with AI - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/firecrawl-website-change-monitor---track-page-changes-with-ai.png",
+    "categories": [
+      "AI",
+      "FIRECRAWL"
+    ],
+    "stats": {
+      "totalRuns": 53,
+      "lastRunStartedAt": "2026-01-20T19:23:50.280Z"
+    },
+    "createdAt": "2026-01-15T16:34:23.030Z",
+    "modifiedAt": "2026-01-19T14:49:10.636Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "wmdRUj1s6QM0EbsRJ",
+    "name": "influencer-strategy-generator---ai-powered-campaign-planning",
+    "title": "Influencer Strategy Generator - AI-Powered Campaign Planning",
+    "description": "Influencer Strategy Generator - AI-Powered Campaign Planning - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/influencer-strategy-generator---ai-powered-campaign-planning.png",
+    "categories": [
+      "SOCIAL",
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 53,
+      "lastRunStartedAt": "2026-01-22T04:47:51.294Z"
+    },
+    "createdAt": "2026-01-16T21:59:48.294Z",
+    "modifiedAt": "2026-01-19T14:46:47.602Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "zM1WJEw6c6I3VFjME",
+    "name": "influencer-discovery---find-influencers-across-social-platforms",
+    "title": "Influencer Discovery - Find Influencers Across Social Platforms",
+    "description": "Influencer Discovery - Find Influencers Across Social Platforms - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/influencer-discovery---find-influencers-across-social-platforms.png",
+    "categories": [
+      "SOCIAL"
+    ],
+    "stats": {
+      "totalRuns": 64,
+      "lastRunStartedAt": "2026-01-22T05:46:41.635Z"
+    },
+    "createdAt": "2026-01-16T22:01:55.957Z",
+    "modifiedAt": "2026-01-19T14:46:45.211Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "ZO7ucoXlZXSXsumhR",
+    "name": "deep-influencer-analyzer-actor",
+    "title": "Deep Influencer Analyzer Actor",
+    "description": "Deep Influencer Analyzer Actor - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/deep-influencer-analyzer-actor.png",
+    "categories": [
+      "SOCIAL",
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-22T04:11:51.750Z"
+    },
+    "createdAt": "2026-01-16T22:03:01.473Z",
+    "modifiedAt": "2026-01-17T01:06:41.944Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "ZKVS9Uhvn9cAV1sSP",
+    "name": "indeed-jobs-scraper-b2b-hiring-intent-signals",
+    "title": "Indeed Jobs Scraper B2B Hiring Intent Signals",
+    "description": "Indeed Jobs Scraper B2B Hiring Intent Signals - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/indeed-jobs-scraper-b2b-hiring-intent-signals.png",
+    "categories": [
+      "SCRAPERS",
+      "JOBS"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-22T04:11:51.456Z"
+    },
+    "createdAt": "2026-01-16T22:46:56.775Z",
+    "modifiedAt": "2026-01-19T14:15:30.380Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "eNX3pzYemYKyf7yXO",
+    "name": "dating-trends-aggregator",
+    "title": "Dating Trends Aggregator",
+    "description": "Dating Trends Aggregator - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/dating-trends-aggregator.png",
+    "categories": [
+      "LIFESTYLE"
+    ],
+    "stats": {
+      "totalRuns": 54,
+      "lastRunStartedAt": "2026-01-20T07:29:51.008Z"
+    },
+    "createdAt": "2026-01-17T17:45:59.674Z",
+    "modifiedAt": "2026-01-17T21:27:32.981Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "LVhRFOQcsjvcnra7I",
+    "name": "localfalcon-gbp-monitor",
+    "title": "LocalFalcon GBP Monitor",
+    "description": "LocalFalcon GBP Monitor - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/local-seo.svg",
+    "categories": [
+      "LOCAL_SEO"
+    ],
+    "stats": {
+      "totalRuns": 23,
+      "lastRunStartedAt": "2026-01-20T17:35:49.312Z"
+    },
+    "createdAt": "2026-01-18T03:40:55.562Z",
+    "modifiedAt": "2026-01-19T14:23:21.908Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "QkhOD86ZO7kA6at6n",
+    "name": "firecrawl-search---llm-ready-content",
+    "title": "Firecrawl Search - LLM-ready content",
+    "description": "Firecrawl Search - LLM-ready content - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "FIRECRAWL"
+    ],
+    "stats": {
+      "totalRuns": 3,
+      "lastRunStartedAt": "2026-01-22T10:23:49.902Z"
+    },
+    "createdAt": "2026-01-19T19:08:51.849Z",
+    "modifiedAt": "2026-01-19T19:56:09.820Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "1aMnmW4xd9QQDaDoo",
+    "name": "geo-citation-analyzer",
+    "title": "GEO Citation Analyzer - AI Citation Source Finder",
+    "description": "GEO Citation Analyzer - AI Citation Source Finder - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 3,
+      "lastRunStartedAt": "2026-01-22T10:53:52.171Z"
+    },
+    "createdAt": "2026-01-19T20:13:31.332Z",
+    "modifiedAt": "2026-01-19T20:24:02.455Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "YpGx837jYIrXtlJgJ",
+    "name": "google-stitch-ai-landing-page-generator",
+    "title": "Google Stitch AI Landing Page Generator",
+    "description": "Google Stitch AI Landing Page Generator - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/ai.svg",
+    "categories": [
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-20T14:17:40.057Z"
+    },
+    "createdAt": "2026-01-20T03:07:09.091Z",
+    "modifiedAt": "2026-01-20T14:34:46.706Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "bqxorqILuZLDSMg5H",
+    "name": "hubspot-company-enrichment-fuzzy-matcher-for-clay",
+    "title": "HubSpot Company Enrichment & Fuzzy Matcher for Clay",
+    "description": "HubSpot Company Enrichment & Fuzzy Matcher for Clay - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "LEAD_GEN"
+    ],
+    "stats": {
+      "totalRuns": 13,
+      "lastRunStartedAt": "2026-01-22T03:54:19.253Z"
+    },
+    "createdAt": "2026-01-20T19:47:55.662Z",
+    "modifiedAt": "2026-01-20T21:29:28.939Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "hIAY5gmtjogCv5y1d",
+    "name": "firecrawl-ai-powered-web-search-scrape",
+    "title": "Firecrawl AI-Powered Web Search & Scrape",
+    "description": "Firecrawl AI-Powered Web Search & Scrape - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SEO",
+      "AI",
+      "FIRECRAWL"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-22T04:05:41.741Z"
+    },
+    "createdAt": "2026-01-22T00:02:01.820Z",
+    "modifiedAt": "2026-01-22T12:04:52.688Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "wcvnAvJFfw6iHgwcN",
+    "name": "tech-stack-lead-finder",
+    "title": "Tech Stack Lead Finder",
+    "description": "Tech Stack Lead Finder - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "LEAD_GEN"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-22T04:11:46.234Z"
+    },
+    "createdAt": "2026-01-22T03:41:06.289Z",
+    "modifiedAt": "2026-01-22T04:06:30.815Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "LqbAUSrJuV8fA4wwa",
+    "name": "ecwid-store-e-commerce-scraper",
+    "title": "Ecwid Store E-Commerce Scraper",
+    "description": "Ecwid Store E-Commerce Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SCRAPERS",
+      "ECOMMERCE"
+    ],
+    "stats": {
+      "totalRuns": 16,
+      "lastRunStartedAt": "2026-01-22T18:12:13.397Z"
+    },
+    "createdAt": "2026-01-22T14:11:07.591Z",
+    "modifiedAt": "2026-01-22T17:51:24.417Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "UnLQUVtANPuUj6Woe",
+    "name": "lightspeed-ecom-scraper",
+    "title": "Lightspeed eCom Store Scraper",
+    "description": "Lightspeed eCom Store Scraper - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "SCRAPERS",
+      "ECOMMERCE"
+    ],
+    "stats": {
+      "totalRuns": 5,
+      "lastRunStartedAt": "2026-01-22T17:29:41.154Z"
+    },
+    "createdAt": "2026-01-22T14:40:28.334Z",
+    "modifiedAt": "2026-01-22T17:28:42.859Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "pwegBndcmJEG4A2gq",
+    "name": "lightspeed-inventory-reconciler",
+    "title": "Lightspeed Inventory Reconciler",
+    "description": "Lightspeed Inventory Reconciler - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/automation.svg",
+    "categories": [
+      "AUTOMATION"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-22T17:47:48.663Z"
+    },
+    "createdAt": "2026-01-22T14:48:00.089Z",
+    "modifiedAt": "2026-01-22T17:46:29.995Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "ANiGozdvIHZqJPn1P",
+    "name": "price-drop-tracker---monitor-any-e-commerce-product",
+    "title": "Price Drop Tracker - Monitor Any E-commerce Product",
+    "description": "Price Drop Tracker - Monitor Any E-commerce Product - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/scraper.svg",
+    "categories": [
+      "ECOMMERCE"
+    ],
+    "stats": {
+      "totalRuns": 12,
+      "lastRunStartedAt": "2026-01-22T17:59:39.368Z"
+    },
+    "createdAt": "2026-01-22T15:36:07.631Z",
+    "modifiedAt": "2026-01-22T17:55:56.181Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "velYDBsFkLXUpDYNa",
+    "name": "square-merchant-finder-discover-businesses-using-square",
+    "title": "Square Merchant Finder Discover Businesses Using Square",
+    "description": "Square Merchant Finder Discover Businesses Using Square - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/local-seo.svg",
+    "categories": [
+      "LOCAL_SEO"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-22T17:41:45.515Z"
+    },
+    "createdAt": "2026-01-22T15:43:48.256Z",
+    "modifiedAt": "2026-01-22T17:41:21.820Z",
+    "username": "alizarin_refrigerator-owner"
+  },
+  {
+    "id": "ecvImN3D2jfsZaHdt",
+    "name": "ai-visibility-suite---dark-visitors-alternative",
+    "title": "Ai Visibility Suite - Dark Visitors Alternative",
+    "description": "Ai Visibility Suite - Dark Visitors Alternative - Apify actor for data extraction and automation.",
+    "pictureUrl": "images/ai.svg",
+    "categories": [
+      "AI"
+    ],
+    "stats": {
+      "totalRuns": 2,
+      "lastRunStartedAt": "2026-01-22T17:47:48.246Z"
+    },
+    "createdAt": "2026-01-22T17:11:30.117Z",
+    "modifiedAt": "2026-01-22T17:46:57.839Z",
+    "username": "alizarin_refrigerator-owner"
   }
 ]

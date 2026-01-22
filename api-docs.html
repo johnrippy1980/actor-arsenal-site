@@ -611,6 +611,113 @@ pip install apify-client</pre>
 );</pre>
             </div>
 
+            <div class="doc-section" id="price-drop-tracker">
+                <h2>Price Drop Tracker API</h2>
+                <p>Track prices on Amazon, Shopify, eBay, Walmart, Target, Etsy & more. Get alerts when prices drop below your threshold.</p>
+
+                <h3>Input Schema</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>productUrls</td>
+                        <td>array</td>
+                        <td><span class="param-required">required</span> List of product page URLs to monitor</td>
+                    </tr>
+                    <tr>
+                        <td>historyDatasetName</td>
+                        <td>string</td>
+                        <td><span class="param-optional">optional</span> Dataset name for persistent price history (default: "price-history")</td>
+                    </tr>
+                    <tr>
+                        <td>priceDropThreshold</td>
+                        <td>integer</td>
+                        <td><span class="param-optional">optional</span> Alert when price drops by this % or more (default: 5)</td>
+                    </tr>
+                    <tr>
+                        <td>webhookUrl</td>
+                        <td>string</td>
+                        <td><span class="param-optional">optional</span> URL to receive alert notifications</td>
+                    </tr>
+                    <tr>
+                        <td>demoMode</td>
+                        <td>boolean</td>
+                        <td><span class="param-optional">optional</span> Run with sample data, no charges (default: false)</td>
+                    </tr>
+                </table>
+
+                <h3>Node.js Example</h3>
+<pre><span class="code-keyword">const</span> { <span class="code-variable">ApifyClient</span> } = <span class="code-function">require</span>(<span class="code-string">'apify-client'</span>);
+
+<span class="code-keyword">const</span> <span class="code-variable">client</span> = <span class="code-keyword">new</span> <span class="code-function">ApifyClient</span>({ <span class="code-variable">token</span>: <span class="code-string">'YOUR_API_TOKEN'</span> });
+
+<span class="code-keyword">const</span> <span class="code-variable">run</span> = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">actor</span>(<span class="code-string">'alizarin_refrigerator-owner/price-drop-tracker---monitor-any-e-commerce-product'</span>).<span class="code-function">call</span>({
+    <span class="code-variable">productUrls</span>: [
+        <span class="code-string">'https://www.amazon.com/dp/B09V3KXJPB'</span>,
+        <span class="code-string">'https://www.walmart.com/ip/123456789'</span>
+    ],
+    <span class="code-variable">historyDatasetName</span>: <span class="code-string">'my-price-tracking'</span>,
+    <span class="code-variable">priceDropThreshold</span>: <span class="code-number">10</span>,
+    <span class="code-variable">webhookUrl</span>: <span class="code-string">'https://hooks.zapier.com/hooks/catch/xxx'</span>
+});
+
+<span class="code-keyword">const</span> { <span class="code-variable">items</span> } = <span class="code-keyword">await</span> <span class="code-variable">client</span>.<span class="code-function">dataset</span>(<span class="code-variable">run</span>.<span class="code-variable">defaultDatasetId</span>).<span class="code-function">listItems</span>();
+<span class="code-variable">console</span>.<span class="code-function">log</span>(<span class="code-variable">items</span>);</pre>
+
+                <h3>Python Example</h3>
+<pre><span class="code-keyword">from</span> apify_client <span class="code-keyword">import</span> ApifyClient
+
+<span class="code-variable">client</span> = <span class="code-function">ApifyClient</span>(<span class="code-string">'YOUR_API_TOKEN'</span>)
+
+<span class="code-variable">run</span> = <span class="code-variable">client</span>.actor(<span class="code-string">'alizarin_refrigerator-owner/price-drop-tracker---monitor-any-e-commerce-product'</span>).call(run_input={
+    <span class="code-string">'productUrls'</span>: [
+        <span class="code-string">'https://www.amazon.com/dp/B09V3KXJPB'</span>,
+        <span class="code-string">'https://www.walmart.com/ip/123456789'</span>
+    ],
+    <span class="code-string">'historyDatasetName'</span>: <span class="code-string">'my-price-tracking'</span>,
+    <span class="code-string">'priceDropThreshold'</span>: <span class="code-number">10</span>,
+    <span class="code-string">'webhookUrl'</span>: <span class="code-string">'https://hooks.zapier.com/hooks/catch/xxx'</span>
+})
+
+<span class="code-variable">items</span> = <span class="code-function">list</span>(<span class="code-variable">client</span>.dataset(<span class="code-variable">run</span>[<span class="code-string">'defaultDatasetId'</span>]).iterate_items())
+<span class="code-function">print</span>(<span class="code-variable">items</span>)</pre>
+
+                <h3>Example Output</h3>
+<pre>{
+  <span class="code-string">"productUrl"</span>: <span class="code-string">"https://www.amazon.com/dp/B09V3KXJPB"</span>,
+  <span class="code-string">"platform"</span>: <span class="code-string">"amazon"</span>,
+  <span class="code-string">"productId"</span>: <span class="code-string">"B09V3KXJPB"</span>,
+  <span class="code-string">"productName"</span>: <span class="code-string">"Sony WH-1000XM5 Wireless Headphones"</span>,
+  <span class="code-string">"currentPrice"</span>: <span class="code-number">328.00</span>,
+  <span class="code-string">"previousPrice"</span>: <span class="code-number">399.99</span>,
+  <span class="code-string">"priceChangePercent"</span>: <span class="code-number">-17.99</span>,
+  <span class="code-string">"inStock"</span>: <span class="code-keyword">true</span>,
+  <span class="code-string">"alertTriggered"</span>: <span class="code-keyword">true</span>
+}</pre>
+
+                <h3>Pricing</h3>
+                <table class="param-table">
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>product-tracked</td>
+                        <td>Per product URL scraped and price-checked</td>
+                        <td>$0.02</td>
+                    </tr>
+                    <tr>
+                        <td>price-alert-triggered</td>
+                        <td>Per alert notification triggered</td>
+                        <td>$0.01</td>
+                    </tr>
+                </table>
+            </div>
+
             <div class="doc-section" id="citation-checker">
                 <h2>Citation Checker API</h2>
                 <p>Check NAP consistency across 60+ business directories.</p>
@@ -883,7 +990,7 @@ pip install apify-client</pre>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">304</div>
+                <div class="hud-value hud-armor" id="hudArmor">315</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
