@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weapons Locker | Partner Tools & Power-Ups | Actor Arsenal</title>
-    <meta name="description" content="Essential partner tools that power the Actor Arsenal. Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, and Camoufox - the weapons behind every automation.">
-    <meta name="keywords" content="Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, anti-detect browser, SEO tools, web scraping, automation, marketing automation, AI coding">
+    <meta name="description" content="Essential partner tools that power the Actor Arsenal. Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, and Crawlee - the weapons behind every automation.">
+    <meta name="keywords" content="Semrush, Apify, DataForSEO, LocalFalcon, WPEngine, Clay, Customers.AI, Firecrawl, Claude Code, Camoufox, Crawlee, anti-detect browser, web scraping library, SEO tools, web scraping, automation, marketing automation, AI coding">
     <meta name="author" content="John Rippy">
     <meta name="robots" content="index, follow">
 
@@ -340,6 +340,30 @@
                     "@type": "Answer",
                     "text": "Camoufox protects against navigator fingerprinting (device, OS, hardware, browser details), screen fingerprinting (dimensions, resolution, viewport), geolocation and timezone detection, WebGL and canvas fingerprinting, font enumeration, and WebRTC IP leaks. All spoofing happens at the browser engine level for maximum stealth."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Crawlee and who created it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Crawlee is an open source web scraping and browser automation library developed by Apify. It's available for both JavaScript/TypeScript and Python, making it accessible to most developers. Crawlee handles the complex infrastructure of web scraping so you can focus on writing extraction logic."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Crawlee handle blocking and anti-bot systems?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Crawlee includes built-in proxy rotation, automatic retries with exponential backoff, session management, and browser fingerprint rotation. It can automatically switch between HTTP requests and full browser automation based on blocking detection, maximizing success rates while minimizing resource usage."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the difference between Crawlee and Puppeteer/Playwright?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Puppeteer and Playwright are browser automation libraries - they control browsers but don't handle scraping infrastructure. Crawlee is a scraping framework that uses Puppeteer or Playwright under the hood, adding request queuing, automatic scaling, proxy management, data storage, and anti-blocking features that you'd otherwise build yourself."
+                }
             }
         ]
     }
@@ -529,6 +553,7 @@
         .partner-card[data-partner="claudecode"] { --card-color: #da7756; --card-rgb: 218, 119, 86; }
         .partner-card[data-partner="googleworkspace"] { --card-color: #4285f4; --card-rgb: 66, 133, 244; }
         .partner-card[data-partner="camoufox"] { --card-color: #ff6b35; --card-rgb: 255, 107, 53; }
+        .partner-card[data-partner="crawlee"] { --card-color: #00d27a; --card-rgb: 0, 210, 122; }
 
         .partner-logo {
             height: 60px;
@@ -1212,6 +1237,22 @@
                 </ul>
                 <a href="https://camoufox.com/" class="partner-cta" target="_blank" rel="noopener">Try Camoufox</a>
             </article>
+
+            <!-- Crawlee -->
+            <article class="partner-card" data-partner="crawlee">
+                <div class="power-level">LVL 95</div>
+                <img src="images/crawlee-logo.svg" alt="Crawlee Logo" class="partner-logo" loading="lazy">
+                <h2 class="partner-name">CRAWLEE</h2>
+                <p class="partner-tagline">Build Reliable Scrapers. Fast.</p>
+                <p class="partner-description">The open source web scraping library for JavaScript and Python by Apify. Crawlee handles blocking, proxies, browser automation, and crawling orchestration so you can focus on extraction logic instead of infrastructure.</p>
+                <ul class="partner-features">
+                    <li>Automatic proxy rotation & blocking bypass</li>
+                    <li>Built-in browser automation (Playwright/Puppeteer)</li>
+                    <li>Request queue & crawl orchestration</li>
+                    <li>Forever free & open source</li>
+                </ul>
+                <a href="https://crawlee.dev/" class="partner-cta" target="_blank" rel="noopener">Get Crawlee</a>
+            </article>
         </div>
     </section>
 
@@ -1567,6 +1608,38 @@
                 </div>
                 <div class="faq-answer">
                     <p>Camoufox protects against navigator fingerprinting (device, OS, hardware, browser details), screen fingerprinting (dimensions, resolution, viewport), geolocation and timezone detection, WebGL and canvas fingerprinting, font enumeration, and WebRTC IP leaks. All spoofing happens at the browser engine level for maximum stealth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Crawlee FAQs -->
+        <div class="faq-partner" data-partner="crawlee">
+            <div class="faq-partner-header">CRAWLEE</div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Crawlee and who created it?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Crawlee is an open source web scraping and browser automation library developed by Apify. It's available for both JavaScript/TypeScript and Python, making it accessible to most developers. Crawlee handles the complex infrastructure of web scraping so you can focus on writing extraction logic.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does Crawlee handle blocking and anti-bot systems?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Crawlee includes built-in proxy rotation, automatic retries with exponential backoff, session management, and browser fingerprint rotation. It can automatically switch between HTTP requests and full browser automation based on blocking detection, maximizing success rates while minimizing resource usage.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What's the difference between Crawlee and Puppeteer/Playwright?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Puppeteer and Playwright are browser automation libraries - they control browsers but don't handle scraping infrastructure. Crawlee is a scraping framework that uses Puppeteer or Playwright under the hood, adding request queuing, automatic scaling, proxy management, data storage, and anti-blocking features that you'd otherwise build yourself.</p>
                 </div>
             </div>
         </div>
