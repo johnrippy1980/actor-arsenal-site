@@ -806,6 +806,35 @@
             text-decoration: none;
             font-weight: 600;
         }
+        /* Announcement Banner */
+        .announcement-banner {
+            background: linear-gradient(90deg, var(--accent-blood) 0%, #660000 50%, var(--accent-blood) 100%);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 100;
+            border-bottom: 2px solid var(--blood-red);
+            animation: banner-pulse 3s ease-in-out infinite;
+        }
+        .announcement-banner a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .announcement-banner a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px var(--accent-green);
+        }
+        .announcement-banner .banner-icon {
+            margin-right: 0.5rem;
+        }
+        @keyframes banner-pulse {
+            0%, 100% { box-shadow: 0 2px 10px rgba(139, 0, 0, 0.5); }
+            50% { box-shadow: 0 2px 20px rgba(204, 0, 0, 0.8); }
+        }
         .hero {
             min-height: 80vh;
             display: flex;
@@ -1090,6 +1119,13 @@
             </div>
         </div>
     </nav>
+
+    <!-- Upgrade Announcement Banner -->
+    <div class="announcement-banner">
+        <span class="banner-icon">🔥</span>
+        <strong>11 Scrapers Upgraded!</strong> Now powered by Camoufox stealth browsing to bypass Cloudflare.
+        <a href="blog/camoufox-upgrade.html">Read the announcement →</a>
+    </div>
 
     <section class="hero">
         <div class="container">

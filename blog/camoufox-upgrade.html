@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 Scrapers Upgraded with Camoufox Stealth | Actor Arsenal</title>
+    <meta name="description" content="Major upgrade: 11 Apify scrapers now powered by Camoufox stealth browsing to bypass Cloudflare and bot detection. LinkedIn, Instagram, Zillow, Redfin, and more.">
+    <meta name="keywords" content="Camoufox, stealth scraping, Cloudflare bypass, Apify actors, web scraping, bot detection">
+    <meta name="author" content="John Rippy">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://actor-arsenal-site.vercel.app/blog/camoufox-upgrade.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://actor-arsenal-site.vercel.app/blog/camoufox-upgrade.html">
+    <meta property="og:title" content="11 Scrapers Upgraded with Camoufox Stealth Browsing">
+    <meta property="og:description" content="Major upgrade: 11 Apify scrapers now powered by Camoufox to bypass Cloudflare and bot detection.">
+    <meta property="og:image" content="https://actor-arsenal-site.vercel.app/images/logo.png">
+    <meta property="og:site_name" content="Actor Arsenal">
+    <meta property="article:published_time" content="2026-01-21">
+    <meta property="article:author" content="John Rippy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://actor-arsenal-site.vercel.app/blog/camoufox-upgrade.html">
+    <meta name="twitter:title" content="11 Scrapers Upgraded with Camoufox Stealth Browsing">
+    <meta name="twitter:description" content="Major upgrade: 11 Apify scrapers now powered by Camoufox to bypass Cloudflare and bot detection.">
+    <meta name="twitter:image" content="https://actor-arsenal-site.vercel.app/images/logo.png">
+
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "11 Scrapers Upgraded with Camoufox Stealth Browsing",
+        "datePublished": "2026-01-21",
+        "dateModified": "2026-01-21",
+        "author": {
+            "@type": "Person",
+            "name": "John Rippy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Actor Arsenal",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://actor-arsenal-site.vercel.app/images/logo.png"
+            }
+        },
+        "description": "Major upgrade: 11 Apify scrapers now powered by Camoufox stealth browsing to bypass Cloudflare and bot detection."
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://actor-arsenal-site.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://actor-arsenal-site.vercel.app/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Camoufox Upgrade",
+                "item": "https://actor-arsenal-site.vercel.app/blog/camoufox-upgrade.html"
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #9933ff;
+            --accent-yellow: #ffcc00;
+            --accent-blood: #8B0000;
+            --blood-red: #cc0000;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border: #222222;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* CRT Scanlines */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            opacity: 0.6;
+        }
+
+        /* Red Vignette */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
+        }
+
+        /* Container */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-img {
+            width: 40px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-green);
+        }
+        .cta-button {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== DIFFICULTY SELECTOR ===== */
+        .difficulty-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .difficulty-btn, .music-btn {
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 0.4rem 0.8rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .music-btn {
+            font-size: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            margin-left: 0.5rem;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(255, 204, 0, 0.1);
+            animation: musicPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .music-btn::after {
+            content: 'E1M1';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.4rem;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+        .music-btn.playing {
+            background: var(--accent-yellow);
+            color: #000;
+            animation: none;
+            box-shadow: 0 0 15px var(--accent-yellow);
+        }
+        .music-btn.playing::after {
+            content: 'PLAYING';
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
+            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
+        }
+        .difficulty-btn:hover, .music-btn:hover {
+            background: var(--accent-red);
+            color: #000;
+        }
+        .music-btn:hover {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .difficulty-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(17, 17, 17, 0.98);
+            border: 1px solid var(--accent-red);
+            min-width: 220px;
+            display: none;
+            z-index: 1001;
+        }
+        .difficulty-menu.show { display: block; }
+        .difficulty-option {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.45rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .difficulty-option:hover, .difficulty-option.active {
+            background: var(--accent-red);
+            color: #000;
+        }
+
+        /* Blog Content */
+        .blog-content {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .blog-date {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .blog-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .blog-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .blog-body {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        .blog-body h2 {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .blog-body h2:first-child {
+            margin-top: 0;
+        }
+        .blog-body p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        .blog-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .blog-body li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        .blog-body a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+        .blog-body a:hover {
+            text-decoration: underline;
+        }
+        .blog-body code {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+        }
+        .actor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .actor-item {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        .actor-item:hover {
+            border-color: var(--accent-green);
+            background: rgba(0, 255, 136, 0.1);
+        }
+        .actor-item a {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .actor-item span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .highlight-box {
+            background: linear-gradient(90deg, rgba(139, 0, 0, 0.2), rgba(204, 0, 0, 0.1));
+            border: 1px solid var(--blood-red);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box h3 {
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--accent-green); }
+        .footer-affiliate {
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links a:not(.cta-button) { display: none; }
+            .blog-body { padding: 1.5rem; }
+            .actor-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- CRT Overlay -->
+    <div class="crt-overlay"></div>
+    <div class="vignette"></div>
+
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../partners.html">Weapons Locker</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
+                    </div>
+                </div>
+                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <article class="blog-content">
+            <header class="blog-header">
+                <div class="blog-date">January 21, 2026</div>
+                <h1 class="blog-title">11 Scrapers Upgraded with Camoufox Stealth Browsing</h1>
+                <p class="blog-subtitle">Bypassing Cloudflare and bot detection just got a whole lot easier</p>
+            </header>
+
+            <div class="blog-body">
+                <h2>The Problem</h2>
+                <p>If you've been scraping websites lately, you know the drill: Cloudflare challenges, CAPTCHAs, and bot detection have made life hell for legitimate data extraction. Many of our scrapers were hitting walls that standard browser fingerprinting just couldn't get around.</p>
+
+                <h2>The Solution: Camoufox</h2>
+                <p><a href="https://camoufox.com/" target="_blank">Camoufox</a> is a stealth-modified Firefox browser that handles fingerprint spoofing at the C++ level - not through JavaScript injection that can be detected. Combined with Crawlee's built-in <code>handleCloudflareChallenge()</code> helper, these scrapers can now slip past most bot detection systems.</p>
+
+                <div class="highlight-box">
+                    <h3>What's Different?</h3>
+                    <p>Unlike traditional fingerprint injection libraries, Camoufox modifies the browser binary itself. This means detection scripts can't find the telltale signs of JavaScript-based fingerprint spoofing.</p>
+                </div>
+
+                <h2>Upgraded Actors</h2>
+                <p>The following 11 scrapers have been upgraded with Camoufox stealth browsing:</p>
+
+                <div class="actor-list">
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/doordash-scraper?fpr=kqpn7" target="_blank">DoorDash Scraper</a>
+                        <span>Restaurant menus, delivery info, ratings</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-profile-scraper?fpr=kqpn7" target="_blank">LinkedIn Profile Scraper</a>
+                        <span>Professional profiles, experience, skills</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/linkedin-post-scraper?fpr=kqpn7" target="_blank">LinkedIn Post Scraper</a>
+                        <span>Posts, engagement metrics, comments</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/instagram-scraper?fpr=kqpn7" target="_blank">Instagram Scraper</a>
+                        <span>Profiles, posts, followers, engagement</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/zillow-scraper?fpr=kqpn7" target="_blank">Zillow Scraper</a>
+                        <span>Property listings, prices, details</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/redfin-scraper?fpr=kqpn7" target="_blank">Redfin Scraper</a>
+                        <span>Real estate listings, market data</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/realtor-scraper?fpr=kqpn7" target="_blank">Realtor.com Scraper</a>
+                        <span>Property listings, agent info</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/glassdoor-scraper?fpr=kqpn7" target="_blank">Glassdoor Scraper</a>
+                        <span>Company reviews, salaries, jobs</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/reddit-scraper?fpr=kqpn7" target="_blank">Reddit Scraper</a>
+                        <span>Posts, comments, subreddit data</span>
+                    </div>
+                    <div class="actor-item">
+                        <a href="https://apify.com/alizarin_refrigerator-owner/nextdoor-scraper?fpr=kqpn7" target="_blank">Nextdoor Scraper</a>
+                        <span>Neighborhood posts, local business</span>
+                    </div>
+                </div>
+
+                <h2>Firecrawl Integration</h2>
+                <p>In addition to Camoufox, several actors now offer optional <a href="https://firecrawl.link/john-rippy" target="_blank">Firecrawl</a> integration as a fallback or alternative scraping method. Firecrawl is a managed API that handles the infrastructure for you - useful when you need guaranteed results without managing browser instances.</p>
+
+                <p>Get <strong>10% off Firecrawl</strong> with our affiliate link: <a href="https://firecrawl.link/john-rippy" target="_blank">firecrawl.link/john-rippy</a></p>
+
+                <h2>What This Means For You</h2>
+                <ul>
+                    <li><strong>Higher success rates</strong> - Fewer blocked requests and CAPTCHAs</li>
+                    <li><strong>Better data quality</strong> - More complete scrapes without missing data</li>
+                    <li><strong>Same pricing</strong> - Pay-per-result model unchanged</li>
+                    <li><strong>No action needed</strong> - Just run the actors as usual</li>
+                </ul>
+
+                <h2>Try It Out</h2>
+                <p>All upgraded actors are live on the <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" target="_blank">Apify Store</a>. Head over, run a test, and see the difference for yourself. Rip and tear through your data extraction tasks!</p>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" target="_blank">Apify Store</a>
+                <a href="https://www.linkedin.com/in/johnrippy/" target="_blank">LinkedIn</a>
+                <a href="https://johnrippy.link" target="_blank">johnrippy.link</a>
+            </div>
+            <a href="https://apify.com/?fpr=kqpn7b" target="_blank" rel="noopener" class="footer-affiliate">
+                <img src="../images/apify-affiliate-partner-dark.png" alt="Apify Partner" style="height: 40px;">
+            </a>
+            <p class="copyright">&copy; 2026 John Rippy. Rip and tear.</p>
+        </div>
+    </footer>
+
+    <!-- Background Music -->
+    <audio id="doomMusic" loop preload="auto">
+        <source src="../sounds/e1m1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // DOOM Theme Music
+        const doomMusic = document.getElementById('doomMusic');
+        doomMusic.volume = 0.3;
+        let musicPlaying = false;
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Check if music was playing on previous page
+        if (localStorage.getItem('doomMusicPlaying') === 'true') {
+            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
+            doomMusic.currentTime = savedTime;
+            doomMusic.play().then(() => {
+                musicPlaying = true;
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('playing');
+            }).catch(() => {});
+        }
+
+        // Save music time periodically
+        setInterval(() => {
+            if (musicPlaying) {
+                localStorage.setItem('doomMusicTime', doomMusic.currentTime.toString());
+            }
+        }, 1000);
+
+        // Save music state before leaving page
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('doomMusicPlaying', musicPlaying.toString());
+            localStorage.setItem('doomMusicTime', doomMusic.currentTime.toString());
+        });
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                doomMusic.pause();
+                musicBtn.textContent = '🔇';
+                musicBtn.classList.remove('playing');
+                musicPlaying = false;
+                localStorage.setItem('doomMusicPlaying', 'false');
+            } else {
+                doomMusic.play().then(() => {
+                    musicBtn.textContent = '🔊';
+                    musicBtn.classList.add('playing');
+                    musicPlaying = true;
+                    localStorage.setItem('doomMusicPlaying', 'true');
+                }).catch(() => {});
+            }
+        }
+
+        // Difficulty selector
+        const difficultyBtn = document.getElementById('difficultyBtn');
+        const difficultyMenu = document.getElementById('difficultyMenu');
+        const difficultyOptions = document.querySelectorAll('.difficulty-option');
+
+        // Check saved difficulty
+        const savedDifficulty = localStorage.getItem('doomDifficulty') || 'HURT ME PLENTY';
+        difficultyBtn.textContent = savedDifficulty;
+        difficultyOptions.forEach(opt => {
+            opt.classList.toggle('active', opt.textContent === savedDifficulty);
+        });
+
+        difficultyBtn.addEventListener('click', () => {
+            difficultyMenu.classList.toggle('show');
+        });
+
+        difficultyOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                difficultyOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                difficultyBtn.textContent = option.textContent;
+                difficultyMenu.classList.remove('show');
+                localStorage.setItem('doomDifficulty', option.textContent);
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.difficulty-selector')) {
+                difficultyMenu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
