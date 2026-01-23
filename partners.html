@@ -452,6 +452,30 @@
                     "@type": "Answer",
                     "text": "Yes, Apollo has native two-way sync with Salesforce, HubSpot, and other major CRMs. It automatically logs activities, syncs contact data, and keeps your CRM updated with the latest information. You can also use Apollo's API or Zapier/Make integrations for custom workflows."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Wise and how is it different from banks?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wise (formerly TransferWise) is a financial technology company that offers international money transfers at the real mid-market exchange rate - the same rate you see on Google. Unlike banks that mark up exchange rates by 3-5% and add hidden fees, Wise shows all costs upfront and is typically up to 6x cheaper for international transfers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a Wise multi-currency account?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Wise multi-currency account lets you hold, convert, and manage money in 40+ currencies from one account. You get local bank details in 10+ countries (US, UK, EU, Australia, etc.) so you can receive payments like a local. Perfect for freelancers, remote workers, and businesses that deal with international clients."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the Wise debit card work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Wise card lets you spend money abroad at the real exchange rate with no markups. It automatically converts from your balance in the currency you're spending, or from your other balances at the mid-market rate. No foreign transaction fees, works in 200+ countries, and you can freeze/unfreeze it instantly from the app."
+                }
             }
         ]
     }
@@ -646,6 +670,7 @@
         .partner-card[data-partner="make"] { --card-color: #6d28d9; --card-rgb: 109, 40, 217; }
         .partner-card[data-partner="n8n"] { --card-color: #ea4b71; --card-rgb: 234, 75, 113; }
         .partner-card[data-partner="apollo"] { --card-color: #5b4fff; --card-rgb: 91, 79, 255; }
+        .partner-card[data-partner="wise"] { --card-color: #9fe870; --card-rgb: 159, 232, 112; }
 
         .partner-logo {
             height: 60px;
@@ -1375,7 +1400,7 @@
                     <li>1,800+ app integrations</li>
                     <li>Complex branching & error handling</li>
                 </ul>
-                <a href="https://www.make.com/" class="partner-cta" target="_blank" rel="noopener">Try Make</a>
+                <a href="https://www.make.com/en/register?pc=johnrippy" class="partner-cta" target="_blank" rel="noopener">Try Make</a>
             </article>
 
             <!-- n8n -->
@@ -1408,6 +1433,22 @@
                     <li>Salesforce & HubSpot sync</li>
                 </ul>
                 <a href="https://www.apollo.io/" class="partner-cta" target="_blank" rel="noopener">Try Apollo</a>
+            </article>
+
+            <!-- Wise -->
+            <article class="partner-card" data-partner="wise">
+                <div class="power-level">LVL 95</div>
+                <img src="images/wise-logo.svg" alt="Wise Logo" class="partner-logo" loading="lazy">
+                <h2 class="partner-name">WISE</h2>
+                <p class="partner-tagline">International Money Without The BS</p>
+                <p class="partner-description">The smartest way to send money internationally. Wise (formerly TransferWise) uses the real mid-market exchange rate with transparent, low fees. Hold and convert 40+ currencies, get local bank details in 10+ countries, and spend worldwide with the Wise card.</p>
+                <ul class="partner-features">
+                    <li>Real mid-market exchange rates</li>
+                    <li>Up to 6x cheaper than banks</li>
+                    <li>Multi-currency account (40+ currencies)</li>
+                    <li>Local bank details in 10+ countries</li>
+                </ul>
+                <a href="https://wise.com/invite/dic/johnadamr5" class="partner-cta" target="_blank" rel="noopener">Try Wise</a>
             </article>
         </div>
     </section>
@@ -1924,6 +1965,38 @@
                 </div>
                 <div class="faq-answer">
                     <p>Yes, Apollo has native two-way sync with Salesforce, HubSpot, and other major CRMs. It automatically logs activities, syncs contact data, and keeps your CRM updated with the latest information. You can also use Apollo's API or Zapier/Make integrations for custom workflows.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wise FAQs -->
+        <div class="faq-partner" data-partner="wise">
+            <div class="faq-partner-header">WISE</div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Wise and how is it different from banks?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Wise (formerly TransferWise) is a financial technology company that offers international money transfers at the real mid-market exchange rate - the same rate you see on Google. Unlike banks that mark up exchange rates by 3-5% and add hidden fees, Wise shows all costs upfront and is typically up to 6x cheaper for international transfers.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is a Wise multi-currency account?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A Wise multi-currency account lets you hold, convert, and manage money in 40+ currencies from one account. You get local bank details in 10+ countries (US, UK, EU, Australia, etc.) so you can receive payments like a local. Perfect for freelancers, remote workers, and businesses that deal with international clients.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does the Wise debit card work?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The Wise card lets you spend money abroad at the real exchange rate with no markups. It automatically converts from your balance in the currency you're spending, or from your other balances at the mid-market rate. No foreign transaction fees, works in 200+ countries, and you can freeze/unfreeze it instantly from the app.</p>
                 </div>
             </div>
         </div>
