@@ -462,100 +462,61 @@
         <section class="content">
         <div class="container">
             <h1>TikTok Creator & Video Scraper</h1>
-            <p>Scrape TikTok Shop for product data, prices, reviews, seller info, and sales metrics. E-commerce research, competitor analysis, and dropshipping product discovery.</p>
-
+<p>Scrape TikTok profiles, videos, and hashtags. Extract follower counts, engagement metrics, video stats, and creator data for influencer research and competitive analysis. Built by John Rippy (https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <ul>
-<li><strong>Product Search</strong> - Search TikTok Shop by keywords</li>
-<li><strong>Product Details</strong> - Scrape individual product pages for full details</li>
-<li><strong>Shop/Seller Scraping</strong> - Extract all products from a seller's shop</li>
-<li><strong>Review Collection</strong> - Optional review scraping with ratings and content</li>
-<li><strong>Multi-Region Support</strong> - US, UK, Germany, Indonesia, Malaysia, Philippines, Singapore, Thailand, Vietnam</li>
-<li><strong>Demo Mode</strong> - Test with realistic sample data before running actual scrapes</li>
-
-</ul>
+<p><li><strong>Profile Scraping</strong>: Followers, following, likes, bio, verification status</li> <li><strong>Video Data</strong>: Views, likes, comments, shares, saves, hashtags, sounds</li> <li><strong>Hashtag Search</strong>: Find top videos for any hashtag</li> <li><strong>Sound/Music Search</strong>: Find videos using specific TikTok sounds</li> <li><strong>Engagement Metrics</strong>: Average views, engagement rate, posting frequency</li> <li><strong>Built-in Anti-Detection</strong>: Uses residential proxies to avoid blocks</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
+<h3>Try it first (Free - Demo Mode)</h3>
+<pre><code class="language-json">{
+<p>"demoMode": true }</code></pre> This returns sample creator data so you can see the output format without any charges.</p>
+<h3>Scrape TikTok Creators by Username</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "profiles", "usernames": ["charlidamelio", "khaby.lame", "addisonre"], "includeVideos": true, "videosPerProfile": 12, "demoMode": false }</code></pre>
+<h3>Find Videos by Hashtag</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "hashtags", "hashtags": ["fyp", "viral", "dance"], "maxResults": 50, "demoMode": false }</code></pre>
+<h3>Search for Creators</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "search", "searchQueries": ["fitness influencer", "cooking tutorials"], "minFollowers": 10000, "maxResults": 20, "demoMode": false }</code></pre>
+<p><strong>No login required!</strong> This scraper works without TikTok authentication. It uses residential proxies to access public data.</p>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<pre><code>{
-  "searchQueries": ["wireless earbuds", "phone cases"],
-  "maxProducts": 50,
-  "region": "US",
-  "includeReviews": true
-}
-</code></pre>
-
-<h3>Input Parameters</h3>
-
-<p>| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| <code>searchQueries</code> | array | <code>["wireless earbuds"]</code> | Keywords to search for products |
-| <code>productUrls</code> | array | <code>[]</code> | Direct TikTok Shop product URLs to scrape |
-| <code>shopUrls</code> | array | <code>[]</code> | Seller profile URLs to scrape all products from |
-| <code>maxProducts</code> | number | 50 | Maximum products to scrape per run (1-500 limit) |
-| <code>includeReviews</code> | boolean | false | Scrape product reviews (increases run time) |
-| <code>maxReviewsPerProduct</code> | number | 10 | Maximum reviews per product (1-50) |
-| <code>region</code> | string | "US" | TikTok Shop region (see Supported Regions below) |
-| <code>demoMode</code> | boolean | true | Run with sample data (no actual scraping) |
-| <code>webhookUrl</code> | string | - | URL for webhook delivery (Zapier, Make, n8n) |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>scrapeType</code></td><td>string</td><td>Mode: profiles, hashtags, sounds, search</td></tr> <tr><td><code>usernames</code></td><td>array</td><td>TikTok usernames to scrape (without @)</td></tr> <tr><td><code>hashtags</code></td><td>array</td><td>Hashtags to find videos (without #)</td></tr> <tr><td><code>searchQueries</code></td><td>array</td><td>Search terms for creators or videos</td></tr> <tr><td><code>sounds</code></td><td>array</td><td>TikTok sound/music IDs</td></tr> <tr><td><code>includeVideos</code></td><td>boolean</td><td>Include recent videos (default: true)</td></tr> <tr><td><code>videosPerProfile</code></td><td>number</td><td>Videos per creator (default: 12, max: 100)</td></tr> <tr><td><code>maxResults</code></td><td>number</td><td>Maximum results (default: 50, max: 500)</td></tr> <tr><td><code>minFollowers</code></td><td>number</td><td>Minimum follower threshold</td></tr> <tr><td><code>minViews</code></td><td>number</td><td>Minimum video views threshold</td></tr> <tr><td><code>sortBy</code></td><td>string</td><td>Sort: followers, likes, views, engagement, recent</td></tr> <tr><td><code>proxyConfiguration</code></td><td>object</td><td>Residential proxy required for TikTok</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>Test with sample data</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "data": [...]
-}
-</code></pre>
-
+<h3>Creator Profile Output</h3>
+<pre><code class="language-json">{
+<p>"username": "charlidamelio", "nickname": "Charli D'Amelio", "bio": "dancer | exclusive content on instagram", "profileUrl": "https://tiktok.com/@charlidamelio", "avatarUrl": "https://p16-sign.tiktokcdn-us.com/...", "followers": 155000000, "following": 1200, "likes": 11800000000, "videoCount": 2847, "verified": true, "privateAccount": false, "avgViews": 45000000, "avgLikes": 3500000, "avgComments": 45000, "avgShares": 120000, "engagementRate": 8.12, "recentVideos": [ { "id": "7312456789012345678", "url": "https://tiktok.com/@charlidamelio/video/7312456789012345678", "description": "new dance 💃 #fyp #dance #viral", "createTime": "2024-12-15T18:30:00.000Z", "duration": 32, "views": 52000000, "likes": 4200000, "comments": 52000, "shares": 145000, "saves": 890000, "hashtags": ["fyp", "dance", "viral"], "mentions": [], "soundName": "Original Sound - Charli", "isAd": false, "engagementRate": 8.42 } ], "scrapedAt": "2024-12-21T10:30:00.000Z" }</code></pre>
+<h2>Common Problems & Solutions</h2>
+<h3>"No results" or "Profile not found"</h3>
+<p><strong>Cause:</strong> Username is incorrect, or the profile is private. <strong>Fix:</strong></p>
+<ul>
+<p><li>Enter usernames WITHOUT the @ symbol (e.g., <code>charlidamelio</code> not <code>@charlidamelio</code>)</li> <li>Check if the profile is public on TikTok</li> <li>Verify the username exists by visiting <code>tiktok.com/@username</code></li> </ul>
+<h3>"Rate limited" or scraping stops partway</h3>
+<p><strong>Cause:</strong> TikTok has aggressive anti-scraping measures. <strong>Fix:</strong></p>
+<ul>
+<p><li>Reduce <code>maxResults</code> to 20-50</li> <li>Reduce <code>videosPerProfile</code> to 5-10</li> <li>Wait 15-30 minutes between runs</li> <li>The actor uses residential proxies automatically, but TikTok can still rate limit</li> </ul>
+<h3>"Engagement rate" or metrics seem wrong</h3>
+<p><strong>Understanding the data:</strong></p>
+<ul>
+<p><li><code>engagementRate</code> = (likes + comments + shares) / views × 100</li> <li><code>avgViews</code> = average views across recent videos</li> <li>Metrics are based on publicly visible data only</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> in your input.</p>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing (optimized for Playwright browser automation):</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>product_scraped</code> | Per TikTok Shop product scraped with full details including price, images, and seller info | $0.035 |
-| <code>seller_scraped</code> | Per seller/shop profile scraped with ratings, followers, and product catalog | $0.05 |
-| <code>review_scraped</code> | Per product review extracted with rating, author, and helpfulness data | $0.008 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>apify-actor-start</code></td><td>Base cost per run</td><td>$0.10</td></tr> <tr><td><code>profile_scraped</code></td><td>Per creator profile</td><td>$0.05</td></tr> <tr><td><code>video_scraped</code></td><td>Per video extracted</td><td>$0.002</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>Scrape 100 products: 100 × $0.035 = <strong>$3.50</strong></li>
-<li>Scrape 100 products with 10 reviews each: $3.50 + 1000 × $0.008 = <strong>$11.50</strong></li>
-
-</ul>
+<p><li>50 creators with 12 videos each: $0.10 + (50 × $0.05) + (600 × $0.002) = <strong>$3.80</strong></li> <li>100 creators, no videos: $0.10 + (100 × $0.05) = <strong>$5.10</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <ul>
-<li><strong>E-commerce Research</strong> - Discover trending products and pricing strategies</li>
-<li><strong>Competitor Analysis</strong> - Monitor competitor product listings and prices</li>
-<li><strong>Dropshipping Discovery</strong> - Find hot-selling products with high sales volume</li>
-<li><strong>Market Intelligence</strong> - Track product availability and pricing across regions</li>
-<li><strong>Seller Research</strong> - Analyze top seller performance and product catalogs</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Influencer Discovery</strong>: Find creators in your niche by engagement, not just follower count</li> <li><strong>Competitive Analysis</strong>: Track competitor brand mentions and influencer partnerships</li> <li><strong>Trend Research</strong>: Identify trending hashtags, sounds, and content formats</li> <li><strong>Talent Scouting</strong>: Discover rising creators before they blow up</li> <li><strong>Market Research</strong>: Analyze audience demographics and content preferences</li> <li><strong>Brand Safety</strong>: Vet influencer content before partnerships</li> </ul>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -584,7 +545,7 @@ This actor uses <strong>pay-per-event</strong> pricing (optimized for Playwright
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

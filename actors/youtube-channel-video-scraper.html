@@ -462,142 +462,66 @@
         <section class="content">
         <div class="container">
             <h1>YouTube Channel & Video Scraper</h1>
-            <p>Scrape YouTube channels, videos, and search results. Extract subscriber counts, video stats, engagement metrics, and creator data for influencer research and competitive analysis. Built by John Rippy (https://johnrippy.link/).</p>
-
+<p>Scrape YouTube channels, videos, and search results. Extract subscriber counts, video stats, engagement metrics, and creator data for influencer research and competitive analysis. Built by John Rippy (https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <ul>
-<li>Extracts data from web pages</li>
-<li>Handles pagination automatically</li>
-<li>Exports data to JSON/CSV</li>
-<li>Built-in proxy support</li>
-<li>Pay-per-result billing</li>
-
-</ul>
+<p><li><strong>Channel Data</strong>: Subscribers, total views, video count, description, join date</li> <li><strong>Video Stats</strong>: Views, likes, comments, duration, upload date</li> <li><strong>Search YouTube</strong>: Find channels or videos by keyword</li> <li><strong>Comment Extraction</strong>: Get comment text and engagement</li> <li><strong>Engagement Metrics</strong>: Average views, likes, engagement rate</li> <li><strong>Upload Patterns</strong>: Posting frequency analysis</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
+<h3>Try it first (Free - Demo Mode)</h3>
+<pre><code class="language-json">{
+<p>"demoMode": true }</code></pre> This returns sample YouTube data so you can see the output format without any charges.</p>
+<h3>Scrape Channels by @handle</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "channels", "channelUrls": ["@MrBeast", "@PewDiePie", "@LinusTechTips"], "includeVideos": true, "videosPerChannel": 10, "demoMode": false }</code></pre>
+<h3>Scrape Channels by URL</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "channels", "channelUrls": [ "https://www.youtube.com/@MrBeast", "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA" ], "includeVideos": true, "demoMode": false }</code></pre>
+<h3>Search for Creators</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "search", "searchQueries": ["tech reviews", "cooking tutorials"], "searchType": "channel", "minSubscribers": 100000, "maxResults": 20, "demoMode": false }</code></pre>
+<h3>Scrape Specific Videos</h3>
+<pre><code class="language-json">{
+<p>"scrapeType": "videos", "videoUrls": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], "includeComments": true, "commentsPerVideo": 50, "demoMode": false }</code></pre>
+<p><strong>No login required!</strong> This scraper works with public YouTube data.</p>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Description |
-|-----------|------|-------------|
-| <code>scrapeType</code> | string | Mode: channels, videos, search, playlists |
-| <code>channelUrls</code> | array | YouTube channel URLs or @handles |
-| <code>videoUrls</code> | array | YouTube video URLs to scrape |
-| <code>searchQueries</code> | array | Search terms for discovery |
-| <code>searchType</code> | string | Search for: channel, video, playlist |
-| <code>includeVideos</code> | boolean | Include recent videos (default: true) |
-| <code>videosPerChannel</code> | number | Videos per channel (default: 10, max: 50) |
-| <code>includeComments</code> | boolean | Scrape comments (slower) |
-| <code>commentsPerVideo</code> | number | Comments per video (default: 20) |
-| <code>maxResults</code> | number | Maximum results (default: 50, max: 500) |
-| <code>minSubscribers</code> | number | Minimum subscriber threshold |
-| <code>minViews</code> | number | Minimum video views threshold |
-| <code>uploadedAfter</code> | string | Filter by upload date (YYYY-MM-DD) |
-| <code>sortBy</code> | string | Sort: subscribers, views, videoCount, engagement, recent |
-| <code>proxyConfiguration</code> | object | Proxy settings for reliability |
-| <code>demoMode</code> | boolean | Test with sample data |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>scrapeType</code></td><td>string</td><td>Mode: channels, videos, search, playlists</td></tr> <tr><td><code>channelUrls</code></td><td>array</td><td>YouTube channel URLs or @handles</td></tr> <tr><td><code>videoUrls</code></td><td>array</td><td>YouTube video URLs to scrape</td></tr> <tr><td><code>searchQueries</code></td><td>array</td><td>Search terms for discovery</td></tr> <tr><td><code>searchType</code></td><td>string</td><td>Search for: channel, video, playlist</td></tr> <tr><td><code>includeVideos</code></td><td>boolean</td><td>Include recent videos (default: true)</td></tr> <tr><td><code>videosPerChannel</code></td><td>number</td><td>Videos per channel (default: 10, max: 50)</td></tr> <tr><td><code>includeComments</code></td><td>boolean</td><td>Scrape comments (slower)</td></tr> <tr><td><code>commentsPerVideo</code></td><td>number</td><td>Comments per video (default: 20)</td></tr> <tr><td><code>maxResults</code></td><td>number</td><td>Maximum results (default: 50, max: 500)</td></tr> <tr><td><code>minSubscribers</code></td><td>number</td><td>Minimum subscriber threshold</td></tr> <tr><td><code>minViews</code></td><td>number</td><td>Minimum video views threshold</td></tr> <tr><td><code>uploadedAfter</code></td><td>string</td><td>Filter by upload date (YYYY-MM-DD)</td></tr> <tr><td><code>sortBy</code></td><td>string</td><td>Sort: subscribers, views, videoCount, engagement, recent</td></tr> <tr><td><code>proxyConfiguration</code></td><td>object</td><td>Proxy settings for reliability</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>Test with sample data</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Channel Profile Output</h3>
-
-<pre><code>{
-  "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
-  "channelName": "MrBeast",
-  "handle": "@MrBeast",
-  "channelUrl": "https://youtube.com/@MrBeast",
-  "description": "SUBSCRIBE FOR A COOKIE!",
-  "avatarUrl": "https://yt3.ggpht.com/...",
-  "bannerUrl": "https://yt3.ggpht.com/...",
-  "subscribers": 345000000,
-  "subscriberGrowth": "+2.1M this month",
-  "totalViews": 62500000000,
-  "videoCount": 812,
-  "country": "US",
-  "joinedDate": "2012-02-20",
-  "verified": true,
-  "avgViews": 125000000,
-  "avgLikes": 4500000,
-  "avgComments": 180000,
-  "engagementRate": 3.74,
-  "uploadFrequency": "2-3 videos/month",
-  "recentVideos": [
-    {
-      "videoId": "dQw4w9WgXcQ",
-      "title": "$1 vs $1,000,000 Hotel Room!",
-      "url": "https://youtube.com/watch?v=dQw4w9WgXcQ",
-      "thumbnailUrl": "https://i.ytimg.com/vi/...",
-      "description": "We stayed in the most expensive hotel...",
-      "publishedAt": "2024-12-15T19:00:00.000Z",
-      "duration": "PT18M32S",
-      "durationSeconds": 1112,
-      "views": 156000000,
-      "likes": 5800000,
-      "comments": 245000,
-      "isShort": false,
-      "isLive": false,
-      "isPremiere": false,
-      "tags": ["mrbeast", "hotel", "expensive"],
-      "engagementRate": 3.87
-    }
-  ],
-  "categories": ["Entertainment"],
-  "topTags": ["mrbeast", "challenge", "money"],
-  "scrapedAt": "2024-12-21T10:30:00.000Z"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA", "channelName": "MrBeast", "handle": "@MrBeast", "channelUrl": "https://youtube.com/@MrBeast", "description": "SUBSCRIBE FOR A COOKIE!", "avatarUrl": "https://yt3.ggpht.com/...", "bannerUrl": "https://yt3.ggpht.com/...", "subscribers": 345000000, "subscriberGrowth": "+2.1M this month", "totalViews": 62500000000, "videoCount": 812, "country": "US", "joinedDate": "2012-02-20", "verified": true, "avgViews": 125000000, "avgLikes": 4500000, "avgComments": 180000, "engagementRate": 3.74, "uploadFrequency": "2-3 videos/month", "recentVideos": [ { "videoId": "dQw4w9WgXcQ", "title": "$1 vs $1,000,000 Hotel Room!", "url": "https://youtube.com/watch?v=dQw4w9WgXcQ", "thumbnailUrl": "https://i.ytimg.com/vi/...", "description": "We stayed in the most expensive hotel...", "publishedAt": "2024-12-15T19:00:00.000Z", "duration": "PT18M32S", "durationSeconds": 1112, "views": 156000000, "likes": 5800000, "comments": 245000, "isShort": false, "isLive": false, "isPremiere": false, "tags": ["mrbeast", "hotel", "expensive"], "engagementRate": 3.87 } ], "categories": ["Entertainment"], "topTags": ["mrbeast", "challenge", "money"], "scrapedAt": "2024-12-21T10:30:00.000Z" }</code></pre>
+<h2>Understanding the Output</h2>
+<p><strong>What is <code>engagementRate</code>?</strong> The percentage of viewers who interact with a video: <code>(likes + comments) / views × 100</code>. Higher is better. 3-6% is typical for popular creators.</p>
+<p><strong>What is <code>PT18M32S</code> (duration format)?</strong> ISO 8601 duration format. <code>PT18M32S</code> = 18 minutes, 32 seconds. We also provide <code>durationSeconds</code> for convenience.</p>
+<p><strong>What is <code>uploadFrequency</code>?</strong> How often the creator posts, like "2-3 videos/month" or "daily".</p>
+<h2>Common Problems & Solutions</h2>
+<h3>"Channel not found" or empty results</h3>
+<p><strong>Cause:</strong> The channel URL or @handle is incorrect. <strong>Fix:</strong></p>
+<ul>
+<p><li>For @handles, use just <code>@MrBeast</code> (with the @)</li> <li>For URLs, use the full URL: <code>https://www.youtube.com/@MrBeast</code></li> <li>Verify the channel exists by visiting it in your browser</li> </ul>
+<h3>Videos missing or limited</h3>
+<p><strong>Cause:</strong> YouTube may not show all videos publicly. <strong>Fix:</strong></p>
+<ul>
+<p><li>Increase <code>videosPerChannel</code> (max 50)</li> <li>Some channels have videos set to unlisted or private</li> <li>YouTube Shorts may be in a separate section</li> </ul>
+<h3>Comments not appearing</h3>
+<p><strong>Cause:</strong> <code>includeComments</code> is set to <code>false</code>, or comments are disabled. <strong>Fix:</strong> Set <code>includeComments: true</code>. Note: scraping comments is slower and costs more.</p>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> in your input.</p>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>apify-actor-start</code> | Base cost per run | $0.10 |
-| <code>channel_scraped</code> | Per channel profile | $0.05 |
-| <code>video_scraped</code> | Per video extracted | $0.003 |
-| <code>comment_scraped</code> | Per comment extracted | $0.001 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>apify-actor-start</code></td><td>Base cost per run</td><td>$0.10</td></tr> <tr><td><code>channel_scraped</code></td><td>Per channel profile</td><td>$0.05</td></tr> <tr><td><code>video_scraped</code></td><td>Per video extracted</td><td>$0.003</td></tr> <tr><td><code>comment_scraped</code></td><td>Per comment extracted</td><td>$0.001</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>50 channels with 10 videos each: $0.10 + (50 × $0.05) + (500 × $0.003) = <strong>$4.10</strong></li>
-<li>100 videos with 20 comments each: $0.10 + (100 × $0.003) + (2000 × $0.001) = <strong>$2.40</strong></li>
-
-</ul>
+<p><li>50 channels with 10 videos each: $0.10 + (50 × $0.05) + (500 × $0.003) = <strong>$4.10</strong></li> <li>100 videos with 20 comments each: $0.10 + (100 × $0.003) + (2000 × $0.001) = <strong>$2.40</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <ul>
-<li><strong>Influencer Discovery</strong>: Find YouTube creators by niche and engagement metrics</li>
-<li><strong>Competitive Analysis</strong>: Track competitor channels and content strategy</li>
-<li><strong>Content Research</strong>: Identify trending topics and successful formats</li>
-<li><strong>Talent Acquisition</strong>: Discover rising creators for early partnerships</li>
-<li><strong>Market Research</strong>: Analyze audience preferences by category</li>
-<li><strong>Ad Placement</strong>: Find channels matching your target demographics</li>
-<li><strong>SEO Research</strong>: Analyze title/description patterns that perform</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Influencer Discovery</strong>: Find YouTube creators by niche and engagement metrics</li> <li><strong>Competitive Analysis</strong>: Track competitor channels and content strategy</li> <li><strong>Content Research</strong>: Identify trending topics and successful formats</li> <li><strong>Talent Acquisition</strong>: Discover rising creators for early partnerships</li> <li><strong>Market Research</strong>: Analyze audience preferences by category</li> <li><strong>Ad Placement</strong>: Find channels matching your target demographics</li> <li><strong>SEO Research</strong>: Analyze title/description patterns that perform</li> </ul>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -626,7 +550,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
