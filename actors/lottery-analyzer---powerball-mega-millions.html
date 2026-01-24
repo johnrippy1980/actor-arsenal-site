@@ -462,123 +462,61 @@
         <section class="content">
         <div class="container">
             <h1>Lottery Analyzer - Powerball & Mega Millions</h1>
-            <p>Historical lottery data analyzer with statistical analysis, hot/cold numbers, frequency tracking, and result notifications. Covers Powerball and Mega Millions with webhook support for Zapier, Make, and n8n.</p>
-
+<p>Historical lottery data analyzer with statistical analysis, hot/cold numbers, frequency tracking, and result notifications. Covers Powerball and Mega Millions with webhook support for Zapier, Make, and n8n.</p>
 <h2>Features</h2>
-
 <h3>📊 Statistical Analysis</h3>
-| Analysis Type | Description |
-|--------------|-------------|
-| Hot Numbers | Most frequently drawn in selected period |
-| Cold Numbers | Least frequently drawn numbers |
-| Overdue Numbers | Numbers that haven't appeared recently |
-| Pair Analysis | Most common number combinations |
-| Gap Analysis | Average drawings between appearances |
-| Day Patterns | Win patterns by day of week |
-| Jackpot Trends | Historical jackpot growth patterns |
-
+<table>
+<p><thead> <tr><th>Analysis Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>Hot Numbers</td><td>Most frequently drawn in selected period</td></tr> <tr><td>Cold Numbers</td><td>Least frequently drawn numbers</td></tr> <tr><td>Overdue Numbers</td><td>Numbers that haven't appeared recently</td></tr> <tr><td>Pair Analysis</td><td>Most common number combinations</td></tr> <tr><td>Gap Analysis</td><td>Average drawings between appearances</td></tr> <tr><td>Day Patterns</td><td>Win patterns by day of week</td></tr> <tr><td>Jackpot Trends</td><td>Historical jackpot growth patterns</td></tr> </tbody> </table>
 <h3>🎰 Lottery Coverage</h3>
 <ul>
-<li><strong>Powerball</strong>: All drawings since 1992 (Wed & Sat)</li>
-<li><strong>Mega Millions</strong>: All drawings since 2002 (Tue & Fri)</li>
-
-</ul>
+<p><li><strong>Powerball</strong>: All drawings since 1992 (Wed & Sat)</li> <li><strong>Mega Millions</strong>: All drawings since 2002 (Tue & Fri)</li> </ul>
 <h3>📅 Real-Time Information</h3>
 <ul>
-<li>Latest drawing results</li>
-<li>Next drawing date/time with countdown</li>
-<li>Estimated jackpot and cash value</li>
-<li>Drawing history</li>
-
-</ul>
+<p><li>Latest drawing results</li> <li>Next drawing date/time with countdown</li> <li>Estimated jackpot and cash value</li> <li>Drawing history</li> </ul>
 <h3>🔔 Automated Notifications</h3>
 <ul>
-<li>Webhook support for Zapier, Make, n8n</li>
-<li>Jackpot threshold alerts</li>
-<li>New result notifications</li>
-<li>Number match alerts</li>
-
-</ul>
+<p><li>Webhook support for Zapier, Make, n8n</li> <li>Jackpot threshold alerts</li> <li>New result notifications</li> <li>Number match alerts</li> </ul>
 <h3>✅ Number Checker</h3>
-Check your regular numbers against historical drawings to see:
+<p>Check your regular numbers against historical drawings to see:</p>
 <ul>
-<li>How often your combination has hit</li>
-<li>Best historical match</li>
-<li>Prize tier matches</li>
-
-</ul>
+<p><li>How often your combination has hit</li> <li>Best historical match</li> <li>Prize tier matches</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "query": "example search"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"query": "example search" }</code></pre>
 <h2>Demo Mode (Enabled by Default)</h2>
-
-<strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong>
-
-<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:
+<p><strong>This actor uses a free public API and defaults to <code>demoMode: true</code>.</strong></p>
+<p>Since this actor wraps a free, publicly available API, demo mode is enabled by default. This allows you to:</p>
 <ul>
-<li>Test the actor without any configuration</li>
-<li>See real sample data from the actual API</li>
-<li>Verify the output format before integrating</li></p>
-
-</ul>
-To get customized results, simply provide your own input parameters.
-
+<li>Test the actor without any configuration</li> <li>See real sample data from the actual API</li> <li>Verify the output format before integrating</li> </ul> To get customized results, simply provide your own input parameters.
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Description |
-|-----------|------|-------------|
-| <code>lottery</code> | string | powerball, megamillions, or both |
-| <code>mode</code> | string | latest_results, historical_data, analysis, next_drawing, check_numbers, full_report |
-| <code>analysisType</code> | string | hot_cold, frequency, overdue, pairs, gaps, day_patterns, jackpot_trends, all |
-| <code>analysisPeriod</code> | number | Days to analyze (0 = all time) |
-| <code>historicalLimit</code> | number | Max drawings to fetch (1-5000) |
-| <code>checkNumbers</code> | string | Your numbers to check (e.g., "5,17,23,44,62,14") |
-| <code>jackpotThreshold</code> | number | Alert when jackpot exceeds this amount |
-| <code>webhookUrl</code> | string | URL for notifications |
-| <code>webhookTriggers</code> | array | new_results, jackpot_threshold, number_match, always |
-| <code>webhookPlatform</code> | string | zapier, make, n8n, custom |
-| <code>demoMode</code> | boolean | Test with sample data |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>lottery</code></td><td>string</td><td>powerball, megamillions, or both</td></tr> <tr><td><code>mode</code></td><td>string</td><td>latest_results, historical_data, analysis, next_drawing, check_numbers, full_report</td></tr> <tr><td><code>analysisType</code></td><td>string</td><td>hot_cold, frequency, overdue, pairs, gaps, day_patterns, jackpot_trends, all</td></tr> <tr><td><code>analysisPeriod</code></td><td>number</td><td>Days to analyze (0 = all time)</td></tr> <tr><td><code>historicalLimit</code></td><td>number</td><td>Max drawings to fetch (1-5000)</td></tr> <tr><td><code>checkNumbers</code></td><td>string</td><td>Your numbers to check (e.g., "5,17,23,44,62,14")</td></tr> <tr><td><code>jackpotThreshold</code></td><td>number</td><td>Alert when jackpot exceeds this amount</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>URL for notifications</td></tr> <tr><td><code>webhookTriggers</code></td><td>array</td><td>new_results, jackpot_threshold, number_match, always</td></tr> <tr><td><code>webhookPlatform</code></td><td>string</td><td>zapier, make, n8n, custom</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>Test with sample data</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "data": [...]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"data": [...] }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-| Event | Cost |
-|-------|------|
-| Actor start | $0.10 |
-| Lottery data fetch | $0.05 per lottery |
-| Analysis run | $0.05 per analysis |
-| Number check | $0.02 |</p>
-
-<strong>Demo mode is FREE</strong> - Test with sample data before using real credits.
-
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
+<table>
+<thead> <tr><th>Event</th><th>Cost</th></tr> </thead> <tbody> <tr><td>Actor start</td><td>$0.10</td></tr> <tr><td>Lottery data fetch</td><td>$0.05 per lottery</td></tr> <tr><td>Analysis run</td><td>$0.05 per analysis</td></tr> <tr><td>Number check</td><td>$0.02</td></tr> </tbody> </table> <strong>Demo mode is FREE</strong> - Test with sample data before using real credits.
 <h2>Use Cases</h2>
-
-<p>1. <strong>Number Research</strong> - Analyze patterns for fun/curiosity
-2. <strong>Pool Management</strong> - Track numbers for office lottery pools
-3. <strong>Result Tracking</strong> - Get automated notifications when drawings happen
-4. <strong>Jackpot Alerts</strong> - Know when mega jackpots are available
-5. <strong>Historical Analysis</strong> - Research lottery trends over time</p>
-
+<ol>
+<p><li><strong>Number Research</strong> - Analyze patterns for fun/curiosity</li> <li><strong>Pool Management</strong> - Track numbers for office lottery pools</li> <li><strong>Result Tracking</strong> - Get automated notifications when drawings happen</li> <li><strong>Jackpot Alerts</strong> - Know when mega jackpots are available</li> <li><strong>Historical Analysis</strong> - Research lottery trends over time</li> </ol>
 <h2>API Reference</h2>
-
 <p>See official API documentation for details.</p>
-
-<p>---</p>
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -607,7 +545,7 @@ To get customized results, simply provide your own input parameters.
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

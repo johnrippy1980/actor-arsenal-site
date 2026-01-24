@@ -586,130 +586,227 @@
         <section class="content">
         <div class="container">
             <h1>GOD MODE INTEL MCP Server</h1>
-            <p><strong>The Ultimate B2B Sales Intelligence Platform</strong> - 48+ AI-Powered Tools in One MCP Server</p>
-            <p>Stop juggling 15 different tools for sales intelligence. GOD MODE INTEL consolidates lead discovery, company research, competitive analysis, LinkedIn scraping, review aggregation, and AI-powered sales automation into a single, unified platform.</p>
-
+<h2>What is MCP (Model Context Protocol)?</h2>
+<p><strong>MCP</strong> is a protocol that allows AI assistants (like Claude) to interact with external tools and data sources. This MCP server connects to various APIs and services.</p>
+<h3>How to Use MCP Servers</h3>
+<ol>
+<p><li>Install the MCP server in Claude Desktop's config</li> <li>The server provides tools the AI can use</li> <li>Ask Claude to use the tools (e.g., "Search for local businesses...")</li> </ol>
+<hr>
+<h2>The Ultimate B2B Sales Intelligence Platform | 48+ AI-Powered Tools in One MCP Server</h2>
+<p><strong>Stop juggling 15 different tools for sales intelligence.</strong> GOD MODE INTEL MCP consolidates lead discovery, company research, competitive analysis, LinkedIn scraping, review aggregation, and AI-powered sales automation into a single, unified platform that works seamlessly with <strong>Make.com, Zapier, n8n, webhooks, Claude Desktop</strong>, and any MCP-compatible client.</p>
+<p><a href="https://img.shields.io/badge/MCP-Protocol%20Ready-blue" target="_blank" rel="noopener">![MCP Protocol</a>](https://modelcontextprotocol.io) <a href="https://img.shields.io/badge/Tools-48+-green" target="_blank" rel="noopener">![Tools</a>](https://apify.com/jrippy/god-mode-intel-mcp) <a href="https://img.shields.io/badge/Make.com-Compatible-purple" target="_blank" rel="noopener">![Make.com</a>](https://make.com) <a href="https://img.shields.io/badge/Zapier-Compatible-orange" target="_blank" rel="noopener">![Zapier</a>](https://zapier.com) <a href="https://img.shields.io/badge/n8n-Compatible-red" target="_blank" rel="noopener">![n8n</a>](https://n8n.io)</p>
+<hr>
 <h2>Why GOD MODE INTEL?</h2>
-<p>Modern B2B sales teams face a fragmented landscape with $500-2,000/month spent on multiple tools. GOD MODE INTEL consolidates everything into a single API endpoint with:</p>
+<h3>The Problem: Sales Intelligence Tool Sprawl</h3>
+<p>Modern B2B sales teams face a fragmented landscape:</p>
 <ul>
-<li><strong>48+ intelligence tools</strong> spanning 10 categories</li>
-<li><strong>Native MCP protocol</strong> support for AI-first workflows</li>
-<li><strong>Unified data format</strong> across all tools</li>
-<li><strong>Real-time execution</strong> with live data (not stale databases)</li>
-<li><strong>Pay-per-use pricing</strong> - no monthly minimums</li>
-<li><strong>Seamless integration</strong> with Make.com, Zapier, n8n, and custom webhooks</li>
-</ul>
-
+<p><li><strong>$500-2,000/month</strong> spent on 5-10 different tools (Apollo, ZoomInfo, BuiltWith, SimilarWeb, etc.)</li> <li><strong>Hours wasted</strong> switching between platforms and manually copying data</li> <li><strong>No unified workflow</strong> - data silos everywhere</li> <li><strong>Complex integrations</strong> that break and require maintenance</li> <li><strong>Inconsistent data formats</strong> that don't talk to each other</li> </ul>
+<h3>The Solution: One MCP Server to Rule Them All</h3>
+<p>GOD MODE INTEL consolidates everything into a <strong>single API endpoint</strong> with:</p>
+<ul>
+<p><li><strong>48+ intelligence tools</strong> spanning 10 categories</li> <li><strong>Native MCP protocol</strong> support for AI-first workflows</li> <li><strong>Unified data format</strong> across all tools</li> <li><strong>Real-time execution</strong> with live data (not stale databases)</li> <li><strong>Pay-per-use pricing</strong> - no monthly minimums</li> <li><strong>Seamless integration</strong> with Make.com, Zapier, n8n, and custom webhooks</li> </ul>
+<hr>
 <h2>Platform Integrations</h2>
+<p>GOD MODE INTEL works with all major automation platforms:</p>
 <table>
-<tr><th>Platform</th><th>Integration Method</th><th>Use Case</th></tr>
-<tr><td><strong>Make.com</strong></td><td>HTTP Module, Apify Module, or SSE/MCP</td><td>Complex multi-step workflows</td></tr>
-<tr><td><strong>Zapier</strong></td><td>Webhooks or Apify Integration</td><td>Simple trigger-action automations</td></tr>
-<tr><td><strong>n8n</strong></td><td>HTTP Request Node or Apify Node</td><td>Self-hosted automation workflows</td></tr>
-<tr><td><strong>Claude Desktop</strong></td><td>MCP Protocol (stdio)</td><td>AI-assisted research</td></tr>
-<tr><td><strong>Custom Apps</strong></td><td>REST API or Webhooks</td><td>Direct integration</td></tr>
-</table>
-
-<h2>Tool Categories</h2>
-
+<p><thead> <tr><th>Platform</th><th>Integration Method</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><strong>Make.com</strong></td><td>HTTP Module, Apify Module, or SSE/MCP</td><td>Complex multi-step workflows</td></tr> <tr><td><strong>Zapier</strong></td><td>Webhooks or Apify Integration</td><td>Simple trigger-action automations</td></tr> <tr><td><strong>n8n</strong></td><td>HTTP Request Node or Apify Node</td><td>Self-hosted automation workflows</td></tr> <tr><td><strong>Claude Desktop</strong></td><td>MCP Protocol (stdio)</td><td>AI-assisted research</td></tr> <tr><td><strong>Custom Apps</strong></td><td>REST API or Webhooks</td><td>Direct integration</td></tr> </tbody> </table>
+<h3>Webhook Support</h3>
+<p>Send results directly to any endpoint:</p>
+<pre><code class="language-json">{
+<p>"tool": "find_prospects", "toolInput": { "query": "restaurants", "location": "Chicago" }, "webhookUrl": "https://hooks.zapier.com/hooks/catch/..." }</code></pre>
+<p>Compatible webhook formats:</p>
+<ul>
+<p><li><strong>Zapier</strong> - Catch Hook triggers</li> <li><strong>Make.com</strong> - Custom Webhook modules</li> <li><strong>n8n</strong> - Webhook nodes</li> <li><strong>Custom endpoints</strong> - Any URL that accepts POST requests</li> </ul>
+<hr>
+<h2>Who Is This For?</h2>
+<h3>Sales Development Representatives (SDRs)</h3>
+<ul>
+<p><li>Find and qualify leads 10x faster</li> <li>Auto-generate personalized outreach at scale</li> <li>Prioritize leads with AI scoring</li> </ul>
+<h3>Growth Marketers</h3>
+<ul>
+<p><li>Monitor competitor ads and content strategy</li> <li>Track brand mentions across Reddit, Quora, and review sites</li> <li>Analyze market sentiment in real-time</li> </ul>
+<h3>Agency Owners</h3>
+<ul>
+<p><li>Research prospects before pitches</li> <li>Audit client competitors comprehensively</li> <li>Generate local SEO reports automatically</li> </ul>
+<h3>RevOps Teams</h3>
+<ul>
+<p><li>Enrich CRM data in bulk</li> <li>Build automated lead scoring pipelines</li> <li>Integrate intelligence into existing workflows</li> </ul>
+<h3>Founders & Entrepreneurs</h3>
+<ul>
+<p><li>Research markets and competitors affordably</li> <li>Find your first 100 customers</li> <li>Understand your competitive landscape</li> </ul>
+<hr>
+<h2>Features & Capabilities</h2>
 <h3>Lead Discovery & Prospecting</h3>
-<ul>
-<li><code>find_prospects</code> - Search Google Maps for businesses</li>
-<li><code>find_lookalikes</code> - Find companies similar to your best customers</li>
-<li><code>scrape_local_leads</code> - Bulk extract local business data</li>
-<li><code>discover_companies</code> - AI-powered company discovery from any URL</li>
-<li><code>enrich_from_url</code> - Extract company data from any webpage</li>
-</ul>
-
-<h3>Lead Enrichment</h3>
-<ul>
-<li><code>enrich_lead</code> - Full enrichment: email, company, social, tech stack</li>
-<li><code>enrich_leads_batch</code> - Enrich up to 100 leads at once</li>
-<li><code>enrich_company_contacts</code> - Find decision-makers at a company</li>
-</ul>
-
-<h3>LinkedIn Intelligence</h3>
-<ul>
-<li><code>scrape_linkedin_profile</code> - Full profile: experience, education, skills</li>
-<li><code>scrape_linkedin_posts</code> - Recent posts with engagement metrics</li>
-<li><code>analyze_linkedin_voice</code> - AI analysis of writing style and tone</li>
-</ul>
-
-<h3>Company Research</h3>
-<ul>
-<li><code>research_company</code> - Comprehensive company intel in one call</li>
-<li><code>scan_tech_stack</code> - Detect 100+ technologies on any website</li>
-<li><code>get_crunchbase_data</code> - Funding rounds, investors, key people</li>
-<li><code>get_glassdoor_reviews</code> - Employee reviews, ratings, salary data</li>
-</ul>
-
-<h3>Competitive Intelligence</h3>
-<ul>
-<li><code>monitor_competitors</code> - Track website, hiring, social changes</li>
-<li><code>scrape_facebook_ads</code> - Facebook Ad Library scraping</li>
-<li><code>track_competitor_keywords</code> - SEO keyword tracking</li>
-<li><code>competitive_gap_analysis</code> - AI-powered gap analysis</li>
-</ul>
-
-<h3>AI-Powered Sales Actions</h3>
-<ul>
-<li><code>score_and_prioritize</code> - AI lead scoring based on ICP fit</li>
-<li><code>generate_outreach</code> - Hyper-personalized message generation</li>
-<li><code>analyze_buying_signals</code> - Detect intent from multiple sources</li>
-<li><code>recommend_approach</code> - AI sales strategy recommendation</li>
-</ul>
-
-<h2>Quick Start</h2>
-
-<pre><code>{
-  "tool": "find_prospects",
-  "toolInput": {
-    "query": "marketing agencies",
-    "location": "San Francisco, CA",
-    "maxResults": 25
-  }
-}
-</code></pre>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  "tool": "find_prospects",
-  "toolInput": { "query": "restaurants", "location": "Chicago" }
-}
-</code></pre>
-
-<h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:</p>
-
 <table>
-<tr><th>Event</th><th>Description</th><th>Price</th></tr>
-<tr><td>Tool Executed</td><td>Each B2B intelligence tool call executed</td><td>$0.10</td></tr>
-<tr><td>Lead Enriched</td><td>Each lead enriched with company and contact data</td><td>$0.15</td></tr>
-<tr><td>Company Researched</td><td>Full company research with tech stack, funding, reviews</td><td>$0.25</td></tr>
-<tr><td>LinkedIn Profile Scraped</td><td>LinkedIn profile data extraction</td><td>$0.12</td></tr>
-<tr><td>Outreach Generated</td><td>AI-personalized outreach message generated</td><td>$0.08</td></tr>
-</table>
-
-<h2>Use Cases</h2>
-
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>find_prospects</code></td><td>Search Google Maps for businesses</td><td>"Find all dentists in Austin, TX"</td></tr> <tr><td><code>find_lookalikes</code></td><td>Find companies similar to your best customers</td><td>"Find 50 companies like Stripe"</td></tr> <tr><td><code>scrape_local_leads</code></td><td>Bulk extract local business data</td><td>"Get all restaurants in 5 cities"</td></tr> <tr><td><code>discover_companies</code></td><td>AI-powered company discovery from any URL</td><td>"Find SaaS companies mentioned on TechCrunch"</td></tr> <tr><td><code>enrich_from_url</code></td><td>Extract company data from any webpage</td><td>"Pull company info from this About page"</td></tr> </tbody> </table>
+<h3>Lead Enrichment</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>enrich_lead</code></td><td>Full enrichment: email, company, social, tech stack</td><td>"Enrich john@acme.com"</td></tr> <tr><td><code>enrich_leads_batch</code></td><td>Enrich up to 100 leads at once</td><td>"Enrich my CSV of 100 leads"</td></tr> <tr><td><code>enrich_company_contacts</code></td><td>Find decision-makers at a company</td><td>"Find VPs at Salesforce"</td></tr> </tbody> </table>
+<h3>LinkedIn Intelligence</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>scrape_linkedin_profile</code></td><td>Full profile: experience, education, skills</td><td>"Get profile data for /in/elonmusk"</td></tr> <tr><td><code>scrape_linkedin_posts</code></td><td>Recent posts with engagement metrics</td><td>"Analyze their content strategy"</td></tr> <tr><td><code>analyze_linkedin_voice</code></td><td>AI analysis of writing style and tone</td><td>"Personalize my outreach to match their voice"</td></tr> </tbody> </table>
+<h3>Company Research</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>research_company</code></td><td>Comprehensive company intel in one call</td><td>"Tell me everything about Stripe"</td></tr> <tr><td><code>scan_tech_stack</code></td><td>Detect 100+ technologies on any website</td><td>"What tools does Shopify use?"</td></tr> <tr><td><code>get_crunchbase_data</code></td><td>Funding rounds, investors, key people</td><td>"Who invested in OpenAI?"</td></tr> <tr><td><code>get_glassdoor_reviews</code></td><td>Employee reviews, ratings, salary data</td><td>"What's the culture like at Meta?"</td></tr> <tr><td><code>scrape_g2</code></td><td>G2 software reviews and ratings</td><td>"What do users say about HubSpot?"</td></tr> <tr><td><code>scrape_capterra</code></td><td>Capterra reviews and comparisons</td><td>"Compare Salesforce vs HubSpot"</td></tr> </tbody> </table>
+<h3>Review Intelligence</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>scrape_trustpilot</code></td><td>Consumer reviews and trust scores</td><td>"Check reputation of this vendor"</td></tr> <tr><td><code>scrape_yelp</code></td><td>Local business reviews</td><td>"Get reviews for this restaurant"</td></tr> <tr><td><code>aggregate_reviews</code></td><td>Combine reviews from all platforms</td><td>"Show me all reviews everywhere"</td></tr> <tr><td><code>analyze_sentiment</code></td><td>AI sentiment analysis of reviews</td><td>"What are the common complaints?"</td></tr> </tbody> </table>
+<h3>Competitive Intelligence</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>monitor_competitors</code></td><td>Track website, hiring, social changes</td><td>"Alert me when competitors update pricing"</td></tr> <tr><td><code>scrape_facebook_ads</code></td><td>Facebook Ad Library scraping</td><td>"What ads are my competitors running?"</td></tr> <tr><td><code>track_competitor_keywords</code></td><td>SEO keyword tracking</td><td>"What keywords do they rank for?"</td></tr> <tr><td><code>compare_tech_stacks</code></td><td>Side-by-side technology comparison</td><td>"How does our stack compare?"</td></tr> <tr><td><code>competitive_gap_analysis</code></td><td>AI-powered gap analysis</td><td>"Where are we falling behind?"</td></tr> </tbody> </table>
+<h3>Local Business Intelligence</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>scrape_gbp</code></td><td>Google Business Profile data</td><td>"Get all GBP data for this business"</td></tr> <tr><td><code>track_local_serp</code></td><td>Local pack ranking tracking</td><td>"Where do we rank for 'plumber near me'?"</td></tr> <tr><td><code>audit_citations</code></td><td>NAP consistency across 50+ directories</td><td>"Find citation errors"</td></tr> <tr><td><code>analyze_local_competitors</code></td><td>Local market competitive analysis</td><td>"Who are the top 10 dentists nearby?"</td></tr> </tbody> </table>
+<h3>Social Intelligence</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>scrape_reddit</code></td><td>Reddit discussions and sentiment</td><td>"What does Reddit say about our product?"</td></tr> <tr><td><code>scrape_quora</code></td><td>Quora questions and answers</td><td>"Find questions we can answer"</td></tr> <tr><td><code>monitor_brand_mentions</code></td><td>Cross-platform brand monitoring</td><td>"Track mentions of our brand everywhere"</td></tr> </tbody> </table>
+<h3>AI-Powered Sales Actions</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>score_and_prioritize</code></td><td>AI lead scoring based on ICP fit</td><td>"Rank these 100 leads A/B/C/D"</td></tr> <tr><td><code>generate_outreach</code></td><td>Hyper-personalized message generation</td><td>"Write 3 email variants for this lead"</td></tr> <tr><td><code>analyze_buying_signals</code></td><td>Detect intent from multiple sources</td><td>"Is this company ready to buy?"</td></tr> <tr><td><code>predict_deal_probability</code></td><td>AI deal close prediction</td><td>"What's the chance this closes?"</td></tr> <tr><td><code>recommend_approach</code></td><td>AI sales strategy recommendation</td><td>"How should I approach this prospect?"</td></tr> </tbody> </table>
+<h3>Full Pipelines (End-to-End Automation)</h3>
+<table>
+<p><thead> <tr><th>Tool</th><th>What It Does</th><th>Use Case</th></tr> </thead> <tbody> <tr><td><code>full_company_research</code></td><td>Tech + funding + reviews + contacts in one call</td><td>"Complete dossier on this company"</td></tr> <tr><td><code>full_prospect_pipeline</code></td><td>Discover → Enrich → Score → Generate Outreach</td><td>"Find and prep 50 leads automatically"</td></tr> <tr><td><code>full_competitive_audit</code></td><td>Tech + content + ads + SEO + reviews audit</td><td>"Full competitive analysis report"</td></tr> </tbody> </table>
+<hr>
+<h2>Quick Start Guide</h2>
+<h3>Option 1: Direct Apify Actor Execution</h3>
+<pre><code class="language-json">{
+<p>"tool": "find_prospects", "toolInput": { "query": "marketing agencies", "location": "San Francisco, CA", "maxResults": 25 } }</code></pre>
+<h3>Option 2: MCP Server (Claude Desktop / Make.com)</h3>
+<p>Connect to the SSE endpoint:</p>
+<pre><code class="language-">https://god-mode-intel-mcp.vercel.app/sse</code></pre>
+<p>Or use the REST API directly:</p>
+<pre><code class="language-bash">curl -X POST https://god-mode-intel-mcp.vercel.app/execute \
+<p>-H "Content-Type: application/json" \ -d '{"tool": "scan_tech_stack", "input": {"url": "https://stripe.com"}}'</code></pre>
+<h3>Option 3: Make.com Integration</h3>
+<ol>
+<p><li>Add <strong>HTTP Module</strong> or <strong>Apify Module</strong> to your scenario</li> <li>Configure the request to GOD MODE INTEL</li> <li>Map the output to your next modules</li> <li>Build powerful automation workflows</li> </ol>
+<h3>Option 4: Zapier Integration</h3>
+<ol>
+<p><li>Use <strong>Webhooks by Zapier</strong> (Catch Hook) as trigger</li> <li>Add <strong>Apify</strong> action or <strong>Webhooks</strong> (POST) action</li> <li>Configure with GOD MODE INTEL actor</li> <li>Use results in subsequent Zap steps</li> </ol>
+<h3>Option 5: n8n Integration</h3>
+<ol>
+<p><li>Add <strong>HTTP Request</strong> node or <strong>Apify</strong> node</li> <li>Configure POST to GOD MODE INTEL endpoint</li> <li>Parse JSON response</li> <li>Continue your workflow</li> </ol>
+<hr>
+<h2>Input Schema</h2>
+<h3>Required Fields</h3>
+<table>
+<p><thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>tool</code></td><td>string</td><td>The tool to execute (see tool list above)</td></tr> </tbody> </table>
+<h3>Tool Input Fields (vary by tool)</h3>
+<table>
+<p><thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>toolInput</code></td><td>object</td><td>Parameters specific to the selected tool</td></tr> </tbody> </table>
+<h3>Optional Configuration</h3>
+<table>
+<p><thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>demoMode</code></td><td>boolean</td><td>Return sample data without API calls (default: false)</td></tr> <tr><td><code>apifyToken</code></td><td>string</td><td>Your Apify API token (auto-provided on Apify platform)</td></tr> <tr><td><code>anthropicApiKey</code></td><td>string</td><td>For AI-powered tools (scoring, outreach, analysis)</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>Send results to Zapier, Make, n8n, or custom endpoint</td></tr> <tr><td><code>webhookPlatform</code></td><td>string</td><td>Format output for specific platform: <code>zapier</code>, <code>make</code>, <code>n8n</code>, <code>custom</code></td></tr> </tbody> </table>
+<h3>Example: Full Configuration</h3>
+<pre><code class="language-json">{
+<p>"tool": "full_prospect_pipeline", "toolInput": { "query": "B2B SaaS companies", "location": "Austin, TX", "maxProspects": 50, "idealCustomerProfile": { "industry": "Technology", "employeeRange": "50-200", "technologies": ["Salesforce", "HubSpot"] }, "generateOutreach": true, "outreachChannel": "email" }, "anthropicApiKey": "sk-ant-...", "webhookUrl": "https://hooks.zapier.com/...", "webhookPlatform": "zapier" }</code></pre>
+<hr>
+<h2>Output Schema</h2>
+<p>All tools return a consistent JSON structure:</p>
+<pre><code class="language-json">{
+<p>"success": true, "tool": "find_prospects", "actorId": "FiEyilQieNzXvHkAg", "runId": "abc123xyz", "data": [ { "title": "Austin Dental Care", "categoryName": "Dentist", "address": "123 Main St, Austin, TX 78701", "phone": "(512) 555-0101", "website": "https://austindentalcare.com", "totalScore": 4.8, "reviewsCount": 342, "placeId": "ChIJ...", "city": "Austin", "state": "TX" } ], "itemCount": 25, "actorRunId": "xyz789abc", "actorStatus": "SUCCEEDED" }</code></pre>
+<h3>Dataset Schema by Tool Type</h3>
+<p>#### Prospect/Lead Data</p>
+<pre><code class="language-json">{
+<p>"title": "string - Business name", "address": "string - Full address", "phone": "string - Phone number", "website": "string - Website URL", "email": "string - Email if found", "totalScore": "number - Rating (1-5)", "reviewsCount": "number - Review count", "categoryName": "string - Business category", "city": "string - City", "state": "string - State", "placeId": "string - Google Place ID" }</code></pre>
+<p>#### Tech Stack Data</p>
+<pre><code class="language-json">{
+<p>"url": "string - Scanned URL", "domain": "string - Domain", "technologies": [ { "name": "string - Technology name", "category": "string - FRAMEWORK, ANALYTICS, CMS, etc.", "confidence": "string - HIGH, MEDIUM, LOW", "detected": "string - Detection method" } ], "summary": { "analytics": ["array - Analytics tools"], "framework": "string - Main framework", "hosting": "string - Hosting provider", "cdn": "string - CDN provider" } }</code></pre>
+<p>#### LinkedIn Profile Data</p>
+<pre><code class="language-json">{
+<p>"name": "string - Full name", "headline": "string - Profile headline", "location": "string - Location", "connections": "string - Connection count", "followers": "number - Follower count", "about": "string - About section", "experience": [ { "title": "string - Job title", "company": "string - Company name", "duration": "string - Duration", "description": "string - Role description" } ], "education": ["array - Education history"], "skills": ["array - Skills list"] }</code></pre>
+<p>#### AI Analysis Output</p>
+<pre><code class="language-json">{
+<p>"score": "number - 0-100 score", "tier": "string - A, B, C, or D", "signals": ["array - Detected signals"], "recommendation": "string - AI recommendation", "confidence": "number - Confidence score", "reasoning": "string - Explanation" }</code></pre>
+<hr>
+<h2>Automation Workflow Examples</h2>
+<h3>Make.com: Auto-Enrich New CRM Contacts</h3>
+<pre><code class="language-">Trigger: New HubSpot Contact
+<p>↓ GOD MODE INTEL: enrich_lead ↓ Update HubSpot Contact with enriched data ↓ GOD MODE INTEL: score_and_prioritize ↓ If Score &gt; 80: Assign to Sales Rep If Score &lt; 50: Add to Nurture Sequence</code></pre>
+<h3>Zapier: Competitive Intelligence Alerts</h3>
+<pre><code class="language-">Schedule: Every Monday 9am (Schedule by Zapier)
+<p>↓ Webhooks by Zapier: POST to GOD MODE INTEL (monitor_competitors) ↓ Filter: Only if changes detected ↓ Slack: Send competitive update to #sales channel</code></pre>
+<h3>n8n: Local Lead Generation Machine</h3>
+<pre><code class="language-">Trigger: New row in Google Sheet (city, industry)
+<p>↓ HTTP Request: GOD MODE INTEL find_prospects ↓ HTTP Request: GOD MODE INTEL enrich_leads_batch ↓ HTTP Request: GOD MODE INTEL generate_outreach ↓ Lemlist: Add to outreach sequence</code></pre>
+<h3>Webhook: Review Monitoring Dashboard</h3>
+<pre><code class="language-">Schedule: Daily CRON job
+<p>↓ POST to GOD MODE INTEL: aggregate_reviews ↓ POST to GOD MODE INTEL: analyze_sentiment ↓ Webhook sends to your dashboard API ↓ If negative review: Slack alert</code></pre>
+<hr>
+<h2>API Keys & Configuration</h2>
+<h3>Required for Full Functionality</h3>
+<table>
+<p><thead> <tr><th>Service</th><th>Required For</th><th>Get Key</th></tr> </thead> <tbody> <tr><td><strong>Apify</strong></td><td>All scraping tools</td><td>Auto-provided on Apify platform</td></tr> <tr><td><strong>Anthropic</strong></td><td>AI scoring, outreach, analysis</td><td><a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></td></tr> </tbody> </table>
+<h3>Optional Enhancements</h3>
+<table>
+<p><thead> <tr><th>Service</th><th>Enhances</th><th>Get Key</th></tr> </thead> <tbody> <tr><td>Apollo.io</td><td>Lead enrichment accuracy</td><td><a href="https://apollo.io" target="_blank" rel="noopener">apollo.io</a></td></tr> <tr><td>Hunter.io</td><td>Email verification</td><td><a href="https://hunter.io" target="_blank" rel="noopener">hunter.io</a></td></tr> <tr><td>Clearbit</td><td>Company enrichment</td><td><a href="https://clearbit.com" target="_blank" rel="noopener">clearbit.com</a></td></tr> <tr><td>Firecrawl</td><td>Web crawling tools</td><td><a href="https://firecrawl.dev" target="_blank" rel="noopener">firecrawl.dev</a></td></tr> <tr><td>OpenAI</td><td>AI fallback</td><td><a href="https://platform.openai.com" target="_blank" rel="noopener">platform.openai.com</a></td></tr> </tbody> </table>
+<hr>
+<h2>Pricing</h2>
+<h3>Pay-Per-Use Model</h3>
+<p>No monthly fees. Only pay for successful results.</p>
+<table>
+<p><thead> <tr><th>Operation</th><th>Cost</th></tr> </thead> <tbody> <tr><td>Prospect found</td><td>$0.01</td></tr> <tr><td>Lead enriched</td><td>$0.05</td></tr> <tr><td>LinkedIn profile scraped</td><td>$0.03</td></tr> <tr><td>Company researched</td><td>$0.10</td></tr> <tr><td>Tech stack scanned</td><td>$0.02</td></tr> <tr><td>Review scraped</td><td>$0.01</td></tr> <tr><td>AI analysis</td><td>$0.05</td></tr> <tr><td>Full pipeline</td><td>$0.25-0.50</td></tr> </tbody> </table>
+<h3>Cost Comparison</h3>
+<table>
+<p><thead> <tr><th>Task</th><th>Traditional Tools</th><th>GOD MODE INTEL</th></tr> </thead> <tbody> <tr><td>1,000 leads enriched</td><td>$500-2,000/mo subscription</td><td>$50 one-time</td></tr> <tr><td>Competitive analysis</td><td>$300/mo (SimilarWeb)</td><td>$5-10 per report</td></tr> <tr><td>Tech stack detection</td><td>$100/mo (BuiltWith)</td><td>$0.02 per scan</td></tr> <tr><td>LinkedIn scraping</td><td>$100/mo + manual work</td><td>$0.03 per profile</td></tr> </tbody> </table>
+<hr>
+<h2>Frequently Asked Questions</h2>
+<h3>Is the data real-time?</h3>
+<p>Yes. Unlike database-based tools (ZoomInfo, Apollo), GOD MODE INTEL scrapes live data at execution time. You always get the freshest information.</p>
+<h3>Can I use this for cold outreach?</h3>
+<p>Absolutely. The <code>generate_outreach</code> tool creates hyper-personalized messages based on enriched lead data. Combined with <code>score_and_prioritize</code>, you can focus on the hottest leads.</p>
+<h3>How does it compare to Apollo/ZoomInfo?</h3>
 <ul>
-<li><strong>SDRs</strong> - Find and qualify leads 10x faster</li>
-<li><strong>Growth Marketers</strong> - Monitor competitor ads and content strategy</li>
-<li><strong>Agency Owners</strong> - Research prospects before pitches</li>
-<li><strong>RevOps Teams</strong> - Enrich CRM data in bulk</li>
-<li><strong>Founders</strong> - Research markets and competitors affordably</li>
-</ul>
-
----
-
-<strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Fresher data</strong>: Real-time scraping vs. stale databases</li> <li><strong>Lower cost</strong>: Pay-per-use vs. $500-2,000/month subscriptions</li> <li><strong>More tools</strong>: 48+ tools vs. limited feature sets</li> <li><strong>Better integration</strong>: Native MCP protocol for AI workflows</li> </ul>
+<h3>Does it work with my CRM?</h3>
+<p>Yes, via Make.com, Zapier, n8n, or direct webhooks. You can enrich contacts, score leads, and update records automatically.</p>
+<h3>Which automation platform should I use?</h3>
+<ul>
+<p><li><strong>Make.com</strong>: Best for complex, multi-step workflows with conditional logic</li> <li><strong>Zapier</strong>: Best for simple trigger-action automations and wide app support</li> <li><strong>n8n</strong>: Best for self-hosted, privacy-focused, or highly custom workflows</li> <li><strong>Webhooks</strong>: Best for direct integration into your own applications</li> </ul>
+<h3>Is there rate limiting?</h3>
+<p>Apify handles rate limiting and proxy rotation automatically. For high-volume use, contact for enterprise plans.</p>
+<h3>Can I run it locally?</h3>
+<p>Yes! The MCP server supports stdio mode for Claude Desktop:</p>
+<pre><code class="language-bash">npx god-mode-intel-mcp --stdio</code></pre>
+<hr>
+<h2>More Tools & Resources</h2>
+<p>Check out my other projects:</p>
+<ul>
+<p><li><strong><a href="https://actor-arsenal-site.vercel.app/" target="_blank" rel="noopener">Actor Arsenal</a></strong> - 280+ Apify actors for web scraping and automation</li> <li><strong><a href="https://zapier-quake-site.vercel.app/" target="_blank" rel="noopener">Zapier Quake</a></strong> - Zapier integrations and automation tools</li> <li><strong><a href="https://duke-semrush-site.vercel.app/" target="_blank" rel="noopener">Duke SEMrush Tools</a></strong> - SEO and marketing intelligence tools</li> </ul>
+<hr>
+<h2>Support & Contact</h2>
+<ul>
+<p><li><strong>Website</strong>: <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></li> <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">linkedin.com/in/johnrippy</a></li> <li><strong>Actor Arsenal</strong>: <a href="https://actor-arsenal-site.vercel.app/" target="_blank" rel="noopener">actor-arsenal-site.vercel.app</a></li> <li><strong>Issues</strong>: Open a ticket on Apify</li> </ul>
+<hr>
+<h2>Changelog</h2>
+<h3>v2.0.0 (Current)</h3>
+<ul>
+<p><li>True MCP protocol implementation</li> <li>48+ tools across 10 categories</li> <li>Real-time data via Apify actor routing</li> <li>AI-powered analysis with Claude/GPT</li> <li>Full support for Make.com, Zapier, n8n, and webhooks</li> <li>Unified output schema</li> </ul>
+<h3>v1.0.0</h3>
+<ul>
+<p><li>Initial release with demo mode</li> <li>Basic tool structure</li> </ul>
+<hr>
+<h2>Built by John Rippy</h2>
+<p><strong>Dominate your market with intelligence.</strong></p>
+<p>GOD MODE INTEL is built by <a href="https://johnrippy.link/" target="_blank" rel="noopener">John Rippy</a>, <strong>Zapier Zappy 2025 Automation Hero of the Year</strong> winner. Specializing in B2B sales intelligence, web scraping, and automation with 280+ Apify actors and deep expertise in Make.com, Zapier, and n8n integrations.</p>
+<p><a href="https://img.shields.io/badge/Zapier-2025%20Automation%20Hero-FF4A00" target="_blank" rel="noopener">![Zappy Award Winner</a>](https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/) <a href="https://img.shields.io/badge/LinkedIn-John%20Rippy-blue" target="_blank" rel="noopener">![LinkedIn</a>](https://www.linkedin.com/in/johnrippy/) <a href="https://img.shields.io/badge/Website-johnrippy.link-green" target="_blank" rel="noopener">![Website</a>](https://johnrippy.link/) <a href="https://img.shields.io/badge/Actor%20Arsenal-280%2B%20Actors-orange" target="_blank" rel="noopener">![Actor Arsenal</a>](https://actor-arsenal-site.vercel.app/)</p>
+<p>> *"John Rippy was named Automation Hero of the Year at the 2025 Zappy Awards for his innovative work scaling sales and marketing through automation."* - <a href="https://zapier.com/blog/drive-social-media-scaling-sales-and-marketing/" target="_blank" rel="noopener">Zapier Blog</a></p>
+<hr>
+<p>*Keywords: B2B sales intelligence, lead generation, lead enrichment, competitive intelligence, LinkedIn scraper, company research, tech stack detection, review scraping, AI sales tools, MCP server, Make.com integration, Zapier integration, n8n integration, webhook automation, Apollo alternative, ZoomInfo alternative, BuiltWith alternative, sales automation, prospect discovery, local business leads, Google Maps scraper*</p>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 

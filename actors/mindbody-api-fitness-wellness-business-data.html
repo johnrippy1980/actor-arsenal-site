@@ -418,151 +418,71 @@
 
         <section class="content">
         <div class="container">
-            <h1>Mindbody API Fitness &amp; Wellness Business Data</h1>
-            <p>Access Mindbody data for fitness studios, gyms, salons, spas, and wellness businesses. Get classes, appointments, clients, staff, memberships, sales, and scheduling data. Perfect for fitness business analytics, client management, and booking integrations.</p>
-
+            <h1>Mindbody API - Fitness & Wellness Business Data</h1>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<p>Access Mindbody data for fitness studios, gyms, salons, spas, and wellness businesses. Get classes, appointments, clients, staff, memberships, sales, and scheduling data. Perfect for fitness business analytics, client management, and booking integrations.</p>
 <h2>Features</h2>
-
 <ul>
-<li><strong>Class Management</strong>: Schedules, descriptions, enrollments, waitlists</li>
-<li><strong>Client Data</strong>: Profiles, visit history, purchases, memberships, account balances</li>
-<li><strong>Appointments</strong>: Booking data, appointment types, staff schedules</li>
-<li><strong>Staff Management</strong>: Staff profiles, permissions, availability</li>
-<li><strong>Sales & Products</strong>: Services, packages, memberships, retail products</li>
-<li><strong>Multi-Location</strong>: Support for multiple business locations</li>
-<li><strong>Demo Mode</strong>: Test with realistic sample data (no credentials required)</li>
-
-</ul>
+<p><li><strong>Class Management</strong>: Schedules, descriptions, enrollments, waitlists</li> <li><strong>Client Data</strong>: Profiles, visit history, purchases, memberships, account balances</li> <li><strong>Appointments</strong>: Booking data, appointment types, staff schedules</li> <li><strong>Staff Management</strong>: Staff profiles, permissions, availability</li> <li><strong>Sales & Products</strong>: Services, packages, memberships, retail products</li> <li><strong>Multi-Location</strong>: Support for multiple business locations</li> <li><strong>Demo Mode</strong>: Test with realistic sample data (no credentials required)</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
 <h3>Task Selection</h3>
 <ul>
-<li><code>task</code>: Operation to perform</li>
-<li><code>get_classes</code> - Get upcoming classes</li>
-<li><code>get_class_schedule</code> - Get class schedule</li>
-<li><code>get_class_descriptions</code> - Get class types/descriptions</li>
-<li><code>get_enrollments</code> - Get class enrollments</li>
-<li><code>get_clients</code> - Search/list clients</li>
-<li><code>get_client_details</code> - Get specific client info</li>
-<li><code>get_client_visits</code> - Get client visit history</li>
-<li><code>get_client_purchases</code> - Get client purchase history</li>
-<li><code>get_client_memberships</code> - Get client memberships</li>
-<li><code>get_appointments</code> - Get appointments</li>
-<li><code>get_appointment_types</code> - Get appointment types</li>
-<li><code>get_staff</code> - Get staff members</li>
-<li><code>get_staff_appointments</code> - Get staff schedules</li>
-<li><code>get_services</code> - Get services offered</li>
-<li><code>get_products</code> - Get retail products</li>
-<li><code>get_packages</code> - Get packages/bundles</li>
-<li><code>get_memberships</code> - Get membership types</li>
-<li><code>get_sales</code> - Get sales transactions</li>
-<li><code>get_locations</code> - Get business locations</li>
-<li><code>get_session_types</code> - Get session types</li>
-<li><code>get_resources</code> - Get resources (rooms, equipment)</li>
-
-</ul>
+<li><code>task</code>: Operation to perform</li> </ul>  - <code>get_classes</code> - Get upcoming classes - <code>get_class_schedule</code> - Get class schedule - <code>get_class_descriptions</code> - Get class types/descriptions - <code>get_enrollments</code> - Get class enrollments - <code>get_clients</code> - Search/list clients - <code>get_client_details</code> - Get specific client info - <code>get_client_visits</code> - Get client visit history - <code>get_client_purchases</code> - Get client purchase history - <code>get_client_memberships</code> - Get client memberships - <code>get_appointments</code> - Get appointments - <code>get_appointment_types</code> - Get appointment types - <code>get_staff</code> - Get staff members - <code>get_staff_appointments</code> - Get staff schedules - <code>get_services</code> - Get services offered - <code>get_products</code> - Get retail products - <code>get_packages</code> - Get packages/bundles - <code>get_memberships</code> - Get membership types - <code>get_sales</code> - Get sales transactions - <code>get_locations</code> - Get business locations - <code>get_session_types</code> - Get session types - <code>get_resources</code> - Get resources (rooms, equipment)
 <h3>Authentication</h3>
 <ul>
-<li><code>apiKey</code>: Mindbody API Key</li>
-<li><code>siteId</code>: Business Site ID</li>
-<li><code>authorization</code>: Staff authorization token</li>
-<li><code>demoMode</code>: Run with sample data</li>
-
-</ul>
+<p><li><code>apiKey</code>: Mindbody API Key</li> <li><code>siteId</code>: Business Site ID</li> <li><code>authorization</code>: Staff authorization token</li> <li><code>demoMode</code>: Run with sample data</li> </ul>
 <h3>Filters</h3>
 <ul>
-<li><code>clientId</code>: Specific client lookup</li>
-<li><code>staffId</code>: Filter by staff member</li>
-<li><code>classId</code>: Specific class lookup</li>
-<li><code>startDate</code> / <code>endDate</code>: Date range</li>
-<li><code>locationId</code>: Filter by location</li>
-<li><code>programId</code>: Filter by program</li>
-<li><code>searchText</code>: Search term</li>
-
-</ul>
+<p><li><code>clientId</code>: Specific client lookup</li> <li><code>staffId</code>: Filter by staff member</li> <li><code>classId</code>: Specific class lookup</li> <li><code>startDate</code> / <code>endDate</code>: Date range</li> <li><code>locationId</code>: Filter by location</li> <li><code>programId</code>: Filter by program</li> <li><code>searchText</code>: Search term</li> </ul>
 <h3>Pagination</h3>
 <ul>
-<li><code>limit</code>: Max records (up to 200)</li>
-<li><code>offset</code>: Page offset</li>
-
-</ul>
+<p><li><code>limit</code>: Max records (up to 200)</li> <li><code>offset</code>: Page offset</li> </ul>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "data": [...]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"data": [...] }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-Pay only for what you use:
+<p>This actor uses <strong>pay-per-event</strong> billing: Pay only for what you use:</p>
 <ul>
-<li><strong>Class Query</strong>: $0.01 per query</li>
-<li><strong>Client Lookup</strong>: $0.01 per lookup</li>
-<li><strong>Client List</strong>: $0.02 per list</li>
-<li><strong>Appointment Query</strong>: $0.01 per query</li>
-<li><strong>Sales Query</strong>: $0.02 per query</li>
-<li><strong>Staff Query</strong>: $0.01 per query</li>
-<li><strong>Membership Query</strong>: $0.01 per query</li></p>
-
-</ul>
+<p><li><strong>Class Query</strong>: $0.01 per query</li> <li><strong>Client Lookup</strong>: $0.01 per lookup</li> <li><strong>Client List</strong>: $0.02 per list</li> <li><strong>Appointment Query</strong>: $0.01 per query</li> <li><strong>Sales Query</strong>: $0.02 per query</li> <li><strong>Staff Query</strong>: $0.01 per query</li> <li><strong>Membership Query</strong>: $0.01 per query</li> </ul>
 <h2>Use Cases</h2>
-
 <h3>Fitness Studio Owners</h3>
 <ul>
-<li>Export client data for marketing campaigns</li>
-<li>Analyze class attendance and popularity</li>
-<li>Track membership sales and retention</li>
-<li>Generate reports on staff performance</li>
-
-</ul>
+<p><li>Export client data for marketing campaigns</li> <li>Analyze class attendance and popularity</li> <li>Track membership sales and retention</li> <li>Generate reports on staff performance</li> </ul>
 <h3>Marketing Agencies</h3>
 <ul>
-<li>Sync Mindbody clients to email platforms</li>
-<li>Build automated follow-up sequences</li>
-<li>Create targeted campaigns based on visit history</li>
-<li>Track conversion from leads to members</li>
-
-</ul>
+<p><li>Sync Mindbody clients to email platforms</li> <li>Build automated follow-up sequences</li> <li>Create targeted campaigns based on visit history</li> <li>Track conversion from leads to members</li> </ul>
 <h3>Software Developers</h3>
 <ul>
-<li>Build custom dashboards and reporting</li>
-<li>Create booking widgets and integrations</li>
-<li>Sync data to CRM systems</li>
-<li>Automate membership management</li>
-
-</ul>
+<p><li>Build custom dashboards and reporting</li> <li>Create booking widgets and integrations</li> <li>Sync data to CRM systems</li> <li>Automate membership management</li> </ul>
 <h3>Business Intelligence</h3>
 <ul>
-<li>Analyze revenue trends across locations</li>
-<li>Track client lifetime value</li>
-<li>Measure class and service profitability</li>
-<li>Forecast demand and capacity</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li>Analyze revenue trends across locations</li> <li>Track client lifetime value</li> <li>Measure class and service profitability</li> <li>Forecast demand and capacity</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -591,7 +511,7 @@ Pay only for what you use:
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

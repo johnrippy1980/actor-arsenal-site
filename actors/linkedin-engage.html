@@ -479,132 +479,62 @@
         <section class="content">
         <div class="container">
             <h1>LinkedIn Engagement Automation</h1>
-            <p>Automate LinkedIn engagement to generate inbound leads. Find posts by keywords, comment on influencer content, and build authority through strategic engagement. Similar to ConnectSafely.ai.</p>
-
+<p>Automate LinkedIn engagement to generate inbound leads. Find posts by keywords, comment on influencer content, and build authority through strategic engagement. Similar to ConnectSafely.ai.</p>
 <h2>Features</h2>
-
 <h3>1. Keyword Engagement</h3>
-Find posts containing your target keywords and automatically engage with thoughtful, AI-generated comments.
-
+<p>Find posts containing your target keywords and automatically engage with thoughtful, AI-generated comments.</p>
 <ul>
-<li>Search LinkedIn for posts with specific keywords</li>
-<li>Filter by decision-maker titles (CEO, VP, Director, etc.)</li>
-<li>Generate personalized comments using your voice profile</li>
-<li>Rate-limited to stay safe on LinkedIn</li>
-
-</ul>
+<p><li>Search LinkedIn for posts with specific keywords</li> <li>Filter by decision-maker titles (CEO, VP, Director, etc.)</li> <li>Generate personalized comments using your voice profile</li> <li>Rate-limited to stay safe on LinkedIn</li> </ul>
 <h3>2. Creator Engagement</h3>
-Position yourself in influential creators' comment sections to reach their audience.
-
+<p>Position yourself in influential creators' comment sections to reach their audience.</p>
 <ul>
-<li>Target specific LinkedIn creators/influencers</li>
-<li>Automatically comment on their new posts</li>
-<li>Build relationships with industry thought leaders</li>
-<li>Get exposure to their followers</li>
-
-</ul>
+<p><li>Target specific LinkedIn creators/influencers</li> <li>Automatically comment on their new posts</li> <li>Build relationships with industry thought leaders</li> <li>Get exposure to their followers</li> </ul>
 <h3>3. Post Boosting</h3>
-Amplify your own content to reach more decision-makers.
-
+<p>Amplify your own content to reach more decision-makers.</p>
 <ul>
-<li>Share your post URL for engagement</li>
-<li>Get authentic engagement from real LinkedIn users</li>
-<li>Boost visibility beyond your immediate network</li>
-
-</ul>
+<p><li>Share your post URL for engagement</li> <li>Get authentic engagement from real LinkedIn users</li> <li>Boost visibility beyond your immediate network</li> </ul>
 <h3>4. Analytics</h3>
-Track your engagement performance and inbound leads.
-
+<p>Track your engagement performance and inbound leads.</p>
 <ul>
-<li>Comments posted per day</li>
-<li>Engagement received (likes, replies)</li>
-<li>Profile views generated</li>
-<li>Inbound connection requests</li>
-
-</ul>
+<p><li>Comments posted per day</li> <li>Engagement received (likes, replies)</li> <li>Profile views generated</li> <li>Inbound connection requests</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| See input schema | | | |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>See input schema</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "task": "keyword_engage",
-  "postsProcessed": 15,
-  "commentsPosted": 12,
-  "results": [
-    {
-      "timestamp": "2024-01-15T10:30:00Z",
-      "action": "comment",
-      "postUrl": "https://linkedin.com/posts/...",
-      "authorName": "Sarah Johnson",
-      "authorHeadline": "CEO at TechStartup",
-      "commentText": "Great insights on scaling B2B operations...",
-      "status": "success"
-    }
-  ],
-  "summary": {
-    "totalEngagements": 12,
-    "successRate": "80%",
-    "keywords": ["local SEO", "Google Business Profile"]
-  }
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"task": "keyword_engage", "postsProcessed": 15, "commentsPosted": 12, "results": [ { "timestamp": "2024-01-15T10:30:00Z", "action": "comment", "postUrl": "https://linkedin.com/posts/...", "authorName": "Sarah Johnson", "authorHeadline": "CEO at TechStartup", "commentText": "Great insights on scaling B2B operations...", "status": "success" } ], "summary": { "totalEngagements": 12, "successRate": "80%", "keywords": ["local SEO", "Google Business Profile"] } }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>comment_posted</code> | Per comment successfully posted to LinkedIn | $0.10 |
-| <code>post_searched</code> | Per post discovered via keyword search | $0.02 |
-| <code>creator_post_found</code> | Per post discovered from a creator's profile | $0.03 |
-| <code>ai_comment_generated</code> | Per AI comment generated | $0.05 |
-| <code>decision_maker_matched</code> | Per post author matching decision-maker filter | $0.02 |
-| <code>engagement_session</code> | Per complete engagement run/session | $0.50 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing: This actor uses <strong>pay-per-event</strong> pricing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>comment_posted</code></td><td>Per comment successfully posted to LinkedIn</td><td>$0.10</td></tr> <tr><td><code>post_searched</code></td><td>Per post discovered via keyword search</td><td>$0.02</td></tr> <tr><td><code>creator_post_found</code></td><td>Per post discovered from a creator's profile</td><td>$0.03</td></tr> <tr><td><code>ai_comment_generated</code></td><td>Per AI comment generated</td><td>$0.05</td></tr> <tr><td><code>decision_maker_matched</code></td><td>Per post author matching decision-maker filter</td><td>$0.02</td></tr> <tr><td><code>engagement_session</code></td><td>Per complete engagement run/session</td><td>$0.50</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>Engage with 20 posts (keyword search): ~$3.40</li>
-<li>1 session ($0.50) + 20 searches ($0.40) + 20 AI comments ($1.00) + 15 posted ($1.50)</li>
-<li>Creator engagement (5 creators, 3 posts each): ~$3.45</li>
-<li>1 session ($0.50) + 15 creator posts ($0.45) + 15 AI comments ($0.75) + 12 posted ($1.20) + 12 decision makers ($0.24)</li>
-
-</ul>
+<p><li>Engage with 20 posts (keyword search): ~$3.40</li> </ul>  - 1 session ($0.50) + 20 searches ($0.40) + 20 AI comments ($1.00) + 15 posted ($1.50)</p>
+<ul>
+<li>Creator engagement (5 creators, 3 posts each): ~$3.45</li> </ul>  - 1 session ($0.50) + 15 creator posts ($0.45) + 15 AI comments ($0.75) + 12 posted ($1.20) + 12 decision makers ($0.24)
 <h2>Use Cases</h2>
-
 <ul>
-<li>Data collection</li>
-<li>Research</li>
-<li>Automation</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li>Data collection</li> <li>Research</li> <li>Automation</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -633,7 +563,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

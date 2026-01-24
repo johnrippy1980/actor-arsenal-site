@@ -461,144 +461,59 @@
 
         <section class="content">
         <div class="container">
-            <h1>Nextdoor Scraper</h1>
-            <p>Scrape Nextdoor local business recommendations, neighborhood posts, and community data. Extract verified neighbor endorsements, vote counts, and business mentions. Essential for hyper-local market research and lead generation. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
+            <h1>Nextdoor Local Business & Recommendations Scraper</h1>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<p>Scrape Nextdoor local business recommendations, neighborhood posts, and community data. Extract verified neighbor endorsements, vote counts, and business mentions. Essential for hyper-local market research and lead generation. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <ul>
-<li><strong>Business Recommendations</strong>: Scrape recommended businesses with neighbor endorsements</li>
-<li><strong>Neighborhood Posts</strong>: Extract posts mentioning businesses or services</li>
-<li><strong>Category Filtering</strong>: Filter by home services, restaurants, automotive, etc.</li>
-<li><strong>Comment Extraction</strong>: Optionally scrape comments and replies</li>
-<li><strong>Vote Counts</strong>: Get upvote/thanks metrics for social proof</li>
-<li><strong>Multi-Neighborhood</strong>: Scrape multiple neighborhoods in one run</li>
-
-</ul>
+<p><li><strong>Business Recommendations</strong>: Scrape recommended businesses with neighbor endorsements</li> <li><strong>Neighborhood Posts</strong>: Extract posts mentioning businesses or services</li> <li><strong>Category Filtering</strong>: Filter by home services, restaurants, automotive, etc.</li> <li><strong>Comment Extraction</strong>: Optionally scrape comments and replies</li> <li><strong>Vote Counts</strong>: Get upvote/thanks metrics for social proof</li> <li><strong>Multi-Neighborhood</strong>: Scrape multiple neighborhoods in one run</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"url": "https://example.com", "maxResults": 100 }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Description |
-|-----------|------|-------------|
-| <code>scrapeType</code> | string | Type of content: recommendations, posts, businesses, events |
-| <code>neighborhoods</code> | array | List of neighborhood URLs or slugs to scrape |
-| <code>searchQuery</code> | string | Search term for finding specific businesses/posts |
-| <code>category</code> | string | Business category filter |
-| <code>maxResults</code> | number | Maximum items to scrape (default: 100) |
-| <code>includeComments</code> | boolean | Extract comments/replies (default: false) |
-| <code>includeVotes</code> | boolean | Extract vote counts (default: true) |
-| <code>minRecommendations</code> | number | Minimum recommendation count filter |
-| <code>dateRange</code> | string | Filter by date: all, today, week, month, year |
-| <code>proxyConfiguration</code> | object | Proxy settings |
-| <code>demoMode</code> | boolean | Return sample data for testing |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>scrapeType</code></td><td>string</td><td>Type of content: recommendations, posts, businesses, events</td></tr> <tr><td><code>neighborhoods</code></td><td>array</td><td>List of neighborhood URLs or slugs to scrape</td></tr> <tr><td><code>searchQuery</code></td><td>string</td><td>Search term for finding specific businesses/posts</td></tr> <tr><td><code>category</code></td><td>string</td><td>Business category filter</td></tr> <tr><td><code>maxResults</code></td><td>number</td><td>Maximum items to scrape (default: 100)</td></tr> <tr><td><code>includeComments</code></td><td>boolean</td><td>Extract comments/replies (default: false)</td></tr> <tr><td><code>includeVotes</code></td><td>boolean</td><td>Extract vote counts (default: true)</td></tr> <tr><td><code>minRecommendations</code></td><td>number</td><td>Minimum recommendation count filter</td></tr> <tr><td><code>dateRange</code></td><td>string</td><td>Filter by date: all, today, week, month, year</td></tr> <tr><td><code>proxyConfiguration</code></td><td>object</td><td>Proxy settings</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>Return sample data for testing</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Business Recommendation Output</h3>
-
-<pre><code>{
-  "businessName": "Mike's Plumbing",
-  "category": "Plumbers",
-  "recommendationCount": 47,
-  "latestRecommendation": {
-    "author": "Sarah M.",
-    "neighborhood": "Coral Gables",
-    "text": "Mike fixed our water heater same day. Fair prices and very professional!",
-    "date": "2024-12-15",
-    "upvotes": 12
-  },
-  "mentions": [
-    {
-      "postType": "recommendation",
-      "text": "Looking for a good plumber? Mike's Plumbing is amazing!",
-      "author": "John D.",
-      "neighborhood": "Coconut Grove",
-      "date": "2024-12-10",
-      "upvotes": 8,
-      "comments": 3
-    }
-  ],
-  "neighborhoods": ["Coral Gables", "Coconut Grove", "South Miami"],
-  "phone": "(305) 555-1234",
-  "website": "https://mikesplumbing.com",
-  "scrapedAt": "2024-12-21T10:30:00.000Z"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"businessName": "Mike's Plumbing", "category": "Plumbers", "recommendationCount": 47, "latestRecommendation": { "author": "Sarah M.", "neighborhood": "Coral Gables", "text": "Mike fixed our water heater same day. Fair prices and very professional!", "date": "2024-12-15", "upvotes": 12 }, "mentions": [ { "postType": "recommendation", "text": "Looking for a good plumber? Mike's Plumbing is amazing!", "author": "John D.", "neighborhood": "Coconut Grove", "date": "2024-12-10", "upvotes": 8, "comments": 3 } ], "neighborhoods": ["Coral Gables", "Coconut Grove", "South Miami"], "phone": "(305) 555-1234", "website": "https://mikesplumbing.com", "scrapedAt": "2024-12-21T10:30:00.000Z" }</code></pre>
 <h3>Neighborhood Post Output</h3>
-
-<pre><code>{
-  "postType": "recommendation_request",
-  "title": "Need a reliable electrician",
-  "content": "Looking for an electrician to install a ceiling fan. Any recommendations?",
-  "author": "Maria G.",
-  "neighborhood": "Miami Beach",
-  "date": "2024-12-20",
-  "upvotes": 5,
-  "commentCount": 12,
-  "comments": [
-    {
-      "author": "Tom H.",
-      "text": "I highly recommend Spark Electric. They did great work at my place.",
-      "date": "2024-12-20",
-      "upvotes": 3
-    }
-  ],
-  "businessMentions": ["Spark Electric", "A1 Electrical"],
-  "scrapedAt": "2024-12-21T10:30:00.000Z"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"postType": "recommendation_request", "title": "Need a reliable electrician", "content": "Looking for an electrician to install a ceiling fan. Any recommendations?", "author": "Maria G.", "neighborhood": "Miami Beach", "date": "2024-12-20", "upvotes": 5, "commentCount": 12, "comments": [ { "author": "Tom H.", "text": "I highly recommend Spark Electric. They did great work at my place.", "date": "2024-12-20", "upvotes": 3 } ], "businessMentions": ["Spark Electric", "A1 Electrical"], "scrapedAt": "2024-12-21T10:30:00.000Z" }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>apify-actor-start</code> | Base cost per run | $0.15 |
-| <code>item_scraped</code> | Per recommendation/post scraped | $0.008 |
-| <code>comment_scraped</code> | Per comment extracted | $0.003 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing: This actor uses <strong>pay-per-event</strong> pricing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>apify-actor-start</code></td><td>Base cost per run</td><td>$0.15</td></tr> <tr><td><code>item_scraped</code></td><td>Per recommendation/post scraped</td><td>$0.008</td></tr> <tr><td><code>comment_scraped</code></td><td>Per comment extracted</td><td>$0.003</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>100 recommendations with 5 comments each: $0.15 + (100 × $0.008) + (500 × $0.003) = <strong>$2.45</strong></li>
-<li>50 posts, no comments: $0.15 + (50 × $0.008) = <strong>$0.55</strong></li>
-
-</ul>
+<p><li>100 recommendations with 5 comments each: $0.15 + (100 × $0.008) + (500 × $0.003) = <strong>$2.45</strong></li> <li>50 posts, no comments: $0.15 + (50 × $0.008) = <strong>$0.55</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <ul>
-<li><strong>Lead Generation</strong>: Find businesses being recommended by locals</li>
-<li><strong>Competitor Research</strong>: See which competitors get mentioned and why</li>
-<li><strong>Market Research</strong>: Understand local sentiment and preferences</li>
-<li><strong>Reputation Monitoring</strong>: Track mentions of your business</li>
-<li><strong>Local SEO</strong>: Discover citation and partnership opportunities</li>
-<li><strong>Content Ideas</strong>: Find trending local topics and concerns</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Lead Generation</strong>: Find businesses being recommended by locals</li> <li><strong>Competitor Research</strong>: See which competitors get mentioned and why</li> <li><strong>Market Research</strong>: Understand local sentiment and preferences</li> <li><strong>Reputation Monitoring</strong>: Track mentions of your business</li> <li><strong>Local SEO</strong>: Discover citation and partnership opportunities</li> <li><strong>Content Ideas</strong>: Find trending local topics and concerns</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -627,7 +542,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

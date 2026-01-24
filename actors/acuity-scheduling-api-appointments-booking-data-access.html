@@ -390,137 +390,68 @@
 
         <section class="content">
         <div class="container">
-            <h1>Acuity Scheduling API Appointments & Booking Data Access</h1>
-            <p>Access Acuity Scheduling data for appointments, clients, calendars, availability, and packages. Perfect for consultants, coaches, salons, and service businesses using Acuity (Squarespace Scheduling) for online booking.</p>
-
+            <h1>Acuity Scheduling API - Appointments & Booking Data</h1>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<p>Access Acuity Scheduling data for appointments, clients, calendars, availability, and packages. Perfect for consultants, coaches, salons, and service businesses using Acuity (Squarespace Scheduling) for online booking.</p>
 <h2>Features</h2>
-
 <ul>
-<li><strong>Appointments</strong>: Upcoming, past, and canceled appointments</li>
-<li><strong>Clients</strong>: Client database with contact info and history</li>
-<li><strong>Calendars</strong>: Staff calendars and availability</li>
-<li><strong>Appointment Types</strong>: Service offerings and pricing</li>
-<li><strong>Packages</strong>: Prepaid packages and bundles</li>
-<li><strong>Availability</strong>: Real-time availability slots</li>
-<li><strong>Forms</strong>: Intake forms and custom fields</li>
-<li><strong>Certificates</strong>: Gift certificates and credits</li>
-<li><strong>Demo Mode</strong>: Test with realistic sample data</li>
-
-</ul>
+<p><li><strong>Appointments</strong>: Upcoming, past, and canceled appointments</li> <li><strong>Clients</strong>: Client database with contact info and history</li> <li><strong>Calendars</strong>: Staff calendars and availability</li> <li><strong>Appointment Types</strong>: Service offerings and pricing</li> <li><strong>Packages</strong>: Prepaid packages and bundles</li> <li><strong>Availability</strong>: Real-time availability slots</li> <li><strong>Forms</strong>: Intake forms and custom fields</li> <li><strong>Certificates</strong>: Gift certificates and credits</li> <li><strong>Demo Mode</strong>: Test with realistic sample data</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
 <h3>Task Selection</h3>
 <ul>
-<li><code>task</code>: Operation to perform</li>
-<li><code>get_appointments</code> - List appointments</li>
-<li><code>get_appointment_details</code> - Get specific appointment</li>
-<li><code>get_clients</code> - List clients</li>
-<li><code>get_client_details</code> - Get client details</li>
-<li><code>get_calendars</code> - List calendars/staff</li>
-<li><code>get_availability</code> - Get available time slots</li>
-<li><code>get_appointment_types</code> - List service types</li>
-<li><code>get_packages</code> - List packages</li>
-<li><code>get_products</code> - List products</li>
-<li><code>get_coupons</code> - List discount coupons</li>
-<li><code>get_forms</code> - List intake forms</li>
-<li><code>get_certificates</code> - List gift certificates</li>
-<li><code>get_blocks</code> - List blocked time</li>
-
-</ul>
+<li><code>task</code>: Operation to perform</li> </ul>  - <code>get_appointments</code> - List appointments - <code>get_appointment_details</code> - Get specific appointment - <code>get_clients</code> - List clients - <code>get_client_details</code> - Get client details - <code>get_calendars</code> - List calendars/staff - <code>get_availability</code> - Get available time slots - <code>get_appointment_types</code> - List service types - <code>get_packages</code> - List packages - <code>get_products</code> - List products - <code>get_coupons</code> - List discount coupons - <code>get_forms</code> - List intake forms - <code>get_certificates</code> - List gift certificates - <code>get_blocks</code> - List blocked time
 <h3>Authentication</h3>
 <ul>
-<li><code>userId</code>: Acuity User ID</li>
-<li><code>apiKey</code>: Acuity API Key</li>
-<li><code>demoMode</code>: Run with sample data</li>
-
-</ul>
+<p><li><code>userId</code>: Acuity User ID</li> <li><code>apiKey</code>: Acuity API Key</li> <li><code>demoMode</code>: Run with sample data</li> </ul>
 <h3>Filters</h3>
 <ul>
-<li><code>appointmentId</code>: Specific appointment</li>
-<li><code>clientId</code>: Filter by client</li>
-<li><code>calendarId</code>: Filter by calendar/staff</li>
-<li><code>appointmentTypeId</code>: Filter by service type</li>
-<li><code>startDate</code> / <code>endDate</code>: Date range</li>
-<li><code>email</code>: Filter by client email</li>
-<li><code>canceled</code>: Include canceled appointments</li>
-<li><code>month</code>: Month for availability</li>
-
-</ul>
+<p><li><code>appointmentId</code>: Specific appointment</li> <li><code>clientId</code>: Filter by client</li> <li><code>calendarId</code>: Filter by calendar/staff</li> <li><code>appointmentTypeId</code>: Filter by service type</li> <li><code>startDate</code> / <code>endDate</code>: Date range</li> <li><code>email</code>: Filter by client email</li> <li><code>canceled</code>: Include canceled appointments</li> <li><code>month</code>: Month for availability</li> </ul>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "data": [...]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"data": [...] }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-Pay only for what you use:
+<p>This actor uses <strong>pay-per-event</strong> billing: Pay only for what you use:</p>
 <ul>
-<li><strong>Appointment Query</strong>: $0.01 per query</li>
-<li><strong>Client Lookup</strong>: $0.01 per lookup</li>
-<li><strong>Availability Check</strong>: $0.01 per check</li>
-<li><strong>Calendar Query</strong>: $0.005 per query</li>
-<li><strong>Package/Product Query</strong>: $0.005 per query</li></p>
-
-</ul>
+<p><li><strong>Appointment Query</strong>: $0.01 per query</li> <li><strong>Client Lookup</strong>: $0.01 per lookup</li> <li><strong>Availability Check</strong>: $0.01 per check</li> <li><strong>Calendar Query</strong>: $0.005 per query</li> <li><strong>Package/Product Query</strong>: $0.005 per query</li> </ul>
 <h2>Use Cases</h2>
-
 <h3>Consultants & Coaches</h3>
 <ul>
-<li>Export client contact lists for marketing</li>
-<li>Analyze appointment trends and busy times</li>
-<li>Track package usage and revenue</li>
-<li>Generate client reports</li>
-
-</ul>
+<p><li>Export client contact lists for marketing</li> <li>Analyze appointment trends and busy times</li> <li>Track package usage and revenue</li> <li>Generate client reports</li> </ul>
 <h3>Salons & Spas</h3>
 <ul>
-<li>Monitor stylist/therapist bookings</li>
-<li>Track no-shows and cancellations</li>
-<li>Analyze service popularity</li>
-<li>Export client data for promotions</li>
-
-</ul>
+<p><li>Monitor stylist/therapist bookings</li> <li>Track no-shows and cancellations</li> <li>Analyze service popularity</li> <li>Export client data for promotions</li> </ul>
 <h3>Healthcare Providers</h3>
 <ul>
-<li>Patient appointment history</li>
-<li>Availability management</li>
-<li>Intake form responses</li>
-<li>Compliance reporting</li>
-
-</ul>
+<p><li>Patient appointment history</li> <li>Availability management</li> <li>Intake form responses</li> <li>Compliance reporting</li> </ul>
 <h3>Business Analytics</h3>
 <ul>
-<li>Revenue forecasting</li>
-<li>Capacity utilization</li>
-<li>Client retention analysis</li>
-<li>Marketing campaign tracking</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li>Revenue forecasting</li> <li>Capacity utilization</li> <li>Client retention analysis</li> <li>Marketing campaign tracking</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -549,7 +480,7 @@ Pay only for what you use:
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

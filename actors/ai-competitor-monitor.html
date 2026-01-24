@@ -461,199 +461,61 @@
 
         <section class="content">
         <div class="container">
-            <h1>AI-Enhanced Competitor Monitor with Strategic Intelligence</h1>
-            <p>AI-Powered Competitive Intelligence for Local Businesses. Track GBP changes, keyword rankings, Google Ads activity, and social media presence with Claude AI strategic analysis. BYOK (Bring Your Own Key) - Use your Anthropic API key for AI-powered competitive strategy recommendations, market positioning insights, and actionable next steps. v2.0 Features: - AI Strategic Analysis of competitor moves - Local SERP ranking tracking (position + local pack status) - Google Ads detection (discover if competitors are running ads) - Social media profile discovery (Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok) - Keyword ranking comparison between you and competitors Core Features: - GBP profile monitoring (reviews, ratings, photos, posts) - Change detection with importance scoring (low/medium/high) - AI-generated strategic recommendations based on competitor activity - Compare your business vs competitors side-by-side - Webhook alerts for important changes - Historical change tracking via dataset comparison AI Analysis Features: - Competitive strategy recommendations - Market positioning insights - Threat assessment with priority ranking - Opportunity identification - Actionable next steps. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
+            <h1>AI-Enhanced Competitor Monitor - Strategic Intelligence with Claude AI Analysis</h1>
+<p>AI-Powered Competitive Intelligence for Local Businesses. Track GBP changes, keyword rankings, Google Ads activity, and social media presence with Claude AI strategic analysis. BYOK (Bring Your Own Key) - Use your Anthropic API key for AI-powered competitive strategy recommendations, market positioning insights, and actionable next steps. v2.0 Features: - AI Strategic Analysis of competitor moves - Local SERP ranking tracking (position + local pack status) - Google Ads detection (discover if competitors are running ads) - Social media profile discovery (Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok) - Keyword ranking comparison between you and competitors Core Features: - GBP profile monitoring (reviews, ratings, photos, posts) - Change detection with importance scoring (low/medium/high) - AI-generated strategic recommendations based on competitor activity - Compare your business vs competitors side-by-side - Webhook alerts for important changes - Historical change tracking via dataset comparison AI Analysis Features: - Competitive strategy recommendations - Market positioning insights - Threat assessment with priority ranking - Opportunity identification - Actionable next steps. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <h3>Core Competitor Tracking</h3>
 <ul>
-<li><strong>Multi-Competitor Tracking</strong> - Monitor up to 20 competitors</li>
-<li><strong>Review Monitoring</strong> - New reviews, rating changes, response patterns</li>
-<li><strong>Post Tracking</strong> - GBP post frequency and content themes</li>
-<li><strong>Profile Change Detection</strong> - Hours, photos, descriptions, categories</li>
-<li><strong>Comparison Dashboard</strong> - Your business vs competitors</li>
-<li><strong>Smart Alerts</strong> - Get notified of significant changes</li>
-
-</ul>
+<p><li><strong>Multi-Competitor Tracking</strong> - Monitor up to 20 competitors</li> <li><strong>Review Monitoring</strong> - New reviews, rating changes, response patterns</li> <li><strong>Post Tracking</strong> - GBP post frequency and content themes</li> <li><strong>Profile Change Detection</strong> - Hours, photos, descriptions, categories</li> <li><strong>Comparison Dashboard</strong> - Your business vs competitors</li> <li><strong>Smart Alerts</strong> - Get notified of significant changes</li> </ul>
 <h3>v2.0 Enhanced Features</h3>
 <ul>
-<li><strong>Keyword Rankings</strong> - Track local SERP positions for target keywords</li>
-<li><strong>Google Ads Detection</strong> - Discover if competitors are running ads</li>
-<li><strong>Social Media Discovery</strong> - Find competitor profiles on Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok</li>
-
-</ul>
+<p><li><strong>Keyword Rankings</strong> - Track local SERP positions for target keywords</li> <li><strong>Google Ads Detection</strong> - Discover if competitors are running ads</li> <li><strong>Social Media Discovery</strong> - Find competitor profiles on Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok</li> </ul>
 <h3>AI Analysis (BYOK - Bring Your Own Key)</h3>
-Provide your Anthropic API key to unlock Claude AI-powered features:
-
+<p>Provide your Anthropic API key to unlock Claude AI-powered features:</p>
 <ul>
-<li><strong>Strategic Summary</strong> - AI analyzes all competitor data and provides actionable insights</li>
-<li><strong>Threat Assessment</strong> - Prioritized list of competitive threats to address</li>
-<li><strong>Opportunity Identification</strong> - Market opportunities based on competitor gaps</li>
-<li><strong>Recommended Actions</strong> - Specific next steps ranked by impact</li>
-<li><strong>Competition Score</strong> - 0-100 overall competitive position rating</li>
-
-</ul>
+<p><li><strong>Strategic Summary</strong> - AI analyzes all competitor data and provides actionable insights</li> <li><strong>Threat Assessment</strong> - Prioritized list of competitive threats to address</li> <li><strong>Opportunity Identification</strong> - Market opportunities based on competitor gaps</li> <li><strong>Recommended Actions</strong> - Specific next steps ranked by impact</li> <li><strong>Competition Score</strong> - 0-100 overall competitive position rating</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Required | Description |
-|-----------|----------|-------------|
-| <code>yourBusiness</code> | No | Your business info for comparison |
-| <code>competitors</code> | Yes | Array of competitors (name + placeId/searchQuery) |
-| <code>previousRunId</code> | No | Previous dataset ID for change detection |
-| <code>trackReviews</code> | No | Monitor reviews (default: true) |
-| <code>trackPosts</code> | No | Monitor GBP posts (default: true) |
-| <code>trackPhotos</code> | No | Monitor photos (default: true) |
-| <code>trackProfileChanges</code> | No | Monitor profile updates (default: true) |
-| <code>trackRankings</code> | No | Monitor keyword rankings (default: false) |
-| <code>targetKeywords</code> | No | Keywords to track rankings for |
-| <code>targetLocation</code> | No | Location for ranking tracking |
-| <code>detectGoogleAds</code> | No | Check for competitor Google Ads (default: false) |
-| <code>trackSocialMedia</code> | No | Find social media profiles (default: false) |
-| <code>webhookUrl</code> | No | URL for alert notifications |
-| <code>alertThreshold</code> | No | Minimum importance for alerts (all/medium/high) |
-| <code>anthropicApiKey</code> | No | Your Anthropic API key for AI features |
-| <code>enableAiAnalysis</code> | No | Enable/disable AI analysis (default: true) |
-| <code>demoMode</code> | No | Return sample data without scraping |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>yourBusiness</code></td><td>No</td><td>Your business info for comparison</td></tr> <tr><td><code>competitors</code></td><td>Yes</td><td>Array of competitors (name + placeId/searchQuery)</td></tr> <tr><td><code>previousRunId</code></td><td>No</td><td>Previous dataset ID for change detection</td></tr> <tr><td><code>trackReviews</code></td><td>No</td><td>Monitor reviews (default: true)</td></tr> <tr><td><code>trackPosts</code></td><td>No</td><td>Monitor GBP posts (default: true)</td></tr> <tr><td><code>trackPhotos</code></td><td>No</td><td>Monitor photos (default: true)</td></tr> <tr><td><code>trackProfileChanges</code></td><td>No</td><td>Monitor profile updates (default: true)</td></tr> <tr><td><code>trackRankings</code></td><td>No</td><td>Monitor keyword rankings (default: false)</td></tr> <tr><td><code>targetKeywords</code></td><td>No</td><td>Keywords to track rankings for</td></tr> <tr><td><code>targetLocation</code></td><td>No</td><td>Location for ranking tracking</td></tr> <tr><td><code>detectGoogleAds</code></td><td>No</td><td>Check for competitor Google Ads (default: false)</td></tr> <tr><td><code>trackSocialMedia</code></td><td>No</td><td>Find social media profiles (default: false)</td></tr> <tr><td><code>webhookUrl</code></td><td>No</td><td>URL for alert notifications</td></tr> <tr><td><code>alertThreshold</code></td><td>No</td><td>Minimum importance for alerts (all/medium/high)</td></tr> <tr><td><code>anthropicApiKey</code></td><td>No</td><td>Your Anthropic API key for AI features</td></tr> <tr><td><code>enableAiAnalysis</code></td><td>No</td><td>Enable/disable AI analysis (default: true)</td></tr> <tr><td><code>demoMode</code></td><td>No</td><td>Return sample data without scraping</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Standard Output (Per Competitor)</h3>
-<pre><code>{
-  "competitor": "Bob's Plumbing",
-  "placeId": "ChIJ...",
-  "monitorDate": "2024-12-26T00:00:00.000Z",
-  "currentState": {
-    "rating": 4.5,
-    "reviewCount": 156,
-    "photoCount": 42,
-    "lastPost": "2024-12-25",
-    "category": "Plumber",
-    "website": "https://bobsplumbing.com"
-  },
-  "rankings": {
-    "plumber dallas": { "position": 3, "inLocalPack": true },
-    "emergency plumber": { "position": 7, "inLocalPack": false }
-  },
-  "googleAds": {
-    "detected": true,
-    "adCopy": "24/7 Emergency Plumbing - Call Now!"
-  },
-  "socialProfiles": {
-    "facebook": "https://facebook.com/bobsplumbing",
-    "instagram": "https://instagram.com/bobsplumbing"
-  },
-  "changes": [
-    {
-      "type": "new_review",
-      "importance": "medium",
-      "details": {
-        "rating": 5,
-        "snippet": "Great service, highly recommend!"
-      }
-    }
-  ],
-  "comparison": {
-    "ratingDiff": -0.2,
-    "reviewCountDiff": 14,
-    "advantage": "You have more photos, they have more reviews"
-  }
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"competitor": "Bob's Plumbing", "placeId": "ChIJ...", "monitorDate": "2024-12-26T00:00:00.000Z", "currentState": { "rating": 4.5, "reviewCount": 156, "photoCount": 42, "lastPost": "2024-12-25", "category": "Plumber", "website": "https://bobsplumbing.com" }, "rankings": { "plumber dallas": { "position": 3, "inLocalPack": true }, "emergency plumber": { "position": 7, "inLocalPack": false } }, "googleAds": { "detected": true, "adCopy": "24/7 Emergency Plumbing - Call Now!" }, "socialProfiles": { "facebook": "https://facebook.com/bobsplumbing", "instagram": "https://instagram.com/bobsplumbing" }, "changes": [ { "type": "new_review", "importance": "medium", "details": { "rating": 5, "snippet": "Great service, highly recommend!" } } ], "comparison": { "ratingDiff": -0.2, "reviewCountDiff": 14, "advantage": "You have more photos, they have more reviews" } }</code></pre>
 <h3>AI Strategic Analysis Output</h3>
-When AI analysis is enabled, a separate dataset item is pushed:
-
-<pre><code>{
-  "type": "ai_strategic_analysis",
-  "overallScore": 72,
-  "strategicSummary": "Your competitive position is moderately strong. Key threats include Bob's Plumbing's aggressive review acquisition and Quick Fix's Google Ads presence. Opportunities exist in social media engagement and emergency service positioning.",
-  "threats": [
-    {
-      "competitor": "Bob's Plumbing",
-      "threat": "Gaining reviews 3x faster than you",
-      "priority": "high",
-      "recommendation": "Implement post-service review request automation"
-    },
-    {
-      "competitor": "Quick Fix Plumbers",
-      "threat": "Running Google Ads on your brand keywords",
-      "priority": "medium",
-      "recommendation": "Consider defensive brand bidding or SEO optimization"
-    }
-  ],
-  "opportunities": [
-    {
-      "area": "Social Media",
-      "insight": "Competitors have minimal Instagram presence",
-      "action": "Establish Instagram with before/after project photos"
-    },
-    {
-      "area": "Emergency Services",
-      "insight": "No competitor ranks for '24 hour plumber'",
-      "action": "Create dedicated landing page for emergency services"
-    }
-  ],
-  "recommendedActions": [
-    "Set up automated review request system (high impact)",
-    "Create Instagram business profile with project portfolio",
-    "Optimize for 'emergency plumber' and '24 hour plumber' keywords",
-    "Add more service area photos to GBP profile"
-  ],
-  "analyzedAt": "2024-12-26T12:00:00.000Z",
-  "competitorsAnalyzed": 5
-}
-</code></pre>
-
+<p>When AI analysis is enabled, a separate dataset item is pushed:</p>
+<pre><code class="language-json">{
+<p>"type": "ai_strategic_analysis", "overallScore": 72, "strategicSummary": "Your competitive position is moderately strong. Key threats include Bob's Plumbing's aggressive review acquisition and Quick Fix's Google Ads presence. Opportunities exist in social media engagement and emergency service positioning.", "threats": [ { "competitor": "Bob's Plumbing", "threat": "Gaining reviews 3x faster than you", "priority": "high", "recommendation": "Implement post-service review request automation" }, { "competitor": "Quick Fix Plumbers", "threat": "Running Google Ads on your brand keywords", "priority": "medium", "recommendation": "Consider defensive brand bidding or SEO optimization" } ], "opportunities": [ { "area": "Social Media", "insight": "Competitors have minimal Instagram presence", "action": "Establish Instagram with before/after project photos" }, { "area": "Emergency Services", "insight": "No competitor ranks for '24 hour plumber'", "action": "Create dedicated landing page for emergency services" } ], "recommendedActions": [ "Set up automated review request system (high impact)", "Create Instagram business profile with project portfolio", "Optimize for 'emergency plumber' and '24 hour plumber' keywords", "Add more service area photos to GBP profile" ], "analyzedAt": "2024-12-26T12:00:00.000Z", "competitorsAnalyzed": 5 }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>apify-actor-start</code> | Base cost per run | $0.10 |
-| <code>competitor_analyzed</code> | Per competitor monitored | $0.03 |
-| <code>review_analyzed</code> | Per review analyzed | $0.02 |
-| AI Analysis | Uses your own Anthropic API key | $0.00 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing: This actor uses <strong>pay-per-event</strong> pricing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>apify-actor-start</code></td><td>Base cost per run</td><td>$0.10</td></tr> <tr><td><code>competitor_analyzed</code></td><td>Per competitor monitored</td><td>$0.03</td></tr> <tr><td><code>review_analyzed</code></td><td>Per review analyzed</td><td>$0.02</td></tr> <tr><td>AI Analysis</td><td>Uses your own Anthropic API key</td><td>$0.00</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>5 competitors basic: $0.10 + (5 × $0.03) = <strong>$0.25</strong></li>
-<li>10 competitors with reviews + AI: $0.10 + (10 × $0.03) + (10 × $0.02) = <strong>$0.60</strong> + your Anthropic API usage</li>
-
-</ul>
+<p><li>5 competitors basic: $0.10 + (5 × $0.03) = <strong>$0.25</strong></li> <li>10 competitors with reviews + AI: $0.10 + (10 × $0.03) + (10 × $0.02) = <strong>$0.60</strong> + your Anthropic API usage</li> </ul>
 <h2>Use Cases</h2>
-
-<p>1. <strong>Local SEO Agencies</strong> - Monitor client competitors at scale
-2. <strong>Multi-Location Businesses</strong> - Track competitors in each market
-3. <strong>Franchise Operations</strong> - Competitive intelligence across territories
-4. <strong>Strategy Planning</strong> - Data-driven competitive positioning</p>
-
-<p>---</p>
-
-<p>---</p>
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<ol>
+<p><li><strong>Local SEO Agencies</strong> - Monitor client competitors at scale</li> <li><strong>Multi-Location Businesses</strong> - Track competitors in each market</li> <li><strong>Franchise Operations</strong> - Competitive intelligence across territories</li> <li><strong>Strategy Planning</strong> - Data-driven competitive positioning</li> </ol>
+<hr>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -682,7 +544,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

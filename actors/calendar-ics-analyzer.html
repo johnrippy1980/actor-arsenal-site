@@ -462,192 +462,61 @@
         <section class="content">
         <div class="container">
             <h1>Calendar ICS Analyzer</h1>
-            <p>Upload your .ics calendar export and get a comprehensive meeting culture analysis with costs, email scores, and actionable recommendations. Generate PDF reports.</p>
-
+<p>Upload your .ics calendar export and get a comprehensive meeting culture analysis with costs, email scores, and actionable recommendations. Generate PDF reports.</p>
 <h2>Features</h2>
-
 <ul>
-<li>Automated data collection</li>
-<li>Structured output format</li>
-<li>Error handling</li>
-<li>Pay-per-event billing</li>
-
-</ul>
+<p><li>Automated data collection</li> <li>Structured output format</li> <li>Error handling</li> <li>Pay-per-event billing</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| See input schema | | | |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>See input schema</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Executive Summary</h3>
-
-<pre><code>{
-  "summary": {
-    "totalMeetings": 156,
-    "totalHours": 312,
-    "totalCost": 22500,
-    "meetingCultureScore": 62,
-    "weeklyAverage": {
-      "meetings": 12,
-      "hours": 24,
-      "cost": 1730
-    }
-  },
-  "topInsights": [
-    "34% of your meetings could have been emails",
-    "Your most expensive recurring meeting costs $12,400/year",
-    "You have 3.2 hours of focus time per day on average",
-    "Tuesday and Wednesday are your heaviest meeting days"
-  ],
-  "recommendations": [
-    {
-      "priority": "high",
-      "action": "Cancel or convert 'Weekly Status Sync'",
-      "potentialSavings": 8320,
-      "rationale": "Email score of 85%, 16 attendees, no agenda"
-    }
-  ]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"summary": { "totalMeetings": 156, "totalHours": 312, "totalCost": 22500, "meetingCultureScore": 62, "weeklyAverage": { "meetings": 12, "hours": 24, "cost": 1730 } }, "topInsights": [ "34% of your meetings could have been emails", "Your most expensive recurring meeting costs $12,400/year", "You have 3.2 hours of focus time per day on average", "Tuesday and Wednesday are your heaviest meeting days" ], "recommendations": [ { "priority": "high", "action": "Cancel or convert 'Weekly Status Sync'", "potentialSavings": 8320, "rationale": "Email score of 85%, 16 attendees, no agenda" } ] }</code></pre>
 <h3>Full Analysis</h3>
-
-<pre><code>{
-  "overview": {
-    "periodAnalyzed": "2024-01-01 to 2024-03-31",
-    "totalMeetings": 156,
-    "totalHours": 312,
-    "totalCost": 22500,
-    "averageMeetingLength": 48,
-    "averageAttendees": 4.2
-  },
-  "meetingCultureScore": {
-    "overall": 62,
-    "breakdown": {
-      "focusTime": 68,
-      "fragmentation": 55,
-      "recurringEfficiency": 60,
-      "attendeeOptimization": 65
-    }
-  },
-  "costBreakdown": {
-    "recurring": 18200,
-    "oneTime": 4300,
-    "byDayOfWeek": {
-      "monday": 4200,
-      "tuesday": 5800,
-      "wednesday": 5200,
-      "thursday": 4100,
-      "friday": 3200
-    }
-  },
-  "asyncCandidates": [
-    {
-      "title": "Weekly Status Sync",
-      "emailScore": 85,
-      "annualCost": 8320,
-      "reason": "Status updates work better async"
-    }
-  ],
-  "recurringMeetings": [
-    {
-      "title": "Team Standup",
-      "frequency": "daily",
-      "annualCost": 15600,
-      "attendees": 8,
-      "emailScore": 72,
-      "recommendation": "Consider 3x/week instead of daily"
-    }
-  ],
-  "focusTimeAnalysis": {
-    "averageBlocksPerDay": 2.1,
-    "averageBlockLength": 95,
-    "fragmentationScore": 55,
-    "bestFocusDay": "Friday",
-    "worstFocusDay": "Wednesday"
-  },
-  "recommendations": [...],
-  "cta": {
-    "message": "Get real-time tracking with Meeting Cost Tracker",
-    "url": "https://meeting.localhowl.com"
-  }
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"overview": { "periodAnalyzed": "2024-01-01 to 2024-03-31", "totalMeetings": 156, "totalHours": 312, "totalCost": 22500, "averageMeetingLength": 48, "averageAttendees": 4.2 }, "meetingCultureScore": { "overall": 62, "breakdown": { "focusTime": 68, "fragmentation": 55, "recurringEfficiency": 60, "attendeeOptimization": 65 } }, "costBreakdown": { "recurring": 18200, "oneTime": 4300, "byDayOfWeek": { "monday": 4200, "tuesday": 5800, "wednesday": 5200, "thursday": 4100, "friday": 3200 } }, "asyncCandidates": [ { "title": "Weekly Status Sync", "emailScore": 85, "annualCost": 8320, "reason": "Status updates work better async" } ], "recurringMeetings": [ { "title": "Team Standup", "frequency": "daily", "annualCost": 15600, "attendees": 8, "emailScore": 72, "recommendation": "Consider 3x/week instead of daily" } ], "focusTimeAnalysis": { "averageBlocksPerDay": 2.1, "averageBlockLength": 95, "fragmentationScore": 55, "bestFocusDay": "Friday", "worstFocusDay": "Wednesday" }, "recommendations": [...], "cta": { "message": "Get real-time tracking with Meeting Cost Tracker", "url": "https://meeting.localhowl.com" } }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
 <ul>
-<li><code>data_point</code>: $0.01 per result</li></p>
-
-</ul>
+<p><li><code>data_point</code>: $0.01 per result</li> </ul>
 <h2>Use Cases</h2>
-
 <h3>1. Quarterly Personal Audit</h3>
-
-<pre><code>const result = await apifyClient.actor("localhowl/calendar-ics-analyzer").call({
-  icsUrl: "https://example.com/my-calendar.ics",
-  dateRange: "last_quarter",
-  generateReport: true
-});
-
-<p>console.log(<code>Meeting Culture Score: ${result.meetingCultureScore.overall}</code>);
-console.log(<code>Potential Savings: $${result.potentialSavings}</code>);
-</code></pre></p>
-
+<pre><code class="language-javascript">const result = await apifyClient.actor("localhowl/calendar-ics-analyzer").call({
+<p>icsUrl: "https://example.com/my-calendar.ics", dateRange: "last_quarter", generateReport: true });</p>
+<p>console.log(<code>Meeting Culture Score: ${result.meetingCultureScore.overall}</code>); console.log(<code>Potential Savings: $${result.potentialSavings}</code>);</code></pre>
 <h3>2. Team Meeting Audit</h3>
-
 <p>Export calendars from team members and analyze patterns:</p>
-
-<pre><code>const teamCalendars = ["alice.ics", "bob.ics", "carol.ics"];
-const results = [];
-
-<p>for (const cal of teamCalendars) {
-  const result = await apifyClient.actor("localhowl/calendar-ics-analyzer").call({
-    icsUrl: <code>https://example.com/${cal}</code>,
-    dateRange: "last_month"
-  });
-  results.push(result);
-}</p>
-
-<p>// Aggregate team insights
-</code></pre></p>
-
+<pre><code class="language-javascript">const teamCalendars = ["alice.ics", "bob.ics", "carol.ics"];
+<p>const results = [];</p>
+<p>for (const cal of teamCalendars) { const result = await apifyClient.actor("localhowl/calendar-ics-analyzer").call({ icsUrl: <code>https://example.com/${cal}</code>, dateRange: "last_month" }); results.push(result); }</p>
+<p>// Aggregate team insights</code></pre>
 <h3>3. Before/After Comparison</h3>
-
 <p>Track improvement over time by comparing quarters:</p>
-
-<pre><code>const q1 = await analyze({ dateRange: "2024-Q1" });
-const q2 = await analyze({ dateRange: "2024-Q2" });
-
-<p>console.log(<code>Score improved from ${q1.score} to ${q2.score}</code>);
-console.log(<code>Saved ${q1.totalCost - q2.totalCost} per quarter</code>);
-</code></pre></p>
-
-<p>---</p>
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<pre><code class="language-javascript">const q1 = await analyze({ dateRange: "2024-Q1" });
+<p>const q2 = await analyze({ dateRange: "2024-Q2" });</p>
+<p>console.log(<code>Score improved from ${q1.score} to ${q2.score}</code>); console.log(<code>Saved ${q1.totalCost - q2.totalCost} per quarter</code>);</code></pre>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -676,7 +545,7 @@ console.log(<code>Saved ${q1.totalCost - q2.totalCost} per quarter</code>);
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

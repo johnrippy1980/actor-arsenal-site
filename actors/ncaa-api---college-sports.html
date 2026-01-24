@@ -467,108 +467,59 @@ Standings</p>
 
         <section class="content">
         <div class="container">
-            <h1>NCAA API - College Sports</h1>
-            <p>Fetch NCAA college sports data including basketball rankings, football standings, team rosters, player stats, and game schedules for all divisions.</p>
-
+            <h1>NCAA API</h1>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<p>Fetch NCAA college sports data including basketball rankings, football standings, team rosters, player stats, and game schedules for all divisions.</p>
 <h2>Features</h2>
-
 <h3>Basketball Data</h3>
 <ul>
-<li><strong>Teams</strong> - All NCAA basketball teams by division and conference</li>
-<li><strong>Rankings</strong> - AP Poll, Coaches Poll, and NET rankings</li>
-<li><strong>Schedule</strong> - Game schedules with dates, times, and opponents</li>
-<li><strong>Scores</strong> - Live and final game scores</li>
-<li><strong>Standings</strong> - Conference and division standings</li>
-
-</ul>
+<p><li><strong>Teams</strong> - All NCAA basketball teams by division and conference</li> <li><strong>Rankings</strong> - AP Poll, Coaches Poll, and NET rankings</li> <li><strong>Schedule</strong> - Game schedules with dates, times, and opponents</li> <li><strong>Scores</strong> - Live and final game scores</li> <li><strong>Standings</strong> - Conference and division standings</li> </ul>
 <h3>Football Data</h3>
 <ul>
-<li><strong>Teams</strong> - All NCAA football teams (FBS/FCS)</li>
-<li><strong>Rankings</strong> - AP Poll, Coaches Poll, and CFP rankings</li>
-<li><strong>Schedule</strong> - Weekly game schedules by week number</li>
-<li><strong>Scores</strong> - Game scores and results</li>
-<li><strong>Standings</strong> - Conference standings</li>
-
-</ul>
+<p><li><strong>Teams</strong> - All NCAA football teams (FBS/FCS)</li> <li><strong>Rankings</strong> - AP Poll, Coaches Poll, and CFP rankings</li> <li><strong>Schedule</strong> - Weekly game schedules by week number</li> <li><strong>Scores</strong> - Game scores and results</li> <li><strong>Standings</strong> - Conference standings</li> </ul>
 <h3>Team & Player Data</h3>
 <ul>
-<li><strong>Team Roster</strong> - Current player rosters with positions, heights, weights</li>
-<li><strong>Player Stats</strong> - Individual player statistics</li>
-
-</ul>
+<p><li><strong>Team Roster</strong> - Current player rosters with positions, heights, weights</li> <li><strong>Player Stats</strong> - Individual player statistics</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| See input schema | | | |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>See input schema</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <p>All tasks return a consistent JSON structure:</p>
-
-<pre><code>{
-    "task": "basketball_rankings",
-    "success": true,
-    "timestamp": "2024-12-29T12:00:00.000Z",
-    "sport": "basketball",
-    "division": "D1",
-    "gender": "mens",
-    "data": [...]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"task": "basketball_rankings", "success": true, "timestamp": "2024-12-29T12:00:00.000Z", "sport": "basketball", "division": "D1", "gender": "mens", "data": [...] }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses pay-per-event pricing:</p>
-
-<p>| Task | Price |
-|---|---|
-| Basketball Teams | $0.01 |
-| Basketball Rankings | $0.01 |
-| Basketball Schedule | $0.01 |
-| Basketball Scores | $0.01 |
-| Basketball Standings | $0.01 |
-| Football Teams | $0.01 |
-| Football Rankings | $0.01 |
-| Football Schedule | $0.01 |
-| Football Scores | $0.01 |
-| Football Standings | $0.01 |
-| Team Roster | $0.02 |
-| Player Stats | $0.02 |
-| Fantasy Projections | $0.03 |
-| Betting Odds | $0.05 |</p>
-
+<p>This actor uses <strong>pay-per-event</strong> billing: This actor uses pay-per-event pricing:</p>
+<table>
+<p><thead> <tr><th>Task</th><th>Price</th></tr> </thead> <tbody> <tr><td>Basketball Teams</td><td>$0.01</td></tr> <tr><td>Basketball Rankings</td><td>$0.01</td></tr> <tr><td>Basketball Schedule</td><td>$0.01</td></tr> <tr><td>Basketball Scores</td><td>$0.01</td></tr> <tr><td>Basketball Standings</td><td>$0.01</td></tr> <tr><td>Football Teams</td><td>$0.01</td></tr> <tr><td>Football Rankings</td><td>$0.01</td></tr> <tr><td>Football Schedule</td><td>$0.01</td></tr> <tr><td>Football Scores</td><td>$0.01</td></tr> <tr><td>Football Standings</td><td>$0.01</td></tr> <tr><td>Team Roster</td><td>$0.02</td></tr> <tr><td>Player Stats</td><td>$0.02</td></tr> <tr><td>Fantasy Projections</td><td>$0.03</td></tr> <tr><td>Betting Odds</td><td>$0.05</td></tr> </tbody> </table>
 <h2>Use Cases</h2>
-
 <ul>
-<li>Data collection</li>
-<li>Research</li>
-<li>Automation</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li>Data collection</li> <li>Research</li> <li>Automation</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -597,7 +548,7 @@ This actor uses pay-per-event pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

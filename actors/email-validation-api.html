@@ -461,136 +461,66 @@
 
         <section class="content">
         <div class="container">
-            <h1>Email Validation API - Bulk Verify</h1>
-            <p>Validate email addresses - check syntax, domain, MX records, SPF, DMARC, and deliverability. Detect disposable emails, free providers, and role-based addresses.</p>
-
+            <h1>Email Validation API</h1>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<p>Validate email addresses - check syntax, domain, MX records, SPF, DMARC, and deliverability. Detect disposable emails, free providers, and role-based addresses.</p>
 <h2>Features</h2>
-
-<p>| Feature | Replaces | What It Does |
-|---------|----------|--------------|
-| <strong>Syntax Validation</strong> | Basic regex | RFC-compliant email format checking with detailed error messages |
-| <strong>MX Record Check</strong> | Manual DNS lookup | Verify domain can actually receive emails |
-| <strong>SPF/DMARC Detection</strong> | DNS tools | Check for email authentication records (higher deliverability) |
-| <strong>Disposable Detection</strong> | EmailHippo, Kickbox | Flag 1,000+ temporary/throwaway email services |
-| <strong>Free Provider Detection</strong> | Manual lists | Identify Gmail, Yahoo, Outlook, ProtonMail, etc. |
-| <strong>Role-Based Detection</strong> | Manual patterns | Flag generic addresses (info@, support@, sales@, admin@) |
-| <strong>Deliverability Score</strong> | Multiple tools | 0-100 score combining all quality signals |</p>
-
-<p>---</p>
-
+<table>
+<p><thead> <tr><th>Feature</th><th>Replaces</th><th>What It Does</th></tr> </thead> <tbody> <tr><td><strong>Syntax Validation</strong></td><td>Basic regex</td><td>RFC-compliant email format checking with detailed error messages</td></tr> <tr><td><strong>MX Record Check</strong></td><td>Manual DNS lookup</td><td>Verify domain can actually receive emails</td></tr> <tr><td><strong>SPF/DMARC Detection</strong></td><td>DNS tools</td><td>Check for email authentication records (higher deliverability)</td></tr> <tr><td><strong>Disposable Detection</strong></td><td>EmailHippo, Kickbox</td><td>Flag 1,000+ temporary/throwaway email services</td></tr> <tr><td><strong>Free Provider Detection</strong></td><td>Manual lists</td><td>Identify Gmail, Yahoo, Outlook, ProtonMail, etc.</td></tr> <tr><td><strong>Role-Based Detection</strong></td><td>Manual patterns</td><td>Flag generic addresses (info@, support@, sales@, admin@)</td></tr> <tr><td><strong>Deliverability Score</strong></td><td>Multiple tools</td><td>0-100 score combining all quality signals</td></tr> </tbody> </table>
+<hr>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| <code>emails</code> | string[] | Yes | List of email addresses to validate |
-| <code>checkMx</code> | boolean | No | Verify MX records exist (default: true) |
-| <code>checkSmtp</code> | boolean | No | Attempt SMTP verification (default: false) |
-| <code>checkDisposable</code> | boolean | No | Flag disposable emails (default: true) |
-| <code>webhookUrl</code> | string | No | Webhook URL for async results |
-| <code>demoMode</code> | boolean | No | Return sample data without validation |</p>
-
-<p>---</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>emails</code></td><td>string[]</td><td>Yes</td><td>List of email addresses to validate</td></tr> <tr><td><code>checkMx</code></td><td>boolean</td><td>No</td><td>Verify MX records exist (default: true)</td></tr> <tr><td><code>checkSmtp</code></td><td>boolean</td><td>No</td><td>Attempt SMTP verification (default: false)</td></tr> <tr><td><code>checkDisposable</code></td><td>boolean</td><td>No</td><td>Flag disposable emails (default: true)</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>No</td><td>Webhook URL for async results</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>No</td><td>Return sample data without validation</td></tr> </tbody> </table>
+<hr>
 <h2>Output Format</h2>
-
 <p>Each validated email returns structured JSON:</p>
-
-<pre><code>{
-  "email": "john.doe@gmail.com",
-  "isValid": true,
-  "syntax": {
-    "isValid": true,
-    "localPart": "john.doe",
-    "domain": "gmail.com"
-  },
-  "domain": {
-    "name": "gmail.com",
-    "hasMx": true,
-    "mxRecords": [
-      {"exchange": "gmail-smtp-in.l.google.com", "priority": 5}
-    ],
-    "hasSpf": true,
-    "hasDmarc": true
-  },
-  "deliverability": {
-    "isDeliverable": true,
-    "reason": null
-  },
-  "flags": {
-    "isDisposable": false,
-    "isFreeProvider": true,
-    "isRoleBased": false,
-    "isCatchAll": null
-  },
-  "score": 95,
-  "checkedAt": "2025-12-23T12:00:00.000Z"
-}
-</code></pre>
-
-<p>---</p>
-
+<pre><code class="language-json">{
+<p>"email": "john.doe@gmail.com", "isValid": true, "syntax": { "isValid": true, "localPart": "john.doe", "domain": "gmail.com" }, "domain": { "name": "gmail.com", "hasMx": true, "mxRecords": [ {"exchange": "gmail-smtp-in.l.google.com", "priority": 5} ], "hasSpf": true, "hasDmarc": true }, "deliverability": { "isDeliverable": true, "reason": null }, "flags": { "isDisposable": false, "isFreeProvider": true, "isRoleBased": false, "isCatchAll": null }, "score": 95, "checkedAt": "2025-12-23T12:00:00.000Z" }</code></pre>
+<hr>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
 <ul>
-<li><code>data_point</code>: $0.01 per result</li></p>
-
-</ul>
+<p><li><code>data_point</code>: $0.01 per result</li> </ul>
 <h2>Use Cases</h2>
-
 <h3>Lead Generation & Sales</h3>
 <ul>
-<li><strong>List cleaning</strong>: Validate purchased lists before campaigns</li>
-<li><strong>Form validation</strong>: Real-time validation at point of entry</li>
-<li><strong>CRM hygiene</strong>: Maintain clean customer databases</li>
-<li><strong>Bounce prevention</strong>: Avoid damaging sender reputation</li>
-
-</ul>
+<p><li><strong>List cleaning</strong>: Validate purchased lists before campaigns</li> <li><strong>Form validation</strong>: Real-time validation at point of entry</li> <li><strong>CRM hygiene</strong>: Maintain clean customer databases</li> <li><strong>Bounce prevention</strong>: Avoid damaging sender reputation</li> </ul>
 <h3>Marketing Agencies</h3>
 <ul>
-<li><strong>Campaign prep</strong>: Clean client lists before sends</li>
-<li><strong>Deliverability optimization</strong>: Improve open rates</li>
-<li><strong>List monetization</strong>: Validate before selling leads</li>
-
-</ul>
+<p><li><strong>Campaign prep</strong>: Clean client lists before sends</li> <li><strong>Deliverability optimization</strong>: Improve open rates</li> <li><strong>List monetization</strong>: Validate before selling leads</li> </ul>
 <h3>E-commerce & SaaS</h3>
 <ul>
-<li><strong>Signup validation</strong>: Reduce fake accounts</li>
-<li><strong>Fraud prevention</strong>: Detect disposable emails</li>
-<li><strong>Customer verification</strong>: Ensure valid contact info</li>
-
-</ul>
+<p><li><strong>Signup validation</strong>: Reduce fake accounts</li> <li><strong>Fraud prevention</strong>: Detect disposable emails</li> <li><strong>Customer verification</strong>: Ensure valid contact info</li> </ul>
 <h3>Developers</h3>
 <ul>
-<li><strong>API integration</strong>: RESTful JSON responses</li>
-<li><strong>Webhook support</strong>: Async processing for large lists</li>
-<li><strong>Batch processing</strong>: Validate thousands in parallel</li>
-
-</ul>
----
-
-<p>---</p>
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>API integration</strong>: RESTful JSON responses</li> <li><strong>Webhook support</strong>: Async processing for large lists</li> <li><strong>Batch processing</strong>: Validate thousands in parallel</li> </ul>
+<hr>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -619,7 +549,7 @@
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

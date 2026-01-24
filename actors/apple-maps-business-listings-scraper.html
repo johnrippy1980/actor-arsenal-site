@@ -418,103 +418,71 @@
 
         <section class="content">
         <div class="container">
-            <h1>Apple Maps Business Listings Scraper</h1>
-            <p>Scrape Google Maps business listings using Playwright browser automation. Returns business name, category, address, phone, website, rating, reviews, and more. Uses real browser for reliable extraction of JavaScript-rendered content. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
+            <h1>Apple Maps Scraper</h1>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<p>Scrape business listings from Apple Maps. Extract business names, categories, ratings (Apple's % rating + Yelp/Tripadvisor aggregated), hours, and more.</p>
 <h2>Features</h2>
-
+<h3>Apple-Exclusive Data</h3>
+<p>Extract data unique to Apple Maps:</p>
+<table>
+<p><thead> <tr><th>Data Point</th><th>Description</th></tr> </thead> <tbody> <tr><td><strong>Apple % Rating</strong></td><td>Apple's proprietary percentage-based rating (e.g., 92%)</td></tr> <tr><td><strong>External Ratings</strong></td><td>Aggregated from Yelp, TripAdvisor, Google</td></tr> <tr><td><strong>Business Hours</strong></td><td>Current open/closed status with times</td></tr> <tr><td><strong>Categories</strong></td><td>Apple's business categorization</td></tr> </tbody> </table>
+<h3>Search Any Location</h3>
+<p>Search for businesses anywhere:</p>
 <ul>
-<li><strong>Browser-based extraction</strong> - Uses Playwright for reliable JavaScript rendering</li>
-<li><strong>Business details</strong> - Name, category, address, phone, website</li>
-<li><strong>Ratings & reviews</strong> - Total score and review count</li>
-<li><strong>Place ID extraction</strong> - Google Maps place identifiers</li>
-<li><strong>Geo-biased search</strong> - Optional lat/lng for location-specific results</li>
-<li><strong>Scrolling pagination</strong> - Loads more results automatically</li>
-
-</ul>
+<p><li>"pizza new york"</li> <li>"coffee shop san francisco"</li> <li>"dentist austin tx"</li> <li>"gym boston ma"</li> </ul>
+<hr>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"url": "https://example.com", "maxResults": 100 }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<pre><code>{
-  "searchStringsArray": ["Bar Fort Lauderdale FL", "Plumber Miami"],
-  "maxCrawledPlacesPerSearch": 20,
-  "language": "en"
-}
-</code></pre>
-
-<h3>Optional Geo-Biased Search</h3>
-
-<pre><code>{
-  "searchStringsArray": ["Bar near me"],
-  "maxCrawledPlacesPerSearch": 10,
-  "lat": "26.1224",
-  "lng": "-80.1373",
-  "zoom": 13
-}
-</code></pre>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>searchQueries</code></td><td>array</td><td>No</td><td>Demo queries</td><td>Search queries like "pizza austin tx"</td></tr> <tr><td><code>maxResults</code></td><td>number</td><td>No</td><td>20</td><td>Max businesses per query</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>No</td><td>true</td><td>Use sample data</td></tr> <tr><td><code>proxyConfiguration</code></td><td>object</td><td>No</td><td>-</td><td>Proxy settings for live scraping</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>No</td><td>-</td><td>URL to send results to (Zapier, Make, n8n)</td></tr> </tbody> </table>
+<hr>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "title": "The Mojito Bar",
-  "categoryName": "Bar",
-  "address": "11401 NW 12th St, Miami, FL 33172",
-  "city": "Miami",
-  "state": "FL",
-  "phone": "(305) 564-1597",
-  "website": "http://www.themojitobar.com/",
-  "totalScore": 4.6,
-  "reviewsCount": 825,
-  "placeId": "0x88d9bf880ee8fad9:0xd5d8645ea7eeff0b",
-  "url": "https://www.google.com/maps/place/..."
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"name": "Via 313 Pizza", "category": "Pizza Restaurant", "appleRating": "95%", "externalRatings": [ { "source": "Yelp", "rating": "4.7" }, { "source": "TripAdvisor", "rating": "4.5" } ], "hours": "Open till 10 PM", "address": "1111 E 6th St, Austin, TX 78702", "phone": "(512) 939-1927", "website": "https://via313.com", "appleMapsUrl": "https://maps.apple.com/search?query=Via%20313%20Pizza", "searchQuery": "pizza austin tx", "scrapedAt": "2025-01-14T12:00:00.000Z" }</code></pre>
+<hr>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>result_scraped</code> | Per result scraped | $0.02 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
 <ul>
-<li>Scrape 20 businesses: 20 × $0.02 = <strong>$0.40</strong></li>
-<li>Scrape 100 businesses: 100 × $0.02 = <strong>$2.00</strong></li>
-
-</ul>
+<p><li><code>data_point</code>: $0.01 per result</li> </ul>
 <h2>Use Cases</h2>
-
+<h3>Local SEO Research</h3>
+<p>Compare Apple Maps data with Google Business Profiles to identify listing inconsistencies.</p>
+<h3>Competitive Analysis</h3>
+<p>Extract ratings and reviews for competitors in a specific area.</p>
+<h3>Lead Generation</h3>
+<p>Build lists of local businesses with contact information.</p>
+<h3>Market Research</h3>
+<p>Analyze business density and categories in different markets.</p>
+<h3>Citation Building</h3>
+<p>Verify NAP (Name, Address, Phone) data across platforms.</p>
+<hr>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
 <ul>
-<li>Data collection</li>
-<li>Research</li>
-<li>Automation</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -543,7 +511,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

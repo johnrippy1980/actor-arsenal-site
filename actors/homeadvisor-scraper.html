@@ -462,135 +462,55 @@
         <section class="content">
         <div class="container">
             <h1>HomeAdvisor Pro Finder & Reviews Scraper</h1>
-            <p>Scrape HomeAdvisor for home service professionals, contractors, ratings, reviews, and project cost data. Extract Screened & Approved status, Elite Service badges, service areas, and customer feedback. Essential for home services competitive analysis and lead generation. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<p>Scrape HomeAdvisor for home service professionals, contractors, ratings, reviews, and project cost data. Extract Screened & Approved status, Elite Service badges, service areas, and customer feedback. Essential for home services competitive analysis and lead generation. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <ul>
-<li><strong>Professional Profile Scraping</strong>: Complete contractor/pro profiles</li>
-<li><strong>Search by Service Type</strong>: Plumbers, roofers, HVAC, electricians, etc.</li>
-<li><strong>Location-Based Search</strong>: Search by city, state, or ZIP code</li>
-<li><strong>Review Extraction</strong>: Customer reviews with ratings and project details</li>
-<li><strong>Cost Data</strong>: Average project costs and cost guides</li>
-<li><strong>Credential Verification</strong>: License, insurance, and screening status</li>
-
-</ul>
+<p><li><strong>Professional Profile Scraping</strong>: Complete contractor/pro profiles</li> <li><strong>Search by Service Type</strong>: Plumbers, roofers, HVAC, electricians, etc.</li> <li><strong>Location-Based Search</strong>: Search by city, state, or ZIP code</li> <li><strong>Review Extraction</strong>: Customer reviews with ratings and project details</li> <li><strong>Cost Data</strong>: Average project costs and cost guides</li> <li><strong>Credential Verification</strong>: License, insurance, and screening status</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"url": "https://example.com", "maxResults": 100 }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Description |
-|-----------|------|-------------|
-| <code>scrapeType</code> | string | Type: search, professional_profile, reviews, cost_guide |
-| <code>professionalUrl</code> | string | Direct HomeAdvisor profile URL |
-| <code>serviceType</code> | string | Service type (Plumbing, Roofing, HVAC, etc.) |
-| <code>location</code> | string | City, State or ZIP code |
-| <code>minRating</code> | number | Minimum rating (1.0-5.0) |
-| <code>screened</code> | boolean | Only Screened & Approved professionals |
-| <code>eliteService</code> | boolean | Only Elite Service professionals |
-| <code>includeReviews</code> | boolean | Scrape customer reviews (default: true) |
-| <code>maxReviewsPerPro</code> | number | Max reviews per professional (default: 25) |
-| <code>includeCostData</code> | boolean | Include cost estimates (default: true) |
-| <code>maxResults</code> | number | Maximum professionals (default: 50) |
-| <code>proxyConfiguration</code> | object | Proxy settings |
-| <code>demoMode</code> | boolean | Return sample data for testing |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>scrapeType</code></td><td>string</td><td>Type: search, professional_profile, reviews, cost_guide</td></tr> <tr><td><code>professionalUrl</code></td><td>string</td><td>Direct HomeAdvisor profile URL</td></tr> <tr><td><code>serviceType</code></td><td>string</td><td>Service type (Plumbing, Roofing, HVAC, etc.)</td></tr> <tr><td><code>location</code></td><td>string</td><td>City, State or ZIP code</td></tr> <tr><td><code>minRating</code></td><td>number</td><td>Minimum rating (1.0-5.0)</td></tr> <tr><td><code>screened</code></td><td>boolean</td><td>Only Screened & Approved professionals</td></tr> <tr><td><code>eliteService</code></td><td>boolean</td><td>Only Elite Service professionals</td></tr> <tr><td><code>includeReviews</code></td><td>boolean</td><td>Scrape customer reviews (default: true)</td></tr> <tr><td><code>maxReviewsPerPro</code></td><td>number</td><td>Max reviews per professional (default: 25)</td></tr> <tr><td><code>includeCostData</code></td><td>boolean</td><td>Include cost estimates (default: true)</td></tr> <tr><td><code>maxResults</code></td><td>number</td><td>Maximum professionals (default: 50)</td></tr> <tr><td><code>proxyConfiguration</code></td><td>object</td><td>Proxy settings</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td>Return sample data for testing</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Professional Output</h3>
-
-<pre><code>{
-  "businessName": "Smith Plumbing & Heating",
-  "homeAdvisorUrl": "https://www.homeadvisor.com/rated.SmithPlumbing.12345.html",
-  "serviceTypes": ["Plumbing", "Water Heater Installation", "Drain Cleaning"],
-  "rating": 4.8,
-  "reviewCount": 234,
-  "hiredCount": 1250,
-  "yearsInBusiness": 15,
-  "address": {
-    "city": "Houston",
-    "state": "TX",
-    "zipCode": "77001"
-  },
-  "phone": "(555) 123-4567",
-  "website": "https://smithplumbing.com",
-  "screenedApproved": true,
-  "eliteService": true,
-  "licensedInsured": true,
-  "bbbAccredited": true,
-  "serviceArea": ["Houston", "Katy", "Sugar Land", "The Woodlands"],
-  "costRange": {
-    "low": 150,
-    "high": 500,
-    "average": 275,
-    "projectType": "Standard Plumbing Repair"
-  },
-  "reviews": [
-    {
-      "reviewId": "ha123456",
-      "rating": 5,
-      "title": "Excellent plumber!",
-      "text": "Fixed our leak quickly and professionally...",
-      "date": "November 2024",
-      "projectType": "Plumbing Repair",
-      "projectCost": "$285",
-      "wouldRecommend": true,
-      "verified": true
-    }
-  ],
-  "scrapedAt": "2024-12-21T10:30:00.000Z"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"businessName": "Smith Plumbing &amp; Heating", "homeAdvisorUrl": "https://www.homeadvisor.com/rated.SmithPlumbing.12345.html", "serviceTypes": ["Plumbing", "Water Heater Installation", "Drain Cleaning"], "rating": 4.8, "reviewCount": 234, "hiredCount": 1250, "yearsInBusiness": 15, "address": { "city": "Houston", "state": "TX", "zipCode": "77001" }, "phone": "(555) 123-4567", "website": "https://smithplumbing.com", "screenedApproved": true, "eliteService": true, "licensedInsured": true, "bbbAccredited": true, "serviceArea": ["Houston", "Katy", "Sugar Land", "The Woodlands"], "costRange": { "low": 150, "high": 500, "average": 275, "projectType": "Standard Plumbing Repair" }, "reviews": [ { "reviewId": "ha123456", "rating": 5, "title": "Excellent plumber!", "text": "Fixed our leak quickly and professionally...", "date": "November 2024", "projectType": "Plumbing Repair", "projectCost": "$285", "wouldRecommend": true, "verified": true } ], "scrapedAt": "2024-12-21T10:30:00.000Z" }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>apify-actor-start</code> | Base cost per run | $0.10 |
-| <code>professional_scraped</code> | Per professional profile scraped | $0.06 |
-| <code>review_scraped</code> | Per review extracted | $0.004 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing: This actor uses <strong>pay-per-event</strong> pricing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>apify-actor-start</code></td><td>Base cost per run</td><td>$0.10</td></tr> <tr><td><code>professional_scraped</code></td><td>Per professional profile scraped</td><td>$0.06</td></tr> <tr><td><code>review_scraped</code></td><td>Per review extracted</td><td>$0.004</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>50 professionals with 25 reviews each: $0.10 + (50 × $0.06) + (1250 × $0.004) = <strong>$8.10</strong></li>
-<li>100 professionals, no reviews: $0.10 + (100 × $0.06) = <strong>$6.10</strong></li>
-
-</ul>
+<p><li>50 professionals with 25 reviews each: $0.10 + (50 × $0.06) + (1250 × $0.004) = <strong>$8.10</strong></li> <li>100 professionals, no reviews: $0.10 + (100 × $0.06) = <strong>$6.10</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <ul>
-<li><strong>Home Services Marketing</strong>: Target underserved markets</li>
-<li><strong>Competitive Analysis</strong>: Compare ratings across competitors</li>
-<li><strong>Lead Generation</strong>: Find professionals for partnerships</li>
-<li><strong>Market Research</strong>: Analyze pricing and demand by region</li>
-<li><strong>Reputation Monitoring</strong>: Track reviews for your business</li>
-<li><strong>Cost Analysis</strong>: Understand market pricing for services</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Home Services Marketing</strong>: Target underserved markets</li> <li><strong>Competitive Analysis</strong>: Compare ratings across competitors</li> <li><strong>Lead Generation</strong>: Find professionals for partnerships</li> <li><strong>Market Research</strong>: Analyze pricing and demand by region</li> <li><strong>Reputation Monitoring</strong>: Track reviews for your business</li> <li><strong>Cost Analysis</strong>: Understand market pricing for services</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -619,7 +539,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

@@ -93,12 +93,31 @@ AI Analysis-powered recommendations",
             <img src="../images/logo.png" alt="Actor Arsenal Logo" class="logo-img">
             <span>ACTOR ARSENAL</span>
         </a>
-        <nav class="main-nav">
-            <a href="../index.html">HOME</a>
-            <a href="../api-docs.html">API</a>
-            <a href="../faq.html">FAQ</a>
-            <a href="../partners.html">PARTNERS</a>
-        </nav>
+        <nav>
+        <div class="container">
+            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <div class="nav-links">
+                <a href="../compare.html">Compare</a>
+                <a href="../api-docs.html">API Docs</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../partners.html">Weapons Locker</a>
+                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
+                <!-- Difficulty Selector -->
+                <div class="difficulty-selector">
+                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
+                    <div class="difficulty-menu" id="difficultyMenu">
+                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
+                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
+                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
+                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
+                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
+                    </div>
+                </div>
+                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+            </div>
+        </div>
+    </nav>
     </header>
 
     <!-- Main Content -->
@@ -167,7 +186,7 @@ const { items } = await client.dataset(run.defaultDatasetId).listItems();</code>
         </div>
     </main>
 
-    <!-- DOOM HUD -->
+    <!-- DOOM HUD (Classic Metal Style) -->
     <div class="doom-hud">
         <div class="hud-section">
             <div class="hud-stat">
@@ -186,7 +205,7 @@ const { items } = await client.dataset(run.defaultDatasetId).listItems();</code>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

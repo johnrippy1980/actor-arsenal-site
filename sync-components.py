@@ -84,7 +84,7 @@ HUD_ROOT = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
@@ -116,7 +116,7 @@ HUD_ACTORS = '''    <!-- DOOM HUD (Classic Metal Style) -->
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

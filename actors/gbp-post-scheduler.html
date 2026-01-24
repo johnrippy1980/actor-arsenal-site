@@ -461,139 +461,73 @@
 
         <section class="content">
         <div class="container">
-            <h1>GBP Post Scheduler</h1>
-            <p>Schedule and automatically publish posts to Google Business Profile. Perfect for content calendars and automated local SEO. Features: - Queue multiple posts for publishing - Schedule posts for specific dates/times - Support for all GBP post types (Update, Event, Offer) - Add images and call-to-action buttons - Batch processing - Retry on failure - Webhook notifications Post Types: - Updates: Regular business updates - Events: Time-bound events with dates - Offers: Promotions with codes and terms Call-to-Action Options: - Learn More - Book - Order Online - Shop - Sign Up - Call Configuration: - Publish immediately or schedule - Auto-retry on failures - Webhook integration for status updates Note: Requires Google account credentials with GBP access. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
+            <h1>GBP Post Scheduler v1.0 - Queue & Auto-Publish Google Business Posts</h1>
+<h2>What is Google Business Profile (GBP)?</h2>
+<p><strong>Google Business Profile</strong> (formerly Google My Business) is Google's free tool for businesses to manage their online presence across Google Search and Maps.</p>
+<p>This actor helps you manage, monitor, or extract data from Google Business Profiles.</p>
+<hr>
+<p>Schedule and automatically publish posts to Google Business Profile. Perfect for content calendars and automated local SEO. Features: - Queue multiple posts for publishing - Schedule posts for specific dates/times - Support for all GBP post types (Update, Event, Offer) - Add images and call-to-action buttons - Batch processing - Retry on failure - Webhook notifications Post Types: - Updates: Regular business updates - Events: Time-bound events with dates - Offers: Promotions with codes and terms Call-to-Action Options: - Learn More - Book - Order Online - Shop - Sign Up - Call Configuration: - Publish immediately or schedule - Auto-retry on failures - Webhook integration for status updates Note: Requires Google account credentials with GBP access. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
 <h2>Features</h2>
-
 <h3>Post Types</h3>
 <ul>
-<li><strong>Updates</strong>: Regular business announcements</li>
-<li><strong>Events</strong>: Time-bound events with start/end dates</li>
-<li><strong>Offers</strong>: Promotions with coupon codes and terms</li>
-
-</ul>
+<p><li><strong>Updates</strong>: Regular business announcements</li> <li><strong>Events</strong>: Time-bound events with start/end dates</li> <li><strong>Offers</strong>: Promotions with coupon codes and terms</li> </ul>
 <h3>Media Support</h3>
 <ul>
-<li><strong>Photos in Posts</strong>: Add single or multiple images to posts</li>
-<li><strong>Videos in Posts</strong>: Attach videos to your updates</li>
-<li><strong>Standalone Media</strong>: Upload directly to GBP Photos section</li>
-<li><strong>Categories</strong>: COVER, PROFILE, LOGO, EXTERIOR, INTERIOR, PRODUCT, AT_WORK, FOOD_AND_DRINK, MENU, COMMON_AREA, ROOMS, TEAMS, ADDITIONAL</li>
-
-</ul>
+<p><li><strong>Photos in Posts</strong>: Add single or multiple images to posts</li> <li><strong>Videos in Posts</strong>: Attach videos to your updates</li> <li><strong>Standalone Media</strong>: Upload directly to GBP Photos section</li> <li><strong>Categories</strong>: COVER, PROFILE, LOGO, EXTERIOR, INTERIOR, PRODUCT, AT_WORK, FOOD_AND_DRINK, MENU, COMMON_AREA, ROOMS, TEAMS, ADDITIONAL</li> </ul>
 <h3>Call-to-Action Buttons</h3>
 <ul>
-<li>Learn More</li>
-<li>Book</li>
-<li>Order Online</li>
-<li>Shop</li>
-<li>Sign Up</li>
-<li>Call</li>
-
-</ul>
+<p><li>Learn More</li> <li>Book</li> <li>Order Online</li> <li>Shop</li> <li>Sign Up</li> <li>Call</li> </ul>
 <h3>Scheduling & Modes</h3>
 <ul>
-<li>Publish immediately</li>
-<li>Schedule for specific date/time</li>
-<li><code>posts_only</code>: Only create posts</li>
-<li><code>media_only</code>: Only upload photos/videos</li>
-<li><code>posts_and_media</code>: Do both</li>
-
-</ul>
+<p><li>Publish immediately</li> <li>Schedule for specific date/time</li> <li><code>posts_only</code>: Only create posts</li> <li><code>media_only</code>: Only upload photos/videos</li> <li><code>posts_and_media</code>: Do both</li> </ul>
 <h3>Integration</h3>
 <ul>
-<li>Webhook notifications (Zapier, Make, n8n)</li>
-<li>Batch processing</li>
-<li>JSON input for automation</li>
-
-</ul>
+<p><li>Webhook notifications (Zapier, Make, n8n)</li> <li>Batch processing</li> <li>JSON input for automation</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| See input schema | | | |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>See input schema</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
 <h3>Dataset</h3>
-<pre><code>{
-  "businessName": "Your Business",
-  "processedAt": "2025-01-01T...",
-  "mediaMode": "posts_and_media",
-  "summary": {
-    "posts": {
-      "total": 3,
-      "published": 2,
-      "scheduled": 1,
-      "failed": 0
-    },
-    "media": {
-      "total": 5,
-      "uploaded": 5,
-      "failed": 0
-    }
-  },
-  "postResults": [...],
-  "mediaResults": [...]
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"businessName": "Your Business", "processedAt": "2025-01-01T...", "mediaMode": "posts_and_media", "summary": { "posts": { "total": 3, "published": 2, "scheduled": 1, "failed": 0 }, "media": { "total": 5, "uploaded": 5, "failed": 0 } }, "postResults": [...], "mediaResults": [...] }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-| Event | Description | Price |
-|-------|-------------|-------|
-| Actor start | Base cost per run | $0.10 |
-| Post published | Per post published | $0.05 |
-| Post scheduled | Per post scheduled | $0.05 |
-| Media uploaded | Per photo/video uploaded | $0.03 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td>Actor start</td><td>Base cost per run</td><td>$0.10</td></tr> <tr><td>Post published</td><td>Per post published</td><td>$0.05</td></tr> <tr><td>Post scheduled</td><td>Per post scheduled</td><td>$0.05</td></tr> <tr><td>Media uploaded</td><td>Per photo/video uploaded</td><td>$0.03</td></tr> </tbody> </table> <strong>Example costs:</strong></p>
 <ul>
-<li>10 posts with images: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li>
-<li>20 photos uploaded: $0.10 + (20 × $0.03) = <strong>$0.70</strong></li>
-<li>5 posts + 10 media: $0.10 + (5 × $0.05) + (10 × $0.03) = <strong>$0.65</strong></li>
-
-</ul>
+<p><li>10 posts with images: $0.10 + (10 × $0.05) = <strong>$0.60</strong></li> <li>20 photos uploaded: $0.10 + (20 × $0.03) = <strong>$0.70</strong></li> <li>5 posts + 10 media: $0.10 + (5 × $0.05) + (10 × $0.03) = <strong>$0.65</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <h3>Content Calendar</h3>
-Schedule a month's worth of posts with images in one run.
-
+<p>Schedule a month's worth of posts with images in one run.</p>
 <h3>Photo Gallery Management</h3>
-Bulk upload photos organized by category.
-
+<p>Bulk upload photos organized by category.</p>
 <h3>Video Marketing</h3>
-Upload promotional videos and virtual tours.
-
+<p>Upload promotional videos and virtual tours.</p>
 <h3>Multi-Location</h3>
-Run for each location to keep all GBP profiles active.
-
+<p>Run for each location to keep all GBP profiles active.</p>
 <h3>Seasonal Campaigns</h3>
-Pre-schedule holiday content with themed imagery.
-
-<p>---</p>
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p>Pre-schedule holiday content with themed imagery.</p>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -622,7 +556,7 @@ Pre-schedule holiday content with themed imagery.
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

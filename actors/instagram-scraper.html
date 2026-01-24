@@ -462,102 +462,94 @@
         <section class="content">
         <div class="container">
             <h1>Instagram Profile & Posts Scraper</h1>
-            <p>Stop paying $2/1000 profiles. This free Instagram scraper extracts profile data and recent posts without per-use fees. Use your own compute credits instead of paying per-result. Features: - Profile metrics (followers, following, posts count) - Bio and profile picture - Recent posts with engagement data - Likes and comments per post - Post captions and hashtags - No per-result pricing Why Use This: - Paid actors charge $2-4 per 1000 profiles - This actor uses your Apify compute only - Same data quality, fraction of the cost - Perfect for agencies with high volume needs Integrations: - MCP Server compatible for Claude AI assistants - Webhook support for Zapier, Make, n8n - Part of the John Rippy actor ecosystem Note: Uses browser automation; respects rate limits to avoid blocks. Built by John Rippy (https://www.linkedin.com/in/johnrippy/ | https://johnrippy.link/).</p>
-
-<h2>Features</h2>
-
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<h2>Web Scraping</h2>
+<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
+<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
+<hr>
+<p>Scrape Instagram profiles and posts without per-result fees. Extract profile metrics, engagement data, and recent posts using browser automation with Camoufox anti-detection.</p>
+<h2>Key Features</h2>
 <ul>
-<li>Profile scraping (followers, following, bio, etc.)</li>
-<li>Recent posts with engagement metrics</li>
-<li>Supports reels and regular posts</li>
-<li>No login required (public profiles only)</li>
-
-</ul>
-<h2>Quick Start</h2>
-
-<pre><code>{
-  "url": "https://example.com",
-  "maxResults": 100
-}
-</code></pre>
-
-<h2>Demo Mode</h2>
-
-<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<p><li><strong>Profile Metrics</strong> - Followers, following, posts count, verification status</li> <li><strong>Bio & Links</strong> - Biography, external URL, business category</li> <li><strong>Recent Posts</strong> - Up to 50 posts per profile with engagement data</li> <li><strong>Reels Support</strong> - Scrape both regular posts and reels</li> <li><strong>Camoufox Anti-Detection</strong> - Built-in browser fingerprint evasion</li> <li><strong>Firecrawl Option</strong> - API-based scraping for enhanced reliability</li> <li><strong>AI Sentiment Analysis</strong> - Analyze caption sentiment with 5 AI providers</li> <li><strong>Webhook Support</strong> - Send results to Zapier, Make, n8n</li> </ul>
+<h2>Quick Start - Real Scraping</h2>
+<pre><code class="language-json">{
+<p>"usernames": ["nike", "adidas"], "maxPosts": 12, "includeReels": true, "demoMode": false }</code></pre>
+<p><strong>Important:</strong> Set <code>demoMode: false</code> to scrape real Instagram data.</p>
 <h2>Input Parameters</h2>
-
-<pre><code>{
-  "usernames": ["nike", "adidas", "puma"],
-  "maxPosts": 12,
-  "includeReels": true
-}
-</code></pre>
-
+<h3>Core Parameters</h3>
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>usernames</code></td><td>array</td><td>-</td><td>Instagram usernames to scrape (without @)</td></tr> <tr><td><code>maxPosts</code></td><td>number</td><td><code>12</code></td><td>Maximum posts per profile (1-50)</td></tr> <tr><td><code>includeReels</code></td><td>boolean</td><td><code>true</code></td><td>Include reels in scraped posts</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td><code>false</code></td><td>Generate sample data for testing</td></tr> </tbody> </table>
+<h3>Advanced Options</h3>
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>useFirecrawl</code></td><td>boolean</td><td><code>false</code></td><td>Use Firecrawl API for scraping</td></tr> <tr><td><code>firecrawlApiKey</code></td><td>string</td><td>-</td><td>Your Firecrawl API key</td></tr> <tr><td><code>proxy</code></td><td>object</td><td>-</td><td>Proxy configuration for avoiding blocks</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>-</td><td>URL to POST results when complete</td></tr> </tbody> </table>
+<h3>AI Sentiment Analysis</h3>
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>enableSentimentAnalysis</code></td><td>boolean</td><td><code>false</code></td><td>Enable AI sentiment analysis</td></tr> <tr><td><code>aiProvider</code></td><td>string</td><td><code>"none"</code></td><td>AI provider: openai, anthropic, google, mistral, cohere</td></tr> <tr><td><code>aiApiKey</code></td><td>string</td><td>-</td><td>Your AI provider API key</td></tr> <tr><td><code>aiModel</code></td><td>string</td><td>-</td><td>Custom model override (optional)</td></tr> </tbody> </table>
+<h2>Usage Examples</h2>
+<h3>Example 1: Scrape Multiple Profiles</h3>
+<pre><code class="language-json">{
+<p>"usernames": ["nike", "adidas", "puma", "reebok"], "maxPosts": 20, "includeReels": true, "demoMode": false }</code></pre>
+<h3>Example 2: With Apify Proxy</h3>
+<pre><code class="language-json">{
+<p>"usernames": ["cocacola"], "maxPosts": 12, "proxy": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"] }, "demoMode": false }</code></pre>
+<h3>Example 3: Demo Mode for Testing</h3>
+<pre><code class="language-json">{
+<p>"usernames": ["demo"], "demoMode": true }</code></pre>
+<p>Returns realistic sample data instantly without scraping.</p>
+<h3>Example 4: With Firecrawl API</h3>
+<pre><code class="language-json">{
+<p>"usernames": ["targetbrand"], "useFirecrawl": true, "firecrawlApiKey": "fc-your-api-key", "demoMode": false }</code></pre>
+<h3>Example 5: With AI Sentiment Analysis</h3>
+<pre><code class="language-json">{
+<p>"usernames": ["nike"], "maxPosts": 20, "enableSentimentAnalysis": true, "aiProvider": "openai", "aiApiKey": "sk-your-api-key", "demoMode": false }</code></pre>
 <h2>Output Format</h2>
-
-<p>Each profile returns:</p>
-
-<pre><code>{
-  "username": "nike",
-  "fullName": "Nike",
-  "biography": "Just Do It.",
-  "profilePicUrl": "https://...",
-  "followersCount": 305000000,
-  "followingCount": 150,
-  "postsCount": 1234,
-  "isVerified": true,
-  "isBusinessAccount": true,
-  "latestPosts": [
-    {
-      "id": "ABC123",
-      "url": "https://instagram.com/p/ABC123",
-      "type": "image",
-      "caption": "Post caption...",
-      "likesCount": 500000,
-      "commentsCount": 5000,
-      "timestamp": "2024-12-15T10:00:00Z"
-    }
-  ]
-}
-</code></pre>
-
+<h3>Profile Data</h3>
+<pre><code class="language-json">{
+<p>"username": "nike", "fullName": "Nike", "biography": "Just Do It.", "profilePicUrl": "https://...", "followersCount": 305000000, "followingCount": 150, "postsCount": 1234, "isVerified": true, "isBusinessAccount": true, "businessCategory": "Product/Service", "externalUrl": "https://nike.com", "latestPosts": [...], "scrapedAt": "2026-01-22T10:00:00.000Z" }</code></pre>
+<h3>Post Data</h3>
+<pre><code class="language-json">{
+<p>"id": "ABC123", "shortcode": "ABC123", "url": "https://instagram.com/p/ABC123", "type": "image", "caption": "Post caption with #hashtags...", "displayUrl": "https://...", "videoUrl": null, "likesCount": 500000, "commentsCount": 5000, "timestamp": "2026-01-20T15:30:00Z", "isVideo": false, "sentiment": { "score": 0.85, "label": "positive", "confidence": 0.92, "summary": "Upbeat promotional content", "tone": "inspiring" } }</code></pre>
+<h2>AI Sentiment Analysis</h2>
+<p>Enable AI-powered sentiment analysis to understand the tone and emotional appeal of Instagram captions. Supports multiple providers:</p>
+<table>
+<p><thead> <tr><th>Provider</th><th>Model</th><th>Best For</th></tr> </thead> <tbody> <tr><td>OpenAI</td><td>GPT-4o-mini</td><td>Fast, affordable analysis</td></tr> <tr><td>Anthropic</td><td>Claude Haiku</td><td>Nuanced understanding</td></tr> <tr><td>Google</td><td>Gemini Flash</td><td>Cost-effective at scale</td></tr> <tr><td>Mistral</td><td>Mistral Small</td><td>European data residency</td></tr> <tr><td>Cohere</td><td>Command-R</td><td>Enterprise deployments</td></tr> </tbody> </table> Each post's caption is analyzed and returns:</p>
+<ul>
+<p><li><strong>score</strong>: -1 to 1 (negative to positive)</li> <li><strong>label</strong>: negative, neutral, or positive</li> <li><strong>confidence</strong>: 0 to 1</li> <li><strong>summary</strong>: Brief description of content tone</li> <li><strong>tone</strong>: Emotional tone (inspiring, humorous, informative, etc.)</li> </ul>
+<h2>Anti-Detection (Camoufox)</h2>
+<p>This actor uses <a href="https://camoufox.com/" target="_blank" rel="noopener">Camoufox</a> for anti-detection:</p>
+<ul>
+<li><strong>Browser Fingerprinting</strong> - C++ level fingerprint evasion</li> <li><strong>Human-like Behavior</strong> - Natural scrolling and navigation</li> <li><strong>Bot Protection Bypass</strong> - Handles Cloudflare and similar challenges</li> <li><strong>Stealth Mode</strong> - Blocks unnecessary resource loading</li> </ul> Camoufox is enabled by default when scraping real profiles.
+<h2>Firecrawl Integration</h2>
+<p><a href="https://firecrawl.dev/" target="_blank" rel="noopener">Firecrawl</a> provides an alternative scraping method:</p>
+<ul>
+<li>API-based scraping (no browser needed)</li> <li>Built-in proxy rotation</li> <li>Automatic retries</li> <li>More consistent results</li> </ul> Enable with <code>useFirecrawl: true</code> and provide your API key.
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-This actor uses <strong>pay-per-event</strong> pricing:</p>
-
-<p>| Event | Description | Price |
-|-------|-------------|-------|
-| <code>apify-actor-start</code> | Base cost per run | $0.10 |
-| <code>profile_scraped</code> | Per profile scraped | $0.02 |
-| <code>post_scraped</code> | Per post scraped | $0.005 |</p>
-
-<strong>Example costs:</strong>
+<p>This actor uses <strong>pay-per-event</strong> billing:</p>
+<table>
+<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>profile_scraped</code></td><td>Per profile scraped</td><td>$0.02</td></tr> <tr><td><code>post_scraped</code></td><td>Per post scraped</td><td>$0.005</td></tr> </tbody> </table> <strong>Cost Examples:</strong></p>
 <ul>
-<li>1 profile with 10 posts: $0.10 + $0.02 + (10 × $0.005) = <strong>$0.17</strong></li>
-<li>5 profiles with 20 posts each: $0.10 + (5 × $0.02) + (100 × $0.005) = <strong>$0.70</strong></li>
-
-</ul>
+<p><li>1 profile with 12 posts: $0.02 + (12 x $0.005) = <strong>$0.08</strong></li> <li>10 profiles with 20 posts each: (10 x $0.02) + (200 x $0.005) = <strong>$1.20</strong></li> <li>50 profiles with 12 posts each: (50 x $0.02) + (600 x $0.005) = <strong>$4.00</strong></li> </ul>
 <h2>Use Cases</h2>
-
 <ul>
-<li>Data collection</li>
-<li>Research</li>
-<li>Automation</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>Influencer Research</strong> - Analyze engagement rates and content strategy</li> <li><strong>Competitor Analysis</strong> - Monitor competitor Instagram activity</li> <li><strong>Content Inspiration</strong> - Find viral posts and trending formats</li> <li><strong>Brand Monitoring</strong> - Track brand mentions and tags</li> <li><strong>Agency Reporting</strong> - Generate client Instagram reports</li> <li><strong>Market Research</strong> - Understand industry trends</li> </ul>
+<h2>Troubleshooting</h2>
+<h3>Profile not found</h3>
+<ul>
+<p><li>Check the username is spelled correctly</li> <li>Ensure the profile is public (private profiles cannot be scraped)</li> <li>Try with proxy enabled</li> </ul>
+<h3>Getting blocked</h3>
+<ul>
+<p><li>Enable Apify residential proxy</li> <li>Reduce number of profiles per run</li> <li>Add delays between runs</li> <li>Try Firecrawl mode</li> </ul>
+<h3>No posts returned</h3>
+<ul>
+<p><li>Profile may have no public posts</li> <li>Try increasing <code>maxPosts</code> value</li> <li>Check if profile exists</li> </ul>
+<h2>Limitations</h2>
+<ul>
+<p><li>Only public profiles can be scraped</li> <li>Instagram may rate limit or block requests</li> <li>Use residential proxies for best results</li> <li>Respect Instagram's terms of service</li> </ul>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -586,7 +578,7 @@ This actor uses <strong>pay-per-event</strong> pricing:</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>

@@ -418,115 +418,62 @@
 
         <section class="content">
         <div class="container">
-            <h1>Cloudflare API - DNS, Zones, Cache &amp; Security</h1>
-            <p>Manage Cloudflare programmatically. Configure DNS records, manage zones, purge cache, set up page rules, and control security settings. Perfect for DevOps automation, multi-site management, and infrastructure-as-code workflows.</p>
-
+            <h1>Cloudflare API - DNS, Zones, Cache & Security</h1>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<h2>API Integration</h2>
+<p>This actor connects to an external API service. You'll need valid API credentials from the service provider.</p>
+<hr>
+<p>Manage Cloudflare programmatically. Configure DNS records, manage zones, purge cache, set up page rules, and control security settings. Perfect for DevOps automation, multi-site management, and infrastructure-as-code workflows.</p>
 <h2>Features</h2>
-
 <h3>Zone Management</h3>
 <ul>
-<li><strong>list_zones</strong> - List all zones in your account</li>
-<li><strong>get_zone</strong> - Get detailed zone information</li>
-<li><strong>get_zone_settings</strong> - Get all zone settings</li>
-<li><strong>update_zone_setting</strong> - Update a specific zone setting</li>
-
-</ul>
+<p><li><strong>list_zones</strong> - List all zones in your account</li> <li><strong>get_zone</strong> - Get detailed zone information</li> <li><strong>get_zone_settings</strong> - Get all zone settings</li> <li><strong>update_zone_setting</strong> - Update a specific zone setting</li> </ul>
 <h3>DNS Management</h3>
 <ul>
-<li><strong>list_dns_records</strong> - List all DNS records for a zone</li>
-<li><strong>get_dns_record</strong> - Get a specific DNS record</li>
-<li><strong>create_dns_record</strong> - Create a new DNS record</li>
-<li><strong>update_dns_record</strong> - Update an existing DNS record</li>
-<li><strong>delete_dns_record</strong> - Delete a DNS record</li>
-
-</ul>
+<p><li><strong>list_dns_records</strong> - List all DNS records for a zone</li> <li><strong>get_dns_record</strong> - Get a specific DNS record</li> <li><strong>create_dns_record</strong> - Create a new DNS record</li> <li><strong>update_dns_record</strong> - Update an existing DNS record</li> <li><strong>delete_dns_record</strong> - Delete a DNS record</li> </ul>
 <h3>Cache Control</h3>
 <ul>
-<li><strong>purge_cache</strong> - Purge all cached content for a zone</li>
-<li><strong>purge_cache_by_url</strong> - Purge specific URLs from cache</li>
-
-</ul>
+<p><li><strong>purge_cache</strong> - Purge all cached content for a zone</li> <li><strong>purge_cache_by_url</strong> - Purge specific URLs from cache</li> </ul>
 <h3>Page Rules</h3>
 <ul>
-<li><strong>list_page_rules</strong> - List all page rules</li>
-<li><strong>create_page_rule</strong> - Create a new page rule</li>
-<li><strong>delete_page_rule</strong> - Delete a page rule</li>
-
-</ul>
+<p><li><strong>list_page_rules</strong> - List all page rules</li> <li><strong>create_page_rule</strong> - Create a new page rule</li> <li><strong>delete_page_rule</strong> - Delete a page rule</li> </ul>
 <h3>Security & Analytics</h3>
 <ul>
-<li><strong>list_firewall_rules</strong> - List firewall rules</li>
-<li><strong>get_analytics</strong> - Get zone analytics data</li>
-<li><strong>get_user</strong> - Get current user information</li>
-
-</ul>
+<p><li><strong>list_firewall_rules</strong> - List firewall rules</li> <li><strong>get_analytics</strong> - Get zone analytics data</li> <li><strong>get_user</strong> - Get current user information</li> </ul>
 <h2>Quick Start</h2>
-
-<pre><code>{
-  "input": "your input here"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"input": "your input here" }</code></pre>
 <h2>Demo Mode</h2>
-
 <p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-
-<pre><code>{
-  "demoMode": true,
-  ...
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"demoMode": true, ... }</code></pre>
 <h2>Input Parameters</h2>
-
-<p>| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| See input schema | | | |</p>
-
+<table>
+<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>See input schema</td></tr> </tbody> </table>
 <h2>Output Format</h2>
-
-<pre><code>{
-  "task": "list_dns_records",
-  "success": true,
-  "results": [
-    {
-      "id": "abc123",
-      "type": "A",
-      "name": "www.example.com",
-      "content": "192.168.1.1",
-      "proxied": true,
-      "ttl": 1,
-      "created_on": "2024-01-15T10:00:00Z",
-      "modified_on": "2024-01-20T14:00:00Z"
-    }
-  ],
-  "count": 1,
-  "timestamp": "2024-01-20T14:30:00Z"
-}
-</code></pre>
-
+<pre><code class="language-json">{
+<p>"task": "list_dns_records", "success": true, "results": [ { "id": "abc123", "type": "A", "name": "www.example.com", "content": "192.168.1.1", "proxied": true, "ttl": 1, "created_on": "2024-01-15T10:00:00Z", "modified_on": "2024-01-20T14:00:00Z" } ], "count": 1, "timestamp": "2024-01-20T14:30:00Z" }</code></pre>
 <h2>Pricing</h2>
-
-<p>This actor uses <strong>pay-per-event</strong> billing:
-$0.01 per query (all tasks)</p>
-
+<p>This actor uses <strong>pay-per-event</strong> billing: $0.01 per query (all tasks)</p>
 <h2>Use Cases</h2>
-
 <ul>
-<li><strong>DevOps Automation</strong> - Automate DNS changes during deployments</li>
-<li><strong>Multi-site Management</strong> - Manage DNS across multiple domains</li>
-<li><strong>Cache Invalidation</strong> - Purge cache after content updates</li>
-<li><strong>SSL Management</strong> - Configure SSL settings programmatically</li>
-<li><strong>Security Automation</strong> - Manage firewall rules based on events</li>
-<li><strong>Infrastructure as Code</strong> - Version control your Cloudflare config</li>
-<li><strong>Monitoring</strong> - Pull analytics data for custom dashboards</li>
-
-</ul>
----
-
-<strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong>
-
-            <p><strong>Built by <a href="https://www.linkedin.com/in/johnrippy/" target="_blank" rel="noopener">John Rippy</a></strong> | <a href="https://johnrippy.link/" target="_blank" rel="noopener">johnrippy.link</a></p>
+<p><li><strong>DevOps Automation</strong> - Automate DNS changes during deployments</li> <li><strong>Multi-site Management</strong> - Manage DNS across multiple domains</li> <li><strong>Cache Invalidation</strong> - Purge cache after content updates</li> <li><strong>SSL Management</strong> - Configure SSL settings programmatically</li> <li><strong>Security Automation</strong> - Manage firewall rules based on events</li> <li><strong>Infrastructure as Code</strong> - Version control your Cloudflare config</li> <li><strong>Monitoring</strong> - Pull analytics data for custom dashboards</li> </ul>
+<hr>
+<h2>Common Problems & Solutions</h2>
+<h3>"Invalid API key" error</h3>
+<p><strong>Cause:</strong> Your API key is wrong, expired, or doesn't have the right permissions. <strong>Fix:</strong> Double-check your API key. Make sure you copied it exactly without extra spaces.</p>
+<h3>"Rate limit exceeded" error</h3>
+<p><strong>Cause:</strong> You've hit the API's rate limits. <strong>Fix:</strong> Wait a few minutes, then try again. Consider reducing the number of concurrent requests.</p>
+<h3>Empty or incomplete results</h3>
+<p><strong>Cause:</strong> The target may have anti-scraping protection or the data doesn't exist. <strong>Fix:</strong></p>
+<ul>
+<p><li>Check if the URL/search query is correct</li> <li>Try with different parameters</li> <li>Some sites may block automated access</li> </ul>
+<h3>Demo data showing instead of real results</h3>
+<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your API key(s).</p>
+<hr>
+<p><strong>Built by John Rippy | <a href="https://actor-arsenal-site.vercel.app" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
         </div>
     </section>
 
@@ -555,7 +502,7 @@ $0.01 per query (all tasks)</p>
         </div>
         <div class="hud-section">
             <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">280</div>
+                <div class="hud-value hud-armor" id="hudArmor">281</div>
                 <div class="hud-label">ACTORS</div>
             </div>
         </div>
