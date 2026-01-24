@@ -1,5 +1,258 @@
 [
   {
+    "id": "LF3BPd0DBfXIgI0uA",
+    "name": "god-mode-intel-mcp",
+    "title": "God Mode - Marketing Intelligence MCP",
+    "description": "The ultimate B2B sales intelligence MCP server. 48+ AI-powered tools for lead discovery, company research, competitive intel, LinkedIn scraping, review aggregation, and sales automation. Works with Make.com, Zapier, n8n, Claude Desktop, and any MCP-compatible client.",
+    "pictureUrl": "images/god-mode-intel-mcp.png",
+    "categories": [
+      "MCP_SERVERS",
+      "LEAD_GENERATION",
+      "AI",
+      "BUSINESS"
+    ]
+  },
+  {
+    "id": "9xFBhFLdlWyXKRkLA",
+    "name": "lbis-pro",
+    "title": "The Local Business Intelligence Suite",
+    "description": "God Mode for Local SEO\n\nStop Paying for 10+ Separate Local SEO Tools\nYou're currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), Yext ($499/mo), ReviewTrackers ($49/mo), & a dozen browser extensions. What if one tool did it all?",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-9xFBhFLdlWyXKRkLA-XjfnKnwfZx-god-mode.png",
+    "categories": [
+      "AI",
+      "MCP_SERVERS",
+      "SEO_TOOLS"
+    ]
+  },
+  {
+    "id": "MPX5BQvZs1uQfTFdO",
+    "name": "service-area-mapper",
+    "title": "Service Area Mapper",
+    "description": "Plan & optimize your service territories w/detailed ZIP code analysis. Understand population, income levels, & competitor saturation to make data-driven expansion decisions. Territory Planning, Franchise Mapping, Market Expansion, Route Optimization, Competitor Analysis & Marketing Targeting",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-MPX5BQvZs1uQfTFdO-zcSaunzvtF-service_area_mapper.png",
+    "categories": [
+      "MCP_SERVERS",
+      "LEAD_GENERATION",
+      "OTHER"
+    ]
+  },
+  {
+    "id": "lHYBnEnMRiPkcPIoh",
+    "name": "local-business-intelligence-suite",
+    "title": "Local Business Intelligence Suite",
+    "description": "God Mode for Local SEO\n\nStop Paying for 10+ Separate Local SEO Tools\nYou're currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), Yext ($499/mo), ReviewTrackers ($49/mo), & a dozen browser extensions. What if one tool did it all?",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-lHYBnEnMRiPkcPIoh-BBzidIyFeV-god-mode.png",
+    "categories": [
+      "AI",
+      "MCP_SERVERS",
+      "SEO_TOOLS"
+    ]
+  },
+  {
+    "id": "0J7JfA55zXp9bfUtm",
+    "name": "linkedin-mcp-server",
+    "title": "LinkedIn MCP Server - AI Assistant",
+    "description": "Model Context Protocol server for LinkedIn automation. Enable AI assistants to search profiles, send messages & manage connections programmatically.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-0J7JfA55zXp9bfUtm-u8rrYuvn1f-LinkedIn_MCP_Server.png",
+    "categories": [
+      "AI",
+      "AGENTS",
+      "MCP_SERVERS"
+    ]
+  },
+  {
+    "id": "jrvjL9BkKeZ6XUSf2",
+    "name": "local-seo-mcp-server",
+    "title": "Local SEO MCP Server for Claude & AI Assistants",
+    "description": "Connect Claude Desktop or any MCP-compatible AI to 14 local SEO tools. Run citation audits, scrape Google Business Profiles, generate review responses, audit technical SEO, find leads, and more - all via natural language. Configure once, automate forever.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-jrvjL9BkKeZ6XUSf2-B8RvaNEze7-local_seo_mcp_server.png",
+    "categories": [
+      "MCP_SERVERS",
+      "SEO_TOOLS",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "2PXK3qnSdJZuog3n5",
+    "name": "review-intelligence-mcp-server",
+    "title": "Review Intelligence MCP Server for AI Assistants",
+    "description": "MCP Server providing AI assistants with unified access to 11+ review platforms through a single interface. Scrape reviews, analyze sentiment, generate AI-powered responses, and monitor reputation across Google, Yelp, Facebook, TripAdvisor, and more.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-2PXK3qnSdJZuog3n5-gxUpMzRSUp-review_intelligence_mcp_server.png",
+    "categories": [
+      "MCP_SERVERS",
+      "AI",
+      "SOCIAL_MEDIA"
+    ]
+  },
+  {
+    "id": "sfPaCcPijqMLKyN8t",
+    "name": "real-estate-mcp-server",
+    "title": "Real Estate MCP Server Multi-Platform Property Data for AI",
+    "description": "MCP Server providing AI assistants with unified access to 4+ real estate platforms through a single interface. Search properties, analyze market trends, compare listings, and generate investment reports across Zillow, Redfin, Realtor.com, and MLS.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-sfPaCcPijqMLKyN8t-PTPR8LSrJa-Real_Estate_MCP_Server.png",
+    "categories": [
+      "REAL_ESTATE",
+      "MCP_SERVERS",
+      "AI"
+    ]
+  },
+  {
+    "id": "ghcYKMV6wvpY81xJN",
+    "name": "b2b-research-mcp-server",
+    "title": "B2B Research MCP Server Company Intel & Sales Research for AI",
+    "description": "MCP Server providing AI assistants w/unified access to B2B company research through a single interface. Analyze tech stacks, scrape LinkedIn profiles, get Glassdoor reviews, research Crunchbase data, and enrich company contacts.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-ghcYKMV6wvpY81xJN-U5Kz9PDAZ7-b2b_research_mcp_server.png",
+    "categories": [
+      "AI",
+      "MCP_SERVERS",
+      "LEAD_GENERATION"
+    ]
+  },
+  {
+    "id": "ObYfhSiyWmdr4OVUc",
+    "name": "performance-seo-mcp-server",
+    "title": "Website Performance & Technical SEO MCP Server for AI Assistant",
+    "description": "MCP Server providing AI assistants with unified access to website performance and technical SEO analysis through a single interface. PageSpeed Insights, Core Web Vitals, Lighthouse audits, robots.txt validation, sitemap analysis, and comprehensive technical SEO checks.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-ObYfhSiyWmdr4OVUc-hzaNpQobXf-performance_and_seo_mcp_server.png",
+    "categories": [
+      "SEO_TOOLS",
+      "MCP_SERVERS",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "DoZdQP5CGVPOWL66b",
+    "name": "social-media-mcp-server",
+    "title": "Social Media MCP Server - Unified Multi-Platform Posting API",
+    "description": "MCP Server providing unified access to 8 social media platforms. AI assistants can post to GBP, Facebook, Instagram, LinkedIn, Twitter/X, Reddit, Pinterest & TikTok through a single interface. Cross-platform posting, content scheduling, platform-specific optimization,& engagement tracking.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-DoZdQP5CGVPOWL66b-bNnQclluqd-_social_media_mcp_server.png",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "MCP_SERVERS",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "CuDbUzc8mbKH9t8ZA",
+    "name": "industry-research-mcp-server",
+    "title": "Industry Research MCP Server for AI Assistants",
+    "description": "MCP Server providing AI assistants with unified access to industry research, market trends, competitor analysis, and business intelligence through a single interface. SEO news aggregation, Quora insights, Crunchbase data, review platform aggregation, and Reddit discussions.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-CuDbUzc8mbKH9t8ZA-E9cnKAtUES-industry_research_mcp_server.png",
+    "categories": [
+      "MCP_SERVERS",
+      "AI",
+      "NEWS"
+    ]
+  },
+  {
+    "id": "tOwNljdTgqnITmlna",
+    "name": "messaging-mcp-server",
+    "title": "Messaging Platform MCP Server",
+    "description": "Model Context Protocol (MCP) server providing unified access to Discord, Slack, Telegram & WhatsApp messaging. Perfect for AI assistants that need to send notifications, alerts or messages across platforms. Multi-Platform Support, Unified Interface, MCP Compatible, Rich Messages Embeds Demo Mode",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-tOwNljdTgqnITmlna-HDqqg6aQXs-Screenshot_2025-12-27_at_12.31.33_PM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "AI",
+      "INTEGRATIONS"
+    ]
+  },
+  {
+    "id": "I6l2177QVbJrkgXnP",
+    "name": "lead-enrichment-mcp-server",
+    "title": "Lead Enrichment MCP Server",
+    "description": "MCP Server that enables AI assistants like Claude to orchestrate complex lead enrichment & prospecting workflows through natural conversation. Instead of manually running ask Claude:\n\n\"Find 10 SaaS companies in Austin, enrich w/Apollo data, scrape CEOs' LinkedIn & prioritize by buying signals\"",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-I6l2177QVbJrkgXnP-ms5FHORNav-Screenshot_2025-12-28_at_3.20.35_PM.png",
+    "categories": [
+      "LEAD_GENERATION",
+      "MCP_SERVERS",
+      "AGENTS"
+    ]
+  },
+  {
+    "id": "Xy8PBI1sedmNTzUHB",
+    "name": "seo-intelligence-mcp-server",
+    "title": "Unified SEO Intelligence MCP Server",
+    "description": "Unified MCP Server for comprehensive SEO intelligence - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration. It orchestrates multiple specialized Apify actors DataForSEO, LocalFalcon & SERPApi",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-Xy8PBI1sedmNTzUHB-FFGfIW7aEn-Screenshot_2025-12-28_at_10.30.20_AM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "SEO_TOOLS",
+      "AI"
+    ]
+  },
+  {
+    "id": "OipZmzAMNkDE4c1rZ",
+    "name": "ai-content-mcp-server",
+    "title": "AI Content MCP Server",
+    "description": "AI-ready content generation with 6 specialized tools. Generate text with Claude/Gemini, create images with Imagen/DALL-E, extract structured data from any URL, and enrich leads with AI - all through a unified MCP interface.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-OipZmzAMNkDE4c1rZ-IOX83PaBew-Screenshot_2025-12-29_at_12.29.14_PM.png",
+    "categories": [
+      "AI",
+      "MCP_SERVERS",
+      "LEAD_GENERATION"
+    ]
+  },
+  {
+    "id": "8KSistQhi9E5Jm2BU",
+    "name": "ai-technical-seo-mcp-server",
+    "title": "AI Technical SEO MCP Server",
+    "description": "AI-ready technical SEO auditing with 7 specialized tools. Check robots.txt, llms.txt, generate sitemaps, run Lighthouse & GTmetrix audits, test rich results, and perform comprehensive technical SEO audits - all through a unified MCP interface.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-8KSistQhi9E5Jm2BU-T94JipbUlK-Screenshot_2025-12-29_at_11.10.27_AM.png",
+    "categories": [
+      "SEO_TOOLS",
+      "MCP_SERVERS",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "JZZk3Ko9bT2UPMkdy",
+    "name": "sports-data-mcp-server",
+    "title": "62-in-1 Sports Data MCP Server",
+    "description": "62-in-1 MCP server for sports data. Get NHL, MLB and Premier League soccer stats with AI assistants. This MCP server bundles 56 sports data tools into a single endpoint. Sports included:\nNHL Hockey\nMLB Baseball\nPremier League Soccer\nNFL\nNCAA Football & Basketball\nNBA\nWWE",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-JZZk3Ko9bT2UPMkdy-S7w3REsgfX-Screenshot_2025-12-29_at_5.32.59_PM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "DEVELOPER_TOOLS",
+      "AI"
+    ]
+  },
+  {
+    "id": "8omVgTi4uVznUBViI",
+    "name": "competitive-intelligence-mcp-server",
+    "title": "Competitive Intelligence MCP Server",
+    "description": "9-in-1 MCP server for AI-powered competitor analysis. Use with Claude, GPT or any AI assistant that supports MCP tools. This MCP server bundles 9 competitive intelligence tools into one endpoint. \nMonitor competitors\nAnalyze Facebook Ads\nDetect tech stack\nAggregate B2B review\nResearch companies",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-8omVgTi4uVznUBViI-Cc2AF7xPTE-Screenshot_2025-12-29_at_5.30.20_PM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "AI",
+      "LEAD_GENERATION"
+    ]
+  },
+  {
+    "id": "XvhCFM7Ksq0mTLoTg",
+    "name": "influencer-marketing-mcp-server",
+    "title": "Influencer Marketing MCP Server",
+    "description": "Enterprise-grade MCP (Model Context Protocol) server that provides unified access to influencer marketing tools across Instagram, TikTok, YouTube, LinkedIn, and Twitter. Includes AI-powered analysis, strategy generation, and multi-platform posting in one integrated toolkit.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-XvhCFM7Ksq0mTLoTg-C2EVrsFVCS-Screenshot_2026-01-01_at_1.39.52_PM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "SOCIAL_MEDIA",
+      "AI"
+    ]
+  },
+  {
+    "id": "2lFniSp1u2BZyidiM",
+    "name": "government-research-mcp-server---unified-data-access",
+    "title": "Government & Research MCP Server - Unified Data Access",
+    "description": "Unified MCP (Model Context Protocol) server providing single-interface access to 16 government and research data sources. Query multiple APIs simultaneously, aggregate results, and use smart routing for natural language queries.",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-2lFniSp1u2BZyidiM-7F6ijWR2Dp-Screenshot_2026-01-13_at_8.21.14_PM.png",
+    "categories": [
+      "MCP_SERVERS",
+      "DEVELOPER_TOOLS",
+      "INTEGRATIONS"
+    ]
+  },
+  {
     "id": "baA4Az12N8znG6uJ7",
     "name": "firecrawl-website-crawler",
     "title": "Firecrawl Website Crawler",
@@ -288,18 +541,6 @@
     ]
   },
   {
-    "id": "MPX5BQvZs1uQfTFdO",
-    "name": "service-area-mapper",
-    "title": "Service Area Mapper",
-    "description": "Plan & optimize your service territories w/detailed ZIP code analysis. Understand population, income levels, & competitor saturation to make data-driven expansion decisions. Territory Planning, Franchise Mapping, Market Expansion, Route Optimization, Competitor Analysis & Marketing Targeting",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-MPX5BQvZs1uQfTFdO-zcSaunzvtF-service_area_mapper.png",
-    "categories": [
-      "MCP_SERVERS",
-      "LEAD_GENERATION",
-      "OTHER"
-    ]
-  },
-  {
     "id": "cUCG5JMJfCbSzpi43",
     "name": "linkedin-voice-trainer",
     "title": "LinkedIn Voice Trainer & AI Content Generator",
@@ -504,18 +745,6 @@
     ]
   },
   {
-    "id": "lHYBnEnMRiPkcPIoh",
-    "name": "local-business-intelligence-suite",
-    "title": "Local Business Intelligence Suite",
-    "description": "God Mode for Local SEO\n\nStop Paying for 10+ Separate Local SEO Tools\nYou're currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), Yext ($499/mo), ReviewTrackers ($49/mo), & a dozen browser extensions. What if one tool did it all?",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-lHYBnEnMRiPkcPIoh-BBzidIyFeV-god-mode.png",
-    "categories": [
-      "AI",
-      "MCP_SERVERS",
-      "SEO_TOOLS"
-    ]
-  },
-  {
     "id": "e0hdcoVJJfUYyy9jv",
     "name": "capterra-scraper",
     "title": "Capterra Scraper",
@@ -623,18 +852,6 @@
     ]
   },
   {
-    "id": "9xFBhFLdlWyXKRkLA",
-    "name": "lbis-pro",
-    "title": "The Local Business Intelligence Suite",
-    "description": "God Mode for Local SEO\n\nStop Paying for 10+ Separate Local SEO Tools\nYou're currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), Yext ($499/mo), ReviewTrackers ($49/mo), & a dozen browser extensions. What if one tool did it all?",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-9xFBhFLdlWyXKRkLA-XjfnKnwfZx-god-mode.png",
-    "categories": [
-      "AI",
-      "MCP_SERVERS",
-      "SEO_TOOLS"
-    ]
-  },
-  {
     "id": "YtYkh2HS1z77PewDl",
     "name": "mlb-stats-api",
     "title": "MLB Stats API - Baseball Data",
@@ -680,18 +897,6 @@
       "LEAD_GENERATION",
       "DEVELOPER_TOOLS",
       "AGENTS"
-    ]
-  },
-  {
-    "id": "0J7JfA55zXp9bfUtm",
-    "name": "linkedin-mcp-server",
-    "title": "LinkedIn MCP Server - AI Assistant",
-    "description": "Model Context Protocol server for LinkedIn automation. Enable AI assistants to search profiles, send messages & manage connections programmatically.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-0J7JfA55zXp9bfUtm-u8rrYuvn1f-LinkedIn_MCP_Server.png",
-    "categories": [
-      "AI",
-      "AGENTS",
-      "MCP_SERVERS"
     ]
   },
   {
@@ -1019,18 +1224,6 @@
     ]
   },
   {
-    "id": "jrvjL9BkKeZ6XUSf2",
-    "name": "local-seo-mcp-server",
-    "title": "Local SEO MCP Server for Claude & AI Assistants",
-    "description": "Connect Claude Desktop or any MCP-compatible AI to 14 local SEO tools. Run citation audits, scrape Google Business Profiles, generate review responses, audit technical SEO, find leads, and more - all via natural language. Configure once, automate forever.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-jrvjL9BkKeZ6XUSf2-B8RvaNEze7-local_seo_mcp_server.png",
-    "categories": [
-      "MCP_SERVERS",
-      "SEO_TOOLS",
-      "AUTOMATION"
-    ]
-  },
-  {
     "id": "jmXFuP9IAv7j2IBVa",
     "name": "recipe-api",
     "title": "Recipe API - TheMealDB, AllRecipes Scraper & Spoonacular",
@@ -1067,18 +1260,6 @@
     ]
   },
   {
-    "id": "2PXK3qnSdJZuog3n5",
-    "name": "review-intelligence-mcp-server",
-    "title": "Review Intelligence MCP Server for AI Assistants",
-    "description": "MCP Server providing AI assistants with unified access to 11+ review platforms through a single interface. Scrape reviews, analyze sentiment, generate AI-powered responses, and monitor reputation across Google, Yelp, Facebook, TripAdvisor, and more.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-2PXK3qnSdJZuog3n5-gxUpMzRSUp-review_intelligence_mcp_server.png",
-    "categories": [
-      "MCP_SERVERS",
-      "AI",
-      "SOCIAL_MEDIA"
-    ]
-  },
-  {
     "id": "5mV7Obyh4lwjMIPao",
     "name": "ai-competitor-monitor",
     "title": "AI-Enhanced Competitor Monitor with Strategic Intelligence",
@@ -1088,54 +1269,6 @@
       "AI",
       "AGENTS",
       "SEO_TOOLS"
-    ]
-  },
-  {
-    "id": "sfPaCcPijqMLKyN8t",
-    "name": "real-estate-mcp-server",
-    "title": "Real Estate MCP Server Multi-Platform Property Data for AI",
-    "description": "MCP Server providing AI assistants with unified access to 4+ real estate platforms through a single interface. Search properties, analyze market trends, compare listings, and generate investment reports across Zillow, Redfin, Realtor.com, and MLS.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-sfPaCcPijqMLKyN8t-PTPR8LSrJa-Real_Estate_MCP_Server.png",
-    "categories": [
-      "REAL_ESTATE",
-      "MCP_SERVERS",
-      "AI"
-    ]
-  },
-  {
-    "id": "ghcYKMV6wvpY81xJN",
-    "name": "b2b-research-mcp-server",
-    "title": "B2B Research MCP Server Company Intel & Sales Research for AI",
-    "description": "MCP Server providing AI assistants w/unified access to B2B company research through a single interface. Analyze tech stacks, scrape LinkedIn profiles, get Glassdoor reviews, research Crunchbase data, and enrich company contacts.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-ghcYKMV6wvpY81xJN-U5Kz9PDAZ7-b2b_research_mcp_server.png",
-    "categories": [
-      "AI",
-      "MCP_SERVERS",
-      "LEAD_GENERATION"
-    ]
-  },
-  {
-    "id": "ObYfhSiyWmdr4OVUc",
-    "name": "performance-seo-mcp-server",
-    "title": "Website Performance & Technical SEO MCP Server for AI Assistant",
-    "description": "MCP Server providing AI assistants with unified access to website performance and technical SEO analysis through a single interface. PageSpeed Insights, Core Web Vitals, Lighthouse audits, robots.txt validation, sitemap analysis, and comprehensive technical SEO checks.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-ObYfhSiyWmdr4OVUc-hzaNpQobXf-performance_and_seo_mcp_server.png",
-    "categories": [
-      "SEO_TOOLS",
-      "MCP_SERVERS",
-      "AUTOMATION"
-    ]
-  },
-  {
-    "id": "DoZdQP5CGVPOWL66b",
-    "name": "social-media-mcp-server",
-    "title": "Social Media MCP Server - Unified Multi-Platform Posting API",
-    "description": "MCP Server providing unified access to 8 social media platforms. AI assistants can post to GBP, Facebook, Instagram, LinkedIn, Twitter/X, Reddit, Pinterest & TikTok through a single interface. Cross-platform posting, content scheduling, platform-specific optimization,& engagement tracking.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-DoZdQP5CGVPOWL66b-bNnQclluqd-_social_media_mcp_server.png",
-    "categories": [
-      "SOCIAL_MEDIA",
-      "MCP_SERVERS",
-      "AUTOMATION"
     ]
   },
   {
@@ -1208,18 +1341,6 @@
       "AI",
       "SEO_TOOLS",
       "DEVELOPER_TOOLS"
-    ]
-  },
-  {
-    "id": "CuDbUzc8mbKH9t8ZA",
-    "name": "industry-research-mcp-server",
-    "title": "Industry Research MCP Server for AI Assistants",
-    "description": "MCP Server providing AI assistants with unified access to industry research, market trends, competitor analysis, and business intelligence through a single interface. SEO news aggregation, Quora insights, Crunchbase data, review platform aggregation, and Reddit discussions.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-CuDbUzc8mbKH9t8ZA-E9cnKAtUES-industry_research_mcp_server.png",
-    "categories": [
-      "MCP_SERVERS",
-      "AI",
-      "NEWS"
     ]
   },
   {
@@ -1319,18 +1440,6 @@
     ]
   },
   {
-    "id": "tOwNljdTgqnITmlna",
-    "name": "messaging-mcp-server",
-    "title": "Messaging Platform MCP Server",
-    "description": "Model Context Protocol (MCP) server providing unified access to Discord, Slack, Telegram & WhatsApp messaging. Perfect for AI assistants that need to send notifications, alerts or messages across platforms. Multi-Platform Support, Unified Interface, MCP Compatible, Rich Messages Embeds Demo Mode",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-tOwNljdTgqnITmlna-HDqqg6aQXs-Screenshot_2025-12-27_at_12.31.33_PM.png",
-    "categories": [
-      "MCP_SERVERS",
-      "AI",
-      "INTEGRATIONS"
-    ]
-  },
-  {
     "id": "blEmEJejEx7r0e6vk",
     "name": "serpapi-realtime",
     "title": "SERPApi Real-Time SERP",
@@ -1343,30 +1452,6 @@
     ]
   },
   {
-    "id": "I6l2177QVbJrkgXnP",
-    "name": "lead-enrichment-mcp-server",
-    "title": "Lead Enrichment MCP Server",
-    "description": "MCP Server that enables AI assistants like Claude to orchestrate complex lead enrichment & prospecting workflows through natural conversation. Instead of manually running ask Claude:\n\n\"Find 10 SaaS companies in Austin, enrich w/Apollo data, scrape CEOs' LinkedIn & prioritize by buying signals\"",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-I6l2177QVbJrkgXnP-ms5FHORNav-Screenshot_2025-12-28_at_3.20.35_PM.png",
-    "categories": [
-      "LEAD_GENERATION",
-      "MCP_SERVERS",
-      "AGENTS"
-    ]
-  },
-  {
-    "id": "Xy8PBI1sedmNTzUHB",
-    "name": "seo-intelligence-mcp-server",
-    "title": "Unified SEO Intelligence MCP Server",
-    "description": "Unified MCP Server for comprehensive SEO intelligence - Orchestrates DataForSEO, LocalFalcon, and SERPApi actors for AI assistant integration. It orchestrates multiple specialized Apify actors DataForSEO, LocalFalcon & SERPApi",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-Xy8PBI1sedmNTzUHB-FFGfIW7aEn-Screenshot_2025-12-28_at_10.30.20_AM.png",
-    "categories": [
-      "MCP_SERVERS",
-      "SEO_TOOLS",
-      "AI"
-    ]
-  },
-  {
     "id": "yC8G3PzCAe3ZvyALa",
     "name": "lingo-asset-sync",
     "title": "Lingo Digital Asset Management (DAM) platform Asset Sync",
@@ -1376,18 +1461,6 @@
       "DEVELOPER_TOOLS",
       "AUTOMATION",
       "OTHER"
-    ]
-  },
-  {
-    "id": "OipZmzAMNkDE4c1rZ",
-    "name": "ai-content-mcp-server",
-    "title": "AI Content MCP Server",
-    "description": "AI-ready content generation with 6 specialized tools. Generate text with Claude/Gemini, create images with Imagen/DALL-E, extract structured data from any URL, and enrich leads with AI - all through a unified MCP interface.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-OipZmzAMNkDE4c1rZ-IOX83PaBew-Screenshot_2025-12-29_at_12.29.14_PM.png",
-    "categories": [
-      "AI",
-      "MCP_SERVERS",
-      "LEAD_GENERATION"
     ]
   },
   {
@@ -1439,18 +1512,6 @@
     ]
   },
   {
-    "id": "8KSistQhi9E5Jm2BU",
-    "name": "ai-technical-seo-mcp-server",
-    "title": "AI Technical SEO MCP Server",
-    "description": "AI-ready technical SEO auditing with 7 specialized tools. Check robots.txt, llms.txt, generate sitemaps, run Lighthouse & GTmetrix audits, test rich results, and perform comprehensive technical SEO audits - all through a unified MCP interface.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-8KSistQhi9E5Jm2BU-T94JipbUlK-Screenshot_2025-12-29_at_11.10.27_AM.png",
-    "categories": [
-      "SEO_TOOLS",
-      "MCP_SERVERS",
-      "AUTOMATION"
-    ]
-  },
-  {
     "id": "seHbIqoxEZby2WBOr",
     "name": "wwe-api",
     "title": "WWE API - Wrestling Sports",
@@ -1460,18 +1521,6 @@
       "DEVELOPER_TOOLS",
       "OTHER",
       "NEWS"
-    ]
-  },
-  {
-    "id": "JZZk3Ko9bT2UPMkdy",
-    "name": "sports-data-mcp-server",
-    "title": "62-in-1 Sports Data MCP Server",
-    "description": "62-in-1 MCP server for sports data. Get NHL, MLB and Premier League soccer stats with AI assistants. This MCP server bundles 56 sports data tools into a single endpoint. Sports included:\nNHL Hockey\nMLB Baseball\nPremier League Soccer\nNFL\nNCAA Football & Basketball\nNBA\nWWE",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-JZZk3Ko9bT2UPMkdy-S7w3REsgfX-Screenshot_2025-12-29_at_5.32.59_PM.png",
-    "categories": [
-      "MCP_SERVERS",
-      "DEVELOPER_TOOLS",
-      "AI"
     ]
   },
   {
@@ -1523,18 +1572,6 @@
     ]
   },
   {
-    "id": "8omVgTi4uVznUBViI",
-    "name": "competitive-intelligence-mcp-server",
-    "title": "Competitive Intelligence MCP Server",
-    "description": "9-in-1 MCP server for AI-powered competitor analysis. Use with Claude, GPT or any AI assistant that supports MCP tools. This MCP server bundles 9 competitive intelligence tools into one endpoint. \nMonitor competitors\nAnalyze Facebook Ads\nDetect tech stack\nAggregate B2B review\nResearch companies",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-8omVgTi4uVznUBViI-Cc2AF7xPTE-Screenshot_2025-12-29_at_5.30.20_PM.png",
-    "categories": [
-      "MCP_SERVERS",
-      "AI",
-      "LEAD_GENERATION"
-    ]
-  },
-  {
     "id": "EHeCYUCXjaBy8MRwn",
     "name": "gmail-sentiment-scanner",
     "title": "GMail Sentiment Scanner",
@@ -1580,18 +1617,6 @@
       "AI",
       "OTHER",
       "JOBS"
-    ]
-  },
-  {
-    "id": "XvhCFM7Ksq0mTLoTg",
-    "name": "influencer-marketing-mcp-server",
-    "title": "Influencer Marketing MCP Server",
-    "description": "Enterprise-grade MCP (Model Context Protocol) server that provides unified access to influencer marketing tools across Instagram, TikTok, YouTube, LinkedIn, and Twitter. Includes AI-powered analysis, strategy generation, and multi-platform posting in one integrated toolkit.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-XvhCFM7Ksq0mTLoTg-C2EVrsFVCS-Screenshot_2026-01-01_at_1.39.52_PM.png",
-    "categories": [
-      "MCP_SERVERS",
-      "SOCIAL_MEDIA",
-      "AI"
     ]
   },
   {
@@ -2497,18 +2522,6 @@
     "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-Q6x9T4jW6HKQr4kyv-RCE4Eple0i-Screenshot_2026-01-13_at_8.07.15_AM.png",
     "categories": [
       "OTHER",
-      "DEVELOPER_TOOLS",
-      "INTEGRATIONS"
-    ]
-  },
-  {
-    "id": "2lFniSp1u2BZyidiM",
-    "name": "government-research-mcp-server---unified-data-access",
-    "title": "Government & Research MCP Server - Unified Data Access",
-    "description": "Unified MCP (Model Context Protocol) server providing single-interface access to 16 government and research data sources. Query multiple APIs simultaneously, aggregate results, and use smart routing for natural language queries.",
-    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-2lFniSp1u2BZyidiM-7F6ijWR2Dp-Screenshot_2026-01-13_at_8.21.14_PM.png",
-    "categories": [
-      "MCP_SERVERS",
       "DEVELOPER_TOOLS",
       "INTEGRATIONS"
     ]
