@@ -1722,4 +1722,40 @@
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/local-business-intelligence-suite.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/linkedin-sales-nav-scraper.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/linkedin-post-engagers-scraper.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/linkedin-event-attendees-scraper.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/linkedin-company-followers-scraper.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://actor-arsenal.com/actors/god-mode-intel-mcp-v2.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>

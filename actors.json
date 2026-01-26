@@ -1,5 +1,77 @@
 [
   {
+    "id": "lHYBnEnMRiPkcPIoh",
+    "name": "local-business-intelligence-suite",
+    "title": "Local Business Intelligence Suite",
+    "description": "God Mode for Local SEO\n\nStop Paying for 10+ Separate Local SEO Tools\nYou're currently paying for: BrightLocal ($39/mo), LocalFalcon ($29/mo), GatherUp ($99/mo), SEMrush ($129/mo), Moz Local ($14/mo), Yext ($499/mo), ReviewTrackers ($49/mo), & a dozen browser extensions. What if one tool did it all?",
+    "pictureUrl": "images/local-business-intelligence-suite.png",
+    "categories": [
+      "AI",
+      "MCP_SERVERS",
+      "SEO_TOOLS"
+    ]
+  },
+  {
+    "id": "m5v2Ji0oXrMaknnDr",
+    "name": "linkedin-sales-nav-scraper",
+    "title": "LinkedIn Sales Navigator Scraper Export Leads & Accounts",
+    "description": "Export leads from LinkedIn Sales Navigator searches, saved lists, and account lists at scale.",
+    "pictureUrl": "images/linkedin-sales-nav-scraper.png",
+    "categories": [
+      "LEAD_GENERATION",
+      "AUTOMATION",
+      "DEVELOPER_TOOLS"
+    ]
+  },
+  {
+    "id": "2U7OJVlqGgjh8a30n",
+    "name": "linkedin-post-engagers-scraper",
+    "title": "LinkedIn Post Engagers - Likers, Commenters, Reposters",
+    "description": "Extract people who engaged with any LinkedIn post. Get likers, commenters, and reposters as warm leads.",
+    "pictureUrl": "images/linkedin-post-engagers-scraper.png",
+    "categories": [
+      "LEAD_GENERATION",
+      "SOCIAL_MEDIA",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "dnsbsrlF5YsYMCIIB",
+    "name": "linkedin-event-attendees-scraper",
+    "title": "LinkedIn Event Attendees - Speakers & Registrations",
+    "description": "Export attendees from LinkedIn Events. Get speakers, registered attendees, and interested users.",
+    "pictureUrl": "images/linkedin-event-attendees-scraper.png",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "LEAD_GENERATION",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "pVuXqaXcegIZKjJsw",
+    "name": "linkedin-company-followers-scraper",
+    "title": "LinkedIn Company Followers - Export Audience",
+    "description": "Export followers of any LinkedIn company page for competitor research and targeted outreach.",
+    "pictureUrl": "images/linkedin-company-followers-scraper.png",
+    "categories": [
+      "LEAD_GENERATION",
+      "SOCIAL_MEDIA",
+      "AUTOMATION"
+    ]
+  },
+  {
+    "id": "RZYvUKdgTvtDbIdp5",
+    "name": "god-mode-intel-mcp-v2",
+    "title": "GOD MODE INTEL MCP V2 - Ultimate B2B Intelligence Suite",
+    "description": "52+ B2B intelligence tools with LinkedIn Intelligence Suite (Sales Navigator, Post Engagers, Event Attendees, Company Followers), pay-per-event pricing, and MCP protocol support for Claude Desktop & Make.com. V2 with proper PPE pricing.",
+    "pictureUrl": "images/god-mode-intel-mcp-v2.png",
+    "categories": [
+      "LEAD_GENERATION",
+      "AI",
+      "MCP_SERVERS"
+    ]
+  },
+  {
     "id": "QCYsGCgOh14YaGz31",
     "name": "tiktok-shop-scraper-v3",
     "title": "TikTok Shop Scraper V3 - Ultimate E-Commerce Intelligence Suite",
