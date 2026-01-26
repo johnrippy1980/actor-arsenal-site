@@ -1,5 +1,17 @@
 [
   {
+    "id": "H0igt0OP9qbYMfd7U",
+    "name": "tiktok-shop-scraper-v2",
+    "title": "TikTok Shop Scraper V2 - E-Commerce Intelligence at Scale",
+    "description": "Extract product data, pricing, sales metrics, reviews, and seller information from TikTok Shop. Built for e-commerce research, competitor analysis, dropshipping discovery, and market intelligence. Features category browsing, search queries, Camoufox anti-detection, multi-region support (12 regions), and FAST extraction mode.",
+    "pictureUrl": "images/tiktok-shop-scraper-v2.png",
+    "categories": [
+      "ECOMMERCE",
+      "SOCIAL_MEDIA",
+      "SCRAPER"
+    ]
+  },
+  {
     "id": "LF3BPd0DBfXIgI0uA",
     "name": "god-mode-intel-mcp",
     "title": "God Mode - Marketing Intelligence MCP",
