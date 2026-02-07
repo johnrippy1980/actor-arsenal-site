@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airtable API - Database &amp; Records Automation | Actor Arsenal</title>
-    <meta name="description" content="Apify actor for Airtable API - Database &amp; Records Automation">
-    
+    <meta name="description" content="">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://actor-arsenal-site.vercel.app/actors/airtable-api---database-records-automation.html">
     <meta name="robots" content="index, follow">
@@ -14,13 +14,57 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://actor-arsenal-site.vercel.app/actors/airtable-api---database-records-automation.html">
     <meta property="og:title" content="Airtable API - Database &amp; Records Automation | Actor Arsenal">
-    <meta property="og:description" content="Apify actor for Airtable API - Database &amp; Records Automation">
-    <meta property="og:image" content="../images/logo.png">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="../images/airtable-api---database-records-automation.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Airtable API - Database &amp; Records Automation">
-    <meta name="twitter:description" content="Apify actor for Airtable API - Database &amp; Records Automation">
+    <meta name="twitter:description" content="">
+
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Airtable API - Database &amp; Records Automation",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cloud (Apify Platform)",
+        "description": "",
+        "url": "https://actor-arsenal-site.vercel.app/actors/airtable-api---database-records-automation.html",
+        "author": {
+            "@type": "Person",
+            "name": "John Rippy"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://actor-arsenal-site.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Airtable API - Database &amp; Records Automation",
+                "item": "https://actor-arsenal-site.vercel.app/actors/airtable-api---database-records-automation.html"
+            }
+        ]
+    }
+    </script>
 
 <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,7 +181,7 @@
         .content {
             padding: 3rem 0;
         }
-        .content h1, .content h2, .content h3 {
+        .content h1, .content h2, .content h3, .content h4 {
             color: var(--accent-green);
             margin: 2rem 0 1rem;
         }
@@ -145,7 +189,7 @@
         .content h2 { font-size: 1.5rem; }
         .content h3 { font-size: 1.25rem; }
         .content p { margin-bottom: 1rem; color: var(--text-secondary); }
-        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content ul, .content ol { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
         .content li { margin-bottom: 0.5rem; }
         .content pre {
             background: var(--bg-code);
@@ -161,6 +205,13 @@
         }
         .content a { color: var(--accent-green); }
         .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -181,393 +232,53 @@
             .actor-header-content { flex-direction: column; }
             .actor-icon { width: 60px; height: 60px; }
         }
-        body { padding-bottom: 90px; }
-        .doom-hud {
-            position: fixed;
-            bottom: 0; left: 0;
-            width: 100%; height: 80px;
-            background:
-                repeating-linear-gradient(90deg, #5a5a5a 0px, #5a5a5a 2px, #6a6a6a 2px, #6a6a6a 4px, #4a4a4a 4px, #4a4a4a 6px, #555 6px, #555 8px),
-                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
-            border-top: 4px solid #7a7a7a;
-            border-bottom: 4px solid #2a2a2a;
-            box-shadow: inset 0 2px 0 #8a8a8a, inset 0 -2px 0 #2a2a2a, 0 -4px 8px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            font-family: 'Press Start 2P', cursive;
-            padding: 0; gap: 0;
-        }
-        .hud-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
-            border-left: 3px solid #6a6a6a;
-            border-right: 3px solid #2a2a2a;
-            border-top: 2px solid #7a7a7a;
-            border-bottom: 2px solid #1a1a1a;
-            padding: 0 1.5rem;
-            position: relative;
-        }
-        .hud-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 0.5rem; }
-        .hud-value { font-size: 1.8rem; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000; letter-spacing: 2px; }
-        .hud-label { font-size: 0.5rem; color: #888; text-shadow: 1px 1px 0 #000; text-transform: uppercase; }
-        .hud-face-container {
-            width: 70px; height: 70px;
-            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
-            border: 3px solid #5a5a5a;
-            border-bottom-color: #1a1a1a;
-            border-right-color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 1rem;
-        }
-        .hud-face { width: 60px; height: 60px; image-rendering: pixelated; }
-        .hud-ammo { color: #ffcc00; }
-        .hud-health { color: #ff3333; }
-        .hud-armor { color: #00ff88; }
-        .hud-secrets { color: #ff6600; }
-    
-        /* ===== CRT SCANLINE OVERLAY ===== */
-        .crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9998;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.3),
-                rgba(0, 0, 0, 0.3) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            opacity: 0.6;
-        }
-
-        /* ===== RED VIGNETTE ===== */
-        .vignette {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
-        }
-
-        /* ===== PAIN FLASH ===== */
-        .pain-flash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9996;
-            background: rgba(255, 0, 0, 0);
-            transition: background 0.1s;
-        }
-        .pain-flash.active {
-            background: rgba(255, 0, 0, 0.3);
-        }
-            /* ===== DIFFICULTY SELECTOR ===== */
-        .difficulty-selector {
-            position: relative;
-            display: inline-block;
-        }
-        .difficulty-btn, .music-btn {
-            background: transparent;
-            border: 1px solid var(--accent-red);
-            color: var(--accent-red);
-            padding: 0.4rem 0.8rem;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .music-btn {
-            font-size: 1.2rem;
-            padding: 0.4rem 0.8rem;
-            margin-left: 0.5rem;
-            border: 2px solid var(--accent-yellow);
-            color: var(--accent-yellow);
-            background: rgba(255, 204, 0, 0.1);
-            animation: musicPulse 2s ease-in-out infinite;
-            position: relative;
-        }
-        .music-btn::after {
-            content: 'E1M1';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
-            color: var(--accent-yellow);
-            white-space: nowrap;
-        }
-        .music-btn.playing {
-            background: var(--accent-yellow);
-            color: #000;
-            animation: none;
-            box-shadow: 0 0 15px var(--accent-yellow);
-        }
-        .music-btn.playing::after {
-            content: 'PLAYING';
-        }
-        @keyframes musicPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
-            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
-        }
-        .difficulty-btn:hover, .music-btn:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .music-btn:hover {
-            background: var(--accent-yellow);
-            color: #000;
-        }
-        .difficulty-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #111;
-            border: 1px solid var(--accent-red);
-            display: none;
-            flex-direction: column;
-            min-width: 200px;
-            z-index: 1002;
-        }
-        .difficulty-menu.show { display: flex; }
-        .difficulty-option {
-            padding: 0.8rem;
-            color: #888;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            text-align: left;
-            transition: all 0.2s;
-        }
-        .difficulty-option:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .difficulty-option.active {
-            color: var(--accent-yellow);
-        }
     </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Airtable API - Database &amp; Records Automation",
-  "description": "Automate your Airtable bases with the official API. List, create, update, and delete records. Manage tables and fields. Sync data between Airtable and other systems. Perfect for CRM automation, inventory management, project tracking, and data pipelines.",
-  "applicationCategory": "WebApplication",
-  "operatingSystem": "Cloud",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Actor Arsenal",
-    "url": "https://actor-arsenal-site.vercel.app"
-  },
-  "url": "https://actor-arsenal-site.vercel.app/actors/airtable-api---database-records-automation.html",
-  "image": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-jX5f0yWSrW9iscQFB-bG4lbGVSTw-Screenshot_2026-01-11_at_4.57.40_PM.png",
-  "identifier": "jX5f0yWSrW9iscQFB",
-  "sameAs": "https://apify.com/alizarin_refrigerator-owner/airtable-api---database-records-automation"
-}
-    </script>
 </head>
 <body>
-    <!-- DOOM Visual Effects -->
-    <div class="crt-overlay"></div>
-    <div class="vignette"></div>
-    <div class="pain-flash"></div>
-
     <nav>
         <div class="container">
-            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Actor Arsenal" class="logo-img">
+                Actor Arsenal
+            </a>
             <div class="nav-links">
-                <a href="../compare.html">Compare</a>
-                <a href="../api-docs.html">API Docs</a>
-                <a href="../faq.html">FAQ</a>
-                <a href="../partners.html">Weapons Locker</a>
-                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
-                <!-- Difficulty Selector -->
-                <div class="difficulty-selector">
-                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
-                    <div class="difficulty-menu" id="difficultyMenu">
-                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
-                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
-                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
-                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
-                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
-                    </div>
-                </div>
-                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
-                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+                <a href="../index.html#actors">Actors</a>
+                <a href="../api.html">API</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank" class="cta-button">View on Apify</a>
             </div>
         </div>
     </nav>
 
-    <section class="actor-header">
+    <header class="actor-header">
         <div class="container">
-            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <a href="../index.html" class="back-link">
+                &larr; Back to all actors
+            </a>
             <div class="actor-header-content">
-                <img src="../images/logo.png" alt="Airtable API - Database &amp; Records Automation" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <img src="../images/airtable-api---database-records-automation.png" alt="Airtable API - Database &amp; Records Automation" class="actor-icon">
                 <div class="actor-info">
                     <h1 class="actor-title">Airtable API - Database &amp; Records Automation</h1>
-                    <span class="actor-category">Automation</span>
-                    <p class="actor-description">Apify actor for Airtable API - Database &amp; Records Automation</p>
+                    <span class="actor-category">SCRAPER</span>
+                    <p class="actor-description"></p>
                     <div class="actor-actions">
-                        <a href="https://apify.com/alizarin_refrigerator-owner/airtable-api---database-records-automation?fpr=kqpn7" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
-                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/airtable-api---database-records-automation" target="_blank" class="btn btn-primary">Run on Apify</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/airtable-api---database-records-automation/api" target="_blank" class="btn btn-secondary">View API</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-        <section class="content">
+    <main class="content">
         <div class="container">
-            <h1>Airtable API - Database & Records Automation</h1>
-<p>Automate Airtable bases with the official API. List, create, update, and delete records. Manage tables and fields. Sync data between Airtable and other systems. Perfect for CRM automation, inventory management, and data pipelines. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
-<hr>
-<h2>How to Get Your Airtable Access Token</h2>
-<ol>
-<p><li>Go to <a href="https://airtable.com/create/tokens" target="_blank" rel="noopener">airtable.com/create/tokens</a></li> <li>Click <strong>"Create new token"</strong></li> <li>Give it a name (e.g., "Apify Integration")</li> <li>Add scopes:</li> </ol>   - <code>data.records:read</code> - to read records - <code>data.records:write</code> - to create/update/delete records - <code>schema.bases:read</code> - to list bases and tables - <code>schema.bases:write</code> - to create tables/fields</p>
-<ol>
-<p><li>Select which bases to grant access to (or "All current and future bases")</li> <li>Click <strong>Create token</strong> and copy it immediately (you won't see it again!)</li> <li>Paste the token in the <code>accessToken</code> field below</li> </ol>
-<hr>
-<h2>Features</h2>
-<h3>Record Operations</h3>
-<ul>
-<p><li><strong>List Records</strong> - Query records with filters, sorts, and views</li> <li><strong>Get Record</strong> - Retrieve a single record by ID</li> <li><strong>Create Record</strong> - Add new records to tables</li> <li><strong>Update Record</strong> - Modify existing records</li> <li><strong>Delete Record</strong> - Remove records</li> <li><strong>Batch Operations</strong> - Create, update, or delete up to 10 records at once</li> </ul>
-<h3>Table & Field Management</h3>
-<ul>
-<p><li><strong>List Tables</strong> - Get all tables in a base</li> <li><strong>Get Table</strong> - Retrieve table schema and fields</li> <li><strong>Create Table</strong> - Create new tables with custom fields</li> <li><strong>List Fields</strong> - Get field definitions</li> <li><strong>Create Field</strong> - Add new fields to tables</li> <li><strong>Update Field</strong> - Modify field properties</li> </ul>
-<h3>Base Operations</h3>
-<ul>
-<p><li><strong>List Bases</strong> - Get all bases you have access to</li> <li><strong>Get Base</strong> - Retrieve base metadata and tables</li> </ul>
-<h2>Quick Start</h2>
-<h3>Try it first (Free - Demo Mode)</h3>
-<pre><code class="language-json">{
-<p>"demoMode": true, "task": "list_records" }</code></pre> This returns sample Airtable data so you can see the output format without charges.</p>
-<h3>List Records from a Table</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX", "task": "list_records", "baseId": "appXXXXXXXXXXXXXX", "tableIdOrName": "Contacts", "maxRecords": 50, "demoMode": false }</code></pre>
-<h3>Create a New Record</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX", "task": "create_record", "baseId": "appXXXXXXXXXXXXXX", "tableIdOrName": "Leads", "fields": { "Name": "John Smith", "Email": "john@example.com", "Status": "New" }, "demoMode": false }</code></pre>
-<h3>Filter Records with Formula</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "patXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXX", "task": "list_records", "baseId": "appXXXXXXXXXXXXXX", "tableIdOrName": "Deals", "filterByFormula": "{Status} = 'Won'", "sort": [{"field": "Amount", "direction": "desc"}], "demoMode": false }</code></pre>
-<p><strong>Where to find your Base ID and Table ID:</strong></p>
-<ul>
-<p><li>Open your base in Airtable</li> <li>Look at the URL: <code>airtable.com/appXXXXXXX/tblYYYYYYY/...</code></li> <li><code>appXXXXXXX</code> is your Base ID</li> <li><code>tblYYYYYYY</code> is your Table ID (or use the table name)</li> </ul>
-<h2>Demo Mode</h2>
-<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-<pre><code class="language-json">{
-<p>"demoMode": true, ... }</code></pre>
-<h2>Input Parameters</h2>
-<table>
-<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>task</td><td>string</td><td>Yes</td><td>Operation to perform (see tasks below)</td></tr> <tr><td>accessToken</td><td>string</td><td>Yes*</td><td>Personal access token (*not needed for demoMode)</td></tr> <tr><td>baseId</td><td>string</td><td>No</td><td>Base ID (starts with 'app')</td></tr> <tr><td>tableIdOrName</td><td>string</td><td>No</td><td>Table ID (starts with 'tbl') or table name</td></tr> <tr><td>recordId</td><td>string</td><td>No</td><td>Record ID (starts with 'rec')</td></tr> <tr><td>fields</td><td>object</td><td>No</td><td>Field values for create/update</td></tr> <tr><td>filterByFormula</td><td>string</td><td>No</td><td>Airtable formula to filter records</td></tr> <tr><td>sort</td><td>array</td><td>No</td><td>Sort configuration</td></tr> <tr><td>view</td><td>string</td><td>No</td><td>View name or ID</td></tr> <tr><td>maxRecords</td><td>integer</td><td>No</td><td>Max records to return (default: 100)</td></tr> <tr><td>batchRecords</td><td>array</td><td>No</td><td>Records for batch operations</td></tr> <tr><td>webhookUrl</td><td>string</td><td>No</td><td>URL for webhook delivery</td></tr> <tr><td>demoMode</td><td>boolean</td><td>No</td><td>Run with sample data (default: true)</td></tr> </tbody> </table>
-<h2>Output Format</h2>
-<p>Results are saved to the default dataset:</p>
-<h3>List Records Result</h3>
-<pre><code class="language-json">{
-<p>"task": "list_records", "success": true, "records": [ { "id": "recXXXXXXXXXXXXXX", "createdTime": "2024-12-01T10:00:00.000Z", "fields": { "Name": "Acme Corp", "Status": "Active", "Revenue": 5000000 } } ], "total": 45, "baseId": "appXXXXXXXXXXXXXX", "tableIdOrName": "Companies" }</code></pre>
-<h3>Record Created</h3>
-<pre><code class="language-json">{
-<p>"task": "create_record", "success": true, "record": { "id": "recNewXXXXXXXXXX", "createdTime": "2025-01-10T12:00:00.000Z", "fields": { "Name": "New Company Inc", "Status": "Lead" } } }</code></pre>
-<h2>Common Problems & Solutions</h2>
-<h3>"INVALID_TOKEN" or "AUTHENTICATION_REQUIRED" error</h3>
-<p><strong>Cause:</strong> Your access token is wrong, expired, or doesn't have the right scopes. <strong>Fix:</strong></p>
-<ol>
-<p><li>Go to <a href="https://airtable.com/create/tokens" target="_blank" rel="noopener">airtable.com/create/tokens</a></li> <li>Create a new token with the correct scopes (see "How to Get Your Airtable Access Token" above)</li> <li>Make sure you copied the full token including the <code>pat</code> prefix</li> </ol>
-<h3>"TABLE_NOT_FOUND" error</h3>
-<p><strong>Cause:</strong> The table name or ID is incorrect. <strong>Fix:</strong></p>
-<ul>
-<p><li>Use the exact table name as it appears in Airtable (case-sensitive)</li> <li>Or use the table ID from the URL (<code>tblXXXXXXX</code>)</li> </ul>
-<h3>"INVALID_REQUEST_UNKNOWN_FIELD" error</h3>
-<p><strong>Cause:</strong> You're trying to set a field that doesn't exist in the table. <strong>Fix:</strong> Check your table's field names in Airtable. Field names are case-sensitive.</p>
-<h3>"BASE_NOT_FOUND" error</h3>
-<p><strong>Cause:</strong> Your token doesn't have access to this base. <strong>Fix:</strong> Edit your token at <a href="https://airtable.com/create/tokens" target="_blank" rel="noopener">airtable.com/create/tokens</a> and add access to the base.</p>
-<h3>Demo data showing instead of real results</h3>
-<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your <code>accessToken</code>.</p>
-<h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> billing:</p>
-<table>
-<p><thead> <tr><th>Operation</th><th>Cost</th></tr> </thead> <tbody> <tr><td>List records</td><td>$0.02</td></tr> <tr><td>Get record</td><td>$0.01</td></tr> <tr><td>Create record</td><td>$0.02</td></tr> <tr><td>Update record</td><td>$0.02</td></tr> <tr><td>Delete record</td><td>$0.01</td></tr> <tr><td>List tables/fields</td><td>$0.01</td></tr> <tr><td>Create table/field</td><td>$0.03</td></tr> <tr><td>List/get base</td><td>$0.01</td></tr> <tr><td>Batch operations (per 10)</td><td>$0.05</td></tr> </tbody> </table>
-<h2>Use Cases</h2>
-<h3>CRM & Sales</h3>
-<ul>
-<p><li>Sync leads from web forms</li> <li>Update deal stages automatically</li> <li>Export customer data for analysis</li> </ul>
-<h3>Inventory Management</h3>
-<ul>
-<p><li>Track stock levels across locations</li> <li>Auto-update quantities from orders</li> <li>Generate low-stock alerts</li> </ul>
-<h3>Project Management</h3>
-<ul>
-<p><li>Create tasks from external triggers</li> <li>Update project statuses</li> <li>Sync with other PM tools</li> </ul>
-<h3>Content Operations</h3>
-<ul>
-<p><li>Manage editorial calendars</li> <li>Track content status</li> <li>Sync with publishing platforms</li> </ul>
-<h3>Data Pipelines</h3>
-<ul>
-<p><li>Import data from APIs</li> <li>Export to data warehouses</li> <li>Sync between systems</li> </ul>
-<hr>
-<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
+            <p>This actor helps you </p>
         </div>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+            <p>Actor Arsenal by <a href="https://apify.com/alizarin_refrigerator-owner">John Rippy</a> | 2025 Zapier Automation Hero</p>
         </div>
     </footer>
-
-    <!-- DOOM HUD (Classic Metal Style) -->
-    <div class="doom-hud">
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
-                <div class="hud-label">KILLS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-health" id="hudHealth">100%</div>
-                <div class="hud-label">HEALTH</div>
-            </div>
-        </div>
-        <div class="hud-face-container">
-            <img src="../images/logo.png" class="hud-face" id="hudFace" alt="Doomguy">
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">281</div>
-                <div class="hud-label">ACTORS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-secrets" id="hudSecrets">3/3</div>
-                <div class="hud-label">SECRETS</div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

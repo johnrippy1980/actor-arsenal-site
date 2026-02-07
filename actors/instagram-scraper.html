@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Profile & Posts Scraper | Actor Arsenal</title>
-    <meta name="description" content="Scrape Instagram profiles and their recent posts. Get follower counts, engagement metrics, and detailed post data. Profile scraping (followers, following, bio, ">
-    
+    <title>Instagram Profile &amp; Posts Scraper | Actor Arsenal</title>
+    <meta name="description" content="">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://actor-arsenal-site.vercel.app/actors/instagram-scraper.html">
     <meta name="robots" content="index, follow">
@@ -13,14 +13,58 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://actor-arsenal-site.vercel.app/actors/instagram-scraper.html">
-    <meta property="og:title" content="Instagram Profile & Posts Scraper | Actor Arsenal">
-    <meta property="og:description" content="Scrape Instagram profiles and their recent posts. Get follower counts, engagement metrics, and detailed post data. Profile scraping (followers, following, bio, ">
-    <meta property="og:image" content="https://images.apifyusercontent.com/VBGnd98svczPbYPYnLjrythpH5VTyop-0YxEJIH6ZCQ/rs:fill:76:76/cb:1/aHR0cHM6Ly9hcGlmeS1pbWFnZS11cGxvYWRzLXByb2QuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vQ1pHaTBpUERTQkZzSmF5M3AtYWN0b3ItSWFlWEdMU09WeVI5YnJlbEwtTWdiNUxtbnlLaC1pbnN0YWdyYW1fc2NyYXBlci5wbmc.webp">
+    <meta property="og:title" content="Instagram Profile &amp; Posts Scraper | Actor Arsenal">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="../images/instagram-scraper.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Instagram Profile & Posts Scraper">
-    <meta name="twitter:description" content="Scrape Instagram profiles and their recent posts. Get follower counts, engagement metrics, and detai">
+    <meta name="twitter:title" content="Instagram Profile &amp; Posts Scraper">
+    <meta name="twitter:description" content="">
+
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Instagram Profile &amp; Posts Scraper",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cloud (Apify Platform)",
+        "description": "",
+        "url": "https://actor-arsenal-site.vercel.app/actors/instagram-scraper.html",
+        "author": {
+            "@type": "Person",
+            "name": "John Rippy"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://actor-arsenal-site.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Instagram Profile &amp; Posts Scraper",
+                "item": "https://actor-arsenal-site.vercel.app/actors/instagram-scraper.html"
+            }
+        ]
+    }
+    </script>
 
 <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,7 +181,7 @@
         .content {
             padding: 3rem 0;
         }
-        .content h1, .content h2, .content h3 {
+        .content h1, .content h2, .content h3, .content h4 {
             color: var(--accent-green);
             margin: 2rem 0 1rem;
         }
@@ -145,7 +189,7 @@
         .content h2 { font-size: 1.5rem; }
         .content h3 { font-size: 1.25rem; }
         .content p { margin-bottom: 1rem; color: var(--text-secondary); }
-        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content ul, .content ol { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
         .content li { margin-bottom: 0.5rem; }
         .content pre {
             background: var(--bg-code);
@@ -188,539 +232,53 @@
             .actor-header-content { flex-direction: column; }
             .actor-icon { width: 60px; height: 60px; }
         }
-    
-        
-                        /* ===== DOOM EFFECTS ===== */
-        body { padding-bottom: 90px; }
-        
-        /* CRT Scanline Overlay */
-        .crt-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9998;
-            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 3px);
-            opacity: 0.6;
-        }
-        
-        /* Red Vignette */
-        .vignette {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
-        }
-        
-        /* Pain Flash */
-        .pain-flash {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9996;
-            background: rgba(255, 0, 0, 0);
-            transition: background 0.1s;
-        }
-        .pain-flash.active { background: rgba(255, 0, 0, 0.3); }
-        
-        /* Screen Shake */
-        @keyframes screenShake {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-2px, -1px); }
-            20% { transform: translate(2px, 1px); }
-            30% { transform: translate(-1px, 2px); }
-            40% { transform: translate(1px, -2px); }
-            50% { transform: translate(-2px, 1px); }
-            60% { transform: translate(2px, -1px); }
-            70% { transform: translate(-1px, -2px); }
-            80% { transform: translate(1px, 2px); }
-            90% { transform: translate(-2px, -1px); }
-        }
-        .shake { animation: screenShake 0.3s ease-in-out; }
-        
-        /* DOOM HUD (Classic Grey Metal Style) */
-        .doom-hud {
-            position: fixed;
-            bottom: 0; left: 0;
-            width: 100%; height: 80px;
-            background:
-                repeating-linear-gradient(90deg, #5a5a5a 0px, #5a5a5a 2px, #6a6a6a 2px, #6a6a6a 4px, #4a4a4a 4px, #4a4a4a 6px, #555 6px, #555 8px),
-                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
-            border-top: 4px solid #7a7a7a;
-            border-bottom: 4px solid #2a2a2a;
-            box-shadow: inset 0 2px 0 #8a8a8a, inset 0 -2px 0 #2a2a2a, 0 -4px 8px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            font-family: 'Press Start 2P', cursive;
-            padding: 0; gap: 0;
-        }
-        .hud-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
-            border-left: 3px solid #6a6a6a;
-            border-right: 3px solid #2a2a2a;
-            border-top: 2px solid #7a7a7a;
-            border-bottom: 2px solid #1a1a1a;
-            padding: 0 1.5rem;
-            position: relative;
-        }
-        .hud-section::before {
-            content: '';
-            position: absolute;
-            top: 4px; left: 4px; right: 4px; bottom: 4px;
-            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
-            border: 2px solid #1a1a1a;
-            border-radius: 2px;
-            z-index: -1;
-        }
-        .hud-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 0.5rem; }
-        .hud-value { font-size: 1.8rem; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000; letter-spacing: 2px; }
-        .hud-label { font-size: 0.5rem; color: #888; text-shadow: 1px 1px 0 #000; text-transform: uppercase; }
-        .hud-face-container {
-            width: 70px; height: 70px;
-            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
-            border: 3px solid #5a5a5a;
-            border-bottom-color: #1a1a1a;
-            border-right-color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 1rem;
-        }
-        .hud-face { width: 60px; height: 60px; image-rendering: pixelated; }
-        .hud-ammo { color: #ffcc00; }
-        .hud-health { color: #ff3333; }
-        .hud-armor { color: #00ff88; }
-        .hud-secrets { color: #ff6600; }
-        
-        /* Demon Sprites */
-        .demon-left, .demon-right {
-            position: fixed;
-            bottom: 70px;
-            width: 80px;
-            height: 100px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            image-rendering: pixelated;
-        }
-        .demon-left { left: -80px; transform: scaleX(-1); }
-        .demon-right { right: -80px; }
-        .demon-left.peek { left: -20px; opacity: 1; }
-        .demon-right.peek { right: -20px; opacity: 1; }
-
-            /* ===== DIFFICULTY SELECTOR ===== */
-        .difficulty-selector {
-            position: relative;
-            display: inline-block;
-        }
-        .difficulty-btn, .music-btn {
-            background: transparent;
-            border: 1px solid var(--accent-red);
-            color: var(--accent-red);
-            padding: 0.4rem 0.8rem;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .music-btn {
-            font-size: 1.2rem;
-            padding: 0.4rem 0.8rem;
-            margin-left: 0.5rem;
-            border: 2px solid var(--accent-yellow);
-            color: var(--accent-yellow);
-            background: rgba(255, 204, 0, 0.1);
-            animation: musicPulse 2s ease-in-out infinite;
-            position: relative;
-        }
-        .music-btn::after {
-            content: 'E1M1';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
-            color: var(--accent-yellow);
-            white-space: nowrap;
-        }
-        .music-btn.playing {
-            background: var(--accent-yellow);
-            color: #000;
-            animation: none;
-            box-shadow: 0 0 15px var(--accent-yellow);
-        }
-        .music-btn.playing::after {
-            content: 'PLAYING';
-        }
-        @keyframes musicPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
-            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
-        }
-        .difficulty-btn:hover, .music-btn:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .music-btn:hover {
-            background: var(--accent-yellow);
-            color: #000;
-        }
-        .difficulty-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #111;
-            border: 1px solid var(--accent-red);
-            display: none;
-            flex-direction: column;
-            min-width: 200px;
-            z-index: 1002;
-        }
-        .difficulty-menu.show { display: flex; }
-        .difficulty-option {
-            padding: 0.8rem;
-            color: #888;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            text-align: left;
-            transition: all 0.2s;
-        }
-        .difficulty-option:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .difficulty-option.active {
-            color: var(--accent-yellow);
-        }
     </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Instagram Profile &amp; Posts Scraper",
-  "description": "Scrape Instagram profiles and their recent posts. Get follower counts, engagement metrics, and detailed post data. Profile scraping (followers, following, bio, etc.). Recent posts with engagement metrics. Supports reels and regular posts. No login required (public profiles only).",
-  "applicationCategory": "WebApplication",
-  "operatingSystem": "Cloud",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Actor Arsenal",
-    "url": "https://actor-arsenal-site.vercel.app"
-  },
-  "url": "https://actor-arsenal-site.vercel.app/actors/instagram-scraper.html",
-  "image": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-IaeXGLSOVyR9brelL-Mgb5LmnyKh-instagram_scraper.png",
-  "identifier": "IaeXGLSOVyR9brelL",
-  "sameAs": "https://apify.com/alizarin_refrigerator-owner/instagram-scraper"
-}
-    </script>
 </head>
 <body>
-    <!-- DOOM Effects -->
-    <div class="crt-overlay"></div>
-    <div class="vignette"></div>
-    <div class="pain-flash" id="painFlash"></div>
-    
-    <!-- Imp Sprites (SVG) -->
-    <img src="../images/imp-front.png" class="demon-left" id="demonLeft" alt="Imp">
-    <img src="../images/imp-front.png" class="demon-right" id="demonRight" alt="Imp">
-
     <nav>
         <div class="container">
-            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Actor Arsenal" class="logo-img">
+                Actor Arsenal
+            </a>
             <div class="nav-links">
-                <a href="../compare.html">Compare</a>
-                <a href="../api-docs.html">API Docs</a>
-                <a href="../faq.html">FAQ</a>
-                <a href="../partners.html">Weapons Locker</a>
-                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
-                <!-- Difficulty Selector -->
-                <div class="difficulty-selector">
-                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
-                    <div class="difficulty-menu" id="difficultyMenu">
-                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
-                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
-                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
-                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
-                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
-                    </div>
-                </div>
-                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
-                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+                <a href="../index.html#actors">Actors</a>
+                <a href="../api.html">API</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank" class="cta-button">View on Apify</a>
             </div>
         </div>
     </nav>
 
-    <section class="actor-header">
+    <header class="actor-header">
         <div class="container">
-            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <a href="../index.html" class="back-link">
+                &larr; Back to all actors
+            </a>
             <div class="actor-header-content">
-                <img src="https://images.apifyusercontent.com/VBGnd98svczPbYPYnLjrythpH5VTyop-0YxEJIH6ZCQ/rs:fill:76:76/cb:1/aHR0cHM6Ly9hcGlmeS1pbWFnZS11cGxvYWRzLXByb2QuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vQ1pHaTBpUERTQkZzSmF5M3AtYWN0b3ItSWFlWEdMU09WeVI5YnJlbEwtTWdiNUxtbnlLaC1pbnN0YWdyYW1fc2NyYXBlci5wbmc.webp" alt="Instagram Profile & Posts Scraper" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <img src="../images/instagram-scraper.png" alt="Instagram Profile &amp; Posts Scraper" class="actor-icon">
                 <div class="actor-info">
-                    <h1 class="actor-title">Instagram Profile & Posts Scraper</h1>
-                    <span class="actor-category">Social Media</span>
-                    <p class="actor-description">Scrape Instagram profiles and their recent posts. Get follower counts, engagement metrics, and detailed post data. Profile scraping (followers, following, bio, etc.). Recent posts with engagement metrics. Supports reels and regular posts. No login required (public profiles only).</p>
+                    <h1 class="actor-title">Instagram Profile &amp; Posts Scraper</h1>
+                    <span class="actor-category">SCRAPER</span>
+                    <p class="actor-description"></p>
                     <div class="actor-actions">
-                        <a href="https://apify.com/alizarin_refrigerator-owner/instagram-scraper?fpr=kqpn7" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
-                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/instagram-scraper" target="_blank" class="btn btn-primary">Run on Apify</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/instagram-scraper/api" target="_blank" class="btn btn-secondary">View API</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-        <section class="content">
+    <main class="content">
         <div class="container">
-            <h1>Instagram Profile & Posts Scraper</h1>
-<h2>Web Scraping</h2>
-<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
-<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
-<hr>
-<h2>Web Scraping</h2>
-<p>This actor extracts data from websites. It handles JavaScript rendering, pagination, and anti-bot measures automatically.</p>
-<p><strong>Note:</strong> Always respect the website's terms of service and robots.txt.</p>
-<hr>
-<p>Scrape Instagram profiles and posts without per-result fees. Extract profile metrics, engagement data, and recent posts using browser automation with Camoufox anti-detection.</p>
-<h2>Key Features</h2>
-<ul>
-<p><li><strong>Profile Metrics</strong> - Followers, following, posts count, verification status</li> <li><strong>Bio & Links</strong> - Biography, external URL, business category</li> <li><strong>Recent Posts</strong> - Up to 50 posts per profile with engagement data</li> <li><strong>Reels Support</strong> - Scrape both regular posts and reels</li> <li><strong>Camoufox Anti-Detection</strong> - Built-in browser fingerprint evasion</li> <li><strong>Firecrawl Option</strong> - API-based scraping for enhanced reliability</li> <li><strong>AI Sentiment Analysis</strong> - Analyze caption sentiment with 5 AI providers</li> <li><strong>Webhook Support</strong> - Send results to Zapier, Make, n8n</li> </ul>
-<h2>Quick Start - Real Scraping</h2>
-<pre><code class="language-json">{
-<p>"usernames": ["nike", "adidas"], "maxPosts": 12, "includeReels": true, "demoMode": false }</code></pre>
-<p><strong>Important:</strong> Set <code>demoMode: false</code> to scrape real Instagram data.</p>
-<h2>Input Parameters</h2>
-<h3>Core Parameters</h3>
-<table>
-<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>usernames</code></td><td>array</td><td>-</td><td>Instagram usernames to scrape (without @)</td></tr> <tr><td><code>maxPosts</code></td><td>number</td><td><code>12</code></td><td>Maximum posts per profile (1-50)</td></tr> <tr><td><code>includeReels</code></td><td>boolean</td><td><code>true</code></td><td>Include reels in scraped posts</td></tr> <tr><td><code>demoMode</code></td><td>boolean</td><td><code>false</code></td><td>Generate sample data for testing</td></tr> </tbody> </table>
-<h3>Advanced Options</h3>
-<table>
-<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>useFirecrawl</code></td><td>boolean</td><td><code>false</code></td><td>Use Firecrawl API for scraping</td></tr> <tr><td><code>firecrawlApiKey</code></td><td>string</td><td>-</td><td>Your Firecrawl API key</td></tr> <tr><td><code>proxy</code></td><td>object</td><td>-</td><td>Proxy configuration for avoiding blocks</td></tr> <tr><td><code>webhookUrl</code></td><td>string</td><td>-</td><td>URL to POST results when complete</td></tr> </tbody> </table>
-<h3>AI Sentiment Analysis</h3>
-<table>
-<p><thead> <tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr> </thead> <tbody> <tr><td><code>enableSentimentAnalysis</code></td><td>boolean</td><td><code>false</code></td><td>Enable AI sentiment analysis</td></tr> <tr><td><code>aiProvider</code></td><td>string</td><td><code>"none"</code></td><td>AI provider: openai, anthropic, google, mistral, cohere</td></tr> <tr><td><code>aiApiKey</code></td><td>string</td><td>-</td><td>Your AI provider API key</td></tr> <tr><td><code>aiModel</code></td><td>string</td><td>-</td><td>Custom model override (optional)</td></tr> </tbody> </table>
-<h2>Usage Examples</h2>
-<h3>Example 1: Scrape Multiple Profiles</h3>
-<pre><code class="language-json">{
-<p>"usernames": ["nike", "adidas", "puma", "reebok"], "maxPosts": 20, "includeReels": true, "demoMode": false }</code></pre>
-<h3>Example 2: With Apify Proxy</h3>
-<pre><code class="language-json">{
-<p>"usernames": ["cocacola"], "maxPosts": 12, "proxy": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"] }, "demoMode": false }</code></pre>
-<h3>Example 3: Demo Mode for Testing</h3>
-<pre><code class="language-json">{
-<p>"usernames": ["demo"], "demoMode": true }</code></pre>
-<p>Returns realistic sample data instantly without scraping.</p>
-<h3>Example 4: With Firecrawl API</h3>
-<pre><code class="language-json">{
-<p>"usernames": ["targetbrand"], "useFirecrawl": true, "firecrawlApiKey": "fc-your-api-key", "demoMode": false }</code></pre>
-<h3>Example 5: With AI Sentiment Analysis</h3>
-<pre><code class="language-json">{
-<p>"usernames": ["nike"], "maxPosts": 20, "enableSentimentAnalysis": true, "aiProvider": "openai", "aiApiKey": "sk-your-api-key", "demoMode": false }</code></pre>
-<h2>Output Format</h2>
-<h3>Profile Data</h3>
-<pre><code class="language-json">{
-<p>"username": "nike", "fullName": "Nike", "biography": "Just Do It.", "profilePicUrl": "https://...", "followersCount": 305000000, "followingCount": 150, "postsCount": 1234, "isVerified": true, "isBusinessAccount": true, "businessCategory": "Product/Service", "externalUrl": "https://nike.com", "latestPosts": [...], "scrapedAt": "2026-01-22T10:00:00.000Z" }</code></pre>
-<h3>Post Data</h3>
-<pre><code class="language-json">{
-<p>"id": "ABC123", "shortcode": "ABC123", "url": "https://instagram.com/p/ABC123", "type": "image", "caption": "Post caption with #hashtags...", "displayUrl": "https://...", "videoUrl": null, "likesCount": 500000, "commentsCount": 5000, "timestamp": "2026-01-20T15:30:00Z", "isVideo": false, "sentiment": { "score": 0.85, "label": "positive", "confidence": 0.92, "summary": "Upbeat promotional content", "tone": "inspiring" } }</code></pre>
-<h2>AI Sentiment Analysis</h2>
-<p>Enable AI-powered sentiment analysis to understand the tone and emotional appeal of Instagram captions. Supports multiple providers:</p>
-<table>
-<p><thead> <tr><th>Provider</th><th>Model</th><th>Best For</th></tr> </thead> <tbody> <tr><td>OpenAI</td><td>GPT-4o-mini</td><td>Fast, affordable analysis</td></tr> <tr><td>Anthropic</td><td>Claude Haiku</td><td>Nuanced understanding</td></tr> <tr><td>Google</td><td>Gemini Flash</td><td>Cost-effective at scale</td></tr> <tr><td>Mistral</td><td>Mistral Small</td><td>European data residency</td></tr> <tr><td>Cohere</td><td>Command-R</td><td>Enterprise deployments</td></tr> </tbody> </table> Each post's caption is analyzed and returns:</p>
-<ul>
-<p><li><strong>score</strong>: -1 to 1 (negative to positive)</li> <li><strong>label</strong>: negative, neutral, or positive</li> <li><strong>confidence</strong>: 0 to 1</li> <li><strong>summary</strong>: Brief description of content tone</li> <li><strong>tone</strong>: Emotional tone (inspiring, humorous, informative, etc.)</li> </ul>
-<h2>Anti-Detection (Camoufox)</h2>
-<p>This actor uses <a href="https://camoufox.com/" target="_blank" rel="noopener">Camoufox</a> for anti-detection:</p>
-<ul>
-<li><strong>Browser Fingerprinting</strong> - C++ level fingerprint evasion</li> <li><strong>Human-like Behavior</strong> - Natural scrolling and navigation</li> <li><strong>Bot Protection Bypass</strong> - Handles Cloudflare and similar challenges</li> <li><strong>Stealth Mode</strong> - Blocks unnecessary resource loading</li> </ul> Camoufox is enabled by default when scraping real profiles.
-<h2>Firecrawl Integration</h2>
-<p><a href="https://firecrawl.dev/" target="_blank" rel="noopener">Firecrawl</a> provides an alternative scraping method:</p>
-<ul>
-<li>API-based scraping (no browser needed)</li> <li>Built-in proxy rotation</li> <li>Automatic retries</li> <li>More consistent results</li> </ul> Enable with <code>useFirecrawl: true</code> and provide your API key.
-<h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> billing:</p>
-<table>
-<p><thead> <tr><th>Event</th><th>Description</th><th>Price</th></tr> </thead> <tbody> <tr><td><code>profile_scraped</code></td><td>Per profile scraped</td><td>$0.02</td></tr> <tr><td><code>post_scraped</code></td><td>Per post scraped</td><td>$0.005</td></tr> </tbody> </table> <strong>Cost Examples:</strong></p>
-<ul>
-<p><li>1 profile with 12 posts: $0.02 + (12 x $0.005) = <strong>$0.08</strong></li> <li>10 profiles with 20 posts each: (10 x $0.02) + (200 x $0.005) = <strong>$1.20</strong></li> <li>50 profiles with 12 posts each: (50 x $0.02) + (600 x $0.005) = <strong>$4.00</strong></li> </ul>
-<h2>Use Cases</h2>
-<ul>
-<p><li><strong>Influencer Research</strong> - Analyze engagement rates and content strategy</li> <li><strong>Competitor Analysis</strong> - Monitor competitor Instagram activity</li> <li><strong>Content Inspiration</strong> - Find viral posts and trending formats</li> <li><strong>Brand Monitoring</strong> - Track brand mentions and tags</li> <li><strong>Agency Reporting</strong> - Generate client Instagram reports</li> <li><strong>Market Research</strong> - Understand industry trends</li> </ul>
-<h2>Troubleshooting</h2>
-<h3>Profile not found</h3>
-<ul>
-<p><li>Check the username is spelled correctly</li> <li>Ensure the profile is public (private profiles cannot be scraped)</li> <li>Try with proxy enabled</li> </ul>
-<h3>Getting blocked</h3>
-<ul>
-<p><li>Enable Apify residential proxy</li> <li>Reduce number of profiles per run</li> <li>Add delays between runs</li> <li>Try Firecrawl mode</li> </ul>
-<h3>No posts returned</h3>
-<ul>
-<p><li>Profile may have no public posts</li> <li>Try increasing <code>maxPosts</code> value</li> <li>Check if profile exists</li> </ul>
-<h2>Limitations</h2>
-<ul>
-<p><li>Only public profiles can be scraped</li> <li>Instagram may rate limit or block requests</li> <li>Use residential proxies for best results</li> <li>Respect Instagram's terms of service</li> </ul>
-<hr>
-<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
+            <p>This actor helps you </p>
         </div>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+            <p>Actor Arsenal by <a href="https://apify.com/alizarin_refrigerator-owner">John Rippy</a> | 2025 Zapier Automation Hero</p>
         </div>
     </footer>
-
-    <!-- DOOM HUD (Classic Metal Style) -->
-    <div class="doom-hud">
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
-                <div class="hud-label">KILLS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-health" id="hudHealth">100%</div>
-                <div class="hud-label">HEALTH</div>
-            </div>
-        </div>
-        <div class="hud-face-container">
-            <img src="../images/logo.png" class="hud-face" id="hudFace" alt="Doomguy">
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">281</div>
-                <div class="hud-label">ACTORS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-secrets" id="hudSecrets">3/3</div>
-                <div class="hud-label">SECRETS</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // DOOM Sounds (Real WAV Files)
-        const doomSounds = {
-            pickup: new Audio('../sounds/pickup.wav'),
-            door: new Audio('../sounds/door.wav'),
-            chainsaw: new Audio('../sounds/chainsaw.wav'),
-            secret: new Audio('../sounds/secret.wav'),
-            imp: new Audio('../sounds/imp.wav'),
-            death: new Audio('../sounds/death.wav'),
-            shotgun: new Audio('../sounds/shotgun.wav')
-        };
-
-        // Load persistent secrets count
-        const secretsState = JSON.parse(localStorage.getItem('doomSecrets') || '{"iddqd":false,"idkfa":false,"wall":false}');
-        const secretsFound = Object.values(secretsState).filter(Boolean).length;
-        document.getElementById('hudSecrets').textContent = secretsFound + '/3';
-
-        // DOOM Theme Music (E1M1 - At Doom's Gate)
-        const doomMusic = new Audio('../sounds/e1m1.mp3');
-        doomMusic.loop = true;
-        doomMusic.volume = 0.3;
-        let musicPlaying = false;
-
-        const musicBtn = document.getElementById('musicBtn');
-        if (localStorage.getItem('doomMusicPlaying') === 'true') {
-            const savedTime = parseFloat(localStorage.getItem('doomMusicTime') || '0');
-            doomMusic.currentTime = savedTime;
-            doomMusic.play().then(() => {
-                musicPlaying = true;
-                if (musicBtn) { musicBtn.textContent = '🔊'; musicBtn.classList.add('playing'); }
-            }).catch(() => {});
-        }
-
-        setInterval(() => {
-            if (musicPlaying) localStorage.setItem('doomMusicTime', doomMusic.currentTime);
-        }, 500);
-
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('doomMusicPlaying', musicPlaying);
-            localStorage.setItem('doomMusicTime', doomMusic.currentTime);
-        });
-
-        function toggleMusic() {
-            if (musicPlaying) {
-                doomMusic.pause();
-                musicPlaying = false;
-                if (musicBtn) { musicBtn.textContent = '🔇'; musicBtn.classList.remove('playing'); }
-                localStorage.setItem('doomMusicPlaying', 'false');
-            } else {
-                doomMusic.play().catch(() => {});
-                musicPlaying = true;
-                if (musicBtn) { musicBtn.textContent = '🔊'; musicBtn.classList.add('playing'); }
-                localStorage.setItem('doomMusicPlaying', 'true');
-            }
-        }
-
-        Object.values(doomSounds).forEach(s => { s.preload = 'auto'; s.volume = 0.5; });
-        function playSound(type) {
-            const sound = doomSounds[type];
-            if (sound) { sound.currentTime = 0; sound.play().catch(() => {}); }
-        }
-
-        // Pain Flash
-        function triggerPainFlash() {
-            const flash = document.getElementById('painFlash');
-            flash.classList.add('active');
-            setTimeout(() => flash.classList.remove('active'), 100);
-        }
-
-        // Demon Peek on scroll
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            if (Math.abs(currentScroll - lastScroll) > 300) {
-                if (Math.random() > 0.6) {
-                    const demon = Math.random() > 0.5 ? document.getElementById('demonLeft') : document.getElementById('demonRight');
-                    demon.classList.add('peek');
-                    playSound('imp');
-                    setTimeout(() => demon.classList.remove('peek'), 2000);
-                }
-                lastScroll = currentScroll;
-            }
-        });
-
-        // CTA button effects
-        document.querySelectorAll('.btn, .cta-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                playSound('pickup');
-                triggerPainFlash();
-            });
-        });
-
-        // Shotgun sound on link clicks (with delay for sound to play)
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (!href || href.startsWith('#') || href.startsWith('javascript:') || link.target === '_blank') {
-                    playSound('shotgun');
-                    return;
-                }
-                e.preventDefault();
-                playSound('shotgun');
-                setTimeout(() => { window.location.href = href; }, 200);
-            });
-        });
-    </script>
-
 </body>
 </html>

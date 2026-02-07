@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notion API - Database &amp; Page Automation | Actor Arsenal</title>
-    <meta name="description" content="Apify actor for Notion API - Database &amp; Page Automation">
-    
+    <meta name="description" content="">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://actor-arsenal-site.vercel.app/actors/notion-api---database-page-automation.html">
     <meta name="robots" content="index, follow">
@@ -14,13 +14,57 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://actor-arsenal-site.vercel.app/actors/notion-api---database-page-automation.html">
     <meta property="og:title" content="Notion API - Database &amp; Page Automation | Actor Arsenal">
-    <meta property="og:description" content="Apify actor for Notion API - Database &amp; Page Automation">
-    <meta property="og:image" content="../images/logo.png">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="../images/notion-api---database-page-automation.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Notion API - Database &amp; Page Automation">
-    <meta name="twitter:description" content="Apify actor for Notion API - Database &amp; Page Automation">
+    <meta name="twitter:description" content="">
+
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Notion API - Database &amp; Page Automation",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cloud (Apify Platform)",
+        "description": "",
+        "url": "https://actor-arsenal-site.vercel.app/actors/notion-api---database-page-automation.html",
+        "author": {
+            "@type": "Person",
+            "name": "John Rippy"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://actor-arsenal-site.vercel.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Notion API - Database &amp; Page Automation",
+                "item": "https://actor-arsenal-site.vercel.app/actors/notion-api---database-page-automation.html"
+            }
+        ]
+    }
+    </script>
 
 <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,7 +181,7 @@
         .content {
             padding: 3rem 0;
         }
-        .content h1, .content h2, .content h3 {
+        .content h1, .content h2, .content h3, .content h4 {
             color: var(--accent-green);
             margin: 2rem 0 1rem;
         }
@@ -145,7 +189,7 @@
         .content h2 { font-size: 1.5rem; }
         .content h3 { font-size: 1.25rem; }
         .content p { margin-bottom: 1rem; color: var(--text-secondary); }
-        .content ul { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
+        .content ul, .content ol { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
         .content li { margin-bottom: 0.5rem; }
         .content pre {
             background: var(--bg-code);
@@ -161,6 +205,13 @@
         }
         .content a { color: var(--accent-green); }
         .content strong { color: var(--text-primary); }
+        .content blockquote {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -181,404 +232,53 @@
             .actor-header-content { flex-direction: column; }
             .actor-icon { width: 60px; height: 60px; }
         }
-        body { padding-bottom: 90px; }
-        .doom-hud {
-            position: fixed;
-            bottom: 0; left: 0;
-            width: 100%; height: 80px;
-            background:
-                repeating-linear-gradient(90deg, #5a5a5a 0px, #5a5a5a 2px, #6a6a6a 2px, #6a6a6a 4px, #4a4a4a 4px, #4a4a4a 6px, #555 6px, #555 8px),
-                linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%);
-            border-top: 4px solid #7a7a7a;
-            border-bottom: 4px solid #2a2a2a;
-            box-shadow: inset 0 2px 0 #8a8a8a, inset 0 -2px 0 #2a2a2a, 0 -4px 8px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            font-family: 'Press Start 2P', cursive;
-            padding: 0; gap: 0;
-        }
-        .hud-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(180deg, #5a5a5a 0%, #3a3a3a 100%);
-            border-left: 3px solid #6a6a6a;
-            border-right: 3px solid #2a2a2a;
-            border-top: 2px solid #7a7a7a;
-            border-bottom: 2px solid #1a1a1a;
-            padding: 0 1.5rem;
-            position: relative;
-        }
-        .hud-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 0.5rem; }
-        .hud-value { font-size: 1.8rem; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000; letter-spacing: 2px; }
-        .hud-label { font-size: 0.5rem; color: #888; text-shadow: 1px 1px 0 #000; text-transform: uppercase; }
-        .hud-face-container {
-            width: 70px; height: 70px;
-            background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
-            border: 3px solid #5a5a5a;
-            border-bottom-color: #1a1a1a;
-            border-right-color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 1rem;
-        }
-        .hud-face { width: 60px; height: 60px; image-rendering: pixelated; }
-        .hud-ammo { color: #ffcc00; }
-        .hud-health { color: #ff3333; }
-        .hud-armor { color: #00ff88; }
-        .hud-secrets { color: #ff6600; }
-    
-        /* ===== CRT SCANLINE OVERLAY ===== */
-        .crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9998;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.3),
-                rgba(0, 0, 0, 0.3) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            opacity: 0.6;
-        }
-
-        /* ===== RED VIGNETTE ===== */
-        .vignette {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(139, 0, 0, 0.3) 100%);
-        }
-
-        /* ===== PAIN FLASH ===== */
-        .pain-flash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9996;
-            background: rgba(255, 0, 0, 0);
-            transition: background 0.1s;
-        }
-        .pain-flash.active {
-            background: rgba(255, 0, 0, 0.3);
-        }
-            /* ===== DIFFICULTY SELECTOR ===== */
-        .difficulty-selector {
-            position: relative;
-            display: inline-block;
-        }
-        .difficulty-btn, .music-btn {
-            background: transparent;
-            border: 1px solid var(--accent-red);
-            color: var(--accent-red);
-            padding: 0.4rem 0.8rem;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .music-btn {
-            font-size: 1.2rem;
-            padding: 0.4rem 0.8rem;
-            margin-left: 0.5rem;
-            border: 2px solid var(--accent-yellow);
-            color: var(--accent-yellow);
-            background: rgba(255, 204, 0, 0.1);
-            animation: musicPulse 2s ease-in-out infinite;
-            position: relative;
-        }
-        .music-btn::after {
-            content: 'E1M1';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
-            color: var(--accent-yellow);
-            white-space: nowrap;
-        }
-        .music-btn.playing {
-            background: var(--accent-yellow);
-            color: #000;
-            animation: none;
-            box-shadow: 0 0 15px var(--accent-yellow);
-        }
-        .music-btn.playing::after {
-            content: 'PLAYING';
-        }
-        @keyframes musicPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--accent-yellow); }
-            50% { box-shadow: 0 0 20px var(--accent-yellow), 0 0 30px var(--accent-red); }
-        }
-        .difficulty-btn:hover, .music-btn:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .music-btn:hover {
-            background: var(--accent-yellow);
-            color: #000;
-        }
-        .difficulty-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #111;
-            border: 1px solid var(--accent-red);
-            display: none;
-            flex-direction: column;
-            min-width: 200px;
-            z-index: 1002;
-        }
-        .difficulty-menu.show { display: flex; }
-        .difficulty-option {
-            padding: 0.8rem;
-            color: #888;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            text-align: left;
-            transition: all 0.2s;
-        }
-        .difficulty-option:hover {
-            background: var(--accent-red);
-            color: #000;
-        }
-        .difficulty-option.active {
-            color: var(--accent-yellow);
-        }
     </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Notion API - Database &amp; Page Automation",
-  "description": "Automate your Notion workspace with the official API. Query databases, create and update pages, manage blocks, search content, and sync data. Perfect for CMS automation, content pipelines, project management, and knowledge base workflows.",
-  "applicationCategory": "WebApplication",
-  "operatingSystem": "Cloud",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Actor Arsenal",
-    "url": "https://actor-arsenal-site.vercel.app"
-  },
-  "url": "https://actor-arsenal-site.vercel.app/actors/notion-api---database-page-automation.html",
-  "image": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/CZGi0iPDSBFsJay3p-actor-TFf5mrs0RCuQNeNOJ-swdYIIfnGg-Screenshot_2026-01-10_at_11.25.18_PM.png",
-  "identifier": "TFf5mrs0RCuQNeNOJ",
-  "sameAs": "https://apify.com/alizarin_refrigerator-owner/notion-api---database-page-automation"
-}
-    </script>
 </head>
 <body>
-    <!-- DOOM Visual Effects -->
-    <div class="crt-overlay"></div>
-    <div class="vignette"></div>
-    <div class="pain-flash"></div>
-
     <nav>
         <div class="container">
-            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="Doomguy" class="logo-img"> ACTOR ARSENAL</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Actor Arsenal" class="logo-img">
+                Actor Arsenal
+            </a>
             <div class="nav-links">
-                <a href="../compare.html">Compare</a>
-                <a href="../api-docs.html">API Docs</a>
-                <a href="../faq.html">FAQ</a>
-                <a href="../partners.html">Weapons Locker</a>
-                <a href="../play-doom.html" style="color: var(--accent-red);">PLAY DOOM</a>
-                <!-- Difficulty Selector -->
-                <div class="difficulty-selector">
-                    <button class="difficulty-btn" id="difficultyBtn">HURT ME PLENTY</button>
-                    <div class="difficulty-menu" id="difficultyMenu">
-                        <button class="difficulty-option" data-difficulty="baby">I'M TOO YOUNG TO DIE</button>
-                        <button class="difficulty-option" data-difficulty="easy">HEY, NOT TOO ROUGH</button>
-                        <button class="difficulty-option active" data-difficulty="medium">HURT ME PLENTY</button>
-                        <button class="difficulty-option" data-difficulty="hard">ULTRA-VIOLENCE</button>
-                        <button class="difficulty-option" data-difficulty="nightmare">NIGHTMARE!</button>
-                    </div>
-                </div>
-                <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
-                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+                <a href="../index.html#actors">Actors</a>
+                <a href="../api.html">API</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner" target="_blank" class="cta-button">View on Apify</a>
             </div>
         </div>
     </nav>
 
-    <section class="actor-header">
+    <header class="actor-header">
         <div class="container">
-            <a href="../index.html" class="back-link">&larr; Back to Arsenal</a>
+            <a href="../index.html" class="back-link">
+                &larr; Back to all actors
+            </a>
             <div class="actor-header-content">
-                <img src="../images/logo.png" alt="Notion API - Database &amp; Page Automation" class="actor-icon" onerror="this.src='../images/logo.png'">
+                <img src="../images/notion-api---database-page-automation.png" alt="Notion API - Database &amp; Page Automation" class="actor-icon">
                 <div class="actor-info">
                     <h1 class="actor-title">Notion API - Database &amp; Page Automation</h1>
-                    <span class="actor-category">Automation</span>
-                    <p class="actor-description">Apify actor for Notion API - Database &amp; Page Automation</p>
+                    <span class="actor-category">SCRAPER</span>
+                    <p class="actor-description"></p>
                     <div class="actor-actions">
-                        <a href="https://apify.com/alizarin_refrigerator-owner/notion-api---database-page-automation?fpr=kqpn7" class="btn btn-primary" target="_blank" rel="noopener">Run on Apify</a>
-                        <a href="../index.html#arsenal" class="btn btn-secondary">Browse All Actors</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/notion-api---database-page-automation" target="_blank" class="btn btn-primary">Run on Apify</a>
+                        <a href="https://apify.com/alizarin_refrigerator-owner/notion-api---database-page-automation/api" target="_blank" class="btn btn-secondary">View API</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-        <section class="content">
+    <main class="content">
         <div class="container">
-            <h1>Notion API - Database & Page Automation</h1>
-<p>Automate Notion workspaces with the official API. Query databases, create/update pages, manage blocks, search content, and sync data. Perfect for CMS automation, content pipelines, and knowledge base management. Built by John Rippy (https://www.linkedin.com/in/johnrippy/).</p>
-<hr>
-<h2>How to Get Your Notion Integration Token</h2>
-<ol>
-<li>Go to <a href="https://www.notion.so/my-integrations" target="_blank" rel="noopener">notion.so/my-integrations</a></li> <li>Click <strong>"+ New integration"</strong></li> <li>Give it a name (e.g., "Apify Automation")</li> <li>Select the workspace you want to connect</li> <li>Click <strong>Submit</strong></li> <li>Copy your <strong>Internal Integration Token</strong> (starts with <code>secret_</code>)</li> </ol> <strong>⚠️ IMPORTANT: Connect Pages to Your Integration</strong>
-<p>After creating the integration, you must explicitly share pages/databases with it:</p>
-<ol>
-<li>Open the Notion page or database you want to access</li> <li>Click <strong>"..."</strong> (three dots) in the top right</li> <li>Click <strong>"Connect to"</strong> → Select your integration</li> <li>Repeat for each page/database you need access to</li> </ol> Without this step, you'll get "Object not found" errors!
-<hr>
-<h2>Features</h2>
-<h3>Database Operations</h3>
-<ul>
-<p><li><strong>Query Database</strong> - Filter and sort database entries</li> <li><strong>Get Database</strong> - Retrieve database schema and properties</li> <li><strong>Create Database</strong> - Create new databases with custom properties</li> <li><strong>Update Database</strong> - Modify database title and properties</li> </ul>
-<h3>Page Management</h3>
-<ul>
-<p><li><strong>Get Page</strong> - Retrieve page properties</li> <li><strong>Create Page</strong> - Create new pages in databases or as subpages</li> <li><strong>Update Page</strong> - Modify page properties</li> <li><strong>Batch Create</strong> - Create multiple pages in one run</li> </ul>
-<h3>Block Operations</h3>
-<ul>
-<p><li><strong>Get Block</strong> - Retrieve block content</li> <li><strong>Get Block Children</strong> - List child blocks (page content)</li> <li><strong>Append Blocks</strong> - Add content to pages</li> <li><strong>Update Block</strong> - Modify block content</li> <li><strong>Delete Block</strong> - Remove blocks</li> </ul>
-<h3>Search & Discovery</h3>
-<ul>
-<p><li><strong>Search</strong> - Find pages and databases by title</li> </ul>
-<h3>User & Comments</h3>
-<ul>
-<p><li><strong>List Users</strong> - Get workspace members</li> <li><strong>Get User</strong> - Retrieve user details</li> <li><strong>List Comments</strong> - Get page/block comments</li> <li><strong>Create Comment</strong> - Add comments to pages</li> </ul>
-<h2>Quick Start</h2>
-<h3>Try it first (Free - Demo Mode)</h3>
-<pre><code class="language-json">{
-<p>"demoMode": true, "task": "query_database" }</code></pre> This returns sample Notion data so you can see the output format without charges.</p>
-<h3>Query a Database</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "secret_XXXXXXXXXXXXXXXXXXXXXXXXX", "task": "query_database", "databaseId": "12345678abcd1234abcd1234abcd1234", "demoMode": false }</code></pre>
-<h3>Create a Page in a Database</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "secret_XXXXXXXXXXXXXXXXXXXXXXXXX", "task": "create_page", "databaseId": "12345678abcd1234abcd1234abcd1234", "properties": { "Name": { "title": [{"text": {"content": "New Task"}}] }, "Status": { "select": {"name": "To Do"} } }, "demoMode": false }</code></pre>
-<h3>Search for Pages</h3>
-<pre><code class="language-json">{
-<p>"accessToken": "secret_XXXXXXXXXXXXXXXXXXXXXXXXX", "task": "search", "searchQuery": "project roadmap", "searchFilter": "page", "demoMode": false }</code></pre>
-<p><strong>Where to find your Database ID:</strong></p>
-<ul>
-<p><li>Open the database in Notion as a full page</li> <li>Look at the URL: <code>notion.so/Your-Database-Name-12345678abcd1234abcd1234abcd1234</code></li> <li>The 32-character ID at the end is your database ID (ignore dashes)</li> </ul>
-<h2>Demo Mode</h2>
-<p>Set <code>demoMode: true</code> to test with sample data (no charges). When you're ready for real results, set <code>demoMode: false</code> or omit it.</p>
-<pre><code class="language-json">{
-<p>"demoMode": true, ... }</code></pre>
-<h2>Input Parameters</h2>
-<table>
-<p><thead> <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr> </thead> <tbody> <tr><td>task</td><td>string</td><td>Yes</td><td>Operation to perform (see tasks below)</td></tr> <tr><td>accessToken</td><td>string</td><td>Yes*</td><td>Notion integration token (*not needed for demoMode)</td></tr> <tr><td>databaseId</td><td>string</td><td>No</td><td>Database ID for database operations</td></tr> <tr><td>pageId</td><td>string</td><td>No</td><td>Page ID for page operations</td></tr> <tr><td>blockId</td><td>string</td><td>No</td><td>Block ID for block operations</td></tr> <tr><td>searchQuery</td><td>string</td><td>No</td><td>Search text for search task</td></tr> <tr><td>searchFilter</td><td>string</td><td>No</td><td>Filter by 'page' or 'database'</td></tr> <tr><td>filter</td><td>object</td><td>No</td><td>Database filter (JSON)</td></tr> <tr><td>sorts</td><td>array</td><td>No</td><td>Database sort configuration</td></tr> <tr><td>pageTitle</td><td>string</td><td>No</td><td>Title for new page</td></tr> <tr><td>properties</td><td>object</td><td>No</td><td>Properties for create/update</td></tr> <tr><td>content</td><td>array</td><td>No</td><td>Block content array</td></tr> <tr><td>batchPages</td><td>array</td><td>No</td><td>Pages for batch creation</td></tr> <tr><td>webhookUrl</td><td>string</td><td>No</td><td>URL for webhook delivery</td></tr> <tr><td>demoMode</td><td>boolean</td><td>No</td><td>Run with sample data (default: true)</td></tr> </tbody> </table>
-<h2>Output Format</h2>
-<p>Results are saved to the default dataset:</p>
-<h3>Query Result</h3>
-<pre><code class="language-json">{
-<p>"task": "query_database", "success": true, "pages": [ { "id": "abc123...", "url": "https://notion.so/...", "properties": { "Name": { "title": [{ "plain_text": "Project Alpha" }] }, "Status": { "select": { "name": "In Progress" } } } } ], "total": 15, "databaseId": "xyz789..." }</code></pre>
-<h3>Page Created</h3>
-<pre><code class="language-json">{
-<p>"task": "create_page", "success": true, "page": { "id": "new123...", "url": "https://notion.so/...", "created_time": "2025-01-10T12:00:00.000Z" } }</code></pre>
-<h2>Common Problems & Solutions</h2>
-<h3>"Object not found" error</h3>
-<p><strong>Cause:</strong> Your integration doesn't have access to the page/database. <strong>Fix:</strong></p>
-<ol>
-<p><li>Open the Notion page or database</li> <li>Click <strong>"..."</strong> → <strong>"Connect to"</strong> → Select your integration</li> <li>The page must be explicitly shared with your integration</li> </ol>
-<h3>"Invalid token" or "Unauthorized" error</h3>
-<p><strong>Cause:</strong> Your access token is wrong or expired. <strong>Fix:</strong></p>
-<ol>
-<p><li>Go to <a href="https://www.notion.so/my-integrations" target="_blank" rel="noopener">notion.so/my-integrations</a></li> <li>Click your integration and copy the token again</li> <li>Make sure you copied the full token starting with <code>secret_</code></li> </ol>
-<h3>"validation_error" when creating pages</h3>
-<p><strong>Cause:</strong> The properties don't match the database schema. <strong>Fix:</strong></p>
-<ul>
-<p><li>Property names are case-sensitive and must match exactly</li> <li>Each property type requires a specific format (title, select, date, etc.)</li> <li>Use the <code>get_database</code> task first to see the correct property structure</li> </ul>
-<h3>"Could not find database" error</h3>
-<p><strong>Cause:</strong> The database ID is incorrect or the database is not shared with your integration. <strong>Fix:</strong></p>
-<ul>
-<p><li>Double-check the database ID from the URL</li> <li>Make sure the database is connected to your integration</li> </ul>
-<h3>Demo data showing instead of real results</h3>
-<p><strong>Cause:</strong> <code>demoMode</code> is still set to <code>true</code>. <strong>Fix:</strong> Set <code>demoMode: false</code> and provide your <code>accessToken</code>.</p>
-<h2>Pricing</h2>
-<p>This actor uses <strong>pay-per-event</strong> billing:</p>
-<table>
-<p><thead> <tr><th>Operation</th><th>Cost</th></tr> </thead> <tbody> <tr><td>Search</td><td>$0.01</td></tr> <tr><td>Query database</td><td>$0.02</td></tr> <tr><td>Get database/page/block</td><td>$0.01</td></tr> <tr><td>Create database</td><td>$0.05</td></tr> <tr><td>Create page</td><td>$0.03</td></tr> <tr><td>Update database/page/block</td><td>$0.02</td></tr> <tr><td>Delete block</td><td>$0.01</td></tr> <tr><td>Append blocks</td><td>$0.02</td></tr> <tr><td>List users/comments</td><td>$0.01</td></tr> <tr><td>Create comment</td><td>$0.02</td></tr> <tr><td>Batch create (per page)</td><td>$0.03</td></tr> </tbody> </table>
-<h2>Use Cases</h2>
-<h3>CMS & Content Management</h3>
-<ul>
-<p><li>Sync blog posts from Notion to website</li> <li>Auto-publish content based on status</li> <li>Update metadata across pages</li> </ul>
-<h3>Project Management</h3>
-<ul>
-<p><li>Create tasks from external sources</li> <li>Update project statuses automatically</li> <li>Generate reports from databases</li> </ul>
-<h3>Knowledge Base</h3>
-<ul>
-<p><li>Search and retrieve documentation</li> <li>Auto-organize content</li> <li>Sync with external systems</li> </ul>
-<h3>Data Pipelines</h3>
-<ul>
-<p><li>Import data to Notion databases</li> <li>Export Notion data for analysis</li> <li>Sync between Notion and other tools</li> </ul>
-<h3>Automation Workflows</h3>
-<ul>
-<p><li>Trigger actions on database changes</li> <li>Create pages from form submissions</li> <li>Update records from API calls</li> </ul>
-<hr>
-<p><strong>Built by John Rippy | <a href="https://actorarsenal.com" target="_blank" rel="noopener">Actor Arsenal</a></strong></p>
+            <p>This actor helps you </p>
         </div>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>Built by <a href="https://johnrippy.link" target="_blank">John Rippy</a> &mdash; 2025 Zapier Automation Hero</p>
+            <p>Actor Arsenal by <a href="https://apify.com/alizarin_refrigerator-owner">John Rippy</a> | 2025 Zapier Automation Hero</p>
         </div>
     </footer>
-
-    <!-- DOOM HUD (Classic Metal Style) -->
-    <div class="doom-hud">
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-ammo" id="hudAmmo">150,000</div>
-                <div class="hud-label">KILLS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-health" id="hudHealth">100%</div>
-                <div class="hud-label">HEALTH</div>
-            </div>
-        </div>
-        <div class="hud-face-container">
-            <img src="../images/logo.png" class="hud-face" id="hudFace" alt="Doomguy">
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-armor" id="hudArmor">281</div>
-                <div class="hud-label">ACTORS</div>
-            </div>
-        </div>
-        <div class="hud-section">
-            <div class="hud-stat">
-                <div class="hud-value hud-secrets" id="hudSecrets">3/3</div>
-                <div class="hud-label">SECRETS</div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

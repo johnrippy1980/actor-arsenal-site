@@ -636,17 +636,28 @@ def main():
         if len(new_actors) > 10:
             print(f"    ... and {len(new_actors) - 10} more")
 
-    # Step 4: Generate missing pages
-    print("\n[4/5] Generating actor pages...")
+    # Define all_actors early for use in force-update
+    all_actors = apify_actors
+
+    # Step 4: Generate/update actor pages
+    force_update = "--force-update" in sys.argv or "--update-all" in sys.argv
+
+    if force_update:
+        print(f"\n[4/5] Regenerating ALL {len(all_actors)} actor pages (--force-update)...")
+        actors_to_process = all_actors
+    else:
+        print("\n[4/5] Generating actor pages...")
+        actors_to_process = new_actors
 
     if not dry_run:
         ACTORS_DIR.mkdir(exist_ok=True)
 
-        for i, actor in enumerate(new_actors):
+        for i, actor in enumerate(actors_to_process):
             name = actor.get("name", "")
             actor_id = actor.get("id", "")
 
-            print(f"  Creating page for {name}...")
+            action = "Updating" if force_update else "Creating"
+            print(f"  {action} page for {name} ({i+1}/{len(actors_to_process)})...")
 
             # Fetch readme
             readme = fetch_actor_readme(actor_id)
@@ -659,14 +670,15 @@ def main():
             page_path = ACTORS_DIR / f"{name}.html"
             page_path.write_text(page_html)
 
-            print(f"    Created: actors/{name}.html")
+            print(f"    {'Updated' if force_update else 'Created'}: actors/{name}.html")
     else:
-        print("  [DRY RUN] Would create pages for new actors")
+        if force_update:
+            print(f"  [DRY RUN] Would regenerate all {len(all_actors)} actor pages")
+        else:
+            print("  [DRY RUN] Would create pages for new actors")
 
     # Step 5: Update JSON, sitemap, and counts
     print("\n[5/5] Updating site files...")
-
-    all_actors = apify_actors
 
     if not dry_run:
         update_actors_json(all_actors)
