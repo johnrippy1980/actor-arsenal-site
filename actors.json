@@ -1,5 +1,15 @@
 [
   {
+    "id": "gMymapAtYrgao6fEx",
+    "name": "agency-sniper",
+    "title": "Agency Sniper - Find Marketing Agency Clients | Reverse Prospecting Tool",
+    "description": "Discover who marketing agencies work with using reverse prospecting. Find proven buyers by analyzing agency portfolios, case studies, client pages, footer attributions, social media mentions, and Google reviews. 6-layer discovery engine with AI-powered extraction.",
+    "pictureUrl": "images/agency-sniper.png",
+    "categories": [
+      "SCRAPER"
+    ]
+  },
+  {
     "id": "LF3BPd0DBfXIgI0uA",
     "name": "deprecated---god-mode---marketing-intelligence-mcp",
     "title": "DEPRECATED  - God Mode - Marketing Intelligence MCP",
@@ -45,16 +55,6 @@
     "title": "Acuity Scheduling API Appointments & Booking Data Access",
     "description": "",
     "pictureUrl": "images/acuity-scheduling-api-appointments-booking-data-access.png",
-    "categories": [
-      "SCRAPER"
-    ]
-  },
-  {
-    "id": "gMymapAtYrgao6fEx",
-    "name": "agency-sniper",
-    "title": "Agency Sniper Find Marketing Agency Clients Reverse Prospecting",
-    "description": "",
-    "pictureUrl": "images/agency-sniper.png",
     "categories": [
       "SCRAPER"
     ]
