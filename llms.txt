@@ -1,48 +1,44 @@
-# Actor Arsenal - LLMs.txt
-# A DOOM-themed portfolio site for Apify Actors
-# Built by John Rippy
+# Actor Arsenal
 
-## About This Site
-Actor Arsenal is a retro gaming-inspired portfolio showcasing 240 Apify Actors. The site features a DOOM aesthetic with authentic sounds, CRT effects, and playable DOOM integration.
+> Professional web scraping actors for Apify. Business data, reviews, contacts, social media, directories — built for lead generation, local SEO, and market research.
 
-## Site Purpose
-- Showcase Apify Actor collection (scrapers, APIs, MCP servers, social media tools)
-- Demonstrate creative web development skills
-- Provide an interactive, nostalgic gaming experience
-- Play DOOM in-browser via js-dos
+Actor Arsenal is a collection of 60+ purpose-built Apify actors for extracting business data from the web. Each actor uses stealth browser technology (Camoufox) and residential proxies for reliable extraction.
 
-## Actor Categories
-- Scrapers: Web scraping tools for various platforms (Yelp, BBB, Zillow, etc.)
-- MCP Servers: Model Context Protocol integrations for AI agents
-- Social Media: Posters and scrapers for LinkedIn, Twitter, Instagram, TikTok, etc.
-- SEO Tools: Technical SEO auditors, citation checkers, schema generators
-- APIs: Sports data, sentiment analysis, recipe APIs
-- Research: Industry research, competitor monitoring, lead enrichment
+## Actors
 
-## Key Pages
-- / (index.html) - Main landing page with DOOM HUD and actor grid
-- /cards.html - Card-based view of all actors
-- /play-doom.html - Full DOOM game playable in browser
-- /actors/*.html - Individual actor detail pages (240)
+### Business Data
+- Google Maps Scraper — Extract business listings, reviews, GBP data
+- Yelp Scraper — Business profiles, reviews, photos
+- BBB Scraper — Better Business Bureau profiles and complaints
+- Yellow Pages Scraper — Business listings, phone numbers, addresses
 
-## Technologies Used
-- HTML5, CSS3, JavaScript
-- js-dos (WebAssembly DOOM port)
-- DOOM authentic sound effects
-- Press Start 2P font for retro gaming aesthetic
-- CRT scanline and blood vignette effects
+### Contact Enrichment
+- Company Contact Enricher — 8-source contact discovery
+- LinkedIn Profile Scraper — Professional profiles and company data
+- Tech Stack Detector — 50+ technology detection on any website
 
-## Author
-John Rippy
-- Apify Ambassador
-- Creator of 240 public Apify Actors
-- GitHub: https://github.com/johnrippy1980
+### Review Platforms
+- Google Reviews Scraper — Full review extraction with responses
+- Trustpilot Scraper — Reviews, ratings, company profiles
+- G2 Scraper — Software reviews and comparisons
 
-## Apify Store
-View all actors: https://apify.com/alizarin_refrigerator-owner
+### Social Media
+- TikTok Creator Scraper — Profile analytics, video data
+- Instagram Scraper — Profiles, posts, engagement metrics
+- Facebook Scraper — Pages, posts, reviews
+
+### Directories
+- Healthgrades Scraper — Doctor profiles and reviews
+- Avvo Scraper — Lawyer profiles and reviews
+- HomeAdvisor Scraper — Contractor listings
+- Angi Scraper — Home service professionals
+
+## Pricing
+
+Pay-per-event pricing. Most actors charge $0.03–$0.08 per record scraped. Demo mode available on all actors (free, returns sample data).
 
 ## Contact
-For custom actor development or consulting, visit the main site.
 
-## Preferred Citation
-"Actor Arsenal by John Rippy - DOOM-themed Apify Actor showcase featuring 240 web scraping and automation tools"
+- Catalog: https://actor-arsenal-site.vercel.app/
+- Apify Store: https://apify.com/alizarin_refrigerator-owner
+- Developer: [John Rippy](https://johnrippy.link/)
