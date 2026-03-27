@@ -1,0 +1,94 @@
+# Actor Arsenal — Professional Web Scraping Actors for Apify
+
+> 60+ purpose-built Apify actors for business data extraction. Lead generation, local SEO, review monitoring, contact enrichment, and market research — all with stealth browser technology and residential proxies.
+
+## About
+
+Actor Arsenal is a collection of professional web scraping actors built for the Apify platform. Each actor extracts structured data from specific websites and platforms, using Camoufox stealth browser technology and residential proxies for reliable, undetected extraction.
+
+Built by John Rippy for marketing agencies, sales teams, SEO professionals, and data analysts who need clean, structured business data at scale.
+
+**Key capabilities:**
+- Stealth extraction with Camoufox (C++ fingerprinting)
+- Residential proxy support for anti-detection
+- Pay-per-event pricing (no monthly minimums)
+- Demo mode on every actor (test free before scraping)
+- Webhook integration (Zapier, Make, n8n, custom)
+- Structured JSON output ready for CRM/database import
+
+## Actor Categories
+
+### Business Data Extraction
+- **Google Maps Scraper** ($0.04/business) — Business listings, reviews, GBP data, hours, photos count, description, service areas, coordinates
+- **Yellow Pages Scraper** ($0.06/business) — Business listings, phone numbers, addresses, reviews, hours, categories
+- **BBB Scraper** ($0.05/business) — Better Business Bureau profiles, ratings, complaints, accreditation status
+
+### Contact Enrichment
+- **Company Contact Enricher** ($0.08/company) — 8-source contact discovery: decision makers, emails, phones, LinkedIn profiles, job titles
+- **Tech Stack Detector** ($0.03/site) — 50+ technologies detected on any website (CMS, analytics, frameworks, CDN, hosting)
+
+### Review Platforms
+- **Yelp Scraper** ($0.05/business) — Business profiles, reviews with text/rating/date, photos, hours, categories
+- **Google Reviews Scraper** ($0.04/business) — Full review extraction with owner responses
+- **Trustpilot Scraper** ($0.04/company) — Company profiles, reviews, ratings, response rates
+- **G2 Scraper** ($0.05/product) — Software reviews, feature comparisons, pricing data
+
+### Healthcare & Legal
+- **Healthgrades Scraper** ($0.05/doctor) — Doctor profiles, specialties, reviews, insurance accepted
+- **Avvo Scraper** ($0.05/lawyer) — Attorney profiles, practice areas, reviews, peer endorsements
+- **Vitals Scraper** — Doctor ratings and patient reviews
+- **WebMD Scraper** — Provider profiles and patient reviews
+
+### Home Services
+- **HomeAdvisor Scraper** ($0.05/business) — Contractor listings, reviews, service areas
+- **Angi Scraper** ($0.05/business) — Home service professionals, ratings, pricing
+- **Houzz Scraper** — Interior design and home improvement professionals
+- **Thumbtack Scraper** — Local service provider listings
+
+### Food & Hospitality
+- **Grubhub Scraper** — Restaurant listings, menus, pricing, delivery areas
+- **DoorDash Scraper** — Restaurant data, menu items, ratings
+- **OpenTable Scraper** — Restaurant reservations, reviews, cuisine types
+- **TripAdvisor Scraper** — Hotel/restaurant reviews, ratings, pricing
+
+### Real Estate
+- **Zillow Scraper** — Property listings, prices, photos, agent info
+- **Realtor.com Scraper** — Real estate listings and agent profiles
+- **Redfin Scraper** — Property data, market trends, agent profiles
+
+### Social Media
+- **TikTok Creator Scraper** — Profile analytics, video engagement, hashtag analysis
+- **Instagram Scraper** — Profiles, posts, engagement metrics
+- **Facebook Scraper** — Pages, posts, reviews, events
+- **LinkedIn Profile Scraper** — Professional profiles and company pages
+
+### Directories & Marketplaces
+- **Clutch Scraper** — B2B service provider reviews and rankings
+- **GoodFirms Scraper** — IT service provider profiles
+- **Capterra Scraper** — Software reviews and comparisons
+- **Glassdoor Scraper** — Company reviews, salaries, interview experiences
+
+## Pricing Model
+
+All actors use pay-per-event pricing:
+- Most actors: **$0.03 – $0.08 per record** scraped
+- No monthly subscription required
+- Demo mode available on every actor (returns sample data, $0.00)
+- Volume pricing available for enterprise use
+
+## Integration
+
+All actors output structured JSON compatible with:
+- CRM systems (HubSpot, Salesforce, GoHighLevel)
+- Google Sheets / Excel
+- Airtable, Notion databases
+- Zapier, Make.com, n8n automations
+- Custom webhooks (JSON payload delivery)
+
+## Links
+
+- **Full Catalog:** https://actor-arsenal-site.vercel.app/
+- **Apify Store:** https://apify.com/alizarin_refrigerator-owner
+- **Developer:** John Rippy — https://johnrippy.link/
+- **Local Howl** (agency): https://www.localhowl.com
+- **ShopTok** (TikTok intelligence): https://shoptok.dev
