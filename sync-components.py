@@ -32,7 +32,7 @@ NAV_ROOT = '''    <nav>
                     </div>
                 </div>
                 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
-                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7b" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
     </nav>'''
@@ -59,7 +59,7 @@ NAV_ACTORS = '''    <nav>
                     </div>
                 </div>
                 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Play Music">🔇</button>
-                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
+                <a href="https://apify.com/alizarin_refrigerator-owner?fpr=kqpn7b" class="cta-button" target="_blank" rel="noopener">View on Apify</a>
             </div>
         </div>
     </nav>'''
